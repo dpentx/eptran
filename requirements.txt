@@ -1,5 +1,5 @@
 EbookLib
 beautifulsoup4
-google-generativeai
+google-genai
 lxml
 html5lib

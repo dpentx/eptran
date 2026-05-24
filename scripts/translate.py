@@ -4,7 +4,7 @@ import subprocess
 import ebooklib
 from ebooklib import epub
 from bs4 import BeautifulSoup
-import google.generativeai as genai
+from google import genai
 from datetime import datetime, timezone
 import time
 import re
@@ -80,7 +80,7 @@ def chunk_text(text, max_chars=12000):
     return chunks
 
 
-def translate_chunk(model, text, chapter_title, chunk_index, total_chunks):
+def translate_chunk(client, text, chapter_title, chunk_index, total_chunks):
     context = f" (Parça {chunk_index + 1}/{total_chunks})" if total_chunks > 1 else ""
     prompt = (
         f"Aşağıdaki İngilizce metni Türkçeye çevir. "
@@ -103,8 +103,7 @@ def translate_chunk(model, text, chapter_title, chunk_index, total_chunks):
 
 
 def main():
-    genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel("gemini-2.0-flash")
+    client = genai.Client(api_key=GEMINI_API_KEY)
 
     # Find epub
     input_files = [f for f in os.listdir("input") if f.endswith(".epub")]
@@ -147,7 +146,7 @@ def main():
         translated_parts = []
 
         for j, chunk in enumerate(chunks):
-            translated = translate_chunk(model, chunk, chapter["title"], j, len(chunks))
+            translated = translate_chunk(client, chunk, chapter["title"], j, len(chunks))
             translated_parts.append(translated)
             time.sleep(1)  # rate limit buffer
 
