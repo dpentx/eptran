@@ -1,0 +1,5 @@
+EbookLib
+beautifulsoup4
+google-generativeai
+lxml
+html5lib
