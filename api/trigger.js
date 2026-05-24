@@ -1,7 +1,4 @@
-// Workflow'u tetikler ve conflict kontrolü yapar
-export const config = { maxDuration: 15 };
-
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== "POST")
     return res.status(405).json({ error: "Method not allowed" });
 
@@ -13,7 +10,6 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "Sunucu yapılandırması eksik" });
 
   try {
-    // Zaten çalışan bir çeviri var mı?
     const statusRes = await fetch(
       `https://api.github.com/repos/${REPO}/contents/status.json`,
       { headers: { Authorization: `token ${TOKEN}` } }
@@ -26,7 +22,6 @@ export default async function handler(req, res) {
       }
     }
 
-    // Workflow tetikle
     await new Promise((r) => setTimeout(r, 2000));
     const dispatchRes = await fetch(
       `https://api.github.com/repos/${REPO}/actions/workflows/translate.yml/dispatches`,
@@ -50,4 +45,4 @@ export default async function handler(req, res) {
     console.error(err);
     return res.status(500).json({ error: "Sunucu hatası" });
   }
-}
+};

@@ -407,29 +407,54 @@
   submitBtn.addEventListener('click', async () => {
     if (!selectedFile) return;
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Yükleniyor...';
+    submitBtn.textContent = 'Hazırlanıyor...';
     hideError();
 
     try {
-      const base64 = await toBase64(selectedFile);
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ filename: selectedFile.name, content: base64 }),
-      });
+      // 1. Credentials al
+      const credsRes = await fetch('/api/creds');
+      if (!credsRes.ok) throw new Error('Credentials alınamadı');
+      const { repo, branch, pat } = await credsRes.json();
 
-      const data = await res.json();
-      if (!res.ok) {
-        showError(data.error || 'Bir hata oluştu.');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Çeviriyi Başlat';
-        return;
+      // 2. Dosyayı base64'e çevir
+      submitBtn.textContent = 'Dosya okunuyor...';
+      const base64 = await toBase64(selectedFile);
+
+      // 3. Direkt GitHub API'ye yükle (Vercel limiti yok)
+      submitBtn.textContent = "GitHub'a yükleniyor...";
+      const commitRes = await fetch(
+        `https://api.github.com/repos/${repo}/contents/input/${selectedFile.name}`,
+        {
+          method: 'PUT',
+          headers: {
+            Authorization: `token ${pat}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: `upload: ${selectedFile.name}`,
+            content: base64,
+            branch,
+          }),
+        }
+      );
+
+      if (!commitRes.ok) {
+        const err = await commitRes.json();
+        throw new Error(err.message || 'GitHub yükleme başarısız');
+      }
+
+      // 4. Workflow tetikle
+      submitBtn.textContent = 'Çeviri başlatılıyor...';
+      const triggerRes = await fetch('/api/trigger', { method: 'POST' });
+      const triggerData = await triggerRes.json();
+      if (!triggerRes.ok) {
+        throw new Error(triggerData.error || 'Workflow tetiklenemedi');
       }
 
       submitBtn.textContent = 'Çeviri Başladı ✓';
       startPolling();
     } catch (err) {
-      showError('Bağlantı hatası: ' + err.message);
+      showError('Hata: ' + err.message);
       submitBtn.disabled = false;
       submitBtn.textContent = 'Çeviriyi Başlat';
     }
