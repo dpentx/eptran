@@ -9,7 +9,7 @@ on:
 jobs:
   translate:
     runs-on: ubuntu-latest
-    timeout-minutes: 360 # 6 saat
+    timeout-minutes: 360
     permissions:
       contents: write
 
@@ -23,16 +23,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: "pip"
 
       - name: Install dependencies
-        run: |
-          pip install \
-            EbookLib \
-            beautifulsoup4 \
-            google-generativeai \
-            lxml \
-            html5lib
+        run: pip install -r requirements.txt
 
       - name: Configure git
         run: |
