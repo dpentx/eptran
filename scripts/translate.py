@@ -18,6 +18,7 @@ def git_push(message):
     result = subprocess.run(["git", "diff", "--cached", "--quiet"])
     if result.returncode != 0:
         subprocess.run(["git", "commit", "-m", message], check=True)
+        subprocess.run(["git", "pull", "--rebase"], check=True)
         subprocess.run(["git", "push"], check=True)
 
 
