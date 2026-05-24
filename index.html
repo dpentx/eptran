@@ -422,6 +422,25 @@
 
       // 3. Direkt GitHub API'ye yükle (Vercel limiti yok)
       submitBtn.textContent = "GitHub'a yükleniyor...";
+
+      // Dosya zaten varsa sha al (güncelleme için gerekli)
+      let existingSha;
+      const checkRes = await fetch(
+        `https://api.github.com/repos/${repo}/contents/input/${selectedFile.name}`,
+        { headers: { Authorization: `token ${pat}` } }
+      );
+      if (checkRes.ok) {
+        const existing = await checkRes.json();
+        existingSha = existing.sha;
+      }
+
+      const commitBody = {
+        message: `upload: ${selectedFile.name}`,
+        content: base64,
+        branch,
+      };
+      if (existingSha) commitBody.sha = existingSha;
+
       const commitRes = await fetch(
         `https://api.github.com/repos/${repo}/contents/input/${selectedFile.name}`,
         {
@@ -430,11 +449,7 @@
             Authorization: `token ${pat}`,
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            message: `upload: ${selectedFile.name}`,
-            content: base64,
-            branch,
-          }),
+          body: JSON.stringify(commitBody),
         }
       );
 
