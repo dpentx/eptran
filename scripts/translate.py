@@ -38,7 +38,6 @@ def extract_chapters(epub_path):
             continue
         soup = BeautifulSoup(item.get_content(), "html.parser")
 
-        # Remove script/style tags
         for tag in soup(["script", "style", "nav"]):
             tag.decompose()
 
@@ -49,7 +48,6 @@ def extract_chapters(epub_path):
             continue
 
         title = item.get_name()
-        # Try to find a heading
         heading = soup.find(["h1", "h2", "h3"])
         if heading:
             title = heading.get_text().strip()
@@ -60,7 +58,6 @@ def extract_chapters(epub_path):
 
 
 def chunk_text(text, max_chars=12000):
-    """Split text into chunks at paragraph boundaries."""
     if len(text) <= max_chars:
         return [text]
 
@@ -94,7 +91,10 @@ def translate_chunk(client, text, chapter_title, chunk_index, total_chunks):
 
     for attempt in range(3):
         try:
-            response = model.generate_content(prompt)
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=prompt,
+            )
             return response.text
         except Exception as e:
             if attempt == 2:
@@ -106,7 +106,6 @@ def translate_chunk(client, text, chapter_title, chunk_index, total_chunks):
 def main():
     client = genai.Client(api_key=GEMINI_API_KEY)
 
-    # Find epub
     input_files = [f for f in os.listdir("input") if f.endswith(".epub")]
     if not input_files:
         print("input/ klasöründe epub bulunamadı.")
@@ -118,7 +117,6 @@ def main():
 
     print(f"Kitap: {epub_file}")
 
-    # Extract
     chapters = extract_chapters(epub_path)
     total = len(chapters)
     print(f"Toplam bölüm: {total}")
@@ -137,7 +135,6 @@ def main():
     }
     write_status(status)
 
-    # Translate
     for i, chapter in enumerate(chapters):
         print(f"[{i+1}/{total}] {chapter['title']}")
         status["current_chapter"] = chapter["title"]
@@ -149,7 +146,7 @@ def main():
         for j, chunk in enumerate(chunks):
             translated = translate_chunk(client, chunk, chapter["title"], j, len(chunks))
             translated_parts.append(translated)
-            time.sleep(1)  # rate limit buffer
+            time.sleep(1)
 
         full_translation = "\n\n".join(translated_parts)
         out_path = f"{output_dir}/{i+1:03d}_{book_slug}.txt"
@@ -161,7 +158,6 @@ def main():
         subprocess.run(["git", "add", out_path])
         write_status(status)
 
-    # Cleanup input
     os.remove(epub_path)
     subprocess.run(["git", "rm", epub_path], check=True)
 
