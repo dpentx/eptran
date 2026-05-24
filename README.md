@@ -2,7 +2,7 @@
 
 İngilizce epub dosyalarını Türkçeye çeviren, Gemini 2.0 Flash destekli araç.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/KULLANICI_ADI/eptran&env=GEMINI_API_KEY,GH_PAT,GH_REPO,GH_BRANCH&envDescription=Kurulum%20için%20gerekli%20değişkenler&envLink=https://github.com/dpentx/eptran/blob/main/.env.example)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/dpentx/eptran&env=GEMINI_API_KEY,GH_PAT,GH_REPO,GH_BRANCH&envDescription=Kurulum%20için%20gerekli%20değişkenler&envLink=https://github.com/dpentx/eptran/blob/main/.env.example)
 
 ## Nasıl Çalışır?
 
