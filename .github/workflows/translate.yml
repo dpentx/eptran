@@ -1,0 +1,45 @@
+name: Translate Novel
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "input/*.epub"
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 6 saat
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install \
+            EbookLib \
+            beautifulsoup4 \
+            google-generativeai \
+            lxml \
+            html5lib
+
+      - name: Configure git
+        run: |
+          git config user.name "eptran-bot"
+          git config user.email "eptran-bot@users.noreply.github.com"
+
+      - name: Run translation
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/translate.py
