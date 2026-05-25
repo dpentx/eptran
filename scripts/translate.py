@@ -4,12 +4,12 @@ import subprocess
 import ebooklib
 from ebooklib import epub
 from bs4 import BeautifulSoup
-from google import genai
+from groq import Groq
 from datetime import datetime, timezone
 import time
 import re
 
-GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
+GROQ_API_KEY = os.environ["GROQ_API_KEY"]
 STATUS_FILE = "status.json"
 
 
@@ -91,11 +91,12 @@ def translate_chunk(client, text, chapter_title, chunk_index, total_chunks):
 
     for attempt in range(3):
         try:
-            response = client.models.generate_content(
-                model="gemini-2.0-flash",
-                contents=prompt,
+            response = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.3,
             )
-            return response.text
+            return response.choices[0].message.content
         except Exception as e:
             if attempt == 2:
                 raise
@@ -104,7 +105,7 @@ def translate_chunk(client, text, chapter_title, chunk_index, total_chunks):
 
 
 def main():
-    client = genai.Client(api_key=GEMINI_API_KEY)
+    client = Groq(api_key=GROQ_API_KEY)
 
     input_files = [f for f in os.listdir("input") if f.endswith(".epub")]
     if not input_files:
@@ -146,7 +147,7 @@ def main():
         for j, chunk in enumerate(chunks):
             translated = translate_chunk(client, chunk, chapter["title"], j, len(chunks))
             translated_parts.append(translated)
-            time.sleep(1)
+            time.sleep(2)
 
         full_translation = "\n\n".join(translated_parts)
         out_path = f"{output_dir}/{i+1:03d}_{book_slug}.txt"
