@@ -1,5 +1,5 @@
 EbookLib
 beautifulsoup4
-google-genai
+groq
 lxml
 html5lib
