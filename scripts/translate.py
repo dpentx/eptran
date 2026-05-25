@@ -4,7 +4,7 @@ import subprocess
 import ebooklib
 from ebooklib import epub
 from bs4 import BeautifulSoup
-from groq import Groq
+from groq import Groq, RateLimitError
 from datetime import datetime, timezone
 import time
 import re
@@ -78,6 +78,24 @@ def chunk_text(text, max_chars=12000):
     return chunks
 
 
+def parse_retry_seconds(error_message):
+    """Hata mesajından bekleme süresini saniyeye çevir."""
+    match = re.search(r'try again in ([\dhms .]+)', str(error_message))
+    if not match:
+        return 3600  # varsayılan 1 saat
+
+    time_str = match.group(1).strip()
+    total = 0
+    for h in re.findall(r'([\d.]+)h', time_str):
+        total += float(h) * 3600
+    for m in re.findall(r'([\d.]+)m', time_str):
+        total += float(m) * 60
+    for s in re.findall(r'([\d.]+)s', time_str):
+        total += float(s)
+
+    return int(total) + 10  # 10 saniye tampon
+
+
 def translate_chunk(client, text, chapter_title, chunk_index, total_chunks):
     context = f" (Parça {chunk_index + 1}/{total_chunks})" if total_chunks > 1 else ""
     prompt = (
@@ -89,7 +107,7 @@ def translate_chunk(client, text, chapter_title, chunk_index, total_chunks):
         f"{text}"
     )
 
-    for attempt in range(3):
+    while True:
         try:
             response = client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
@@ -97,11 +115,13 @@ def translate_chunk(client, text, chapter_title, chunk_index, total_chunks):
                 temperature=0.3,
             )
             return response.choices[0].message.content
+        except RateLimitError as e:
+            wait = parse_retry_seconds(e)
+            print(f"Rate limit — {wait} saniye bekleniyor ({wait//60} dakika)...")
+            time.sleep(wait)
         except Exception as e:
-            if attempt == 2:
-                raise
-            print(f"Retry {attempt + 1}/3 after error: {e}")
-            time.sleep(5 * (attempt + 1))
+            print(f"Hata: {e} — 30 saniye sonra tekrar deneniyor...")
+            time.sleep(30)
 
 
 def main():
@@ -122,21 +142,31 @@ def main():
     total = len(chapters)
     print(f"Toplam bölüm: {total}")
 
+    # Kaldığı yerden devam et
     output_dir = f"output/{book_slug}"
     os.makedirs(output_dir, exist_ok=True)
+    completed_start = len([f for f in os.listdir(output_dir) if f.endswith(".txt")]) if os.path.exists(output_dir) else 0
+    if completed_start > 0:
+        print(f"Kaldığı yerden devam: {completed_start}/{total}")
 
     status = {
         "status": "running",
         "book": book_slug,
         "epub_file": epub_file,
         "total": total,
-        "completed": 0,
+        "completed": completed_start,
         "current_chapter": "",
         "started_at": datetime.now(timezone.utc).isoformat(),
     }
     write_status(status)
 
     for i, chapter in enumerate(chapters):
+        # Zaten çevrilmişse atla
+        out_path = f"{output_dir}/{i+1:03d}_{book_slug}.txt"
+        if os.path.exists(out_path):
+            print(f"[{i+1}/{total}] Atlanıyor (zaten mevcut): {chapter['title']}")
+            continue
+
         print(f"[{i+1}/{total}] {chapter['title']}")
         status["current_chapter"] = chapter["title"]
         write_status(status)
@@ -150,7 +180,6 @@ def main():
             time.sleep(2)
 
         full_translation = "\n\n".join(translated_parts)
-        out_path = f"{output_dir}/{i+1:03d}_{book_slug}.txt"
 
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(f"# {chapter['title']}\n\n{full_translation}\n")
