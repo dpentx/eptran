@@ -34,5 +34,5 @@ jobs:
 
       - name: Run translation
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python scripts/translate.py
