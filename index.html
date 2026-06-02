@@ -225,20 +225,96 @@
       font-size: 1.25rem;
     }
 
-    #upload-progress-track {
-      height: 6px;
-      background: var(--md-outline-variant);
-      border-radius: 3px;
-      overflow: hidden;
-      margin: 1.2rem 0;
+    #feedback-box {
+      display: none;
+      margin-top: 1.2rem;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.3s ease;
     }
 
-    .progress-bar-fill {
+    #feedback-box.visible {
+      display: flex;
+    }
+
+    #feedback-box.uploading {
+      background: var(--md-primary-container);
+      color: var(--md-on-primary-container);
+      border: 1px solid rgba(16, 149, 233, 0.2);
+    }
+
+    #feedback-box.error {
+      background: var(--md-error-container);
+      color: var(--md-on-error-container);
+      border: 1px solid rgba(248, 113, 113, 0.3);
+    }
+
+    #feedback-box.translating {
+      background: var(--md-primary-container);
+      color: var(--md-on-primary-container);
+      border: 1px solid rgba(16, 149, 233, 0.2);
+    }
+
+    #feedback-box.completed {
+      background: var(--md-success-container);
+      color: var(--md-on-success-container);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    #feedback-box i {
+      flex-shrink: 0;
+      font-size: 1.25rem;
+    }
+
+    #feedback-box .feedback-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    #feedback-box .feedback-text {
+      flex: 1;
+    }
+
+    #feedback-box .feedback-progress {
+      flex-shrink: 0;
+      min-width: 60px;
+      text-align: right;
+      font-size: 0.75rem;
+      opacity: 0.9;
+    }
+
+    #feedback-progress-bar {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    #feedback-progress-bar.visible {
+      display: block;
+    }
+
+    #feedback-progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--md-primary), var(--md-secondary));
-      border-radius: 3px;
+      background: currentColor;
+      border-radius: 2px;
       transition: width 0.8s ease;
       width: 0%;
+      opacity: 0.8;
+    }
+
+    #feedback-box.uploading #feedback-progress-bar,
+    #feedback-box.translating #feedback-progress-bar {
+      display: block;
     }
 
     #submit-btn {
@@ -581,12 +657,18 @@
     <span id="file-name-label"></span>
   </div>
 
-  <div class="progress-bar-track" id="upload-progress-track" style="display: none;">
-    <div class="progress-bar-fill" id="upload-progress-fill"></div>
+  <div id="feedback-box">
+    <i class="ti ti-info-circle"></i>
+    <div class="feedback-content">
+      <div class="feedback-text" id="feedback-text"></div>
+      <div class="feedback-progress" id="feedback-progress"></div>
+    </div>
+    <div id="feedback-progress-bar" class="visible">
+      <div id="feedback-progress-fill"></div>
+    </div>
   </div>
 
   <button id="submit-btn" disabled>Çeviriyi Başlat</button>
-  <div id="error-msg"></div>
 </div>
 
 <div class="card" id="status-card">
@@ -629,12 +711,12 @@
   const fileInfo    = document.getElementById('file-info');
   const fileNameLabel = document.getElementById('file-name-label');
   const submitBtn   = document.getElementById('submit-btn');
-  const errorMsg    = document.getElementById('error-msg');
+  const feedbackBox = document.getElementById('feedback-box');
+  const feedbackText = document.getElementById('feedback-text');
+  const feedbackProgress = document.getElementById('feedback-progress');
+  const feedbackProgressFill = document.getElementById('feedback-progress-fill');
   const statusCard  = document.getElementById('status-card');
   const outputSection = document.getElementById('output-section');
-  
-  const uploadProgressTrack = document.getElementById('upload-progress-track');
-  const uploadProgressFill = document.getElementById('upload-progress-fill');
 
   let selectedFile = null;
   let pollInterval = null;
@@ -654,34 +736,31 @@
 
   function setFile(file) {
     if (!file.name.endsWith('.epub') && !file.name.endsWith('.pdf')) {
-      showError('Sadece .epub ve .pdf dosyaları destekleniyor.');
+      showFeedback('Sadece .epub ve .pdf dosyaları destekleniyor.', 'error');
       return;
     }
     selectedFile = file;
     fileNameLabel.textContent = file.name;
     fileInfo.classList.remove('hidden');
     submitBtn.disabled = false;
-    
-    uploadProgressTrack.style.display = 'none';
-    uploadProgressFill.style.width = '0%';
-    hideError();
+    hideFeedback();
   }
 
   submitBtn.addEventListener('click', async () => {
     if (!selectedFile) return;
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Hazırlanıyor...';
-    hideError();
+    hideFeedback();
 
     try {
+      showFeedback('Hazırlanıyor...', 'uploading');
       const credsRes = await fetch('/api/creds');
       if (!credsRes.ok) throw new Error('Credentials alınamadı');
       const { repo, branch, pat } = await credsRes.json();
 
-      submitBtn.textContent = 'Dosya okunuyor...';
+      showFeedback('Dosya okunuyor...', 'uploading');
       const base64 = await toBase64(selectedFile);
 
-      submitBtn.textContent = "GitHub bilgileri sorgulanıyor...";
+      showFeedback('GitHub bilgileri sorgulanıyor...', 'uploading');
 
       let existingSha;
       const checkRes = await fetch(
@@ -700,9 +779,6 @@
       };
       if (existingSha) commitBody.sha = existingSha;
 
-      uploadProgressTrack.style.display = 'block';
-      submitBtn.textContent = "GitHub'a yükleniyor (%0)...";
-
       const commitData = await new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open('PUT', `https://api.github.com/repos/${repo}/contents/input/${selectedFile.name}`);
@@ -712,8 +788,9 @@
         xhr.upload.onprogress = (e) => {
           if (e.lengthComputable) {
             const percent = Math.round((e.loaded / e.total) * 100);
-            uploadProgressFill.style.width = percent + '%';
-            submitBtn.textContent = `GitHub'a yükleniyor (%${percent})...`;
+            feedbackProgressFill.style.width = percent + '%';
+            feedbackProgress.textContent = `%${percent}`;
+            showFeedback(`GitHub'a yükleniyor...`, 'uploading', true);
           }
         };
 
@@ -738,20 +815,18 @@
         xhr.send(JSON.stringify(commitBody));
       });
 
-      submitBtn.textContent = 'Çeviri başlatılıyor...';
+      showFeedback('Çeviri başlatılıyor...', 'translating');
       const triggerRes = await fetch('/api/trigger', { method: 'POST' });
       const triggerData = await triggerRes.json();
       if (!triggerRes.ok) {
         throw new Error(triggerData.error || 'Workflow tetiklenemedi');
       }
 
-      submitBtn.textContent = 'Çeviri Başladı ✓';
-      startPolling();
+      showFeedback('Çeviri başladı ✓', 'completed');
+      setTimeout(() => startPolling(), 500);
     } catch (err) {
-      showError('Hata: ' + err.message);
+      showFeedback('Hata: ' + err.message, 'error');
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Çeviriyi Başlat';
-      uploadProgressTrack.style.display = 'none';
     }
   });
 
@@ -852,13 +927,26 @@
     }
   }
 
-  function showError(msg) {
-    errorMsg.innerHTML = `<i class="ti ti-alert-circle"></i><span>${msg}</span>`;
-    errorMsg.classList.add('visible');
+  function showFeedback(msg, state = 'uploading', keepProgress = false) {
+    feedbackBox.className = `visible ${state}`;
+    
+    let icon = 'ti-info-circle';
+    if (state === 'error') icon = 'ti-alert-circle';
+    else if (state === 'uploading') icon = 'ti-upload';
+    else if (state === 'translating') icon = 'ti-circle-check-filled';
+    else if (state === 'completed') icon = 'ti-check';
+    
+    feedbackBox.querySelector('i').className = `ti ${icon}`;
+    feedbackText.textContent = msg;
+    
+    if (!keepProgress) {
+      feedbackProgress.textContent = '';
+      feedbackProgressFill.style.width = '0%';
+    }
   }
 
-  function hideError() {
-    errorMsg.classList.remove('visible');
+  function hideFeedback() {
+    feedbackBox.classList.remove('visible');
   }
 
   window.addEventListener('load', async () => {
