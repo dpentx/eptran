@@ -350,6 +350,10 @@
     <span id="file-name-label"></span>
   </div>
 
+  <div class="progress-bar-track" id="upload-progress-track" style="display: none; margin-top: 1.2rem; height: 6px;">
+    <div class="progress-bar-fill" id="upload-progress-fill" style="background: var(--blue); width: 0%;"></div>
+  </div>
+
   <button id="submit-btn" disabled>Çeviriyi Başlat</button>
   <div id="error-msg"></div>
 </div>
@@ -394,6 +398,9 @@
   const errorMsg    = document.getElementById('error-msg');
   const statusCard  = document.getElementById('status-card');
   const outputSection = document.getElementById('output-section');
+  
+  const uploadProgressTrack = document.getElementById('upload-progress-track');
+  const uploadProgressFill = document.getElementById('upload-progress-fill');
 
   let selectedFile = null;
   let pollInterval = null;
@@ -411,6 +418,7 @@
     if (fileInput.files[0]) setFile(fileInput.files[0]);
   });
 
+  function setFile(file) {
     if (!file.name.endsWith('.epub') && !file.name.endsWith('.pdf')) {
        showError('Sadece .epub ve .pdf dosyaları destekleniyor.');
       return;
@@ -419,6 +427,9 @@
     fileNameLabel.textContent = file.name;
     fileInfo.classList.remove('hidden');
     submitBtn.disabled = false;
+    
+    uploadProgressTrack.style.display = 'none';
+    uploadProgressFill.style.width = '0%';
     hideError();
   }
 
@@ -436,7 +447,7 @@
       submitBtn.textContent = 'Dosya okunuyor...';
       const base64 = await toBase64(selectedFile);
 
-      submitBtn.textContent = "GitHub'a yükleniyor...";
+      submitBtn.textContent = "GitHub bilgileri sorgulanıyor...";
 
       let existingSha;
       const checkRes = await fetch(
@@ -455,22 +466,44 @@
       };
       if (existingSha) commitBody.sha = existingSha;
 
-      const commitRes = await fetch(
-        `https://api.github.com/repos/${repo}/contents/input/${selectedFile.name}`,
-        {
-          method: 'PUT',
-          headers: {
-            Authorization: `token ${pat}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(commitBody),
-        }
-      );
+      uploadProgressTrack.style.display = 'block';
+      submitBtn.textContent = "GitHub'a yükleniyor (%0)...";
 
-      if (!commitRes.ok) {
-        const err = await commitRes.json();
-        throw new Error(err.message || 'GitHub yükleme başarısız');
-      }
+      const commitData = await new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('PUT', `https://api.github.com/repos/${repo}/contents/input/${selectedFile.name}`);
+        xhr.setRequestHeader('Authorization', `token ${pat}`);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        // Yükleme yüzdesi değiştikçe çalışır
+        xhr.upload.onprogress = (e) => {
+          if (e.lengthComputable) {
+            const percent = Math.round((e.loaded / e.total) * 100);
+            uploadProgressFill.style.width = percent + '%';
+            submitBtn.textContent = `GitHub'a yükleniyor (%${percent})...`;
+          }
+        };
+
+        xhr.onload = () => {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            try {
+              resolve(JSON.parse(xhr.responseText));
+            } catch {
+              resolve(xhr.responseText);
+            }
+          } else {
+            try {
+              const err = JSON.parse(xhr.responseText);
+              reject(new Error(err.message || 'GitHub yükleme başarısız'));
+            } catch {
+              reject(new Error(`GitHub yükleme başarısız (Kod: ${xhr.status})`));
+            }
+          }
+        };
+
+        xhr.onerror = () => reject(new Error('Ağ hatası oluştu.'));
+        xhr.send(JSON.stringify(commitBody));
+      });
 
       submitBtn.textContent = 'Çeviri başlatılıyor...';
       const triggerRes = await fetch('/api/trigger', { method: 'POST' });
@@ -485,6 +518,7 @@
       showError('Hata: ' + err.message);
       submitBtn.disabled = false;
       submitBtn.textContent = 'Çeviriyi Başlat';
+      uploadProgressTrack.style.display = 'none';
     }
   });
 
@@ -509,7 +543,6 @@
       const data = await res.json();
       updateStatusUI(data);
 
-      // Stop polling only when epub is ready (or fully idle with no epub)
       const done = data.status === 'completed' && (data.epubFile || data.convert_status === 'completed');
       const idle = data.status === 'idle';
       if (done || idle) clearInterval(pollInterval);
@@ -556,12 +589,10 @@
       updatedAt.textContent = 'güncellendi: ' + d.toLocaleString('tr-TR');
     }
 
-    // Show output section if there's anything to show
     if (data.epubFile || (data.outputFiles && data.outputFiles.length > 0) || data.convert_status === 'running') {
       outputSection.classList.add('visible');
     }
 
-    // epub download area
     if (data.epubFile) {
       epubArea.innerHTML = `
         <div class="epub-download">
@@ -576,7 +607,6 @@
       epubArea.innerHTML = '';
     }
 
-    // txt files
     if (data.outputFiles && data.outputFiles.length > 0) {
       const list = document.getElementById('output-list');
       list.innerHTML = data.outputFiles
