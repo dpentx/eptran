@@ -1,11 +1,11 @@
 {
-  "status": "running",
+  "status": "completed",
   "book": "ngnlv1",
   "epub_file": "ngnlv1.epub",
   "source_type": "epub",
   "total": 10,
   "completed": 10,
-  "current_chapter": "Copyright",
+  "current_chapter": "",
   "started_at": "2026-06-02T15:29:10.515643+00:00",
-  "updated_at": "2026-06-02T15:33:24.883604+00:00"
+  "updated_at": "2026-06-02T15:33:26.572438+00:00"
 }
