@@ -6,89 +6,174 @@
   <title>eptran</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,300;0,400;0,500;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/tabler-icons.min.css" />
   <style>
     :root {
-      --bg:       #2d353b;
-      --bg1:      #343f44;
-      --bg2:      #3d484d;
-      --bg3:      #475258;
-      --fg:       #d3c6aa;
-      --fg-dim:   #859289;
-      --green:    #a7c080;
-      --yellow:   #dbbc7f;
-      --red:      #e67e80;
-      --blue:     #7fbbb3;
-      --orange:   #e69875;
-      --aqua:     #83c092;
-      --border:   #4a555b;
+      --md-primary: #0ea5e9;
+      --md-on-primary: #ffffff;
+      --md-primary-container: #cfe9ff;
+      --md-on-primary-container: #001a3f;
+      
+      --md-secondary: #06b6d4;
+      --md-on-secondary: #ffffff;
+      --md-secondary-container: #b3ebf5;
+      --md-on-secondary-container: #001a1f;
+      
+      --md-tertiary: #8e44ad;
+      --md-on-tertiary: #ffffff;
+      --md-tertiary-container: #eaddff;
+      --md-on-tertiary-container: #33003d;
+      
+      --md-error: #f87171;
+      --md-on-error: #ffffff;
+      --md-error-container: #fde2e4;
+      --md-on-error-container: #410e0b;
+      
+      --md-success: #10b981;
+      --md-on-success: #ffffff;
+      --md-success-container: #d1fae5;
+      --md-on-success-container: #022c1f;
+      
+      --md-surface: #fafafa;
+      --md-on-surface: #1a1a1a;
+      --md-surface-dim: #ddd9d6;
+      --md-surface-bright: #ffffff;
+      --md-surface-container-lowest: #ffffff;
+      --md-surface-container-low: #f7f2ef;
+      --md-surface-container: #f3ede9;
+      --md-surface-container-high: #ede7e3;
+      --md-surface-container-highest: #e7e1dd;
+      
+      --md-outline: #79747e;
+      --md-outline-variant: #cac4cf;
+      --md-scrim: #000000;
+      
+      --md-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.24);
+      --md-shadow-md: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24);
+      --md-shadow-lg: 0 8px 16px rgba(0,0,0,0.15), 0 4px 8px rgba(0,0,0,0.12);
+      
+      color-scheme: light dark;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --md-primary: #80deea;
+        --md-on-primary: #003a52;
+        --md-primary-container: #004d6d;
+        --md-on-primary-container: #cfe9ff;
+        
+        --md-secondary: #4dd0e1;
+        --md-on-secondary: #003638;
+        --md-secondary-container: #004e52;
+        --md-on-secondary-container: #b3ebf5;
+        
+        --md-tertiary: #e6b3ff;
+        --md-on-tertiary: #520359;
+        --md-tertiary-container: #6e2a7f;
+        --md-on-tertiary-container: #eaddff;
+        
+        --md-error: #ffb4af;
+        --md-on-error: #690005;
+        --md-error-container: #93000a;
+        --md-on-error-container: #ffb4af;
+        
+        --md-success: #72dd9f;
+        --md-on-success: #003828;
+        --md-success-container: #0d5c3c;
+        --md-on-success-container: #d1fae5;
+        
+        --md-surface: #1a1a1a;
+        --md-on-surface: #e7e1dd;
+        --md-surface-dim: #131313;
+        --md-surface-bright: #2f2f2f;
+        --md-surface-container-lowest: #0e0e0e;
+        --md-surface-container-low: #1a1a1a;
+        --md-surface-container: #1e1e1e;
+        --md-surface-container-high: #2a2a2a;
+        --md-surface-container-highest: #353535;
+        
+        --md-outline: #998fa0;
+        --md-outline-variant: #504558;
+        --md-scrim: #000000;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      background: var(--bg);
-      color: var(--fg);
-      font-family: 'Literata', Georgia, serif;
+      background: var(--md-surface);
+      color: var(--md-on-surface);
+      font-family: 'Roboto', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 3rem 1.5rem;
+      padding: 2rem 1.5rem;
     }
 
     header {
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
       text-align: center;
     }
 
     header h1 {
-      font-size: 2.4rem;
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      color: var(--green);
-      font-style: italic;
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--md-primary);
+      margin-bottom: 0.5rem;
     }
 
     header p {
-      font-size: 0.9rem;
-      color: var(--fg-dim);
-      margin-top: 0.4rem;
-      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: var(--md-outline);
+      font-weight: 400;
     }
 
     .card {
-      background: var(--bg1);
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      background: var(--md-surface-container-low);
+      border: 1px solid var(--md-outline-variant);
+      border-radius: 12px;
       width: 100%;
-      max-width: 560px;
-      padding: 2rem;
+      max-width: 600px;
+      padding: 1.5rem;
       margin-bottom: 1.5rem;
+      box-shadow: var(--md-shadow);
     }
 
     .card-title {
       font-size: 0.75rem;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--fg-dim);
+      font-weight: 500;
+      color: var(--md-outline);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
     #drop-zone {
-      border: 2px dashed var(--border);
-      border-radius: 6px;
+      border: 2px dashed var(--md-outline-variant);
+      border-radius: 12px;
       padding: 2.5rem 1.5rem;
       text-align: center;
       cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
+      transition: all 0.2s ease;
       position: relative;
+      background: var(--md-surface-container);
     }
 
-    #drop-zone:hover, #drop-zone.drag-over {
-      border-color: var(--green);
-      background: rgba(167, 192, 128, 0.05);
+    #drop-zone:hover {
+      border-color: var(--md-primary);
+      background: var(--md-primary-container);
+    }
+
+    #drop-zone.drag-over {
+      border-color: var(--md-primary);
+      background: var(--md-primary-container);
     }
 
     #drop-zone input[type="file"] {
@@ -99,232 +184,377 @@
     }
 
     #drop-zone .icon {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
       display: block;
+      opacity: 0.8;
     }
 
     #drop-zone .label {
       font-size: 0.95rem;
-      color: var(--fg-dim);
+      color: var(--md-on-surface);
+      line-height: 1.5;
     }
 
     #drop-zone .label strong {
-      color: var(--green);
+      color: var(--md-primary);
       font-weight: 500;
     }
 
     #file-info {
       display: none;
-      margin-top: 1rem;
-      padding: 0.75rem 1rem;
-      background: var(--bg2);
-      border-radius: 4px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--yellow);
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    #file-info.hidden { display: none !important; }
-    #file-info:not(.hidden) { display: flex; }
-
-    #submit-btn {
       margin-top: 1.2rem;
-      width: 100%;
-      padding: 0.75rem;
-      background: var(--green);
-      color: var(--bg);
-      border: none;
-      border-radius: 5px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      letter-spacing: 0.05em;
-      transition: opacity 0.2s;
+      padding: 0.75rem 1rem;
+      background: var(--md-secondary-container);
+      border-radius: 8px;
+      font-size: 0.875rem;
+      color: var(--md-on-secondary-container);
+      align-items: center;
+      gap: 0.75rem;
     }
 
-    #submit-btn:hover:not(:disabled) { opacity: 0.85; }
-    #submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    #file-info.hidden {
+      display: none !important;
+    }
 
-    #status-card { display: none; }
-    #status-card.visible { display: block; }
-
-    .progress-header {
+    #file-info:not(.hidden) {
       display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.8rem;
     }
 
-    .progress-book {
-      font-size: 1rem;
-      color: var(--fg);
-      font-style: italic;
+    #file-info i {
+      font-size: 1.25rem;
     }
 
-    .progress-count {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--fg-dim);
-    }
-
-    .progress-bar-track {
-      height: 4px;
-      background: var(--bg3);
-      border-radius: 2px;
+    #upload-progress-track {
+      height: 6px;
+      background: var(--md-outline-variant);
+      border-radius: 3px;
       overflow: hidden;
-      margin-bottom: 0.8rem;
+      margin: 1.2rem 0;
     }
 
     .progress-bar-fill {
       height: 100%;
-      background: var(--green);
-      border-radius: 2px;
+      background: linear-gradient(90deg, var(--md-primary), var(--md-secondary));
+      border-radius: 3px;
       transition: width 0.8s ease;
       width: 0%;
     }
 
-    .progress-chapter {
-      font-size: 0.8rem;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--fg-dim);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .status-badge {
-      display: inline-block;
-      padding: 0.2rem 0.6rem;
-      border-radius: 3px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+    #submit-btn {
+      margin-top: 1.2rem;
+      width: 100%;
+      padding: 0.875rem 1rem;
+      background: var(--md-primary);
+      color: var(--md-on-primary);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      cursor: pointer;
       letter-spacing: 0.05em;
+      transition: all 0.2s ease;
+      box-shadow: var(--md-shadow);
+      text-transform: uppercase;
     }
 
-    .badge-running  { background: rgba(219,188,127,0.15); color: var(--yellow); }
-    .badge-completed{ background: rgba(167,192,128,0.15); color: var(--green); }
-    .badge-idle     { background: rgba(133,146,137,0.15); color: var(--fg-dim); }
-    .badge-converting { background: rgba(127,187,179,0.15); color: var(--blue); }
+    #submit-btn:hover:not(:disabled) {
+      box-shadow: var(--md-shadow-md);
+      transform: translateY(-2px);
+    }
+
+    #submit-btn:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    #submit-btn:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+    }
+
+    #status-card {
+      display: none;
+    }
+
+    #status-card.visible {
+      display: block;
+    }
 
     .status-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
-    .badge-running, .badge-converting { animation: pulse 2s ease-in-out infinite; }
+    .progress-book {
+      font-size: 1rem;
+      color: var(--md-on-surface);
+      font-weight: 500;
+    }
 
-    #output-section { display: none; }
-    #output-section.visible { display: block; }
+    .progress-count {
+      font-size: 0.8125rem;
+      color: var(--md-outline);
+      font-weight: 400;
+    }
 
-    /* epub download button */
+    .progress-bar-track {
+      height: 4px;
+      background: var(--md-outline-variant);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .progress-chapter {
+      font-size: 0.8125rem;
+      color: var(--md-outline);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 400;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.75rem;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 0.875rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-idle {
+      background: var(--md-outline-variant);
+      color: var(--md-outline);
+    }
+
+    .badge-running {
+      background: var(--md-primary-container);
+      color: var(--md-on-primary-container);
+    }
+
+    .badge-completed {
+      background: var(--md-success-container);
+      color: var(--md-on-success-container);
+    }
+
+    .badge-converting {
+      background: var(--md-secondary-container);
+      color: var(--md-on-secondary-container);
+    }
+
+    .badge-running i, .badge-converting i {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    #output-section {
+      display: none;
+    }
+
+    #output-section.visible {
+      display: block;
+    }
+
     .epub-download {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.75rem 1rem;
-      background: rgba(167,192,128,0.08);
-      border: 1px solid rgba(167,192,128,0.3);
-      border-radius: 6px;
+      padding: 1rem;
+      background: var(--md-success-container);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 12px;
       margin-bottom: 1rem;
     }
 
     .epub-download span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.82rem;
-      color: var(--green);
+      font-size: 0.9375rem;
+      color: var(--md-on-success-container);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .epub-download a {
-      padding: 0.35rem 0.9rem;
-      background: var(--green);
-      color: var(--bg);
-      border-radius: 4px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      padding: 0.5rem 1rem;
+      background: var(--md-success);
+      color: var(--md-on-success);
+      border-radius: 6px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.8125rem;
       font-weight: 500;
       text-decoration: none;
-      transition: opacity 0.2s;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: var(--md-shadow);
     }
 
-    .epub-download a:hover { opacity: 0.85; }
+    .epub-download a:hover {
+      box-shadow: var(--md-shadow-md);
+      transform: translateY(-1px);
+    }
 
     .epub-converting {
-      padding: 0.6rem 1rem;
-      background: rgba(127,187,179,0.08);
-      border: 1px dashed rgba(127,187,179,0.3);
-      border-radius: 6px;
+      padding: 1rem;
+      background: var(--md-secondary-container);
+      border: 1px dashed rgba(77, 208, 225, 0.3);
+      border-radius: 12px;
       margin-bottom: 1rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--blue);
+      font-size: 0.875rem;
+      color: var(--md-on-secondary-container);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .epub-converting i {
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .output-list {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.75rem;
     }
 
     .output-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.5rem 0.75rem;
-      background: var(--bg2);
-      border-radius: 4px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--fg);
+      padding: 0.875rem 1rem;
+      background: var(--md-surface-container);
+      border: 1px solid var(--md-outline-variant);
+      border-radius: 8px;
+      font-size: 0.8125rem;
+      color: var(--md-on-surface);
+      transition: all 0.2s ease;
+    }
+
+    .output-item:hover {
+      background: var(--md-surface-container-high);
+      border-color: var(--md-outline);
+    }
+
+    .output-item i {
+      margin-right: 0.5rem;
+      color: var(--md-primary);
     }
 
     .output-item a {
-      color: var(--blue);
+      color: var(--md-primary);
       text-decoration: none;
-      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.375rem 0.75rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
     }
 
-    .output-item a:hover { text-decoration: underline; }
+    .output-item a:hover {
+      background: var(--md-primary-container);
+    }
 
     #error-msg {
       display: none;
-      margin-top: 0.8rem;
-      padding: 0.6rem 0.9rem;
-      background: rgba(230,126,128,0.1);
-      border: 1px solid rgba(230,126,128,0.3);
-      border-radius: 4px;
-      font-size: 0.82rem;
-      color: var(--red);
-      font-family: 'JetBrains Mono', monospace;
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--md-error-container);
+      border: 1px solid rgba(248, 113, 113, 0.3);
+      border-radius: 8px;
+      font-size: 0.8125rem;
+      color: var(--md-on-error-container);
+      font-weight: 400;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
     }
 
-    #error-msg.visible { display: block; }
+    #error-msg.visible {
+      display: flex;
+    }
+
+    #error-msg i {
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
 
     .updated-at {
-      font-size: 0.72rem;
-      color: var(--fg-dim);
-      font-family: 'JetBrains Mono', monospace;
-      margin-top: 0.6rem;
+      font-size: 0.75rem;
+      color: var(--md-outline);
+      margin-top: 0.75rem;
       text-align: right;
+      font-weight: 400;
     }
 
     footer {
       margin-top: auto;
-      padding-top: 3rem;
+      padding-top: 2rem;
       font-size: 0.75rem;
-      color: var(--bg3);
-      font-family: 'JetBrains Mono', monospace;
+      color: var(--md-outline);
       text-align: center;
     }
 
-    footer a { color: var(--border); text-decoration: none; }
-    footer a:hover { color: var(--fg-dim); }
+    footer a {
+      color: var(--md-primary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--md-secondary);
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+
+      header {
+        margin-bottom: 2rem;
+      }
+
+      header h1 {
+        font-size: 1.625rem;
+      }
+
+      .card {
+        padding: 1.25rem;
+        max-width: 100%;
+      }
+
+      #drop-zone {
+        padding: 2rem 1rem;
+      }
+
+      .status-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -341,17 +571,18 @@
     <input type="file" id="file-input" accept=".epub,.pdf" />
     <span class="icon">📖</span>
     <div class="label">
-      <strong>epub veya pdf seç</strong> ya da sürükle bırak
+      <strong>epub veya pdf seç</strong><br>
+      ya da sürükle bırak
     </div>
   </div>
 
   <div id="file-info" class="hidden">
-    <span>📄</span>
+    <i class="ti ti-file"></i>
     <span id="file-name-label"></span>
   </div>
 
-  <div class="progress-bar-track" id="upload-progress-track" style="display: none; margin-top: 1.2rem; height: 6px;">
-    <div class="progress-bar-fill" id="upload-progress-fill" style="background: var(--blue); width: 0%;"></div>
+  <div class="progress-bar-track" id="upload-progress-track" style="display: none;">
+    <div class="progress-bar-fill" id="upload-progress-fill"></div>
   </div>
 
   <button id="submit-btn" disabled>Çeviriyi Başlat</button>
@@ -363,7 +594,9 @@
 
   <div class="status-row">
     <div class="progress-book" id="status-book">—</div>
-    <span class="status-badge badge-idle" id="status-badge">bekliyor</span>
+    <span class="status-badge badge-idle" id="status-badge">
+      <i class="ti ti-clock"></i> bekliyor
+    </span>
   </div>
 
   <div class="progress-bar-track">
@@ -386,7 +619,8 @@
 
 <footer>
   <a href="https://github.com/search?q=eptran" target="_blank">github</a>
-  &nbsp;·&nbsp; groq llama-3.3-70b
+  &nbsp;·&nbsp;
+  <a href="#" onclick="event.preventDefault()">groq llama-3.3-70b</a>
 </footer>
 
 <script>
@@ -420,7 +654,7 @@
 
   function setFile(file) {
     if (!file.name.endsWith('.epub') && !file.name.endsWith('.pdf')) {
-       showError('Sadece .epub ve .pdf dosyaları destekleniyor.');
+      showError('Sadece .epub ve .pdf dosyaları destekleniyor.');
       return;
     }
     selectedFile = file;
@@ -475,7 +709,6 @@
         xhr.setRequestHeader('Authorization', `token ${pat}`);
         xhr.setRequestHeader('Content-Type', 'application/json');
 
-        // Yükleme yüzdesi değiştikçe çalışır
         xhr.upload.onprogress = (e) => {
           if (e.lengthComputable) {
             const percent = Math.round((e.loaded / e.total) * 100);
@@ -564,16 +797,16 @@
 
     if (data.status === 'running') {
       badge.classList.add('badge-running');
-      badge.textContent = 'çalışıyor';
+      badge.innerHTML = '<i class="ti ti-circle-check-filled"></i> çalışıyor';
     } else if (data.status === 'completed' && data.convert_status === 'running') {
       badge.classList.add('badge-converting');
-      badge.textContent = 'epub oluşturuluyor';
+      badge.innerHTML = '<i class="ti ti-book"></i> epub oluşturuluyor';
     } else if (data.status === 'completed') {
       badge.classList.add('badge-completed');
-      badge.textContent = 'tamamlandı';
+      badge.innerHTML = '<i class="ti ti-check"></i> tamamlandı';
     } else {
       badge.classList.add('badge-idle');
-      badge.textContent = 'bekliyor';
+      badge.innerHTML = '<i class="ti ti-clock"></i> bekliyor';
     }
 
     if (data.book) bookEl.textContent = data.book.replace(/_/g, ' ');
@@ -596,13 +829,13 @@
     if (data.epubFile) {
       epubArea.innerHTML = `
         <div class="epub-download">
-          <span>📖 ${data.epubFile.name}</span>
-          <a href="${data.epubFile.download_url}" target="_blank">epub indir</a>
+          <span><i class="ti ti-book"></i> ${data.epubFile.name}</span>
+          <a href="${data.epubFile.download_url}" target="_blank">İndir</a>
         </div>`;
     } else if (data.status === 'completed' && data.convert_status === 'running') {
-      epubArea.innerHTML = `<div class="epub-converting">⏳ epub oluşturuluyor...</div>`;
+      epubArea.innerHTML = `<div class="epub-converting"><i class="ti ti-loader"></i> epub oluşturuluyor...</div>`;
     } else if (data.status === 'completed' && !data.epubFile) {
-      epubArea.innerHTML = `<div class="epub-converting">⏳ epub bekleniyor...</div>`;
+      epubArea.innerHTML = `<div class="epub-converting"><i class="ti ti-hourglass-empty"></i> epub bekleniyor...</div>`;
     } else {
       epubArea.innerHTML = '';
     }
@@ -612,15 +845,15 @@
       list.innerHTML = data.outputFiles
         .map(f => `
           <div class="output-item">
-            <span>${f.name}</span>
-            <a href="${f.download_url}" target="_blank">indir</a>
+            <span><i class="ti ti-file-document"></i> ${f.name}</span>
+            <a href="${f.download_url}" target="_blank">İndir</a>
           </div>`)
         .join('');
     }
   }
 
   function showError(msg) {
-    errorMsg.textContent = msg;
+    errorMsg.innerHTML = `<i class="ti ti-alert-circle"></i><span>${msg}</span>`;
     errorMsg.classList.add('visible');
   }
 
