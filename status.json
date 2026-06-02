@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "completed",
   "book": "ngnlv4",
   "epub_file": "ngnlv4.pdf",
   "source_type": "pdf",
@@ -7,5 +7,5 @@
   "completed": 9,
   "current_chapter": "",
   "started_at": "2026-06-02T15:50:02.957224+00:00",
-  "updated_at": "2026-06-02T15:50:02.957242+00:00"
+  "updated_at": "2026-06-02T15:50:05.623052+00:00"
 }
