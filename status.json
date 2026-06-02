@@ -1,13 +1,11 @@
 {
-  "status": "completed",
-  "book": "ngnlv4",
-  "epub_file": "ngnlv4.pdf",
-  "source_type": "pdf",
-  "total": 9,
-  "completed": 9,
+  "status": "running",
+  "book": "No_Game_No_Life_Vol__5",
+  "epub_file": "No Game No Life Vol. 5.epub",
+  "source_type": "epub",
+  "total": 17,
+  "completed": 0,
   "current_chapter": "",
-  "started_at": "2026-06-02T15:50:02.957224+00:00",
-  "updated_at": "2026-06-02T15:50:36.199696+00:00",
-  "convert_status": "completed",
-  "epub_output": "output/ngnlv4/ngnlv4_tr.epub"
+  "started_at": "2026-06-02T15:52:02.383482+00:00",
+  "updated_at": "2026-06-02T15:52:02.383504+00:00"
 }
