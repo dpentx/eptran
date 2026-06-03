@@ -1,11 +1,11 @@
 {
-  "status": "running",
+  "status": "completed",
   "book": "No_Game_No_Life_Vol__5",
   "epub_file": "No Game No Life Vol. 5.epub",
   "source_type": "epub",
   "total": 17,
   "completed": 17,
-  "current_chapter": "Copyright",
+  "current_chapter": "",
   "started_at": "2026-06-03T02:45:26.122631+00:00",
-  "updated_at": "2026-06-03T05:24:07.543757+00:00"
+  "updated_at": "2026-06-03T05:24:08.573706+00:00"
 }
