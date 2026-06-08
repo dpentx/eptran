@@ -1,11 +1,11 @@
 {
-  "status": "running",
+  "status": "completed",
   "book": "the_yellow_wallpaper",
   "epub_file": "the_yellow_wallpaper.epub",
   "source_type": "epub",
   "total": 1,
   "completed": 1,
-  "current_chapter": "The Project Gutenberg eBook of The Yellow Wallpaper",
+  "current_chapter": "",
   "started_at": "2026-06-08T15:54:49.773716+00:00",
-  "updated_at": "2026-06-08T15:56:21.645188+00:00"
+  "updated_at": "2026-06-08T15:56:23.075633+00:00"
 }
