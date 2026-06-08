@@ -1,17 +1,17 @@
-name: Convert to EPUB
+name: Review Translation
 
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["Review Translation"]
+    workflows: ["Translate Novel"]
     types:
       - completed
 
 jobs:
-  convert:
+  review:
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
-    timeout-minutes: 30
+    timeout-minutes: 360
     permissions:
       contents: write
 
@@ -25,7 +25,7 @@ jobs:
       - name: Pull latest changes
         run: git pull origin main
 
-      - name: Check if conversion needed
+      - name: Check if review needed
         id: check
         run: |
           STATUS=$(python3 -c "
@@ -33,9 +33,7 @@ jobs:
           try:
               with open('status.json') as f:
                   s = json.load(f)
-              if (s.get('status') == 'completed'
-                      and s.get('review_status') == 'completed'
-                      and s.get('convert_status') not in ('running', 'completed')):
+              if s.get('status') == 'completed' and s.get('review_status') not in ('running', 'completed'):
                   print('yes')
               else:
                   print('no')
@@ -60,6 +58,9 @@ jobs:
           git config user.name "eptran-bot"
           git config user.email "eptran-bot@users.noreply.github.com"
 
-      - name: Run conversion
+      - name: Run review
         if: steps.check.outputs.needed == 'yes'
-        run: python scripts/convert.py
+        env:
+          GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
+          GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
+        run: python scripts/review.py
