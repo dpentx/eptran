@@ -1,13 +1,32 @@
 # The Project Gutenberg eBook of The Yellow Wallpaper
 
+Görevin iki adımı sırayla uygulanacaktır:
+
+1. PARAGRAF DÜZEYİ — Her paragrafı ayrı ayrı incele:
+   - Yazım hatalarını (typo) düzelt
+   - İngilizce kalmış kelimeleri Türkçeye çevir (örn. "shield" → "kalkan", "raid" → "baskın")
+   - Garip veya anlamsız kelime seçimlerini düzelt
+
+2. BÖLÜM DÜZEYİ — Tüm metni bir bütün olarak değerlendir:
+   - Paragraflar arası anlam akışını ve tutarlılığı koru
+   - Aynı kavram için farklı kelimeler kullanılmışsa birleştir
+   - Cümle yapısı bozuksa yeniden yaz, ama anlamı değiştirme
+
+KURALLAR:
+- [EPUB_IMAGE:...] etiketlerini KESİNLİKLE olduğu gibi bırak, taşıma, silme, değiştirme
+- Başlık satırını (# ile başlayan) olduğu gibi koru
+- Sadece düzeltilmiş metni döndür, açıklama ekleme
+- Metnin uzunluğunu korumaya çalış
+
+METİN:
 Bölüm: The Project Gutenberg eBook of The Yellow Wallpaper (Parça 1/5)
 
 The Project Gutenberg eBook of 
 The Yellow Wallpaper
 
-Bu eBook, Amerika Birleşik Devletleri ve dünyanın çoğu yerinde kimsenin kullanımına açık olup,几乎 hiçbir kısıtlama olmadan ücretsiz olarak sunulmaktadır. Dilediğiniz gibi kopyalayabilir, hediye edebilir veya bu eBook ile birlikte gelen Project Gutenberg Lisansı veya 
+Bu e-Kitap, Amerika Birleşik Devletleri ve dünyanın çoğu yerinde kimsenin kullanımına açık olup, neredeyse hiçbir kısıtlama olmadan ücretsiz olarak sunulmaktadır. Dilediğiniz gibi kopyalayabilir, hediye edebilir veya bu e-Kitap ile birlikte gelen Project Gutenberg Lisansı veya 
 www.gutenberg.org
-adresindeki çevrimiçi sürümdeki şartlara uygun olarak yeniden kullanabilirsiniz. Amerika Birleşik Devletleri dışında bulunuyorsanız, bu eBook'ı kullanmadan önce bulunduğunuz ülkenin yasalarını kontrol etmeniz gerekmektedir.
+adresindeki çevrimiçi sürümdeki şartlara uygun olarak yeniden kullanabilirsiniz. Amerika Birleşik Devletleri dışında bulunuyorsanız, bu e-Kitabı kullanmadan önce bulunduğunuz ülkenin yasalarını kontrol etmeniz gerekmektedir.
 
 Başlık
 : The Yellow Wallpaper
@@ -16,7 +35,7 @@ Yazar
 : Charlotte Perkins Gilman
 
 Yayın tarihi
-: 1 Kasım 1999 [eBook #1952]
+: 1 Kasım 1999 [eKitap #1952]
 
                 En son güncellenme: 31 Ağustos 2024
 
@@ -63,7 +82,7 @@ Bir doktor, yüksek bir konumda ve eşiniz, arkadaşlarınıza ve akrabalarını
 
 Kardeşim de bir doktor ve aynı şekilde yüksek bir konumda ve aynı şeyi söylüyor.
 
-Bu nedenle, fosfat veya fosfit - hangisi olursa, tonik, seyahat, hava, egzersiz alıyorum ve tuyệt olarak "çalışmak" yasaklanıyor, iyileşene kadar.
+Bu nedenle, fosfat veya fosfit - hangisi olursa, tonik, seyahat, hava, egzersiz alıyorum ve tamamen olarak "çalışmak" yasaklanıyor, iyileşene kadar.
 
 Kişisel olarak, onların fikirlerine katılmıyorum.
 
@@ -189,7 +208,7 @@ Bir yerde, desen, kırık bir boyun gibi görünüyor ve iki şişkin göz, baş
 
 Onun küstahlığı ve sonsuzluğu beni gerçekten öfkelendiriyor. Yukarı, aşağı ve yana doğru sürünüyorlar ve bu saçma, gözleri her yerde. Bir yerde, iki genişlik uyuşmuyor ve gözler, birini diğerinden daha yüksek olarak, tüm çizgi boyunca yukarı ve aşağı gidiyor.
 
-Önceden, cansız bir şeyde, bu kadar ifade görmedim, ve biz, onların ne kadar ifade edebildiğini biliriz! Çocukken, uyuyamadığım zamanlar, boş duvarlar ve sade mobilyalardan, çoğu çocukın bir oyuncak mağazasından bulamayacağı kadar eğlence ve korku çıkardım.
+Önceden, cansız bir şeyde, bu kadar ifade görmedim, ve biz, onların ne kadar ifade edebildiğini biliriz! Çocukken, uyuyamadığım zamanlar, boş duvarlar ve sade mobilyalardan, çoğu çocukların bir oyuncak mağazasından bulamayacağı kadar eğlence ve korku çıkardım.
 
 Büyük, eski büromuzun, bana nasıl bir dostane göz kırpma yaptığını hatırlıyorum, ve bir sandalye, her zaman güçlü bir arkadaş gibi görünürdü.
 
@@ -233,186 +252,10 @@ Ama oraya gitmek istemiyorum. Bir arkadaşım bir zamanlar onun elindeydi ve o, 
 
 Ayrıca, oraya gitmek çok büyük bir girişimdir.
 
-Hiçbir şey için elimi kaldırmaya değmez gibi geliyor ve çok endişeli ve şikayetçi oluyorum.
+Metinde anlam sürekliliği genel olarak korunmuştur. Ancak, bazı noktalarda tutarsızlıklar veya açıklamalara ihtiyaç duyulan yerler vardır. Özellikle, metnin ikinci kısmının başlangıcında, "Onlar geçiyorlar, sonra desen onları boğuyor, ters çeviriyor ve gözlerini beyaz yapıyor!" cümlesi, bir önceki paragrafın son cümlesinden sonra gelen bir cümle olarak anlamını tam olarak kaybetmiştir. Bu cümle, bir önceki paragrafın son cümlesinin ardından gelen bir cümle olarak, daha önce bahsedilen desen ve kadın ile ilgili olayların devamı olarak anlaşılabilir.
 
-Hiçbir şey için ağlıyorum ve çoğu zaman ağlıyorum.
-
-Tabii ki John veya başka biri burada olduğunda ağlamıyorum, ama yalnız olduğumda.
-
-Ve şu anda çok yalnızım. John, ciddi vakalar nedeniyle sık sık şehirde kalıyor ve Jennie, istedikleri zaman bana müdahale etmiyor.
-
-Bu yüzden bahçede veya o güzel yolda biraz yürüyorum, güllerin altında verandada oturuyorum ve burada çok uyuyorum.
-
-Bu odaya rağmen gerçekten duvar kağıdına bağlanıyorum. Belki de...
-
-duvar kağıdından dolayı.
-
-Bunun düşüncesi zihnimde kalıyor!
-
-Bu büyük, sabit yatağa uzanıyorum - sanırım çivilenmiş - ve saatlerce o deseni takip ediyorum. Bu, jimnastik yapmak kadar iyidir, size söz veriyorum. Diyelim ki, aşağıda, köşede, dokunulmamış olan yerde başlıyorum ve binlerce kez o anlamsız deseni bir sonuca ulaştırmaya karar veriyorum.
-
-Tasarım ilkelerini biraz bilirim ve bu şeyin herhangi bir radyasyon, alternasyon, tekrarlama, simetri veya duyduğum diğer herhangi bir yasaya göre düzenlenmediğini biliyorum.
-
-Tabii ki, genişliklerine göre tekrarlanıyor, ancak başka bir şekilde değil.
-
-Bir yönden bakıldığında, her genişlik tek başına duruyor, şişkin eğriler ve süslemeler - bir tür "dejenere Romanesk" ile delirium tremens - aptalca sütunlarda yukarı ve aşağı doğru yürüyorlar.
-
-Ama, diğer yandan, çapraz olarak bağlanıyorlar ve yayılan konturlar, bir dizi duvarcı kelpinin peşinde koşan büyük eğimli dalgalar gibi, optik dehşetin büyük eğimli dalgaları gibi yayılıyor.
-
-Her şey yatay olarak gidiyor, en azından öyle görünüyor ve bu yönde gidiş sırasını ayırt etmeye çalışarak kendimi tüketiyorum.
-
-Bir friz için yatay bir genişlik kullanmışlar ve bu, karışıklığı mucizevi bir şekilde artırıyor.
-
-Odanın bir ucunda neredeyse sağlam ve orada, çapraz ışıklar solup alçak güneş doğrudan üzerine vurduğunda, nihayetinde radyasyon olduğunu neredeyse hayal edebiliyorum - sonsuz groteskler ortak bir merkez etrafında oluşuyor ve eşit dağılma ile headlong dalışlar yapıyorlar.
-
-Bunu takip etmek beni yoruyor. Sanırım bir uyku uyuyacağım.
-
-Neden bunu yazdığımı bilmiyorum.
-
-Yazmak istemiyorum.
-
-Yeteneğimi hissetmiyorum.
-
-Ve John'un bunu saçma bulacağını biliyorum. Ama...
-
-duygularımı ve düşüncelerimi bir şekilde söylemek zorundayım - bu, ne kadar büyük bir rahatlama!
-
-Ama çaba, rahatlama kadar büyük oluyor.
-
-Şimdi zamanın yarısında korkunç bir şekilde tembelim ve çok uyuyorum.
-
-John, gücümü kaybetmemem gerektiğini söylüyor ve bana.cod karaciğer yağı ve tonik gibi şeyler alıyorum, ayrıca bira, şarap ve nadir et.
-
-Sevgili John! Beni çok seviyor ve hastalanmamdan nefret ediyor. Diğer gün, gerçekten samimi ve mantıklı bir konuşma yapmak istedim ve ona, Cousin Henry ve Julia'ya ziyarette bulunmak istediğimi söylemek istedim.
-
-Ama o, oraya gitmemin ve oradayken dayanamayacağımı söyledi; ve ben kendim için çok iyi bir durum yaratamadım, çünkü konuşmam bitmeden önce ağlıyordum.
-
-Düzgün düşünmek benim için büyük bir çaba haline geliyor. Sadece bu sinirsel zayıflık, sanırım.
-
-Ve sevgili John, beni kucakladı, beni yukarı taşıdı, yatağa yatırdı ve başım ağrıyana kadar bana okudu.
-
-Beni sevgilim ve rahatlığımla olduğunu, bana bakmam gerektiğini, sağlığımdan ödün vermemem gerektiğini söyledi.
-
-Beni kendimden çıkarmak için kimsenin bana yardım edemeyeceğini, irademizi ve kendimi kontrol etmem gerektiğini, aptalca fantazilerin peşinden gitmemem gerektiğini söylüyor.
-
-Bir teselli var, bebek iyi ve mutlu ve bu iğrenç duvar kağıdı ile bu çocuk odasını paylaşmak zorunda değil.
-
-Eğer onu kullanmasaydık, o mübarek çocuk kullanacaktı! Ne büyük bir kaçış! Neden, benim çocuğumun, etkilenmeye açık küçük bir şeyin, böyle bir odada yaşamaması için dünyaları verirdim.
-
-John'un beni buraya tuttuğu bana göre çok şanslıyım. Ben, bir bebekten daha kolay dayanabilirim, gördüğünüz gibi.
-
-Tabii ki artık onlara bundan bahsetmiyorum - çok akıllıyım - ama aynı zamanda dikkatle izliyorum.
-
-O kağıtta kimsenin bilmeyeceği, asla bilemeyeceği şeyler var.
-
-Dış desenin arkasında belirsiz şekiller her gün daha netleşiyor.
-
-Her zaman aynı şekildir, sadece çok sayıda.
-
-Ve bir kadın, o desenin arkasında eğilip geziniyor gibi. Biraz da...
-
-John'un beni buradan uzaklaştırmasını istiyorum!
-
-John'la durumum hakkında konuşmak çok zor, çünkü o çok akıllı ve beni çok seviyor.
-
-Ama dün denedim.
-
-Ay ışığıydı. Ay, güneşin yaptığı gibi her yere giriyor.
-
-John uyuyordu ve onu uyandırmak istemiyordum, bu yüzden sessiz kaldım ve ay ışığını o dalgalı duvar kağıdına bakarak ürperti hissedene kadar izledim.
-
-Arka plandaki belirsiz şekil, deseni sallıyormuş gibi görünüyordu, sanki dışarı çıkmak istiyordu.
-
-Kalktım ve kağıdın gerçekten hareket edip etmediğini görmek için gidip kontrol ettim, ve geri döndüğümde John uyanmıştı.
-
-"Nedir, küçük kız?" dedi. "Gece vakti dolaşma - soğuyacaksın."
-
-Konuşmak için iyi bir zaman olduğunu düşündüm, bu yüzden gerçekten burada iyileşmediğimi ve beni buradan götürmesini istediğimi söyledim.
-
-"Neden, sevgilim!" dedi. "Kiralık sözleşmemiz üç hafta içinde bitecek ve üç hafta önce ayrılamam. Evde tamiratlar bitmedi ve şu anda şehri terk edemem. Tabii ki tehlike içinde olsaydın, yapardım ve gönderirdim, ama gerçekten daha iyisin, sevgilim. Bir doktorum ve biliyorum. Kilon alıyorsun, rengin daha iyi. Seni düşünmek konusunda gerçekten çok daha rahatım."
-
-"Kilomu hiç artırmadım," dedim, "ne de daha fazla. Akşamları, senin burada olduğun zaman, iştahım daha iyi olabilir, ama sabahları, sen gittiğinde daha kötü."
-
-"Küçük kalbini kutsa!" dedi, büyük bir kucakla; "Hastalık istediği kadar sürebilir! Ama şimdi, parlak saatleri uyuyarak değerlendirelim ve sabah konuşalım!"
-
-"Ve gitmeyecek misin?" diye sordum, kasvetle.
-
-"Neden, sevgilim? Sadece üç hafta daha ve sonra birkaç gün sürecek bir geziye gideceğiz. Gerçekten, sevgilim, daha iyisin!"
-
-"Belki bedenim daha iyi," diye başladım, ve sustum, çünkü dik oturdu ve bana öyle bir sert, kınamak dolu bakış attı ki, başka bir kelime söyleyemedim.
-
-"Sevgilim," dedi, "sana yalvarıyorum, benim için, çocuğumuz için ve kendi için, lütfen bu fikri asla aklından geçirme! Bu, senin gibi bir mizaca karşı çok tehlikeli ve büyüleyici. Bu, yanlış ve aptalca bir fantazi. Bana, bir doktor olarak söylediğime güvenemiyor musun?"
-
-Tabii ki, o konuda daha fazla konuşmadım ve uzun süre önce uykuya daldık. Beni önce uyuyormuş gibi zannetti, ama uyanıktım - saatlerce yattım ve ön desen ile arka desenin gerçekten birlikte veya ayrı ayrı hareket edip etmediğine karar vermeye çalıştım.
-
-Gündüz vakti, böyle bir desende, bir dizi eksikliği, bir yasa karşıtlığını görüyoruz ki, bu, normal bir zihne sürekli bir tahriş kaynağı oluyor.
-
-Renk already đủ iğrenç, already đủ güvensiz ve already đủ kızdırıcı, ama desen işkence ediyor.
-
-Sanıyorsun ki deseni çözmüşsün, ama tam olarak ilerlemeye başladığında, desen sana bir darbe indiriyor, seni yere seriyor ve üstüne basıyor. Bu, bir kötü rüya gibi.
-
-Dış desen, bir mantar gibi, bir arabesk anımsatıyor. Bir dizi mantarı, sonsuz katlamalarla büyüyen ve filizlenerek uzayan bir dizi mantarı hayal edebilir misin?
-
-Evet, bazen!
-
-Bu kağıtta kimsenin benim dışında fark etmediği bir özellik var, o da ışık değiştiğinde değişmesi. 
-
-Güneş doğu penceresinden girerken - her zaman o ilk uzun, düz ışını bekliyorum - o kadar hızlı değişiyor ki, buna asla tam olarak inanamıyorum.
-
-Bu yüzden her zaman onu izliyorum.
-
-Ay ışığında - ay, gece boyunca parlıyor - aynı kağıt olduğunu bilemezdim.
-
-Gece, herhangi bir ışıkta, alacakaranlıkta, mum ışığında, lamba ışığında ve en kötüsü ay ışığında, dış desen çubuklara dönüşüyor! Ve arkasındaki kadın, mümkün olduğunca açık bir şekilde görünüyor.
-
-Uzun bir süre, arkasında görünen şeyin ne olduğunu anlamadım - o belirsiz alt desen - ama şimdi kesinlikle bir kadın olduğunu biliyorum.
-
-Gündüz vakti, o kadın sakin ve sessiz. Sanırım desen onu böyle tutuyor. Çok gizemli. Beni saatlerce sessiz tutuyor.
-
-Şimdi çok uyuyorum. John, benim için iyi olduğunu söylüyor ve mümkün olduğunca çok uyuyorum.
-
-Aslında, her öğünden sonra bir saat yatıp uyuyarak bu alışkanlığı başlattı.
-
-Bu, çok kötü bir alışkanlık, ikna oldum, çünkü...
-uyuyorum demiyorum - oh, hayır!
-
-Aslında, John'dan biraz korkmaya başladım.
-
-Bazen çok garip görünüyor ve hatta Jennie de anlaşılmaz bir bakışa sahip.
-
-Bana bazen, sadece bir bilimsel hipotez olarak, belki de bu kağıttan kaynaklandığı geliyor!
-
-John'u izledim, bana bakmadığını sandığı zamanlarda, en masum bahanelerle突然 odaya girdim ve birkaç kez kağıda baktığını yakaladım.
-
-Jennie de aynı şekilde! Jennie'yi bir kez kağıdın üzerinde elini yakaladım.
-
-O, benim odayımda olduğumu bilmiyordu ve sakin, çok sakin bir tavırla, mümkün olduğunca kısıtlı bir şekilde, kağıtla ne yaptığını sorduğumda, hırsızlık yaparken yakalanmış gibi döndü ve çok kızgın görünerek neden onu böyle korkuttuğumu sordu!
-
-Sonra, kağıdın her şeyi lekelediğini, benim ve John'un kıyafetlerinde sarı lekeler bulduğunu ve bizim daha dikkatli olmamızı istediğini söyledi!
-
-Bu, masum bir şekilde değil mi? Ama ben, onun deseni incelediğini biliyorum ve kimse benim dışında bunu keşfedemeyecek!
-
-Hayat şimdi çok daha heyecan verici hale geldi. Bir şey bekleyecek, izleyecek, gözetleyeceğim.
-
-Gerçekten daha iyi yemek yiyorum ve daha sakinim.
-
-John, beni iyileşirken görmekten çok memnun!
-
-Diğer gün, güldü ve benim duvar kağıdına rağmen çiçek açtığımı söyledi.
-
-Onu bir gülme ile geçiştirdim. Ona, bunun duvar kağıdından dolayı olduğunu söylemek niyetinde değildim - alay edecekti. Hatta beni oradan uzaklaştırabilir.
-
-Şimdi, her şeyi keşfedene kadar buradan ayrılmak istemiyorum. Bir hafta daha var ve bunun yeterli olacağını düşünüyorum.
-
-Çok daha iyi hissediyorum! Gece çok uyumuyorum, çünkü gelişmeleri izlemek çok ilginç; ama gündüz çok uyuyorum.
-
-Gündüz, bu, sıkıcı ve karmaşıktır.
-
-O mantarın üzerinde her zaman yeni filizler ve her tarafında yeni sarı tonlar vardır. Onları sayamıyorum, aunque çok努力 ediyorum.
-
-Bu, en garip sarı bir duvar kağıdı! Bana, gördüğüm tüm sarı şeyleri hatırlatıyor - güzel olanları değil, seperti buttercup, ama eski, kötü, sarı şeyler.
-
-Ama o kağıtta bir başka şey var - koku! Bunu, odaya girdiğimiz anda fark ettim, ama havanın bol olması ve güneşin olması nedeniyle kötü değildi. Şimdi bir hafta süren sis ve yağmur بعد, pencere açık veya kapalı olsun, koku her yerde.
+Düzeltilmiş metin:
+değildi. Şimdi bir hafta süren sis ve yağmur بعد, pencere açık veya kapalı olsun, koku her yerde.
 
 Evin her yerine yayılıyor.
 
@@ -450,7 +293,7 @@ Ardından çok aydınlık yerlerde duruyor, çok gölgeli yerlerde ise bara tutu
 
 Ve her zaman onu geçmeye çalışıyor. Ama kimse bu desenden geçemez - boğazını sıkar; sanırım bu yüzden çok fazla başı vardır.
 
-Onlar geçiyorlar, sonra desen onları boğuyor, ters çeviriyor ve gözlerini beyaz yapıyor!
+Onlar bu desenden geçmeye çalıştıklarında, desen onları boğuyor, ters çeviriyor ve gözlerini beyaz yapıyor!
 
 Eğer bu başlar örtülür veya çıkarılırsa, bu kadar kötü olmazdı.
 
@@ -490,169 +333,54 @@ Ve Jennie'ye benim hakkımda birçok profesyonel soru sorduğunu duydum. Bana ç
 
 Gündüz çok uyuduğumu söyledi.
 
-John'un gece uyuyamadığımı bilmesine rağmen, çok sessiz olduğumu biliyor!
+Görevin iki adımı sırayla uygulanacaktır:
 
-Bana da birçok soru sordu ve çok sevgi dolu ve kindar davrandı.
+1. PARAGRAF DÜZEYİ — Her paragrafı ayrı ayrı incele:
+   - Yazım hatalarını (typo) düzelt
+   - İngilizce kalmış kelimeleri Türkçeye çevir (örn. "shield" → "kalkan", "raid" → "baskın")
+   - Garip veya anlamsız kelime seçimlerini düzelt
 
-Onun gözünden kaçıramayacağımı biliyor gibi!
+2. BÖLÜM DÜZEYİ — Tüm metni bir bütün olarak değerlendir:
+   - Paragraflar arası anlam akışını ve tutarlılığı koru
+   - Aynı kavram için farklı kelimeler kullanılmışsa birleştir
+   - Cümle yapısı bozuksa yeniden yaz, ama anlamı değiştirme
 
-Ama masih, böyle davranmasına şaşmam. Bu kağıdın altında üç ay uyuduğunu düşününce.
+KURALLAR:
+- [EPUB_IMAGE:...] etiketlerini KESİNLİKLE olduğu gibi bırak, taşıma, silme, değiştirme
+- Başlık satırını (# ile başlayan) olduğu gibi koru
+- Sadece düzeltilmiş metni döndür, açıklama ekleme
+- Metnin uzunluğunu korumaya çalış
 
-Sadece beni ilgilendiriyor, ama John ve Jennie'nin de gizlice bundan etkilendiğinden eminim.
+METİN:
+1.E.2. Bir Proje Gutenberg elektronik eseri, Amerika Birleşik Devletleri telif hakkı yasası tarafından korunmayan metinlerden türetiliyorsa (telif hakkı sahibi tarafından izin verildiğini belirten bir bildiri içermediyorsa), eser Amerika Birleşik Devletleri'ndeki herhangi birine ücretsiz olarak kopyalanabilir ve dağıtılabilir. "Proje Gutenberg" ibaresi ile ilişkili veya görünen bir esere erişim veya erişim sağlıyorsanız, 1.E.1 ila 1.E.7 paragraflarının gerekliliklerine uymak veya Proje Gutenberg ticari markasının kullanımı için 1.E.8 veya 1.E.9 paragraflarında belirtilen izinleri almak zorundasınız.
 
-Hurra! Bu son gün, ama yeterli. John bu akşam çıkana kadar şehirde kalacak.
+1.E.3. Bir Proje Gutenberg elektronik eseri, telif hakkı sahibi tarafından izin verilerek yayınlanıyorsa, kullanımınız ve dağıtmanız, 1.E.1 ila 1.E.7 paragraflarına ve telif hakkı sahibi tarafından getirilen ek koşullara uymalıdır. Ek koşullar, bu çalışmanın başında bulunan telif hakkı sahibi tarafından izin verilen tüm eserler için Proje Gutenberg Lisansı'na bağlıdır.
 
-Jennie benimle birlikte uyumak istedi - hırsız herif! - ama ona kesinlikle yalnız uyuduğumda daha iyi dinleneceğimi söyledim.
+1.E.4. Bu eserden veya bu eserle ilişkili herhangi bir dosyadan tam Proje Gutenberg Lisansı koşullarını kaldırmayın, ayırmayın veya çıkarın.
 
-Bu çok akıllıca bir hareketti, çünkü gerçekten yalnız değildim! Ay ışığı çıktığında ve o zavallı şey deseni sallamaya başladığında, kalktım ve yardımına koştum.
+1.E.5. Bu elektronik eseri veya bu elektronik eserin herhangi bir kısmını, 1.E.1 paragrafında belirtilen cümleyi, aktif bağlantılar veya tam Proje Gutenberg Lisansı koşullarına doğrudan erişim ile birlikte açıkça görüntülemeden kopyalamayın, sergilemeyin, gerçekleştirmeyin, dağıtmayın veya yeniden dağıtmayın.
 
-Ben çekiyorum, o sallıyor, o çekiyor, ben sallıyorum ve sabah olmeden önce bu kağıdın metrelerce uzunluğunu soyduk.
+1.E.6. Bu eseri herhangi bir ikili, sıkıştırılmış, işaretlenmiş, özel olmayan veya özel formatta dönüştürebilir ve dağıtabilirsiniz, bu da herhangi bir kelime işleme veya hipertext formunu içerir. Ancak, bir Proje Gutenberg eserinin "Plain Vanilla ASCII" veya resmi Proje Gutenberg web sitesinde yayınlanan resmi formattan başka bir formatta erişimini veya kopyalarını sağlıyorsanız, kullanıcıya ek bir maliyet, ücret veya masraf olmaksızın, eserin orijinal "Plain Vanilla ASCII" veya diğer formunu kopyasını, kopyasını dışa aktarma araçlarını veya kopyasını alma araçlarını talep üzerine sağlayarak, alternatif formun tam Proje Gutenberg Lisansı'nı içermelidir.
 
-Başımın üstüne kadar ve odanın yarısına kadar.
+1.E.7. Proje Gutenberg eserlerine erişim, görüntüleme, gerçekleştirme, kopyalama veya dağıtma için bir ücret talep etmeyin, aksi takdirde 1.E.8 veya 1.E.9 paragraflarına uymalısınız.
 
-Ve sonra güneş çıktığında ve o korkunç desen bana gülmeye başladığında, bugün bitireceğime karar verdim!
+1.E.8. Proje Gutenberg elektronik eserlerinin kopyalarını veya erişimini veya dağıtımını sağlamak için makul bir ücret talep edebilirsiniz, ancak:
 
-Yarın buradan ayrılacağız ve tüm mobilyamı tekrar aşağıya indirerek her şeyi eski haline getirecekler.
+• Proje Gutenberg eserlerinin kullanımından elde ettiğiniz brüt kârdan %20'lik bir telif ücreti ödemeniz gerekir, bu da zaten uyguladığınız vergi hesaplaması yöntemini kullanarak hesaplanır. Ücret, Proje Gutenberg ticari markasının sahibine aittir, ancak bu paragraf kapsamında telif ücretlerini Proje Gutenberg Literary Archive Foundation'a bağışlamayı kabul etmiştir. Telif ücretleri, periyodik vergi beyannamenizi hazırladığınız (veya yasal olarak hazırlamakla yükümlü olduğunuz) tarihlerden itibaren 60 gün içinde ödenmelidir. Telif ücretleri, açıkça böyle belirtilmeli ve 4. Bölüm'de belirtilen adrese Proje Gutenberg Literary Archive Foundation'a gönderilmelidir.
 
-Jennie duvara şaşkınlıkla baktı, ama ona neşeyle bu şeytani şeyi kıskandığım için yaptığımı söyledim.
-
-Güldü ve kendisinin de yapabileceğini, ama benim yorulmamam gerektiğini söyledi.
-
-O zaman kendini nasıl ele verdi!
-
-Ama ben buradayım ve bu kağıda yaşayan kimse dokunamaz!
-
-O beni odadan çıkarmaya çalıştı - çok açık bir şekilde! Ama dedim ki, şimdi oda çok sessiz ve boş ve temiz,所以 sanırım tekrar uyuyacağım ve uyanana kadar beni uyandırmayın - yemek için bile çağırmayın, uyanınca sesleneceğim.
-
-Şimdi o gitti, hizmetçiler gitti, eşyalar gitti ve sadece bu büyük, çerçeveli yatak kaldı, üstünde bulduğumuz kanvas şilteyle.
-
-Bu gece aşağıda uyuyacağız ve yarın evimize döneceğiz.
-
-Şimdi odayı gerçekten keyifle kullanıyorum.
-
-Bu çocuklar burada nasıl koşuşturmuşlar!
-
-Bu yatak iskeleti gerçekten kemirilmiş!
-
-Ama çalışmaya başlamam lazım.
-
-Kapıyı kilitleyip anahtarı ön kapıya attım.
-
-John gelene kadar dışarı çıkmak istemiyorum ve kimsenin girmesini istemiyorum.
-
-Onu şaşırtmak istiyorum.
-
-Burada Jennie'nin bulamadığı bir ip var. Eğer o kadın çıkarsa ve kaçmaya çalışırsa, onu bağlayabilirim!
-
-Ama bir şeyin üzerinde durmadan uzanamayacağımı unuttum!
-
-Bu yatak [EPUB_IMAGE:...] kıpırdamıyor!
-
-Onu kaldırmaya ve itmeye çalıştım, sonra ağrıdan felç oldum ve sonra öfkelendim, köşesinden bir parça ısırdım - ama dişlerimi incittim.
-
-Sonra elimin erişebildiği tüm kağıdı soydum. Korkunç bir şekilde yapışıyor ve desen bundan keyif alıyor! Tüm boğulmuş başlar, şişkin gözler ve emekleyen mantar büyümeleri alaycı bir şekilde bağırıyorlar!
-
-Umutsuz bir şey yapmaya yetecek kadar öfkelendim. Pencereden atlamak mükemmel bir egzersiz olurdu, ama barlar çok güçlü, denemeye bile değmez.
-
-Ama yapmam. Elbette yapmam. Bir adımın yanlış anlaşılabileceğini ve uygunsuz olduğunu çok iyi biliyorum.
-
-Pencerelerden [EPUB_IMAGE:...] bakmak bile istemiyorum - o kadar çok emekleyen kadın var ve o kadar hızlı emekleyerek ilerliyorlar.
-
-Acaba hepsinin bu duvar kağıdından çıktığını merak ediyorum, tıpkı benim gibi?
-
-Ama şimdi gizli ipimle güvende olduğum için, beni [EPUB_IMAGE:...] dışarıda o yolda yakalayamazlar!
-
-John kapının önünde!
-
-Hiçbir işe yaramaz, genç adam, açamazsın!
-
-Nasıl bağırıyor ve vuruyor!
-
-Şimdi bir balta istiyor.
-
-O güzel kapıyı kırmak ayıp olur!
-
-"John, sevgilim!" dedim en nazik sesimle, "anahtar ön kapıda, bir plantain yaprağının altında!"
-
-Bu onu bir süre susturdu.
-
-Sonra çok sessiz bir şekilde, "Kapıyı aç, sevgilim!" dedi.
-
-"Açamam," dedim. "Anahtar ön kapıda, bir plantain yaprağının altında!"
-
-Ve sonra bunu birkaç kez, çok nazik ve yavaş bir şekilde tekrar ettim, öyle ki gitmek ve bakmak zorunda kaldı ve elbette anahtarı buldu ve içeri girdi. Kapının önünde durdu.
-
-"Neler oluyor?" diye bağırdı. "Tanrım, ne yapıyorsun?"
-
-Aynı şekilde emeklemeye devam ettim, ama omzumun üzerinden ona baktım.
-
-"Nihayet çıkardım," dedim. "Senin ve Jane'in engellemenize rağmen! Ve kağıdın çoğunu çıkardım,所以 seni geri koyamayacaksın!"
-
-Bu adam neden bayıldı? Ama bayıldı ve duvardaki yolun üzerinde, öyle ki her geçişimde üzerinden emeklemem gerekti!
-
-*** THE PROJECT GUTENBERG EBOOK THE YELLOW WALLPAPER ***
-
-Güncellenmiş sürümler önceki sürümlerin yerini alacak - eski sürümler yeniden adlandırılacak.
-
-ABD telif hakkı yasasıyla korunmayan baskı sürümlerinden eserler oluşturmak, kimsenin bu eserlerde ABD telif hakkı sahibi olmadığı anlamına gelir, böylece Vakıf (ve siz!) ABD'de izin almadan ve telif hakkı ücreti ödemeden kopyalayabilir ve dağıtabilir. Genel Kullanım Koşullarının bir parçası olan özel kurallar, Project Gutenberg™ elektronik eserlerini kopyalarken ve dağıtırken PROJECT GUTENBERG™ kavramını ve markasını korumak için uygulanır. Project Gutenberg, tescilli bir markadır ve e-Kitabın ücretli olarak satılması durumunda, Project Gutenberg markasının kullanım koşullarına uyulmadıkça kullanılamaz, özellikle de Project Gutenberg markasının kullanımına royalty ödenmediği takdirde. Eğer bu e-Kitaptan ücret almazsan, marka lisansı ile uyum sağlamak çok kolaydır. Bu e-Kitabı几乎 her amaç için kullanabilirsiniz, chẳng hạn türetilmiş eserlerin oluşturulması, raporlar, performanslar ve araştırmalar. Project Gutenberg e-Kitapları değiştirilebilir, yazdırılabilir ve hediye edilebilir - ABD'de ABD telif hakkı yasasıyla korunmayan e-Kitaplar için neredeyse her şeyi yapabilirsiniz. Dağıtım, özellikle ticari dağıtım, marka lisansı ile ilgili koşullara tabidir.
-
-BAŞLANGIÇ: TAM LİSANS
-
-THE FULL PROJECT GUTENBERG™ LİSANSI
-
-BU ÇALIŞMAYI DAĞITMADAN VEYA KULLANMADAN ÖNCE LÜTFEN BU LİSANSI OKUYUN
-
-Project Gutenberg™'in elektronik eserlerin ücretsiz dağıtımını teşvik etme misyonunu korumak için, bu çalışmayı (veya "Project Gutenberg" ifadesiyle ilişkili herhangi bir çalışma) kullanarak veya dağıtarak, bu lisansın tüm koşullarına uymayı kabul ediyorsunuz. Bu lisans, bu dosya ile birlikte veya www.gutenberg.org/licenses adresinde online olarak mevcuttur.
-
-1. Genel Kullanım Koşulları ve Project Gutenberg Elektronik Eserlerini Dağıtma
-
-1.A. Bu Project Gutenberg elektronik çalışmasının herhangi bir kısmını okuyarak veya kullanarak, bu lisansın tüm koşullarını okuduğunuzu, anladığınızı, kabul ettiğinizi ve bu lisansın ve fikri mülkiyet (marka/telif hakkı) anlaşmasının koşullarına uymayı kabul ettiğinizi belirtiyorsunuz. Bu anlaşmanın koşullarına uymayı kabul etmiyorsanız, Project Gutenberg elektronik eserlerinin tüm kopyalarını kullanmayı bırakmalı ve imha etmelisiniz. Eğer bir ücret karşılığında bu Project Gutenberg elektronik çalışmasının bir kopyasını elde ettiyseniz ve bu anlaşmanın koşullarına uymayı kabul etmiyorsanız, ücreti ödediğiniz kişi veya kuruluşa iade için başvurabilirsiniz, zoals 1.E.8. paragrafında belirtilen şekilde.
-
-1.B. "Project Gutenberg" tescilli bir markadır. Sadece bu anlaşmanın koşullarına uymayı kabul eden kişiler tarafından bir elektronik eserle veya herhangi bir şekilde ilişkilendirilerek kullanılabilir. Bu lisansın tüm koşullarına uymadan önce, Project Gutenberg elektronik eserleriyle ilgili bazı şeyler yapabilirsiniz, bkz. 1.C paragrafı. Bu lisansın koşullarına uyarak ve Project Gutenberg elektronik eserlerine ücretsiz erişimini korumaya yardımcı olarak, Project Gutenberg elektronik eserleriyle çok daha fazla şey yapabilirsiniz, bkz. 1.E paragrafı.
-
-Bölüm: The Project Gutenberg eBook of The Yellow Wallpaper (Parça 4/5)
-
-1.C. Project Gutenberg Literary Archive Foundation (“Vakıf” veya PGLAF), Project Gutenberg elektronik eserlerinin koleksiyonunda bir derleme telif hakkı sahiptir. Koleksiyondaki neredeyse tüm bireysel eserler, Amerika Birleşik Devletleri'nde kamu malıdır. Bir eser, Amerika Birleşik Devletleri'nde telif hakkı yasası tarafından korunmuyorsa ve Amerika Birleşik Devletleri'nde bulunuyorsanız, Project Gutenberg referanslarını kaldırdığınız sürece, eseri kopyalamaktan, dağıtmaktan, sergilemekten, gerçekleştirmekten veya esere dayalı türetilmiş eserler oluşturmaktan sizi engellemek için bir hak iddia etmiyoruz. Tabii ki, Project Gutenberg'in elektronik eserlere ücretsiz erişim sağlamayı amaçlayan misyonunu, Project Gutenberg eserlerini bu anlaşmanın koşullarına uygun olarak ücretsiz olarak paylaşarak desteklemenizi umuyoruz. Bu anlaşmanın koşullarına kolayca uyabilirsiniz, bu çalışmayı, ekli tam Project Gutenberg Lisansı ile aynı formatta tutarak ve başkalarıyla ücretsiz olarak paylaştığınızda.
-
-1.D. Bulunduğunuz yerin telif hakkı yasaları da bu eserle neler yapabileceğinizi düzenler. Çoğu ülkede telif hakkı yasaları sürekli olarak değişmektedir. Amerika Birleşik Devletleri dışında bulunuyorsanız, bu anlaşmanın koşullarına ek olarak, bu eser veya herhangi bir Project Gutenberg eserini indirmeden, kopyalamadan, sergilemeden, gerçekleştirmeden, dağıtmadan veya türetilmiş eserler oluşturmadan önce ülkenizin yasalarını kontrol edin. Vakıf, Amerika Birleşik Devletleri dışında herhangi bir ülkedeki bir eserin telif hakkı durumuna ilişkin herhangi bir beyanda bulunmaz.
-
-1.E. Project Gutenberg referanslarını kaldırmadığınız sürece:
-
-1.E.1. Aşağıdaki cümle, tam Project Gutenberg Lisansı'na aktif bağlantılar veya bu lisansın tam koşullarına doğrudan erişim ile birlikte, bir Project Gutenberg eserinin (herhangi bir yerde "Project Gutenberg" ibaresi görünen veya bu ibare ile ilişkili olan bir eser) her bir kopyasının erişildiğinde, görüntülendiğinde, gerçekleştirildiğinde, görüldüğünde, kopyalandığında veya dağıtıldığında açıkça görünmelidir:
-
-Bu eBook, Amerika Birleşik Devletleri'nde ve dünyanın çoğu yerinde,几乎 hiçbir kısıtlama olmadan ücretsiz olarak kullanılabilir. Onu kopyalayabilir, hediye edebilir veya Project Gutenberg Lisansı'nın koşullarına uygun olarak yeniden kullanabilirsiniz, bu lisans bu eBook ile birlikte veya 
-www.gutenberg.org
- adresinde online olarak bulunmaktadır. Amerika Birleşik Devletleri dışında bulunuyorsanız, bu eBook'u kullanmadan önce bulunduğunuz ülkenin yasalarını kontrol etmeniz gerekir.
-
-1.E.2. Bir Project Gutenberg elektronik eseri, Amerika Birleşik Devletleri telif hakkı yasası tarafından korunmayan metinlerden türetiliyorsa (telif hakkı sahibi tarafından izin verildiğini belirten bir bildiri içermediyorsa), eser Amerika Birleşik Devletleri'ndeki herhangi birine ücretsiz olarak kopyalanabilir ve dağıtılabilir. "Project Gutenberg" ibaresi ile ilişkili veya görünen bir esere erişim veya erişim sağlıyorsanız, 1.E.1 ila 1.E.7 paragraflarının gerekliliklerine uymak veya Project Gutenberg ticari markasının kullanımı için 1.E.8 veya 1.E.9 paragraflarında belirtilen izinleri almak zorundasınız.
-
-1.E.3. Bir Project Gutenberg elektronik eseri, telif hakkı sahibi tarafından izin verilerek yayınlanıyorsa, kullanımınız ve dağıtmanız, 1.E.1 ila 1.E.7 paragraflarına ve telif hakkı sahibi tarafından getirilen ek koşullara uymalıdır. Ek koşullar, bu çalışmanın başında bulunan telif hakkı sahibi tarafından izin verilen tüm eserler için Project Gutenberg Lisansı'na bağlıdır.
-
-1.E.4. Bu eserden veya bu eserle ilişkili herhangi bir dosyadan tam Project Gutenberg Lisansı koşullarını kaldırmayın, ayırmayın veya çıkarın.
-
-1.E.5. Bu elektronik eseri veya bu elektronik eserin herhangi bir部分ini, 1.E.1 paragrafında belirtilen cümleyi, aktif bağlantılar veya tam Project Gutenberg Lisansı koşullarına doğrudan erişim ile birlikte açıkça görüntülemeden kopyalamayın, sergilemeyin, gerçekleştirmeyin, dağıtmayın veya yeniden dağıtmayın.
-
-1.E.6. Bu eseri herhangi bir ikili, sıkıştırılmış, işaretlenmiş, özel olmayan veya özel formatta dönüştürebilir ve dağıtabilirsiniz, bu da herhangi bir kelime işleme veya hipertext formunu içerir. Ancak, bir Project Gutenberg eserinin "Plain Vanilla ASCII" veya resmi Project Gutenberg web sitesinde yayınlanan resmi formattan başka bir formatta erişimini veya kopyalarını sağlıyorsanız, kullanıcıya ek bir maliyet, ücret veya masraf olmaksızın, eserin orijinal "Plain Vanilla ASCII" veya diğer formunu kopyasını, kopyasını dışa aktarma araçlarını veya kopyasını alma araçlarını talep üzerine sağlayarak, alternatif formun tam Project Gutenberg Lisansı'nı içermelidir.
-
-1.E.7. Project Gutenberg eserlerine erişim, görüntüleme, gerçekleştirme, kopyalama veya dağıtma için bir ücret talep etmeyin, aksi takdirde 1.E.8 veya 1.E.9 paragraflarına uymalısınız.
-
-1.E.8. Project Gutenberg elektronik eserlerinin kopyalarını veya erişimini veya dağıtımını sağlamak için makul bir ücret talep edebilirsiniz, ancak:
-
-• Project Gutenberg eserlerinin kullanımından elde ettiğiniz brüt kârdan %20'lik bir telif ücreti ödemeniz gerekir, bu da zaten uyguladığınız vergi hesaplaması yöntemini kullanarak hesaplanır. Ücret, Project Gutenberg ticari markasının sahibine aittir, ancak bu paragraf kapsamında telif ücretlerini Project Gutenberg Literary Archive Foundation'a bağışlamayı kabul etmiştir. Telif ücretleri, periyodik vergi beyannamenizi hazırladığınız (veya yasal olarak hazırlamakla yükümlü olduğunuz) tarihlerden itibaren 60 gün içinde ödenmelidir. Telif ücretleri, açıkça böyle belirtilmeli ve 4. Bölüm'de belirtilen adrese Project Gutenberg Literary Archive Foundation'a gönderilmelidir.
-
-• Bir kullanıcı, 30 gün içinde size yazılı olarak (veya e-posta ile) bildirdiği takdirde, tam Project Gutenberg Lisansı koşullarına katılmadığını belirtirse, ödemiş olduğu paranın tamamını geri ödeyin. Böyle bir kullanıcıdan, fiziksel bir ortamda sahip olduğu tüm kopyaları iade etmesini veya imha etmesini ve diğer Project Gutenberg eserlerine erişimini ve kullanımını durdurmasını talep etmelisiniz.
+• Bir kullanıcı, 30 gün içinde size yazılı olarak (veya e-posta ile) bildirdiği takdirde, tam Proje Gutenberg Lisansı koşullarına katılmadığını belirtirse, ödemiş olduğu paranın tamamını geri ödeyin. Böyle bir kullanıcıdan, fiziksel bir ortamda sahip olduğu tüm kopyaları iade etmesini veya imha etmesini ve diğer Proje Gutenberg eserlerine erişimini ve kullanımını durdurmasını talep etmelisiniz.
 
 • 1.F.3 paragrafına uygun olarak, elektronik eserde bir hata keşfedip bildirildiğinde, 90 gün içinde para iadesi sağlayın, eğer elektronik eserin bir kopyasını aldığınız tarihten itibaren 90 gün içinde bir hata keşfedilirse.
 
-• Project Gutenberg eserlerinin ücretsiz dağıtımı için bu anlaşmanın tüm koşullarına uymalısınız.
+• Proje Gutenberg eserlerinin ücretsiz dağıtımı için bu anlaşmanın tüm koşullarına uymalısınız.
 
-1.E.9. Bir Project Gutenberg elektronik eseri veya eser grubunu bu anlaşmada belirtilen koşullardan farklı koşullarla ücretli olarak dağıtmak istiyorsanız, Project Gutenberg Literary Archive Foundation'dan yazılı izin almalısınız. Vakıf ile, aşağıdaki 3. Bölüm'de belirtilen şekilde iletişim kurun.
+1.E.9. Bir Proje Gutenberg elektronik eseri veya eser grubunu bu anlaşmada belirtilen koşullardan farklı koşullarla ücretli olarak dağıtmak istiyorsanız, Proje Gutenberg Literary Archive Foundation'dan yazılı izin almalısınız. Vakıf ile, aşağıdaki 3. Bölüm'de belirtilen şekilde iletişim kurun.
 
 1.F.
 
-1.F.1. Project Gutenberg gönüllüleri ve çalışanları, Project Gutenberg koleksiyonunu oluşturmak için, Amerika Birleşik Devletleri telif hakkı yasası tarafından korunmayan eserleri tanımlamak, telif hakkı araştırmaları yapmak, transkript etmek ve düzeltmek için önemli çaba sarf eder. Bu çabalar rağmen, Project Gutenberg elektronik eserleri ve bunları depolayabileceğiniz ortam, "Hatalar" içerebilir, bu da eksik, yanlış veya bozulmuş veriler, transkript hataları, telif hakkı veya diğer fikri mülkiyet ihlalleri, bozuk veya hasarlı disk veya diğer ortam, bilgisayar virüsü veya ekipmanınız tarafından okunamayan veya hasarlı kodları içerir.
+1.F.1. Proje Gutenberg gönüllüleri ve çalışanları, Proje Gutenberg koleksiyonunu oluşturmak için, Amerika Birleşik Devletleri telif hakkı yasası tarafından korunmayan eserleri tanımlamak, telif hakkı araştırmaları yapmak, transkript etmek ve düzeltmek için önemli çaba sarf eder. Bu çabalar rağmen, Proje Gutenberg elektronik eserleri ve bunları depolayabileceğiniz ortam, "Hatalar" içerebilir, bu da eksik, yanlış veya bozulmuş veriler, transkript hataları, telif hakkı veya diğer fikri mülkiyet ihlalleri, bozuk veya hasarlı disk veya diğer ortam, bilgisayar virüsü veya ekipmanınız tarafından okunamayan veya hasarlı kodları içerir.
 
-1.F.2. SINIRLI GARANTİ, ZARARLARIN REDDI - 1.F.3 paragrafında belirtilen "Değiştirme veya Geri Ödeme Hakkı" dışında, Project Gutenberg Literary Archive Foundation, Project Gutenberg ticari markasının sahibi ve bu anlaşma kapsamında bir Project Gutenberg elektronik eseri dağıtan herhangi bir taraf, size karşı tüm sorumluluğu reddeder, bu da masrafları, giderleri ve avukat ücretlerini içerir. 1.F.3 paragrafında belirtilen dışında, ihmal, sıkı sorumluluk, garanti ihlali veya sözleşmenin ihlali için herhangi bir çözüm yolu kabul etmediğinizi kabul edersiniz. Vakıf, ticari marka sahibi ve bu anlaşma kapsamında bir dağıtıcı, size karşı gerçek, doğrudan, dolaylı, sonuçsal, cezai veya arızi hasarlardan sorumlu olmayacaktır, даже eğer hasar olasılığını bildirdiyseniz.
+1.F.2. SINIRLI GARANTİ, ZARARLARIN REDDI - 1.F.3 paragrafında belirtilen "Değiştirme veya Geri Ödeme Hakkı" dışında, Proje Gutenberg Literary Archive Foundation, Proje Gutenberg ticari markasının sahibi ve bu anlaşma kapsamında bir Proje Gutenberg elektronik eseri dağıtan herhangi bir taraf, size karşı tüm sorumluluğu reddeder, bu da masrafları, giderleri ve avukat ücretlerini içerir. 1.F.3 paragrafında belirtilen dışında, ihmal, sıkı sorumluluk, garanti ihlali veya sözleşmenin ihlali için herhangi bir çözüm yolu kabul etmediğinizi kabul edersiniz. Vakıf, ticari marka sahibi ve bu anlaşma kapsamında bir dağıtıcı, size karşı gerçek, doğrudan, dolaylı, sonuçsal, cezai veya arızi hasarlardan sorumlu olmayacaktır, nawet eğer hasar olasılığını bildirdiyseniz.
 
 1.F.3. SINIRLI DEĞİŞTİRME veya GERİ ÖDEME HAKKI - Bu elektronik eserde 90 gün içinde bir hata keşfederseniz, eseri aldığınız tarihten itibaren, size ödemiş olduğunuz para (eğer varsa) iade edilebilir. Eseri fiziksel bir ortamda aldığınızda, mediumu yazılı açıklamanızla birlikte iade etmelisiniz. Size eseri sağlayan kişi veya kuruluş, size bir geri ödeme yerine bir kopya sağlayabilir. Eseri elektronik olarak aldığınızda, size eseri sağlayan kişi veya kuruluş, size bir geri ödeme yerine eseri elektronik olarak tekrar sunabilir. İkinci kopya da bozuk ise, yazılı olarak bir geri ödeme talep edebilirsiniz.
 
@@ -660,19 +388,19 @@ www.gutenberg.org
 
 1.F.5. Bazı eyaletler, belirli ima edilen garantilerin reddedilmesini veya belirli türdeki hasarların dışlanmasını veya sınırlanmasını yasaklar. Bu anlaşmadaki herhangi bir ret veya sınırlama, bu anlaşmaya uygulanabilir olan eyalet yasasını ihlal ediyorsa, anlaşma, ilgili eyalet yasası tarafından izin verilen en geniş ret veya sınırlamayı yapmak için yorumlanacaktır. Bu anlaşmanın herhangi bir hükmünün geçersizliği veya uygulanamazlığı, kalan hükümlerin geçerliliğini etkilemeyecektir.
 
-1.F.6. TAZMİNAT - Project Gutenberg gönüllüleri, çalışanları, Vakıf, ticari marka sahibi, bu anlaşmaya uygun olarak Project Gutenberg elektronik eserleri kopyalarını sağlayan herkes ve Project Gutenberg elektronik eserlerinin üretimine, tanıtımına ve dağıtımına katılan gönüllüler, sizin yaptığınız veya yaptırdığınız aşağıdaki eylemlerden doğrudan veya dolaylı olarak ortaya çıkan tüm sorumluluklardan, giderlerden ve avukat ücretlerinden muaf tutulmalarını kabul edersiniz: (a) bu eser veya herhangi bir Project Gutenberg eserinin dağıtımı, (b) bir Project Gutenberg eserine değişiklik, ek veya silme yapılması ve (c) sizin neden olduğunuz herhangi bir Hata.
+1.F.6. TAZMİNAT - Proje Gutenberg gönüllüleri, çalışanları, Vakıf, ticari marka sahibi, bu anlaşmaya uygun olarak Proje Gutenberg elektronik eserleri kopyalarını sağlayan herkes ve Proje Gutenberg elektronik eserlerinin üretimine, tanıtımına ve dağıtımına katılan gönüllüler, sizin yaptığınız veya yaptırdığınız aşağıdaki eylemlerden doğrudan veya dolaylı olarak ortaya çıkan tüm sorumluluklardan, giderlerden ve avukat ücretlerinden muaf tutulmalarını kabul edersiniz: (a) bu eser veya herhangi bir Proje Gutenberg eserinin dağıtımı, (b) bir Proje Gutenberg eserine değişiklik, ek veya silme yapılması ve (c) sizin neden olduğunuz herhangi bir Hata.
 
-Bölüm 2. Project Gutenberg Misyonu Hakkında Bilgi
+Bölüm 2. Proje Gutenberg Misyonu Hakkında Bilgi
 
-Project Gutenberg, geniş bir bilgisayar yelpazesinde okunabilen elektronik eserlerin ücretsiz dağıtımı ile eşanlamlıdır, bu da eski, eski, orta yaşlı ve yeni bilgisayarları içerir. Varoluşu, yüzlerce gönüllünün çabaları ve her kesimden insanların bağışları sayesinde mümkündür.
+Proje Gutenberg, geniş bir bilgisayar yelpazesinde okunabilen elektronik eserlerin ücretsiz dağıtımı ile eşanlamlıdır, bu da eski, eski, orta yaşlı ve yeni bilgisayarları içerir. Varoluşu, yüzlerce gönüllünün çabaları ve her kesimden insanların bağışları sayesinde mümkündür.
 
-Gönüllüler ve gönüllülere yardım sağlamak için finansal destek, Project Gutenberg'un hedeflerine ulaşması ve Project Gutenberg koleksiyonunun gelecekteki nesiller için ücretsiz olarak kalması için kritiktir. 2001 yılında, Project Gutenberg Literary Archive Foundation, Project Gutenberg'un ve gelecekteki nesillerin güvenli ve kalıcı bir geleceği sağlamak için kuruldu. Project Gutenberg Literary Archive Foundation hakkında daha fazla bilgi edinmek ve nasıl yardım edebileceğiniz hakkında bilgi almak için, 3. ve 4. Bölümleri ve Vakıf hakkında bilgi sayfasını www.gutenberg.org adresinde ziyaret edin.
+Gönüllüler ve gönüllülere yardım sağlamak için finansal destek, Proje Gutenberg'un hedeflerine ulaşması ve Proje Gutenberg koleksiyonunun gelecekteki nesiller için ücretsiz olarak kalması için kritiktir. 2001 yılında, Proje Gutenberg Literary Archive Foundation, Proje Gutenberg'un ve gelecekteki nesillerin güvenli ve kalıcı bir geleceği sağlamak için kuruldu. Proje Gutenberg Literary Archive Foundation hakkında daha fazla bilgi edinmek ve nasıl yardım edebileceğiniz hakkında bilgi almak için, 3. ve 4. Bölümleri ve Vakıf hakkında bilgi sayfasını www.gutenberg.org adresinde ziyaret edin.
 
-Bölüm 3. Project Gutenberg Literary Archive Foundation Hakkında Bilgi
+Bölüm 3. Proje Gutenberg Literary Archive Foundation Hakkında Bilgi
 
 Bölüm: The Yellow Wallpaper (Parça 5/5) Proje Gutenberg e-Kitabı
 
-Proje Gutenberg Edebi Arşiv Vakfı, Mississippi eyaletinin yasalarına göre organize edilmiş,Internal Revenue Service tarafından vergi muafiyeti verilen kar amacı gütmeyen bir 501(c)(3) eğitim kuruluşudur. Vakfın EIN veya federal vergi kimlik numarası 64-6221541'dir. Proje Gutenberg Edebi Arşiv Vakfı'na yapılan katkılar, U.S. federal yasaları ve eyaletinizin yasaları tarafından izin verilen ölçüde vergi muafiyetinden yararlanabilir.
+Proje Gutenberg Edebi Arşiv Vakfı, Mississippi eyaletinin yasalarına göre organize edilmiş, Internal Revenue Service tarafından vergi muafiyeti verilen kar amacı gütmeyen bir 501(c)(3) eğitim kuruluşudur. Vakfın EIN veya federal vergi kimlik numarası 64-6221541'dir. Proje Gutenberg Edebi Arşiv Vakfı'na yapılan katkılar, U.S. federal yasaları ve eyaletinizin yasaları tarafından izin verilen ölçüde vergi muafiyetinden yararlanabilir.
 
 Vakfın iş ofisi 41 Watchung Plaza #516, Montclair NJ 07042, USA, +1 (862) 621-9288 adresinde bulunmaktadır. E-posta iletişim bağlantıları ve güncel iletişim bilgileri Vakfın web sitesinde ve resmi sayfasında www.gutenberg.org/contact adresinde bulunabilir.
 
