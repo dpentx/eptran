@@ -1,11 +1,11 @@
 {
-  "status": "running",
+  "status": "completed",
   "book": "The_Call_of_Cthulhu",
   "epub_file": "The Call of Cthulhu.epub",
   "source_type": "epub",
   "total": 2,
   "completed": 2,
-  "current_chapter": "THE FULL PROJECT GUTENBERG™ LICENSE",
+  "current_chapter": "",
   "started_at": "2026-06-09T20:16:38.011574+00:00",
-  "updated_at": "2026-06-09T20:18:59.461229+00:00"
+  "updated_at": "2026-06-09T20:19:00.935841+00:00"
 }
