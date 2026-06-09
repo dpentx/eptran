@@ -1,17 +1,11 @@
 {
-  "status": "completed",
-  "book": "the_yellow_wallpaper",
-  "epub_file": "the_yellow_wallpaper.epub",
+  "status": "running",
+  "book": "kafka-metamorphosis",
+  "epub_file": "kafka-metamorphosis.epub",
   "source_type": "epub",
-  "total": 1,
-  "completed": 1,
+  "total": 4,
+  "completed": 0,
   "current_chapter": "",
-  "started_at": "2026-06-08T15:54:49.773716+00:00",
-  "updated_at": "2026-06-08T15:58:02.245009+00:00",
-  "review_status": "completed",
-  "review_total": 1,
-  "review_completed": 1,
-  "review_current": "",
-  "convert_status": "completed",
-  "epub_output": "output/the_yellow_wallpaper/the_yellow_wallpaper_tr.epub"
+  "started_at": "2026-06-09T14:50:59.564261+00:00",
+  "updated_at": "2026-06-09T14:50:59.564278+00:00"
 }
