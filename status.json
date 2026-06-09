@@ -7,9 +7,9 @@
   "completed": 4,
   "current_chapter": "",
   "started_at": "2026-06-09T14:50:59.564261+00:00",
-  "updated_at": "2026-06-09T14:55:48.296660+00:00",
+  "updated_at": "2026-06-09T14:56:31.041102+00:00",
   "review_status": "running",
   "review_total": 4,
-  "review_completed": 2,
-  "review_current": "002_kafka-metamorphosis.txt"
+  "review_completed": 3,
+  "review_current": "003_kafka-metamorphosis.txt"
 }
