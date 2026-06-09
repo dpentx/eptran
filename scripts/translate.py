@@ -12,19 +12,66 @@ import re
 
 STATUS_FILE = "status.json"
 
-# Model zaman zaman çevirinin başına/sonuna bu kalıplarla yorum ekliyor.
-# Bunları temizlemek için kullanılan regex listesi.
+# ── Temizleyiciler ────────────────────────────────────────────────────────────
+
+# Sağlayıcı/telif bloklarını tespit eden kalıplar.
+# Bir paragrafın TAMAMI bu kalıplardan biriyle eşleşirse silinir.
+_BOILERPLATE_PATTERNS = [
+    # Telif satırları
+    re.compile(r'©|copyright|\ball rights reserved\b|isbn[\s:]\d', re.IGNORECASE),
+    # Proje Gutenberg standart metinleri
+    re.compile(r'project gutenberg|gutenberg\.org|www\.gutenberg', re.IGNORECASE),
+    # epub sağlayıcı adları ve URL'leri
+    re.compile(r'epubbooks?\.com|www\.[a-z0-9\-]+\.[a-z]{2,}', re.IGNORECASE),
+    # eBook numaraları
+    re.compile(r'\bebook\s*#?\d+\b', re.IGNORECASE),
+    # Çevirmen notu başlıkları
+    re.compile(r"^(translator'?s?\s*note|note from the translator|çevirmen\s*notu)\b", re.IGNORECASE),
+    # "Bu yayın ... korunmaktadır" lisans blokları
+    re.compile(r'bu (yayın|e[\-\s]?kitap).{0,60}(telif|lisans|hak)', re.IGNORECASE),
+    # "This eBook is for the use of..." Gutenberg standart açılışı
+    re.compile(r"this e[\-\s]?book is for the use of", re.IGNORECASE),
+    # Yayın yılı + yayıncı satırları ("İlk olarak 2002 yılında yayımlanmıştır")
+    re.compile(r'(ilk olarak|first published|originally published).{0,60}\d{4}', re.IGNORECASE),
+]
+
+# Model çıktısındaki prompt kalıntıları
 _JUNK_PATTERNS = [
-    # "Bölüm: X (Parça Y/Z)" satırları
     re.compile(r'^Bölüm:.*\n?', re.MULTILINE),
-    # "İşte çeviri:", "Çeviri:" gibi giriş satırları
     re.compile(r'^(?:İşte (?:çeviri|Türkçe çeviri)|Çeviri\s*:).*\n?', re.MULTILINE | re.IGNORECASE),
-    # "Not:" ile başlayan dipnot satırları
     re.compile(r'^Not\s*:.*\n?', re.MULTILINE | re.IGNORECASE),
-    # Prompt kalıntısı — "Sadece çeviriyi döndür" gibi
     re.compile(r'^Sadece çeviri.*\n?', re.MULTILINE | re.IGNORECASE),
 ]
 
+
+def is_boilerplate(paragraph: str) -> bool:
+    """Paragrafın tamamı sağlayıcı/telif metni mi?"""
+    p = paragraph.strip()
+    if not p:
+        return True
+    # Kısa satırlar için tam eşleşme, uzun paragraflar için içerik kontrolü
+    for pat in _BOILERPLATE_PATTERNS:
+        if pat.search(p):
+            return True
+    return False
+
+
+def clean_boilerplate(text: str) -> str:
+    """Metindeki sağlayıcı/telif paragraflarını kaldır."""
+    paragraphs = text.split("\n\n")
+    cleaned = [p for p in paragraphs if not is_boilerplate(p)]
+    return "\n\n".join(cleaned).strip()
+
+
+def clean_output(text: str) -> str:
+    """Model yorumlarını ve prompt kalıntılarını çıktıdan temizle."""
+    for pattern in _JUNK_PATTERNS:
+        text = pattern.sub('', text)
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    return text.strip()
+
+
+# ── Groq ──────────────────────────────────────────────────────────────────────
 
 def get_groq_clients():
     clients = []
@@ -59,15 +106,6 @@ def write_status(data):
     git_push(f"status: {data.get('completed', 0)}/{data.get('total', '?')}")
 
 
-def clean_output(text):
-    """Model yorumlarını ve prompt kalıntılarını çıktıdan temizle."""
-    for pattern in _JUNK_PATTERNS:
-        text = pattern.sub('', text)
-    # Başta/sonda oluşan fazla boş satırları temizle
-    text = re.sub(r'\n{3,}', '\n\n', text)
-    return text.strip()
-
-
 def extract_chapters_epub(epub_path):
     book = epub.read_epub(epub_path)
     chapters = []
@@ -79,6 +117,10 @@ def extract_chapters_epub(epub_path):
             tag.decompose()
         text = soup.get_text(separator="\n").strip()
         text = re.sub(r"\n{3,}", "\n\n", text)
+
+        # Sağlayıcı/telif bloklarını extract aşamasında temizle
+        text = clean_boilerplate(text)
+
         if len(text) < 300:
             continue
         title = item.get_name()
@@ -120,13 +162,10 @@ def extract_chapters_pdf(pdf_path, book_slug):
                 base_image = doc_fitz.extract_image(xref)
                 image_bytes = base_image["image"]
                 image_ext = base_image["ext"]
-
                 img_name = f"page_{page_idx+1}_img_{img_idx+1}.{image_ext}"
                 img_path = os.path.join(images_dir, img_name)
-
                 with open(img_path, "wb") as f_img:
                     f_img.write(image_bytes)
-
                 all_lines.append(f"[EPUB_IMAGE:{img_name}]")
 
             all_lines.append("")
@@ -147,6 +186,7 @@ def extract_chapters_pdf(pdf_path, book_slug):
         print("Bölüm başlığı tespit edilemedi — tüm metin tek bölüm olarak işlenecek.")
         full_text = "\n".join(all_lines).strip()
         full_text = re.sub(r"\n{3,}", "\n\n", full_text)
+        full_text = clean_boilerplate(full_text)
         if len(full_text) >= 300:
             chapters.append({
                 "name": "chapter_001",
@@ -163,6 +203,7 @@ def extract_chapters_pdf(pdf_path, book_slug):
         body_lines = all_lines[start_line + 1: end_line]
         body_text = "\n".join(body_lines).strip()
         body_text = re.sub(r"\n{3,}", "\n\n", body_text)
+        body_text = clean_boilerplate(body_text)
         if len(body_text) < 300:
             continue
         chapters.append({
@@ -216,8 +257,6 @@ def parse_retry_seconds(error_message):
 
 
 def translate_chunk(clients, key_index, text, chapter_title, chunk_index, total_chunks):
-    # Başlık ve parça bilgisi artık system mesajında, prompt gövdesinde değil.
-    # Bu sayede model bu satırları çıktıya dahil etmiyor.
     part_info = f", Parça {chunk_index + 1}/{total_chunks}" if total_chunks > 1 else ""
     system_msg = (
         f"Sen profesyonel bir çevirmensin. "
@@ -227,14 +266,12 @@ def translate_chunk(clients, key_index, text, chapter_title, chunk_index, total_
         f"'[EPUB_IMAGE:...]' etiketlerini olduğu gibi bırak. "
         f"Yanıt olarak SADECE çeviriyi yaz. Açıklama, yorum, başlık veya giriş cümlesi ekleme."
     )
-    prompt = text
 
     while True:
         current_time = time.time()
         available_keys = [c for c in clients if c["locked_until"] <= current_time]
         if not available_keys:
-            min_lock_release = min(c["locked_until"] for c in clients)
-            wait_time = max(int(min_lock_release - current_time), 1)
+            wait_time = max(int(min(c["locked_until"] for c in clients) - current_time), 1)
             print(f"Tüm keyler limit dışı. {wait_time} saniye bekleniyor...")
             time.sleep(wait_time)
             continue
@@ -247,25 +284,22 @@ def translate_chunk(clients, key_index, text, chapter_title, chunk_index, total_
                     key_index[0] = i
                     break
 
-        current_client_info = clients[idx]
-        client = current_client_info["client"]
-        key_id = current_client_info["id"]
+        info = clients[idx]
         try:
-            response = client.chat.completions.create(
+            response = info["client"].chat.completions.create(
                 model="llama-3.3-70b-versatile",
                 messages=[
                     {"role": "system", "content": system_msg},
-                    {"role": "user", "content": prompt},
+                    {"role": "user", "content": text},
                 ],
                 temperature=0.3,
             )
             key_index[0] = (idx + 1) % len(clients)
-            raw = response.choices[0].message.content
-            return clean_output(raw)
+            return clean_output(response.choices[0].message.content)
         except RateLimitError as e:
             wait = parse_retry_seconds(e)
-            print(f"Key {key_id} rate limit! {wait}s kilitlendi.")
-            clients[idx]["locked_until"] = time.time() + wait
+            print(f"Key {info['id']} rate limit! {wait}s kilitlendi.")
+            info["locked_until"] = time.time() + wait
             key_index[0] = (idx + 1) % len(clients)
         except Exception as e:
             print(f"Hata: {e} — 30s sonra tekrar deneniyor...")
