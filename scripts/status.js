@@ -26,12 +26,12 @@ export default async function handler(req, res) {
     let outputFiles = [];
     let epubFile = null;
 
-    const isDone =
+    const fullyDone =
       status.status === "completed" &&
       status.review_status === "completed" &&
       status.convert_status === "completed";
 
-    if (isDone && status.book) {
+    if (fullyDone && status.book) {
       const outputRes = await fetch(
         `https://api.github.com/repos/${REPO}/contents/output/${status.book}`,
         { headers: { Authorization: `token ${TOKEN}` } }

@@ -12,6 +12,19 @@ import re
 
 STATUS_FILE = "status.json"
 
+# Model zaman zaman çevirinin başına/sonuna bu kalıplarla yorum ekliyor.
+# Bunları temizlemek için kullanılan regex listesi.
+_JUNK_PATTERNS = [
+    # "Bölüm: X (Parça Y/Z)" satırları
+    re.compile(r'^Bölüm:.*\n?', re.MULTILINE),
+    # "İşte çeviri:", "Çeviri:" gibi giriş satırları
+    re.compile(r'^(?:İşte (?:çeviri|Türkçe çeviri)|Çeviri\s*:).*\n?', re.MULTILINE | re.IGNORECASE),
+    # "Not:" ile başlayan dipnot satırları
+    re.compile(r'^Not\s*:.*\n?', re.MULTILINE | re.IGNORECASE),
+    # Prompt kalıntısı — "Sadece çeviriyi döndür" gibi
+    re.compile(r'^Sadece çeviri.*\n?', re.MULTILINE | re.IGNORECASE),
+]
+
 
 def get_groq_clients():
     clients = []
@@ -46,6 +59,15 @@ def write_status(data):
     git_push(f"status: {data.get('completed', 0)}/{data.get('total', '?')}")
 
 
+def clean_output(text):
+    """Model yorumlarını ve prompt kalıntılarını çıktıdan temizle."""
+    for pattern in _JUNK_PATTERNS:
+        text = pattern.sub('', text)
+    # Başta/sonda oluşan fazla boş satırları temizle
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    return text.strip()
+
+
 def extract_chapters_epub(epub_path):
     book = epub.read_epub(epub_path)
     chapters = []
@@ -68,24 +90,20 @@ def extract_chapters_epub(epub_path):
 
 
 def extract_chapters_pdf(pdf_path, book_slug):
-    """
-    PDF'ten bölümleri çıkarır ve gömülü görselleri PyMuPDF ile ayıklar.
-    Görsellerin çıktığı yere metin içinde yer tutucu bir etiket yerleştirir.
-    """
     import pdfplumber
     import fitz
 
     chapter_patterns = [
         re.compile(r'^(chapter\s+\w+[\s:\-–—]?.*)$', re.IGNORECASE),
         re.compile(r'^(prologue|epilogue|interlude|afterword|foreword|preface)$', re.IGNORECASE),
-        re.compile(r'^(\d+\.\s+.{3,60})$'),           
-        re.compile(r'^([IVX]+\.\s+.{3,60})$'),         
+        re.compile(r'^(\d+\.\s+.{3,60})$'),
+        re.compile(r'^([IVX]+\.\s+.{3,60})$'),
     ]
 
     all_lines = []
     images_dir = f"output/{book_slug}/images"
     os.makedirs(images_dir, exist_ok=True)
-    
+
     doc_fitz = fitz.open(pdf_path)
 
     with pdfplumber.open(pdf_path) as pdf:
@@ -94,7 +112,7 @@ def extract_chapters_pdf(pdf_path, book_slug):
             text = page.extract_text()
             if text:
                 all_lines.extend(text.split("\n"))
-            
+
             fitz_page = doc_fitz[page_idx]
             image_list = fitz_page.get_images(full=True)
             for img_idx, img in enumerate(image_list):
@@ -102,16 +120,16 @@ def extract_chapters_pdf(pdf_path, book_slug):
                 base_image = doc_fitz.extract_image(xref)
                 image_bytes = base_image["image"]
                 image_ext = base_image["ext"]
-                
+
                 img_name = f"page_{page_idx+1}_img_{img_idx+1}.{image_ext}"
                 img_path = os.path.join(images_dir, img_name)
-                
+
                 with open(img_path, "wb") as f_img:
                     f_img.write(image_bytes)
-                
+
                 all_lines.append(f"[EPUB_IMAGE:{img_name}]")
-                
-            all_lines.append("")  # sayfa sonu boşluk
+
+            all_lines.append("")
 
     chapter_starts = []
     for i, line in enumerate(all_lines):
@@ -142,7 +160,7 @@ def extract_chapters_pdf(pdf_path, book_slug):
     for idx in range(len(chapter_starts) - 1):
         start_line, title = chapter_starts[idx]
         end_line = chapter_starts[idx + 1][0]
-        body_lines = all_lines[start_line + 1 : end_line]
+        body_lines = all_lines[start_line + 1: end_line]
         body_text = "\n".join(body_lines).strip()
         body_text = re.sub(r"\n{3,}", "\n\n", body_text)
         if len(body_text) < 300:
@@ -158,7 +176,6 @@ def extract_chapters_pdf(pdf_path, book_slug):
 
 
 def extract_chapters(file_path, book_slug):
-    """epub veya pdf'e göre doğru extractor'ı seç."""
     ext = os.path.splitext(file_path)[1].lower()
     if ext == ".pdf":
         return extract_chapters_pdf(file_path, book_slug)
@@ -199,16 +216,19 @@ def parse_retry_seconds(error_message):
 
 
 def translate_chunk(clients, key_index, text, chapter_title, chunk_index, total_chunks):
-    context = f" (Parça {chunk_index + 1}/{total_chunks})" if total_chunks > 1 else ""
-    prompt = (
-        f"Aşağıdaki İngilizce metni Türkçeye çevir. "
-        f"Çeviriyi doğal, akıcı ve edebi tut. "
-        f"Karakterlerin sesini, tonunu ve yazı stilini koru. "
-        f"Metinde göreceğin '[EPUB_IMAGE:...]' şeklindeki görsel etiketlerini KESİNLİKLE değiştirme, çevirme ve aynen oldukları yerde koru. "
-        f"Sadece çeviriyi döndür, başka hiçbir şey ekleme.\n\n"
-        f"Bölüm: {chapter_title}{context}\n\n"
-        f"{text}"
+    # Başlık ve parça bilgisi artık system mesajında, prompt gövdesinde değil.
+    # Bu sayede model bu satırları çıktıya dahil etmiyor.
+    part_info = f", Parça {chunk_index + 1}/{total_chunks}" if total_chunks > 1 else ""
+    system_msg = (
+        f"Sen profesyonel bir çevirmensin. "
+        f"Şu an \"{chapter_title}\"{part_info} başlıklı bölümü çeviriyorsun. "
+        f"Görevin yalnızca verilen İngilizce metni Türkçeye çevirmek. "
+        f"Çeviriyi doğal, akıcı ve edebi tut; karakterlerin sesini ve tonunu koru. "
+        f"'[EPUB_IMAGE:...]' etiketlerini olduğu gibi bırak. "
+        f"Yanıt olarak SADECE çeviriyi yaz. Açıklama, yorum, başlık veya giriş cümlesi ekleme."
     )
+    prompt = text
+
     while True:
         current_time = time.time()
         available_keys = [c for c in clients if c["locked_until"] <= current_time]
@@ -218,6 +238,7 @@ def translate_chunk(clients, key_index, text, chapter_title, chunk_index, total_
             print(f"Tüm keyler limit dışı. {wait_time} saniye bekleniyor...")
             time.sleep(wait_time)
             continue
+
         idx = key_index[0] % len(clients)
         if clients[idx]["locked_until"] > current_time:
             for i, c in enumerate(clients):
@@ -225,17 +246,22 @@ def translate_chunk(clients, key_index, text, chapter_title, chunk_index, total_
                     idx = i
                     key_index[0] = i
                     break
+
         current_client_info = clients[idx]
         client = current_client_info["client"]
         key_id = current_client_info["id"]
         try:
             response = client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
-                messages=[{"role": "user", "content": prompt}],
+                messages=[
+                    {"role": "system", "content": system_msg},
+                    {"role": "user", "content": prompt},
+                ],
                 temperature=0.3,
             )
             key_index[0] = (idx + 1) % len(clients)
-            return response.choices[0].message.content
+            raw = response.choices[0].message.content
+            return clean_output(raw)
         except RateLimitError as e:
             wait = parse_retry_seconds(e)
             print(f"Key {key_id} rate limit! {wait}s kilitlendi.")

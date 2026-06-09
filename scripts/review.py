@@ -10,6 +10,22 @@ import re
 STATUS_FILE = "status.json"
 BRIDGE_OVERLAP = 1800  # her iki taraftan alınacak karakter (~270 kelime)
 
+# Model yorumlarını ve prompt kalıntılarını temizlemek için
+_JUNK_PATTERNS = [
+    re.compile(r'^(?:İşte (?:düzeltilmiş|güncellenmiş|revize edilmiş).*)\n?', re.MULTILINE | re.IGNORECASE),
+    re.compile(r'^(?:Düzeltilmiş metin\s*:?)\n?', re.MULTILINE | re.IGNORECASE),
+    re.compile(r'^Not\s*:.*\n?', re.MULTILINE | re.IGNORECASE),
+    re.compile(r'^(?:Bu metinde|Metinde|Aşağıda).*(?:düzelt|değiştir|güncell).*\n?', re.MULTILINE | re.IGNORECASE),
+    re.compile(r'^Açıklama\s*:.*\n?', re.MULTILINE | re.IGNORECASE),
+]
+
+
+def clean_output(text):
+    for pattern in _JUNK_PATTERNS:
+        text = pattern.sub('', text)
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    return text.strip()
+
 
 # ── Groq ──────────────────────────────────────────────────────────────────────
 
@@ -43,7 +59,7 @@ def parse_retry_seconds(error_message):
     return int(total) + 5
 
 
-def call_llm(clients, key_index, prompt):
+def call_llm(clients, key_index, system_msg, user_msg):
     while True:
         current_time = time.time()
         available = [c for c in clients if c["locked_until"] <= current_time]
@@ -65,11 +81,15 @@ def call_llm(clients, key_index, prompt):
         try:
             response = info["client"].chat.completions.create(
                 model="llama-3.3-70b-versatile",
-                messages=[{"role": "user", "content": prompt}],
+                messages=[
+                    {"role": "system", "content": system_msg},
+                    {"role": "user", "content": user_msg},
+                ],
                 temperature=0.2,
             )
             key_index[0] = (idx + 1) % len(clients)
-            return response.choices[0].message.content.strip()
+            raw = response.choices[0].message.content
+            return clean_output(raw)
         except RateLimitError as e:
             wait = parse_retry_seconds(e)
             print(f"Key {info['id']} rate limit! {wait}s kilitlendi.")
@@ -129,8 +149,8 @@ def build_windows(chunks, overlap=BRIDGE_OVERLAP):
     """
     N chunk → 2N-1 pencere.
     Tek chunk ise sadece kendisi döner.
-    Çift indexler (0,2,4...) chunk'ların kendisi,
-    tek indexler (1,3,5...) köprü pencereleri.
+    Çift indexler (0,2,4,...) chunk'ların kendisi,
+    tek indexler (1,3,5,...) köprü pencereleri.
     """
     if len(chunks) == 1:
         return [{"text": chunks[0], "is_bridge": False, "index": 0}]
@@ -144,77 +164,71 @@ def build_windows(chunks, overlap=BRIDGE_OVERLAP):
     return windows
 
 
-# ── Prompt'lar ────────────────────────────────────────────────────────────────
+# ── System mesajları ──────────────────────────────────────────────────────────
 
-CHUNK_PROMPT = """Aşağıdaki metin bir Türkçe çevirinin bir bölümüdür.
+CHUNK_SYSTEM = (
+    "Sen bir Türkçe metin editörüsün. "
+    "Sana verilen metin daha önce İngilizceden Türkçeye çevrilmiş bir bölümdür. "
+    "Görevin şu iki adımı sırayla uygulamak:\n"
+    "1. PARAGRAF DÜZEYİ: Her paragrafı ayrı incele — yazım hatalarını düzelt, "
+    "İngilizce kalmış kelimeleri Türkçeye çevir, anlamsız kelime seçimlerini düzelt.\n"
+    "2. BÖLÜM DÜZEYİ: Tüm metni bir bütün olarak değerlendir — paragraflar arası "
+    "anlam akışını ve tutarlılığı koru, aynı kavram için farklı kelimeler "
+    "kullanılmışsa birleştir, bozuk cümle yapılarını yeniden yaz.\n"
+    "ZORUNLU KURALLAR:\n"
+    "- '[EPUB_IMAGE:...]' etiketlerine kesinlikle dokunma, oldukları yerde bırak.\n"
+    "- '# ' ile başlayan başlık satırını olduğu gibi koru.\n"
+    "- Yanıt olarak SADECE düzeltilmiş metni yaz. "
+    "Hiçbir açıklama, yorum, giriş veya kapanış cümlesi ekleme. "
+    "İlk karakterden son karaktere kadar yalnızca metin."
+)
 
-Görevin şu iki adımı sırayla uygulamak:
-
-1. PARAGRAF DÜZEYİ — Her paragrafı ayrı ayrı incele:
-   - Yazım hatalarını (typo) düzelt
-   - İngilizce kalmış kelimeleri Türkçeye çevir (örn. "shield" → "kalkan", "raid" → "baskın")
-   - Garip veya anlamsız kelime seçimlerini düzelt
-
-2. BÖLÜM DÜZEYİ — Tüm metni bir bütün olarak değerlendir:
-   - Paragraflar arası anlam akışını ve tutarlılığı koru
-   - Aynı kavram için farklı kelimeler kullanılmışsa birleştir
-   - Cümle yapısı bozuksa yeniden yaz, ama anlamı değiştirme
-
-KURALLAR:
-- [EPUB_IMAGE:...] etiketlerini KESİNLİKLE olduğu gibi bırak, taşıma, silme, değiştirme
-- Başlık satırını (# ile başlayan) olduğu gibi koru
-- Sadece düzeltilmiş metni döndür, açıklama ekleme
-- Metnin uzunluğunu korumaya çalış
-
-METİN:
-{text}"""
-
-BRIDGE_PROMPT = """Aşağıdaki metin iki chunk'ın birleşim noktasından alınan bir köprü parçasıdır.
-"---" işareti iki chunk arasındaki sınırı gösterir.
-
-Görevin:
-- Bu geçiş noktasında anlam sürekliliğini kontrol et
-- Sınır boyunca tutarsız kelime veya kavram kullanımı varsa not et
-- Düzeltilmiş köprü metnini döndür (aynı uzunlukta)
-
-KURALLAR:
-- [EPUB_IMAGE:...] etiketlerine dokunma
-- Sadece düzeltilmiş metni döndür
-- "---" ayırıcısını koru
-
-METİN:
-{text}"""
+BRIDGE_SYSTEM = (
+    "Sen bir Türkçe metin editörüsün. "
+    "Sana verilen metin, iki parçanın birleşim noktasından alınmış bir köprü bölümüdür. "
+    "'---' işareti iki parça arasındaki sınırı gösterir. "
+    "Görevin: bu geçiş noktasında anlam sürekliliğini ve kelime tutarlılığını kontrol et, "
+    "varsa tutarsızlıkları düzelt. "
+    "ZORUNLU KURALLAR:\n"
+    "- '[EPUB_IMAGE:...]' etiketlerine kesinlikle dokunma.\n"
+    "- '---' ayırıcısını olduğu gibi koru.\n"
+    "- Yanıt olarak SADECE düzeltilmiş köprü metnini yaz. "
+    "Hiçbir açıklama, yorum veya ek cümle ekleme."
+)
 
 
 # ── Köprü geri bildirimi entegrasyonu ────────────────────────────────────────
 
-def apply_bridge_corrections(original_chunks, bridge_results):
+def apply_bridge_corrections(corrected_chunks, bridge_results):
     """
     Köprü pencerelerinden gelen düzeltmeleri ilgili chunk'lara yansıt.
     Köprünün ilk yarısı → önceki chunk'ın sonu
     Köprünün ikinci yarısı → sonraki chunk'ın başı
     """
-    corrected = list(original_chunks)
-
     for bridge_idx, bridge_text in bridge_results.items():
-        # bridge_idx: köprünün solundaki chunk'ın index'i
         parts = bridge_text.split("\n\n---\n\n", 1)
         if len(parts) != 2:
+            print(f"    uyarı: köprü {bridge_idx} ayırıcısı kaybolmuş, atlanıyor.")
             continue
 
-        left_correction, right_correction = parts[0].strip(), parts[1].strip()
+        left_correction = parts[0].strip()
+        right_correction = parts[1].strip()
 
-        # Sol chunk'ın sonunu güncelle
-        left_chunk = corrected[bridge_idx]
+        left_chunk = corrected_chunks[bridge_idx]
         left_overlap_start = max(0, len(left_chunk) - BRIDGE_OVERLAP)
-        corrected[bridge_idx] = left_chunk[:left_overlap_start] + "\n\n" + left_correction if left_overlap_start > 0 else left_correction
+        if left_overlap_start > 0:
+            corrected_chunks[bridge_idx] = left_chunk[:left_overlap_start] + "\n\n" + left_correction
+        else:
+            corrected_chunks[bridge_idx] = left_correction
 
-        # Sağ chunk'ın başını güncelle
-        right_chunk = corrected[bridge_idx + 1]
+        right_chunk = corrected_chunks[bridge_idx + 1]
         right_overlap_end = min(len(right_chunk), BRIDGE_OVERLAP)
-        corrected[bridge_idx + 1] = right_correction + "\n\n" + right_chunk[right_overlap_end:] if right_overlap_end < len(right_chunk) else right_correction
+        if right_overlap_end < len(right_chunk):
+            corrected_chunks[bridge_idx + 1] = right_correction + "\n\n" + right_chunk[right_overlap_end:]
+        else:
+            corrected_chunks[bridge_idx + 1] = right_correction
 
-    return corrected
+    return corrected_chunks
 
 
 # ── Ana review fonksiyonu ─────────────────────────────────────────────────────
@@ -223,7 +237,6 @@ def review_file(filepath, clients, key_index):
     with open(filepath, encoding="utf-8") as f:
         raw = f.read()
 
-    # Başlık satırını ayır
     lines = raw.split("\n", 2)
     if lines[0].startswith("#"):
         title_line = lines[0]
@@ -242,18 +255,15 @@ def review_file(filepath, clients, key_index):
 
     for win in windows:
         if win["is_bridge"]:
-            prompt = BRIDGE_PROMPT.format(text=win["text"])
-            result = call_llm(clients, key_index, prompt)
+            result = call_llm(clients, key_index, BRIDGE_SYSTEM, win["text"])
             bridge_results[win["index"]] = result
             print(f"    köprü {win['index']}↔{win['index']+1} ✓")
         else:
-            prompt = CHUNK_PROMPT.format(text=win["text"])
-            result = call_llm(clients, key_index, prompt)
+            result = call_llm(clients, key_index, CHUNK_SYSTEM, win["text"])
             corrected_chunks[win["index"]] = result
             print(f"    chunk {win['index']+1}/{len(chunks)} ✓")
         time.sleep(2)
 
-    # Köprü düzeltmelerini chunk'lara yansıt
     if bridge_results:
         corrected_chunks = apply_bridge_corrections(corrected_chunks, bridge_results)
 
@@ -295,7 +305,6 @@ def main():
     clients = get_groq_clients()
     key_index = [0]
 
-    # Kaldığı yerden devam
     review_done = status.get("review_completed", 0)
     total = len(txt_files)
 
