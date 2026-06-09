@@ -7,9 +7,10 @@
   "completed": 4,
   "current_chapter": "",
   "started_at": "2026-06-09T14:50:59.564261+00:00",
-  "updated_at": "2026-06-09T14:58:02.607872+00:00",
+  "updated_at": "2026-06-09T14:58:34.880061+00:00",
   "review_status": "completed",
   "review_total": 4,
   "review_completed": 4,
-  "review_current": ""
+  "review_current": "",
+  "convert_status": "running"
 }
