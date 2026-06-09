@@ -1,11 +1,11 @@
 {
-  "status": "running",
+  "status": "completed",
   "book": "kafka-metamorphosis",
   "epub_file": "kafka-metamorphosis.epub",
   "source_type": "epub",
   "total": 4,
   "completed": 4,
-  "current_chapter": "III",
+  "current_chapter": "",
   "started_at": "2026-06-09T14:50:59.564261+00:00",
-  "updated_at": "2026-06-09T14:54:39.357190+00:00"
+  "updated_at": "2026-06-09T14:54:40.458917+00:00"
 }
