@@ -1,17 +1,11 @@
 {
-  "status": "completed",
-  "book": "kafka-metamorphosis",
-  "epub_file": "kafka-metamorphosis.epub",
+  "status": "running",
+  "book": "The_Call_of_Cthulhu",
+  "epub_file": "The Call of Cthulhu.epub",
   "source_type": "epub",
-  "total": 4,
-  "completed": 4,
+  "total": 2,
+  "completed": 0,
   "current_chapter": "",
-  "started_at": "2026-06-09T14:50:59.564261+00:00",
-  "updated_at": "2026-06-09T14:58:36.598517+00:00",
-  "review_status": "completed",
-  "review_total": 4,
-  "review_completed": 4,
-  "review_current": "",
-  "convert_status": "completed",
-  "epub_output": "output/kafka-metamorphosis/kafka-metamorphosis_tr.epub"
+  "started_at": "2026-06-09T20:16:38.011574+00:00",
+  "updated_at": "2026-06-09T20:16:38.011591+00:00"
 }
