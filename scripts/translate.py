@@ -12,30 +12,24 @@ import re
 
 STATUS_FILE = "status.json"
 
-# ── Temizleyiciler ────────────────────────────────────────────────────────────
+# ── Boilerplate kalıpları ─────────────────────────────────────────────────────
 
-# Sağlayıcı/telif bloklarını tespit eden kalıplar.
-# Bir paragrafın TAMAMI bu kalıplardan biriyle eşleşirse silinir.
 _BOILERPLATE_PATTERNS = [
-    # Telif satırları
     re.compile(r'©|copyright|\ball rights reserved\b|isbn[\s:]\d', re.IGNORECASE),
-    # Proje Gutenberg standart metinleri
     re.compile(r'project gutenberg|gutenberg\.org|www\.gutenberg', re.IGNORECASE),
-    # epub sağlayıcı adları ve URL'leri
     re.compile(r'epubbooks?\.com|www\.[a-z0-9\-]+\.[a-z]{2,}', re.IGNORECASE),
-    # eBook numaraları
     re.compile(r'\bebook\s*#?\d+\b', re.IGNORECASE),
-    # Çevirmen notu başlıkları
     re.compile(r"^(translator'?s?\s*note|note from the translator|çevirmen\s*notu)\b", re.IGNORECASE),
-    # "Bu yayın ... korunmaktadır" lisans blokları
     re.compile(r'bu (yayın|e[\-\s]?kitap).{0,60}(telif|lisans|hak)', re.IGNORECASE),
-    # "This eBook is for the use of..." Gutenberg standart açılışı
     re.compile(r"this e[\-\s]?book is for the use of", re.IGNORECASE),
-    # Yayın yılı + yayıncı satırları ("İlk olarak 2002 yılında yayımlanmıştır")
     re.compile(r'(ilk olarak|first published|originally published).{0,60}\d{4}', re.IGNORECASE),
+    # Lisans bölümleri
+    re.compile(r'^\s*(the\s+)?full\s+project\s+gutenberg', re.IGNORECASE),
+    re.compile(r'(limited warranty|indemnity|disclaimer of|distribution of this)', re.IGNORECASE),
+    re.compile(r'(1\.e\.\d|1\.f\.\d|section \d+\.)', re.IGNORECASE),
 ]
 
-# Model çıktısındaki prompt kalıntıları
+# Model çıktısı kalıntıları
 _JUNK_PATTERNS = [
     re.compile(r'^Bölüm:.*\n?', re.MULTILINE),
     re.compile(r'^(?:İşte (?:çeviri|Türkçe çeviri)|Çeviri\s*:).*\n?', re.MULTILINE | re.IGNORECASE),
@@ -44,27 +38,29 @@ _JUNK_PATTERNS = [
 ]
 
 
-def is_boilerplate(paragraph: str) -> bool:
-    """Paragrafın tamamı sağlayıcı/telif metni mi?"""
-    p = paragraph.strip()
-    if not p:
-        return True
-    # Kısa satırlar için tam eşleşme, uzun paragraflar için içerik kontrolü
+def is_boilerplate_text(text: str) -> bool:
+    """Metin boilerplate/lisans içeriği mi?"""
     for pat in _BOILERPLATE_PATTERNS:
-        if pat.search(p):
+        if pat.search(text):
             return True
     return False
 
 
+def is_boilerplate_paragraph(paragraph: str) -> bool:
+    p = paragraph.strip()
+    if not p:
+        return True
+    return is_boilerplate_text(p)
+
+
 def clean_boilerplate(text: str) -> str:
-    """Metindeki sağlayıcı/telif paragraflarını kaldır."""
+    """Metindeki boilerplate paragraflarını kaldır."""
     paragraphs = text.split("\n\n")
-    cleaned = [p for p in paragraphs if not is_boilerplate(p)]
+    cleaned = [p for p in paragraphs if not is_boilerplate_paragraph(p)]
     return "\n\n".join(cleaned).strip()
 
 
 def clean_output(text: str) -> str:
-    """Model yorumlarını ve prompt kalıntılarını çıktıdan temizle."""
     for pattern in _JUNK_PATTERNS:
         text = pattern.sub('', text)
     text = re.sub(r'\n{3,}', '\n\n', text)
@@ -115,18 +111,23 @@ def extract_chapters_epub(epub_path):
         soup = BeautifulSoup(item.get_content(), "html.parser")
         for tag in soup(["script", "style", "nav"]):
             tag.decompose()
+
+        # Başlık boilerplate mı? Tüm bölümü atla
+        heading = soup.find(["h1", "h2", "h3"])
+        if heading:
+            heading_text = heading.get_text().strip()
+            if is_boilerplate_text(heading_text):
+                print(f"  Boilerplate bölüm atlandı: {heading_text[:60]}")
+                continue
+
         text = soup.get_text(separator="\n").strip()
         text = re.sub(r"\n{3,}", "\n\n", text)
-
-        # Sağlayıcı/telif bloklarını extract aşamasında temizle
         text = clean_boilerplate(text)
 
         if len(text) < 300:
             continue
-        title = item.get_name()
-        heading = soup.find(["h1", "h2", "h3"])
-        if heading:
-            title = heading.get_text().strip()
+
+        title = heading.get_text().strip() if heading else item.get_name()
         chapters.append({"name": item.get_name(), "title": title, "text": text})
     return chapters
 
@@ -247,12 +248,9 @@ def parse_retry_seconds(error_message):
         return 3600
     time_str = match.group(1).strip()
     total = 0
-    for h in re.findall(r'([\d.]+)h', time_str):
-        total += float(h) * 3600
-    for m in re.findall(r'([\d.]+)m', time_str):
-        total += float(m) * 60
-    for s in re.findall(r'([\d.]+)s', time_str):
-        total += float(s)
+    for h in re.findall(r'([\d.]+)h', time_str): total += float(h) * 3600
+    for m in re.findall(r'([\d.]+)m', time_str): total += float(m) * 60
+    for s in re.findall(r'([\d.]+)s', time_str): total += float(s)
     return int(total) + 5
 
 
