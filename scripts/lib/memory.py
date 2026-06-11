@@ -1,0 +1,162 @@
+"""
+Çeviri Hafızası (Translation Memory)
+
+Her kitap için output/<slug>/memory.json dosyasında tutulur:
+  - characters : {"John": "John", "the innkeeper": "hancı"}
+  - terms       : {"mana": "mana", "grimoire": "büyü kitabı"}
+  - style_notes : "Anlatıcı kısa, kuru cümleler kullanıyor..."
+  - summaries   : ["Bölüm 1: ...", "Bölüm 2: ..."]
+
+İlk bölümden otomatik çıkarılır, sonraki bölümlerde güncellenir.
+"""
+import json
+import os
+import time
+
+from . import groq_client as gc
+
+MEMORY_FILE = "memory.json"
+
+_EXTRACT_SYSTEM = """Sen bir çeviri editörüsün. Sana verilen İngilizce metni analiz et ve aşağıdaki JSON formatında çıktı üret. SADECE JSON döndür, başka hiçbir şey ekleme:
+
+{
+  "characters": {"İngilizce isim veya lakap": "Türkçede kullanılacak karşılık"},
+  "terms": {"özel terim": "Türkçe karşılık"},
+  "style_notes": "Anlatıcının tonu, cümle yapısı, dikkat edilmesi gereken özellikler hakkında 1-2 cümle"
+}
+
+Kurallar:
+- Kişi adları genellikle olduğu gibi korunur (John → John)
+- Kültüre özgü terimler, büyü/güç adları, unvanlar önemlidir
+- style_notes kısa ve net olsun"""
+
+_UPDATE_SYSTEM = """Sen bir çeviri editörüsün. Mevcut çeviri hafızasını yeni bölüm bilgileriyle güncelle.
+SADECE güncellenmiş JSON döndür, başka hiçbir şey ekleme.
+Mevcut kayıtları silme, sadece yenilerini ekle veya çelişkileri düzelt."""
+
+_SUMMARY_SYSTEM = (
+    "Sana verilen Türkçe çeviri metninin 1-2 cümlelik özetini yaz. "
+    "Önemli olayları ve karakterleri belirt. "
+    "SADECE özeti döndür, başka hiçbir şey ekleme."
+)
+
+
+def _memory_path(output_dir: str) -> str:
+    return os.path.join(output_dir, MEMORY_FILE)
+
+
+def load(output_dir: str) -> dict:
+    """Hafızayı diskten yükle, yoksa boş yapı döndür."""
+    path = _memory_path(output_dir)
+    if not os.path.exists(path):
+        return {"characters": {}, "terms": {}, "style_notes": "", "summaries": []}
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def save(output_dir: str, memory: dict) -> None:
+    """Hafızayı diske kaydet."""
+    path = _memory_path(output_dir)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(memory, f, ensure_ascii=False, indent=2)
+
+
+def extract_from_source(source_text: str, clients: list, key_index: list) -> dict:
+    """
+    İlk bölümün kaynak (İngilizce) metninden hafıza çıkar.
+    Karakter, terim ve stil notlarını döndürür.
+    """
+    # Uzun metinleri kısalt — hafıza için ilk 4000 karakter yeterli
+    sample = source_text[:4000]
+    raw = gc.call(clients, key_index, _EXTRACT_SYSTEM, sample, temperature=0.1)
+    time.sleep(1)
+
+    try:
+        # JSON bloğunu temizle
+        raw = raw.strip()
+        if raw.startswith("```"):
+            raw = raw.split("```")[1]
+            if raw.startswith("json"):
+                raw = raw[4:]
+        data = json.loads(raw)
+        return {
+            "characters": data.get("characters", {}),
+            "terms": data.get("terms", {}),
+            "style_notes": data.get("style_notes", ""),
+            "summaries": [],
+        }
+    except json.JSONDecodeError:
+        print("  Hafıza çıkarılamadı (JSON parse hatası), boş başlanıyor.")
+        return {"characters": {}, "terms": {}, "style_notes": "", "summaries": []}
+
+
+def update_from_translation(memory: dict, translated_text: str,
+                             clients: list, key_index: list) -> dict:
+    """
+    Çevrilmiş metinden yeni karakter/terim bilgileri çıkar,
+    mevcut hafızayla birleştir.
+    """
+    sample = translated_text[:3000]
+    user_msg = (
+        f"Mevcut hafıza:\n{json.dumps(memory, ensure_ascii=False)}\n\n"
+        f"Yeni bölüm metni:\n{sample}"
+    )
+    raw = gc.call(clients, key_index, _UPDATE_SYSTEM, user_msg, temperature=0.1)
+    time.sleep(1)
+
+    try:
+        raw = raw.strip()
+        if raw.startswith("```"):
+            raw = raw.split("```")[1]
+            if raw.startswith("json"):
+                raw = raw[4:]
+        updated = json.loads(raw)
+        # summaries'i koru — update endpoint'i değiştirmez
+        updated["summaries"] = memory.get("summaries", [])
+        return updated
+    except json.JSONDecodeError:
+        print("  Hafıza güncellenemedi (JSON parse hatası), mevcut korunuyor.")
+        return memory
+
+
+def add_summary(memory: dict, chapter_title: str, translated_text: str,
+                clients: list, key_index: list) -> dict:
+    """Bölüm özetini hafızaya ekle."""
+    sample = translated_text[:3000]
+    summary = gc.call(clients, key_index, _SUMMARY_SYSTEM, sample, temperature=0.1)
+    time.sleep(1)
+    memory["summaries"].append(f"{chapter_title}: {summary}")
+    # Son 5 özeti tut — context window'u şişirme
+    memory["summaries"] = memory["summaries"][-5:]
+    return memory
+
+
+def build_context(memory: dict) -> str:
+    """
+    Hafızayı translate/review prompt'larına eklenecek context string'e dönüştür.
+    Boşsa boş string döner.
+    """
+    if not any([memory.get("characters"), memory.get("terms"),
+                memory.get("style_notes"), memory.get("summaries")]):
+        return ""
+
+    parts = ["=== ÇEVİRİ HAFIZASI ==="]
+
+    if memory.get("characters"):
+        chars = ", ".join(f"{k} → {v}" for k, v in memory["characters"].items())
+        parts.append(f"Karakterler: {chars}")
+
+    if memory.get("terms"):
+        terms = ", ".join(f"{k} → {v}" for k, v in memory["terms"].items())
+        parts.append(f"Terimler: {terms}")
+
+    if memory.get("style_notes"):
+        parts.append(f"Stil: {memory['style_notes']}")
+
+    if memory.get("summaries"):
+        parts.append("Önceki bölümler:")
+        for s in memory["summaries"]:
+            parts.append(f"  - {s}")
+
+    parts.append("======================")
+    return "\n".join(parts)
