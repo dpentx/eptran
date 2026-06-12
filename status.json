@@ -1,15 +1,11 @@
 {
-  "status": "completed",
-  "book": "The_Call_of_Cthulhu",
-  "epub_file": "The Call of Cthulhu.epub",
+  "status": "running",
+  "book": "the_yellow_wallpaper",
+  "epub_file": "the_yellow_wallpaper.epub",
   "source_type": "epub",
-  "total": 2,
-  "completed": 2,
+  "total": 1,
+  "completed": 0,
   "current_chapter": "",
-  "started_at": "2026-06-09T20:16:38.011574+00:00",
-  "updated_at": "2026-06-09T22:25:53.755529+00:00",
-  "review_status": "running",
-  "review_total": 2,
-  "review_completed": 1,
-  "review_current": "001_The_Call_of_Cthulhu.txt"
+  "started_at": "2026-06-12T07:17:50.346270+00:00",
+  "updated_at": "2026-06-12T07:17:50.346287+00:00"
 }
