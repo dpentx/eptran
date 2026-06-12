@@ -25,8 +25,9 @@ def review_file(filepath: str, clients: list, key_index: list, memory_ctx: str) 
         title_text = title_line.lstrip("#").strip()
         body = lines[2].strip() if len(lines) > 2 else ""
 
-        # Başlığın kendisi boilerplate ise dosyayı temizle
-        if boilerplate.is_boilerplate(title_text):
+        # Başlık boilerplate VE gövde de boş/kısaysa dosyayı temizle
+        # (sadece başlığa bakarak atma — içerik meşru olabilir)
+        if boilerplate.is_boilerplate(title_text) and len(body) < 100:
             print(f"  Boilerplate dosya temizleniyor: {title_text[:60]}")
             open(filepath, "w").close()
             return

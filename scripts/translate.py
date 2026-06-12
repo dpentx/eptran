@@ -32,9 +32,6 @@ def extract_epub(epub_path: str) -> list:
             tag.decompose()
 
         heading = soup.find(["h1", "h2", "h3"])
-        if heading and boilerplate.is_boilerplate(heading.get_text().strip()):
-            print(f"  Boilerplate bölüm atlandı: {heading.get_text().strip()[:60]}")
-            continue
 
         text = soup.get_text(separator="\n").strip()
         text = re.sub(r"\n{3,}", "\n\n", text)
@@ -42,7 +39,12 @@ def extract_epub(epub_path: str) -> list:
         if len(text) < 300:
             continue
 
-        title = heading.get_text().strip() if heading else item.get_name()
+        # Başlığı ayıkla — "The Project Gutenberg eBook of X" → "X"
+        raw_title = heading.get_text().strip() if heading else item.get_name()
+        title = re.sub(
+            r'^the\s+project\s+gutenberg\s+e[\-\s]?book\s+of\s+',
+            '', raw_title, flags=re.IGNORECASE
+        ).strip() or raw_title
         chapters.append({"name": item.get_name(), "title": title, "text": text})
     return chapters
 
