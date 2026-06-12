@@ -8,13 +8,13 @@ eptran — review.py
 """
 import os
 
-from lib import boilerplate, groq_client as gc, memory as mem, ner, sliding_window as sw
-from lib.git_utils import read_status, write_status, is_stale_running
+from lib import boilerplate, groq_client as gc, memory as mem, ner, sliding_window as swfrom lib.git_utils import read_status, write_status, is_stale_running
 
 STATUS_FILE = "status.json"
 
 
-def review_file(filepath: str, clients: list, key_index: list, memory_ctx: str) -> None:
+def review_file(filepath: str, clients: list, key_index: list,
+                memory_ctx: str, memory: dict) -> None:
     with open(filepath, encoding="utf-8") as f:
         raw = f.read()
 
@@ -42,9 +42,9 @@ def review_file(filepath: str, clients: list, key_index: list, memory_ctx: str) 
         open(filepath, "w").close()
         return
 
-    # NER + İngilizce kelime düzeltmesi
+    # NER + İngilizce kelime düzeltmesi (hafıza whitelist kullanır, NER çağrısı yok)
     print(f"  Paragraf taraması...")
-    body = ner.fix_text(body, clients, key_index)
+    body = ner.fix_text(body, clients, key_index, memory)
 
     # Sliding window review (hafıza context'li)
     chunks = sw.chunk_text(body)
@@ -112,7 +112,7 @@ def main():
 
         filepath = os.path.join(output_dir, fname)
         print(f"[{i+1}/{total}] Review: {fname}")
-        review_file(filepath, clients, key_index, memory_ctx)
+        review_file(filepath, clients, key_index, memory_ctx, memory)
 
         status["review_completed"] = i + 1
         status["review_current"] = fname

@@ -13,7 +13,7 @@ import ebooklib
 from ebooklib import epub
 from bs4 import BeautifulSoup
 
-from lib import boilerplate, groq_client as gc, memory as mem
+from lib import boilerplate, groq_client as gc, memory as mem, ner
 from lib.git_utils import git_push, write_status
 
 STATUS_FILE = "status.json"
@@ -115,7 +115,8 @@ def _chunk(text: str, max_chars: int = 12000) -> list:
 
 
 def translate_chapter(chapter: dict, clients: list, key_index: list,
-                       memory_ctx: str, chunk_idx: int, total_chunks: int) -> str:
+                       memory_ctx: str, protected_str: str,
+                       chunk_idx: int, total_chunks: int) -> str:
     part_info = f", Parça {chunk_idx + 1}/{total_chunks}" if total_chunks > 1 else ""
     system_msg = (
         f"Sen profesyonel bir çevirmensin. "
@@ -123,8 +124,10 @@ def translate_chapter(chapter: dict, clients: list, key_index: list,
         f"Görevin yalnızca verilen İngilizce metni Türkçeye çevirmek. "
         f"Çeviriyi doğal, akıcı ve edebi tut; karakterlerin sesini ve tonunu koru. "
         f"'[EPUB_IMAGE:...]' etiketlerini olduğu gibi bırak.\n"
-        f"Yanıt olarak SADECE çeviriyi yaz, hiçbir açıklama ekleme."
     )
+    if protected_str:
+        system_msg += f"{protected_str}\n"
+    system_msg += "Yanıt olarak SADECE çeviriyi yaz, hiçbir açıklama ekleme."
     if memory_ctx:
         system_msg += f"\n\n{memory_ctx}"
     return gc.call(clients, key_index, system_msg, chapter["text"], temperature=0.3)
@@ -203,6 +206,13 @@ def main():
         status["current_chapter"] = chapter["title"]
         write_status(status, f"status: {i}/{total}")
 
+        # Bölüm başına NER — kaynak metinden özel isimleri çıkar
+        print(f"  NER taraması...")
+        chapter_entities = ner.extract_from_source(chapter["text"], clients, key_index)
+        protected_str = ner.build_protected_str(memory, chapter_entities)
+        if protected_str:
+            print(f"  Korunan: {len(chapter_entities)} isim/terim")
+
         memory_ctx = mem.build_context(memory)
         chunks = _chunk(chapter["text"])
         parts = []
@@ -210,7 +220,7 @@ def main():
         for j, chunk in enumerate(chunks):
             ch_copy = dict(chapter, text=chunk)
             translated = translate_chapter(ch_copy, clients, key_index,
-                                           memory_ctx, j, len(chunks))
+                                           memory_ctx, protected_str, j, len(chunks))
             parts.append(translated)
             import time; time.sleep(2)
 
