@@ -1,24 +1,19 @@
 # The Gift of the Magi
 
-The Project Gutenberg eBook of 
+# The Gift of the Magi
+
 The Gift of the Magi
 
-Başlık
-: The Gift of the Magi
+Yazar: O. Henry
 
-Yazar
-: O. Henry
+En son güncellenme: 24 Aralık 2021
 
-                En son güncellenme: december 24, 2021
+Dil: İngilizce
 
-Dil
-: english
-
-Katkılar
-: Susan Ritchie. HTML sürümü oleh Jose Menendez.
+Katkılar: Susan Ritchie. HTML sürümü oleh Jose Menendez.
 
 *** THE PROJECT GUTENBERG EBOOK THE GIFT OF THE MAGI BAŞLANGIÇ ***
- 
+
 The Gift of the Magi
 
-by O. Henry
+O. Henry tarafından

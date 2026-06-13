@@ -7,8 +7,9 @@
   "completed": 2,
   "current_chapter": "",
   "started_at": "2026-06-13T07:47:41.724443+00:00",
-  "updated_at": "2026-06-13T07:48:47.389428+00:00",
+  "updated_at": "2026-06-13T07:48:51.073891+00:00",
   "review_status": "running",
   "review_total": 2,
-  "review_completed": 0
+  "review_completed": 1,
+  "review_current": "001_The_Gift_of_the_Magi.txt"
 }
