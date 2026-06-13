@@ -2,19 +2,22 @@
 eptran — review.py
 Çevrilmiş .txt dosyalarını sliding window ile review eder:
   1. Boilerplate temizle
-  2. NER + İngilizce kelime düzeltmesi
-  3. Sliding window (chunk + köprü) review
-  4. Hafıza context'i her adımda kullanılır
+  2. Sliding window (chunk + köprü) review
+  3. Hafıza context'i her adımda kullanılır
+
+Not: İngilizce kelime tespiti ve NER translate aşamasında yapılır.
+Review yalnızca Türkçe metin kalitesini iyileştirir.
 """
 import os
 
-from lib import boilerplate, groq_client as gc, memory as mem, ner, sliding_window as swfrom lib.git_utils import read_status, write_status, is_stale_running
+from lib import boilerplate, groq_client as gc, memory as mem, sliding_window as sw
+from lib.git_utils import read_status, write_status, is_stale_running
 
 STATUS_FILE = "status.json"
 
 
 def review_file(filepath: str, clients: list, key_index: list,
-                memory_ctx: str, memory: dict) -> None:
+                memory_ctx: str) -> None:
     with open(filepath, encoding="utf-8") as f:
         raw = f.read()
 
@@ -41,10 +44,6 @@ def review_file(filepath: str, clients: list, key_index: list,
         print(f"  İçerik kalmadı, dosya temizleniyor.")
         open(filepath, "w").close()
         return
-
-    # NER + İngilizce kelime düzeltmesi (hafıza whitelist kullanır, NER çağrısı yok)
-    print(f"  Paragraf taraması...")
-    body = ner.fix_text(body, clients, key_index, memory)
 
     # Sliding window review (hafıza context'li)
     chunks = sw.chunk_text(body)
@@ -112,7 +111,7 @@ def main():
 
         filepath = os.path.join(output_dir, fname)
         print(f"[{i+1}/{total}] Review: {fname}")
-        review_file(filepath, clients, key_index, memory_ctx, memory)
+        review_file(filepath, clients, key_index, memory_ctx)
 
         status["review_completed"] = i + 1
         status["review_current"] = fname
