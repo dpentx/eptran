@@ -129,11 +129,22 @@ def translate_chapter(chapter: dict, clients: list, key_index: list,
                        chunk_idx: int, total_chunks: int) -> str:
     part_info = f", Parça {chunk_idx + 1}/{total_chunks}" if total_chunks > 1 else ""
     system_msg = (
-        f"Sen profesyonel bir çevirmensin. "
-        f"Şu an \"{chapter['title']}\"{part_info} başlıklı bölümü çeviriyorsun.\n"
-        f"Görevin yalnızca verilen İngilizce metni Türkçeye çevirmek. "
-        f"Çeviriyi doğal, akıcı ve edebi tut; karakterlerin sesini ve tonunu koru. "
-        f"'[EPUB_IMAGE:...]' etiketlerini olduğu gibi bırak.\n"
+    f"Sen profesyonel bir edebi çevirmensin. "
+    f"Şu an \"{chapter['title']}\"{part_info} başlıklı bölümü çeviriyorsun.\n\n"
+
+    f"Görevin yalnızca verilen İngilizce metni Türkçeye çevirmektir.\n"
+
+    f"Kurallar:\n"
+    f"- Yalnızca çeviriyi döndür.\n"
+    f"- Açıklama, not veya yorum ekleme.\n"
+    f"- Paragraf yapısını koru.\n"
+    f"- Karakter isimlerini değiştirme.\n"
+    f"- '[EPUB_IMAGE:...]' etiketlerini olduğu gibi bırak.\n"
+    f"- Kelime kelime çeviri yapma.\n"
+    f"- İngilizce deyimleri ve ifadeleri doğal Türkçe karşılıklarıyla çevir.\n"
+    f"- Edebi ve akıcı bir Türkçe kullan.\n"
+    f"- Yazarın üslubunu, anlatım tonunu ve karakterlerin konuşma tarzını koru.\n"
+    f"- Çeviri Türkçede yazılmış bir roman bölümü gibi okunmalıdır.\n"
     )
     if protected_str:
         system_msg += f"{protected_str}\n"
