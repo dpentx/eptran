@@ -45,6 +45,16 @@ def extract_epub(epub_path: str) -> list:
             r'^the\s+project\s+gutenberg\s+e[\-\s]?book\s+of\s+',
             '', raw_title, flags=re.IGNORECASE
         ).strip() or raw_title
+
+        # Başlık kendisi boilerplate/lisans ifadesi taşıyorsa
+        # (örn. "THE FULL PROJECT GUTENBERG™ LICENSE", "Section 1. General Terms")
+        # bu item gerçek bir hikaye bölümü değildir — gövde uzun olsa bile atla.
+        # Bu kontrol olmadan bu tür bloklar çeviriliyor ve hafızayı
+        # (memory.json) kirletip sonraki bölümlerin çevirisini bozuyordu.
+        if boilerplate.is_boilerplate_title(raw_title) or boilerplate.is_boilerplate_title(title):
+            print(f"  Boilerplate başlık atlandı: {raw_title[:60]!r}")
+            continue
+
         chapters.append({"name": item.get_name(), "title": title, "text": text})
     return chapters
 
