@@ -1,0 +1,33 @@
+{
+  "characters": {
+    "John": {
+      "tr": "John",
+      "notes": "John, anlatıcının eşi ve bir doktor, pratik ve mantıklı bir kişidir, ancak eşinin duygularını ve endişelerini çoğu zaman göz ardı eder. Anlatıcıya karşı sevgi ve özen gösterir, ancak aynı zamanda onun bağımsızlığını ve karar alma yeteneğini sınırlar."
+    },
+    "Anlatıcı": {
+      "tr": "Anlatıcı",
+      "notes": "Anlatıcı, John'un eşi, bir kadın ve muhtemelen depresyon veya diğer psikolojik sorunlar yaşayan bir kişidir. Kendini ifade etme ve bağımsız olma arzusuna sahiptir, ancak eşinin ve toplumun baskısı altında hissetmektedir."
+    }
+  },
+  "terms": {
+    "phosphates": {
+      "tr": "fosfatlar",
+      "notes": "Fosfatlar, anlatıcının doktor eşinin ona verdiği bir tür ilaç veya takviyedir, ancak anlatıcı bu tedaviye karşı şüphelidir."
+    },
+    "tonics": {
+      "tr": "tonik",
+      "notes": "Tonik, anlatıcının doktor eşinin ona verdiği bir tür ilaç veya takviyedir, amaçları genel olarak sağlık ve enerjiyi artırmaktır."
+    },
+    "hysterical tendency": {
+      "tr": "histerik eğilim",
+      "notes": "Histerik eğilim, anlatıcının doktor eşinin ve kardeşinin ona teşhis koyduğu bir durum, ancak anlatıcı bu teşhisi kabul etmemektedir."
+    }
+  },
+  "style_notes": {
+    "narration": "1. tekil şahıs, geçmiş zaman",
+    "tone": "Samimi, içsel ve đôi zaman melankolik bir ton, anlatıcının duygularını ve düşüncelerini yansıtır.",
+    "dialogue": "Diyaloglar kısa ve doğal, ancak çoğu zaman zımni veya ima yoluyla gerçekleşir, çünkü anlatıcı eşinin ve diğerlerinin düşüncelerini ve hislerini anlamaya çalışır.",
+    "patterns": "Tekrarlayan kalıplar arasında anlatıcının eşine ve çevresine karşı hissettiği hayal kırıklığı ve öfke, serta evin ve bahçenin tasviri yer alır."
+  },
+  "summaries": []
+}
