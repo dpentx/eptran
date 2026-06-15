@@ -7,8 +7,9 @@
   "completed": 1,
   "current_chapter": "",
   "started_at": "2026-06-15T14:48:01.009254+00:00",
-  "updated_at": "2026-06-15T14:49:58.626202+00:00",
+  "updated_at": "2026-06-15T14:50:57.834807+00:00",
   "review_status": "running",
   "review_total": 1,
-  "review_completed": 0
+  "review_completed": 1,
+  "review_current": "001_the_yellow_wallpaper.txt"
 }

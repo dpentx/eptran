@@ -1,187 +1,50 @@
 # The Yellow Wallpaper
 
-Project Gutenberg E-Kitabı 
-Sarı Duvar Kağıdı
-
-Başlık
-: Sarı Duvar Kağıdı
-
-Yazar
-: Charlotte Perkins Gilman
-
-En son güncellenme: 31 Ağustos 2024
-
-Dil
-: İngilizce
-
-Katkılar
-: Bir Anonymous Volunteer ve David Widger
-
-*** PROJECT GUTENBERG E-Kitabı SARI DUVAR KAĞIDI BAŞLANGIÇ ***
-
-Sarı Duvar Kağıdı
+# Sarı Duvar Kağıdı
 
 Charlotte Perkins Gilman tarafından
 
-John ve ben gibi sıradan insanların ancestral halls için yazlık olarak güvence altına almaları çok nadirdir.
+John ve ben gibi sıradan insanların ata evleri için yazlık olarak güvence altına almaları çok nadirdir. Bir koloni malikanesi, bir miras mülkü, diyeceğim ki bir hayalet ev, ve romantik mutluluğun zirvesine ulaşmak - ama bu, kaderden çok fazla şey istemek olur! Ancak, ben gururla ilan edeceğim ki, bunda tuhaf bir şeyler var. Aksi takdirde, neden bu kadar ucuz kiraya veriliyor? Ve neden bu kadar uzun süre boş kaldı?
 
-Bir koloni malikanesi, bir miras mülkü, diyeceğim ki bir hayalet ev, ve romantik mutluluğun zirvesine ulaşmak - ama bu, kaderden çok fazla şey istemek olur!
+John, tabii ki, bana güler, ama evlilikte böyle şeyler beklenir. John aşırı derecede pratiktir. İnanca karşı sabrı yoktur, süperstisyon korkusu vardır ve görülmeyen, hissedilmeyen şeylerin konuşulmasına açıkça alay eder. John bir doktordur ve belki bu, neden daha hızlı iyileşmediğimin bir nedenidir. Görüyorsunuz, o, benim hasta olduğumu inanmıyor! Ve biri ne yapabilir? Yüksek bir doktor ve eşin, arkadaşlara ve akrabalara, benim gerçekten bir şeyim olmadığını, sadece geçici sinirsel depresyon - hafif bir histerik eğilim - olduğunu söylerse, biri ne yapabilir?
 
-Ancak, ben gururla ilan edeceğim ki, bunda tuhaf bir şeyler var.
+Kardeşim de bir doktordur ve aynı şeyi söylüyor. Bu nedenle, fosfatlar veya tonik, seyahat, hava, egzersiz alıyorum ve "çalışmak" totalement yasaklanıyorum. Kişisel olarak, onların fikirlerine katılmıyorum. Kişisel olarak, bana uygun işin, heyecan ve değişimle, iyi geleceğine inanıyorum. Ama biri ne yapabilir? Bir süre için onlara rağmen yazdım; ancak bunu yapmak beni oldukça yorar - bunu gizlice yapmak zorunda olmak ya da ağır muhalefetle karşılaşmak.
 
-Aksi takdirde, neden bu kadar ucuz kiraya veriliyor? Ve neden bu kadar uzun süre boş kaldı?
+Bazen, durumum buysa, daha az muhalefet ve daha fazla toplum ve uyarıcı olsaydım, ama John, durumum hakkında düşünmenin en kötü şey olacağını söylüyor ve itiraf ediyorum, bu luôn beni kötü hissettiriyor. Bu nedenle, bunu bırakacağım ve evden bahsedeceğim. En güzel yer! Bu, yolun gerisinde, köyden yaklaşık üç mil uzakta, tek başına duran bir yer. Bana, okuduğumuz İngiliz yerleri gibi geliyor, çünkü burada çitler, duvarlar, kilitli kapılar ve bahçıvanlar ve insanlar için birçok ayrı küçük ev var.
 
-John, tabii ki, bana güler, ama evlilikte böyle şeyler beklenir.
+Ne güzel bir bahçe! Ben böyle bir bahçe görmedim - büyük ve gölgeli, kutulu yollar, uzun asma kaplı kemerler ve altında koltuklar. Cam evler de vardı, ancak şimdi hepsi kırık. Sanırım, bir yasal sorun vardı, mirasçılar ve birlikte mirasçılar hakkında bir şeyler; her neyse, yer yıllardır boş. Bu, hayaletlik hissimi bozar, ama umurumda değil - evde tuhaf bir şeyler var - bunu hissedebiliyorum. Hatta bir ay ışığı akşamında John'a söyledim, ancak o, hissettiğimin bir taslak olduğunu söyledi ve pencereyi kapattı.
 
-John aşırı derecede pratiktir. İnanca karşı sabrı yoktur, süperstisyon korkusu vardır ve görülmeyen, hissedilmeyen ve rakamlara dökülemeyen şeylerin konuşulmasına açıkça alay eder.
+Bazen John'a karşı mantıksız bir şekilde öfkelenebiliyorum. Eminim ki, önce böyle duyarlı değildim. Sanırım bu, sinirsel durumumun bir sonucu. Ancak John, eğer böyle hissediyorsam, uygun öz kontrolü ihmal edeceğimi söylüyor; bu nedenle, kendimi kontrol etmeye çalışıyorum - en azından onun önünde - ve bu beni çok yoruyor. Odadan hiç hoşlanmıyorum. Aşağıda, pavyona açılan ve penceresinde güller olan bir oda istiyordum, ve böyle güzel eski moda çiçek desenli perde vardı! Ancak John buna yanaşmadı.
 
-John bir doktordur ve 
-belki
-—(Tabii ki, bunu canlı bir ruha söylemeyeceğim, ama bu ölü kağıt ve zihinsel bir rahatlama)—
-belki
-bu, neden daha hızlı iyileşmediğimin bir nedenidir.
+Dedi ki, sadece bir pencere vardı ve iki yatak için yer yoktu ve yakındaki bir oda yoktu. O, çok dikkatli ve sevgi dolu, ve beni özel talimat olmadan hareket etmemeye çalışıyor. Her gün için bir zaman çizelgesi var; o, tüm bakımımı üstleniyor, ve bu nedenle, bunu daha fazla değerlendiremediğim için çok nankör hissediyorum. Dedi ki, buraya sadece benim hesabıma geldik, ben mükemmel bir dinlenme ve tüm havayı alabilecektim. "Egzersizin, gücüne bağlı, yiyeceklerin ise iştahına bağlı," dedi, "ama hava, her zaman emebiliyorsun." Bu nedenle, en üst kattaki çocuk odasını aldık.
 
-Görüyorsunuz, o, benim hasta olduğumu inanmıyor!
+Bu, büyük, havadar bir oda,几乎 tüm kat, her yöne bakan pencerelerle, hava ve güneş ışığı boldur. İlk olarak bir çocuk odası, sonra bir oyun alanı ve jimnastik salonu olarak kullanılmış olmalı; çünkü pencereler, küçük çocuklar için çubuklarla donatılmış ve duvarlarda halkalar ve şeyler var. Boya ve duvar kağıdı, bir erkek okulu kullanmış gibi görünüyor. Duvar kağıdı, büyük parçalar halinde, yatağımın başının etrafında ve odanın diğer tarafında, alçak bir yerde soyulmuştur. Hayatımda böyle kötü bir duvar kağıdı görmedim.
 
-Ve biri ne yapabilir?
+Bu, sanatsal tüm günahları işleyen, yayılan, flambayan bir desen. Gözü karıştırıcı, sinir bozucu, ve sürekli olarak studye ve öfkeye neden olan bir desen. Ve bu desenin zayıf, kararsız eğrilerini bir süre takip ederseniz, aniden intihar ediyorlar - saçma, mantıksız açılarda, kendilerini imkansız çelişkilerde yok ediyorlar. Renk, itici, neredeyse iğrenç; bir yanmış, kirli sarı, yavaş dönen güneş ışığında garip bir şekilde solmuş. Bu, bir düştür, ancak aynı zamanda bir tür parlak turuncu, diğer yerlerde ise hasta bir kükürt tonu.
 
-Yüksek bir doktor ve eşin, arkadaşlara ve akrabalara, benim gerçekten bir şeyim olmadığını, sadece geçici sinirsel depresyon - hafif bir histerik eğilim - olduğunu söylerse, biri ne yapabilir?
+Hayret verici değil ki, çocuklar bunu sevmemiş! Ben de, bu odada uzun süre kalsam, bunu sevmeyeceğimi düşünüyorum. John geliyor, ve ben bunu saklamalıyım - o, benim yazmama izin vermiyor. Burada iki hafta oldu ve daha önce, ilk gün dışında, yazmaya enerjim yoktu. Şimdi, bu iğrenç çocuk odasında, pencerenin yanında oturuyorum, ve yazmama engel olan hiçbir şey yok, sadece gücümün yetmemesi.
 
-Kardeşim de bir doktordur ve aynı şeyi söylüyor.
+John, gün boyunca ve bazen geceleri, önemli vakalarda olduğunda, dışarıda oluyor. Benim durumumun ciddiye alınmadığından memnunum! Ancak bu sinirsel sorunlar, gerçekten de üzdürücü. John, benim gerçekten ne kadar acı çektiğimi bilmiyor. O, benim acı çekmeme gerek olmadığını biliyor, ve bu, onu tatmin ediyor. Tabii ki, bu sadece sinir bozukluğudur. Benim, herhangi bir şekilde görevimi yapmama engel olan bir şey yok! John, bana yardım olmak, gerçek bir dinlenme ve rahatlık olmak istemiştim, ve şimdi ben, karşılaştırıldığında bir yük oluyorum!
 
-Bu nedenle, fosfatlar veya fosfatlar - hangisi olursa olsun - ve tonik, seyahat, hava, egzersiz alıyorum ve "çalışmak" tuyệti yasaklanıyorum.
+Hiç kimse, benim, yapabildiğim kadar az şey yapmamın ne kadar çaba gerektirdiğini inanmaz - giyinmek, eğlence düzenlemek, şeyler sipariş etmek. Mary'nin bebeğe karşı çok iyi olduğu şanslı bir şey! Ne güzel bir bebek! Ancak ben onunla olamıyorum, çünkü beni çok sinirli yapıyor. Sanırım John, hayatında hiç sinirli olmamıştır! O, bana bu duvar kağıdı hakkında güler! İlk olarak, o, odanın duvar kağıdını değiştirmeyi düşünmüştü, ancak daha sonra, benim, bunu bana hakim kıldığımı, ve bir sinirli hastanın, böyle fantazilere boyun eğmemesi gerektiğini söyledi.
 
-Kişisel olarak, onların fikirlerine katılmıyorum.
+Dedi ki, duvar kağıdı değiştirildikten sonra, ağır yatak, sonra da barlı pencereler, sonra da merdiven başındaki kapı, ve böyle devam eder. "Bu yer, sana iyi geliyor," dedi, "ve gerçekten, canım, ben, üç aylık kiralama için evi yenilemek istemiyorum." "O zaman, hadi aşağıya gidelim," dedim, "orada çok güzel odalar var." Sonra beni kucakladı ve beni bir nimet gibi bir kız dedi, ve bana, eğer istersem, bodruma inip, beyazlatmak için bile gidebileceğini söyledi.
 
-Kişisel olarak, bana uygun işin, heyecan ve değişimle, iyi geleceğine inanıyorum.
-
-Ama biri ne yapabilir?
-
-Bir süre için onlara rağmen yazdım; ancak 
-bunu
-yapmak beni oldukça yorar - bunu gizlice yapmak zorunda olmak ya da ağır muhalefetle karşılaşmak.
-
-Bazen, durumum buysa, daha az muhalefet ve daha fazla toplum ve uyarıcı olsaydım, ama John, durumum hakkında düşünmenin en kötü şey olacağını söylüyor ve itiraf ediyorum, bu luôn beni kötü hissettiriyor.
-
-Bu nedenle, bunu bırakacağım ve evden bahsedeceğim.
-
-En güzel yer! Bu, yolun gerisinde, köyden yaklaşık üç mil uzakta, tek başına duran bir yer. Bana, okuduğumuz İngiliz yerleri gibi geliyor, çünkü burada çitler, duvarlar, kilitli kapılar ve bahçıvanlar ve insanlar için birçok ayrı küçük ev var.
-
-Ne güzel bir bahçe! Ben böyle bir bahçe görmedim - büyük ve gölgeli, kutulu yollar, uzun asma kaplı kemerler ve altında koltuklar.
-
-Cam evler de vardı, ancak şimdi hepsi kırık.
-
-Sanırım, bir yasal sorun vardı, mirasçılar ve birlikte mirasçılar hakkında bir şeyler; her neyse, yer yıllardır boş.
-
-Bu, hayaletlik hissimi bozar, ama umurumda değil - evde tuhaf bir şeyler var - bunu hissedebiliyorum.
-
-Hatta bir ay ışığı akşamında John'a söyledim, ancak o, hissettiğimin bir taslak olduğunu söyledi ve pencereyi kapattı.
-
-Bazen John'a karşı mantıksız bir şekilde öfkelenebiliyorum. Eminim ki,以前 böyle duyarlı değildim. Sanırım bu, sinirsel durumumun bir sonucu.
-
-Ancak John, eğer böyle hissediyorsam, uygun öz kontrolü ihmal edeceğimi söylüyor; bu nedenle, kendimi kontrol etmeye çalışıyorum - en azından onun önünde - ve bu beni çok yoruyor.
-
-Odadan hiç hoşlanmıyorum. Aşağıda, pavyona açılan ve penceresinde güller olan bir oda istiyordum, ve böyle güzel eski moda çiçek desenli perde vardı! ancak John buna yanaşmadı.
-
-Dedi ki, sadece bir pencere vardı ve iki yatak için yer yoktu ve yakındaki bir oda yoktu.
-
-O, çok dikkatli ve sevgi dolu, ve beni özel talimat olmadan hareket etmemeye çalışıyor.
-
-Her gün için bir zaman çizelgesi var; o, tüm bakımımı üstleniyor, ve bu nedenle, bunu daha fazla değerlendiremediğim için çok nankör hissediyorum.
-
-Dedi ki, buraya sadece benim hesabıma geldik, ben mükemmel bir dinlenme ve tüm havayı alabilecektim. "Egzersizin, gücüne bağlı, yiyeceklerin ise iştahına bağlı," dedi, "ama hava, her zaman emebiliyorsun." Bu nedenle, en üst kattaki çocuk odasını aldık.
-
-Bu, büyük, havadar bir oda,几乎 tüm kat, her yöne bakan pencerelerle, hava ve güneş ışığı boldur. İlk olarak bir çocuk odası, sonra bir oyun alanı ve jimnastik salonu olarak kullanılmış olmalı; çünkü pencereler, küçük çocuklar için çubuklarla donatılmış ve duvarlarda halkalar ve şeyler var.
-
-Boya ve duvar kağıdı, bir erkek okulu kullanmış gibi görünüyor. Duvar kağıdı, büyük parçalar halinde, yatağımın başının etrafında ve odanın diğer tarafında, alçak bir yerde soyulmuştur. Hayatımda böyle kötü bir duvar kağıdı görmedim.
-
-Bu, sanatsal tüm günahları işleyen, yayılan, flambayan bir desen.
-
-Gözü karıştırıcı, sinir bozucu, ve sürekli olarak studye ve öfkeye neden olan bir desen. Ve bu desenin zayıf, kararsız eğrilerini bir süre takip ederseniz, aniden intihar ediyorlar - saçma, mantıksız açılarda, kendilerini imkansız çelişkilerde yok ediyorlar.
-
-Renk, itici, neredeyse iğrenç; bir yanmış, kirli sarı, yavaş dönen güneş ışığında garip bir şekilde solmuş.
-
-Bu, bir düştür, ancak aynı zamanda bir tür parlak turuncu, diğer yerlerde ise hasta bir kükürt tonu.
-
-Hayret verici değil ki, çocuklar bunu sevmemiş! Ben de, bu odada uzun süre kalsam, bunu sevmeyeceğimi düşünüyorum.
-
-John geliyor, ve ben bunu saklamalıyım - o, benim yazmama izin vermiyor.
-
-Burada iki hafta oldu ve daha önce, ilk gün dışında, yazmaya enerjim yoktu.
-
-Şimdi, bu iğrenç çocuk odasında, pencerenin yanında oturuyorum, ve yazmama engel olan hiçbir şey yok, sadece gücümün yetmemesi.
-
-John, gün boyunca ve bazen geceleri, önemli vakalarda olduğunda, dışarıda oluyor.
-
-Benim durumumun ciddiye alınmadığından memnunum!
-
-Ancak bu sinirsel sorunlar, gerçekten de üzdürücü.
-
-John, benim gerçekten ne kadar acı çektiğimi bilmiyor. O, benim acı çekmeme gerek olmadığını biliyor, ve bu, onu tatmin ediyor.
-
-Tabii ki, bu sadece sinir bozukluğudur. Benim, herhangi bir şekilde görevimi yapmama engel olan bir şey yok!
-
-John, bana yardım olmak, gerçek bir dinlenme ve rahatlık olmak istemiştim, ve şimdi ben, karşılaştırıldığında bir yük oluyorum!
-
-Hiç kimse, benim, yapabildiğim kadar az şey yapmamın ne kadar çaba gerektirdiğini inanmaz - giyinmek, eğlence düzenlemek, şeyler sipariş etmek.
-
-Mary'nin bebeğe karşı çok iyi olduğu şanslı bir şey! Ne güzel bir bebek!
-
-Ancak ben 
-onunla
-olamıyorum, çünkü beni çok sinirli yapıyor.
-
-Sanırım John, hayatında hiç sinirli olmamıştır! O, bana bu duvar kağıdı hakkında güler!
-
-İlk olarak, o, odanın duvar kağıdını değiştirmeyi düşünmüştü, ancak daha sonra, benim, bunu bana hakim kıldığımı, ve bir sinirli hastanın, böyle fantazilere boyun eğmemesi gerektiğini söyledi.
-
-Dedi ki, duvar kağıdı değiştirildikten sonra, ağır yatak, sonra da barlı pencereler, sonra da merdiven başındaki kapı, ve böyle devam eder.
-
-"Bu yer, sana iyi geliyor," dedi, "ve gerçekten, canım, ben, üç aylık kiralama için evi yenilemek istemiyorum."
-
-"O zaman, hadi aşağıya gidelim," dedim, "orada çok güzel odalar var."
-
-Sonra beni kucakladı ve beni bir nimet gibi bir kız dedi, ve bana, eğer istersem, bodruma inip, beyazlatmak için bile gidebileceğini söyledi.
-
-Ancak o, yataklar, pencereler ve şeyler hakkında haklı.
-
-Bu, her istediğimiz kadar havadar ve konforlu bir oda, ve ben, sadece bir heves için, onu rahatsız etmemek için, böyle aptalca davranmayacağım.
-
-Aslında, büyük odayı, o iğrenç duvar kağıdından başka her şeyi sevmeye başladım.
-
-Bir pencereden, bahçeyi, o esrarengiz, derin gölgeli kemerleri, eski moda çiçekleri, çalıları ve dallı ağaçları görebiliyorum.
+Ancak o, yataklar, pencereler ve şeyler hakkında haklı. Bu, her istediğimiz kadar havadar ve konforlu bir oda, ve ben, sadece bir heves için, onu rahatsız etmemek için, böyle aptalca davranmayacağım. Aslında, büyük odayı, o iğrenç duvar kağıdından başka her şeyi sevmeye başladım. Bir pencereden, bahçeyi, o esrarengiz, derin gölgeli kemerleri, eski moda çiçekleri, çalıları ve dallı ağaçları görebiliyorum.
 
 Bir diğer pencereden, körfezi ve özel iskelemizi görebiliyorum. Orada, evden aşağıya inen, güzel, gölgeli bir yol var. Ben, hep bu yollarda ve kemerlerde insanları yürürken hayal ediyorum, ancak John, bana, fantaziye kapılmamamı söyledi. Dedi ki, benim hayal gücüm ve hikaye anlatma alışkanlığım, sinirsel bir zayıflıkla birleştiğinde, her türlü heyecan verici fantazilere yol açabilir, ve ben, iradem ve sağduyumla, bu eğilimi kontrol etmeliyim. Bu nedenle, ben, bunu deniyorum.
 
-Bazen, yazsam, fikirlerin baskısını hafifletebileceğimi ve bana rahatlık verebileceğini düşünüyorum.
+Bazen, yazsam, fikirlerin baskısını hafifletebileceğimi ve bana rahatlık verebileceğini düşünüyorum. Ancak yazmaya çalıştığım zaman, çok yoruluyorum. Çalışmam hakkında bana rehberlik edecek ve beni destekleyecek kimsenin olmaması çok üzücü. John, gerçekten iyileştiğimde, Cousin Henry ve Julia'yı uzun bir ziyaret için davet edeceğimizi söylüyor; ancak o, bana, şimdi, beni uyaran insanları etrafımda bulundurmaktan daha çok, benim ateşimi yastığımın içine koymanın daha iyi olacağını söylüyor.
 
-Ancak yazmaya çalıştığım zaman, çok yoruluyorum.
+Hızlı iyileşmek istiyorum. Ancak, bunu düşünmemeliyim. Bu duvar kağıdı, bana, ne kadar kötü bir etki yaptığı bilinci var gibi görünüyor! Bir yerde, desen, bir kırık boyun gibi görünüyor ve iki şişkin göz, baş aşağı bana bakıyor. Onun küstahlığı ve sonsuzluğu beni gerçekten öfkelendiriyor. Yukarı, aşağı, yana - her yerlerde, bu saçma, gözleri hiç kapanmayan gözler var. Bir yerde, iki parça uymuyor, ve gözler, birini diğerinden daha yüksek olarak, tüm çizgi boyunca yukarı ve aşağı gidiyor.
 
-Çalışmam hakkında bana rehberlik edecek ve beni destekleyecek kimsenin olmaması çok üzücü. John, gerçekten iyileştiğimde, Cousin Henry ve Julia'yı uzun bir ziyaret için davet edeceğimizi söylüyor; ancak o, bana, şimdi, beni uyaran insanları etrafımda bulundurmaktan daha çok, benim ateşimi yastığımın içine koymanın daha iyi olacağını söylüyor.
+Önceden, bir şeyin, bir nesnenin, nasıl bu kadar ifade edici olabileceğini görmedim! Ben, çocukken, uyuyamadığım zaman, boş duvarlar ve basit mobilyalardan, çoğu çocuk, bir oyuncak mağazasında bulamayacağı kadar, eğlence ve korku bulurdum. Büyük, eski büromuzun, nasıl bir nezaketle gülümsediğini hatırlıyorum, ve orada, bana, güçlü bir arkadaş gibi gelen bir sandalye vardı.
 
-Hızlı iyileşmek istiyorum.
+Ben, diğer şeylerin çok korkunç görünmeye başladığını hissettiğim zaman, o sandalyeye atlayıp güvende olabileceğimi hissederdim. Bu odadaki mobilya, uyumsuz, ancak, aşağıdan getirdiğimiz için, bu kadar kötü değil. Sanırım, bu, bir oyun odası olarak kullanıldığında, çocuk odası eşyalarını çıkarmak zorunda kaldılar, ve şaşmamak lazım! Ben, çocukların burada yarattığı böyle bir tahribat görmedim.
 
-Ancak, bunu düşünmemeliyim. Bu duvar kağıdı, bana, ne kadar kötü bir etki yaptığı bilinci var gibi görünüyor!
+Duvar kağıdı, dediğim gibi, bazı yerlerde soyulmuştur, ve bu, bir kardeşten daha da yakın - onlar, bu kadar sabır ve nefretle, bunu yapmış olmalılar. Sonra, zemin, kazınmış, oyulmuş, ve plaster, bazı yerlerde kazınmış, ve bu büyük, ağır yatak, odada bulabildiğimiz tek şey, savaşlardan geçmiş gibi görünüyor. Ancak ben, bundan rahatsız değilim - sadece duvar kağıdından.
 
-Bir yerde, desen, bir kırık boyun gibi görünüyor ve iki şişkin göz, baş aşağı bana bakıyor.
-
-Onun küstahlığı ve sonsuzluğu beni gerçekten öfkelendiriyor. Yukarı, aşağı, yana - her yerlerde, bu saçma, gözleri hiç kapanmayan gözler var. Bir yerde, iki parça uymuyor, ve gözler, birini diğerinden daha yüksek olarak, tüm çizgi boyunca yukarı ve aşağı gidiyor.
-
-Önceden, bir şeyin, bir nesnenin, nasıl bu kadar ifade edici olabileceğini görmedim! Ben, çocukken, uyuyamadığım zaman, boş duvarlar ve basit mobilyalardan, çoğu çocuk, bir oyuncak mağazasında bulamayacağı kadar, eğlence ve korku bulurdum.
-
-Büyük, eski büromuzun, nasıl bir nezaketle gülümsediğini hatırlıyorum, ve orada, bana, güçlü bir arkadaş gibi gelen bir sandalye vardı.
-
-Ben, diğer şeylerin çok korkunç görünmeye başladığını hissettiğim zaman, o sandalyeye atlayıp güvende olabileceğimi hissederdim.
-
-Bu odadaki mobilya, uyumsuz, ancak, aşağıdan getirdiğimiz için, bu kadar kötü değil. Sanırım, bu, bir oyun odası olarak kullanıldığında, çocuk odası eşyalarını çıkarmak zorunda kaldılar, ve şaşmamak lazım! Ben, çocukların burada yarattığı böyle bir tahribat görmedim.
-
-Duvar kağıdı, dediğim gibi, bazı yerlerde soyulmuştur, ve bu, bir kardeşten daha da yakın - onlar, bu kadar sabır ve nefretle, bunu yapmış olmalılar.
-
-Sonra, zemin, kazınmış, oyulmuş, ve plaster, bazı yerlerde kazınmış, ve bu büyük, ağır yatak, odada bulabildiğimiz tek şey, savaşlardan geçmiş gibi görünüyor.
-
-Ancak ben, bundan rahatsız değilim - sadece duvar kağıdından.
-
-John'un kız kardeşi geliyor. Ne güzel bir kız, ve bana karşı nasıl da özenli!
+John'un kız kardeşi geliyor. Ne güzel bir kız, ve bana kar
 
 O, mükemmel, ve coşkulu bir ev hanımı, ve başka bir meslekten daha iyi olabileceğine inanmıyorum! Sanırım, o, benim hastalığımın, yazmaktan kaynaklandığını düşünüyor!
 
@@ -191,7 +54,7 @@ Bir pencere, yolu, güzel, gölgeli, dolambaçlı bir yolu gösterecek, ve bir d
 
 Bu duvar kağıdının, belirli ışıklarda, ancak net olarak görünmeyen, özel bir alt deseni var, özellikle sinir bozucu.
 
-Ama, solmamış ve güneş ışığının tam olduğu yerlerde, bir tür şekilsiz,Provokatif bir figür görüyorum, ki bu, aptalca ve bariz ön tasarımla gizleniyor.
+Ama, solmamış ve güneş ışığının tam olduğu yerlerde, bir tür şekilsiz, provokatif bir figür görüyorum, ki bu, aptalca ve bariz ön tasarımla gizleniyor.
 
 Kız kardeşim merdivenlerde!
 
@@ -245,13 +108,15 @@ Yazmak istemiyorum.
 
 Yetenek hissetmiyorum.
 
-Ve John'ın bunu saçma bulacağını biliyorum. Ancak hissettiğim ve düşündüğüm şeyi bazı şekilde söylemek zorundayım -bu kadar büyük bir rahatlama!
+Ve John'ın bunu saçma bulacağını biliyorum. Ancak hissettiğim ve düşündüğüm şeyi bazı şekilde söylemek zorundayım -bu kadar bunalıma girmemin bir anlamı olmalı.
+
+üyük bir rahatlama!
 
 Ancak çaba, rahatlama olduğundan daha büyük hale geliyor.
 
 Şu an çok tembelim ve çok fazla yatıyorum.
 
-John, gücümü kaybetmemem gerektiğini söylüyor ve bana.cod karaciğeri yağı ve tonik gibi şeyleri verip, birayla, şarapla ve nadir etle beslenmemi söylüyor.
+John, gücümü kaybetmemem gerektiğini söylüyor ve bana cod karaciğeri yağı ve tonik gibi şeyleri verip, birayla, şarapla ve nadir etle beslenmemi söylüyor.
 
 Sevgili John! Beni çok seviyor ve hastalanmamdan nefret ediyor. Öteki gün, ciddi ve mantıklı bir konuşma yapmak ve bana Cousin Henry ve Julia'ya ziyarette bulunma izni vermesini istemek için gerçekten çabaladım.
 
@@ -385,7 +250,9 @@ Tüm evi sarıyor.
 
 Onu yemek odasında, salonda, koridorda, merdivenlerde gizli veya pusuda beklerken buluyorum.
 
-Saçlarıma siniyor.
+Saçlarım
+
+A siniyor.
 
 Bahkan at binerken, aniden başımı çevirip onu yakalarsam -orada o koku var!
 
@@ -435,7 +302,7 @@ Onu suçlayacak değilim. Gündüz emeklemeye yakalanmak çok utanç verici olma
 
 Gündüz emeklediğimde her zaman kapıyı kilitleyorum. Gece yapamıyorum, çünkü John'un hemen bir şeyden şüpheleneceğini biliyorum.
 
-Ve John şimdi çok tuhaf,所以 onu kızdırmak istemiyorum. Umarım başka bir odaya taşınır! Ayrıca, gece o kadını çıkarmak için kimsenin beni dışarı çıkarmasını istemiyorum.
+Ve John şimdi çok tuhaf, bu yüzden onu kızdırmak istemiyorum. Umarım başka bir odaya taşınır! Ayrıca, gece o kadını çıkarmak için kimsenin beni dışarı çıkarmasını istemiyorum.
 
 Bazen aynı anda tüm pencerelerden onu görebileceğimi merak ediyorum.
 
@@ -461,7 +328,9 @@ Bana da birçok soru sordu, ve çok sevgi dolu ve kindar gibi davrandı.
 
 Onun gerçek niyetini görmemem mümkün değil!
 
-Ama o davranışı göstermesi şaşırtıcı değil, bu kağıdın altında üç ay uyuduğunu düşününce.
+Ama o davranışı göstermesi şaşırtıcı değil, bu kağıdın beni nasıl etkilediğini biliyorsunuz.
+
+ bu kağıdın altında üç ay uyuduğunu düşününce.
 
 Bu sadece beni ilgilendiriyor, ama John ve Jennie'nin de bundan gizlice etkilendiğinden eminim.
 
