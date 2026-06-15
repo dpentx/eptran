@@ -1,17 +1,11 @@
 {
-  "status": "completed",
-  "book": "The_Gift_of_the_Magi",
-  "epub_file": "The Gift of the Magi.epub",
+  "status": "running",
+  "book": "the_yellow_wallpaper",
+  "epub_file": "the_yellow_wallpaper.epub",
   "source_type": "epub",
-  "total": 2,
-  "completed": 2,
+  "total": 1,
+  "completed": 0,
   "current_chapter": "",
-  "started_at": "2026-06-13T07:47:41.724443+00:00",
-  "updated_at": "2026-06-13T07:49:25.468087+00:00",
-  "review_status": "completed",
-  "review_total": 2,
-  "review_completed": 2,
-  "review_current": "",
-  "convert_status": "completed",
-  "epub_output": "output/The_Gift_of_the_Magi/The_Gift_of_the_Magi_tr.epub"
+  "started_at": "2026-06-15T14:30:14.605090+00:00",
+  "updated_at": "2026-06-15T14:30:14.605110+00:00"
 }
