@@ -22,6 +22,17 @@ _PATTERNS = [
     re.compile(r'(bağış|vakf[ıa]|elektronik çalışma).{0,60}(hak|lisans|koşul)', re.IGNORECASE),
 ]
 
+# Sadece başlık (title) alanları için ek pattern'ler.
+# Gövde için anlamlı olabilecek ama başlık olarak göründüğünde
+# kesinlikle boilerplate olan ifadeler buraya eklenir.
+_TITLE_PATTERNS = [
+    re.compile(r'^\s*(the\s+)?full\s+project\s+gutenberg', re.IGNORECASE),
+    re.compile(r'project\s+gutenberg.{0,30}licen[sc]e', re.IGNORECASE),
+    re.compile(r'^\s*start:?\s+full\s+licen[sc]e', re.IGNORECASE),
+    re.compile(r'^\s*section\s+\d+\.\s+general', re.IGNORECASE),
+    re.compile(r'^\s*(license|licence|lisans)\s*$', re.IGNORECASE),
+]
+
 # Lisans bloğu başlangıcını kesen regex.
 # Sadece gerçek lisans bölümlerini keser — "1.E.1", "START: FULL LICENSE" gibi.
 # "This eBook is for the use of" tek başına yeterli değil çünkü hikaye
@@ -43,6 +54,24 @@ def is_boilerplate(text: str) -> bool:
         if pat.search(t):
             return True
     return False
+
+
+def is_boilerplate_title(title: str) -> bool:
+    """
+    Başlık (chapter title / heading) boilerplate mi?
+    Örn: "THE FULL PROJECT GUTENBERG™ LICENSE", "Section 1. General Terms" vb.
+    Gövde içeriği anlamlı görünse bile başlık bu tür ifadeler taşıyorsa
+    o bölüm tamamen atlanmalıdır — çünkü gerçek hikaye bölümü değildir,
+    lisans/metadata bloğudur.
+    """
+    t = title.strip()
+    if not t:
+        return False
+    for pat in _TITLE_PATTERNS:
+        if pat.search(t):
+            return True
+    # Genel boilerplate pattern'leri de başlık için geçerli
+    return is_boilerplate(t)
 
 
 def clean(text: str) -> str:
