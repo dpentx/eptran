@@ -1,24 +1,27 @@
 {
   "characters": {
-    "Hans Pfaal": "Rotterdam'da eşsiz bir macera yaşayan karakter, bir baloncu",
-    "William Legrand": "Eski bir Huguenot ailesinden gelen, bir zamanlar zengin olmuş ancak talihsizlikler sonucu yoksulluğa sürüklenen bir karakter",
-    "Jupiter": "Eski bir zenci, Legrand'ın efendisi, ailesinin tersine rağmen Legrand'a eşlik etmeyi reddetmeyen bir karakter"
+    "Antiochus Epiphanes": "Peygamber Ezekiel'in Gog'u olarak görülen Suriye kralı",
+    "Crébillon": "Xerxes'in yazarı",
+    "Cambyses": "Cyrus'un oğlu, Antiochus Epiphanes'e benzer karakter",
+    "Seleucus Nicanor": "Büyük İskender'den sonra ülkenin ilk kralı, Antiochia Epidaphne'nin kurucusu",
+    "Verus": "Roma İmparatoru, Antioch'ta zaman geçiren",
+    "Valens": "Roma İmparatoru, Antioch'ta zaman geçiren"
   },
   "terms": {
-    "varil": "sıvı maddeleri taşımak için kullanılan büyük kap",
-    "raf": "eşyaları koymak için kullanılan sehpa veya destek",
-    "tıpa": "deliği kapatmak için kullanılan parça",
-    "konveksite": "dışa doğru eğrilme",
-    "ufuk çizgisi": "gözlemcinin görüş alanının sınırlarını belirleyen çizgi",
-    "palmetto": "bir tür palmiye ağacı",
-    "mersin": "bir tür bitki",
-    "entomolojik": "böceklerle ilgili"
+    "peygamber": "Tanrı'nın mesajlarını insanlara ileten kişi",
+    "gaspetme": "zorla ele geçirme",
+    "Kutsal Yer": "dini açıdan önemli yer",
+    "Taba": "Antiochus Epiphanes'in öldüğü yer",
+    "ordinaryo": "Roma İmparatorluğu'nda valilerin ikamet ettiği yer",
+    "vahşi ortam": "doğal ve kontrolsüz çevre",
+    "şelale": "nehir veya akarsuda oluşan su düşüşü",
+    "patrik": "Hristiyan Kilisesi'nin yüksek rütbeli din adamı"
   },
   "summaries": [
-    "EDGAR ALLAN POE: Amerikan edebiyatının merkezi olmadığını ve birçok sisteme bölünmüş olduğunu belirten James Russell Lowell, Edgar Allan Poe'nun ilginç biyografisini ve edebi kariyerini anlatıyor. Poe, romantik bir evlilikten doğmuş, erken yaşta yetim kalmış ve zengin bir Virginian tarafından evlat edinilmiştir.",
     "DEATH OF EDGAR A. POE: Edgar A. Poe'nun ölümünün ardından N. P. Willis tarafından kaleme alınan metinde, Poe'nun karakteri ve doğası hakkında bilgi veriliyor. Metinde, Poe'nun iki zıt ruhun bir bedende hapsedilmiş olduğu şeklinde tanımlanan karakteri ve ölümünün birçok kişi tarafından şaşırtıcı ancak üzüntüye neden olmayan bir olay olduğu belirtiliyor.",
     "THE UNPARALLELED ADVENTURES OF ONE HANS PFAAL (*1): Rotterdam şehri, bir balonun ortaya çıkmasıyla felsefi bir heyecan içinde kalıyor. Bu balon, kirli gazetelerden yapılmış ve tuhaf bir şekilde şekillendirilmiş, Rotterdam vatandaşlarını şaşkına çevirerek onların anlamakta ve takdir etmekte zorlandıkları bir gizem yaratıyor.",
     "Notes to Hans Pfaal: Anlatıcı, balonun yüksek irtifada sabit kalması sayesinde uykusunu düzenlemek için bir sistem geliştirir ve bu sayede düzenli aralıklarla uyanır. 3 Nisan'da, balonun muazzam bir yükseklikte olduğunu görür ve世界nin apparent convexity arttığını gözlemleyerek, kuzeyde Polar Denizi'nin güney disklerini gördüğünü düşünür.",
-    "THE GOLD-BUG: Bay William Legrand, eski bir Huguenot ailesinden gelen ve bir dizi talihsizlik sonucu yoksulluğa düşen bir adam, Charleston, Güney Carolina yakınlarındaki Sullivan's Island'da ikamet etmektedir. Burada, Legrand'ın dostu olan anlatıcı ile tanışır ve Legrand'ın yaşamı ve davranışları hakkında bilgi edinilir."
+    "THE GOLD-BUG: Bay William Legrand, eski bir Huguenot ailesinden gelen ve bir dizi talihsizlik sonucu yoksulluğa düşen bir adam, Charleston, Güney Carolina yakınlarındaki Sullivan's Island'da ikamet etmektedir. Burada, Legrand'ın dostu olan anlatıcı ile tanışır ve Legrand'ın yaşamı ve davranışları hakkında bilgi edinilir.",
+    "FOUR BEASTS IN ONE—THE HOMO-CAMELEOPARD: Antiochus Epiphanes, MÖ 171 yılında tahta çıkarak egemenliği gasp etmiş ve Yahudilere karşı düşmanlık beslemiştir. Antioch kentine gelindiğinde, Seleucus Nicanor tarafından inşa edilen ve Daphne tapınağına yakın olan Antiochia Epidaphne şehri görülmektedir. Şehir, Orontes Nehri ve Akdeniz'e yakın bir konumdadır."
   ]
 }
