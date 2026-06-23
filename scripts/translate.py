@@ -13,7 +13,7 @@ import ebooklib
 from ebooklib import epub
 from bs4 import BeautifulSoup
 
-from lib import boilerplate, groq_client as gc, memory as mem, ner
+from lib import boilerplate, groq_client as gc, memory as mem, ner, unicode_cleaner
 from lib.git_utils import git_push, write_status
 
 STATUS_FILE = "status.json"
@@ -45,16 +45,6 @@ def extract_epub(epub_path: str) -> list:
             r'^the\s+project\s+gutenberg\s+e[\-\s]?book\s+of\s+',
             '', raw_title, flags=re.IGNORECASE
         ).strip() or raw_title
-
-        # Başlık kendisi boilerplate/lisans ifadesi taşıyorsa
-        # (örn. "THE FULL PROJECT GUTENBERG™ LICENSE", "Section 1. General Terms")
-        # bu item gerçek bir hikaye bölümü değildir — gövde uzun olsa bile atla.
-        # Bu kontrol olmadan bu tür bloklar çeviriliyor ve hafızayı
-        # (memory.json) kirletip sonraki bölümlerin çevirisini bozuyordu.
-        if boilerplate.is_boilerplate_title(raw_title) or boilerplate.is_boilerplate_title(title):
-            print(f"  Boilerplate başlık atlandı: {raw_title[:60]!r}")
-            continue
-
         chapters.append({"name": item.get_name(), "title": title, "text": text})
     return chapters
 
@@ -129,29 +119,37 @@ def translate_chapter(chapter: dict, clients: list, key_index: list,
                        chunk_idx: int, total_chunks: int) -> str:
     part_info = f", Parça {chunk_idx + 1}/{total_chunks}" if total_chunks > 1 else ""
     system_msg = (
-    f"Sen profesyonel bir edebi çevirmensin. "
-    f"Şu an \"{chapter['title']}\"{part_info} başlıklı bölümü çeviriyorsun.\n\n"
-
-    f"Görevin yalnızca verilen İngilizce metni Türkçeye çevirmektir.\n"
-
-    f"Kurallar:\n"
-    f"- Yalnızca çeviriyi döndür.\n"
-    f"- Açıklama, not veya yorum ekleme.\n"
-    f"- Paragraf yapısını koru.\n"
-    f"- Karakter isimlerini değiştirme.\n"
-    f"- '[EPUB_IMAGE:...]' etiketlerini olduğu gibi bırak.\n"
-    f"- Kelime kelime çeviri yapma.\n"
-    f"- İngilizce deyimleri ve ifadeleri doğal Türkçe karşılıklarıyla çevir.\n"
-    f"- Edebi ve akıcı bir Türkçe kullan.\n"
-    f"- Yazarın üslubunu, anlatım tonunu ve karakterlerin konuşma tarzını koru.\n"
-    f"- Çeviri Türkçede yazılmış bir roman bölümü gibi okunmalıdır.\n"
+        f"Sen profesyonel bir çevirmensin. "
+        f"Şu an \"{chapter['title']}\"{part_info} başlıklı bölümü çeviriyorsun.\n"
+        f"Görevin yalnızca verilen İngilizce metni Türkçeye çevirmek. "
+        f"Çeviriyi doğal, akıcı ve edebi tut; karakterlerin sesini ve tonunu koru. "
+        f"Çıktının TAMAMI sadece Türkçe olmalı — başka hiçbir dilden "
+        f"(Arapça, Fransızca, İngilizce vb.) tek bir kelime bile karışmamalı. "
+        f"'[EPUB_IMAGE:...]' etiketlerini olduğu gibi bırak.\n"
     )
     if protected_str:
         system_msg += f"{protected_str}\n"
     system_msg += "Yanıt olarak SADECE çeviriyi yaz, hiçbir açıklama ekleme."
     if memory_ctx:
         system_msg += f"\n\n{memory_ctx}"
-    return gc.call(clients, key_index, system_msg, chapter["text"], temperature=0.3)
+
+    result = gc.call(clients, key_index, system_msg, chapter["text"], temperature=0.3)
+
+    # Çıktıda Arapça/Kiril/Yunan gibi beklenmeyen script varsa bir kez retry et
+    foreign = unicode_cleaner.find_foreign_words(result)
+    if foreign:
+        print(f"  Uyarı: çıktıda yabancı script tespit edildi {foreign[:5]} — yeniden deneniyor.")
+        retry_msg = system_msg + (
+            "\n\nÖNEMLİ: Önceki yanıtında Türkçe olmayan kelimeler vardı. "
+            "Bu sefer çıktının HER kelimesi Türkçe olmalı."
+        )
+        result = gc.call(clients, key_index, retry_msg, chapter["text"], temperature=0.2)
+        still_foreign = unicode_cleaner.find_foreign_words(result)
+        if still_foreign:
+            print(f"  Uyarı: retry sonrası hâlâ yabancı kelime var {still_foreign[:5]} — "
+                  f"elle kontrol gerekebilir.")
+
+    return result
 
 
 # ── Ana akış ───────────────────────────────────────────────────────────────────
