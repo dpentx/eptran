@@ -1,19 +1,17 @@
 {
   "characters": {
-    "Edgar Allan Poe": "Amerikan edebiyatının en ilginç ve orijinal figürü",
-    "Mr. Lowell": "Poe'nun eserlerini değerlendiren bir yazar",
-    "Sarah Helen Whitman": "Poe'nun adının harflerini değiştirerek 'a God-peer' kelimelerini bulan bir yazar",
-    "General David Poe": "Edgar Allan Poe'nun babası, Amerikan devrimci yurtsever ve Lafayette'in arkadaşı"
+    "James Russell Lowell": "Amerikan edebiyat eleştirmeni ve yazar",
+    "Bay Allan": "Edgar Allan Poe'nun evlat edinildiği zengin Virginian"
   },
   "terms": {
-    "ratiocination": "mantık ve akıl yürütme",
-    "vicdan hikayeleri": "suç ve günahla ilgili hikayeler",
-    "illüzyon ve şaka hikayeleri": "aldatmaca ve şaka içeren hikayeler",
-    "fantastik parçalar": "fantastik ve hayal gücü içeren yazılar"
+    "epitaf": "mezar taşı yazısı",
+    "mürekkep": "yazı için kullanılan sıvı",
+    "meyan kökü": "bitki kökü",
+    "flört": "aşk oyunu"
   },
-  "style_notes": "Anlatıcı nesnel ve bilgilendirici bir tonda, klasik edebiyat eserlerinin sunumuna uygun bir yapıda yazıyor. Edgar Allan Poe'nun eserleri ve hayatı hakkında detaylı bilgi veriliyor.",
   "summaries": [
     "The Works of Edgar Allan Poe — Volume 1: Edgar Allan Poe Eserleri — Cilt 1, Edgar Allan Poe'nun eserlerini içeren bir kitap olup Poe'nun hayatı, ölümü ve著 famous eserleri gibi konuları içermektedir. Kitap, Poe'nun著 famous eserleri arasında \"Kuzgun\", \"Altın Böceği\" ve \"Rue Morgue Caddesi Cinayetleri\" gibi önemli hikayelerini içermektedir.",
-    "EDGAR ALLAN POE\nAN APPRECIATION: Edgar Allan Poe, Amerikan edebiyatının en ilginç ve orijinal figürlerinden biri olarak kabul edilir. Poe, \"Kuzgun\" ve \"Haunted Palace\" gibi eserleriyle okuyucuları büyülemiş, \"Usher Evi'nin Çöküşü\" ve \"Ligeia\" gibi hikayeleriyle edebiyat dünyasına önemli katkılar sağlamıştır."
+    "EDGAR ALLAN POE\nAN APPRECIATION: Edgar Allan Poe, Amerikan edebiyatının en ilginç ve orijinal figürlerinden biri olarak kabul edilir. Poe, \"Kuzgun\" ve \"Haunted Palace\" gibi eserleriyle okuyucuları büyülemiş, \"Usher Evi'nin Çöküşü\" ve \"Ligeia\" gibi hikayeleriyle edebiyat dünyasına önemli katkılar sağlamıştır.",
+    "EDGAR ALLAN POE: Amerikan edebiyatının merkezi olmadığını ve birçok sisteme bölünmüş olduğunu belirten James Russell Lowell, Edgar Allan Poe'nun ilginç biyografisini ve edebi kariyerini anlatıyor. Poe, romantik bir evlilikten doğmuş, erken yaşta yetim kalmış ve zengin bir Virginian tarafından evlat edinilmiştir."
   ]
 }
