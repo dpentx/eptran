@@ -47,3 +47,27 @@ def clean(text: str) -> str:
         # Hiç Latin yoksa kelimeyi tamamen atla
 
     return ' '.join(result)
+
+
+def find_foreign_words(text: str) -> list:
+    """
+    Tamamen Latin olmayan script'ten oluşan TAM kelimeleri tespit et
+    (örn. cümle ortasına sızmış ayrı bir Arapça/Kiril/Yunan kelimesi).
+    unicode_cleaner.clean() kelime İÇİ karışımı temizler, bu fonksiyon
+    ise ayrı duran yabancı script kelimeleri raporlar — silmez, sadece bulur.
+    """
+    found = []
+    for word in text.split():
+        letters = [ch for ch in word if ch.isalpha()]
+        if not letters:
+            continue
+        scripts = {_script(ch) for ch in letters}
+        # Tamamen Latin değilse ve Latin de karışmamışsa (yani saf yabancı kelime)
+        if scripts and 'latin' not in scripts and scripts != {'other'}:
+            found.append(word)
+    return found
+
+
+def has_foreign_script(text: str) -> bool:
+    """Metinde Latin dışı (Arapça, Kiril, Yunan, CJK) herhangi bir tam kelime var mı?"""
+    return len(find_foreign_words(text)) > 0
