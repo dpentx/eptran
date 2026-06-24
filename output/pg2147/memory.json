@@ -1,21 +1,22 @@
 {
   "characters": {
-    "Sir Thomas Browne": "İngiliz hekim ve yazar",
-    "Achilles": "Eski Yunan mitolojisinde önemli bir figür"
+    "Chevalier C. Auguste Dupin": "Zihinsel karakteri dikkat çekici bir kişi",
+    "Madame L'Espanaye": "Öldürülen bir kadın",
+    "Mary Cecila Rogers": "New York'ta öldürülen bir kadın",
+    "Novalis": "Alman şair ve yazar"
   },
   "terms": {
-    "analitik": "zihinsel özellikler, analiz ve çözümleme yeteneği",
-    "sezgi": "doğru veya doğruya yakın sonuçlara ulaşma yeteneği",
-    "draughts": "satranç benzeri bir masa oyunu",
-    "hiyeroglif": "eski Mısır yazı sistemi",
-    "bilmece": "zihinsel bir problem veya bulmaca"
+    "süpernatürel": "doğal olmayan veya doğaüstü",
+    "spekülasyon": "tahmin veya varsayım",
+    "Olasılık Hesabı": "matematiksel bir disiplin",
+    "tesadüf": "beklenmedik veya rastlantısal olay"
   },
   "summaries": [
-    "THE UNPARALLELED ADVENTURES OF ONE HANS PFAAL (*1): Rotterdam şehri, bir balonun ortaya çıkmasıyla felsefi bir heyecan içinde kalıyor. Bu balon, kirli gazetelerden yapılmış ve tuhaf bir şekilde şekillendirilmiş, Rotterdam vatandaşlarını şaşkına çevirerek onların anlamakta ve takdir etmekte zorlandıkları bir gizem yaratıyor.",
     "Notes to Hans Pfaal: Anlatıcı, balonun yüksek irtifada sabit kalması sayesinde uykusunu düzenlemek için bir sistem geliştirir ve bu sayede düzenli aralıklarla uyanır. 3 Nisan'da, balonun muazzam bir yükseklikte olduğunu görür ve世界nin apparent convexity arttığını gözlemleyerek, kuzeyde Polar Denizi'nin güney disklerini gördüğünü düşünür.",
     "THE GOLD-BUG: Bay William Legrand, eski bir Huguenot ailesinden gelen ve bir dizi talihsizlik sonucu yoksulluğa düşen bir adam, Charleston, Güney Carolina yakınlarındaki Sullivan's Island'da ikamet etmektedir. Burada, Legrand'ın dostu olan anlatıcı ile tanışır ve Legrand'ın yaşamı ve davranışları hakkında bilgi edinilir.",
     "FOUR BEASTS IN ONE—THE HOMO-CAMELEOPARD: Antiochus Epiphanes, MÖ 171 yılında tahta çıkarak egemenliği gasp etmiş ve Yahudilere karşı düşmanlık beslemiştir. Antioch kentine gelindiğinde, Seleucus Nicanor tarafından inşa edilen ve Daphne tapınağına yakın olan Antiochia Epidaphne şehri görülmektedir. Şehir, Orontes Nehri ve Akdeniz'e yakın bir konumdadır.",
-    "THE MURDERS IN THE RUE MORGUE: Analitik zihinsel özellikler, sahibi için en canlı zevkin kaynağıdır ve bu yetenek, en sıradan işlerden bile keyif alır. Çözümleme yeteneği, matematiksel çalışma ile güçlendirilir ve özellikle analiz dalı ile ilişkilidir."
+    "THE MURDERS IN THE RUE MORGUE: Analitik zihinsel özellikler, sahibi için en canlı zevkin kaynağıdır ve bu yetenek, en sıradan işlerden bile keyif alır. Çözümleme yeteneği, matematiksel çalışma ile güçlendirilir ve özellikle analiz dalı ile ilişkilidir.",
+    "THE MYSTERY OF MARIE ROGET.(*1): Marie Roget Bilmecesi, \"Rue Morgue Cinayetleri\"nin devamı niteliğinde bir olayı anlatır. Chevalier C. Auguste Dupin'in zihinsel karakterini ve yeteneklerini gösteren bir dizi olayı içerir."
   ],
   "style_notes": ""
 }
