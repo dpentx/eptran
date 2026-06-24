@@ -1,6 +1,8 @@
 {
   "characters": {
-    "Anlatıcı": "Hikayenin anlatıcısı"
+    "Anlatıcı": "Hikayenin anlatıcısı",
+    "Uşak": "Anlatıcının uşağı",
+    "Mrs. Radcliffe": "Bir yazar"
   },
   "terms": {
     "Pyrrhonizm": "Bir felsefe ekolü, her şeyin şüpheli olduğu görüşünü savunur",
@@ -9,14 +11,17 @@
     "Malabar teknesi": "Bir tür gemi",
     "koir": "Bir tür bitki lifi",
     "jagri": "Bir tür şeker",
-    "ghee": "Saf yağımsız süt yağı"
+    "ghee": "Saf yağımsız süt yağı",
+    "vignette": "Sanat eserlerinde kullanılan bir teknik",
+    "Moresque": "Bir tür süsleme tarzı",
+    "Appennines": "İtalya'da bir dağ sırası"
   },
   "summaries": [
-    "THE MURDERS IN THE RUE MORGUE: Analitik zihinsel özellikler, sahibi için en canlı zevkin kaynağıdır ve bu yetenek, en sıradan işlerden bile keyif alır. Çözümleme yeteneği, matematiksel çalışma ile güçlendirilir ve özellikle analiz dalı ile ilişkilidir.",
     "THE MYSTERY OF MARIE ROGET.(*1): Marie Roget Bilmecesi, \"Rue Morgue Cinayetleri\"nin devamı niteliğinde bir olayı anlatır. Chevalier C. Auguste Dupin'in zihinsel karakterini ve yeteneklerini gösteren bir dizi olayı içerir.",
     "FOOTNOTES—Marie Rogêt: Marie Rogêt'in gizli sevgilisi kimdir ve Madame Rogêt'in Marie'nin ayrılışının sabahında yaptığı tuhaf kehaneti ne anlama geliyor? Marie'nin evden ayrılışının arkasında yatan gerçekler ve amaçlar hala belirsizdir.",
     "THE BALLOON-HOAX: Atlantik Okyanusu, \"Victoria\" adlı bir balonla 75 saatlik bir seyahat sonunda crossed. Bu seyahati gerçekleştirenler arasında Bay Monck Mason, Bay Robert Holland, Bay Henson, Bay Harrison Ainsworth ve diğerleri bulunuyordu.",
-    "MS. FOUND IN A BOTTLE: Anlatıcı, ailesi ve ülkesi hakkında pek fazla şey bilmeyen ve Alman ahlakçıların çalışmalarını seven bir kişidir. Yabancı ülkelerde uzun yıllar geçirdikten sonra, Java adasındaki Batavia limanından Sunda adalarına bir yolculuğa çıkar. Anlatıcı, gemide garip bir bulut gözlemleyerek denizde ve havada oluşan değişimleri fark eder."
+    "MS. FOUND IN A BOTTLE: Anlatıcı, ailesi ve ülkesi hakkında pek fazla şey bilmeyen ve Alman ahlakçıların çalışmalarını seven bir kişidir. Yabancı ülkelerde uzun yıllar geçirdikten sonra, Java adasındaki Batavia limanından Sunda adalarına bir yolculuğa çıkar. Anlatıcı, gemide garip bir bulut gözlemleyerek denizde ve havada oluşan değişimleri fark eder.",
+    "THE OVAL PORTRAIT: Anlatıcı, uşağıyla birlikte terk edilmiş bir şatoya girer ve en uzak kuleden bir odaya yerleşir. Odadaki resimlere bakarken, özellikle bir genç kızın portresine dikkat çeker ve bu resim ona büyük bir ilgi ve merak uyandırır."
   ],
-  "style_notes": ""
+  "style_notes": "Anlatıcı, resim hakkında detaylı bir şekilde konuşur ve resmin teknik özelliklerini ve güzelliğini tarif eder."
 }
