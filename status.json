@@ -7,8 +7,9 @@
   "completed": 14,
   "current_chapter": "",
   "started_at": "2026-06-24T14:05:36.723574+00:00",
-  "updated_at": "2026-06-24T16:59:38.837568+00:00",
+  "updated_at": "2026-06-24T17:05:44.320059+00:00",
   "review_status": "running",
   "review_total": 14,
-  "review_completed": 0
+  "review_completed": 1,
+  "review_current": "001_pg2147.txt"
 }
