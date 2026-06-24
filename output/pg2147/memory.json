@@ -1,18 +1,23 @@
 {
   "characters": {
-    "Marie Roget": "Paris'te öldürülen bir kadın",
-    "Madame Rogêt": "Marie Roget'in annesi"
+    "Bay Monck Mason": "Uçan Makinesi'nin mucidi",
+    "Bay Robert Holland": "Uçan Makinesi'nin ortak mucidi",
+    "Bay Henson": "Uçan Makinesi'nin bir diğer mucidi",
+    "Bay Harrison Ainsworth": "Yazar ve Uçan Makinesi'nin yolcusu",
+    "Sir Everard Bringhurst": "Uçan Makinesi'nin yolcusu",
+    "Bay Osborne": "Lord Bentinck'in yeğeni ve Uçan Makinesi'nin yolcusu"
   },
   "terms": {
-    "gizli sevgili": "kimliği bilinmeyen veya gizli tutulan sevgili",
-    "kehanet": "gelecek hakkında yapılan tahmin veya öngörü"
+    "hava navigasyonu": "hava yoluyla ulaşım",
+    "aerostat": "hava dolu balon",
+    "uçan makine": "hava yoluyla ulaşım için tasarlanan cihaz"
   },
   "summaries": [
-    "THE GOLD-BUG: Bay William Legrand, eski bir Huguenot ailesinden gelen ve bir dizi talihsizlik sonucu yoksulluğa düşen bir adam, Charleston, Güney Carolina yakınlarındaki Sullivan's Island'da ikamet etmektedir. Burada, Legrand'ın dostu olan anlatıcı ile tanışır ve Legrand'ın yaşamı ve davranışları hakkında bilgi edinilir.",
     "FOUR BEASTS IN ONE—THE HOMO-CAMELEOPARD: Antiochus Epiphanes, MÖ 171 yılında tahta çıkarak egemenliği gasp etmiş ve Yahudilere karşı düşmanlık beslemiştir. Antioch kentine gelindiğinde, Seleucus Nicanor tarafından inşa edilen ve Daphne tapınağına yakın olan Antiochia Epidaphne şehri görülmektedir. Şehir, Orontes Nehri ve Akdeniz'e yakın bir konumdadır.",
     "THE MURDERS IN THE RUE MORGUE: Analitik zihinsel özellikler, sahibi için en canlı zevkin kaynağıdır ve bu yetenek, en sıradan işlerden bile keyif alır. Çözümleme yeteneği, matematiksel çalışma ile güçlendirilir ve özellikle analiz dalı ile ilişkilidir.",
     "THE MYSTERY OF MARIE ROGET.(*1): Marie Roget Bilmecesi, \"Rue Morgue Cinayetleri\"nin devamı niteliğinde bir olayı anlatır. Chevalier C. Auguste Dupin'in zihinsel karakterini ve yeteneklerini gösteren bir dizi olayı içerir.",
-    "FOOTNOTES—Marie Rogêt: Marie Rogêt'in gizli sevgilisi kimdir ve Madame Rogêt'in Marie'nin ayrılışının sabahında yaptığı tuhaf kehaneti ne anlama geliyor? Marie'nin evden ayrılışının arkasında yatan gerçekler ve amaçlar hala belirsizdir."
+    "FOOTNOTES—Marie Rogêt: Marie Rogêt'in gizli sevgilisi kimdir ve Madame Rogêt'in Marie'nin ayrılışının sabahında yaptığı tuhaf kehaneti ne anlama geliyor? Marie'nin evden ayrılışının arkasında yatan gerçekler ve amaçlar hala belirsizdir.",
+    "THE BALLOON-HOAX: Atlantik Okyanusu, \"Victoria\" adlı bir balonla 75 saatlik bir seyahat sonunda crossed. Bu seyahati gerçekleştirenler arasında Bay Monck Mason, Bay Robert Holland, Bay Henson, Bay Harrison Ainsworth ve diğerleri bulunuyordu."
   ],
   "style_notes": ""
 }
