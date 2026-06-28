@@ -6,11 +6,13 @@ on:
     workflows: ["Translate Novel"]
     types:
       - completed
+  schedule:
+    - cron: "0 */6 * * *"
 
 jobs:
   review:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' || github.event.workflow_run.conclusion == 'success'
     timeout-minutes: 360
     permissions:
       contents: write
@@ -30,14 +32,31 @@ jobs:
         run: |
           STATUS=$(python3 -c "
           import json, sys
+          from datetime import datetime, timezone, timedelta
           try:
               with open('status.json') as f:
                   s = json.load(f)
-              if s.get('status') == 'completed' and s.get('review_status') not in ('running', 'completed'):
-                  print('yes')
-              else:
+              if s.get('status') != 'completed':
                   print('no')
-          except:
+                  sys.exit()
+              rs = s.get('review_status')
+              if rs == 'completed':
+                  print('no')
+                  sys.exit()
+              if rs == 'running':
+                  # stale kontrolü — 30dk+ güncellenmemişse devam et
+                  updated_at = s.get('updated_at')
+                  if not updated_at:
+                      print('yes')
+                      sys.exit()
+                  ts = datetime.fromisoformat(updated_at)
+                  if ts.tzinfo is None:
+                      ts = ts.replace(tzinfo=timezone.utc)
+                  age = datetime.now(timezone.utc) - ts
+                  print('yes' if age > timedelta(minutes=30) else 'no')
+                  sys.exit()
+              print('yes')
+          except Exception:
               print('no')
           ")
           echo "needed=$STATUS" >> $GITHUB_OUTPUT
