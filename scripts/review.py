@@ -2,22 +2,22 @@
 eptran — review.py
 Çevrilmiş .txt dosyalarını sliding window ile review eder:
   1. Boilerplate temizle
-  2. Sliding window (chunk + köprü) review
-  3. Hafıza context'i her adımda kullanılır
-
-Not: İngilizce kelime tespiti ve NER translate aşamasında yapılır.
-Review yalnızca Türkçe metin kalitesini iyileştirir.
+  2. Sözlük destekli İngilizce kelime düzeltmesi (NER çağrısı YOK,
+     hafızadaki whitelist + dictionary.py kullanılır)
+  3. Sliding window (chunk + köprü) review
+  4. Hafıza context'i her adımda kullanılır
 """
 import os
 
-from lib import boilerplate, groq_client as gc, memory as mem, sliding_window as sw
+from lib import boilerplate, groq_client as gc, memory as mem, review_fix, sliding_window as sw
 from lib.git_utils import read_status, write_status, is_stale_running
+from lib import dictionary
 
 STATUS_FILE = "status.json"
 
 
 def review_file(filepath: str, clients: list, key_index: list,
-                memory_ctx: str) -> None:
+                memory_ctx: str, memory: dict) -> None:
     with open(filepath, encoding="utf-8") as f:
         raw = f.read()
 
@@ -29,7 +29,6 @@ def review_file(filepath: str, clients: list, key_index: list,
         body = lines[2].strip() if len(lines) > 2 else ""
 
         # Başlık boilerplate VE gövde de boş/kısaysa dosyayı temizle
-        # (sadece başlığa bakarak atma — içerik meşru olabilir)
         if boilerplate.is_boilerplate(title_text) and len(body) < 100:
             print(f"  Boilerplate dosya temizleniyor: {title_text[:60]}")
             open(filepath, "w").close()
@@ -44,6 +43,10 @@ def review_file(filepath: str, clients: list, key_index: list,
         print(f"  İçerik kalmadı, dosya temizleniyor.")
         open(filepath, "w").close()
         return
+
+    # Sözlük destekli İngilizce kelime düzeltmesi (NER çağrısı yok)
+    print(f"  Paragraf taraması (sözlük destekli)...")
+    body = review_fix.fix_text(body, clients, key_index, memory)
 
     # Sliding window review (hafıza context'li)
     chunks = sw.chunk_text(body)
@@ -111,11 +114,15 @@ def main():
 
         filepath = os.path.join(output_dir, fname)
         print(f"[{i+1}/{total}] Review: {fname}")
-        review_file(filepath, clients, key_index, memory_ctx)
+        review_file(filepath, clients, key_index, memory_ctx, memory)
 
         status["review_completed"] = i + 1
         status["review_current"] = fname
         write_status(status, f"review: {i+1}/{total}")
+        # Not: dictionary.flush() review_fix.fix_text() içinde her dosya
+        # sonunda çağrılır, learned_words.json güncellenmiş olur.
+        # write_status() -> git_push() "git add -A" kullandığı için
+        # learned_words.json değişikliği otomatik commit'e dahil olur.
 
     # Boş kalan dosyaları sil
     for fname in txt_files:
