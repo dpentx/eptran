@@ -1,13 +1,19 @@
 {
   "characters": {
     "John": "John",
-    "Charlotte Perkins Gilman": "Charlotte Perkins Gilman"
+    "Charlotte Perkins Gilman": "Charlotte Perkins Gilman",
+    "Anonymous Volunteer": "Anonymous Volunteer",
+    "David Widger": "David Widger"
   },
   "terms": {
     "phosphates": "fosfatlar",
     "tonics": "tonikler",
-    "hysterical tendency": "histerik eğilim"
+    "hysterical tendency": "histerik eğilim",
+    "colonial": "sömürge tarzı",
+    "superstition": "süperstisyon"
   },
-  "style_notes": "Anlatıcı, iç dünyasını ve duygularını samimi bir şekilde paylaşıyor, cümle yapısı sade ve akıcı.",
-  "summaries": []
+  "style_notes": "Anlatıcı, iç dünyasını ve duygularını samimi bir şekilde paylaşıyor, cümle yapısı sade ve akıcı. Yazar, okuyucuyu hikayenin içine çekmek için betimlemeler ve duygusal ifadeler kullanıyor.",
+  "summaries": [
+    "The Yellow Wallpaper: Sarı Duvar Kağıdı, Charlotte Perkins Gilman tarafından yazılan bir kitaptır. Kitap, John adındaki doktor eşinin tavsiyelerine uymak zorunda kalan ve evde himselfe hapsedilen bir kadının hikayesini anlatır. Kadın, evin garip bir atmosfere sahip olduğunu düşünür ve bu durumdan etkilenmeye başlar."
+  ]
 }
