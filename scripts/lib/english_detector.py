@@ -14,6 +14,35 @@ import re
 
 from . import dictionary
 
+# Türkçe zamirler ve temel sözcüklerin TÜM çekimli halleri.
+# "bana", "buna", "biri" gibi kelimeler kısa ve sözlükte (370k'lık
+# devasa listede) tesadüfen İngilizce kelime olarak da geçebiliyor.
+# Bu kelimeler o kadar temel ve sık kullanılır ki ek bazlı heuristic
+# yetersiz kalıyor — kökü tanıyıp doğrudan whitelist'e alıyoruz.
+_TR_PRONOUN_FORMS = {
+    # ben
+    'ben', 'beni', 'bana', 'bende', 'benden', 'benim', 'benimle',
+    # sen
+    'sen', 'seni', 'sana', 'sende', 'senden', 'senin', 'seninle',
+    # o / bu / şu (işaret + 3. tekil)
+    'o', 'onu', 'ona', 'onda', 'ondan', 'onun', 'onunla',
+    'bu', 'bunu', 'buna', 'bunda', 'bundan', 'bunun', 'bununla',
+    'şu', 'şunu', 'şuna', 'şunda', 'şundan', 'şunun',
+    # biz
+    'biz', 'bizi', 'bize', 'bizde', 'bizden', 'bizim', 'bizimle',
+    # siz
+    'siz', 'sizi', 'size', 'sizde', 'sizden', 'sizin', 'sizinle',
+    # onlar / bunlar
+    'onlar', 'onları', 'onlara', 'onlarda', 'onlardan', 'onların',
+    'bunlar', 'bunları', 'bunlara', 'bunlarda', 'bunlardan', 'bunların',
+    # biri / kimi / hiçbiri gibi belirsizlik zamirleri
+    'biri', 'birine', 'birini', 'birinde', 'birinden', 'birinin',
+    'kimi', 'kimine', 'kimini', 'herkes', 'herkese', 'herkesi',
+    'hiçbiri', 'hepsi', 'hepsine', 'hepsini',
+    # yana, yandan gibi yön sözcükleri
+    'yan', 'yana', 'yanda', 'yandan', 'yanı', 'yanına', 'yanında',
+}
+
 # Türkçede yaygın kullanılan yabancı kökenli ama kabul görmüş kelimeler
 _WHITELIST = {
     'olan', 'veya', 'için', 'gibi', 'bile', 'daha', 'kadar', 'beri',
@@ -21,16 +50,10 @@ _WHITELIST = {
     'zaten', 'artık', 'ise', 'ama', 'televizyon', 'telefon', 'internet',
     'bilgisayar', 'organizasyon', 'motivasyon', 'pozisyon', 'koleksiyon',
     'prodüksiyon', 'üniversite', 'enstitü', 'akademi',
-    # Çok yaygın kısa Türkçe kelimeler — bazıları tesadüfen büyük
-    # İngilizce sözlükte de geçiyor (örn. "ben" İngilizce isim, "her"
-    # İngilizce zamir, "hasta" İspanyolca kökenli İngilizce ifade).
-    # Bunlar Türkçede o kadar sık kullanılır ki yanlış pozitif riski
-    # gerçek kazanımdan çok daha yüksek.
-    'ben', 'sen', 'biz', 'siz', 'her', 'bir', 'beni', 'seni', 'bizi',
-    'sizi', 'benim', 'senin', 'bizim', 'sizin', 'ona', 'onu', 'ondan',
     'hasta', 'can', 'son', 'baba', 'ana', 'kara', 'sol', 'sağ', 'al',
     'var', 'yok', 'çok', 'az', 'tam', 'düz', 'in', 'on', 'el', 'göz',
-}
+    'aptal', 'durum', 'renk', 'sarı',
+} | _TR_PRONOUN_FORMS
 
 # Türkçe çekim ekleri — bu eklerle biten Latin harfli kelimeler Türkçedir.
 # Liste geniş tutuldu çünkü büyük İngilizce sözlük (370k kelime) çok
@@ -49,7 +72,7 @@ _TR_SUFFIX_RE = re.compile(
     r')$'
 )
 
-_WORD_RE = re.compile(r'\b[a-zA-Z]{4,}\b')
+_WORD_RE = re.compile(r'\b[a-zA-Z]{5,}\b')
 
 
 def _passes_heuristic(word_lower: str) -> bool:

@@ -23,6 +23,7 @@ from . import boilerplate
 from . import unicode_cleaner
 from . import english_detector
 from . import dictionary
+from . import git_utils
 
 _FIX_SYSTEM = (
     "Sen profesyonel bir Türkçe editör ve çevirmensin. "
@@ -31,6 +32,23 @@ _FIX_SYSTEM = (
     "Paragrafı doğal, akıcı Türkçeye çevir/düzelt. "
     "SADECE düzeltilmiş paragrafı döndür, açıklama ekleme."
 )
+
+
+def _flush_and_commit(paragraph_idx: int) -> None:
+    """
+    learned_words.json'ı diske yaz VE git'e commit et.
+    Sadece flush() yetmez — process timeout'la kesilirse diskte
+    duran ama commit edilmemiş değişiklik kaybolur (yeni job
+    checkout yapınca eski main'i çeker). Bu yüzden periyodik
+    olarak gerçek bir commit atılır.
+    """
+    dictionary.flush()
+    try:
+        git_utils.git_push(f"dictionary: learned_words güncellendi (p{paragraph_idx})")
+    except Exception as e:
+        # git push başarısız olursa akışı durdurma, bir sonraki
+        # periyotta tekrar denenecek.
+        print(f"    uyarı: dictionary commit başarısız ({e}), devam ediliyor.")
 
 
 def _build_whitelist(memory: dict) -> set:
@@ -72,13 +90,18 @@ def fix_text(text: str, clients: list, key_index: list, memory: dict) -> str:
     2. Sözlük destekli İngilizce kelime tespiti (heuristic + dictionary)
     3. Hafızadaki whitelist ile karşılaştır (NER çağrısı YOK)
     4. Whitelist dışında sorun varsa paragrafı fix_paragraph ile düzelt
+
+    Not: dictionary.flush() periyodik olarak (her 5 paragrafta bir) ve
+    fonksiyon sonunda çağrılır. Rate limit nedeniyle uzun süren
+    çalışmalarda job timeout'a uğrarsa bile o ana kadar öğrenilen
+    kelimeler kaybolmaz — periyodik flush bunu garanti eder.
     """
     whitelist = _build_whitelist(memory)
     paragraphs = text.split("\n\n")
     result = []
     fixed_count = 0
 
-    for para in paragraphs:
+    for idx, para in enumerate(paragraphs):
         stripped = para.strip()
 
         if stripped.startswith("[EPUB_IMAGE:") or stripped.startswith("#"):
@@ -107,10 +130,15 @@ def fix_text(text: str, clients: list, key_index: list, memory: dict) -> str:
         result.append(fixed)
         fixed_count += 1
 
+        # Periyodik flush + commit — rate limit beklerken kesinti olsa
+        # bile bu ana kadar öğrenilen kelimeler git'e işlenmiş olur.
+        if idx % 5 == 0:
+            _flush_and_commit(idx)
+
     if fixed_count:
         print(f"  {fixed_count} paragraf düzeltildi.")
 
-    # Bu dosyanın taraması bitti — öğrenilen kelimeleri diske yaz
-    dictionary.flush()
+    # Bu dosyanın taraması bitti — kalan öğrenilen kelimeleri diske/git'e yaz
+    _flush_and_commit(len(paragraphs))
 
     return "\n\n".join(result)
