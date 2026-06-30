@@ -7,10 +7,11 @@
   "completed": 1,
   "current_chapter": "",
   "started_at": "2026-06-29T07:58:40.623250+00:00",
-  "updated_at": "2026-06-30T10:44:29.460962+00:00",
+  "updated_at": "2026-06-30T10:44:30.548339+00:00",
   "review_status": "completed",
   "review_total": 1,
   "review_completed": 1,
   "review_current": "",
-  "convert_status": "running"
+  "convert_status": "completed",
+  "epub_output": "output/the_yellow_wallpaper/the_yellow_wallpaper_tr.epub"
 }
