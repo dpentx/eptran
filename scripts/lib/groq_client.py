@@ -81,7 +81,7 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
         info = clients[idx]
         try:
             response = info["client"].chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model="openai/gpt-oss-120b",
                 messages=[
                     {"role": "system", "content": system_msg},
                     {"role": "user", "content": user_msg},
