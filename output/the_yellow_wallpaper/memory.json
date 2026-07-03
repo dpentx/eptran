@@ -1,6 +1,7 @@
 {
   "characters": {
-    "John": "John"
+    "John": "John",
+    "Charlotte Perkins Gilman": "Charlotte Perkins Gilman"
   },
   "terms": {
     "phosphates": "fosfatlar",
@@ -12,8 +13,21 @@
     "colonial mansion": "sömürge köşkü",
     "hereditary estate": "kalıtsal malikane",
     "nervous depression": "sinirsel depresyon",
-    "hysterical tendency": "histerik eğilim"
+    "hysterical tendency": "histerik eğilim",
+    "The Yellow Wallpaper": "Sarı Duvar Kağıdı",
+    "Project Gutenberg": "Project Gutenberg",
+    "eBook": "e-kitap",
+    "summer": "yaz",
+    "doctor": "doktor",
+    "high-ranking doctor": "yüksek mevkiye sahip doktor",
+    "trip": "gezi",
+    "air": "hava",
+    "exercise": "egzersiz",
+    "garden": "bahçe",
+    "greenhouse": "sera"
   },
   "style_notes": "Anlatıcı, birinci tekil şahıs kadın bakış açısından, Victorian dönemin toplumsal normlarını eleştiren, içsel sıkıntılarını ve kısıtlamalarını sakin ama alaycı bir üslupla dile getirir.",
-  "summaries": []
+  "summaries": [
+    "The Yellow Wallpaper: Kadın, doktor olan kocası John'un “dinlenme tedavisi” olarak bir köy evindeki odada yalnız bırakılması ve sarı duvar kağıdına takıntı geliştirmesiyle zihinsel çöküşünü yaşar; John ve diğer doktorlar hastalığını görmezden gelirken, anlatıcı duvar kağıdındaki figürlerin hareket ettiğini hayal eder ve sonunda kendini o figürlerin içinde bulur."
+  ]
 }
