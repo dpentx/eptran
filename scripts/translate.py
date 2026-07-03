@@ -194,7 +194,11 @@ def main():
     os.makedirs(backup_dir, exist_ok=True)
     shutil.copy2(file_path, f"{backup_dir}/{book_slug}{file_ext}")
 
-    completed_start = len([f for f in os.listdir(output_dir) if f.endswith(".txt")])
+    completed_start = len([
+        f for f in os.listdir(output_dir)
+        if f.endswith(".txt") and
+        os.path.getsize(os.path.join(output_dir, f)) > 500
+    ])
     if completed_start > 0:
         print(f"Kaldığı yerden devam: {completed_start}/{total}")
 
@@ -217,7 +221,7 @@ def main():
 
     for i, chapter in enumerate(chapters):
         out_path = f"{output_dir}/{i+1:03d}_{book_slug}.txt"
-        if os.path.exists(out_path):
+        if os.path.exists(out_path) and os.path.getsize(out_path) > 500:
             print(f"[{i+1}/{total}] Atlanıyor: {chapter['title']}")
             continue
 
