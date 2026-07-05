@@ -1,11 +1,11 @@
 {
-  "status": "running",
+  "status": "completed",
   "book": "the_yellow_wallpaper",
   "epub_file": "the_yellow_wallpaper.epub",
   "source_type": "epub",
   "total": 1,
   "completed": 1,
-  "current_chapter": "The Yellow Wallpaper",
+  "current_chapter": "",
   "started_at": "2026-07-05T12:07:09.808743+00:00",
-  "updated_at": "2026-07-05T12:08:03.967826+00:00"
+  "updated_at": "2026-07-05T12:08:05.326449+00:00"
 }
