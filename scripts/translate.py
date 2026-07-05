@@ -221,7 +221,10 @@ def main():
 
     for i, chapter in enumerate(chapters):
         out_path = f"{output_dir}/{i+1:03d}_{book_slug}.txt"
-        if os.path.exists(out_path) and os.path.getsize(out_path) > 500:
+        # Bölümün Türkçe çevirisi orijinalin en az %30'u kadar olmalı.
+        # Sabit 500 byte eşiği yarım çevirileri "tamamlanmış" sayıyordu.
+        min_expected = max(500, len(chapter["text"]) * 0.30)
+        if os.path.exists(out_path) and os.path.getsize(out_path) > min_expected:
             print(f"[{i+1}/{total}] Atlanıyor: {chapter['title']}")
             continue
 
