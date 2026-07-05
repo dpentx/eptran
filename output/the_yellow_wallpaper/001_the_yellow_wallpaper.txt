@@ -1,9 +1,3 @@
 # The Yellow Wallpaper
 
-
-
-
-
-
-
-Bu web sitesi, Project Gutenberg hakkında bilgi içerir; Project Gutenberg Literary Archive Foundation’a bağış yapma yolları, yeni e‑kitaplarımızın üretilmesine nasıl yardımcı olunacağı ve yeni e‑kitaplardan haberdar olmak için e‑posta bültenimize nasıl abone olunacağı gibi konuları kapsar.
+Bu web sitesi, Project Gutenberg hakkında bilgi içerir; Project Gutenberg Literary Archive Foundation’a bağış yapma yolları, yeni e‑kitaplarımızın üretilmesine nasıl yardımcı olunacağı ve yeni e‑kitaplarımızdan haberdar olmak için e‑posta bültenimize nasıl abone olunacağı gibi konuları kapsar.
