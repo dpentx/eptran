@@ -19,11 +19,16 @@ _JUNK_PATTERNS = [
 
 
 def clean_output(text: str) -> str:
-    """Model yorumlarını ve prompt kalıntılarını temizle."""
+    """Model yorumlarını, prompt kalıntılarını ve reasoning bloklarını temizle."""
+    # <think>...</think> bloklarını temizle (reasoning modeller: gpt-oss, qwen vb.)
+    text = re.sub(r'<think>.*?</think>\s*', '', text, flags=re.DOTALL)
     for pat in _JUNK_PATTERNS:
         text = pat.sub('', text)
     text = re.sub(r'\n{3,}', '\n\n', text)
-    return text.strip()
+    result = text.strip()
+    if not result:
+        print("  Uyarı: clean_output sonucu boş — model boş yanıt döndürdü.")
+    return result
 
 
 def get_clients() -> list:
@@ -89,7 +94,15 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
                 temperature=temperature,
             )
             key_index[0] = (idx + 1) % len(clients)
-            return clean_output(response.choices[0].message.content)
+            raw = response.choices[0].message.content
+            if not raw or not raw.strip():
+                print(f"  Uyarı: model boş yanıt döndürdü (key {info['id']})")
+                return ""
+            result = clean_output(raw)
+            if not result:
+                print(f"  Uyarı: clean_output sonrası boş — ham uzunluk: {len(raw)}")
+                print(f"  Ham başlangıç: {raw[:200]!r}")
+            return result
         except RateLimitError as e:
             wait = _parse_retry_seconds(e)
             print(f"Key {info['id']} rate limit! {wait}s kilitlendi.")
