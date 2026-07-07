@@ -40,7 +40,11 @@ _TITLE_PATTERNS = [
 _LICENSE_BLOCK_RE = re.compile(
     r'\n\n[^\n]*?(tam lisans|full project gutenberg™? licen|start:? full licen|'
     r'please read this before you distribute|'
-    r'1\.e\.1[^0-9]|section 1\. general terms)[^\n]*',
+    r'1\.e\.1[^0-9]|section 1\. general terms|'
+    r'\*{3}\s*end of the project gutenberg|'
+    r'\*{3}\s*end of this project gutenberg|'
+    r'updated editions will replace the previous|'
+    r'section \d+\.\s+general information about project)[^\n]*',
     re.IGNORECASE | re.DOTALL
 )
 
@@ -80,7 +84,11 @@ def clean(text: str) -> str:
     Gutenberg lisansları genellikle metnin sonunda blok halinde gelir,
     başlangıç noktasından itibaren tamamı kesilir.
     """
-    text = _LICENSE_BLOCK_RE.sub('', text)
+    # Lisans bloğunun başlangıç noktasını bul ve oradan kes
+    m = _LICENSE_BLOCK_RE.search(text)
+    if m:
+        text = text[:m.start()]
+
     paragraphs = text.split("\n\n")
     cleaned = [p for p in paragraphs if not is_boilerplate(p)]
     return "\n\n".join(cleaned).strip()
