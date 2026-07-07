@@ -1,6 +1,9 @@
 {
   "characters": {
-    "John": "John"
+    "John": "John",
+    "Jennie": "Jennie",
+    "Cousin Henry": "Cousin Henry",
+    "Julia": "Julia"
   },
   "terms": {
     "haunted house": "perili ev",
@@ -20,8 +23,46 @@
     "piazza": "avlu",
     "chintz": "çintz",
     "draught": "esinti",
-    "ghostliness": "hayaletlik"
+    "ghostliness": "hayaletlik",
+    "garden": "bahçe",
+    "rose": "gül",
+    "veranda": "veranda",
+    "wallpaper": "duvar kağıdı",
+    "bed": "yatak",
+    "nail": "çivi",
+    "gymnastics": "jimnastik",
+    "design principle": "tasarım ilkesi",
+    "radiation": "ışınım",
+    "transformation": "dönüşüm",
+    "repetition": "tekrarlama",
+    "symmetry": "simetri",
+    "width": "genişlik",
+    "bulge": "şişkin kıvrım",
+    "ornament": "süsleme",
+    "degenerate Romanesque": "dejenere Romanesk",
+    "delirium tremens": "delirium tremens",
+    "foolishness columns": "aptallık sütunları",
+    "cross linking": "çapraz bağlanırlar",
+    "common lines": "yaygın hatları",
+    "inclined waves": "eğik dalgalar",
+    "optical horror": "optik dehşet",
+    "seaweed": "deniz yosunları",
+    "frieze": "friz",
+    "cross light": "çapraz ışıklar",
+    "low sun": "alçak güneş",
+    "grotesque": "grotesk",
+    "center": "merkez",
+    "messiness": "dağınıklık",
+    "nap": "şekerleme",
+    "fish oil": "balık yağı",
+    "tonic": "tonik",
+    "beer": "bira",
+    "wine": "şarap",
+    "rare meat": "nadir et",
+    "lovely": "sevimli"
   },
   "style_notes": "Anlatıcı, birinci tekil şahıs ve melankolik bir sesle, uzun ve süslü cümleler kullanarak, dönemin toplumsal cinsiyet normlarını ve tıbbi otoriteyi eleştirir.",
-  "summaries": []
+  "summaries": [
+    "The Yellow Wallpaper: Anlatıcı, John ve Jennie’nin sık sık yokluğunda yalnız kalıp bahçede yürüyüşler yapıp duvar kağıdını incelerken içsel sıkıntılarını ve umutsuzluğunu dile getiriyor; John’a Cousin Henry ve Julia’yı ziyaret etme isteğini anlatmaya çalıştığında ise John, gücünün yetmeyeceğini söyleyerek anlatıcının duygusal çöküşüne ve düşüncelerini toparlamadaki zorlanmasına yol açıyor."
+  ]
 }
