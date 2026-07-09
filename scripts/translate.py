@@ -134,6 +134,11 @@ def translate_chapter(chapter: dict, clients: list, key_index: list,
         system_msg += f"\n\n{memory_ctx}"
 
     result = gc.call(clients, key_index, system_msg, chapter["text"], temperature=0.3)
+    if result is None:
+        # gc.call zaten MAX_EMPTY_RETRIES kez denedi, hâlâ boş — burada
+        # zorlamıyoruz, çağıran (main) bu bölümü bu çalıştırmada
+        # tamamlanmış saymayıp bir sonraki run'da yeniden deneyecek.
+        return None
 
     # Çıktıda Arapça/Kiril/Yunan gibi beklenmeyen script varsa bir kez retry et
     foreign = unicode_cleaner.find_foreign_words(result)
@@ -143,11 +148,17 @@ def translate_chapter(chapter: dict, clients: list, key_index: list,
             "\n\nÖNEMLİ: Önceki yanıtında Türkçe olmayan kelimeler vardı. "
             "Bu sefer çıktının HER kelimesi Türkçe olmalı."
         )
-        result = gc.call(clients, key_index, retry_msg, chapter["text"], temperature=0.2)
-        still_foreign = unicode_cleaner.find_foreign_words(result)
-        if still_foreign:
-            print(f"  Uyarı: retry sonrası hâlâ yabancı kelime var {still_foreign[:5]} — "
-                  f"elle kontrol gerekebilir.")
+        retry_result = gc.call(clients, key_index, retry_msg, chapter["text"], temperature=0.2)
+        if retry_result is None:
+            # Retry boş döndüyse ilk (yabancı kelimeli) sonucu koru — en
+            # azından içerik var, hiç içerik olmamasından daha iyidir.
+            print("  Uyarı: yabancı-kelime retry'ı boş yanıt döndürdü, ilk sonuç korunuyor.")
+        else:
+            result = retry_result
+            still_foreign = unicode_cleaner.find_foreign_words(result)
+            if still_foreign:
+                print(f"  Uyarı: retry sonrası hâlâ yabancı kelime var {still_foreign[:5]} — "
+                      f"elle kontrol gerekebilir.")
 
     return result
 
@@ -243,12 +254,24 @@ def main():
         chunks = _chunk(chapter["text"])
         parts = []
 
+        chapter_failed = False
         for j, chunk in enumerate(chunks):
             ch_copy = dict(chapter, text=chunk)
             translated = translate_chapter(ch_copy, clients, key_index,
                                            memory_ctx, protected_str, j, len(chunks))
+            if translated is None:
+                print(f"  Hata: parça {j+1}/{len(chunks)} çevrilemedi (model ısrarla "
+                      f"boş yanıt döndürdü). Bu bölüm bu çalıştırmada atlanıyor, "
+                      f"bir sonraki run'da yeniden denenecek.")
+                chapter_failed = True
+                break
             parts.append(translated)
             import time; time.sleep(2)
+
+        if chapter_failed:
+            # status'u ilerletme — bir sonraki run bu bölümü baştan dener.
+            # Var olan (varsa) çıktı dosyasına dokunulmadı.
+            continue
 
         full_translation = "\n\n".join(parts)
 
