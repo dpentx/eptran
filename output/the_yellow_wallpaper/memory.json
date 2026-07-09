@@ -1,7 +1,8 @@
 {
   "characters": {
     "John": "John",
-    "the narrator": "anlatıcı"
+    "the narrator": "anlatıcı",
+    "Charlotte Perkins Gilman": "Charlotte Perkins Gilman"
   },
   "terms": {
     "colonial mansion": "sömürge köşkü",
@@ -17,8 +18,23 @@
     "draught": "esinti",
     "ghostliness": "hayaletlik",
     "self‑control": "özdenetim",
-    "ungrateful": "nankör"
+    "ungrateful": "nankör",
+    "Project Gutenberg": "Project Gutenberg",
+    "En son güncellenme": "En son güncellenme",
+    "Dil": "Dil",
+    "Katkıda Bulunanlar": "Katkıda Bulunanlar",
+    "An Anonymous Volunteer": "Anonim Gönüllü",
+    "David Widger": "David Widger",
+    "salonları": "salonlar",
+    "kardeşim": "kardeşim",
+    "tonikler": "tonikler",
+    "yolculuklar": "yolculuklar",
+    "hava": "hava",
+    "egzersiz": "egzersiz",
+    "çalışmam": "çalışmam"
   },
   "style_notes": "Anlatıcı, 19. yüzyılın sonlarına ait birinci tekil şahıs bakış açısıyla, içsel kaygı ve toplumsal kısıtlamaları vurgulayan, resmi ve ölçülü bir dil kullanır; cümle yapısı uzun ve bağlaçlarla zenginleştirilmiştir.",
-  "summaries": []
+  "summaries": [
+    "The Yellow Wallpaper: Kadın anlatıcı, “histerik” olduğu iddia edilen ve doktor olan kocası John tarafından bir köy evinde dinlenme tedavisi için odasına kilitlenerek, dış dünyadan izole edilerek zorla dinlenmeye zorulur; odanın sarı duvar kağıdına takıntılı bir şekilde bakmaya başladıkça, kağıdın içinde bir kadın figürünün hapsolduğunu görür ve bu takıntı, onun zihinsel çöküşüne ve gerçeklik algısının kaybolmasına yol açar."
+  ]
 }
