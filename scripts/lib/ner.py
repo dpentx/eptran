@@ -41,7 +41,7 @@ def extract_from_source(source_text: str, clients: list, key_index: list) -> set
     time.sleep(1)
 
     entities = set()
-    for line in result.splitlines():
+    for line in (result or "").splitlines():
         name = line.strip().strip('-').strip('•').strip()
         if not name:
             continue
@@ -123,6 +123,9 @@ def fix_paragraph(paragraph: str, whitelist: set,
     )
     result = gc.call(clients, key_index, _FIX_SYSTEM, user_msg)
     time.sleep(1)
+    if result is None:
+        print("    Uyarı: düzeltme alınamadı (model boş yanıt), paragraf orijinal haliyle korunuyor.")
+        return paragraph
     return result
 
 

@@ -60,12 +60,21 @@ def _parse_retry_seconds(error_message) -> int:
     return int(total) + 5
 
 
+MAX_EMPTY_RETRIES = 3  # model boş yanıt döndürürse bu kadar tekrar dene
+
+
 def call(clients: list, key_index: list, system_msg: str, user_msg: str,
-         temperature: float = 0.2) -> str:
+         temperature: float = 0.2) -> str | None:
     """
     Groq'a system+user mesajı gönder, rate limit'e göre key rotasyonu yap.
     Dönen çıktıyı clean_output() ile temizleyerek döndür.
+
+    Model boş yanıt döndürürse (MAX_EMPTY_RETRIES kez tekrar denendikten
+    sonra hâlâ boşsa) "" DEĞİL None döner. Bu, çağıran kodun boş bir
+    "başarılı" sonuçla var olan içeriği yanlışlıkla ezmesini önlemek
+    içindir — çağıranlar None kontrolü yapıp orijinal içeriği korumalı.
     """
+    empty_retries = 0
     while True:
         now = time.time()
         available = [c for c in clients if c["locked_until"] <= now]
@@ -97,11 +106,30 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
             raw = response.choices[0].message.content
             if not raw or not raw.strip():
                 print(f"  Uyarı: model boş yanıt döndürdü (key {info['id']})")
-                return ""
+                empty_retries += 1
+                if empty_retries <= MAX_EMPTY_RETRIES:
+                    wait = 5 * empty_retries
+                    print(f"  Boş yanıt — {wait}s sonra tekrar deneniyor "
+                          f"({empty_retries}/{MAX_EMPTY_RETRIES})...")
+                    time.sleep(wait)
+                    continue
+                print(f"  Hata: {MAX_EMPTY_RETRIES} denemeden sonra hâlâ boş yanıt — "
+                      f"içerik korunacak, bu parça ATLANACAK (üzerine yazılmayacak).")
+                return None
             result = clean_output(raw)
             if not result:
                 print(f"  Uyarı: clean_output sonrası boş — ham uzunluk: {len(raw)}")
                 print(f"  Ham başlangıç: {raw[:200]!r}")
+                empty_retries += 1
+                if empty_retries <= MAX_EMPTY_RETRIES:
+                    wait = 5 * empty_retries
+                    print(f"  {wait}s sonra tekrar deneniyor "
+                          f"({empty_retries}/{MAX_EMPTY_RETRIES})...")
+                    time.sleep(wait)
+                    continue
+                print(f"  Hata: {MAX_EMPTY_RETRIES} denemeden sonra hâlâ boş yanıt — "
+                      f"içerik korunacak, bu parça ATLANACAK (üzerine yazılmayacak).")
+                return None
             return result
         except RateLimitError as e:
             wait = _parse_retry_seconds(e)

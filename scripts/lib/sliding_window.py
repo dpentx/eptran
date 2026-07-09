@@ -117,10 +117,18 @@ def review_chunks(chunks: list, clients: list, key_index: list,
 
         if win["is_bridge"]:
             result = gc.call(clients, key_index, sys_bridge, win["text"])
+            if result is None:
+                print(f"    Uyarı: köprü {win['index']}↔{win['index']+1} için model boş "
+                      f"yanıt döndürdü — köprü düzeltmesi atlanıyor, orijinal metin korunuyor.")
+                continue
             bridge_results[win["index"]] = result
             print(f"    köprü {win['index']}↔{win['index']+1} ✓")
         else:
             result = gc.call(clients, key_index, sys_chunk, win["text"])
+            if result is None:
+                print(f"    Uyarı: chunk {win['index']+1}/{len(chunks)} için model boş "
+                      f"yanıt döndürdü — bu chunk review'suz (orijinal haliyle) korunuyor.")
+                continue
             corrected[win["index"]] = result
             print(f"    chunk {win['index']+1}/{len(chunks)} ✓")
         time.sleep(2)

@@ -88,8 +88,8 @@ def extract_from_source(source_text: str, clients: list, key_index: list) -> dic
     time.sleep(1)
 
     try:
-        # JSON bloğunu temizle
-        raw = raw.strip()
+        # JSON bloğunu temizle (gc.call boş yanıtta None döndürebilir)
+        raw = (raw or "").strip()
         if raw.startswith("```"):
             raw = raw.split("```")[1]
             if raw.startswith("json"):
@@ -122,7 +122,7 @@ def update_from_translation(memory: dict, translated_text: str,
     time.sleep(1)
 
     try:
-        raw = raw.strip()
+        raw = (raw or "").strip()
         if raw.startswith("```"):
             raw = raw.split("```")[1]
             if raw.startswith("json"):
@@ -158,6 +158,9 @@ def add_summary(memory: dict, chapter_title: str, translated_text: str,
 
     summary = gc.call(clients, key_index, _SUMMARY_SYSTEM, cleaned_sample, temperature=0.1)
     time.sleep(1)
+    if not summary:
+        print(f"  Özet alınamadı (model boş yanıt döndürdü): {chapter_title[:60]}")
+        return memory
     memory["summaries"].append(f"{chapter_title}: {summary}")
     # Son 5 özeti tut — context window'u şişirme
     memory["summaries"] = memory["summaries"][-5:]
