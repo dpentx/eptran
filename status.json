@@ -7,5 +7,8 @@
   "completed": 1,
   "current_chapter": "",
   "started_at": "2026-07-09T13:22:17.173556+00:00",
-  "updated_at": "2026-07-09T13:24:53.028687+00:00"
+  "updated_at": "2026-07-09T13:25:40.279530+00:00",
+  "review_status": "running",
+  "review_total": 1,
+  "review_completed": 0
 }
