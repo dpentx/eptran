@@ -21,8 +21,11 @@
     "The Mystery of Marie Roget": "Marie Roget'in Gizemi",
     "The Balloon-Hoax": "Balon Hilesi",
     "MS. Found in a Bottle": "Şişede Bulunan El Yazması",
-    "The Oval Portrait": "Oval Portre"
+    "The Oval Portrait": "Oval Portre",
+    "The Raven Edition": "The Raven Edition"
   },
   "style_notes": "Resmi ve katalog niteliğinde bir metin; başlıklar büyük harfle, kısa ve net cümle yapısı, akademik bir üslup.",
-  "summaries": []
+  "summaries": [
+    "The Works of Edgar Allan Poe — Volume 1: Bu cilt, Edgar Allan Poe'nun hayatı ve ölümüyle birlikte “Altın Böcek”, “Rue Morgue Cinayetleri” ve “Marie Roget'in Gizemi” gibi ünlü kısa öykülerini, “Hans Pfaall'ın Eşi Benzeri Olmayan Maceraları”, “Balon Hilesi”, “Şişede Bulunan El Yazması” ve “Oval Portre” gibi macera ve bilim‑kurgu eserlerini içerir. Özellikle dedektif C. Auguste Dupin'in yer aldığı “Rue Morgue Cinayetleri”, Poe’nun gotik ve çözümleyici anlatımının öne çıktığı önemli bir olaydır."
+  ]
 }
