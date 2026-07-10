@@ -1,0 +1,28 @@
+{
+  "characters": {
+    "Edgar Allan Poe": "Edgar Allan Poe",
+    "James Russell Lowell": "James Russell Lowell",
+    "Nathaniel Parker Willis": "Nathaniel Parker Willis",
+    "David Widger": "David Widger",
+    "Carlo Traverso": "Carlo Traverso",
+    "Hans Pfaall": "Hans Pfaall"
+  },
+  "terms": {
+    "Project Gutenberg": "Project Gutenberg",
+    "eBook": "e-kitap",
+    "Volume": "Cilt",
+    "Preface": "Önsöz",
+    "Life of Poe": "Poe'nun Hayatı",
+    "Death of Poe": "Poe'nun Ölümü",
+    "The Unparalleled Adventures of One Hans Pfaall": "Hans Pfaall'ın Eşi Benzeri Olmayan Maceraları",
+    "The Gold-Bug": "Altın Böcek",
+    "Four Beasts in One—The Homo-Cameleopard": "Tek Bir Canlıda Dört Canavar—Homo-Kamelyopard",
+    "The Murders in the Rue Morgue": "Rue Morgue Cinayetleri",
+    "The Mystery of Marie Roget": "Marie Roget'in Gizemi",
+    "The Balloon-Hoax": "Balon Hilesi",
+    "MS. Found in a Bottle": "Şişede Bulunan El Yazması",
+    "The Oval Portrait": "Oval Portre"
+  },
+  "style_notes": "Resmi ve katalog niteliğinde bir metin; başlıklar büyük harfle, kısa ve net cümle yapısı, akademik bir üslup.",
+  "summaries": []
+}
