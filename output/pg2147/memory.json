@@ -12,7 +12,16 @@
     "Mrs. Hopkins": "Mrs. Hopkins",
     "Charles Dickens": "Charles Dickens",
     "Marie": "Marie",
-    "Madame Rogêt": "Madame Rogêt"
+    "Madame Rogêt": "Madame Rogêt",
+    "Mr. Monck Mason": "Mr. Monck Mason",
+    "Mr. Robert Holland": "Mr. Robert Holland",
+    "Mr. Henson": "Mr. Henson",
+    "Mr. Harrison Ainsworth": "Mr. Harrison Ainsworth",
+    "Sir Everard Bringhurst": "Sir Everard Bringhurst",
+    "Lord Bentinck": "Lord Bentinck",
+    "Mr. Osborne": "Mr. Osborne",
+    "Mr. Forsyth": "Mr. Forsyth",
+    "Sir George Cayley": "Sir George Cayley"
   },
   "terms": {
     "Project Gutenberg": "Project Gutenberg",
@@ -53,12 +62,25 @@
     "Beauvais": "Beauvais",
     "Barrière du Roule": "Barrière du Roule",
     "Rue des Drômes": "Rue des Drômes",
-    "Madame Rogêt": "Madame Rogêt"
+    "Madame Rogêt": "Madame Rogêt",
+    "Express": "Express",
+    "Norfolk": "Norfolk",
+    "Atlantic": "Atlantic",
+    "Victoria": "Victoria",
+    "S.C.": "S.C.",
+    "Charlestown": "Charlestown",
+    "Sullivan’s Island": "Sullivan’s Island",
+    "New York Sun": "New York Sun",
+    "Charleston": "Charleston",
+    "Balon": "Balon",
+    "Jack Sheppard": "Jack Sheppard",
+    "Adelaide Galerisi": "Adelaide Galerisi"
   },
   "style_notes": "Resmi ve katalog niteliğinde bir metin; başlıklar büyük harfle, kısa ve net cümle yapısı, akademik bir üslup.",
   "summaries": [
     "The Works of Edgar Allan Poe — Volume 1: Bu cilt, Edgar Allan Poe'nun hayatı ve ölümüyle birlikte “Altın Böcek”, “Rue Morgue Cinayetleri” ve “Marie Roget'in Gizemi” gibi ünlü kısa öykülerini, “Hans Pfaall'ın Eşi Benzeri Olmayan Maceraları”, “Balon Hilesi”, “Şişede Bulunan El Yazması” ve “Oval Portre” gibi macera ve bilim‑kurgu eserlerini içerir. Özellikle dedektif C. Auguste Dupin'in yer aldığı “Rue Morgue Cinayetleri”, Poe’nun gotik ve çözümleyici anlatımının öne çıktığı önemli bir olaydır.",
     "EDGAR ALLAN POE\nAN APPRECIATION: Edgar Allan Poe, “The Raven” ve “The Tell‑tale Heart” gibi karanlık şiir ve kısa öyküleriyle Amerikan edebiyatının en özgün dâhilerinden biri olarak anılır; James Russell Lowell, Poe’nun Baltimore’daki anıtını övgüyle tasvir ederken, Sarah Helen Whitman onun adını “a God‑peer” anagramıyla oyunlaştırmış, Poe’nun babası ise devrimci General David Poe’dur. (Bu özet, Poe’nun geniş eser yelpazesini ve ona duyulan takdiri vurgular.)",
-    "FOOTNOTES—Marie Rogêt: Metin, Marie'nin gizli sevgilisiyle Barrière du Roule’da buluşması ve kaçak evlilik planı üzerine, Madame Rogêt'in “Marie’yi bir daha göremeyeceğimden korkuyorum” kehaneti ve St. Eustache’in şüpheleriyle çevrili bir olay örgüsü sunar; Marie, akşamüstü uzun süre evden uzak kalmayı ve gizli bir ilişkiyi sürdürmeyi amaçlamaktadır."
+    "FOOTNOTES—Marie Rogêt: Metin, Marie'nin gizli sevgilisiyle Barrière du Roule’da buluşması ve kaçak evlilik planı üzerine, Madame Rogêt'in “Marie’yi bir daha göremeyeceğimden korkuyorum” kehaneti ve St. Eustache’in şüpheleriyle çevrili bir olay örgüsü sunar; Marie, akşamüstü uzun süre evden uzak kalmayı ve gizli bir ilişkiyi sürdürmeyi amaçlamaktadır.",
+    "THE BALLOON-HOAX: Victoria adlı yönlendirme balonu, Monck Mason, Robert Holland, Harrison Ainsworth ve diğer altı kişiyle 75 saat içinde New York’tan Charleston’a geçerek Atlantik’i başarıyla aşmıştır; yolculuk Sir Everard Bringhurst, Mr. Osborne, Mr. Henson ve iki Woolwich denizcisinin de katılımıyla gerçekleşmiştir."
   ]
 }
