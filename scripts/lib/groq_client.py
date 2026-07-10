@@ -62,6 +62,21 @@ def _parse_retry_seconds(error_message) -> int:
 
 MAX_EMPTY_RETRIES = 3  # model boş yanıt döndürürse bu kadar tekrar dene
 
+# Groq'un bazı organizasyon/tier'larında TPM (dakikalık token) limiti çok
+# düşük olabilir (örn. on_demand tier'da 8000 TPM görülmüştür). Groq,
+# max_completion_tokens'ı "bu istek en fazla bu kadar üretebilir" diye
+# PROMPT + bu değer toplamını önceden TPM limitine karşı kontrol eder —
+# gerçekte o kadar üretilmese bile istek daha başlamadan 413 ile reddedilir.
+# Bu yüzden makul/güvenli bir üst sınırla başlıyoruz; 413 alırsak küçültüp
+# tekrar deneriz (bkz. _shrink_and_retry mantığı call() içinde).
+_DEFAULT_MAX_COMPLETION_TOKENS = 6000
+_MIN_MAX_COMPLETION_TOKENS = 1024
+
+
+def _is_too_large_error(err) -> bool:
+    msg = str(err)
+    return "413" in msg or "reduce your message size" in msg or "tokens per minute" in msg.lower()
+
 
 def call(clients: list, key_index: list, system_msg: str, user_msg: str,
          temperature: float = 0.2) -> str | None:
@@ -75,8 +90,15 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
     boş/eksik bir "başarılı" sonuçla var olan içeriği yanlışlıkla ezmesini
     önlemek içindir — çağıranlar None kontrolü yapıp orijinal içeriği
     korumalı.
+
+    Hesabın TPM limiti tek bir isteğin talep ettiği (prompt + max tokens)
+    boyuttan küçükse (413/"too large"), bu ASLA retry ile düzelmez —
+    max_completion_tokens otomatik küçültülüp hemen (30s beklemeden)
+    tekrar denenir; _MIN_MAX_COMPLETION_TOKENS'a inmesine rağmen hâlâ
+    reddediliyorsa None döner (30 dakika boşuna döngüye girmek yerine).
     """
     empty_retries = 0
+    max_out = _DEFAULT_MAX_COMPLETION_TOKENS
     while True:
         now = time.time()
         available = [c for c in clients if c["locked_until"] <= now]
@@ -103,7 +125,7 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
                     {"role": "user", "content": user_msg},
                 ],
                 temperature=temperature,
-                max_completion_tokens=16000,
+                max_completion_tokens=max_out,
             )
             key_index[0] = (idx + 1) % len(clients)
             choice = response.choices[0]
@@ -156,10 +178,38 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
                 return None
             return result
         except RateLimitError as e:
+            if _is_too_large_error(e):
+                # Bu, zamanla düzelen bir rate limit DEĞİL — tek bir isteğin
+                # talep ettiği token miktarı hesabın TPM tavanından büyük.
+                # Key değiştirmek ya da beklemek işe yaramaz (aynı org'un
+                # tavanı); tek çözüm isteği küçültmek.
+                if max_out > _MIN_MAX_COMPLETION_TOKENS:
+                    max_out = max(max_out // 2, _MIN_MAX_COMPLETION_TOKENS)
+                    print(f"  Uyarı: istek TPM limiti için çok büyük (413) — "
+                          f"max_completion_tokens {max_out}'a düşürülüp hemen "
+                          f"tekrar deneniyor.")
+                    continue
+                print(f"  Hata: max_completion_tokens zaten {_MIN_MAX_COMPLETION_TOKENS} "
+                      f"(minimum) ama istek hâlâ hesabın TPM limitini aşıyor. "
+                      f"Bu metin parçası muhtemelen tek başına çok uzun ya da "
+                      f"Groq hesabının TPM tavanı (bkz. Groq konsolu > Settings > "
+                      f"Billing) çok düşük. Bu parça ATLANIYOR.")
+                return None
             wait = _parse_retry_seconds(e)
             print(f"Key {info['id']} rate limit! {wait}s kilitlendi.")
             info["locked_until"] = time.time() + wait
             key_index[0] = (idx + 1) % len(clients)
         except Exception as e:
+            if _is_too_large_error(e):
+                if max_out > _MIN_MAX_COMPLETION_TOKENS:
+                    max_out = max(max_out // 2, _MIN_MAX_COMPLETION_TOKENS)
+                    print(f"  Uyarı: istek TPM limiti için çok büyük (413) — "
+                          f"max_completion_tokens {max_out}'a düşürülüp hemen "
+                          f"tekrar deneniyor.")
+                    continue
+                print(f"  Hata: max_completion_tokens zaten {_MIN_MAX_COMPLETION_TOKENS} "
+                      f"(minimum) ama istek hâlâ hesabın TPM limitini aşıyor. "
+                      f"Bu parça ATLANIYOR.")
+                return None
             print(f"Hata: {e} — 30s sonra tekrar deneniyor...")
             time.sleep(30)
