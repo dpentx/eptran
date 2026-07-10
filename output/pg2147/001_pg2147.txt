@@ -1,10 +1,8 @@
 # The Works of Edgar Allan Poe — Volume 1
 
-Project Gutenberg e-kitap  
+Edgar Allan Poe'nun Eserleri — Cilt 1
 
-The Works of Edgar Allan Poe — Cilt 1  
-
-Başlık: The Works of Edgar Allan Poe — Cilt 1  
+Başlık: Edgar Allan Poe'nun Eserleri — Cilt 1
 
 Yazar: Edgar Allan Poe  
 
@@ -18,11 +16,11 @@ Dil: İngilizce
 
 Katkı: David Widger ve Carlo Traverso  
 
-*** PROJECT GUTENBERG E-KİTAP THE WORKS OF EDGAR ALLAN POE — CILT 1 ***  
+*** PROJECT GUTENBERG E‑KİTAP EDGAR ALLAN POE'İN ESERLERİ — CILT 1 ***
 
-The Works of Edgar Allan Poe  
+Edgar Allan Poe'nun Eserleri
 
-by Edgar Allan Poe  
+Edgar Allan Poe tarafından  
 
 The Raven Edition  
 
@@ -38,7 +36,7 @@ Hans Pfaall'ın Eşi Benzeri Olmayan Maceraları
 
 Altın Böcek  
 
-Tek Bir Canlıda Dört Canavar—Homo-Kamelyopard  
+Tek Bir Canlıda Dört Canavar—Homo‑Kamelyopard  
 
 Rue Morgue Cinayetleri  
 
