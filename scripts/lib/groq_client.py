@@ -69,10 +69,12 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
     Groq'a system+user mesajı gönder, rate limit'e göre key rotasyonu yap.
     Dönen çıktıyı clean_output() ile temizleyerek döndür.
 
-    Model boş yanıt döndürürse (MAX_EMPTY_RETRIES kez tekrar denendikten
-    sonra hâlâ boşsa) "" DEĞİL None döner. Bu, çağıran kodun boş bir
-    "başarılı" sonuçla var olan içeriği yanlışlıkla ezmesini önlemek
-    içindir — çağıranlar None kontrolü yapıp orijinal içeriği korumalı.
+    Model boş yanıt döndürürse VEYA yanıt token limiti yüzünden yarıda
+    kesilirse (finish_reason == "length") (MAX_EMPTY_RETRIES kez tekrar
+    denendikten sonra hâlâ öyleyse) "" DEĞİL None döner. Bu, çağıran kodun
+    boş/eksik bir "başarılı" sonuçla var olan içeriği yanlışlıkla ezmesini
+    önlemek içindir — çağıranlar None kontrolü yapıp orijinal içeriği
+    korumalı.
     """
     empty_retries = 0
     while True:
@@ -101,9 +103,31 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
                     {"role": "user", "content": user_msg},
                 ],
                 temperature=temperature,
+                max_completion_tokens=16000,
             )
             key_index[0] = (idx + 1) % len(clients)
-            raw = response.choices[0].message.content
+            choice = response.choices[0]
+            raw = choice.message.content
+            finish_reason = getattr(choice, "finish_reason", None)
+
+            if finish_reason == "length":
+                # Model, görünür yanıtı bitirmeden token bütçesini tüketti
+                # (genellikle gizli reasoning token'ları yüzünden). raw dolu
+                # olabilir ama cümle ortasında kesilmiş olabilir — bunu
+                # sessizce "tamamlanmış" gibi kabul ETME.
+                print(f"  Uyarı: model yanıtı yarıda kesildi (finish_reason=length, "
+                      f"key {info['id']}, ham uzunluk: {len(raw or '')})")
+                empty_retries += 1
+                if empty_retries <= MAX_EMPTY_RETRIES:
+                    wait = 5 * empty_retries
+                    print(f"  Kesik yanıt — {wait}s sonra tekrar deneniyor "
+                          f"({empty_retries}/{MAX_EMPTY_RETRIES})...")
+                    time.sleep(wait)
+                    continue
+                print(f"  Hata: {MAX_EMPTY_RETRIES} denemeden sonra hâlâ kesik yanıt — "
+                      f"içerik korunacak, bu parça ATLANACAK (üzerine yazılmayacak).")
+                return None
+
             if not raw or not raw.strip():
                 print(f"  Uyarı: model boş yanıt döndürdü (key {info['id']})")
                 empty_retries += 1
