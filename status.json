@@ -1,17 +1,11 @@
 {
-  "status": "completed",
-  "book": "the_yellow_wallpaper",
-  "epub_file": "the_yellow_wallpaper.epub",
+  "status": "running",
+  "book": "pg2147",
+  "epub_file": "pg2147.epub",
   "source_type": "epub",
-  "total": 1,
-  "completed": 1,
+  "total": 14,
+  "completed": 0,
   "current_chapter": "",
-  "started_at": "2026-07-09T13:22:17.173556+00:00",
-  "updated_at": "2026-07-09T13:28:29.802647+00:00",
-  "review_status": "completed",
-  "review_total": 1,
-  "review_completed": 1,
-  "review_current": "",
-  "convert_status": "completed",
-  "epub_output": "output/the_yellow_wallpaper/the_yellow_wallpaper_tr.epub"
+  "started_at": "2026-07-10T06:39:13.326545+00:00",
+  "updated_at": "2026-07-10T06:39:13.326564+00:00"
 }
