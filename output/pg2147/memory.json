@@ -21,7 +21,10 @@
     "Lord Bentinck": "Lord Bentinck",
     "Mr. Osborne": "Mr. Osborne",
     "Mr. Forsyth": "Mr. Forsyth",
-    "Sir George Cayley": "Sir George Cayley"
+    "Sir George Cayley": "Sir George Cayley",
+    "Mrs. Radcliffe": "Mrs. Radcliffe",
+    "Pedro": "Pedro",
+    "Sully": "Sully"
   },
   "terms": {
     "Project Gutenberg": "Project Gutenberg",
@@ -74,13 +77,16 @@
     "Charleston": "Charleston",
     "Balon": "Balon",
     "Jack Sheppard": "Jack Sheppard",
-    "Adelaide Galerisi": "Adelaide Galerisi"
+    "Adelaide Galerisi": "Adelaide Galerisi",
+    "Appennines": "Apeninler",
+    "Moresque": "Moresk"
   },
   "style_notes": "Resmi ve katalog niteliğinde bir metin; başlıklar büyük harfle, kısa ve net cümle yapısı, akademik bir üslup.",
   "summaries": [
     "The Works of Edgar Allan Poe — Volume 1: Bu cilt, Edgar Allan Poe'nun hayatı ve ölümüyle birlikte “Altın Böcek”, “Rue Morgue Cinayetleri” ve “Marie Roget'in Gizemi” gibi ünlü kısa öykülerini, “Hans Pfaall'ın Eşi Benzeri Olmayan Maceraları”, “Balon Hilesi”, “Şişede Bulunan El Yazması” ve “Oval Portre” gibi macera ve bilim‑kurgu eserlerini içerir. Özellikle dedektif C. Auguste Dupin'in yer aldığı “Rue Morgue Cinayetleri”, Poe’nun gotik ve çözümleyici anlatımının öne çıktığı önemli bir olaydır.",
     "EDGAR ALLAN POE\nAN APPRECIATION: Edgar Allan Poe, “The Raven” ve “The Tell‑tale Heart” gibi karanlık şiir ve kısa öyküleriyle Amerikan edebiyatının en özgün dâhilerinden biri olarak anılır; James Russell Lowell, Poe’nun Baltimore’daki anıtını övgüyle tasvir ederken, Sarah Helen Whitman onun adını “a God‑peer” anagramıyla oyunlaştırmış, Poe’nun babası ise devrimci General David Poe’dur. (Bu özet, Poe’nun geniş eser yelpazesini ve ona duyulan takdiri vurgular.)",
     "FOOTNOTES—Marie Rogêt: Metin, Marie'nin gizli sevgilisiyle Barrière du Roule’da buluşması ve kaçak evlilik planı üzerine, Madame Rogêt'in “Marie’yi bir daha göremeyeceğimden korkuyorum” kehaneti ve St. Eustache’in şüpheleriyle çevrili bir olay örgüsü sunar; Marie, akşamüstü uzun süre evden uzak kalmayı ve gizli bir ilişkiyi sürdürmeyi amaçlamaktadır.",
-    "THE BALLOON-HOAX: Victoria adlı yönlendirme balonu, Monck Mason, Robert Holland, Harrison Ainsworth ve diğer altı kişiyle 75 saat içinde New York’tan Charleston’a geçerek Atlantik’i başarıyla aşmıştır; yolculuk Sir Everard Bringhurst, Mr. Osborne, Mr. Henson ve iki Woolwich denizcisinin de katılımıyla gerçekleşmiştir."
+    "THE BALLOON-HOAX: Victoria adlı yönlendirme balonu, Monck Mason, Robert Holland, Harrison Ainsworth ve diğer altı kişiyle 75 saat içinde New York’tan Charleston’a geçerek Atlantik’i başarıyla aşmıştır; yolculuk Sir Everard Bringhurst, Mr. Osborne, Mr. Henson ve iki Woolwich denizcisinin de katılımıyla gerçekleşmiştir.",
+    "THE OVAL PORTRAIT: Valetinin zorla girmeye çalıştığı terk edilmiş bir şatoda, anlatıcı yaralı hâliyle odada kalır, Pedro’nun perdeleri açıp şamdanı yakmasını ister; gece yarısı ışıkların yön değiştirmesiyle genç bir kızın portresini net bir şekilde görür ve bu anı yoğun bir farkındalıkla deneyimler."
   ]
 }
