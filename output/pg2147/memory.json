@@ -10,7 +10,9 @@
     "General David Poe": "General David Poe",
     "Lafayette": "Lafayette",
     "Mrs. Hopkins": "Mrs. Hopkins",
-    "Charles Dickens": "Charles Dickens"
+    "Charles Dickens": "Charles Dickens",
+    "Marie": "Marie",
+    "Madame Rogêt": "Madame Rogêt"
   },
   "terms": {
     "Project Gutenberg": "Project Gutenberg",
@@ -46,11 +48,17 @@
     "The Haunted Palace": "Perili Saray",
     "Tamerlane": "Timur",
     "The City in the Sea": "Denizdeki Şehir",
-    "The Raven": "Kuzgun"
+    "The Raven": "Kuzgun",
+    "St. Eustache": "St. Eustache",
+    "Beauvais": "Beauvais",
+    "Barrière du Roule": "Barrière du Roule",
+    "Rue des Drômes": "Rue des Drômes",
+    "Madame Rogêt": "Madame Rogêt"
   },
   "style_notes": "Resmi ve katalog niteliğinde bir metin; başlıklar büyük harfle, kısa ve net cümle yapısı, akademik bir üslup.",
   "summaries": [
     "The Works of Edgar Allan Poe — Volume 1: Bu cilt, Edgar Allan Poe'nun hayatı ve ölümüyle birlikte “Altın Böcek”, “Rue Morgue Cinayetleri” ve “Marie Roget'in Gizemi” gibi ünlü kısa öykülerini, “Hans Pfaall'ın Eşi Benzeri Olmayan Maceraları”, “Balon Hilesi”, “Şişede Bulunan El Yazması” ve “Oval Portre” gibi macera ve bilim‑kurgu eserlerini içerir. Özellikle dedektif C. Auguste Dupin'in yer aldığı “Rue Morgue Cinayetleri”, Poe’nun gotik ve çözümleyici anlatımının öne çıktığı önemli bir olaydır.",
-    "EDGAR ALLAN POE\nAN APPRECIATION: Edgar Allan Poe, “The Raven” ve “The Tell‑tale Heart” gibi karanlık şiir ve kısa öyküleriyle Amerikan edebiyatının en özgün dâhilerinden biri olarak anılır; James Russell Lowell, Poe’nun Baltimore’daki anıtını övgüyle tasvir ederken, Sarah Helen Whitman onun adını “a God‑peer” anagramıyla oyunlaştırmış, Poe’nun babası ise devrimci General David Poe’dur. (Bu özet, Poe’nun geniş eser yelpazesini ve ona duyulan takdiri vurgular.)"
+    "EDGAR ALLAN POE\nAN APPRECIATION: Edgar Allan Poe, “The Raven” ve “The Tell‑tale Heart” gibi karanlık şiir ve kısa öyküleriyle Amerikan edebiyatının en özgün dâhilerinden biri olarak anılır; James Russell Lowell, Poe’nun Baltimore’daki anıtını övgüyle tasvir ederken, Sarah Helen Whitman onun adını “a God‑peer” anagramıyla oyunlaştırmış, Poe’nun babası ise devrimci General David Poe’dur. (Bu özet, Poe’nun geniş eser yelpazesini ve ona duyulan takdiri vurgular.)",
+    "FOOTNOTES—Marie Rogêt: Metin, Marie'nin gizli sevgilisiyle Barrière du Roule’da buluşması ve kaçak evlilik planı üzerine, Madame Rogêt'in “Marie’yi bir daha göremeyeceğimden korkuyorum” kehaneti ve St. Eustache’in şüpheleriyle çevrili bir olay örgüsü sunar; Marie, akşamüstü uzun süre evden uzak kalmayı ve gizli bir ilişkiyi sürdürmeyi amaçlamaktadır."
   ]
 }
