@@ -4,7 +4,9 @@
     "James Russell Lowell": "James Russell Lowell",
     "Nathaniel Parker Willis": "Nathaniel Parker Willis",
     "Hans Pfaall": "Hans Pfaall",
-    "Marie Roget": "Marie Roget"
+    "Marie Roget": "Marie Roget",
+    "David Widger": "David Widger",
+    "Carlo Traverso": "Carlo Traverso"
   },
   "terms": {
     "Project Gutenberg": "Project Gutenberg",
@@ -17,10 +19,20 @@
     "Four Beasts in One—The Homo-Cameleopard": "Tek Bir Canlıda Dört Hayvan—Homo-Kamelyopard",
     "The Murders in the Rue Morgue": "Morgue Sokağındaki Cinayetler",
     "The Mystery of Marie Roget": "Marie Roget'in Gizemi",
-    "The Balloon-Hoax": "Balon Hilesi",
+    "The Balloon-Hoox": "Balon Hilesi",
     "MS. Found in a Bottle": "Şişede Bulunan El Yazması",
-    "The Oval Portrait": "Oval Portre"
+    "The Oval Portrait": "Oval Portre",
+    "The Raven Edition": "The Raven Edition",
+    "Contents": "İçindekiler",
+    "Contributors": "Katkıda Bulunan",
+    "Contributions": "Katkılar",
+    "Last updated": "En son güncellenme",
+    "Language": "Dil",
+    "Title": "Başlık",
+    "Author": "Yazar"
   },
   "style_notes": "Metin resmi ve bibliyografik bir üslup taşır; başlık ve içerik listeleri net, kısa ve nesnel bir dille sunulmalıdır.",
-  "summaries": []
+  "summaries": [
+    "The Works of Edgar Allan Poe — Volume 1: Bu kitap, Edgar Allan Poe'nun hayatı, ölümü ve “The Unparalleled Adventures of One Hans Pfaall”, “Altın Böcek”, “Morgue Sokağındaki Cinayetler” gibi öykülerini içeren bir derlemedir; katkıda bulunanlar arasında James Russell Lowell, Nathaniel Parker Willis, David Widger ve Carlo Traverso bulunur. Ana karakterler Poe’nun kendisi ve hikayelerdeki Hans Pfaall gibi figürlerdir."
+  ]
 }
