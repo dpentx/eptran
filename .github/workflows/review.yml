@@ -33,6 +33,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: main
+          fetch-depth: 0
 
       - name: Pull latest changes
         run: git pull origin main
