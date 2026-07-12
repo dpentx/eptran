@@ -9,6 +9,16 @@ on:
   schedule:
     - cron: "0 */6 * * *"
 
+# translate.yml ile AYNI grup — ikisi de status.json ve output/ üzerinde
+# git push yapıyor. Bu olmadan, translate hâlâ çalışırken (ya da bir
+# önceki review hâlâ çalışırken) yeni bir review tetiklenirse, ikisi
+# aynı anda push etmeye çalışıp birbirinin commit'ini kaybettirebiliyordu
+# (pg2147'deki eksik bölümlerin sebebi buydu). cancel-in-progress: false
+# -> devam eden bir review yarıda kesilmez, yeni tetiklenen sıraya girer.
+concurrency:
+  group: eptran-pipeline
+  cancel-in-progress: false
+
 jobs:
   review:
     runs-on: ubuntu-latest

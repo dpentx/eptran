@@ -7,6 +7,12 @@ on:
     types:
       - completed
 
+# Aynı grup — translate/review ile aynı git durumuna (status.json,
+# output/) yazıyor, sırasız çalışmasın diye kuyruğa alınıyor.
+concurrency:
+  group: eptran-pipeline
+  cancel-in-progress: false
+
 jobs:
   convert:
     runs-on: ubuntu-latest

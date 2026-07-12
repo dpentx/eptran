@@ -5,6 +5,16 @@ on:
   schedule:
     - cron: "0 */6 * * *"
 
+# translate/review/convert hepsi aynı git durumunu (status.json, output/)
+# okuyup yazıyor. Aynı grubu paylaşarak, biri çalışırken diğerinin
+# (ya da kendisinin başka bir tetiklemesinin) aynı anda başlayıp git
+# push'larda yarışmasını (ve sessizce commit kaybetmesini) engelliyoruz.
+# cancel-in-progress: false -> yeni tetiklenen çalışma öncekini iptal
+# etmez, sırasını bekler.
+concurrency:
+  group: eptran-pipeline
+  cancel-in-progress: false
+
 jobs:
   translate:
     runs-on: ubuntu-latest
