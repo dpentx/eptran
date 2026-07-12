@@ -27,8 +27,13 @@
     "Author": "Yazar",
     "Contributor": "Katkıda Bulunan",
     "Language": "Dil",
-    "Most recently updated": "En son güncellendi"
+    "Most recently updated": "En son güncellendi",
+    "The Works of Edgar Allan Poe — Volume 1": "Edgar Allan Poe'nun Eserleri — Cilt 1",
+    "The Raven Edition": "The Raven Edition",
+    "Table of Contents": "İçindekiler"
   },
   "style_notes": "Metin resmi, bibliyografik bir üslup taşır; başlıklar büyük harfle ve özgün noktalama işaretleri korunmalı, özel isimler orijinal haliyle bırakılmalı.",
-  "summaries": []
+  "summaries": [
+    "The Works of Edgar Allan Poe — Volume 1: Edgar Allan Poe'nun eserlerini içeren bu hacimde, Poe'nun hayatı, ölümü ve çeşitli öyküleri (örneğin “Hans Pfaall’ın Eşsiz Maceraları”, “Altın Böcek”, “Rue Morgue’daki Cinayetler”) yer alırken, katkıda bulunanlar arasında James Russell Lowell, Nathaniel Parker Willis, David Widger ve Carlo Traverso gibi isimler bulunur."
+  ]
 }
