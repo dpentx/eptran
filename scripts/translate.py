@@ -163,6 +163,40 @@ def translate_chapter(chapter: dict, clients: list, key_index: list,
     return result
 
 
+# ── Chunk checkpoint (parça bazlı ara kayıt) ────────────────────────────────
+# Büyük bölümler (çok chunk'lı) bir run içinde bitmeyip timeout'a uğrarsa,
+# o ana kadar çevrilen chunk'lar burada saklanır. Bir sonraki run, bölümü
+# baştan değil KALDIĞI CHUNK'TAN devam ettirir — hem zaman kazandırır hem
+# de her chunk kendi başına diske/commit'e yazıldığı için run yarıda
+# kesilse bile o parçalar kaybolmaz.
+
+def _checkpoint_path(output_dir: str, i: int, book_slug: str) -> str:
+    return f"{output_dir}/.checkpoints/{i+1:03d}_{book_slug}.json"
+
+
+def _load_checkpoint(path: str) -> list:
+    if not os.path.exists(path):
+        return []
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f).get("parts", [])
+    except (json.JSONDecodeError, OSError):
+        print(f"  Uyarı: checkpoint okunamadı ({path}), sıfırdan başlanıyor.")
+        return []
+
+
+def _save_checkpoint(path: str, parts: list) -> None:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump({"parts": parts}, f, ensure_ascii=False)
+
+
+def _remove_checkpoint(path: str) -> None:
+    if os.path.exists(path):
+        os.remove(path)
+        subprocess.run(["git", "rm", "-f", "--ignore-unmatch", path])
+
+
 # ── Ana akış ───────────────────────────────────────────────────────────────────
 
 def main():
@@ -252,31 +286,45 @@ def main():
 
         memory_ctx = mem.build_context(memory)
         chunks = _chunk(chapter["text"])
-        parts = []
+        checkpoint_path = _checkpoint_path(output_dir, i, book_slug)
+        parts = _load_checkpoint(checkpoint_path)
+        if parts:
+            print(f"  Checkpoint bulundu: {len(parts)}/{len(chunks)} parça zaten "
+                  f"çevrilmiş, kaldığı chunk'tan devam ediliyor.")
 
         chapter_failed = False
-        for j, chunk in enumerate(chunks):
+        for j in range(len(parts), len(chunks)):
+            chunk = chunks[j]
             ch_copy = dict(chapter, text=chunk)
             translated = translate_chapter(ch_copy, clients, key_index,
                                            memory_ctx, protected_str, j, len(chunks))
             if translated is None:
                 print(f"  Hata: parça {j+1}/{len(chunks)} çevrilemedi (model ısrarla "
                       f"boş yanıt döndürdü). Bu bölüm bu çalıştırmada atlanıyor, "
-                      f"bir sonraki run'da yeniden denenecek.")
+                      f"bir sonraki run'da (şimdiye kadar çevrilen "
+                      f"{len(parts)}/{len(chunks)} parçadan devam ederek) "
+                      f"yeniden denenecek.")
                 chapter_failed = True
                 break
             parts.append(translated)
+            # Her chunk'ı hemen diske + git'e yaz — run burada kesilse bile
+            # bu parça kaybolmaz, bir sonraki run j+1'den devam eder.
+            _save_checkpoint(checkpoint_path, parts)
+            subprocess.run(["git", "add", checkpoint_path])
+            write_status(status, f"status: {i}/{total} (parça {j+1}/{len(chunks)})")
             import time; time.sleep(2)
 
         if chapter_failed:
-            # status'u ilerletme — bir sonraki run bu bölümü baştan dener.
-            # Var olan (varsa) çıktı dosyasına dokunulmadı.
+            # status'u ilerletme — bir sonraki run bu bölümü, checkpoint'te
+            # kayıtlı olan yerden devam ettirir. Var olan (varsa) çıktı
+            # dosyasına dokunulmadı.
             continue
 
         full_translation = "\n\n".join(parts)
 
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(f"# {chapter['title']}\n\n{full_translation}\n")
+        _remove_checkpoint(checkpoint_path)
 
         # Hafızayı çeviriyle güncelle + özet ekle
         memory = mem.update_from_translation(memory, full_translation, clients, key_index)
