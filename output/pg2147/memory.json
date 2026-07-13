@@ -4,7 +4,9 @@
     "James Russell Lowell": "James Russell Lowell",
     "Nathaniel Parker Willis": "Nathaniel Parker Willis",
     "Hans Pfaall": "Hans Pfaall",
-    "Marie Roget": "Marie Roget"
+    "Marie Roget": "Marie Roget",
+    "David Widger": "David Widger",
+    "Carlo Traverso": "Carlo Traverso"
   },
   "terms": {
     "Project Gutenberg": "Project Gutenberg",
@@ -24,8 +26,11 @@
     "Credits": "Katkılar",
     "Contributor": "Katkıda Bulunan",
     "Language": "Dil",
-    "Most recently updated": "En son güncellenme"
+    "Most recently updated": "En son güncellenme",
+    "The Works of Edgar Allan Poe — Cilt 1": "The Works of Edgar Allan Poe — Cilt 1"
   },
   "style_notes": "Metin, bibliyografik ve başlık odaklı bir üslup taşıyor; resmi, nesnel ve kısa cümle yapılarıyla sunulmalı.",
-  "summaries": []
+  "summaries": [
+    "The Works of Edgar Allan Poe — Volume 1: Bu cilt, Edgar Allan Poe'nun hayatı ve ölümüyle birlikte “Hans Pfaall'ın Eşsiz Maceraları”, “Altın Böcek”, “Rue Morgue'deki Cinayetler”, “Marie Roget'in Gizemi”, “Balon Hilesi”, “Şişede Bulunan El Yazması” ve “Oval Portre” gibi ünlü öykülerini içerir; öykülerde Hans Pfaall, C. Auguste Dupin ve Marie Roget gibi karakterler öne çıkar. Ayrıca önsöz ve katkı sağlayan James Russell Lowell, Nathaniel Parker Willis gibi isimler de yer alır."
+  ]
 }
