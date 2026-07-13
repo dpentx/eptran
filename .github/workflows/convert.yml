@@ -7,10 +7,13 @@ on:
     types:
       - completed
 
-# Aynı grup — translate/review ile aynı git durumuna (status.json,
-# output/) yazıyor, sırasız çalışmasın diye kuyruğa alınıyor.
+# Sadece kendi türünden (başka bir convert run'ı) ile çakışmayı önler —
+# translate/review ile artık ayrı gruplarda (bkz. o dosyalardaki
+# açıklama: aynı grupta olmaları, translate zaman aşımına uğradığında
+# onun kuyruktaki "devam et" denemesinin review/convert tarafından
+# iptal edilmesine yol açıyordu).
 concurrency:
-  group: eptran-pipeline
+  group: eptran-convert
   cancel-in-progress: false
 
 jobs:

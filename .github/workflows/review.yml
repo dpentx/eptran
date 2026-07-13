@@ -9,14 +9,21 @@ on:
   schedule:
     - cron: "0 */6 * * *"
 
-# translate.yml ile AYNI grup — ikisi de status.json ve output/ üzerinde
-# git push yapıyor. Bu olmadan, translate hâlâ çalışırken (ya da bir
-# önceki review hâlâ çalışırken) yeni bir review tetiklenirse, ikisi
-# aynı anda push etmeye çalışıp birbirinin commit'ini kaybettirebiliyordu
-# (pg2147'deki eksik bölümlerin sebebi buydu). cancel-in-progress: false
-# -> devam eden bir review yarıda kesilmez, yeni tetiklenen sıraya girer.
+# Sadece kendi türünden (başka bir review run'ı) ile çakışmayı önler.
+# translate.yml ile ARTIK AYNI GRUBU KULLANMIYORUZ: aynı grupta kuyruğa
+# girmiş birden fazla çalışma varsa GitHub Actions sadece EN SON kuyruğa
+# gireni çalıştırıp öncekileri iptal ediyor — translate zaman aşımına
+# uğrayınca onun "devam et" denemesi, aynı gruba kuyruğa girmiş bir
+# review çalışmasıyla YER DEĞİŞTİRİP iptal oluyordu, çeviri bu yüzden
+# hiç ilerleyemiyordu. Şimdi git push çakışması riski, git_utils.py'deki
+# sağlamlaştırılmış push+doğrulama mantığıyla ve fetch-depth: 0 ile ayrıca
+# önleniyor; review'ın gerçek iş yapması zaten status.json'daki
+# "status: completed" kontrolüne bağlı, o yüzden translate bitmeden
+# aynı anda çalışsa bile zararsız.
+# cancel-in-progress: false -> devam eden bir review yarıda kesilmez,
+# yeni tetiklenen sıraya girer.
 concurrency:
-  group: eptran-pipeline
+  group: eptran-review
   cancel-in-progress: false
 
 jobs:

@@ -9,10 +9,20 @@ on:
 # okuyup yazıyor. Aynı grubu paylaşarak, biri çalışırken diğerinin
 # (ya da kendisinin başka bir tetiklemesinin) aynı anda başlayıp git
 # push'larda yarışmasını (ve sessizce commit kaybetmesini) engelliyoruz.
+# Sadece kendi türünden (başka bir translate run'ı) ile çakışmayı önler.
+# ÖNEMLİ: review/convert ile AYNI grubu kullanmıyoruz — aynı grupta
+# kuyruğa girmiş birden fazla çalışma olduğunda GitHub Actions sadece
+# EN SON kuyruğa gireni çalıştırıp öncekileri iptal ediyor. Bu yüzden
+# translate zaman aşımına uğrayıp bir sonraki denemesi kuyruğa girdiğinde,
+# review'ın kuyruğa girmiş bir çalışması onu iptal edip yerine geçebiliyordu
+# — çevirinin hiç ilerleyememesinin sebebi buydu. Artık her workflow kendi
+# grubunda, birbirini kuyruktan atamıyor. Çapraz güvenlik zaten
+# status.json kontrolüyle sağlanıyor (review, translate "completed"
+# olmadan gerçek işi yapmıyor).
 # cancel-in-progress: false -> yeni tetiklenen çalışma öncekini iptal
 # etmez, sırasını bekler.
 concurrency:
-  group: eptran-pipeline
+  group: eptran-translate
   cancel-in-progress: false
 
 jobs:
