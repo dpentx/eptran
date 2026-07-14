@@ -275,7 +275,13 @@ def main():
 
         print(f"[{i+1}/{total}] Çevriliyor: {chapter['title']}")
         status["current_chapter"] = chapter["title"]
-        write_status(status, f"status: {i}/{total}")
+        # NOT: {status['completed']} zaten kaç bölümün BİTTİĞİni gösteriyor;
+        # {i+1} ise şu an BAŞLANAN bölümü. İkisi karışmasın diye ayrı ayrı
+        # yazıyoruz — önceden ikisi için de aynı format kullanılıyordu, bu
+        # da "status: 2/14" gibi bir mesajın "2 bölüm bitti" mi yoksa
+        # "3. bölüme başlandı, hâlâ 1 bitmiş" mi olduğunu belirsiz
+        # bırakıyordu (git geçmişini okurken kafa karıştırmıştı).
+        write_status(status, f"başlıyor: {i+1}/{total} (bitmiş: {status['completed']})")
 
         # Bölüm başına NER — kaynak metinden özel isimleri çıkar
         print(f"  NER taraması...")
@@ -311,7 +317,8 @@ def main():
             # bu parça kaybolmaz, bir sonraki run j+1'den devam eder.
             _save_checkpoint(checkpoint_path, parts)
             subprocess.run(["git", "add", checkpoint_path])
-            write_status(status, f"status: {i}/{total} (parça {j+1}/{len(chunks)})")
+            write_status(status, f"parça: bölüm {i+1}/{total} - chunk {j+1}/{len(chunks)} "
+                                  f"(bitmiş bölüm: {status['completed']})")
             import time; time.sleep(2)
 
         if chapter_failed:
