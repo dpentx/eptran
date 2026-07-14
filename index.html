@@ -357,6 +357,14 @@
       display: block;
     }
 
+    #review-card {
+      display: none;
+    }
+
+    #review-card.visible {
+      display: block;
+    }
+
     .status-row {
       display: flex;
       align-items: center;
@@ -431,7 +439,12 @@
       color: var(--md-on-secondary-container);
     }
 
-    .badge-running i, .badge-converting i {
+    .badge-reviewing {
+      background: var(--md-tertiary-container);
+      color: var(--md-on-tertiary-container);
+    }
+
+    .badge-running i, .badge-converting i, .badge-reviewing i {
       animation: pulse 2s ease-in-out infinite;
     }
 
@@ -693,6 +706,26 @@
   <div class="updated-at" id="updated-at"></div>
 </div>
 
+<div class="card" id="review-card">
+  <div class="card-title">inceleme durumu</div>
+
+  <div class="status-row">
+    <div class="progress-book" id="review-book">—</div>
+    <span class="status-badge badge-idle" id="review-badge">
+      <i class="ti ti-clock"></i> bekliyor
+    </span>
+  </div>
+
+  <div class="progress-bar-track">
+    <div class="progress-bar-fill" id="review-fill"></div>
+  </div>
+
+  <div class="progress-header">
+    <div class="progress-chapter" id="review-file">—</div>
+    <div class="progress-count" id="review-count">0 / 0</div>
+  </div>
+</div>
+
 <div class="card" id="output-section">
   <div class="card-title">çıktı dosyaları</div>
   <div id="epub-area"></div>
@@ -702,7 +735,7 @@
 <footer>
   <a href="https://github.com/search?q=eptran" target="_blank">github</a>
   &nbsp;·&nbsp;
-  <a href="#" onclick="event.preventDefault()">groq llama-3.3-70b</a>
+  <a href="#" onclick="event.preventDefault()">groq gpt-oss-120b</a>
 </footer>
 
 <script>
@@ -925,6 +958,45 @@
           </div>`)
         .join('');
     }
+
+    updateReviewUI(data);
+  }
+
+  function updateReviewUI(data) {
+    const reviewCard  = document.getElementById('review-card');
+    const badge       = document.getElementById('review-badge');
+    const bookEl      = document.getElementById('review-book');
+    const fileEl      = document.getElementById('review-file');
+    const countEl     = document.getElementById('review-count');
+    const fill        = document.getElementById('review-fill');
+
+    // İnceleme, çeviri tamamlanmadan başlamıyor — review_status hiç
+    // yoksa (henüz sıra gelmemiş) kartı hiç gösterme.
+    if (!data.review_status) {
+      reviewCard.classList.remove('visible');
+      return;
+    }
+    reviewCard.classList.add('visible');
+
+    badge.className = 'status-badge';
+    if (data.review_status === 'running') {
+      badge.classList.add('badge-reviewing');
+      badge.innerHTML = '<i class="ti ti-eye-check"></i> inceleniyor';
+    } else if (data.review_status === 'completed') {
+      badge.classList.add('badge-completed');
+      badge.innerHTML = '<i class="ti ti-check"></i> tamamlandı';
+    } else {
+      badge.classList.add('badge-idle');
+      badge.innerHTML = '<i class="ti ti-clock"></i> bekliyor';
+    }
+
+    if (data.book) bookEl.textContent = data.book.replace(/_/g, ' ');
+    if (data.review_current) fileEl.textContent = '→ ' + data.review_current;
+
+    const total = data.review_total || 0;
+    const completed = data.review_completed || 0;
+    countEl.textContent = `${completed} / ${total}`;
+    fill.style.width = total > 0 ? `${(completed / total) * 100}%` : '0%';
   }
 
   function showFeedback(msg, state = 'uploading', keepProgress = false) {
