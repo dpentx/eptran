@@ -4,27 +4,25 @@ Git işlemleri ve status.json yönetimi.
 import json
 import os
 import subprocess
+import time
 from datetime import datetime, timezone, timedelta
 
 STATUS_FILE = "status.json"
 STALE_RUNNING_MINUTES = 30
 
 
-def git_push(message: str) -> None:
+def git_push(message: str, max_retries: int = 3) -> None:
     """
     Değişiklikleri commit'leyip push eder.
 
-    NOT: Bu fonksiyon artık sık sık (chunk başına bir kez) çağrılıyor
-    (checkpoint özelliği). Sığ (shallow) bir clone üzerinde bu kadar sık
-    'git pull --rebase' çağırmak kırılgandır — bazı durumlarda rebase,
-    daha önce push edilmiş bir local commit'i (ve içindeki dosyayı)
-    sessizce kaybettirebilir; push yine de 'başarılı' görünür. Bunun
-    önündeki ASIL çözüm workflow'larda actions/checkout'a
-    'fetch-depth: 0' eklemek (artık tam geçmişle çekiliyor). Burada ek
-    olarak: rebase yerine daha öngörülebilir olan fetch+rebase akışını
-    kullanıyoruz ve push sonrası commit'in gerçekten remote'a ulaştığını
-    doğruluyoruz — ulaşmadıysa sessizce devam etmek yerine hata basıp
-    script'i durduruyoruz (sessiz veri kaybı yerine gürültülü başarısızlık).
+    fetch-depth: 0 ve tree-doğrulama sayesinde artık sessiz veri kaybı
+    yaşanmıyor — gerçek bir çakışma olursa gürültülü şekilde duruyor.
+    Ama bazı çakışmalar GERÇEKTEN GEÇİCİ: örn. bir workflow run'ı
+    bitip concurrency kuyruğundaki bir sonraki run hemen başladığında,
+    iki tarafın da status.json'a neredeyse aynı anda commit atması gibi.
+    Bu yüzden fetch+rebase+push'ı birkaç kez (kısa bir bekleme ile)
+    deniyoruz; hepsi başarısız olursa (gerçek/kalıcı bir sorun varsa)
+    yine RuntimeError ile duruyoruz — sonsuza kadar sessizce denemiyoruz.
     """
     subprocess.run(["git", "add", "-A"], check=True)
     result = subprocess.run(["git", "diff", "--cached", "--quiet"])
@@ -32,43 +30,65 @@ def git_push(message: str) -> None:
         return  # değişiklik yok
 
     subprocess.run(["git", "commit", "-m", message], check=True)
-    local_sha = subprocess.run(
-        ["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True
-    ).stdout.strip()
 
-    subprocess.run(["git", "fetch", "origin", "main"], check=True)
-    rebase = subprocess.run(["git", "rebase", "origin/main"], capture_output=True, text=True)
-    if rebase.returncode != 0:
-        # Rebase temiz gitmediyse (gerçek çakışma vb.) yarım bırakma —
-        # abort edip net bir hatayla dur. Sessizce "en iyi çabayı göster"
-        # yaklaşımı tam olarak dosya kaybına yol açan şeydi.
-        subprocess.run(["git", "rebase", "--abort"])
-        raise RuntimeError(
-            f"git rebase origin/main başarısız oldu, commit push edilemedi:\n"
-            f"{rebase.stdout}\n{rebase.stderr}"
-        )
+    last_error = ""
+    for attempt in range(1, max_retries + 1):
+        subprocess.run(["git", "fetch", "origin", "main"], check=True)
+        rebase = subprocess.run(["git", "rebase", "origin/main"], capture_output=True, text=True)
+        if rebase.returncode != 0:
+            subprocess.run(["git", "rebase", "--abort"])
+            last_error = (
+                f"git rebase origin/main başarısız (deneme {attempt}/{max_retries}):\n"
+                f"{rebase.stdout}\n{rebase.stderr}"
+            )
+            if attempt < max_retries:
+                wait = 5 * attempt
+                print(f"  Uyarı: {last_error}\n  Muhtemelen an'lık bir çakışma (ör. başka "
+                      f"bir çalışmanın hemen ardından gelen push'u) — {wait}s sonra "
+                      f"tekrar deneniyor.")
+                time.sleep(wait)
+                continue
+            raise RuntimeError(last_error)
 
-    push = subprocess.run(["git", "push"], capture_output=True, text=True)
-    if push.returncode != 0:
-        raise RuntimeError(f"git push başarısız oldu:\n{push.stdout}\n{push.stderr}")
+        push = subprocess.run(["git", "push"], capture_output=True, text=True)
+        if push.returncode != 0:
+            last_error = (
+                f"git push başarısız (deneme {attempt}/{max_retries}):\n"
+                f"{push.stdout}\n{push.stderr}"
+            )
+            if attempt < max_retries:
+                wait = 5 * attempt
+                print(f"  Uyarı: {last_error}\n  {wait}s sonra tekrar deneniyor.")
+                time.sleep(wait)
+                continue
+            raise RuntimeError(last_error)
 
-    # Doğrulama: local HEAD içeriği (dosya + status.json) gerçekten
-    # origin/main'de mi? (rebase sonrası SHA değişmiş olabilir, o yüzden
-    # SHA yerine ağaç içeriğini karşılaştırıyoruz.)
-    local_tree = subprocess.run(
-        ["git", "rev-parse", "HEAD^{tree}"], capture_output=True, text=True, check=True
-    ).stdout.strip()
-    subprocess.run(["git", "fetch", "origin", "main"], check=True)
-    remote_tree = subprocess.run(
-        ["git", "rev-parse", "origin/main^{tree}"], capture_output=True, text=True, check=True
-    ).stdout.strip()
-    if local_tree != remote_tree:
-        raise RuntimeError(
-            "Push sonrası doğrulama başarısız: local ağaç ile origin/main "
-            "eşleşmiyor. Bu, commit'in push edildiği ama içeriğin remote'a "
-            "tam yansımadığı anlamına gelebilir — devam etmek yerine "
-            "duruluyor (sessiz veri kaybını önlemek için)."
-        )
+        # Doğrulama: local HEAD içeriği (dosya + status.json) gerçekten
+        # origin/main'de mi? (rebase sonrası SHA değişmiş olabilir, o
+        # yüzden SHA yerine ağaç içeriğini karşılaştırıyoruz.)
+        local_tree = subprocess.run(
+            ["git", "rev-parse", "HEAD^{tree}"], capture_output=True, text=True, check=True
+        ).stdout.strip()
+        subprocess.run(["git", "fetch", "origin", "main"], check=True)
+        remote_tree = subprocess.run(
+            ["git", "rev-parse", "origin/main^{tree}"], capture_output=True, text=True, check=True
+        ).stdout.strip()
+        if local_tree != remote_tree:
+            last_error = (
+                "Push sonrası doğrulama başarısız: local ağaç ile origin/main "
+                "eşleşmiyor."
+            )
+            if attempt < max_retries:
+                wait = 5 * attempt
+                print(f"  Uyarı: {last_error}\n  {wait}s sonra tekrar deneniyor.")
+                time.sleep(wait)
+                continue
+            raise RuntimeError(
+                last_error + " Devam etmek yerine duruluyor (sessiz veri "
+                "kaybını önlemek için)."
+            )
+
+        return  # başarılı
 
 
 def read_status() -> dict:
