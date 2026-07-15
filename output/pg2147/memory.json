@@ -5,7 +5,9 @@
     "Nathaniel Parker Willis": "Nathaniel Parker Willis",
     "David Widger": "David Widger",
     "Carlo Traverso": "Carlo Traverso",
-    "Hans Pfaall": "Hans Pfaall"
+    "Hans Pfaall": "Hans Pfaall",
+    "N. P. Willis": "N. P. Willis",
+    "Rufus W. Griswold": "Rufus W. Griswold"
   },
   "terms": {
     "Project Gutenberg": "Project Gutenberg",
@@ -14,6 +16,7 @@
     "Preface": "Önsöz",
     "Life of Poe": "Poe'nun Hayatı",
     "Death of Poe": "Poe'nun Ölümü",
+    "Death of Edgar A. Poe": "Edgar A. Poe'nun Ölümü",
     "The Unparalleled Adventures of One Hans Pfaall": "Hans Pfaall'ın Eşi Benzeri Olmayan Maceraları",
     "The Gold-Bug": "Altın Böcek",
     "Four Beasts in One—The Homo-Cameleopard": "Tek Bir Canlıda Dört Canavar—Homo-Kamelyopard",
@@ -23,10 +26,15 @@
     "MS. Found in a Bottle": "Şişede Bulunan El Yazması",
     "The Oval Portrait": "Oval Portre",
     "The Works of Edgar Allan Poe": "Edgar Allan Poe'nun Eserleri",
-    "The Works of Edgar Allan Poe — Volume 1": "Edgar Allan Poe'nun Eserleri — Cilt 1"
+    "The Works of Edgar Allan Poe — Volume 1": "Edgar Allan Poe'nun Eserleri — Cilt 1",
+    "By": "Tarafından",
+    "Tribune": "Tribune",
+    "Baltimore": "Baltimore",
+    "October 7th": "7 Ekim"
   },
   "style_notes": "Metin bibliyografik ve başlık odaklıdır; başlıklar büyük harfle ve noktalama işaretleriyle vurgulanır, resmi bir dil ve sabit terimler korunur.",
   "summaries": [
-    "The Works of Edgar Allan Poe — Volume 1: Edgar Allan Poe'nun eserlerini içeren bu cilt, yazarın hayatı ve ölümüyle birlikte “Hans Pfaall’ın Eşi Benzeri Olmayan Maceraları”, “Altın Böcek”, “Tek Bir Canlıda Dört Canavar—Homo‑Kamelyopard”, “Rue Morgue Cinayetleri” (Dedektif C. Auguste Dupin), “Marie Roget’in Gizemi” (Marie Rogêt), “Balon Hilesi”, “Şişede Bulunan El Yazması” ve “Oval Portre” gibi öyküleri sunar."
+    "The Works of Edgar Allan Poe — Volume 1: Edgar Allan Poe'nun eserlerini içeren bu cilt, yazarın hayatı ve ölümüyle birlikte “Hans Pfaall’ın Eşi Benzeri Olmayan Maceraları”, “Altın Böcek”, “Tek Bir Canlıda Dört Canavar—Homo‑Kamelyopard”, “Rue Morgue Cinayetleri” (Dedektif C. Auguste Dupin), “Marie Roget’in Gizemi” (Marie Rogêt), “Balon Hilesi”, “Şişede Bulunan El Yazması” ve “Oval Portre” gibi öyküleri sunar.",
+    "DEATH OF EDGAR A. POE: Edgar Allan Poe, 7 Ekim 1849’da Baltimore’da öldü; Dr. Rufus W. Griswold’un kaleme aldığı anıtta, Poe’nun hem deha dolu hem de çelişkili bir kişiliğe sahip olduğu, az sayıda dostu ve geniş bir okuyucu kitlesi olduğu vurgulanıyor."
   ]
 }
