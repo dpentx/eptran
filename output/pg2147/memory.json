@@ -30,11 +30,39 @@
     "By": "Tarafından",
     "Tribune": "Tribune",
     "Baltimore": "Baltimore",
-    "October 7th": "7 Ekim"
+    "October 7th": "7 Ekim",
+    "Balloon": "Balon",
+    "Altitude": "irtifa",
+    "Steady": "sabit",
+    "Rise": "yükseliş",
+    "Water": "su",
+    "Gallon": "galon",
+    "Barrel": "varil",
+    "Rope": "ip",
+    "Foot": "ayak",
+    "Inch": "inç",
+    "Board": "tahta",
+    "Plank": "tahta",
+    "Conical": "konik",
+    "Soft wood": "yumuşak odun",
+    "Plug": "tıpa",
+    "Chronometer": "kronometre",
+    "Condensator": "kondansatör",
+    "Fit": "fit",
+    "North": "kuzey",
+    "Arctic Sea": "Kutup Denizi",
+    "Ice": "buz",
+    "South disc": "güney diski",
+    "Hour": "saat",
+    "Bed": "yatak",
+    "Ground": "zemin",
+    "Height": "yükseklik",
+    "Minute": "dakika"
   },
   "style_notes": "Metin bibliyografik ve başlık odaklıdır; başlıklar büyük harfle ve noktalama işaretleriyle vurgulanır, resmi bir dil ve sabit terimler korunur.",
   "summaries": [
     "The Works of Edgar Allan Poe — Volume 1: Edgar Allan Poe'nun eserlerini içeren bu cilt, yazarın hayatı ve ölümüyle birlikte “Hans Pfaall’ın Eşi Benzeri Olmayan Maceraları”, “Altın Böcek”, “Tek Bir Canlıda Dört Canavar—Homo‑Kamelyopard”, “Rue Morgue Cinayetleri” (Dedektif C. Auguste Dupin), “Marie Roget’in Gizemi” (Marie Rogêt), “Balon Hilesi”, “Şişede Bulunan El Yazması” ve “Oval Portre” gibi öyküleri sunar.",
-    "DEATH OF EDGAR A. POE: Edgar Allan Poe, 7 Ekim 1849’da Baltimore’da öldü; Dr. Rufus W. Griswold’un kaleme aldığı anıtta, Poe’nun hem deha dolu hem de çelişkili bir kişiliğe sahip olduğu, az sayıda dostu ve geniş bir okuyucu kitlesi olduğu vurgulanıyor."
+    "DEATH OF EDGAR A. POE: Edgar Allan Poe, 7 Ekim 1849’da Baltimore’da öldü; Dr. Rufus W. Griswold’un kaleme aldığı anıtta, Poe’nun hem deha dolu hem de çelişkili bir kişiliğe sahip olduğu, az sayıda dostu ve geniş bir okuyucu kitlesi olduğu vurgulanıyor.",
+    "Notes to Hans Pfaal: Balonun sabit yükselişiyle kurduğu su damlatmalı uyanma sistemi sayesinde yazar, her 60 dakikada bir suyun sürahiyi doldurup yüzüne düşmesiyle uyanarak bir gün boyunca uyuyup kalkar; ardından 3 Nisan’da yüksek irtifadan Dünya’nın belirgin konveksliğini, altındaki kara noktaları (ada), kuzeye uzanan parlak buz şeridini (Kutup Denizi’nin güney diski) gözlemler."
   ]
 }
