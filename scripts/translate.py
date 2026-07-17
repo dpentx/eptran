@@ -18,7 +18,10 @@ from ebooklib import epub
 from bs4 import BeautifulSoup
 
 from lib import boilerplate, groq_client as gc, unicode_cleaner
-from lib.git_utils import write_status, trigger_workflow
+from lib.git_utils import (
+    write_status, trigger_workflow, create_book_branch,
+    list_active_book_branches, peek_remote_file, is_stale_running, git_push,
+)
 
 STATUS_FILE = "status.json"
 
@@ -199,25 +202,54 @@ def translate_chapter(chapter: dict, clients: list, key_index: list,
 # ilerleme (chunk checkpoint'i olsa bile) riske giriyordu; artık her run
 # birkaç dakika sürüyor, kaybedilecek en fazla şey TEK bir parça.
 
+def _scan_and_nudge_active_books() -> None:
+    """
+    main'de dururken tüm 'book/*' dallarını (checkout ETMEDEN) tarar,
+    her birinin status.json'una bakar ve hangi aşamada bekliyorsa o
+    workflow'u ilgili dal adıyla tetikler. Kuyruk/review/convert
+    zincirinin bir yerde kopması (rate limit, geçici hata) durumunda
+    devreye giren TEK merkezi güvenlik ağı — translate.yml zaten
+    periyodik (cron) çalıştığı için bu taramayı her tetiklenişinde yapar.
+    """
+    try:
+        branches = list_active_book_branches()
+    except subprocess.CalledProcessError:
+        return
+
+    for branch in branches:
+        raw = peek_remote_file(branch, STATUS_FILE)
+        if raw is None:
+            continue
+        try:
+            status = json.loads(raw)
+        except json.JSONDecodeError:
+            continue
+
+        if status.get("status") == "running" and status.get("queue_mode"):
+            print(f"[{branch}] çeviri kuyruğu sürüyor — queue-worker dürtülüyor.")
+            trigger_workflow("queue-worker.yml", branch=branch)
+            continue
+
+        review_status = status.get("review_status")
+        if status.get("status") == "completed" and review_status != "completed":
+            if review_status == "running" and not is_stale_running(status):
+                continue  # aktif çalışıyor, dokunma
+            print(f"[{branch}] review bekliyor/durmuş — review dürtülüyor.")
+            trigger_workflow("review.yml", branch=branch)
+            continue
+
+        if review_status == "completed" and status.get("convert_status") != "completed":
+            print(f"[{branch}] ciltleme (epub) bekliyor — convert dürtülüyor.")
+            trigger_workflow("convert.yml", branch=branch)
+
+
 def main():
+    _scan_and_nudge_active_books()
+
     input_files = [f for f in os.listdir("input")
                    if f.endswith(".epub") or f.endswith(".pdf")]
-
     if not input_files:
-        # Yeni kitap yok. Ama kuyrukta iş kalmış olabilir — örn. bir
-        # worker run'ı kendini tetiklemeden sessizce çıktıysa (rate limit,
-        # geçici hata vb.) zincir kopmuş olabilir. Bu script cron ile
-        # periyodik çalıştığı için burada bir GÜVENLİK AĞI görevi de
-        # görüyor: kuyrukta iş varsa worker'ı yeniden dürtüyoruz.
-        if os.path.exists(STATUS_FILE):
-            with open(STATUS_FILE) as f:
-                status = json.load(f)
-            if status.get("status") == "running" and status.get("queue_mode"):
-                print("Kuyrukta iş var (queue_mode) — queue-worker güvenlik "
-                      "ağı olarak tetikleniyor.")
-                trigger_workflow("queue-worker.yml")
-                return
-        print("input/ klasöründe epub/pdf bulunamadı, kuyrukta da iş yok.")
+        print("input/ klasöründe yeni epub/pdf yok.")
         return
 
     input_file = input_files[0]
@@ -225,6 +257,7 @@ def main():
     book_slug = re.sub(r"[^\w\-]", "_",
                        re.sub(r'\.(epub|pdf)$', '', input_file, flags=re.IGNORECASE))
     file_ext = os.path.splitext(input_file)[1].lower()
+    branch = f"book/{book_slug}"
 
     print(f"Dosya: {input_file}")
     chapters = (extract_epub(file_path) if file_ext == ".epub"
@@ -235,14 +268,37 @@ def main():
         print("Hiç bölüm çıkarılamadı.")
         return
 
+    # Orijinal dosyanın baytlarını sil MEDEN önce belleğe al — az sonra
+    # kitap dalına yedek olarak yazılacak.
+    with open(file_path, "rb") as f:
+        original_bytes = f.read()
+
+    # input/, henüz işlenmemiş kitapların kuyruğu — main dalında yaşıyor.
+    # Bir kitap işlenmeye alınır alınmaz kuyruktan (main'den) hemen
+    # ÇIKARILIP push'lanmalı; yoksa bir sonraki cron tetiklemesi aynı
+    # dosyayı TEKRAR bulur ve book/<slug> dalı zaten var olduğu için
+    # `git checkout -b` çakışmasına yol açar.
+    os.remove(file_path)
+    subprocess.run(["git", "rm", file_path], check=True)
+    git_push(f"input'tan alındı: {input_file}")
+
+    # Bu kitap için main'den ayrı, kendine ait bir dal oluştur. Tüm ara
+    # ilerleme (çeviri, review, ciltleme) bundan sonra SADECE bu dala
+    # yazılır — main hiç etkilenmez. Kitap tamamen bitince tek bir PR
+    # açılır (bkz. convert.py), sen onaylayıp merge edene kadar main'e
+    # hiçbir şey yansımaz.
+    create_book_branch(branch)
+
     output_dir = f"output/{book_slug}"
     originals_dir = f"{output_dir}/.originals"
     os.makedirs(originals_dir, exist_ok=True)
 
-    # Orijinali yedekle
+    # Orijinali (bellekte tuttuğumuz baytlardan) bu dala yedekle —
+    # convert.py bu dosyayı find_original_epub() ile burada arayacak.
     backup_dir = "input/.originals"
     os.makedirs(backup_dir, exist_ok=True)
-    shutil.copy2(file_path, f"{backup_dir}/{book_slug}{file_ext}")
+    with open(f"{backup_dir}/{book_slug}{file_ext}", "wb") as f:
+        f.write(original_bytes)
 
     # Ön-bölme: her bölümü kelime-hedefli parçalara ayır, .originals/'a yaz.
     # NER/hafıza context'i BURADA hesaplanmıyor — queue_worker.py, her
@@ -271,20 +327,18 @@ def main():
 
     status = {
         "status": "running", "book": book_slug, "epub_file": input_file,
-        "source_type": file_ext.lstrip("."), "total": total,
+        "branch": branch, "source_type": file_ext.lstrip("."), "total": total,
         "completed": 0, "current_chapter": "",
         "started_at": datetime.now(timezone.utc).isoformat(),
         "queue_mode": True,
     }
     subprocess.run(["git", "add", originals_dir])
 
-    if os.path.exists(file_path):
-        os.remove(file_path)
-        subprocess.run(["git", "rm", file_path], check=True)
-
+    # Bu dalın ilk push'u — git_utils.git_push() remote'ta bu dal henüz
+    # yokken otomatik '-u origin <branch>' ile push eder.
     write_status(status, f"kuyruğa alındı: {total} bölüm, {total_parts_all} parça")
-    print("Queue-worker tetikleniyor...")
-    trigger_workflow("queue-worker.yml")
+    print(f"Queue-worker tetikleniyor (dal: {branch})...")
+    trigger_workflow("queue-worker.yml", branch=branch)
 
 
 if __name__ == "__main__":

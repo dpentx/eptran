@@ -10,7 +10,7 @@ eptran — review.py
 import os
 
 from lib import boilerplate, groq_client as gc, memory as mem, review_fix, sliding_window as sw
-from lib.git_utils import read_status, write_status, is_stale_running
+from lib.git_utils import read_status, write_status, is_stale_running, trigger_workflow, current_branch
 from lib import dictionary
 
 STATUS_FILE = "status.json"
@@ -133,7 +133,8 @@ def main():
 
     status.update({"review_status": "completed", "review_current": ""})
     write_status(status, "review: completed")
-    print("Review tamamlandı.")
+    print("Review tamamlandı. Ciltleme (convert) tetikleniyor...")
+    trigger_workflow("convert.yml", branch=current_branch())
 
 
 if __name__ == "__main__":

@@ -1,39 +1,14 @@
 import os
 import re
-import json
-import subprocess
-from datetime import datetime, timezone
 
 import ebooklib
 from ebooklib import epub
 from bs4 import BeautifulSoup
 from lxml import etree
 
+from lib.git_utils import read_status, write_status, open_pr, current_branch
 
 STATUS_FILE = "status.json"
-
-
-def git_push(message):
-    subprocess.run(["git", "add", "-A"], check=True)
-    result = subprocess.run(["git", "diff", "--cached", "--quiet"])
-    if result.returncode != 0:
-        subprocess.run(["git", "commit", "-m", message], check=True)
-        subprocess.run(["git", "pull", "--rebase"], check=True)
-        subprocess.run(["git", "push"], check=True)
-
-
-def read_status():
-    if not os.path.exists(STATUS_FILE):
-        return {}
-    with open(STATUS_FILE, encoding="utf-8") as f:
-        return json.load(f)
-
-
-def write_status(data):
-    data["updated_at"] = datetime.now(timezone.utc).isoformat()
-    with open(STATUS_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    git_push(f"convert: {data.get('convert_status', '')}")
 
 
 def normalize(s):
@@ -331,15 +306,28 @@ def main():
     epub_out = f"output/{book_slug}/{book_slug}_tr.epub"
 
     status["convert_status"] = "running"
-    write_status(status)
+    write_status(status, "convert: running")
 
     build_epub(book_slug, chapters, original_epub_path, epub_out)
 
     status["convert_status"] = "completed"
     status["epub_output"] = epub_out
-    write_status(status)
+    write_status(status, "convert: completed")
 
     print("Dönüşüm tamamlandı.")
+
+    # Kitap tamamen bitti: çeviri + review + ciltleme. Bu, tüm sürecin TEK
+    # onay noktası — kitap dalından (book/<slug>) main'e bir PR açılıyor.
+    # Sen PR'ı inceleyip merge edene kadar main'de hiçbir şey değişmiyor.
+    branch = current_branch()
+    title = f"📖 {book_slug.replace('_', ' ')} — çeviri tamamlandı"
+    body = (
+        f"**{len(chapters)} bölüm** çevrildi, review edildi ve `{epub_out}` "
+        f"olarak ciltlendi.\n\n"
+        f"Bu PR, `{branch}` dalındaki TÜM süreci (çeviri + review + epub) "
+        f"main'e taşıyor — merge etmeden önce dilediğin kadar inceleyebilirsin."
+    )
+    open_pr(branch, title, body)
 
 
 if __name__ == "__main__":
