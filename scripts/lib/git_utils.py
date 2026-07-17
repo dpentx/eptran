@@ -11,6 +11,25 @@ STATUS_FILE = "status.json"
 STALE_RUNNING_MINUTES = 30
 
 
+def trigger_workflow(workflow_file: str) -> None:
+    """
+    `gh workflow run` ile başka bir workflow'u (ya da kendini) tetikler.
+    GH CLI, ortam değişkeni GH_TOKEN'ı otomatik kullanır (workflow yml'de
+    App token'ı bu değişkene atanmış olmalı). Tetikleme başarısız olursa
+    (örn. gh kurulu değil, ya da izin sorunu) sessizce loglayıp devam
+    ediyoruz — bu, bir sonraki güvenlik ağı tetiklemesinde (translate.yml'in
+    periyodik nudge'ı) telafi edilir, script'i çökertmeye değmez.
+    """
+    result = subprocess.run(
+        ["gh", "workflow", "run", workflow_file],
+        capture_output=True, text=True
+    )
+    if result.returncode != 0:
+        print(f"  Uyarı: '{workflow_file}' tetiklenemedi: {result.stderr.strip()}")
+    else:
+        print(f"  '{workflow_file}' tetiklendi.")
+
+
 def git_push(message: str, max_retries: int = 3) -> None:
     """
     Değişiklikleri commit'leyip push eder.

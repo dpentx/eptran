@@ -62,6 +62,24 @@ def _parse_retry_seconds(error_message) -> int:
 
 MAX_EMPTY_RETRIES = 3  # model boş yanıt döndürürse bu kadar tekrar dene
 
+# Kuyruk mimarisinde her worker run'ı KISA ÖMÜRLÜ (tek bir parça işleyip
+# çıkıyor). Eskiden "tüm keyler kilitli" durumunda süre ne olursa olsun
+# (gördüğümüz kadarıyla 72 dakikaya kadar) process içinde uyuyup
+# bekliyorduk — bu, kısa ömürlü bir worker için Actions dakikalarını
+# boşuna yakar. Bunun yerine: en kısa bekleme MAX_ACCEPTABLE_WAIT'i
+# aşıyorsa hemen AllKeysLockedError fırlatıp çıkıyoruz; worker bunu
+# yakalayıp bu run'da hiçbir şey commit'lemeden, kendini yeniden
+# TETİKLEMEDEN sonlanır — bir sonraki deneme translate.yml'nin
+# periyodik "güvenlik ağı" tetiklemesiyle gelir.
+MAX_ACCEPTABLE_WAIT = 120  # saniye
+
+
+class AllKeysLockedError(Exception):
+    """Tüm key'ler kilitli ve en kısa bekleme süresi kabul edilebilir eşiği aşıyor."""
+    def __init__(self, wait_seconds: int):
+        self.wait_seconds = wait_seconds
+        super().__init__(f"Tüm keyler kilitli, en kısa bekleme: {wait_seconds}s")
+
 # Groq'un bazı organizasyon/tier'larında TPM (dakikalık token) limiti çok
 # düşük olabilir (örn. on_demand tier'da 8000 TPM görülmüştür). Groq,
 # max_completion_tokens'ı "bu istek en fazla bu kadar üretebilir" diye
@@ -104,6 +122,8 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
         available = [c for c in clients if c["locked_until"] <= now]
         if not available:
             wait = max(int(min(c["locked_until"] for c in clients) - now), 1)
+            if wait > MAX_ACCEPTABLE_WAIT:
+                raise AllKeysLockedError(wait)
             print(f"Tüm keyler limit dışı. {wait}s bekleniyor...")
             time.sleep(wait)
             continue
