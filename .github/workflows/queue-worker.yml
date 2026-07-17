@@ -1,0 +1,61 @@
+name: Queue Worker
+
+on:
+  workflow_dispatch:
+
+# Sadece kendi türünden (başka bir queue-worker run'ı) ile çakışmayı
+# önler. translate.yml/review.yml/convert.yml ile ayrı gruplarda —
+# aynı sebepten: aynı grupta kuyruğa girmiş birden fazla çalışma
+# olduğunda GitHub Actions sadece EN SON kuyruğa gireni çalıştırıp
+# öncekileri iptal ediyor, bu da zincirin kopmasına yol açar.
+concurrency:
+  group: eptran-queue-worker
+  cancel-in-progress: false
+
+jobs:
+  work:
+    runs-on: ubuntu-latest
+    # Her run TEK BİR parça çeviriyor — normalde birkaç dakika sürer.
+    # Yine de NER/hafıza çıkarımı + birkaç retry ihtimaline karşı makul
+    # bir pay bırakıyoruz. Eskiden bir run bir KİTABIN TAMAMINI (360 dk'ya
+    # kadar) işlemeye çalışıyordu; artık kaybedilebilecek en fazla şey
+    # tek bir parçanın o anki denemesi.
+    timeout-minutes: 20
+    permissions:
+      contents: write
+
+    steps:
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Configure git
+        run: |
+          git config user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
+          git config user.email "${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
+
+      - name: Process one queued chunk
+        env:
+          GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
+          GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
+          GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
+          GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: python scripts/queue_worker.py

@@ -28,15 +28,25 @@ concurrency:
 jobs:
   translate:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    # Bu adım artık ÇEVİRİ YAPMIYOR, sadece bölüp kuyruğa yazıyor (LLM
+    # çağrısı yok) — birkaç dakikadan uzun sürmemeli. Asıl çeviri işini
+    # queue-worker.yml, tek parça başına ayrı run'larla yapıyor.
+    timeout-minutes: 15
     permissions:
       contents: write
 
     steps:
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.app-token.outputs.token }}
           fetch-depth: 0
 
       - name: Setup Python
@@ -49,13 +59,10 @@ jobs:
 
       - name: Configure git
         run: |
-          git config user.name "eptran-bot"
-          git config user.email "eptran-bot@users.noreply.github.com"
+          git config user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
+          git config user.email "${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
 
-      - name: Run translation
+      - name: Run pre-split (and/or nudge queue-worker)
         env:
-          GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
-          GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
-          GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
-          GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: python scripts/translate.py
