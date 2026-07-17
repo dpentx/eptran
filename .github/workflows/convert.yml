@@ -2,38 +2,41 @@ name: Convert to EPUB
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Review Translation"]
-    types:
-      - completed
+    inputs:
+      branch:
+        description: "İşlenecek kitap dalı (örn. book/pg2147)"
+        required: true
+        type: string
 
-# Sadece kendi türünden (başka bir convert run'ı) ile çakışmayı önler —
-# translate/review ile artık ayrı gruplarda (bkz. o dosyalardaki
-# açıklama: aynı grupta olmaları, translate zaman aşımına uğradığında
-# onun kuyruktaki "devam et" denemesinin review/convert tarafından
-# iptal edilmesine yol açıyordu).
+# review.yml bittiğinde bu workflow'u dal adıyla açıkça tetikliyor —
+# artık kendi workflow_run zincirlemesi yok. Merkezi güvenlik ağı
+# translate.yml'de (tüm 'book/*' dallarını tarayıp gerekeni dürtüyor).
 concurrency:
-  group: eptran-convert
+  group: eptran-convert-${{ inputs.branch }}
   cancel-in-progress: false
 
 jobs:
   convert:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     timeout-minutes: 30
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          ref: main
+          token: ${{ steps.app-token.outputs.token }}
+          ref: ${{ inputs.branch }}
           fetch-depth: 0
-
-      - name: Pull latest changes
-        run: git pull origin main
 
       - name: Check if conversion needed
         id: check
@@ -67,9 +70,11 @@ jobs:
       - name: Configure git
         if: steps.check.outputs.needed == 'yes'
         run: |
-          git config user.name "eptran-bot"
-          git config user.email "eptran-bot@users.noreply.github.com"
+          git config user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
+          git config user.email "${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
 
-      - name: Run conversion
+      - name: Run conversion (and open completion PR)
         if: steps.check.outputs.needed == 'yes'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: python scripts/convert.py

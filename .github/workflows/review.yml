@@ -2,48 +2,43 @@ name: Review Translation
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Translate Novel"]
-    types:
-      - completed
-  schedule:
-    - cron: "0 */6 * * *"
+    inputs:
+      branch:
+        description: "İşlenecek kitap dalı (örn. book/pg2147)"
+        required: true
+        type: string
 
-# Sadece kendi türünden (başka bir review run'ı) ile çakışmayı önler.
-# translate.yml ile ARTIK AYNI GRUBU KULLANMIYORUZ: aynı grupta kuyruğa
-# girmiş birden fazla çalışma varsa GitHub Actions sadece EN SON kuyruğa
-# gireni çalıştırıp öncekileri iptal ediyor — translate zaman aşımına
-# uğrayınca onun "devam et" denemesi, aynı gruba kuyruğa girmiş bir
-# review çalışmasıyla YER DEĞİŞTİRİP iptal oluyordu, çeviri bu yüzden
-# hiç ilerleyemiyordu. Şimdi git push çakışması riski, git_utils.py'deki
-# sağlamlaştırılmış push+doğrulama mantığıyla ve fetch-depth: 0 ile ayrıca
-# önleniyor; review'ın gerçek iş yapması zaten status.json'daki
-# "status: completed" kontrolüne bağlı, o yüzden translate bitmeden
-# aynı anda çalışsa bile zararsız.
-# cancel-in-progress: false -> devam eden bir review yarıda kesilmez,
-# yeni tetiklenen sıraya girer.
+# translate.yml, hangi kitap dalının review'a hazır olduğunu (status.json
+# üzerinden) kendisi tespit edip bu workflow'u dal adıyla tetikliyor —
+# artık kendi cron'u ya da workflow_run zincirlemesi yok (geçmişte bu
+# ikisinin BİRLİKTE var olması, translate henüz bitmeden review'ın
+# gereksiz yere tetiklenmesine yol açmıştı). Merkezi güvenlik ağı
+# translate.yml'de; bu workflow sadece açıkça çağrıldığında çalışır.
 concurrency:
-  group: eptran-review
+  group: eptran-review-${{ inputs.branch }}
   cancel-in-progress: false
 
 jobs:
   review:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' || github.event.workflow_run.conclusion == 'success'
-    timeout-minutes: 360
+    timeout-minutes: 60
     permissions:
       contents: write
 
     steps:
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          ref: main
+          token: ${{ steps.app-token.outputs.token }}
+          ref: ${{ inputs.branch }}
           fetch-depth: 0
-
-      - name: Pull latest changes
-        run: git pull origin main
 
       - name: Check if review needed
         id: check
@@ -62,7 +57,6 @@ jobs:
                   print('no')
                   sys.exit()
               if rs == 'running':
-                  # stale kontrolü — 30dk+ güncellenmemişse devam et
                   updated_at = s.get('updated_at')
                   if not updated_at:
                       print('yes')
@@ -92,8 +86,8 @@ jobs:
       - name: Configure git
         if: steps.check.outputs.needed == 'yes'
         run: |
-          git config user.name "eptran-bot"
-          git config user.email "eptran-bot@users.noreply.github.com"
+          git config user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
+          git config user.email "${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
 
       - name: Run review
         if: steps.check.outputs.needed == 'yes'
@@ -102,4 +96,5 @@ jobs:
           GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
           GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
           GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: python scripts/review.py
