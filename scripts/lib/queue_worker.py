@@ -27,7 +27,7 @@ import subprocess
 from datetime import datetime, timezone
 
 from lib import groq_client as gc, memory as mem, ner
-from lib.git_utils import write_status, trigger_workflow
+from lib.git_utils import write_status, trigger_workflow, current_branch
 from translate import translate_chapter
 
 STATUS_FILE = "status.json"
@@ -230,15 +230,20 @@ def main():
         write_status(status, f"status: {chapter_idx+1}/{total}")
         print(f"[{chapter_idx+1}/{total}] Bölüm tamamlandı: {title}")
 
-    # Sırada başka parça var mı? Varsa kendimi tetikle, yoksa kitap bitti.
+    # Sırada başka parça var mı? Varsa kendimi tetikle, yoksa kitap bitti
+    # — review.yml'e açıkça devrediyoruz (workflow_run zincirlemesi yerine
+    # açık tetikleme kullanıyoruz, geçmişte çift-tetiklenme sorunlarına yol
+    # açmıştı).
+    branch = current_branch()
     if _next_part(originals_dir, translated_dir) is not None:
         print("Sıradaki parça için kendimi tetikliyorum...")
-        trigger_workflow("queue-worker.yml")
+        trigger_workflow("queue-worker.yml", branch=branch)
     else:
         status["status"] = "completed"
         status["current_chapter"] = ""
         write_status(status, "status: completed")
-        print("Kitap tamamlandı!")
+        print("Kitabın çevirisi tamamlandı! Review'e devrediliyor...")
+        trigger_workflow("review.yml", branch=branch)
 
 
 if __name__ == "__main__":
