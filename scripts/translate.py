@@ -1,6 +1,10 @@
 """
 eptran — translate.py
-epub/pdf → bölüm çıkarma → Groq ile Türkçe çeviri → .txt dosyaları
+
+Artık çeviri yapmıyor: epub/pdf'ten bölümleri çıkarır, kelime-hedefli
+parçalara böler ve output/<slug>/.originals/ altına yazar ("ön-bölme").
+Gerçek çeviriyi parça parça yapan queue_worker.py'yi tetikleyip çıkar.
+Ayrıca kuyrukta iş varken bir güvenlik ağı görevi de görür (bkz. main()).
 """
 import os
 import re
@@ -13,8 +17,8 @@ import ebooklib
 from ebooklib import epub
 from bs4 import BeautifulSoup
 
-from lib import boilerplate, groq_client as gc, memory as mem, ner, unicode_cleaner
-from lib.git_utils import git_push, write_status
+from lib import boilerplate, groq_client as gc, unicode_cleaner
+from lib.git_utils import write_status, trigger_workflow
 
 STATUS_FILE = "status.json"
 
@@ -99,16 +103,38 @@ def extract_pdf(pdf_path: str, book_slug: str) -> list:
 
 # ── Çeviri ─────────────────────────────────────────────────────────────────────
 
-def _chunk(text: str, max_chars: int = 12000) -> list:
-    if len(text) <= max_chars:
+def _chunk(text: str, target_words: int = 4500) -> list:
+    """
+    Metni paragraf sınırlarını koruyarak parçalara böler.
+
+    Sabit bir parça SAYISI değil, parça başına HEDEF KELİME SAYISI
+    (~4500, yani 4-5k aralığının ortası) kullanılıyor. Bu sayede kısa
+    bölümler tek parça kalırken, çok uzun bölümler (23-24k kelime gibi)
+    gerektiği kadar (5-6+) parçaya bölünüyor — sabit bir üst sınır yok.
+    NER taraması zaten bölümün TAMAMI üzerinde (parçalardan önce, ayrıca)
+    çalıştığı için isim/terim tutarlılığı parça sayısından bağımsız olarak
+    korunuyor.
+    """
+    total_words = len(text.split())
+    # %15 tolerans: hedefi az aşan bölümler için anlamsızca küçük bir
+    # son parça oluşturmaktansa tek parça bırakmak daha iyi.
+    if total_words <= target_words * 1.15:
         return [text]
-    chunks, current = [], ""
-    for para in text.split("\n\n"):
-        if len(current) + len(para) + 2 > max_chars and current:
+
+    paragraphs = [p for p in text.split("\n\n") if p.strip()]
+    num_parts = max(2, round(total_words / target_words))
+    target_words_per_part = total_words / num_parts
+
+    chunks, current, current_words = [], "", 0
+    for para in paragraphs:
+        para_words = len(para.split())
+        if (current and len(chunks) < num_parts - 1
+                and current_words + para_words > target_words_per_part):
             chunks.append(current.strip())
-            current = para
+            current, current_words = para, para_words
         else:
-            current += "\n\n" + para if current else para
+            current = f"{current}\n\n{para}" if current else para
+            current_words += para_words
     if current.strip():
         chunks.append(current.strip())
     return chunks
@@ -163,57 +189,35 @@ def translate_chapter(chapter: dict, clients: list, key_index: list,
     return result
 
 
-# ── Chunk checkpoint (parça bazlı ara kayıt) ────────────────────────────────
-# Büyük bölümler (çok chunk'lı) bir run içinde bitmeyip timeout'a uğrarsa,
-# o ana kadar çevrilen chunk'lar burada saklanır. Bir sonraki run, bölümü
-# baştan değil KALDIĞI CHUNK'TAN devam ettirir — hem zaman kazandırır hem
-# de her chunk kendi başına diske/commit'e yazıldığı için run yarıda
-# kesilse bile o parçalar kaybolmaz.
-
-def _checkpoint_path(output_dir: str, i: int, book_slug: str) -> str:
-    return f"{output_dir}/.checkpoints/{i+1:03d}_{book_slug}.json"
-
-
-def _load_checkpoint(path: str) -> list:
-    if not os.path.exists(path):
-        return []
-    try:
-        with open(path, encoding="utf-8") as f:
-            return json.load(f).get("parts", [])
-    except (json.JSONDecodeError, OSError):
-        print(f"  Uyarı: checkpoint okunamadı ({path}), sıfırdan başlanıyor.")
-        return []
-
-
-def _save_checkpoint(path: str, parts: list) -> None:
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump({"parts": parts}, f, ensure_ascii=False)
-
-
-def _remove_checkpoint(path: str) -> None:
-    if os.path.exists(path):
-        os.remove(path)
-        subprocess.run(["git", "rm", "-f", "--ignore-unmatch", path])
-
-
 # ── Ana akış ───────────────────────────────────────────────────────────────────
+# NOT: Bu script artık ÇEVİRİ YAPMIYOR — sadece kitabı bölüp
+# output/<slug>/.originals/ altına parça parça yazıyor ("ön-bölme"), sonra
+# gerçek çeviriyi parça parça yapan queue_worker.py'yi tetikliyor. Bu,
+# Hydra'daki build kuyruğuna benzer bir tasarım: her worker run'ı kısa
+# ömürlü (tek parça), zincirleme kendini tetikliyor. Eskiden tek bir dev
+# run 360 dakikaya kadar sürebiliyor, timeout'a uğradığında o ana kadarki
+# ilerleme (chunk checkpoint'i olsa bile) riske giriyordu; artık her run
+# birkaç dakika sürüyor, kaybedilecek en fazla şey TEK bir parça.
 
 def main():
-    clients = gc.get_clients()
-    key_index = [0]
-
     input_files = [f for f in os.listdir("input")
                    if f.endswith(".epub") or f.endswith(".pdf")]
 
     if not input_files:
+        # Yeni kitap yok. Ama kuyrukta iş kalmış olabilir — örn. bir
+        # worker run'ı kendini tetiklemeden sessizce çıktıysa (rate limit,
+        # geçici hata vb.) zincir kopmuş olabilir. Bu script cron ile
+        # periyodik çalıştığı için burada bir GÜVENLİK AĞI görevi de
+        # görüyor: kuyrukta iş varsa worker'ı yeniden dürtüyoruz.
         if os.path.exists(STATUS_FILE):
             with open(STATUS_FILE) as f:
-                prev = json.load(f)
-            if prev.get("status") == "running":
-                print("Status running ama input'ta dosya yok.")
+                status = json.load(f)
+            if status.get("status") == "running" and status.get("queue_mode"):
+                print("Kuyrukta iş var (queue_mode) — queue-worker güvenlik "
+                      "ağı olarak tetikleniyor.")
+                trigger_workflow("queue-worker.yml")
                 return
-        print("input/ klasöründe epub/pdf bulunamadı.")
+        print("input/ klasöründe epub/pdf bulunamadı, kuyrukta da iş yok.")
         return
 
     input_file = input_files[0]
@@ -232,125 +236,55 @@ def main():
         return
 
     output_dir = f"output/{book_slug}"
-    os.makedirs(output_dir, exist_ok=True)
+    originals_dir = f"{output_dir}/.originals"
+    os.makedirs(originals_dir, exist_ok=True)
 
     # Orijinali yedekle
     backup_dir = "input/.originals"
     os.makedirs(backup_dir, exist_ok=True)
     shutil.copy2(file_path, f"{backup_dir}/{book_slug}{file_ext}")
 
-    completed_start = len([
-        f for f in os.listdir(output_dir)
-        if f.endswith(".txt") and
-        os.path.getsize(os.path.join(output_dir, f)) > 500
-    ])
-    if completed_start > 0:
-        print(f"Kaldığı yerden devam: {completed_start}/{total}")
+    # Ön-bölme: her bölümü kelime-hedefli parçalara ayır, .originals/'a yaz.
+    # NER/hafıza context'i BURADA hesaplanmıyor — queue_worker.py, her
+    # bölümün ilk parçasını işlerken (o anki güncel hafıza durumuyla)
+    # hesaplayıp bölümün meta dosyasına önbelleğe alacak. Böylece hafıza,
+    # önceki bölümler işlendikçe birikmeye devam ediyor (tek seferde tüm
+    # kitabı önceden bölmek bunu bozmaz, çünkü context hesaplama işlemi
+    # zaman içinde, sırayla, worker tarafından yapılıyor).
+    total_parts_all = 0
+    for i, chapter in enumerate(chapters):
+        chunks = _chunk(chapter["text"])
+        total_parts_all += len(chunks)
+        for j, chunk_text in enumerate(chunks):
+            part_path = f"{originals_dir}/{i:03d}_{j:02d}.txt"
+            with open(part_path, "w", encoding="utf-8") as f:
+                f.write(chunk_text)
+        meta_path = f"{originals_dir}/{i:03d}_meta.json"
+        with open(meta_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "title": chapter["title"],
+                "total_parts": len(chunks),
+                "protected_str": None,
+                "memory_ctx": None,
+            }, f, ensure_ascii=False)
+    print(f"Ön-bölme tamamlandı: {total} bölüm, {total_parts_all} parça.")
 
     status = {
         "status": "running", "book": book_slug, "epub_file": input_file,
         "source_type": file_ext.lstrip("."), "total": total,
-        "completed": completed_start, "current_chapter": "",
+        "completed": 0, "current_chapter": "",
         "started_at": datetime.now(timezone.utc).isoformat(),
+        "queue_mode": True,
     }
-    write_status(status, f"status: {completed_start}/{total}")
-
-    # Hafızayı yükle veya ilk bölümden çıkar
-    memory = mem.load(output_dir)
-    if completed_start == 0 and not memory.get("characters"):
-        print("Çeviri hafızası çıkarılıyor...")
-        memory = mem.extract_from_source(chapters[0]["text"], clients, key_index)
-        mem.save(output_dir, memory)
-        print(f"  Hafıza: {len(memory['characters'])} karakter, "
-              f"{len(memory['terms'])} terim")
-
-    for i, chapter in enumerate(chapters):
-        out_path = f"{output_dir}/{i+1:03d}_{book_slug}.txt"
-        # Bölümün Türkçe çevirisi orijinalin en az %30'u kadar olmalı.
-        # Sabit 500 byte eşiği yarım çevirileri "tamamlanmış" sayıyordu.
-        min_expected = max(500, len(chapter["text"]) * 0.30)
-        if os.path.exists(out_path) and os.path.getsize(out_path) > min_expected:
-            print(f"[{i+1}/{total}] Atlanıyor: {chapter['title']}")
-            continue
-
-        print(f"[{i+1}/{total}] Çevriliyor: {chapter['title']}")
-        status["current_chapter"] = chapter["title"]
-        # NOT: {status['completed']} zaten kaç bölümün BİTTİĞİni gösteriyor;
-        # {i+1} ise şu an BAŞLANAN bölümü. İkisi karışmasın diye ayrı ayrı
-        # yazıyoruz — önceden ikisi için de aynı format kullanılıyordu, bu
-        # da "status: 2/14" gibi bir mesajın "2 bölüm bitti" mi yoksa
-        # "3. bölüme başlandı, hâlâ 1 bitmiş" mi olduğunu belirsiz
-        # bırakıyordu (git geçmişini okurken kafa karıştırmıştı).
-        write_status(status, f"başlıyor: {i+1}/{total} (bitmiş: {status['completed']})")
-
-        # Bölüm başına NER — kaynak metinden özel isimleri çıkar
-        print(f"  NER taraması...")
-        chapter_entities = ner.extract_from_source(chapter["text"], clients, key_index)
-        protected_str = ner.build_protected_str(memory, chapter_entities)
-        if protected_str:
-            print(f"  Korunan: {len(chapter_entities)} isim/terim")
-
-        memory_ctx = mem.build_context(memory)
-        chunks = _chunk(chapter["text"])
-        checkpoint_path = _checkpoint_path(output_dir, i, book_slug)
-        parts = _load_checkpoint(checkpoint_path)
-        if parts:
-            print(f"  Checkpoint bulundu: {len(parts)}/{len(chunks)} parça zaten "
-                  f"çevrilmiş, kaldığı chunk'tan devam ediliyor.")
-
-        chapter_failed = False
-        for j in range(len(parts), len(chunks)):
-            chunk = chunks[j]
-            ch_copy = dict(chapter, text=chunk)
-            translated = translate_chapter(ch_copy, clients, key_index,
-                                           memory_ctx, protected_str, j, len(chunks))
-            if translated is None:
-                print(f"  Hata: parça {j+1}/{len(chunks)} çevrilemedi (model ısrarla "
-                      f"boş yanıt döndürdü). Bu bölüm bu çalıştırmada atlanıyor, "
-                      f"bir sonraki run'da (şimdiye kadar çevrilen "
-                      f"{len(parts)}/{len(chunks)} parçadan devam ederek) "
-                      f"yeniden denenecek.")
-                chapter_failed = True
-                break
-            parts.append(translated)
-            # Her chunk'ı hemen diske + git'e yaz — run burada kesilse bile
-            # bu parça kaybolmaz, bir sonraki run j+1'den devam eder.
-            _save_checkpoint(checkpoint_path, parts)
-            subprocess.run(["git", "add", checkpoint_path])
-            write_status(status, f"parça: bölüm {i+1}/{total} - chunk {j+1}/{len(chunks)} "
-                                  f"(bitmiş bölüm: {status['completed']})")
-            import time; time.sleep(2)
-
-        if chapter_failed:
-            # status'u ilerletme — bir sonraki run bu bölümü, checkpoint'te
-            # kayıtlı olan yerden devam ettirir. Var olan (varsa) çıktı
-            # dosyasına dokunulmadı.
-            continue
-
-        full_translation = "\n\n".join(parts)
-
-        with open(out_path, "w", encoding="utf-8") as f:
-            f.write(f"# {chapter['title']}\n\n{full_translation}\n")
-        _remove_checkpoint(checkpoint_path)
-
-        # Hafızayı çeviriyle güncelle + özet ekle
-        memory = mem.update_from_translation(memory, full_translation, clients, key_index)
-        memory = mem.add_summary(memory, chapter["title"], full_translation, clients, key_index)
-        mem.save(output_dir, memory)
-
-        status["completed"] = i + 1
-        subprocess.run(["git", "add", out_path,
-                        os.path.join(output_dir, mem.MEMORY_FILE)])
-        write_status(status, f"status: {i+1}/{total}")
+    subprocess.run(["git", "add", originals_dir])
 
     if os.path.exists(file_path):
         os.remove(file_path)
         subprocess.run(["git", "rm", file_path], check=True)
 
-    status["status"] = "completed"
-    status["current_chapter"] = ""
-    write_status(status, "status: completed")
-    print("Çeviri başarıyla tamamlandı.")
+    write_status(status, f"kuyruğa alındı: {total} bölüm, {total_parts_all} parça")
+    print("Queue-worker tetikleniyor...")
+    trigger_workflow("queue-worker.yml")
 
 
 if __name__ == "__main__":
