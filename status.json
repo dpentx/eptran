@@ -1,12 +1,12 @@
 {
   "status": "running",
-  "book": "pg2147",
-  "epub_file": "pg2147.epub",
+  "book": "The_Apothecary_Diaries_v10__J-Novel_Club___Premium___CleanBookGuy_",
+  "epub_file": "The Apothecary Diaries v10 [J-Novel Club] [Premium] [CleanBookGuy].epub",
   "source_type": "epub",
-  "total": 14,
+  "total": 33,
   "completed": 0,
   "current_chapter": "",
-  "started_at": "2026-07-17T05:17:53.827946+00:00",
+  "started_at": "2026-07-17T07:51:19.233896+00:00",
   "queue_mode": true,
-  "updated_at": "2026-07-17T05:17:53.930923+00:00"
+  "updated_at": "2026-07-17T07:51:19.343565+00:00"
 }
