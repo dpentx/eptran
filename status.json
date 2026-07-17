@@ -1,0 +1,12 @@
+{
+  "status": "running",
+  "book": "pg2147",
+  "epub_file": "pg2147.epub",
+  "source_type": "epub",
+  "total": 14,
+  "completed": 0,
+  "current_chapter": "",
+  "started_at": "2026-07-17T05:17:53.827946+00:00",
+  "queue_mode": true,
+  "updated_at": "2026-07-17T05:17:53.930923+00:00"
+}
