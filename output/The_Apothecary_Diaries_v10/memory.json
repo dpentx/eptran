@@ -5,7 +5,8 @@
     "Kevin Steinbach": "Kevin Steinbach",
     "Sasha McGlynn": "Sasha McGlynn",
     "Shufunotomo Co., Ltd.": "Shufunotomo Co., Ltd.",
-    "J-Novel Club LLC": "J-Novel Club LLC"
+    "J-Novel Club LLC": "J-Novel Club LLC",
+    "Nianzhen": "Nianzhen"
   },
   "terms": {
     "The Apothecary Diaries": "Eczacı Günlükleri",
@@ -15,5 +16,7 @@
     "j-novel.club": "j-novel.club"
   },
   "style_notes": "Metin resmi ve bilgilendirici bir ton taşıyor; cümle yapısı kısa ve net, yasal uyarılar ve çeviri bilgileri vurgulanmalı.",
-  "summaries": []
+  "summaries": [
+    "Editor’s Notes: Sasha McGlynn, “The Apothecary Diaries” serisinin 10. cildinin editörü olarak çevirmen Kevin Steinbach ile birlikte çalışıp metni düzenleme sürecini, yazım‑dilbilgisi kontrollerini ve karakterlerin özgün seslerini korumayı anlatıyor; Nianzhen gibi karakterlerin sosyal konumlarına uygun kelime seçimleri ve gerçek bilimsel doğrulukların araştırılması da bu sürecin önemli adımlarıdır."
+  ]
 }
