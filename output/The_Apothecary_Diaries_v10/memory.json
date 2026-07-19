@@ -1,6 +1,9 @@
 {
   "characters": {
-    "Koku‑u": "Koku‑u"
+    "Koku‑u": "Koku‑u",
+    "Dr. You": "Dr. You",
+    "Niangniang": "Niangniang",
+    "Lihaku": "Lihaku"
   },
   "terms": {
     "İmparator": "İmparator",
@@ -11,6 +14,7 @@
     "Editor’s Notes: Sasha McGlynn, “The Apothecary Diaries” serisinin 10. cildinin editörü olarak çevirmen Kevin Steinbach ile birlikte çalışıp metni düzenleme sürecini, yazım‑dilbilgisi kontrollerini ve karakterlerin özgün seslerini korumayı anlatıyor; Nianzhen gibi karakterlerin sosyal konumlarına uygun kelime seçimleri ve gerçek bilimsel doğrulukların araştırılması da bu sürecin önemli adımlarıdır.",
     "Character Profiles: Karakter profilleri, Maomao, Jinshi, Basen, Gaoshun, Chue, Lakan, Empress Gyokuyou, Rikuson, Gyokuen, Gyoku‑ou, Suiren, Taomei, Baryou, Tianyu, Dr. You ve Lahan’ın kardeşi gibi ana karakterlerin yaşları, aile bağları, görevleri ve kişilik özelliklerini özetler. Bu kişiler imparatorluk, askerî ve tıbbi çevrelerde birbirleriyle ilişkili olarak yer alır.",
     "Epilogue: Empress Gyokuyou, batıdan gelen yeğeni Yaqin'i politik tartışmalardan uzak tutarak lüks bir çay partisiyle zengin eşleri etkilemeye çalışır; Yaqin'in gerçek kimliği ve Gyokuyou'nun imparatorlukta konumu, aile içi iktidar ve miras mücadelelerini ortaya koyar.",
-    "Prologue: Gyokuyou, imparatorluk köşkesinde genç ve kırmızı saçlı Yaqin adlı bir kadını, olası yeğeni olarak karşılar; ikisi birbirlerine benzer görünürken, Gyokuyou onun niyetlerini ve kimliğini sorgular."
+    "Prologue: Gyokuyou, imparatorluk köşkesinde genç ve kırmızı saçlı Yaqin adlı bir kadını, olası yeğeni olarak karşılar; ikisi birbirlerine benzer görünürken, Gyokuyou onun niyetlerini ve kimliğini sorgular.",
+    "Text/chapter1_1.xhtml: Dr. You, Tianyu ve sahte doktorun liderliğinde yeni bir grup kurularak, Maomao ve üç yoldaşı haberci genç memurla birlikte Gyoku‑ou’ya bağlı binalara götürülür; grup içinde Tianyu’nun cerrahi yeteneği, Niangniang’ın ilaç karışımı bilgisi ve sahte doktorun sorumlulukları vurgulanır. Maomao, bu görevin hem öğretici hem de tehlikeli olacağını fark eder."
   ]
 }
