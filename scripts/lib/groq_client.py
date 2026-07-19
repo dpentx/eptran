@@ -97,10 +97,24 @@ def _is_too_large_error(err) -> bool:
 
 
 def call(clients: list, key_index: list, system_msg: str, user_msg: str,
-         temperature: float = 0.2) -> str | None:
+         temperature: float = 0.2, reasoning_effort: str = "low") -> str | None:
     """
     Groq'a system+user mesajı gönder, rate limit'e göre key rotasyonu yap.
     Dönen çıktıyı clean_output() ile temizleyerek döndür.
+
+    reasoning_effort="low" (varsayılan): gpt-oss-120b bir REASONING modeli
+    ve Groq'ta reasoning_effort belirtilmezse varsayılan "medium" kullanılır
+    — model, görünür yanıtı yazmadan önce gizli bir "düşünme" aşamasına
+    ciddi miktarda token harcıyor. Haftalarca yaşadığımız 413 (TPM aşımı)
+    ve finish_reason=length (ham uzunluk 0 olan kesik yanıt) sorunlarının
+    kök sebebi büyük ölçüde BUYDU — hesabın küçük TPM tavanı, çeviri
+    içeriği için değil, görünmeyen düşünme token'ları için tükeniyordu.
+    Çeviri/NER/hafıza/review gibi görevlerin hiçbiri çok adımlı mantık
+    zinciri gerektirmiyor (asıl ihtiyaç dil hakimiyeti) — bu yüzden "low"
+    hem modelin çeviri kalitesini KORUYOR hem de bütçenin neredeyse
+    tamamını görünür çıktıya ayırıyor. Nadiren daha derin akıl yürütme
+    gerektiren bir çağrı olursa, çağıran taraf reasoning_effort="medium"
+    geçebilir.
 
     Model boş yanıt döndürürse VEYA yanıt token limiti yüzünden yarıda
     kesilirse (finish_reason == "length") (MAX_EMPTY_RETRIES kez tekrar
@@ -146,6 +160,7 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
                 ],
                 temperature=temperature,
                 max_completion_tokens=max_out,
+                reasoning_effort=reasoning_effort,
             )
             key_index[0] = (idx + 1) % len(clients)
             choice = response.choices[0]

@@ -14,6 +14,7 @@ import os
 import time
 
 from . import groq_client as gc
+from .ner import representative_sample
 
 MEMORY_FILE = "memory.json"
 
@@ -82,8 +83,10 @@ def extract_from_source(source_text: str, clients: list, key_index: list) -> dic
     İlk bölümün kaynak (İngilizce) metninden hafıza çıkar.
     Karakter, terim ve stil notlarını döndürür.
     """
-    # Uzun metinleri kısalt — hafıza için ilk 4000 karakter yeterli
-    sample = source_text[:4000]
+    # Baş+orta+son örnekleme — bkz. ner.representative_sample docstring'i.
+    # Bu bölüm ilk parçadan çok daha uzunsa (çok parçalı), sadece baştan
+    # bakmak sonradan tanıtılan karakterleri/üslup ipuçlarını kaçırabilirdi.
+    sample = representative_sample(source_text, max_chars=8000)
     raw = gc.call(clients, key_index, _EXTRACT_SYSTEM, sample, temperature=0.1)
     time.sleep(1)
 

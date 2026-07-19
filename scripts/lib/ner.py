@@ -29,14 +29,38 @@ _SOURCE_NER_SYSTEM = (
 )
 
 
+def representative_sample(text: str, max_chars: int = 16000) -> str:
+    """
+    Metnin TAMAMINI göndermek yerine, baştan/ortadan/sondan temsili
+    parçalar alarak yeterince kapsamlı ama sınırlı boyutlu bir örnek
+    oluşturur.
+
+    ÖNEMLİ (Temmuz 2026): Eskiden burada sadece ilk N karakter alınıyordu
+    ("ilk 6000 karakter yeterli, önemli isimler erken geçer" varsayımıyla)
+    — bu, tek chunk'lık kısa bölümlerde doğruydu ama artık bölümler
+    4-5k kelimelik parçalara ayrılıp uzun bölümler 5-6 parçaya kadar
+    çıkabiliyor (25-30k+ karakter). Sadece başı taramak, bölümün
+    ortasında ya da sonunda tanıtılan bir karakteri/terimi tamamen
+    kaçırıyordu. reasoning_effort=low ile token bütçesi rahatladığı için
+    artık baş+orta+son örneklemeyi karşılayabiliyoruz.
+    """
+    if len(text) <= max_chars:
+        return text
+    part = max_chars // 3
+    start = text[:part]
+    mid_point = len(text) // 2
+    middle = text[mid_point - part // 2: mid_point + part // 2]
+    end = text[-part:]
+    return f"{start}\n\n[...]\n\n{middle}\n\n[...]\n\n{end}"
+
+
 def extract_from_source(source_text: str, clients: list, key_index: list) -> set:
     """
     Kaynak (İngilizce) metinden özel isimleri çıkar.
     Bölüm başına 1 kez çağrılır, hafızaya eklenir.
     Küçük harf set döner.
     """
-    # İlk 6000 karakter yeterli — tüm önemli isimler genellikle erken geçer
-    sample = source_text[:6000]
+    sample = representative_sample(source_text)
     result = gc.call(clients, key_index, _SOURCE_NER_SYSTEM, sample, temperature=0.1)
     time.sleep(1)
 
