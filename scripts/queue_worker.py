@@ -87,6 +87,80 @@ def _reconstruct_source(originals_dir: str, chapter_idx: int, total_parts: int) 
     return "\n\n".join(parts)
 
 
+MIN_SPLIT_WORDS = 500  # bunun altına inersek daha fazla bölmenin faydası yok
+
+
+def _split_and_requeue(originals_dir: str, chapter_idx: int, part_idx: int,
+                        total_parts: int, chunk_text: str, meta: dict) -> bool:
+    """
+    Bir parça, gc.call()'ın kendi retry/küçültme mekanizmasına rağmen
+    ISRARLA başarısız oluyorsa, bunun sebebi genelde ARTIK reasoning
+    token'ları değil — parçanın kendisi (girdi + gereken çıktı) hesabın
+    TPM tavanı için tek başına fazla büyük demektir. Bu durumda parçayı
+    paragraf sınırında ikiye bölüp kuyruğa GERİ KOYUYORUZ.
+
+    Sıradaki (part_idx'ten sonraki) parçalar henüz hiç işlenmediği için
+    (kuyruk her zaman sırayla ilerliyor) numaralarını 1 kaydırmak
+    güvenlidir — hiçbir çevrilmiş içerik kaybolmaz, sadece yeniden
+    numaralandırılır.
+
+    Böler ve kuyruğa koyarsa True, (kelime sayısı zaten düşükse, bölmenin
+    faydası olmayacağı için) bölmeden False döner.
+    """
+    words = chunk_text.split()
+    if len(words) < MIN_SPLIT_WORDS * 2:
+        print(f"  Parça zaten küçük ({len(words)} kelime) — bölmenin faydası "
+              f"yok, sorun büyüklükten kaynaklanmıyor olabilir.")
+        return False
+
+    paragraphs = [p for p in chunk_text.split("\n\n") if p.strip()]
+    if len(paragraphs) < 2:
+        print("  Parça tek bir paragraf — doğal bir bölme sınırı yok.")
+        return False
+
+    half_words = len(words) / 2
+    first, second, running = [], [], 0
+    for para in paragraphs:
+        if running < half_words or not first:
+            first.append(para)
+            running += len(para.split())
+        else:
+            second.append(para)
+    if not second:
+        return False
+
+    first_text = "\n\n".join(first)
+    second_text = "\n\n".join(second)
+
+    # Sonraki (henüz işlenmemiş) parçaların dosya adlarını SONDAN BAŞA
+    # doğru 1 kaydır (üzerine yazmayı önlemek için ters sırayla).
+    for p in range(total_parts - 1, part_idx, -1):
+        old = f"{originals_dir}/{chapter_idx:03d}_{p:02d}.txt"
+        new = f"{originals_dir}/{chapter_idx:03d}_{p+1:02d}.txt"
+        if os.path.exists(old):
+            os.rename(old, new)
+            subprocess.run(["git", "add", new])
+            subprocess.run(["git", "rm", "--cached", "--ignore-unmatch", old])
+
+    with open(f"{originals_dir}/{chapter_idx:03d}_{part_idx:02d}.txt",
+              "w", encoding="utf-8") as f:
+        f.write(first_text)
+    with open(f"{originals_dir}/{chapter_idx:03d}_{part_idx+1:02d}.txt",
+              "w", encoding="utf-8") as f:
+        f.write(second_text)
+    subprocess.run(["git", "add", originals_dir])
+
+    meta["total_parts"] = total_parts + 1
+    _save_chapter_meta(originals_dir, chapter_idx, meta)
+    subprocess.run(["git", "add", _chapter_meta_path(originals_dir, chapter_idx)])
+
+    print(f"  Parça {part_idx+1}/{total_parts} ısrarla başarısız oldu "
+          f"({len(words)} kelime) — muhtemelen hesabın TPM tavanı için tek "
+          f"başına çok büyük. İkiye bölünüp kuyruğa geri konuldu "
+          f"(bölüm artık {total_parts + 1} parça).")
+    return True
+
+
 def main():
     status = _load_status()
     if status is None or status.get("status") != "running" or not status.get("queue_mode"):
@@ -187,9 +261,17 @@ def main():
         return
 
     if translated is None:
-        print("Hata: parça çevrilemedi (model ısrarla boş/kesik yanıt döndürdü). "
-              "Self-trigger yapılmıyor — bir sonraki tetiklemede aynı parça "
-              "tekrar denenecek.")
+        print("Hata: parça çevrilemedi (model ısrarla boş/kesik yanıt döndürdü).")
+        split_ok = _split_and_requeue(originals_dir, chapter_idx, part_idx,
+                                       total_parts, chunk_text, meta)
+        if split_ok:
+            write_status(status, f"parça bölündü: bölüm {chapter_idx+1}/{total} "
+                                  f"({total_parts}→{total_parts + 1} parça)")
+            print("Bölünen (artık daha küçük) parça için hemen tekrar deneniyor...")
+            trigger_workflow("queue-worker.yml", branch=current_branch())
+        else:
+            print("Self-trigger yapılmıyor — bir sonraki tetiklemede aynı "
+                  "parça tekrar denenecek.")
         return
 
     translated_path = f"{translated_dir}/{chapter_idx:03d}_{part_idx:02d}.txt"
