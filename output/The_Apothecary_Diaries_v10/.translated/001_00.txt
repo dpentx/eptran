@@ -1,0 +1,158 @@
+Editör Notları
+
+The 
+Apothecary Diaries
+ Günlükleri
+
+Cilt 10
+
+Sasha McGlynn’in Bin Çeşitli Saplantısı
+
+Herkese merhaba! 10. cildi nasıl buldunuz? Her şeyi 
+içeriyormuş 
+gibi hissettirdi, değil mi?
+
+Siyaset. Romantizm. Aksiyon. Entrika.
+
+Ördekler.
+
+Ah, kendimi tanıtmayı unuttum! Ben Sasha McGlynn, 
+The Apothecary Diaries
+’in editörüyüm. Çevirmen Kevin Steinbach ile yedi yılı aşkın süredir birlikte çalışıyorum! Bu süre zarfında kendimizi ince ayarlı bir makineye dönüştürdük: o Japonca metni İngilizceye çeviriyor, ben de ona son dokunuşları yapıyorum! Ben onun yangı, o benim yin’im. Ben onun X’i, o benim Y’si. Benim...Gaoshun, onun Jinshi’si? Anlayacağınız gibi.
+
+Kevin, önceki ciltte genel düzenleme sürecini çok güzel anlatmıştı, bu yüzden yaptığım işin detaylarına biraz daha inmek istiyorum. Son üründe göremeyeceğiniz bir şeyi size göstereceğim. O hâlâ benimle kalır mısınız? Ve adımlarınıza dikkat edin; tavşan delikleri her yerde...
+
+Kevin, önceki ciltte de söylediği gibi, bir romanın bir bölümünü çevirmeyi bitirdiğinde dosyayı bana gönderiyor. Zaten düzenlememe yardımcı olacak notlar almış ve tartışma gerektirebilecek bölümleri işaretlemiş.
+
+Düzenleme yaparken, ilerlerken birden fazla mini görevle uğraşıyorum. Bunlar arasında şunları kontrol etmek yer alıyor:
+
+Yazım. Tüm kelimeler ev sözlüğümüz, J-Novel Club stil rehberi ve seri sözlüğüne uygun olarak doğru yazılmış mı?
+
+Dilbilgisi ve noktalama. Kelimeler doğru sırada mı? Özne-yüklem uyumu var mı? Fiil zamanları tüm metin boyunca tutarlı mı?
+
+Ses. Her karakterin kendine özgü bir konuşma tarzı ve (kullandığı ya da kullanmadığı) belirli bir kelime hazinesi vardır. Örneğin, Nianzhen geçmişini anlatırken Kevin şöyle yazmış:
+People began to agree that it was as she said: we were the cause of this disaster, for having vitiated the ritual observance.
+Ben 
+vitiated
+ kelimesini işaretledim ve Nianzhen’in düşük sosyal konumu nedeniyle böyle bir kelimeyi kullanmasının pek olası olmadığını yorumladım. Son sürümde bunu 
+interrupted
+ olarak değiştirdik:
+People began to agree that it was as she said: we were the cause of this disaster, for having interrupted the ritual observance.
+
+Bu görevlerin çoğu yüzeysel; cümle ve paragraflarda değişiklik yaparak metnin belirli kurallara uymasını ve okuyucunun dilbilgisi hataları ya da karakter dışı kelime seçimleri yüzünden hikayeden kopmamasını sağlıyorum. Yazım ve dilbilgisi kontrolü, bir editörün işi için asgari gerekliliktir; metnin sesini ayarlamak ise okuyucunun hikâyeye daha derinlemesine dalmasını sağlayan ek bir adımdır.
+
+Genel düzenlemeleri yaparken, ara sıra en sevdiğim bölümlerden birine rastlıyorum.
+
+Gerçek Kontrolü!
+
+The Apothecary Diaries
+ gerçek dünyaya dayanır ve bu yüzden gerçek bilim ve mantığı izler. Hikâye, kendime güvenmediğim bir fikir sunduğunda, doğru kelimeleri kullandığımızdan ve çeviride verdiğimiz bilgilerin doğru olduğundan emin olmak için konuyu araştırırım. Yazar Natsu Hyuuga, 
+The Apothecary Diaries
+ dünyasına lezzet katmada ustadır, bu yüzden araştırmam bir makyaj terimi için güzellik sitesine bakmak kadar kolay ya da hamilelikte komplikasyon tedavileri hakkında derinlemesine bilgi edinmek kadar kapsamlı olabilir. Benim için doğru dili ya da yaklaşımı bulmak, bir gizemi çözmek gibidir—birkaç dakika boyunca Maomao’nun yerine geçerim! Keşfettiklerim doğrudan son sayfaya geçmese de, yazarın ne yazdığını daha iyi anlamamız, İngilizce okuyuculara anlatmamızı kolaylaştırır.
+
+Bir Tavşan Deliğine Düşüp Çıkamıyorum
+
+Ara sıra araştırmalarımda çok derine iniyorum. Belki de fazla. Ve bazen incelediğim şey, metinde sadece bir yan nottur ve bütün hikâyeyi etkilemez. İşte bu, tavşan deliklerine yolculuklar. Garip bir terimin anlamını aramak, tuhaf bir bilgiye yol açar, bu da başka bir bilgiye, bir haftalar önce düşündüğüm hafif ilgili bir şeye bağlanır. Örneğin, bir kez Tang-dynasty mutfakları ve pişirme gereçleri fotoğraflarını aradım ve sonunda duvarlarım için renk paletleri seçtim, sonra kendimi tekrar el yazmasına zorladım.
+
+Tüm bu tavşan deliklerine ithafen, 
+The Apothecary Diaries
+ üzerinde çalışırken kaybolduğum bazı eğlenceli gerçekleri ve arama terimlerini paylaşmak istiyorum. Belki seride nerede kaybolduğumu tanırsınız; diğerleri ise sadece benim çarpık merak duygumla açıklanabilir. Her neyse, bunlar harika hikâyeler oluşturur ve kim bilir? Belki ileriki ciltlerde öğrendiklerimi kullanabiliriz.
+
+Trivia:
+
+Datura stramonium,
+The Apothecary Diaries
+’de “thornapple” olarak bilinir, aynı zamanda “zombie cucumber” olarak da adlandırılır.
+
+Sol kol ve sol bacağı aynı anda (veya sağ kol ve sağ bacağı) hareket ettirmek 
+ipsilateral movement
+ olarak adlandırılır.
+
+Çoğu tekir kedi dişi olur, erkek oranı çok düşüktür. Tekir kediler birçok kültürde, hem Doğu’da hem Batı’da şanslı kabul edilir.
+
+Autopsy ve necropsy, ölüm nedenini bulmak için bir bedeni kesip açma eylemini tanımlayan terimlerdir. Autopsy insanlarda, necropsy ise diğer hayvanlarda kullanılır. Dissection ise bir bedeni (insan ya da hayvan) açıp anatomisini inceleme eylemidir.
+
+Bitler 130 °F (yaklaşık 54 °C) üzerindeki sıcaklıklarda ölür.
+
+Arama Motoru Tavşan Delikleri şunları içerdi:
+
+Kağıt hamuru ve kağıt yapımı
+
+Kedi nanesine alternatifler
+
+Kadınların yüz dövmeleri yaptığı kültürler
+
+Bit lifi vs. protein bazlı lifler için doğal boya tutucular
+
+Parazitik mantar türleri
+
+The Last of Us 
+konsept sanatı
+
+Şok belirtileri
+
+pH’ın ortanca çiçeğine etkisi
+
+İnsan saçı iç çamaşırı
+
+Tığ işi iç çamaşırı desenleri
+
+Farklı dışkı türleri için kelime hazinesi
+
+Zehirli deniz yosunu çeşitleri
+
+Parlayan mantarlar
+
+Topuklu ayakkabı tarihi
+
+Berberlerin ne zaman cerrah olarak da görev almaya başladığı
+
+Tembel ütü teknikleri
+
+Çin eczane dolapları
+
+Çin eczane dolapları satılık yakınımda
+
+Uygun fiyatlı Çin eczane dolapları satılık yakınımda
+
+DIY Çin eczane dolabı talimatları
+
+Bebek ev eczane dolapları satılık yakınımda
+
+Mektup mühürleme teknikleri
+
+Buğday anatomisi
+
+Tatlı patates anatomisi
+
+Kopmuş uzuvların çürüme süreci
+
+Çekirgeyi yemek için hazırlama
+
+Çekirge tarifleri
+
+Çekirge diseksiyon fotoğrafları
+
+Ölü bedenlerde farklı ölüm aşamalarında kanama
+
+Arsenik zehirlenmesi belirtileri
+
+Dantel tarihi
+
+“Sütlü çay” içmenin “doğru” yolu
+
+Çocuklar için eğlenceli bilim deneyleri
+
+Dolaplar
+
+Bebeklerin yememesi gereken şeyler
+
+Tang-dynasty metal işçiliği
+
+Ördek yumurtlama davranışları
+
+Kadın göğüs boyutunu artıran yiyecekler
+
+Ereksiyonları önleyen yiyecekler
+
+Daha fazla ekleyebilirim... ama şimdilik burada durmak iyi olur. Bu eksik turun, bir editörün işinin ne kadar geniş bir yelpazeye sahip olduğuna dair size bir bakış sunduğunu umarım. Bu, mesleği bu kadar tatmin edici kılan şeylerden biri. Bir sonraki sefere kadar, iyi eğlenceler, bolca okuyun ve o tavşan deliklerinden korkmayın! Nereye götüreceğini asla bilemezsiniz.
