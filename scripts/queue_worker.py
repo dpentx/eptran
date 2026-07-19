@@ -160,6 +160,18 @@ def main():
     protected_str = meta.get("protected_str") or ""
     memory_ctx = meta.get("memory_ctx") or ""
 
+    # Bir önceki parçanın çevirisinin son ~600 karakterini bağlam olarak
+    # al — bu, chunk sınırlarında üslup/terim dikişini KAYNAĞINDA önlüyor
+    # (bkz. translate_chapter'daki prev_tail açıklaması). İlk parça için
+    # (part_idx==0) doğal olarak önceki parça yok.
+    prev_tail = ""
+    if part_idx > 0:
+        prev_path = f"{translated_dir}/{chapter_idx:03d}_{part_idx-1:02d}.txt"
+        if os.path.exists(prev_path):
+            with open(prev_path, encoding="utf-8") as f:
+                prev_text = f.read().strip()
+            prev_tail = prev_text[-600:]
+
     print(f"[{chapter_idx+1}/{total}] Çevriliyor: {title} "
           f"— parça {part_idx+1}/{total_parts}")
     status["current_chapter"] = title
@@ -167,6 +179,7 @@ def main():
         translated = translate_chapter(
             {"title": title, "text": chunk_text}, clients, key_index,
             memory_ctx, protected_str, part_idx, total_parts,
+            prev_tail=prev_tail,
         )
     except gc.AllKeysLockedError as e:
         print(f"Tüm keyler kilitli ({e.wait_seconds}s) — bu parça bu run'da "

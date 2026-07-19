@@ -1,23 +1,33 @@
 """
 eptran — review.py
-Çevrilmiş .txt dosyalarını sliding window ile review eder:
+Çevrilmiş .txt dosyalarını review eder:
   1. Boilerplate temizle
   2. Sözlük destekli İngilizce kelime düzeltmesi (NER çağrısı YOK,
-     hafızadaki whitelist + dictionary.py kullanılır)
-  3. Sliding window (chunk + köprü) review
-  4. Hafıza context'i her adımda kullanılır
+     hafızadaki whitelist + dictionary.py kullanılır) — LLM çağrısı
+     SADECE gerçek bir sorun (yabancı kelime kalıntısı) bulunursa yapılır
+
+NOT (Temmuz 2026): Eskiden burada bir de sliding_window.review_chunks()
+adımı vardı — her chunk'ı (+ chunk sınırlarındaki "köprüleri") koşulsuz
+olarak LLM'e tekrar yollayıp "düzelt" diyordu. Bu, translate.py'nin her
+chunk'ı birbirinden bağımsız (önceki chunk'ın çevirisini GÖRMEDEN)
+çevirmesinin yarattığı üslup/terim dikişlerini SONRADAN yamak içindi.
+Artık translate_chapter() bir önceki parçanın çevrilmiş son birkaç
+cümlesini bağlam olarak alıyor (bkz. queue_worker.py'deki prev_tail),
+yani dikiş sorunu KAYNAĞINDA büyük ölçüde önleniyor. Bu da her bölümü
+ikinci kez baştan sona LLM'e sokan (ve review'ı günler sürdüren)
+koşulsuz geçişi gereksiz kıldı — kaldırdık. Kalan review_fix.fix_text()
+zaten ucuz: sadece gerçek bir İngilizce kalıntı bulursa LLM çağırıyor.
 """
 import os
 
-from lib import boilerplate, groq_client as gc, memory as mem, review_fix, sliding_window as sw
+from lib import boilerplate, groq_client as gc, memory as mem, review_fix
 from lib.git_utils import read_status, write_status, is_stale_running, trigger_workflow, current_branch
 from lib import dictionary
 
 STATUS_FILE = "status.json"
 
 
-def review_file(filepath: str, clients: list, key_index: list,
-                memory_ctx: str, memory: dict) -> None:
+def review_file(filepath: str, clients: list, key_index: list, memory: dict) -> None:
     with open(filepath, encoding="utf-8") as f:
         raw = f.read()
 
@@ -44,16 +54,12 @@ def review_file(filepath: str, clients: list, key_index: list,
         open(filepath, "w").close()
         return
 
-    # Sözlük destekli İngilizce kelime düzeltmesi (NER çağrısı yok)
+    # Sözlük destekli İngilizce kelime düzeltmesi (NER çağrısı yok, LLM
+    # çağrısı SADECE gerçek bir yabancı-kelime kalıntısı bulunursa olur)
     print(f"  Paragraf taraması (sözlük destekli)...")
     body = review_fix.fix_text(body, clients, key_index, memory)
 
-    # Sliding window review (hafıza context'li)
-    chunks = sw.chunk_text(body)
-    corrected = sw.review_chunks(chunks, clients, key_index, memory_ctx)
-
-    final_body = "\n\n".join(corrected)
-    final = f"{title_line}\n\n{final_body}\n" if title_line else final_body + "\n"
+    final = f"{title_line}\n\n{body}\n" if title_line else body + "\n"
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(final)
@@ -90,13 +96,11 @@ def main():
     clients = gc.get_clients()
     key_index = [0]
 
-    # Hafızayı yükle
+    # Hafızayı yükle (whitelist/sözlük düzeltmesi için)
     memory = mem.load(output_dir)
-    memory_ctx = mem.build_context(memory)
-    if memory_ctx:
-        print(f"Hafıza yüklendi: {len(memory.get('characters', {}))} karakter, "
-              f"{len(memory.get('terms', {}))} terim, "
-              f"{len(memory.get('summaries', []))} özet")
+    print(f"Hafıza yüklendi: {len(memory.get('characters', {}))} karakter, "
+          f"{len(memory.get('terms', {}))} terim, "
+          f"{len(memory.get('summaries', []))} özet")
 
     review_done = status.get("review_completed", 0)
     total = len(txt_files)
@@ -114,7 +118,7 @@ def main():
 
         filepath = os.path.join(output_dir, fname)
         print(f"[{i+1}/{total}] Review: {fname}")
-        review_file(filepath, clients, key_index, memory_ctx, memory)
+        review_file(filepath, clients, key_index, memory)
 
         status["review_completed"] = i + 1
         status["review_current"] = fname

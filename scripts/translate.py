@@ -145,7 +145,18 @@ def _chunk(text: str, target_words: int = 4500) -> list:
 
 def translate_chapter(chapter: dict, clients: list, key_index: list,
                        memory_ctx: str, protected_str: str,
-                       chunk_idx: int, total_chunks: int) -> str:
+                       chunk_idx: int, total_chunks: int,
+                       prev_tail: str = "") -> str:
+    """
+    prev_tail: bu bölümün BİR ÖNCEKİ parçasının çevrilmiş (Türkçe) son
+    birkaç cümlesi. Chunk'lar birbirinden bağımsız çevrildiği için
+    (her API çağrısı sadece kendi chunk'ını görür), parça sınırlarında
+    üslup/terim dikişi atlayabiliyordu — review'daki sliding_window
+    "köprü" adımı bunu SONRADAN yamıyordu. Bunun yerine artık dikişi
+    KAYNAĞINDA önlüyoruz: modele "buradan devam et" diye önceki parçanın
+    nasıl bittiğini gösteriyoruz. Bu, review'ı hafifletmeyi güvenli hale
+    getiren asıl değişiklik.
+    """
     part_info = f", Parça {chunk_idx + 1}/{total_chunks}" if total_chunks > 1 else ""
     system_msg = (
         f"Sen profesyonel bir çevirmensin. "
@@ -158,6 +169,13 @@ def translate_chapter(chapter: dict, clients: list, key_index: list,
     )
     if protected_str:
         system_msg += f"{protected_str}\n"
+    if prev_tail:
+        system_msg += (
+            f"\nBu bölümün bir önceki parçası şöyle bitmişti (SADECE bağlam "
+            f"için veriliyor — bunu TEKRAR ÇEVİRME, üslup ve terimleri "
+            f"koruyarak doğal bir şekilde devam et):\n"
+            f"\"...{prev_tail}\"\n"
+        )
     system_msg += "Yanıt olarak SADECE çeviriyi yaz, hiçbir açıklama ekleme."
     if memory_ctx:
         system_msg += f"\n\n{memory_ctx}"
