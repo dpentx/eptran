@@ -1,3 +1,5 @@
+# Text/chapter12_1.xhtml
+
 O, onun ne kadar çabuk çalıştığına hayran kaldı.
 
 “Buna, uygun bir şekilde, maskeli bir baykuş diyoruz,” dedi. “Normal bir baykuş, uçan bir maskenin izlenimini veremez—ve bu baykuşun alışılmadık bir renklenmesi var.” Bu baykuş, neredeyse siyah kadar koyu tüyler taşıyordu. Genellikle, koyu renkli gövdelere sahip kuşların karnında beyaz tüyler olur, ama yüzü dışındaki tüm vücudu tekdüze koyu kahverengiydi. Geceleyin onu fark etmek çok zor olurdu.
