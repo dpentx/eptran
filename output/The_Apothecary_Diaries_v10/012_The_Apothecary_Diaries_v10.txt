@@ -38,9 +38,9 @@ Basen batı başkentinde iki tam gün kalmıştı ki Maomao sonunda bir tarım k
 
 “Sorun değil, efendim. Kim bilir? Belki bilinmeyen bir ilaç bulurum.”
 
-Bu doğruydu. i-sei Province, Kaou’dan farklı flora ve fauna barındırıyordu. Hangi bitki ya da hayvanla karşılaşacağı ve bunların potansiyel tıbbi özellikleri bilinmezdi; Maomao aslında biraz heyecanlıydı—ilginç ilaçlar bulmayı umuyordu.
+Bu doğruydu. i-sei il, Kaou’dan farklı bitki örtüsü ve hayvan çeşitliliği barındırıyordu. Hangi bitki ya da hayvanla karşılaşacağı ve bunların potansiyel tıbbi özellikleri bilinmezdi; Maomao aslında biraz heyecanlıydı—ilginç ilaçlar bulmayı umuyordu.
 
-Yanına sadece bir çantaya sığabilecek en az eşyayı aldı. Nakit ihtiyacı olursa kullanması için biraz altın külçesi ya da gümüş parça hazırlanmasını istedi; işlenmemiş değerli metaller, i-sei Province’de diğer uluslarla çok ticaret yaptığı için en çok yönlü ve etkili ödeme şekli olurdu.
+Yanına sadece bir çantaya sığabilecek en az eşyayı aldı. Nakit ihtiyacı olursa kullanması için biraz altın külçesi ya da gümüş parça hazırlanmasını istedi; işlenmemiş değerli metaller, i-sei eyaletinde diğer uluslarla çok ticaret yaptığı için en çok yönlü ve etkili ödeme şekli olurdu.
 
 “Hmm. Genelde saray kadınlarını böyle görevlere gönderirler mi?” diye sordu Tianyu şüpheci bir bakışla.
 
@@ -60,7 +60,7 @@ Dünyada sorulacak bir şey kalmayacak kadar ilgisiz çok az insan vardır.
 
 Ördek doktor Maomao’ya bir paket atıştırmalık verdi ve el salladı. “Yakında görüşürüz!”
 
-“Endişelenme, sen yokken işlere göz kulak olurum!” dedi Lihaku. Evet, onunla en azından ördek doktor hakkında endişelenmezdi.
+“Endişelenme, sen yokken işlere göz olurum!” dedi Lihaku. Evet, onunla en azından ördek doktor hakkında endişelenmezdi.
 
 “Uzun sürdün.”
 
@@ -80,9 +80,9 @@ Akılda kalmayan vagon sürücüsü Lahan’ın Kardeşi olmalıydı. Maomao, Ch
 
 Maomao’nun haklı olduğunu doğrudan söylemek yerine, Chue bir dizi küçük bayrak çıkardı.
 
-“Ve seni tarım köylerine tur yapmaya ne götürüyor, Master Basen?” diye sordu Maomao, sadece nazik olmak için.
+“Ve seni tarım köylerine tur yapmaya ne götürüyor, Usta Basen?” diye sordu Maomao, sadece nazik olmak için.
 
-“Ay Prensi’nin emri. Seni canımla korumamı istedi. Master Lakan’ın batı başkentinde bir çılgınlık yapmasını istemiyor.”
+“Ay Prensi’nin emri. Seni canımla korumamı istedi. Usta Lakan’ın batı başkentinde bir çılgınlık yapmasını istemiyor.”
 
 Maomao’nun buna söyleyecek bir şeyi yoktu. Lihaku’nun daha iyi bir seçim olabileceğini söyleyemezdi.
 
@@ -109,7 +109,7 @@ Uzun bir yolculuk sırasında önemli birisi suikastle öldürülürse, sorumlul
 
 Gyoku‑ou hakkında pek bir şey bilmiyordum, ama en önemli ziyaretçisinin tehlikeye düşmesine izin vermeyeceğini umuyordum.
 
-Chue gülümsedi, sonra atına bindi ve ayaklarını eyerine yerleştirdi. Etek yerine bir çift pantolon giymişti.
+Chue gülümsedi, sonra atına binip ayaklarını eyerine yerleştirdi. Etek yerine bir çift pantolon giymişti.
 
 “Tamam. Köy buradan yaklaşık kırk kilometre uzakta. Dört saat içinde varırız,” dedi Basen.
 
@@ -117,8 +117,8 @@ Chue gülümsedi, sonra atına bindi ve ayaklarını eyerine yerleştirdi. Etek 
 
 “Maalesef, burası başkent değil ve çok fazla çay evi yok. Atınla ot paylaşmak istersen, alabilirsin,” dedi Basen, Chue’nun takıntısına aldırış etmeden.
 
-O, onun büyük kardeşinin eşi, bu kadar.
-Basen ona belli bir saygı gösteriyordu, ama Chue onu herkes gibi aynı şekilde muamele ediyordu.
+O, onun büyük kardeşinin eşi, bu kadar.  
+Basen ona belirli bir saygı gösteriyordu, ama Chue onu herkes gibi aynı şekilde muamele ediyordu.
 
 “Hangi atı tercih edersin, Bayan Maomao?” diye sordu Chue.
 
@@ -126,7 +126,7 @@ Basen ona belli bir saygı gösteriyordu, ama Chue onu herkes gibi aynı şekild
 
 İki at vardı ve Maomao tek başına binmeyi bilmiyordu, bu yüzden diğerlerinden biriyle binmek zorundaydı. Kiminle olduğu ona fark etmezdi.
 
-“Tamam, o zaman Bayan Chue’nin arkasına oturabilirsin! Mister Basen’in eyeri sert—kıç için zor! Bayan Chue’nun eyeri güzelce tabanlanmış, darbeyi iyi emer ve uzun yolculuklarda oturması rahat! Söyle bana, hangisini daha çok seversin?”
+“Tamam, o zaman Bayan Chue’nin arkasına oturabilirsin! Bay Basen’in eyeri sert—kıç için zor! Bayan Chue’nun eyeri güzelce tabanlanmış, darbeyi iyi emer ve uzun yolculuklarda oturması rahat! Söyle bana, hangisini daha çok seversin?”
 
 Tabii ki Maomao Chue’ye işaret etti.
 
@@ -157,7 +157,7 @@ Maomao. Eski babası Luomen, dünyanın bir küre olduğu teorisini ve bunun aç
 
 Dünyanın yuvarlak olduğu doğru mu bilmiyordu, ama eğer öyleyse yıldızların hareket etmesini açıklardı. Ya da en azından Luomen öyle söylemişti. Şimdi daha fazla dikkat etseydi keşke derdi, ama ne yazık ki açıklamasının çoğu ona yapışmamıştı. Bunun, yabancı bir ülkede öğrenirken edindiği şeylerden biri olduğunu ve burada göz ardı ettiğini üzülerek fark etti.
 
-Ovallar soğuktu, bahar olmasına rağmen. Güneş boldu, ama aynı zamanda vücudun ısısını çeken bir rüzgar da vardı. Üstelik hava çok kurak ve biraz inceydi. Deniz seviyesinin oldukça üzerindeydiler.
+Ovallar soğuktu, yaz olmasına rağmen. Güneş parladı, ama aynı zamanda vücudun ısısını çeken bir rüzgar da vardı. Üstelik hava çok kurak ve biraz inceydi. Deniz seviyesinin oldukça üzerindeydiler.
 
 “Buyurun, Bayan Maomao,” dedi Chue, ona bir pelerin uzatarak. Rüzgarı kesen yünden yapılmıştı ve başkentte dahi şık görünecek kadar ince işçilikle süslenmişti.
 
@@ -172,7 +172,7 @@ Keşke şu anda kız kardeşlerimin merhemlerinden birini alabilseydim.
 
 “Bayan Chue, bronzlaşmayı önleyecek bir şeyim var. Biraz ister misin? Derini kurumasından da korur.” diye sordu, belki sorarsa faydalı olur diye düşündü. Eğer biterse, batı başkentinde buldukları malzemelerle bir tane daha yapabilirdi.
 
-“Ooh, alabilir miyim? Bayan Chue hep biraz daha koyu olur, bu yüzden bronzluklar o kadar belli olmaz, ama denemekten mutlu olur!”
+“Ooh, alabilir miyim? Bayan Chue hep biraz daha koyu olur, bu yüzden bronzluklar o kadar belirgin olmaz, ama denemekten mutlu olur!”
 
 “Tabii. Bir ara dinlenirken sana vereceğim.”
 
@@ -198,7 +198,7 @@ Ağaçların etrafına bakıyordu.
 
 Maomao ve Chue baktılar, ama bir şey bulamadılar. Yerde bir delik, bir in gibi görünüyordu, ama kazdıklarında bir fare çıktı. Yanlarında erzak olduğu için kemirgeni serbest bıraktılar.
 
-Su kenarında uzun otlar uzanıyordu. Maomao, araştırmasından bu bölgenin beefwood ve meyan köküne ev sahipliği yaptığını biliyordu, ama bir şey göremedi. Tek bir yerde bu bitkilerin büyük miktarlarda bulunmasını beklemezdi.
+Su kenarında uzun otlar uzanıyordu. Maomao, araştırmasından bu bölgenin sığır ağacı ve meyan köküne ev sahipliği yaptığını biliyordu, ama bir şey göremedi. Tek bir yerde bu bitkilerin büyük miktarlarda bulunmasını beklemezdi.
 
 Umut etmek çok şeydi.
 
@@ -268,7 +268,7 @@ Basen, biraz şaşkın, eldivenini çıkardı ve elini uzattı. Parmaklar kırı
 
 Anlamıyorum.
 
-Tüm o korkunç seslerden sonra, dayak yapan kişinin elini en azından bir şeyler kırmış olmasını beklerdi. Basen’in tamamen zarar görmemesinin bir nedeni olmalıydı.
+Tüm o korkunç seslerden sonra, darbe yapan kişinin elini en azından bir şeyler kırmış olmasını beklerdi. Basen’in tamamen zarar görmemesinin bir nedeni olmalıydı.
 
 Eldivenini aldı ve açıklamayı kısa sürede buldu. Dışarıdan yün gibi yumuşak görünüyordu, ama ağırdı. İçinde bir çeşit metal vardı. Basen’in vahşi gücü, ağırlıklı bir eldivenle birleşince? Haydutlara acıma duygusu hissettirecek kadar yakındı.
 
@@ -390,7 +390,7 @@ Lahan’ın Kardeşi’nin adını da Basen bilmiyordu.
 
 “Kim normal?! Ve kim çiftçi?!” diye bağırdı Lahan’ın Kardeşi, ama eğer çiftçi değilse, o ne? Geniş tarlaları ekerken onu gördü—işine biraz daha gurur duyması mümkün.
 
-“Anlıyorum. Eğer Master Lakan’ın bir akrabasıysa, saygıyla muamele edilmesi gerekir.”
+“Anlıyorum. Eğer Usta Lakan’ın bir akrabasıysa, saygıyla muamele edilmesi gerekir.”
 
 Basen’in bunu söylerken Maomao’ya bir bakış attığını hissetti, ama görmezden geldi. O, onu aynı kategoriye sokmuyordu.
 
@@ -458,13 +458,13 @@ Chue iyi bir harita okuyucusu gibi görünüyordu, ama onun için bile, yabancı
 
 “Güzel mi?”
 
-Maomao, Chue’nün giydiği pelerini inceledi. “Senin gösterişli olmayı sevdiğini biliyorum, Bayan Chue, eğer iki pelerin olsaydı daha süslüsünü kendine almanı beklerdim. Ama sen daha sade olanı giydin.”
+Maomâo, Chue’nün giydiği pelerini inceledi. “Senin gösterişli olmayı sevdiğini biliyorum, Bayan Chue; eğer iki pelerin olsaydı, daha süslüsünü kendine almanı beklerdim. Ama sen daha sade olanı giydin.”
 
 “Evet, ama Bayan Chue, üstlerine göre davranmayı bilir.” Tonu başka bir şey söylüyordu.
 
 “Evet, ve bana daha güzel pelerini verdiğin şeyin Ay Prensi’nden geldiğini ima etti. Onun sana eyer verdiğinden bahsederek bu izlenimi pekiştirdin. Neredeyse pelerinin de ondan olduğunu ikna ettin—ama öyle değildi, değil mi?”
 
-Maomao’nun pelerini dokunuşta hoştu. İnce nakışlarla süslüydü, uzaktan bile ne kadar değerli bir giysi olduğu belli olurdu.
+Maomao’nun pelerini dokunuşta hoştu. İnce nakışlarla süslüydü, uzaktan bile ne kadar değerli bir giysi olduğu anlaşılırdı.
 
 “Böyle bir pelerin, haydutlara ‘Lütfen! Beni soyun!’ demek gibi. Biraz daha sade bir kıyafet giyerek kendini hedefin hizmetçisine benzetmiş oldun.”
 
@@ -474,7 +474,7 @@ Maomao’nun pelerini dokunuşta hoştu. İnce nakışlarla süslüydü, uzaktan
 
 Sıradan Lahan’ın Kardeşi güçlü, sağlıklı bir adamdı ama deneyimli bir dövüşçü gibi görünmüyordu. Maomao, onun da diğerleri gibi bir kavgadan korktuğunu düşündü.
 
-“Eğer iki gruba bölünseydik, biri daha küçük ve içinde bariz bir şekilde para gibi görünen biri olsaydı, haydutlar o gruba saldırma ihtimalini artırırdı. İki kadın, bir adam—adam Master Basen, çılgın gücüne rağmen bebek yüzlü ve asker için nispeten küçük bir yapıya sahip. Kadınları bırakmamız gerektiğinde, bizi satmayı düşünmüyorlardı, değil mi? Asıl amaç fidye potansiyeliydi.”
+“Eğer iki gruba bölünseydik, biri daha küçük ve içinde bariz bir şekilde para gibi görünen biri olsaydı, haydutlar o gruba saldırma ihtimalini artırırdı. İki kadın, bir adam—adam Usta Basen, çılgın gücüne rağmen bebek yüzlü ve asker için nispeten küçük bir yapıya sahip. Kadınları bırakmamız gerektiğinde, bizi satmayı düşünmüyorlardı, değil mi? Asıl amaç fidye potansiyeliydi.”
 
 Haydutlar, Basen’in bir adamın kıyafeti içinde ayı gibi olduğunu asla tahmin etmezdi. O bir aslan avcısıydı zaten.
 
@@ -506,11 +506,7 @@ O zaman muhtemelen Jinshi değildi. Chue, onun da içinde olmadığı bir komuta
 
 “Evet?”
 
-“Bayan Chue her zaman neşeli, rahat Chue’dur, bu yüzden lütfen Bayan Chue’yu her zaman 
-nasıl 
-tutarsan o şekilde tut.” Küçük bayraklardan bir dizi çıkardı. 
-Shoop
-.
+“Bayan Chue her zaman neşeli, rahat Chue’dur, bu yüzden lütfen Bayan Chue’yu her zaman nasıl tutarsan o şekilde tut.” Küçük bayraklardan bir dizi çıkardı.
 
 “Ne demek istediğini tam olarak anlamadım ama tamam.” Maomao bayrakları alıp parmaklarından sarkıttı, ne yapacağını bilemedi.
 
@@ -550,6 +546,6 @@ Chue keçilerin dizginlerini aldı ve bagajını karıştırarak ağır görün�
 
 “Ve, bu tuz ne işe yarar?” Maomao, Chue’nin ne yapmaya çalıştığını hayal edemiyordu.
 
-Chue gülümsedi. “Pazarlık! Keçiler ve tuzla. Bayan Chue bir barışçıdır, görüyorsun. Mümkün olduğunda sessiz yolu tercih eder. Uykum var ama bir işi halletmem gerekiyor. Sen sadece dinlen, yorgun kendini, Bayan Maomao.”
+Chue gülümsedi. “Pazarlık! Keçiler ve tuz. Bayan Chue bir barışçıdır, görüyorsun. Mümkün olduğunda sessiz yolu tercih eder. Uykum var ama bir işi halletmem gerekiyor. Sen sadece dinlen, yorgun kendini, Bayan Maomao.”
 
 Chue çadırın girişine doğru dönerek dönüp gitti, keçileriyle birlikte.
