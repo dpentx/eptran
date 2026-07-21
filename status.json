@@ -1,13 +1,13 @@
 {
-  "status": "running",
+  "status": "completed",
   "book": "The_Apothecary_Diaries_v10",
   "epub_file": "The Apothecary Diaries v10.epub",
   "branch": "book/The_Apothecary_Diaries_v10",
   "source_type": "epub",
   "total": 33,
   "completed": 33,
-  "current_chapter": "Chapter 19: Scratches",
+  "current_chapter": "",
   "started_at": "2026-07-19T10:08:45.141946+00:00",
   "queue_mode": true,
-  "updated_at": "2026-07-21T08:13:54.578439+00:00"
+  "updated_at": "2026-07-21T08:13:55.891030+00:00"
 }
