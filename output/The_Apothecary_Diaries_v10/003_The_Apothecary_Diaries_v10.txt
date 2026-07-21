@@ -10,11 +10,11 @@ Eskiden zevk bölgesinde bir eczacıydı. İlaçlar ve zehirler konusunda tam bi
 
 Jinshi
 
-İmparatorun küçük kardeşi. İnsanüstü güzel. Bu kadar çekici olmasına rağmen şaşırtıcı derecede ayakları yere basıyor, ama kendini serbest bıraktığında neler yapabileceği belli değil. Ortalama üzerindeki entelektüel yetenekleriyle ilgili bir aşağılık kompleksi taşıyor. Gerçek adı: Ka Zuigetsu. Yirmi bir yaşında.
+İmparatorun küçük kardeşi. İnsanüstü güzel. Bu kadar çekici olmasına rağmen şaşırtıcı derecede ayakları yere basıyor, ama kendini serbest bıraktığında neler yapabileceği belirsiz. Ortalama üzerindeki entelektüel yetenekleriyle ilgili bir aşağılık kompleksi taşıyor. Gerçek adı: Ka Zuigetsu. Yirmi bir yaşında.
 
 Basen
 
-Gaoshun’un oğlu; Jinshi’nin hizmetkarı. Çoğu insandan daha az acı hissediyor, bu da ona çoğu insandan çok daha büyük fiziksel kapasite sağlıyor. Çok ciddidir, bu da onu kolayca provoke edilebilir kılıyor. Konsort Lishu’ya aşıktır.
+Gaoshun’un oğlu; Jinshi’nin hizmetkarı. Çoğu insandan daha az acı hissediyor, bu da ona çoğu insandan çok daha büyük fiziksel kapasite sağlıyor. Çok ciddidir, bu da onu kolayca kızdırılabilir kılıyor. Konsort Lishu’ya aşıktır.
 
 Gaoshun
 
@@ -26,9 +26,9 @@ Baryou’nun eşi ve çocuğunun annesi. Çarpıcı derecede çekici olmasa da g
 
 Lakan
 
-Maomao’nun biyolojik babası ve Luomen’in yeğeni. Monokl taşıyan bir eksantrik. Askeri yüksek rütbeli bir üye, ancak garip davranışları nedeniyle insanlar ondan kaçınıyor. Go ve Shogi’ye bayılıyor ve güçlü bir oyuncu.
+Maomao’nun biyolojik babası ve Luomen’in yeğeni. Monokl taşıyan bir eksantrik. Askeri yüksek rütbeli bir üye, ancak garip davranışları nedeniyle insanlar ondan kaçınıyor. Go ve shogi’ye bayılıyor ve güçlü bir oyuncu.
 
-Empress Gyokuyou
+İmparatoriçe Gyokuyou
 
 İmparatorun resmi eşi. Kızıl saçlı ve yeşil gözlü egzotik bir güzellik. Yirmi iki yaşında.
 
@@ -38,11 +38,11 @@ Bir zamanlar Lakan’ın yardımcısıydı, şimdi batı başkentinde görev yap
 
 Gyokuen
 
-Empress Gyokuyou’nun babası. Resmi olarak batı başkentinin yöneticisi, ancak kızı tahta çıktığında kraliyet başkentine taşındı.
+İmparatoriçe Gyokuyou’nun babası. Resmi olarak batı başkentinin yöneticisi, ancak kızı tahta çıktığında kraliyet başkentine taşındı.
 
 Gyoku‑ou
 
-Gyokuen’in en büyük oğlu; Empress Gyokuyou’nun üvey kardeşi. Babası yokken şu anda batı başkentini yönetiyor.
+Gyokuen’in en büyük oğlu; İmparatoriçe Gyokuyou’nun üvey kardeşi. Babası yokken şu anda batı başkentini yönetiyor.
 
 Suiren
 
