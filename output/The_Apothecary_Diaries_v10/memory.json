@@ -1,50 +1,18 @@
 {
   "characters": {
-    "Koku‑u": "Koku‑u",
-    "Dr. You": "Dr. You",
-    "Niangniang": "Niangniang",
-    "Lihaku": "Lihaku",
-    "Rikuson": "Rikuson",
-    "Gyoku‑ou": "Gyoku‑ou",
-    "Lakan": "Lakan",
-    "Onsou": "Onsou",
-    "Master Lakan": "Master Lakan",
-    "Basen": "Basen",
-    "Lishu": "Lishu",
-    "Gaoshun": "Gaoshun",
-    "Ay Prensi": "Ay Prensi",
-    "Ma": "Ma",
-    "Lahan’ın Kardeşi": "Lahan’ın Kardeşi",
-    "Chue": "Chue",
-    "Frizzy‑Glasses": "Frizzy‑Glasses",
-    "Maomao": "Maomao",
-    "Tianyu": "Tianyu",
-    "Jofu": "Jofu",
-    "Nianzhen": "Nianzhen",
-    "Gyokuen": "Gyokuen",
-    "Bahçıvan": "Bahçıvan",
-    "Jinshi": "Jinshi",
-    "Taomei": "Taomei",
-    "Kulumu": "Kulumu",
-    "Suiren": "Suiren",
-    "Gece Prensi": "Gece Prensi",
-    "İmparatoriçe Gyokuyou": "İmparatoriçe Gyokuyou",
-    "Kırmızı Erik Köyü": "Kırmızı Erik Köyü",
-    "Windreader": "Windreader",
-    "Şef": "Şef",
-    "Şefin Oğlu": "Şefin Oğlu",
-    "Yaşlı Adam": "Yaşlı Adam"
+    "Feitouman": "Feitouman",
+    "sahte doktor": "sahte doktor"
   },
   "terms": {
-    "İmparator": "İmparator",
-    "İmparatoriçe": "İmparatoriçe"
+    "Verdigris House": "Verdigris House",
+    "Pairin": "Pairin"
   },
   "style_notes": "Metin resmi ve bilgilendirici bir ton taşıyor; cümle yapısı kısa ve net, yasal uyarılar ve çeviri bilgileri vurgulanmalı.",
   "summaries": [
-    "Text/chapter19_1.xhtml: Maomao ve Chue, yıkılmış köydeki çorak tarlalarda kalan çekirgelerden yemek yapmaya çalışırken, Rikuson’un köylülerle yıkımın sorumluluğunu tartıştığı sahneler görülür; ana karakterler Maomao, Chue ve Rikuson’dur.",
     "Chapter 20: Confirmation: Batı başkentine dönen Maomaa, şehirde hâlâ çekirgeler ve yıkılmış tezgâhlar arasında kıtlık ve kaosla mücadele eden halkı, yiyecek dağıtımı ve patates stoğu gibi geçici çözümlerle görür; Lihaku, Jinshi ve Chue gibi karakterler ise şehrin düzeni, korku ve liderlik eksikliği üzerine tartışır.",
     "Chapter 1: Return to the Western Capital: Maomao, bir yıl sonra sıcak bir günde Chue eşliğinde Batı Başkentine geri döner, idari ofiste Dr. You, Tianyu ve diğer hekimlerle buluşur; Chue ona yolculukta eşlik ederken Maomao, Jinshi adlı çocuğu aklına getirir.",
     "Chapter 4: Spring Comes to Basen (Part 1): Basen, Ay Prensi'nin gizli emriyle bir beyaz ördeği yetiştirme görevini kabul eder ve bu görevi öğrenmek için ölümsüzlük araştırmaları yapan Kırmızı Erik Köyü'ne gider; burada ördek bakımıyla ilgili bilgiler alır ve görevinin ülkeyi kurtaracak bir öneme sahip olduğunu anlar.",
-    "Chapter 6: The Farm Village (Part 1): Basen, Maomao ve diğerleri batı başkentine varıp ek binanın girişinde beklerken, Basen’in omzunda oturan sıradışı bir ördek (gagasında tek siyah nokta) ortaya çıkar; Chue ördeği hediye sanıp aldırış etse de Basen, ördeğin yemek için olmadığını belirterek durumu netleştirir. önemli karakterler: Basen, Maomao, Chue."
+    "Chapter 6: The Farm Village (Part 1): Basen, Maomao ve diğerleri batı başkentine varıp ek binanın girişinde beklerken, Basen’in omzunda oturan sıradışı bir ördek (gagasında tek siyah nokta) ortaya çıkar; Chue ördeği hediye sanıp aldırış etse de Basen, ördeğin yemek için olmadığını belirterek durumu netleştirir. önemli karakterler: Basen, Maomao, Chue.",
+    "Chapter 11: The Feitouman (Part 1): Feitouman adlı uçan kafa, iki ay önce bir hizmetkarın ay ışığında beyaz bir maske şeklinde görmesiyle ortaya çıktı; bu gizemli varlık daha sonra birçok kişi tarafından rapor edilerek bir kadının bedensiz kafasının malikanede uçtuğu söylentileriyle korku yaydı. Hikâyede Lihaku, Maomaa, Tianyu ve sahte doktor gibi karakterler, Feitouman’ın görülüşünü ve bunun üzerine yapılan sohbetleri medikal ofisteki kahvaltı sırasında tartışıyor."
   ]
 }
