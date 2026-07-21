@@ -1,7 +1,16 @@
 {
   "characters": {
     "Feitouman": "Feitouman",
-    "sahte doktor": "sahte doktor"
+    "sahte doktor": "sahte doktor",
+    "Jinshi": "Jinshi",
+    "Suiren": "Suiren",
+    "Taomei": "Taomei",
+    "Gaoshun": "Gaoshun",
+    "Baryou": "Baryou",
+    "Chue": "Chue",
+    "Basen": "Basen",
+    "Maomao": "Maomao",
+    "Tianyu": "Tianyu"
   },
   "terms": {
     "Verdigris House": "Verdigris House",
@@ -9,10 +18,10 @@
   },
   "style_notes": "Metin resmi ve bilgilendirici bir ton taşıyor; cümle yapısı kısa ve net, yasal uyarılar ve çeviri bilgileri vurgulanmalı.",
   "summaries": [
-    "Chapter 20: Confirmation: Batı başkentine dönen Maomaa, şehirde hâlâ çekirgeler ve yıkılmış tezgâhlar arasında kıtlık ve kaosla mücadele eden halkı, yiyecek dağıtımı ve patates stoğu gibi geçici çözümlerle görür; Lihaku, Jinshi ve Chue gibi karakterler ise şehrin düzeni, korku ve liderlik eksikliği üzerine tartışır.",
     "Chapter 1: Return to the Western Capital: Maomao, bir yıl sonra sıcak bir günde Chue eşliğinde Batı Başkentine geri döner, idari ofiste Dr. You, Tianyu ve diğer hekimlerle buluşur; Chue ona yolculukta eşlik ederken Maomao, Jinshi adlı çocuğu aklına getirir.",
     "Chapter 4: Spring Comes to Basen (Part 1): Basen, Ay Prensi'nin gizli emriyle bir beyaz ördeği yetiştirme görevini kabul eder ve bu görevi öğrenmek için ölümsüzlük araştırmaları yapan Kırmızı Erik Köyü'ne gider; burada ördek bakımıyla ilgili bilgiler alır ve görevinin ülkeyi kurtaracak bir öneme sahip olduğunu anlar.",
     "Chapter 6: The Farm Village (Part 1): Basen, Maomao ve diğerleri batı başkentine varıp ek binanın girişinde beklerken, Basen’in omzunda oturan sıradışı bir ördek (gagasında tek siyah nokta) ortaya çıkar; Chue ördeği hediye sanıp aldırış etse de Basen, ördeğin yemek için olmadığını belirterek durumu netleştirir. önemli karakterler: Basen, Maomao, Chue.",
-    "Chapter 11: The Feitouman (Part 1): Feitouman adlı uçan kafa, iki ay önce bir hizmetkarın ay ışığında beyaz bir maske şeklinde görmesiyle ortaya çıktı; bu gizemli varlık daha sonra birçok kişi tarafından rapor edilerek bir kadının bedensiz kafasının malikanede uçtuğu söylentileriyle korku yaydı. Hikâyede Lihaku, Maomaa, Tianyu ve sahte doktor gibi karakterler, Feitouman’ın görülüşünü ve bunun üzerine yapılan sohbetleri medikal ofisteki kahvaltı sırasında tartışıyor."
+    "Chapter 11: The Feitouman (Part 1): Feitouman adlı uçan kafa, iki ay önce bir hizmetkarın ay ışığında beyaz bir maske şeklinde görmesiyle ortaya çıktı; bu gizemli varlık daha sonra birçok kişi tarafından rapor edilerek bir kadının bedensiz kafasının malikanede uçtuğu söylentileriyle korku yaydı. Hikâyede Lihaku, Maomaa, Tianyu ve sahte doktor gibi karakterler, Feitouman’ın görülüşünü ve bunun üzerine yapılan sohbetleri medikal ofisteki kahvaltı sırasında tartışıyor.",
+    "Chapter 12: The Feitouman (Part 2): Jinshi, Feitouman’ın maskeli başını taşıyan garip bir kuşu incelerken, Maomao, Suiren, Taomei, Chue ve koruması Basen ile birlikte kuşun kimliği ve kanıtları üzerine tartışır; Gaoshun’un yokluğu ve Tianyu’nun gülümseyerek orada bulunması da olayın arka planını oluşturur."
   ]
 }
