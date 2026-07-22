@@ -9,10 +9,11 @@
   "current_chapter": "",
   "started_at": "2026-07-19T10:08:45.141946+00:00",
   "queue_mode": true,
-  "updated_at": "2026-07-22T08:10:21.771315+00:00",
+  "updated_at": "2026-07-22T08:10:24.365367+00:00",
   "review_status": "completed",
   "review_total": 33,
   "review_completed": 33,
   "review_current": "",
-  "convert_status": "running"
+  "convert_status": "completed",
+  "epub_output": "output/The_Apothecary_Diaries_v10/The_Apothecary_Diaries_v10_tr.epub"
 }
