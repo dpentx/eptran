@@ -1,6 +1,6 @@
 # Chapter 16: A Moment’s Peace
 
-Chapter 16: Bir Anlık Huzur
+Bölüm 16: Bir Anlık Huzur
 
 Bundan bir süre sonra Maomao’nun günleri huzurluydu.
 
@@ -30,9 +30,9 @@ Güvercine baktı; güvercin darı tanelerini kırıp bir kez daha cıvıldadı.
 
 “Kaç tane gönderdin onunla?” diye Maomao kayıtsızca sordu.
 
-“Üç. Onları bakabilecek kadar yetenekli göründü. Son konumuna hızlı bir binici göndererek daha fazlasını temin edebiliriz.”
+“Üç. Onları bakabilecek kadar yetenekli göründü. Son konumuna hızlı bir binici göndererek daha fazlasını elde edebiliriz.”
 
-Jinshi I-sei Province haritasını açtı. Suiren ortaya çıktı ve mektup alınan köylerin etrafına daireler çizdi.
+Jinshi I-sei il haritasını açtı. Suiren ortaya çıktı ve mektup alınan köylerin etrafına daireler çizdi.
 
 Lahan’ın Kardeşi gerçekten çok çalışıyor, Maomao düşündü. Jinshi ona iki ay içinde tüm köyleri ziyaret etme görevini vermişti, ama Lahan’ın Kardeşi neredeyse dönüş yolundaydı.  
 Bu adam işi nasıl bitirir biliyor.
@@ -47,7 +47,7 @@ Jinshi artık adını kullanmaya alışmış gibiydi. Uzun bir süre boyunca ona
 
 “Ş… Hm. Görünüşe göre iş yükün son zamanlarda azalmış.”
 
-“Evet, öyle diyebilirim.” En acil görevler halledilmişti. Bir süre yeterli ilaç üretmiş, ihtiyaç duydukları aletleri de temin etmişlerdi.
+“Evet, öyle diyebilirim.” En acil görevler halledilmişti. Bir süre yeterli ilaç üretmiş, ihtiyaç duydukları aletleri de tedarik etmişlerdi.
 
 “Belki başka işlere de el atabilirsin.”
 
@@ -55,7 +55,7 @@ Jinshi artık adını kullanmaya alışmış gibiydi. Uzun bir süre boyunca ona
 
 Bu, Jinshi’nin beklediği bir yanıt değildi. “Buğday hasadı? Neden?”
 
-“Efendim! Herhangi bir ergot büyümüş mü merak ediyorum.”
+“Efendim! Herhangi bir ergot büyümüş mü, merak ediyorum.”
 
 “Ergot?” kelimeyi tanımıyor gibiydi.
 
@@ -65,11 +65,11 @@ Bu, Jinshi’nin beklediği bir yanıt değildi. “Buğday hasadı? Neden?”
 
 “Buğday öğütülene kadar fark edilmez, bu yüzden şimdi kontrol etmek istiyorum.”
 
-Ergot, kürtaj için kullanılabiliyor ve düşük kaliteli unlarda sıkça bulunuyordu; bu yüzden kesin olmak en iyisiydi. Aynı zamanda hasadın ne kadar büyük olduğunu da görebilirdi.
+Ergot, kürtajda kullanılabiliyor ve düşük kaliteli unlarda sıkça bulunuyordu; bu yüzden kesin karar vermek en iyisiydi. Aynı zamanda hasadın ne kadar büyük olduğunu da görebiliyordu.
 
 “Anladım. Pekala. Senin için bir araba hazırlayacağım.”
 
-“Bu gerekli olmayacak, efendim. Küçük bir kuş bana Master Rikuson’un yakında bir denetim yapacağını söylemişti, onunla birlikte seyahat edebilirim diye düşündüm.”
+“Bu gerekli olmayacak, efendim. Küçük bir kuş bana Rikuson’un yakında bir denetim yapacağını söylemişti, onunla birlikte seyahat edebilirim diye düşündüm.”
 
 Küçük kuşun türü mü? O sırada duyan sahte doktor, bu söylentiyi Chue’dan doğrulamıştı.
 
@@ -85,7 +85,7 @@ Jinshi kısa bir an kararsız kaldı, ardından “Tamam. Rikuson’a geleceğin
 
 Bu yolculukta yapmak istediği bir şey daha vardı—yol üzerindeki ovallardan şifalı otlar toplamak. Önceki yolculuktan bazı örnekleri umut verici sonuçlar vermişti. Hemen bir sepet alıp toplamalıydı.
 
-“Eğer sakıncası yoksa, Master Jinshi, ben gitmek zorundayım!”
+“Eğer sakıncası yoksa, Usta Jinshi, ben gitmek zorundayım!”
 
 “Hey!”
 
@@ -97,7 +97,7 @@ Birkaç gün sonra Maomao tarım köyüne gitti.
 
 Maomao, rüzgarda ot kokusunu yakaladı, çatırtılı araba onu götürürken.
 
-“Hava bir sürecek daha açık olacak. Yağış mevsimi dışında, I-sei Province’da kayda değer bir yağış olmaz,” dedi Rikuson, onlara karşı oturan koltuktan. Hareket etmeyi kolaylaştıracak bir kıyafet giymişti, bir tarım köyünü ziyaret etmek için uygun bir tarz.
+“Hava bir sürecek daha açık olacak. Yağış mevsimi dışında, I-sei ili’da kayda değer bir yağış olmaz,” dedi Rikuson, onlara karşı oturan koltuktan. Hareket etmeyi kolaylaştıracak bir kıyafet giymişti, bir tarım köyünü ziyaret etmek için uygun bir tarz.
 
 “Bu, buğday hasadı için mükemmel,” dedi Chue. Hasat sırasında yağmur yağarsa, buğday filizlenmeye başlayabilir, bu da kalitesini düşürür. Ve eğer düzgün kurutulamazsa, sadece çürüyebilir.
 
