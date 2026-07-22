@@ -12,7 +12,7 @@ Kollarını kavuşturdu. “Evet, elli yıldan fazla bir süre önce Nianzhen ve
 
 Bu, Maomao’ya hâlâ tam oturmuyordu—başkasına oturuyordu.
 
-“Nianzhen mi? Nianzhen, değil mi? Bahar ekimi demek istiyorsun, değil mi?”  
+“Nianzhen mi? Nianzhen, değil mi? Bahar ekimi demek istiyorsun, değil mi?”
 
 Maomao ve Basen, Lahan’ın Kardeşi’ne şaşkınlıkla baktılar; bu ifadeyi tanımıyorlardı.
 
@@ -48,7 +48,7 @@ Maomao bir burukluk hissetti. Lahan’ın Kardeşi, yaşlı adamın kasabada dü
 
 “Size bir şey sorabilir miyim? Buradaki insanlar buğday yetiştirmek için gerçekten çaba harcıyor mu? Sanki çok da çaba göstermiyorlarmış gibi geliyor,” diye sordu Maomao, Lahan’ın Kardeşi’nden alıntı yaparak.
 
-“Yani,” dedi Nianzhen, “ziyaretçilere bile açıkça belli, değil mi?”
+“Yani,” dedi Nianzhen, “ziyaretçilere bile açıkça görünür, değil mi?”
 
 “Evet, efendim. Sizin tarlanız diğerlerinden çok daha güzel.”
 
@@ -72,11 +72,11 @@ Sorarak öğrenmek, düşünmekten daha hızlıydı.
 
 “Evet, doğru. Ritüeli bilen kimse kalmadığını düşünmemiştim. Hatta valinin de duymadığını görüyorum. Rikuson, bir tanıdığıdan bahsetmişti.” Nianzhen boşalmış süt bardağını bıraktı ve sert görünümlü yatağa kaydı.
 
-“Vali bunu bilmiyor mu? Master Gyokuen mi demek istiyorsun, efendim?”
+“Vali bunu bilmiyor mu? Usta Gyokuen mi demek istiyorsun, efendim?”
 
 Hikâyesinde Nianzhen, Gyokuen’i yeni atanmış bir vali olarak tanımlamıştı.
 
-“Ah, özür dilerim, yanlış kelime seçtim. O değil. Evet, Master Gyokuen I-sei Province’un yöneticisi, ama son zamanlarda işleri onun yavrusu yürütüyor.”
+Ah, özür dilerim, yanlış kelime seçtim. O değil. Evet, Usta Gyokuen I-sei İl’in yöneticisi, ama son zamanlarda işleri onun yavrusu yürütüyor.
 
 “Yavrusundan mı bahsediyorsun?”
 
@@ -84,7 +84,7 @@ Hikâyesinde Nianzhen, Gyokuen’i yeni atanmış bir vali olarak tanımlamışt
 
 Eski bir haydut ve eski bir kölenin vali’ye fazla saygı göstermeye niyeti yok gibi görünüyordu. Maomao’nun umurunda değildi ama Basen, Nianzhen’in tavrına itiraz ediyor gibiydi. En azından, kendini fiziksel bir kavgaya sürüklememeye çalışıyordu.
 
-“Master Gyoku-ou’nun bu köyde saygın bir yeri var gibi görünüyor. Bunun arkasında ne var? Ritüelle bir ilgisi var mı?” diye sordu Maomao.
+“Usta Gyoku-ou’nun bu köyde saygın bir yeri var gibi görünüyor. Bunun arkasında ne var? Ritüelle bir ilgisi var mı?” diye sordu Maomao.
 
 “Pek de değil. O popüler, basit bir adam. Kötü bir hasat olsa bile çiftçileri cezalandırmaz. Hatta yeterince yiyecek yoksa depolardan bize verir. Hani, düzgün bir iş yapmaktan daha çok şey alabiliyorsunuz.”
 
@@ -120,9 +120,7 @@ Basen bu ani yanıt karşısında kaşlarını çattı. “Ördekler böcek yer.
 böcek 
 yiyebilir… değil mi?”
 
-“Ördekler suyu sever. Burası bir 
-çöl 
-. Kimse ördek yetiştirmez!”
+“Ördekler suyu severler. Burası bir çöl. Kimse ördek yetiştirmez!”
 
 “Kanıtım var, yanılıyorsun,” dedi Basen, ördeğine işaret ederek. “Su kuşları burada da büyüyüp güçlü olabilir, yeter ki çaba gösterilsin.”
 
@@ -158,22 +156,22 @@ Bu, böcek korkusu olan birini delirtir gibi bir işti. Çekirge diseksiyonu kon
 
 Lahan’ın Kardeşi ve Basen, Maomao’nun kaldırabildiğinden birkaç kat daha fazla toprağı sürmüşlerdi. Lahan’ın Kardeşi, gerçek bir çiftçi gibi işini gösteriyordu—kürek tutuşu ve kullanışı tamamen farklıydı—oysa Basen’in gülünç gücü, bir kez olsun ona iyi gelmişti.
 
-“Basen’in burada bize katılmaya istekli olması beni mutlu etti. 
-Asker işi olmadığını söyleyerek reddedebilirdi; o zaman çok az şey yapabilirdi. 
-Jinshi’nin çekirgelerle ilgili endişesini kalbine almış gibi görünüyordu ve şikayet etmeden katıldı. 
+“Basen’in burada bize katılmaya istekli olması beni mutlu etti.  
+Askerlik işi olmadığını söyleyerek reddedebilirdi; o zaman çok az şey yapabilirdi.  
+Jinshi’nin çekirgelerle ilgili endişesini kalbine almış gibi görünüyordu ve şikayet etmeden katıldı.  
 Ördek yetiştirmekle kıyaslandığında bu daha kolay gelmiş olmalı.”
 
 Basen’in bu istekliliği, batı başkentinden getirdikleri muhafız ve çiftçileri de ikna etti. Gün içinde tüm tarlayı sürmeye başlayacaklardı. Chue bile oradaydı, sürülmüş toprağın üzerinde koşarak kaçak çekirge yumurtalarını topluyordu. Ardından iki çocuk, ona patates verdiği kardeş ve kız, hemen peşindeydi. Onlar, yardım ederlerse kendilerine bir patates daha kalabileceğini sanıyorlardı.
 
 “Miss Maomao! Miss Maomao! Çokça var! Görmek ister misin?”
 
-“Miss Chue! Miss Chue! Görmek istemiyorum. Ama bir devir kelebeği yumurtası (praying mantis ootheca) varsa, seve seve alırım.” Devir kelebeği yumurtaları, 
-sang piao shao 
+“Miss Chue! Miss Chue! Görmek istemiyorum. Ama bir devir kelebeği yumurta kılıfı varsa, seve seve alırım.” Devir kelebeği yumurtaları,  
+sang piao shao  
 adlı bir ilaç yapımında kullanılabiliyor, ki bu büyük miktarlarda elde edilmesi zor olduğu için oldukça değerli.
 
 “Bu yumurtalar çatlıyor— içlerinden küçük şeyler çıkıyor! Görmek istemez misin, Miss Maomao?”
 
-“Bahar zaten geldi. Ve evet, kesinlikle istemiyorum. İğrençler; lütfen bana gösterme.”
+“İlkbahar zaten geldi. Ve evet, kesinlikle istemiyorum. İğrençler; lütfen bana gösterme.”
 
 Shi klanı kalesindeki böcek ansiklopedisinden Maomao, çekirgelerin yaklaşık üç ay yaşadığını ve bir seferde yüzden fazla yumurta bırakabildiklerini öğrenmişti. Yumurtalar baharda çatlar, yeni nesil ise yazın daha fazla yumurta bırakır.
 
@@ -193,13 +191,11 @@ Bu tabii ki akademik bir önerme; farelerin hepsi yetişkinliğe ulaşmaz. Ama �
 Bir yumurta demeti yüz ise, on tanesi bin, yüz tanesi on bin eder.
  Şu an yumurtaları yok ederlerse, gelecekte başa çıkacakları çekirge sayısını kat kat azaltabilirler.
 
-Çekirgeler yumurtalarını biraz nemli toprakta bırakmayı sever.
- Nehir yakında ve bol ot olduğu için burası onlar için mükemmel bir yer.
- Belki de bazı araziler kasıtlı olarak çekirgeleri çekmek için ekilmeyip bırakılmıştır.
+Çekirgeler yumurtalarını biraz nemli toprakta bırakmayı severler. Nehir yakında ve bol ot olduğu için burası onlar için mükemmel bir yer. Belki de bazı araziler kasıtlı olarak çekirgeleri çekmek için ekilmeyip bırakılmıştır.
 
-I‑sei Province’da bu tür köylerin bir sürüsü olduğu söylenir—ama kaç tanesi hâlâ işlevsel?
+I‑sei ilinde bu tür köylerin bir sürüsü olduğu söylenir—ama kaç tanesi hâlâ işlevsel?
 
-Nianzhen, bir kavanoz çekirge yumurtası taşıyarak Maomao’ya yaklaştı. “Tek yapmamız gereken bunları yakmak.”
+Nianzhen, bir kavanoz çekirge yumurtası taşıyarak Maomao’ya yaklaştı. “Tek yapmamız gereken bunları yapmak.”
 
 “Bana da iyi geliyor.”
 
@@ -209,7 +205,7 @@ Köydeki çiftçilerin geçen yılın böcek zararı açısından kötü olduğu
 
 “Yani hasat kötü müydü?” diye sordu.
 
-Nianzhen başını salladı. “Yiyebileceğimiz kadar az vardı, depomuz yok. Üzerine vergi de ödemek zorunda kalsaydık, muhtemelen aç kalırdık. O zaman tüccarlardan günlük ihtiyaçları alacak paramız kalmaz, hayvanlarımızı satmak zorunda kalırdık.”
+Nianzhen başını salladı. “Yiyebileceğimiz kadar az vardı, depomuz yok. Üzerine vergiyi de ödemek zorunda kalsaydık, muhtemelen aç kalırdık. O zaman tüccarlardan günlük ihtiyaçları alacak paramız kalmaz, hayvanlarımızı satmak zorunda kalırdık.”
 
 “Ama valinin vergiden muaf tuttuğunu söylemiştiniz, değil mi? Aslında size destek de gönderdi.”
 
@@ -280,7 +276,7 @@ Bu köydeki eski serflerin sonuncusu olarak Nianzhen, kendi tarlasını da sürm
 
 “Burada bize yardım edecek birini bırakamaz mıyız?” diye sordu Maomao, getirdikleri orta bölge çiftçilerine bakarak.
 
-Lahan’ın Kardeşi bir an düşündü, sonra şöyle dedi: “Onlar sadece orta bölgeden benim yüzümden geldiler. Tanımadıkları bir toprakta toprağı işleteceklerini bırakamam. Çok trajik olur, sence de öyle mi?”
+Lahan’ın Kardeşi bir an düşündü, sonra şöyle dedi: “Onlar sadece orta bölgeden benim yüzümden geldiler. Tanımadıkları bir toprakta toprağı işleteceklerini bırakamam. Çok trajik olur, sen de öyle mi?”
 
 “Evet, haklısın.”
 
@@ -314,9 +310,9 @@ Yani tatlılar burada orta bölgeye göre daha kıymetli.
 
 “Bunu kullanabiliriz sanırım.” diye gülümseyerek Lahan’ın Kardeşi’ne doğru döndü Maomao.
 
-Nianzhen’in evinin arkasında büyük bir çukur kazılmıştı. Üzerinde yanma izleri vardı—muhtemelen çöp yakmak için kullanılırdı.
+Nianzhen’in evinin arkasında büyük bir çukur kazılmıştı. Üzerinde yanma izleri vardı—muhtemelen çöp yakmak için kullanılmıştı.
 
-“Burası çekirge yumurtalarını yakmak için mi?” diye sordu Maomao.
+“Burası çekirge yumurtalarını yapmak için mi?” diye sordu Maomao.
 
 “Evet. Kolay yanmazlar, bu yüzden yakıt eklemek gerekir.”
 
@@ -360,7 +356,7 @@ Maomao merak etti. Nianzhen’e eksantrik davranıyorlardı ama ona açıkça d�
 
 “Bizim rehberimiz ne oldu?” diye sordu.
 
-Belki de düşünmemek daha iyiydi, ama sorması gerekiyordu. “Neden bizi yem olarak seçtiniz, Bayan Chue? Master Basen planınızı bilmiyor gibi görünüyordu, ve Ay Prensi’nin böyle bir şey emretmesi de pek olası değil.”
+Belki de düşünmemek daha iyiydi, ama sorması gerekiyordu. “Neden bizi yem olarak seçtiniz, Bayan Chue? Usta Basen planınızı bilmiyor gibi görünüyordu, ve Ay Prensi’nin böyle bir şey emretmesi de pek olası değil.”
 
 Jinshi, son zamanlarda Maomao’nun güvenliğine oldukça dikkatli görünüyordu—Basen’in koruma görevi bile onun düşünceli bir hareketi gibi duruyordu.
 
@@ -406,7 +402,7 @@ Maomao tencereyi alıp tapınağa doğru yürüdü. Mütevazı bir tuğla yapıs
 
 “Ve bir ritüelin bir ziyafete ihtiyacı vardır, değil mi?” Maomao, hâlâ etrafta dolaşan köy çocuklarına baktı. Patates haberleri yayılmıştı, bu yüzden kardeş ve kız kardeşin yanında bir kalabalık da vardı.
 
-“Ne demek istediğini anlıyorum.” diye güldü Chue. Maomao’nun ne yapacağını gördü—iyi. “Dekorasyonu bana bırak!” diye bağından kırmızı bir kurdele çekti. “Güzel tenceremiz için bir platform lazım. Lahan’ın Kardeşi ve küçük kayınbiraderimi çağırırım!”
+“Ne demek istediğini anlıyorum.” diye güldü Chue. Maomao’nun ne yapacağını gördü—iyi. “Dekorasyonu bana bırak!” diye bağından kırmızı bir kurdele çekti. “Güzel tenceremiz için bir **platform** lazım. Lahan’ın Kardeşi ve küçük kayınbiraderimi çağırırım!”
 
 Görünüşe göre Chue artık ona “Lahan’ın Kardeşi” diyor.
 
@@ -450,9 +446,9 @@ Görünüşe göre Lahan, Lahan’ın Kardeşi’ne tatlı patatesi kullanmanın
 
 “Bana neden soruyorsun?!” dedi.
 
-“Çünkü Bayan Chue daha çok yiyen tip, ve Master Basen hiçbir yardım etmeyecek.”
+“Çünkü Bayan Chue daha çok yiyen tip, ve Usta Basen hiçbir yardım etmeyecek.”
 
-Chue, gerçekten zorunda kalırsa congee yapabilirdi, ama daha karmaşık yemeklerde üretmekten çok tüketmeye odaklanıyordu.
+Chue, gerçekten zorunda kalırsa pirinç lapası yapabilirdi, ama daha karmaşık yemeklerde üretmekten çok tüketmeye odaklanıyordu.
 
 “Bilmiyorum,” dedi Lahan’ın Kardeşi, düz bir sesle. Gözlerini ondan kaçırdı, ama açıkça yalan söylüyordu.
 
@@ -476,9 +472,9 @@ Lahan’ın Kardeşi giderek rahatsız görünüyordu. Kıvrıldı, sırtını o
 
 Ne kadar yumuşak bir dokunuş! diye düşündü Maomao, çubuklarıyla buharlı tenceredeki bir patatesi iğnelediğinde.
 
-Maomao ve ekibi yemeklerini bitirdiğinde, tapınak tamamen süslenmişti. Chue, çimen çekirdeği yumurtalarıyla dolu tencereyi, küçük ama sağlam bir tuğla yığını üzerine, geçici bir platform gibi ortasına koymuştu.
+Maomao ve ekibi yemeklerini bitirdiğinde, tapınak tamamen süslenmişti. Chue, çimen çekirdeği yumurtalarıyla dolu tencereyi, küçük ama sağlam bir tuğla yığını üzerine, geçici bir yapı gibi ortasına koymuştu.
 
-Mütevazı tapınak kırmızı bayraklarla süslenmiş, hayvan yağı lambaları ara sıra yanıyordu. Metal bir çınlama duyuldu; Maomao sesin geldiği yöne baktı ve iki metal levhanın bağlanarak bir çan oluşturduğunu gördü. Rüzgar estiğinde çanlar çınladı, bayraklar dalgalandı.
+Mütevazı tapınak kırmızı bayraklarla süslenmiş, hayvan yağı lambaları ara sıra yanıyordu. metal bir çınlama duyuldu; Maomao sesin geldiği yöne baktı ve iki metal levhanın bağlanarak bir çan oluşturduğunu gördü. Rüzgar estiğinde çanlar çınladı, bayraklar dalgalandı.
 
 Sandalye ve masalar, var oldukları gibi, keçe ile örtülmüş fıçılardan oluşuyordu. “Masa”, Maomao ve diğerlerinin hazırladığı yemeklerle doluydu.
 
@@ -488,7 +484,7 @@ Her şey hazır olduğunda, güneş batı ufkunu zaten okşuyordu.
 
 Herkes orada toplandığında, Maomao dev tencereye yağ döktü. Sonra kurutulmuş otları kullanarak ateşi yaktılar.
 
-Hoş bir koku mu yoksa mide bulandırıcı bir koku mu olduğu belli değildi; söylemek zordu. Tencere, kararan ortamda parlak bir şekilde yanmaya başladı.
+Hoş bir koku mu yoksa mide bulandırıcı bir koku mu olduğu belirsizdi; söylemek zordu. Tencere, kararan ortamda parlak bir şekilde yanmaya başladı.
 
 “Saygıdeğer ziyaretçiler, ne… eh… yapıyorsunuz?” diye sordu köy başkanı, şaşkın. Yanında birkaç köylü daha vardı.
 
@@ -546,7 +542,7 @@ Yine de ona uyum sağlamak zorundaydı. Yavaş, ağır adımlarla büyük tencer
 
 Deneyecek bir şey bulmalıyım. Küçük bir blöf, gözlerini kör edecek bir şey…
 
-Maomao ellerini göğsünün önüne koydu, bu da ona cübbesinin katmanlarını karıştırma fırsatı verdi. Chue kadar çok şey saklamıyordu, ama içinde bazı otlar ve dikiş aletleri vardı. Elinden gelen en yavaş şekilde yürüdü ve bir metin uydurmaya çalıştı. Sonunda kazan önüne geldi, başını eğdi.
+Maomao ellerini göğsünün önüne koydu, bu da ona cübbesinin katmanlarını karıştırma fırsatı verdi. Chue kadar çok şey saklamıyordu, ama içinde bazı otlar ve dikiş aletleri vardı. Elinden gelen en yavaş şekilde yürüdü ve bir cümle uydurmaya çalıştı. Sonunda kazan önüne geldi, başını eğdi.
 
 “Bu ateş, sunaklarımızı tanrılara taşıyan bir taşıyıcıdır. Bir zamanlar insanlar kurbanlarımızdı, ama tanrılar bize seslendi ve bu kurban şeklinin istedikleri şey olmadığını açıkladı.”
 
