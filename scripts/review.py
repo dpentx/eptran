@@ -118,7 +118,22 @@ def main():
 
         filepath = os.path.join(output_dir, fname)
         print(f"[{i+1}/{total}] Review: {fname}")
-        review_file(filepath, clients, key_index, memory)
+        try:
+            review_file(filepath, clients, key_index, memory)
+        except gc.AllKeysLockedError as e:
+            # review_fix.fix_paragraph() içindeki gc.call() bunu fırlatabilir
+            # (bkz. groq_client.py) — eskiden bu, review.py'yi yakalanmamış
+            # bir exception olarak ÇÖKERTİYORDU (job kırmızı X ile bitiyordu),
+            # ama her çöküşten önce o ana kadarki dosyalar zaten commit'lendiği
+            # için ilerleme kayboldu değil, sadece her seferinde gereksiz bir
+            # hata + yeniden başlatma döngüsü oluşuyordu. Artık burada
+            # yakalayıp run'ı TEMİZ bir şekilde durduruyoruz (review_status
+            # "running" kalır) — bir sonraki tetiklemede bu dosyadan devam
+            # edilecek. Aşağıdaki "review tamamlandı" finalizasyonuna
+            # gitmemesi için doğrudan return ediyoruz.
+            print(f"  Tüm keyler kilitli ({e.wait_seconds}s) — bu run burada "
+                  f"duruyor, bir sonraki tetiklemede '{fname}'den devam edilecek.")
+            return
 
         status["review_completed"] = i + 1
         status["review_current"] = fname
