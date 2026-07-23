@@ -13,7 +13,10 @@
     "William Wilson": "William Wilson",
     "Dr. Tarr": "Dr. Tarr",
     "Profesor Fether": "Profesor Fether",
-    "Arnheim": "Arnheim"
+    "Arnheim": "Arnheim",
+    "Hermes": "Hermes",
+    "Bay Allan": "Bay Allan",
+    "Virginia": "Virginia"
   },
   "terms": {
     "Project Gutenberg": "Project Gutenberg",
@@ -49,11 +52,24 @@
     "Narrative of Arthur Gordon Pym": "Arthur Gordon Pym’in Anlatısı",
     "The Bells": "Ziller",
     "Tamerlane": "Tamerlan",
-    "The City in the Sea": "Denizdeki Şehir"
+    "The City in the Sea": "Denizdeki Şehir",
+    "AN APPRECIATION": "Bir Değerlendirme",
+    "Virginia University": "Virginia Üniversitesi",
+    "West Point": "West Point",
+    "St. Petersburg": "St. Petersburg",
+    "Boston": "Boston",
+    "New York": "New York",
+    "Philadelphia": "Philadelphia",
+    "Londra": "Londra",
+    "Paris": "Paris",
+    "Almanya": "Almanya",
+    "İngiltere": "İngiltere",
+    "Atlantik": "Atlantik"
   },
-  "style_notes": "Metin, bir e-kitap başlık sayfası ve içerik tablosu olduğu için resmi, bilgilendirici ve nötr bir tona sahiptir. Başlıklar ve isimler orijinal yapıtın literatürdeki standart Türkçe karşılıklarıyla korunmalıdır.",
+  "style_notes": "Metin, bir e-kitap başlık sayfası ve içerik tablosu olduğu için resmi, bilgilendirici ve nötr bir tona sahiptir. Başlıklar ve isimler orijinal yapıtın literatürdeki standart Türkçe karşılıklarıyla korunmalıdır. Biyografik bölümler, dönemin edebi eleştiri diline uygun olarak, biraz daha süslü ve analitik bir üslupla çevrilmiştir.",
   "summaries": [
     "The Works of Edgar Allan Poe — Volume 1: Bu metin, Edgar Allan Poe’nun eserlerinin ilk cildini içeren bir derlemenin başlık sayfası ve içindekiler listesidir. James Russell Lowell ve Nathaniel Parker Willis gibi katkıda bulunanların yanı sıra Poe’nun biyografisi, ölümü ve \"Kara Karga\" gibi ünlü hikayelerinin yer aldığı bu çalışma, yazarın edebi mirasını sunmayı amaçlamaktadır.",
-    "EDGAR ALLAN POE\nAN APPRECIATION: Metin, Edgar Allan Poe’nun ABD edebiyatındaki özgün dehasını, ünlü eserlerini ve halkın ona gösterdiği saygısızlığı eleştirerek değerlendirir. Poe’nun korku, gizem ve şiir alanlarındaki katkıları vurgulanırken, yazarın yaşadığı zorluklara rağmen edebi mirasının büyük bir zevk ve sanat kaynağı olduğu belirtilir."
+    "EDGAR ALLAN POE\nAN APPRECIATION: Metin, Edgar Allan Poe’nun ABD edebiyatındaki özgün dehasını, ünlü eserlerini ve halkın ona gösterdiği saygısızlığı eleştirerek değerlendirir. Poe’nun korku, gizem ve şiir alanlarındaki katkıları vurgulanırken, yazarın yaşadığı zorluklara rağmen edebi mirasının büyük bir zevk ve sanat kaynağı olduğu belirtilir.",
+    "EDGAR ALLAN POE: James Russell Lowell, Edgar Allan Poe’nun yetimlikten evlat edinilmesine, akademik başarılarına ve askeri kariyerindeki aksaklıklara kadar olan çalkantılı hayatını anlatırken, Poe’nun evlat edinen babası Allan ile arasındaki miras anlaşmazlığı nedeniyle yazarlığa yönelmesini özetler. Metin, Poe’nun erken yaşamındaki önemli olayları ve Allan gibi temel karakterleri vurgular."
   ]
 }
