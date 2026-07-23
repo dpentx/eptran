@@ -1,362 +1,168 @@
-      “Let us assume 8, then, as 
+      “But proceed—I am all impatience.”
+     
+
+      “Well; you have heard, of course, the many stories current—the
+      thousand vague rumors afloat about money buried, somewhere upon the
+      Atlantic coast, by Kidd and his associates. These rumors must have had
+      some foundation in fact. And that the rumors have existed so long and so
+      continuous, could have resulted, it appeared to me, only from the
+      circumstance of the buried treasure still remaining entombed. Had Kidd
+      concealed his plunder for a time, and afterwards reclaimed it, the rumors
+      would scarcely have reached us in their present unvarying form. You will
+      observe that the stories told are all about money-seekers, not about
+      money-finders. Had the pirate recovered his money, there the affair would
+      have dropped. It seemed to me that some accident—say the loss of a
+      memorandum indicating its locality—had deprived him of the means of
+      recovering it, and that this accident had become known to his followers,
+      who otherwise might never have heard that treasure had been concealed at
+      all, and who, busying themselves in vain, because unguided attempts, to
+      regain it, had given first birth, and then universal currency, to the
+      reports which are now so common. Have you ever heard of any important
+      treasure being unearthed along the coast?”
+     
+
+      “Never.”
+     
+
+      “But that Kidd’s accumulations were immense, is well known. I took it for
+      granted, therefore, that the earth still held them; and you will scarcely
+      be surprised when I tell you that I felt a hope, nearly amounting to
+      certainty, that the parchment so strangely found, involved a lost record
+      of the place of deposit.”
+     
+
+      “But how did you proceed?”
+     
+
+      “I held the vellum again to the fire, after increasing the heat; but
+      nothing appeared. I now thought it possible that the coating of dirt might
+      have something to do with the failure; so I carefully rinsed the parchment
+      by pouring warm water over it, and, having done this, I placed it in a tin
+      pan, with the skull downwards, and put the pan upon a furnace of lighted
+      charcoal. In a few minutes, the pan having become thoroughly heated, I
+      removed the slip, and, to my inexpressible joy, found it spotted, in
+      several places, with what appeared to be figures arranged in lines. Again
+      I placed it in the pan, and suffered it to remain another minute. Upon
+      taking it off, the whole was just as you see it now.”
+     
+
+      Here Legrand, having re-heated the parchment, submitted it to my
+      inspection. The following characters were rudely traced, in a red tint,
+      between the death’s-head and the goat:
+    
+
+     “53‡‡†305))6*;4826)4‡.)4‡);806*;48†8¶60))85;1‡(;:‡*8†83(88)5*†
+
+     ;46(;88*96*?;8)*‡(;485);5*†2:*‡(;4956*2(5*—4)8¶8*;4069285);)
+
+     6†8)4‡‡;1(‡9;48081;8:8‡1;48†85;4)485†528806*81(‡9;48;(88;4(‡?3
+
+     4;48)4‡;161;:188;‡?;”
+ 
+
+      “But,” said I, returning him the slip, “I am as much in the dark as ever.
+      Were all the jewels of Golconda awaiting me upon my solution of this
+      enigma, I am quite sure that I should be unable to earn them.”
+     
+
+      “And yet,” said Legrand, “the solution is by no means so difficult as you
+      might be lead to imagine from the first hasty inspection of the
+      characters. These characters, as any one might readily guess, form a
+      cipher—that is to say, they convey a meaning; but then, from what is
+      known of Kidd, I could not suppose him capable of constructing any of the
+      more abstruse cryptographs. I made up my mind, at once, that this was of a
+      simple species—such, however, as would appear, to the crude
+      intellect of the sailor, absolutely insoluble without the key.”
+     
+
+      “And you really solved it?”
+     
+
+      “Readily; I have solved others of an abstruseness ten thousand times
+      greater. Circumstances, and a certain bias of mind, have led me to take
+      interest in such riddles, and it may well be doubted whether human
+      ingenuity can construct an enigma of the kind which human ingenuity may
+      not, by proper application, resolve. In fact, having once established
+      connected and legible characters, I scarcely gave a thought to the mere
+      difficulty of developing their import.
+    
+
+      “In the present case—indeed in all cases of secret writing—the
+      first question regards the language of the cipher; for the principles of
+      solution, so far, especially, as the more simple ciphers are concerned,
+      depend upon, and are varied by, the genius of the particular idiom. In
+      general, there is no alternative but experiment (directed by
+      probabilities) of every tongue known to him who attempts the solution,
+      until the true one be attained. But, with the cipher now before us, all
+      difficulty was removed by the signature. The pun upon the word ‘Kidd’ is
+      appreciable in no other language than the English. But for this
+      consideration I should have begun my attempts with the Spanish and French,
+      as the tongues in which a secret of this kind would most naturally have
+      been written by a pirate of the Spanish main. As it was, I assumed the
+      cryptograph to be English.
+    
+
+      “You observe there are no divisions between the words. Had there been
+      divisions, the task would have been comparatively easy. In such case I
+      should have commenced with a collation and analysis of the shorter words,
+      and, had a word of a single letter occurred, as is most likely, (a or I,
+      for example,) I should have considered the solution as assured. But, there
+      being no division, my first step was to ascertain the predominant letters,
+      as well as the least frequent. Counting all, I constructed a table, thus:
+    
+
+      Of the character 8 there are 33.
+    
+
+                          ;        “     26.
+
+                          4        “     19.
+
+                        ‡ )        “     16.
+
+                          *        “     13.
+
+                          5        “     12.
+
+                          6        “     11.
+
+                        † 1        “      8.
+
+                          0        “      6.
+
+                        9 2        “      5.
+
+                        : 3        “      4.
+
+                          ?        “      3.
+
+                          ¶        “      2.
+
+                         -.        “      1.
+
+      “Now, in English, the letter which most frequently occurs is e.
+      Afterwards, succession runs thus: 
+a o i d h n r s t u y c f g l m w b k
+      p q x z
+. 
+E
+ predominates so remarkably that an individual
+      sentence of any length is rarely seen, in which it is not the prevailing
+      character.
+    
+
+      “Here, then, we leave, in the very beginning, the groundwork for something
+      more than a mere guess. The general use which may be made of the table is
+      obvious—but, in this particular cipher, we shall only very partially
+      require its aid. As our predominant character is 8, we will commence by
+      assuming it as the 
 e
-. Now, of all 
-words
- in the
-      language, ‘the’ is most usual; let us see, therefore, whether there are
-      not repetitions of any three characters, in the same order of collocation,
-      the last of them being 8. If we discover repetitions of such letters, so
-      arranged, they will most probably represent the word ‘the.’ Upon
-      inspection, we find no less than seven such arrangements, the characters
-      being ;48. We may, therefore, assume that ; represents 
-t
-, 4
-      represents 
-h
-, and 8 represents 
+ of the natural alphabet. To verify the
+      supposition, let us observe if the 8 be seen often in couples—for 
 e
-—the last being now
-      well confirmed. Thus a great step has been taken.
+
+      is doubled with great frequency in English—in such words, for
+      example, as ‘meet,’ ‘.fleet,’ ‘speed,’ ‘seen,’ been,’ ‘agree,’ &c. In
+      the present instance we see it doubled no less than five times, although
+      the cryptograph is brief.
     
-
-      “But, having established a single word, we are enabled to establish a
-      vastly important point; that is to say, several commencements and
-      terminations of other words. Let us refer, for example, to the last
-      instance but one, in which the combination ;48 occurs—not far from
-      the end of the cipher. We know that the ; immediately ensuing is the
-      commencement of a word, and, of the six characters succeeding this ‘the,’
-      we are cognizant of no less than five. Let us set these characters down,
-      thus, by the letters we know them to represent, leaving a space for the
-      unknown—
-    
-
-      t eeth.
-    
-
-      “Here we are enabled, at once, to discard the ‘th,’ as forming no portion
-      of the word commencing with the first t; since, by experiment of the
-      entire alphabet for a letter adapted to the vacancy, we perceive that no
-      word can be formed of which this 
-th
- can be a part. We are thus
-      narrowed into
-    
-
-      t ee,
-    
-
-      and, going through the alphabet, if necessary, as before, we arrive at the
-      word ‘tree,’ as the sole possible reading. We thus gain another letter, 
-r
-,
-      represented by (, with the words ‘the tree’ in juxtaposition.
-    
-
-      “Looking beyond these words, for a short distance, we again see the
-      combination ;48, and employ it by way of termination to what
-      immediately precedes. We have thus this arrangement:
-    
-
-      the tree ;4(‡?34 the,
-    
-
-      or, substituting the natural letters, where known, it reads thus:
-    
-
-      the tree thr‡?3h the.
-    
-
-      “Now, if, in place of the unknown characters, we leave blank spaces, or
-      substitute dots, we read thus:
-    
-
-      the tree thr...h the,
-    
-
-      when the word ‘
-through
-’ makes itself evident at once. But this
-      discovery gives us three new letters, 
-o
-, 
-u
- and 
-g
-,
-      represented by ‡, ? and 3.
-    
-
-      “Looking now, narrowly, through the cipher for combinations of known
-      characters, we find, not very far from the beginning, this arrangement,
-    
-
-      83(88, or egree,
-    
-
-      which, plainly, is the conclusion of the word ‘degree,’ and gives us
-      another letter, 
-d
-, represented by †.
-    
-
-      “Four letters beyond the word ‘degree,’ we perceive the combination
-    
-
-      ;46(;88.
-    
-
-      “Translating the known characters, and representing the unknown by dots,
-      as before, we read thus:
-    
-
-      th.rtee,
-    
-
-      an arrangement immediately suggestive of the word ‘thirteen,’
-      and again furnishing us with two new characters, 
-i
- and 
-n
-,
-      represented by 6 and *.
-    
-
-      “Referring, now, to the beginning of the cryptograph, we find the
-      combination,
-    
-
-      53‡‡†.
-    
-
-      “Translating as before, we obtain
-    
-
-      good,
-    
-
-      which assures us that the first letter is 
-A
-, and that the first two
-      words are ‘A good.’
-    
-
-      “It is now time that we arrange our key, as far as discovered, in a
-      tabular form, to avoid confusion. It will stand thus:
-    
-
-                5 represents      a
-
-                †       “         d
-
-                8       “         e
-
-                3       “         g
-
-                4       “         h
-
-                6       “         i
-
-                *       “         n
-
-                ‡       “         o
-
-                (       “         r
-
-                ;       “         t
-
-                ?       “         u
-
-      “We have, therefore, no less than eleven of the most important letters
-      represented, and it will be unnecessary to proceed with the details of the
-      solution. I have said enough to convince you that ciphers of this nature
-      are readily soluble, and to give you some insight into the rationale of
-      their development. But be assured that the specimen before us appertains
-      to the very simplest species of cryptograph. It now only remains to give
-      you the full translation of the characters upon the parchment, as
-      unriddled. Here it is:
-    
-
-      “‘
-A good glass in the bishop’s hostel in the devil’s seat forty-one
-      degrees and thirteen minutes northeast and by north main branch seventh
-      limb east side shoot from the left eye of the death’s-head a bee line from
-      the tree through the shot fifty feet out
-.’”
-     
-
-      “But,” said I, “the enigma seems still in as bad a condition as ever. How
-      is it possible to extort a meaning from all this jargon about ‘devil’s
-      seats,’ ‘death’s heads,’ and ‘bishop’s hotels?’”
-     
-
-      “I confess,” replied Legrand, “that the matter still wears a serious
-      aspect, when regarded with a casual glance. My first endeavor was to
-      divide the sentence into the natural division intended by the
-      cryptographist.”
-     
-
-      “You mean, to punctuate it?”
-     
-
-      “Something of that kind.”
-     
-
-      “But how was it possible to effect this?”
-     
-
-      “I reflected that it had been a point with the writer to run his words
-      together without division, so as to increase the difficulty of solution.
-      Now, a not over-acute man, in pursuing such an object, would be nearly
-      certain to overdo the matter. When, in the course of his composition, he
-      arrived at a break in his subject which would naturally require a pause,
-      or a point, he would be exceedingly apt to run his characters, at this
-      place, more than usually close together. If you will observe the MS., in
-      the present instance, you will easily detect five such cases of unusual
-      crowding. Acting upon this hint, I made the division thus: ‘A good glass
-      in the Bishop’s hostel in the Devil’s seat—forty-one degrees and
-      thirteen minutes—northeast and by north—main branch seventh
-      limb east side—shoot from the left eye of the death’s-head—a
-      bee-line from the tree through the shot fifty feet out.’”
-     
-
-      “Even this division,” said I, “leaves me still in the dark.”
-     
-
-      “It left me also in the dark,” replied Legrand, “for a few days; during
-      which I made diligent inquiry, in the neighborhood of Sullivan’s Island,
-      for any building which went by the name of the ‘Bishop’s Hotel;’ for, of
-      course, I dropped the obsolete word ‘hostel.’ Gaining no information on
-      the subject, I was on the point of extending my sphere of search, and
-      proceeding in a more systematic manner, when, one morning, it entered into
-      my head, quite suddenly, that this ‘Bishop’s Hostel’ might have some
-      reference to an old family, of the name of Bessop, which, time out of
-      mind, had held possession of an ancient manor-house, about four miles to
-      the northward of the island. I accordingly went over to the plantation,
-      and re-instituted my inquiries among the older negroes of the place. At
-      length one of the most aged of the women said that she had heard of such a
-      place as Bessop’s Castle, and thought that she could guide me to it, but
-      that it was not a castle nor a tavern, but a high rock.
-    
-
-      “I offered to pay her well for her trouble, and, after some demur, she
-      consented to accompany me to the spot. We found it without much
-      difficulty, when, dismissing her, I proceeded to examine the place. The
-      ‘castle’ consisted of an irregular assemblage of cliffs and rocks—one
-      of the latter being quite remarkable for its height as well as for its
-      insulated and artificial appearance. I clambered to its apex, and then felt
-      much at a loss as to what should be next done.
-    
-
-      “While I was busied in reflection, my eyes fell upon a narrow ledge in the
-      eastern face of the rock, perhaps a yard below the summit upon which I
-      stood. This ledge projected about eighteen inches, and was not more than a
-      foot wide, while a niche in the cliff just above it gave it a rude
-      resemblance to one of the hollow-backed chairs used by our ancestors. I
-      made no doubt that here was the ‘devil’s seat’ alluded to in the MS., and
-      now I seemed to grasp the full secret of the riddle.
-    
-
-      “The ‘good glass,’ I knew, could have reference to nothing but a
-      telescope; for the word ‘glass’ is rarely employed in any other sense by
-      seamen. Now here, I at once saw, was a telescope to be used, and a
-      definite point of view, admitting no variation, from which to use it. Nor
-      did I hesitate to believe that the phrases, ‘forty-one degrees and
-      thirteen minutes,’ and ‘northeast and by north,’ were intended as
-      directions for the levelling of the glass. Greatly excited by these
-      discoveries, I hurried home, procured a telescope, and returned to the
-      rock.
-    
-
-      “I let myself down to the ledge, and found that it was impossible to
-      retain a seat upon it except in one particular position. This fact
-      confirmed my preconceived idea. I proceeded to use the glass. Of course,
-      the ‘forty-one degrees and thirteen minutes’ could allude to nothing but
-      elevation above the visible horizon, since the horizontal direction was
-      clearly indicated by the words, ‘northeast and by north.’ This latter
-      direction I at once established by means of a pocket-compass; then,
-      pointing the glass as nearly at an angle of forty-one degrees of elevation
-      as I could do it by guess, I moved it cautiously up or down, until my
-      attention was arrested by a circular rift or opening in the foliage of a
-      large tree that overtopped its fellows in the distance. In the centre of
-      this rift I perceived a white spot, but could not, at first, distinguish
-      what it was. Adjusting the focus of the telescope, I again looked, and now
-      made it out to be a human skull.
-    
-
-      “Upon this discovery I was so sanguine as to consider the enigma solved;
-      for the phrase ‘main branch, seventh limb, east side,’ could refer only to
-      the position of the skull upon the tree, while ‘shoot from the left eye of
-      the death’s head’ admitted, also, of but one interpretation, in regard to
-      a search for buried treasure. I perceived that the design was to drop a
-      bullet from the left eye of the skull, and that a bee-line, or, in other
-      words, a straight line, drawn from the nearest point of the trunk through
-      ‘the shot,’ (or the spot where the bullet fell,) and thence extended to a
-      distance of fifty feet, would indicate a definite point—and beneath
-      this point I thought it at least possible that a deposit of value lay
-      concealed.”
-     
-
-      “All this,” I said, “is exceedingly clear, and, although ingenious, still
-      simple and explicit. When you left the Bishop’s Hotel, what then?”
-     
-
-      “Why, having carefully taken the bearings of the tree, I turned homewards.
-      The instant that I left ‘the devil’s seat,’ however, the circular rift
-      vanished; nor could I get a glimpse of it afterwards, turn as I would.
-      What seems to me the chief ingenuity in this whole business, is the fact
-      (for repeated experiment has convinced me it is a fact) that the circular
-      opening in question is visible from no other attainable point of view than
-      that afforded by the narrow ledge upon the face of the rock.
-    
-
-      “In this expedition to the ‘Bishop’s Hotel’ I had been attended by
-      Jupiter, who had, no doubt, observed, for some weeks past, the abstraction
-      of my demeanor, and took especial care not to leave me alone. But, on the
-      next day, getting up very early, I contrived to give him the slip, and
-      went into the hills in search of the tree. After much toil I found it.
-      When I came home at night my valet proposed to give me a flogging. With
-      the rest of the adventure I believe you are as well acquainted as myself.”
-     
-
-      “I suppose,” said I, “you missed the spot, in the first attempt at
-      digging, through Jupiter’s stupidity in letting the bug fall through the
-      right instead of through the left eye of the skull.”
-     
-
-      “Precisely. This mistake made a difference of about two inches and a half
-      in the ‘shot’—that is to say, in the position of the peg nearest the
-      tree; and had the treasure been beneath the ‘shot,’ the error would have
-      been of little moment; but ‘the shot,’ together with the nearest point of
-      the tree, were merely two points for the establishment of a line of
-      direction; of course the error, however trivial in the beginning,
-      increased as we proceeded with the line, and by the time we had gone fifty
-      feet, threw us quite off the scent. But for my deep-seated impressions
-      that treasure was here somewhere actually buried, we might have had all
-      our labor in vain.”
-     
-
-      “But your grandiloquence, and your conduct in swinging the beetle—how
-      excessively odd! I was sure you were mad. And why did you insist upon
-      letting fall the bug, instead of a bullet, from the skull?”
-     
-
-      “Why, to be frank, I felt somewhat annoyed by your evident suspicions
-      touching my sanity, and so resolved to punish you quietly, in my own way,
-      by a little bit of sober mystification. For this reason I swung the
-      beetle, and for this reason I let it fall it from the tree. An observation
-      of yours about its great weight suggested the latter idea.”
-     
-
-      “Yes, I perceive; and now there is only one point which puzzles me. What
-      are we to make of the skeletons found in the hole?”
-     
-
-      “That is a question I am no more able to answer than yourself. There
-      seems, however, only one plausible way of accounting for them—and
-      yet it is dreadful to believe in such atrocity as my suggestion would
-      imply. It is clear that Kidd—if Kidd indeed secreted this treasure,
-      which I doubt not—it is clear that he must have had assistance in
-      the labor. But this labor concluded, he may have thought it expedient to
-      remove all participants in his secret. Perhaps a couple of blows with a
-      mattock were sufficient, while his coadjutors were busy in the pit;
-      perhaps it required a dozen—who shall tell?”
