@@ -28,8 +28,42 @@ STATUS_FILE = "status.json"
 
 # ── Bölüm çıkarma ─────────────────────────────────────────────────────────────
 
-def extract_epub(epub_path: str) -> list:
+def extract_epub(epub_path: str) -> tuple:
+    """
+    NOT (Temmuz 2026): Eskiden bu fonksiyon SADECE metni çıkarıyordu
+    (soup.get_text()) — epub içindeki <img> etiketleri sessizce
+    kayboluyordu, çünkü [EPUB_IMAGE:...] yer tutucu mekanizması sadece
+    extract_pdf()'te vardı. Epub kaynaklı kitaplarda (çoğu light novel
+    gibi) illüstrasyonlar bu yüzden hiç çıkarılmıyordu. Artık <img>
+    etiketleri metne dönüştürülmeden ÖNCE bulunup BELLEKTE tutuluyor
+    (diske YAZILMIYOR — bu fonksiyon main dalındayken, kitap dalı henüz
+    oluşturulmadan önce çağrılıyor; diske yazsaydık bir sonraki
+    git_push()'un 'git add -A'sı bu resimleri main'e commit'leyebilirdi).
+    Görüntüler, main() içinde kitap dalına geçildikten SONRA diske
+    yazılıyor. Yerlerine aynı [EPUB_IMAGE:...] yer tutucusu konuyor —
+    chunking ve çeviri bunu olduğu gibi bırakıyor, convert.py da geri
+    <img>'e çeviriyor (zaten vardı).
+
+    Döner: (chapters, images) — images = {dosya_adı: bytes}
+    """
     book = epub.read_epub(epub_path)
+    images = {}
+    saved_names = {}  # epub-içi href -> atanan dosya adı
+    img_counter = [0]
+
+    def _capture_image(href: str):
+        if href in saved_names:
+            return saved_names[href]
+        item = book.get_item_with_href(href)
+        if item is None:
+            return None
+        ext = os.path.splitext(href)[1] or ".jpg"
+        img_counter[0] += 1
+        name = f"img_{img_counter[0]:03d}{ext}"
+        images[name] = item.get_content()
+        saved_names[href] = name
+        return name
+
     chapters = []
     for item in book.get_items():
         if item.get_type() != ebooklib.ITEM_DOCUMENT:
@@ -37,6 +71,24 @@ def extract_epub(epub_path: str) -> list:
         soup = BeautifulSoup(item.get_content(), "html.parser")
         for tag in soup(["script", "style", "nav"]):
             tag.decompose()
+
+        # <img> etiketlerini metin-içi yer tutucuyla değiştir — get_text()
+        # çağrılmadan ÖNCE yapılmalı ki placeholder doğru paragraf
+        # konumunda kalsın (chunking paragraf sınırlarını koruyor, bu
+        # yüzden resim, metinde neredeyse olduğu yerde kalır).
+        for img in soup.find_all("img"):
+            src = img.get("src") or img.get("xlink:href") or ""
+            if not src:
+                img.decompose()
+                continue
+            href = os.path.normpath(
+                os.path.join(os.path.dirname(item.get_name()), src)
+            ).replace("\\", "/")
+            saved_name = _capture_image(href)
+            if saved_name:
+                img.replace_with(f"\n[EPUB_IMAGE:{saved_name}]\n")
+            else:
+                img.decompose()
 
         heading = soup.find(["h1", "h2", "h3"])
 
@@ -46,17 +98,48 @@ def extract_epub(epub_path: str) -> list:
         if len(text) < 300:
             continue
 
+        if heading:
+            raw_title = heading.get_text().strip()
+        else:
+            # Bazı epub'larda bölüm başlıkları <h1-h3> değil, düz bir
+            # paragraf olarak biçimlendiriliyor. Eskiden bu durumda
+            # item.get_name() (ham epub iç dosya yolu, örn.
+            # "Text/chapter1_1.xhtml") kullanılıyordu — bu, kullanıcıya
+            # başlık olarak AYNEN böyle çirkin bir haliyle görünüyordu.
+            # Onun yerine: metnin ilk satırı "Chapter N" gibi tanıdık bir
+            # kalıba uyuyorsa ya da kısa/başlık-gibi görünüyorsa onu
+            # başlık olarak kullan (ve gövdeden çıkar, tekrar etmesin);
+            # hiçbiri uymuyorsa ham dosya adı yerine nötr, sıralı bir
+            # "Bölüm N" kullan.
+            first_line = text.split("\n", 1)[0].strip()
+            chapter_pattern = re.compile(
+                r'^(chapter\s+\w+|prologue|epilogue|interlude|afterword|'
+                r'foreword|preface)\b', re.IGNORECASE
+            )
+            looks_like_title = len(first_line) < 100 and not first_line.endswith(
+                (".", "!", "?", "…", ":", ",")
+            )
+            if chapter_pattern.match(first_line) or looks_like_title:
+                raw_title = first_line
+                text = text.split("\n", 1)[1].strip() if "\n" in text else text
+            else:
+                raw_title = f"Bölüm {len(chapters) + 1}"
+
         # Başlığı ayıkla — "The Project Gutenberg eBook of X" → "X"
-        raw_title = heading.get_text().strip() if heading else item.get_name()
         title = re.sub(
             r'^the\s+project\s+gutenberg\s+e[\-\s]?book\s+of\s+',
             '', raw_title, flags=re.IGNORECASE
         ).strip() or raw_title
         chapters.append({"name": item.get_name(), "title": title, "text": text})
-    return chapters
+    return chapters, images
 
 
-def extract_pdf(pdf_path: str, book_slug: str) -> list:
+def extract_pdf(pdf_path: str, book_slug: str) -> tuple:
+    """
+    Döner: (chapters, images) — images = {dosya_adı: bytes}. Aynı
+    extract_epub() gibi, main dalındayken diske YAZMIYORUZ (bkz. o
+    fonksiyonun docstring'i) — main() kitap dalına geçtikten sonra yazar.
+    """
     import pdfplumber, fitz
 
     patterns = [
@@ -65,8 +148,7 @@ def extract_pdf(pdf_path: str, book_slug: str) -> list:
         re.compile(r'^(\d+\.\s+.{3,60})$'),
         re.compile(r'^([IVX]+\.\s+.{3,60})$'),
     ]
-    images_dir = f"output/{book_slug}/images"
-    os.makedirs(images_dir, exist_ok=True)
+    images = {}
     all_lines, doc = [], fitz.open(pdf_path)
 
     with pdfplumber.open(pdf_path) as pdf:
@@ -76,8 +158,7 @@ def extract_pdf(pdf_path: str, book_slug: str) -> list:
             for ii, img in enumerate(doc[pi].get_images(full=True)):
                 base = doc.extract_image(img[0])
                 name = f"page_{pi+1}_img_{ii+1}.{base['ext']}"
-                with open(os.path.join(images_dir, name), "wb") as f:
-                    f.write(base["image"])
+                images[name] = base["image"]
                 all_lines.append(f"[EPUB_IMAGE:{name}]")
             all_lines.append("")
 
@@ -89,9 +170,10 @@ def extract_pdf(pdf_path: str, book_slug: str) -> list:
 
     if not starts:
         text = boilerplate.clean(re.sub(r"\n{3,}", "\n\n", "\n".join(all_lines).strip()))
-        return [{"name": "chapter_001",
+        chapters = [{"name": "chapter_001",
                  "title": os.path.splitext(os.path.basename(pdf_path))[0],
                  "text": text}] if len(text) >= 300 else []
+        return chapters, images
 
     starts.append((len(all_lines), None))
     chapters = []
@@ -101,7 +183,7 @@ def extract_pdf(pdf_path: str, book_slug: str) -> list:
                                         "\n".join(all_lines[sl+1:starts[idx+1][0]]).strip()))
         if len(body) >= 300:
             chapters.append({"name": f"chapter_{idx+1:03d}", "title": title, "text": body})
-    return chapters
+    return chapters, images
 
 
 # ── Çeviri ─────────────────────────────────────────────────────────────────────
@@ -278,10 +360,10 @@ def main():
     branch = f"book/{book_slug}"
 
     print(f"Dosya: {input_file}")
-    chapters = (extract_epub(file_path) if file_ext == ".epub"
-                else extract_pdf(file_path, book_slug))
+    chapters, images = (extract_epub(file_path) if file_ext == ".epub"
+                        else extract_pdf(file_path, book_slug))
     total = len(chapters)
-    print(f"Toplam bölüm: {total}")
+    print(f"Toplam bölüm: {total}, {len(images)} görsel bulundu.")
     if total == 0:
         print("Hiç bölüm çıkarılamadı.")
         return
@@ -310,6 +392,17 @@ def main():
     output_dir = f"output/{book_slug}"
     originals_dir = f"{output_dir}/.originals"
     os.makedirs(originals_dir, exist_ok=True)
+
+    # Görselleri ANCAK ŞİMDİ (kitap dalındayken) diske yaz — extract_epub/
+    # extract_pdf bunları bilerek diske yazmadı (bkz. o fonksiyonların
+    # docstring'i): main dalındayken yazılsaydı, az önceki git_push()'un
+    # 'git add -A'sı bunları main'e commit'leyebilirdi.
+    if images:
+        images_dir = f"{output_dir}/images"
+        os.makedirs(images_dir, exist_ok=True)
+        for name, data in images.items():
+            with open(os.path.join(images_dir, name), "wb") as f:
+                f.write(data)
 
     # Orijinali (bellekte tuttuğumuz baytlardan) bu dala yedekle —
     # convert.py bu dosyayı find_original_epub() ile burada arayacak.
