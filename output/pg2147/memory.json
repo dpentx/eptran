@@ -16,7 +16,9 @@
     "Arnheim": "Arnheim",
     "Hermes": "Hermes",
     "Bay Allan": "Bay Allan",
-    "Virginia": "Virginia"
+    "Virginia": "Virginia",
+    "Dr. Rufus W. Griswold": "Dr. Rufus W. Griswold",
+    "N. P. Willis": "N. P. Willis"
   },
   "terms": {
     "Project Gutenberg": "Project Gutenberg",
@@ -64,12 +66,16 @@
     "Paris": "Paris",
     "Almanya": "Almanya",
     "İngiltere": "İngiltere",
-    "Atlantik": "Atlantik"
+    "Atlantik": "Atlantik",
+    "Tribune": "Tribune",
+    "Baltimore": "Baltimore",
+    "Aidenn": "Aidenn"
   },
   "style_notes": "Metin, bir e-kitap başlık sayfası ve içerik tablosu olduğu için resmi, bilgilendirici ve nötr bir tona sahiptir. Başlıklar ve isimler orijinal yapıtın literatürdeki standart Türkçe karşılıklarıyla korunmalıdır. Biyografik bölümler, dönemin edebi eleştiri diline uygun olarak, biraz daha süslü ve analitik bir üslupla çevrilmiştir.",
   "summaries": [
     "The Works of Edgar Allan Poe — Volume 1: Bu metin, Edgar Allan Poe’nun eserlerinin ilk cildini içeren bir derlemenin başlık sayfası ve içindekiler listesidir. James Russell Lowell ve Nathaniel Parker Willis gibi katkıda bulunanların yanı sıra Poe’nun biyografisi, ölümü ve \"Kara Karga\" gibi ünlü hikayelerinin yer aldığı bu çalışma, yazarın edebi mirasını sunmayı amaçlamaktadır.",
     "EDGAR ALLAN POE\nAN APPRECIATION: Metin, Edgar Allan Poe’nun ABD edebiyatındaki özgün dehasını, ünlü eserlerini ve halkın ona gösterdiği saygısızlığı eleştirerek değerlendirir. Poe’nun korku, gizem ve şiir alanlarındaki katkıları vurgulanırken, yazarın yaşadığı zorluklara rağmen edebi mirasının büyük bir zevk ve sanat kaynağı olduğu belirtilir.",
-    "EDGAR ALLAN POE: James Russell Lowell, Edgar Allan Poe’nun yetimlikten evlat edinilmesine, akademik başarılarına ve askeri kariyerindeki aksaklıklara kadar olan çalkantılı hayatını anlatırken, Poe’nun evlat edinen babası Allan ile arasındaki miras anlaşmazlığı nedeniyle yazarlığa yönelmesini özetler. Metin, Poe’nun erken yaşamındaki önemli olayları ve Allan gibi temel karakterleri vurgular."
+    "EDGAR ALLAN POE: James Russell Lowell, Edgar Allan Poe’nun yetimlikten evlat edinilmesine, akademik başarılarına ve askeri kariyerindeki aksaklıklara kadar olan çalkantılı hayatını anlatırken, Poe’nun evlat edinen babası Allan ile arasındaki miras anlaşmazlığı nedeniyle yazarlığa yönelmesini özetler. Metin, Poe’nun erken yaşamındaki önemli olayları ve Allan gibi temel karakterleri vurgular.",
+    "DEATH OF EDGAR A. POE: Metin, Edgar Allan Poe’nun 7 Ekim’de Baltimore’da hayatını kaybettiğini ve Dr. Rufus W. Griswold’un onu dostu olmayan, düzensiz ama parlak bir edebi deha olarak tanımladığını aktarır. Poe’nun çelişkili karakteri, büyüleyici konuşma yeteneği ve iç dünyasında yaşadığı melek ile şeytan arasındaki mücadele vurgulanmaktadır."
   ]
 }
