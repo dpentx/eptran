@@ -1,0 +1,23 @@
+{
+  "characters": {
+    "Edgar Allan Poe": "Edgar Allan Poe",
+    "James Russell Lowell": "James Russell Lowell",
+    "Nathaniel Parker Willis": "Nathaniel Parker Willis",
+    "David Widger": "David Widger",
+    "Carlo Traverso": "Carlo Traverso",
+    "Hans Pfaall": "Hans Pfaall",
+    "Marie Roget": "Marie Roget"
+  },
+  "terms": {
+    "Project Gutenberg": "Project Gutenberg",
+    "The Raven Edition": "Karga Sürümü",
+    "The Murders in the Rue Morgue": "Rue Morgue Cinayetleri",
+    "The Gold-Bug": "Altın Böcek",
+    "MS. Found in a Bottle": "Bir Şişede Bulunan El Yazması",
+    "The Oval Portrait": "Oval Portre",
+    "The Balloon-Hoax": "Balon Dolandırıcılığı",
+    "Four Beasts in One—The Homo-Cameleopard": "Bir Arada Dört Canavar — Homo-Kameleopard"
+  },
+  "style_notes": "Metin, bir e-kitap başlık sayfası ve içerik tablosu olduğu için resmi, bilgilendirici ve nötr bir tona sahiptir. Başlıklar ve isimler orijinal yapıtın literatürdeki standart Türkçe karşılıklarıyla korunmalıdır.",
+  "summaries": []
+}
