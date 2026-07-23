@@ -1,19 +1,13 @@
 {
-  "status": "completed",
-  "book": "The_Apothecary_Diaries_v10",
-  "epub_file": "The Apothecary Diaries v10.epub",
-  "branch": "book/The_Apothecary_Diaries_v10",
+  "status": "running",
+  "book": "pg2147",
+  "epub_file": "pg2147.epub",
+  "branch": "book/pg2147",
   "source_type": "epub",
-  "total": 33,
-  "completed": 33,
+  "total": 14,
+  "completed": 0,
   "current_chapter": "",
-  "started_at": "2026-07-19T10:08:45.141946+00:00",
+  "started_at": "2026-07-23T20:21:41.085620+00:00",
   "queue_mode": true,
-  "updated_at": "2026-07-22T08:10:24.365367+00:00",
-  "review_status": "completed",
-  "review_total": 33,
-  "review_completed": 33,
-  "review_current": "",
-  "convert_status": "completed",
-  "epub_output": "output/The_Apothecary_Diaries_v10/The_Apothecary_Diaries_v10_tr.epub"
+  "updated_at": "2026-07-23T20:21:41.090065+00:00"
 }
