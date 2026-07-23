@@ -6,7 +6,14 @@
     "David Widger": "David Widger",
     "Carlo Traverso": "Carlo Traverso",
     "Hans Pfaall": "Hans Pfaall",
-    "Marie Roget": "Marie Roget"
+    "Marie Roget": "Marie Roget",
+    "Sarah Helen Whitman": "Sarah Helen Whitman",
+    "Charles Dickens": "Charles Dickens",
+    "Arthur Gordon Pym": "Arthur Gordon Pym",
+    "William Wilson": "William Wilson",
+    "Dr. Tarr": "Dr. Tarr",
+    "Profesor Fether": "Profesor Fether",
+    "Arnheim": "Arnheim"
   },
   "terms": {
     "Project Gutenberg": "Project Gutenberg",
@@ -22,10 +29,31 @@
     "The Mystery of Marie Roget": "Marie Roget Gizemi",
     "Preface": "Önsöz",
     "Life of Poe": "Poe'nun Hayatı",
-    "Death of Poe": "Poe'nun Ölümü"
+    "Death of Poe": "Poe'nun Ölümü",
+    "A Review": "Bir Değerlendirme",
+    "The Raven": "Kara Karga",
+    "The Haunted Palace": "Hayalet Saray",
+    "The Fall of the House of Usher": "Usher Evinin Çöküşü",
+    "Ligeia": "Ligeia",
+    "Descent into the Maelstrom": "Bir Maelstrom’a İniş",
+    "William Wilson": "William Wilson",
+    "The Black Cat": "Kara Kedi",
+    "The Tell-Tale Heart": "Yalan Söyleyen Kalp",
+    "The Island of the Fay": "Fay Adası",
+    "The Domain of Arnheim": "Arnheim’ın Alanı",
+    "The Purloined Letter": "Çalınan Mektup",
+    "The Premature Burial": "Erken Gömülmüş",
+    "The System of Doctor Tarr and Professor Fether": "Dr. Tarr ve Profesör Fether’in Sistemi",
+    "The Devil in the Belfry": "Kuledeki Şeytan",
+    "The Angel of the Odd": "Garip Meleği",
+    "Narrative of Arthur Gordon Pym": "Arthur Gordon Pym’in Anlatısı",
+    "The Bells": "Ziller",
+    "Tamerlane": "Tamerlan",
+    "The City in the Sea": "Denizdeki Şehir"
   },
   "style_notes": "Metin, bir e-kitap başlık sayfası ve içerik tablosu olduğu için resmi, bilgilendirici ve nötr bir tona sahiptir. Başlıklar ve isimler orijinal yapıtın literatürdeki standart Türkçe karşılıklarıyla korunmalıdır.",
   "summaries": [
-    "The Works of Edgar Allan Poe — Volume 1: Bu metin, Edgar Allan Poe’nun eserlerinin ilk cildini içeren bir derlemenin başlık sayfası ve içindekiler listesidir. James Russell Lowell ve Nathaniel Parker Willis gibi katkıda bulunanların yanı sıra Poe’nun biyografisi, ölümü ve \"Kara Karga\" gibi ünlü hikayelerinin yer aldığı bu çalışma, yazarın edebi mirasını sunmayı amaçlamaktadır."
+    "The Works of Edgar Allan Poe — Volume 1: Bu metin, Edgar Allan Poe’nun eserlerinin ilk cildini içeren bir derlemenin başlık sayfası ve içindekiler listesidir. James Russell Lowell ve Nathaniel Parker Willis gibi katkıda bulunanların yanı sıra Poe’nun biyografisi, ölümü ve \"Kara Karga\" gibi ünlü hikayelerinin yer aldığı bu çalışma, yazarın edebi mirasını sunmayı amaçlamaktadır.",
+    "EDGAR ALLAN POE\nAN APPRECIATION: Metin, Edgar Allan Poe’nun ABD edebiyatındaki özgün dehasını, ünlü eserlerini ve halkın ona gösterdiği saygısızlığı eleştirerek değerlendirir. Poe’nun korku, gizem ve şiir alanlarındaki katkıları vurgulanırken, yazarın yaşadığı zorluklara rağmen edebi mirasının büyük bir zevk ve sanat kaynağı olduğu belirtilir."
   ]
 }
