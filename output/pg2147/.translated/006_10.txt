@@ -1,0 +1,87 @@
+“O halde 8’i e olarak kabul edelim. Şimdi, dildeki tüm kelimeler arasında ‘the’ en yaygın olanıdır; bu nedenle, son karakteri 8 olan, aynı dizilim sırasına sahip üç karakterli tekrarlar olup olmadığını görelim. Böylece dizilmiş harflerin tekrarlarını bulursak, bunlar büyük olasılıkla ‘the’ kelimesini temsil edecektir. İnceleme sonucunda, karakterlerin ;48 şeklinde olduğu en az yedi böyle dizilim buluyoruz. Dolayısıyla, ;’nin t’yi, 4’ün h’yi ve 8’in e’yi temsil ettiğini varsayabiliriz—sonuncusu artık iyi bir şekilde doğrulanmış oldu. Böylece büyük bir adım atmış olduk.
+
+“Fakat, tek bir kelimeyi belirledikten sonra, çok önemli bir noktayı da belirleme imkânına kavuşuyoruz; yani diğer kelimelerin çeşitli başlangıç ve bitişlerini. Örneğin, şifrenin sonuna yakın olmayan, ;48 kombinasyonunun görüldüğü sondan bir önceki örneğe bakalım. ‘the’ kelimesinden hemen sonra gelen ;’nin bir kelimenin başlangıcı olduğunu biliyoruz ve bu ‘the’den sonra gelen altı karakterden en az beşini biliyoruz. Bu karakterleri, bildiğimiz harflerle, bilinmeyeni için boşluk bırakarak şu şekilde yazalım:
+
+t eeth.
+
+“Burada, ilk t ile başlayan kelimenin bir parçası olarak ‘th’yi hemen elememize olanak tanıyoruz; çünkü boşluğa uygun bir harf bulmak için tüm alfabeyi denediğimizde, bu th’nin bir parçası olabileceği hiçbir kelime oluşturulamayacağını görüyoruz. Böylece kapsamımız daralıyor:
+
+t ee,
+
+ve gerekirse önceki gibi alfabeyi tarayarak, ‘tree’ kelimesine tek olası okuma olarak ulaşıyoruz. Böylece ( ile temsil edilen r harfini ve yan yana ‘the tree’ kelimelerini elde ediyoruz.
+
+“Bu kelimelerin ötesine, kısa bir mesafe bakarak, tekrar ;48 kombinasyonunu görüyor ve bunu hemen öncekine bitiş olarak kullanıyoruz. Böylece şu dizilimi elde ediyoruz:
+
+the tree ;4(‡?34 the,
+
+veya bilinen doğal harfleri yerine koyarsak, şöyle okunur:
+
+the tree thr‡?3h the.
+
+“Şimdi, bilinmeyen karakterlerin yerine boşluklar bırakırsak veya noktalar koyarsak, şöyle okuyoruz:
+
+the tree thr...h the,
+
+burada ‘through’ kelimesi hemen kendini belli ediyor. Fakat bu keşif bize ‡, ? ve 3 ile temsil edilen o, u ve g olmak üzere üç yeni harf veriyor.
+
+“Şimdi, şifreyi bilinen karakterlerin kombinasyonları açısından dikkatlice taradığımızda, başlangıçtan çok uzak olmayan şu dizilimi buluyoruz:
+
+83(88, yani egree,
+
+ki bu açıkça ‘degree’ kelimesinin sonudur ve † ile temsil edilen d harfini bize veriyor.
+
+“‘degree’ kelimesinden dört harf sonra, şu kombinasyonu fark ediyoruz:
+
+;46(;88.
+
+“Bilinen karakterleri çevirip, bilinmeyenleri önceki gibi noktalarla temsil edersek, şöyle okuyoruz:
+
+th.rtee,
+
+bu dizilim hemen ‘thirteen’ kelimesini akla getiriyor ve bize 6 ve * ile temsil edilen i ve n olmak üzere iki yeni karakter daha sunuyor.
+
+“Şimdi, şifrenin başına döndüğümüzde, şu kombinasyonu buluyoruz:
+
+53‡‡†.
+
+“Önceki gibi çevirirsek,
+
+good,
+
+kelimesini elde ediyoruz, bu da ilk harfin A olduğunu ve ilk iki kelimenin ‘A good’ olduğunu bize garanti ediyor.
+
+“Artık anahtarımızı, karışıklığı önlemek için, keşfedildiği kadarıyla tablo halinde düzenleme zamanı geldi. Şu şekilde duracak:
+
+5 represents a
+† “ d
+8 “ e
+3 “ g
+4 “ h
+6 “ i
+* “ n
+‡ “ o
+( “ r
+; “ t
+? “ u
+
+“Dolayısıyla, en önemli onbir harften en azını temsil ediyoruz ve çözmenin detaylarına devam etmeye gerek yok. Bu tür şifrelerin kolayca çözülebileceğini size ikna edecek kadar ve onların gelişim mantığına dair bazı içgörüler sunacak kadar şey söyledim. Fakat, önümüzdeki örneğin şifrelerin en basit türüne ait olduğundan emin olun. Artık sadece, deşifre edilmiş şekilde, pergamen üzerindeki karakterlerin tam çevirisini size vermek kalıyor. İşte o:
+
+‘A good glass in the bishop’s hostel in the devil’s seat forty-one degrees and thirteen minutes northeast and by north main branch seventh limb east side shoot from the left eye of the death’s-head a bee line from the tree through the shot fifty feet out.’
+
+“Ama,” dedim, “bilinmez hâlâ eskisi kadar kötü bir durumda görünüyor. ‘devil’s seats,’ ‘death’s heads’ ve ‘bishop’s hotels’ hakkında bu jargonun anlamını nasıl çıkarabiliriz?”
+
+“İtiraf ederim,” diye yanıtladı Legrand, “konuya rastgele bir bakışla bakıldığında, hâlâ ciddi bir yönü var. İlk çabam, cümleyi şifreleyenin niyet ettiği doğal bölümlere ayırmaktı.”
+
+“Noktalama yapmaktan mı bahsediyorsunuz?”
+
+“Bir nevi öyle.”
+
+“Ama bunu nasıl mümkün kılabilirdi?”
+
+“Yazarın, çözümün zorluğunu artırmak için kelimelerini bölmeden birleştirmeye özen gösterdiğini düşündüm. Şimdi, böyle bir amaç peşinde olan, aşırı keskin olmayan biri, bu konuyu neredeyse kesinlikle abartacaktır. Yazarken, konusundaki doğal bir duraksama veya nokta gerektiren bir yere geldiğinde, bu noktada karakterlerini alışılmadık derecede yakın yazma eğiliminde olacaktır. Eğer mevcut durumda MS’yi gözlemlerseniz, beş böyle alışılmadık sıkışıklık durumunu kolayca tespit edeceksiniz. Bu ipucu üzerine, bölümlendirmeyi şöyle yaptım: ‘A good glass in the Bishop’s hostel in the Devil’s seat—forty-one degrees and thirteen minutes—northeast and by north—main branch seventh limb east side—shoot from the left eye of the death’s-head—a bee-line from the tree through the shot fifty feet out.’”
+
+“Hatta bu bölümlendirme,” dedim, “beni hâlâ karanlıkta bırakıyor.”
+
+“Beni de birkaç gün boyunca karanlıkta bıraktı,” diye yanıtladı Legrand, “bu süre içinde, Sullivan’s Island’ın çevresinde, ‘Bishop’s Hotel’ adıyla anılan herhangi bir bina olup olmadığını araştırdım; çünkü tabii ki, ‘hostel’ kelimesini terk ettim. Konuyla ilgili bilgi edinemeyince, arama alanımı genişletmek ve daha sistematik bir şekilde ilerlemek üzereydim ki, bir sabah, bu ‘Bishop’s Hostel’in, adanın kuzeyinde yaklaşık dört mil uzakta, eski bir malikânede uzun süredir sahip olduğu bir Bessop ailesine bir atıfta bulunabileceği aklıma birdenbire geldi. Buna göre, plantasyona gidip, yerin daha yaşlı siyahileri arasında araştırmalarımı yeniden başlattım. Sonunda, en yaşlı kadınlarından biri, Bessop’s Castle adında bir yerden haberi olduğunu ve beni oraya götürebileceğini, fakat bunun ne bir kale ne de bir han olduğunu, yüksek bir kaya olduğunu söyledi.
+
+“Ona zahmetine karşılık iyi ödeme teklif ettim ve biraz tereddütten sonra, beni yere eşlik etmeye razı oldu. Onu kolayca bulduk, ardından onu gönderip, yeri incelemeye başladım. ‘Kale’, kayalıklar ve kayaların düzensiz bir topluluğundan oluşuyordu—sonuncularından biri, yüksekliği ve izole ve yapay görünümüyle oldukça dikkat çekiciydi. Tepeye tırmandım ve sonra ne yapılması gerektiği konusunda çok kayboldum.”
