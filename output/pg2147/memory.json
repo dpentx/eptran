@@ -1,6 +1,10 @@
 {
   "characters": {
-    "Hans Pfaall": "Hans Pfaall"
+    "Hans Pfaall": "Hans Pfaall",
+    "William Legrand": "William Legrand",
+    "Jupiter": "Jupiter",
+    "Massa Will": "Massa Will",
+    "Swammerdamm": "Swammerdamm"
   },
   "terms": {
     "Polar Denizi": "Kuzey Kutbu Denizi",
@@ -60,14 +64,32 @@
     "disk": "disk",
     "merak": "merak",
     "umut": "umut",
-    "kendini bulma": "kendini bulma"
+    "kendini bulma": "kendini bulma",
+    "The Gold-Bug": "Altın Böcek",
+    "Tarantula": "Tarantula",
+    "Huguenot": "Huguenot",
+    "New Orleans": "New Orleans",
+    "South Carolina": "Güney Karolina",
+    "Charleston": "Charleston",
+    "Sullivan’s Island": "Sullivan Adası",
+    "Fort Moultrie": "Fort Moultrie",
+    "palmetto": "palmetto",
+    "sweet myrtle": "tatlı defne",
+    "entomoloji": "entomoloji",
+    "kabuklar": "kabuklar",
+    "avcılık": "avcılık",
+    "balıkçılık": "balıkçılık",
+    "inziva": "inziva",
+    "coşku": "coşku",
+    "hüzün": "hüzün",
+    "Ekim": "Ekim"
   },
-  "style_notes": "Metin, Hans Pfaall'ın balon seyahati sırasında yaptığı teknik düzenlemeleri ve gözlemleri detaylı, nesnel ve bilimsel bir dille anlatmaktadır. Ölçü birimleri (feet, inç, galon) orijinal metindeki gibi korunmalı veya parantez içinde Türkçe karşılıkları belirtilmelidir. Anlatım, dönemin bilimsel merakını yansıtan, hassas ve analitik bir üslup taşır. Karakterin iç monologu ve gözlemleri, okuyucuya olayların gerçekçiliğini hissettirecek şekilde, akıcı ve betimleyici bir Türkçeyle aktarılmalıdır.",
+  "style_notes": "Metin, Hans Pfaall'ın balon seyahati sırasında yaptığı teknik düzenlemeleri ve gözlemleri detaylı, nesnel ve bilimsel bir dille anlatmaktadır. Ölçü birimleri (feet, inç, galon) orijinal metindeki gibi korunmalı veya parantez içinde Türkçe karşılıkları belirtilmelidir. Anlatım, dönemin bilimsel merakını yansıtan, hassas ve analitik bir üslup taşır. Karakterin iç monologu ve gözlemleri, okuyucuya olayların gerçekçiliğini hissettirecek şekilde, akıcı ve betimleyici bir Türkçeyle aktarılmalıdır. Altın Böcek bölümünde anlatım, 19. yüzyıl Amerikan edebiyatının tipik atmosferik ve betimleyici üslubunu yansıtmalı; karakterlerin sosyal statüsü, psikolojik durumları ve çevre betimlemeleri (Sullivan Adası'nın coğrafyası, bitki örtüsü) dikkatlice aktarılmalıdır.",
   "summaries": [
-    "EDGAR ALLAN POE\nAN APPRECIATION: Metin, Edgar Allan Poe’nun ABD edebiyatındaki özgün dehasını, ünlü eserlerini ve halkın ona gösterdiği saygısızlığı eleştirerek değerlendirir. Poe’nun korku, gizem ve şiir alanlarındaki katkıları vurgulanırken, yazarın yaşadığı zorluklara rağmen edebi mirasının büyük bir zevk ve sanat kaynağı olduğu belirtilir.",
     "EDGAR ALLAN POE: James Russell Lowell, Edgar Allan Poe’nun yetimlikten evlat edinilmesine, akademik başarılarına ve askeri kariyerindeki aksaklıklara kadar olan çalkantılı hayatını anlatırken, Poe’nun evlat edinen babası Allan ile arasındaki miras anlaşmazlığı nedeniyle yazarlığa yönelmesini özetler. Metin, Poe’nun erken yaşamındaki önemli olayları ve Allan gibi temel karakterleri vurgular.",
     "DEATH OF EDGAR A. POE: Metin, Edgar Allan Poe’nun 7 Ekim’de Baltimore’da hayatını kaybettiğini ve Dr. Rufus W. Griswold’un onu dostu olmayan, düzensiz ama parlak bir edebi deha olarak tanımladığını aktarır. Poe’nun çelişkili karakteri, büyüleyici konuşma yeteneği ve iç dünyasında yaşadığı melek ile şeytan arasındaki mücadele vurgulanmaktadır.",
     "THE UNPARALLELED ADVENTURES OF ONE HANS PFAAL (*1): Rotterdam'da gökyüzünden düşen ve tamamen eski gazetalardan yapıldığı anlaşılan garip bir balon, şehir halkında büyük şok ve hayret yaratmıştır. Bu beklenmedik olay, Rotterdam'ın burjuva kesiminde felsefi bir heyecan dalgası başlatmış ve herkesin dikkatini üzerine çekmiştir.",
-    "Notes to Hans Pfaal: Baloncu, yüksek irtifada sepetin içinde suyun damlayarak yüzüne çarpmasıyla uyanmasını sağlayan bir alarm sistemi kurar ve bu düzenekle gece boyunca düzenli aralıklarla uyuyup kalkar. Sabah olduğunda balonun muazzam bir yükseklikte olduğunu ve kuzeydeki buzulları gördüğünü fark ederek Kutuplar'a ulaşma umuduyla heyecanlanır."
+    "Notes to Hans Pfaal: Baloncu, yüksek irtifada sepetin içinde suyun damlayarak yüzüne çarpmasıyla uyanmasını sağlayan bir alarm sistemi kurar ve bu düzenekle gece boyunca düzenli aralıklarla uyuyup kalkar. Sabah olduğunda balonun muazzam bir yükseklikte olduğunu ve kuzeydeki buzulları gördüğünü fark ederek Kutuplar'a ulaşma umuduyla heyecanlanır.",
+    "THE GOLD-BUG: William Legrand ve anlatıcı, South Carolina’daki Sullivan’s Island’da yakın bir arkadaşlık kurar; Legrand, zenginliğinden yoksun düşen, tuhaf ruh hallerine eğilimli ve entomolojiye meraklı bir Huguenot’tur. Legrand’ın hayatı, onu her yere takip eden sadık kölesi Jupiter ile birlikte inzivaya çekilmiş bir yaşam sürmesiyle karakterize edilir."
   ]
 }
