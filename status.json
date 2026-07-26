@@ -1,13 +1,13 @@
 {
-  "status": "running",
+  "status": "completed",
   "book": "pg2147",
   "epub_file": "pg2147.epub",
   "branch": "book/pg2147",
   "source_type": "epub",
   "total": 14,
   "completed": 14,
-  "current_chapter": "THE OVAL PORTRAIT",
+  "current_chapter": "",
   "started_at": "2026-07-23T20:21:41.085620+00:00",
   "queue_mode": true,
-  "updated_at": "2026-07-26T18:58:56.314944+00:00"
+  "updated_at": "2026-07-26T18:58:57.820197+00:00"
 }
