@@ -114,23 +114,55 @@ def _split_and_requeue(originals_dir: str, chapter_idx: int, part_idx: int,
         return False
 
     paragraphs = [p for p in chunk_text.split("\n\n") if p.strip()]
-    if len(paragraphs) < 2:
-        print("  Parça tek bir paragraf — doğal bir bölme sınırı yok.")
-        return False
-
     half_words = len(words) / 2
-    first, second, running = [], [], 0
-    for para in paragraphs:
-        if running < half_words or not first:
-            first.append(para)
-            running += len(para.split())
-        else:
-            second.append(para)
-    if not second:
-        return False
 
-    first_text = "\n\n".join(first)
-    second_text = "\n\n".join(second)
+    if len(paragraphs) < 2:
+        # Tek bir devasa paragraf (bkz. Poe'nun "Marie Rogêt" gibi
+        # bölümleri — bazı paragrafları tek başına 700+ kelime). Doğal
+        # bir paragraf sınırı yoksa cümle sınırında bölmeyi dene.
+        sentences = re.split(r'(?<=[.!?”"\'])\s+(?=[A-ZÀ-Ý])', paragraphs[0]) if paragraphs else []
+        if len(sentences) < 2:
+            print("  Parça tek bir paragraf/cümle — doğal bir bölme sınırı yok.")
+            return False
+        first, second, running = [], [], 0
+        for sent in sentences:
+            sent_words = len(sent.split())
+            if not first or running + sent_words <= half_words:
+                first.append(sent)
+                running += sent_words
+            else:
+                second.append(sent)
+        if not second:
+            print("  Cümle bazlı bölme de ikinci yarıyı boş bıraktı — bölünemedi.")
+            return False
+        first_text = " ".join(first)
+        second_text = " ".join(second)
+    else:
+        # Paragrafları BİRİKTİREREK ikiye ayır. NOT: eskiden burada
+        # "running < half_words ise ekle" mantığı vardı — ama bir paragraf
+        # TEK BAŞINA yarıdan büyükse (örn. 723 kelimelik bir paragraf),
+        # bu paragraf eklendiğinde running yarıyı çoktan geçmiş oluyor
+        # ANCAK zaten "içeri alınmış" oluyordu, ondan sonra eklenecek
+        # paragraf kalmıyordu — "second" boş kalıp SESSİZCE False
+        # dönüyordu (bu bug'ı gerçek bir Poe bölümünde yakaladık: 5
+        # paragraf, biri 723 kelime, hepsi "first"e gitmişti). Artık her
+        # paragraf eklenmeden ÖNCE "eklersem yarıyı aşar mıyım" diye
+        # kontrol ediyoruz — aşıyorsa (ve "first" zaten boş değilse) bu
+        # paragrafı ve sonrasını "second"e bırakıyoruz.
+        first, second, running = [], [], 0
+        for para in paragraphs:
+            para_words = len(para.split())
+            if not first or running + para_words <= half_words:
+                first.append(para)
+                running += para_words
+            else:
+                second.append(para)
+        if not second:
+            print("  Paragraf bazlı bölme ikinci yarıyı boş bıraktı — "
+                  "bölünemedi (tüm paragraflar tek yarıya sığdı).")
+            return False
+        first_text = "\n\n".join(first)
+        second_text = "\n\n".join(second)
 
     # Sonraki (henüz işlenmemiş) parçaların dosya adlarını SONDAN BAŞA
     # doğru 1 kaydır (üzerine yazmayı önlemek için ters sırayla).
