@@ -1,139 +1,63 @@
-      “This model (which, through want of time, we have necessarily described in
-      an imperfect manner,) was put in action at the Adelaide Gallery, where it
-      accomplished a velocity of five miles per hour; although, strange to say,
-      it excited very little interest in comparison with the previous complex
-      machine of Mr. Henson—so resolute is the world to despise anything
-      which carries with it an air of simplicity. To accomplish the great
-      desideratum of ærial navigation, it was very generally supposed
-      that some exceedingly complicated application must be made of some
-      unusually profound principle in dynamics.
+      power, the whole fabric would necessarily descend. This consideration led
+      Sir George Cayley to think only of adapting a propeller to some machine
+      having of itself an independent power of support—in a word, to a
+      balloon; the idea, however, being novel, or original, with Sir George,
+      only so far as regards the mode of its application to practice. He
+      exhibited a model of his invention at the Polytechnic Institution. The
+      propelling principle, or power, was here, also, applied to interrupted
+      surfaces, or vanes, put in revolution. These vanes were four in number,
+      but were found entirely ineffectual in moving the balloon, or in aiding
+      its ascending power. The whole project was thus a complete failure.
     
 
-      “So well satisfied, however, was Mr. Mason of the ultimate success of his
-      invention, that he determined to construct immediately, if possible, a
-      balloon of sufficient capacity to test the question by a voyage of some
-      extent—the original design being to cross the British Channel, as
-      before, in the Nassau balloon. To carry out his views, he solicited and
-      obtained the patronage of Sir Everard Bringhurst and Mr. Osborne, two
-      gentlemen well known for scientific acquirement, and especially for the
-      interest they have exhibited in the progress of ærostation. The
-      project, at the desire of Mr. Osborne, was kept a profound secret from the
-      public—the only persons entrusted with the design being those
-      actually engaged in the construction of the machine, which was built
-      (under the superintendence of Mr. Mason, Mr. Holland, Sir Everard
-      Bringhurst, and Mr. Osborne,) at the seat of the latter gentleman near
-      Penstruthal, in Wales. Mr. Henson, accompanied by his friend Mr.
-      Ainsworth, was admitted to a private view of the balloon, on Saturday last—when
-      the two gentlemen made final arrangements to be included in the adventure.
-      We are not informed for what reason the two seamen were also included in
-      the party—but, in the course of a day or two, we shall put our
-      readers in possession of the minutest particulars respecting this
-      extraordinary voyage.
+      “It was at this juncture that Mr. Monck Mason (whose voyage from Dover to
+      Weilburg in the balloon, “Nassau,” occasioned so much excitement in 1837,)
+      conceived the idea of employing the principle of the Archimedean screw for
+      the purpose of propulsion through the air—rightly attributing the
+      failure of Mr. Henson’s scheme, and of Sir George Cayley’s, to the
+      interruption of surface in the independent vanes. He made the first public
+      experiment at Willis’s Rooms, but afterward removed his model to the
+      Adelaide Gallery.
     
 
-      “The balloon is composed of silk, varnished with the liquid gum
-      caoutchouc. It is of vast dimensions, containing more than 40,000 cubic
-      feet of gas; but as coal gas was employed in place of the more expensive
-      and inconvenient hydrogen, the supporting power of the machine, when fully
-      inflated, and immediately after inflation, is not more than about 2500
-      pounds. The coal gas is not only much less costly, but is easily procured
-      and managed.
+      “Like Sir George Cayley’s balloon, his own was an ellipsoid. Its length
+      was thirteen feet six inches—height, six feet eight inches. It
+      contained about three hundred and twenty cubic feet of gas, which, if pure
+      hydrogen, would support twenty-one pounds upon its first inflation, before
+      the gas has time to deteriorate or escape. The weight of the whole machine
+      and apparatus was seventeen pounds—leaving about four pounds to
+      spare. Beneath the centre of the balloon, was a frame of light wood, about
+      nine feet long, and rigged on to the balloon itself with a network in the
+      customary manner. From this framework was suspended a wicker basket or
+      car.
     
 
-      “For its introduction into common use for purposes of aerostation, we are
-      indebted to Mr. Charles Green. Up to his discovery, the process of
-      inflation was not only exceedingly expensive, but uncertain. Two, and even
-      three days, have frequently been wasted in futile attempts to procure a
-      sufficiency of hydrogen to fill a balloon, from which it had great
-      tendency to escape, owing to its extreme subtlety, and its affinity for
-      the surrounding atmosphere. In a balloon sufficiently perfect to retain
-      its contents of coal-gas unaltered, in quantity or amount, for six months,
-      an equal quantity of hydrogen could not be maintained in equal purity for
-      six weeks.
-    
-
-      “The supporting power being estimated at 2500 pounds, and the united
-      weights of the party amounting only to about 1200, there was left a
-      surplus of 1300, of which again 1200 was exhausted by ballast, arranged in
-      bags of different sizes, with their respective weights marked upon them—by
-      cordage, barometers, telescopes, barrels containing provision for a
-      fortnight, water-casks, cloaks, carpet-bags, and various other
-      indispensable matters, including a coffee-warmer, contrived for warming
-      coffee by means of slack-lime, so as to dispense altogether with fire, if
-      it should be judged prudent to do so. All these articles, with the
-      exception of the ballast, and a few trifles, were suspended from the hoop
-      overhead. The car is much smaller and lighter, in proportion, than the one
-      appended to the model. It is formed of a light wicker, and is wonderfully
-      strong, for so frail looking a machine. Its rim is about four feet deep.
-      The rudder is also very much larger, in proportion, than that of the
-      model; and the screw is considerably smaller. The balloon is furnished
-      besides with a grapnel, and a guide-rope; which latter is of the most
-      indispensable importance. A few words, in explanation, will here be
-      necessary for such of our readers as are not conversant with the details
-      of aerostation.
-    
-
-      “As soon as the balloon quits the earth, it is subjected to the influence
-      of many circumstances tending to create a difference in its weight;
-      augmenting or diminishing its ascending power. For example, there may be a
-      deposition of dew upon the silk, to the extent, even, of several hundred
-      pounds; ballast has then to be thrown out, or the machine may descend.
-      This ballast being discarded, and a clear sunshine evaporating the dew,
-      and at the same time expanding the gas in the silk, the whole will again
-      rapidly ascend. To check this ascent, the only recourse is, (or rather 
-was
-,
-      until Mr. Green’s invention of the guide-rope,) the permission of the
-      escape of gas from the valve; but, in the loss of gas, is a proportionate
-      general loss of ascending power; so that, in a comparatively brief period,
-      the best-constructed balloon must necessarily exhaust all its resources,
-      and come to the earth. This was the great obstacle to voyages of length.
-    
-
-      “The guide-rope remedies the difficulty in the simplest manner
-      conceivable. It is merely a very long rope which is suffered to trail from
-      the car, and the effect of which is to prevent the balloon from changing
-      its level in any material degree. If, for example, there should be a
-      deposition of moisture upon the silk, and the machine begins to descend in
-      consequence, there will be no necessity for discharging ballast to remedy
-      the increase of weight, for it is remedied, or counteracted, in an exactly
-      just proportion, by the deposit on the ground of just so much of the end
-      of the rope as is necessary. If, on the other hand, any circumstances
-      should cause undue levity, and consequent ascent, this levity is
-      immediately counteracted by the additional weight of rope upraised from
-      the earth. Thus, the balloon can neither ascend or descend, except within
-      very narrow limits, and its resources, either in gas or ballast, remain
-      comparatively unimpaired. When passing over an expanse of water, it
-      becomes necessary to employ small kegs of copper or wood, filled with
-      liquid ballast of a lighter nature than water. These float, and serve all
-      the purposes of a mere rope on land. Another most important office of the
-      guide-rope, is to point out the 
-direction
- of the balloon. The rope
+      “The screw consists of an axis of hollow brass tube, eighteen inches in
+      length, through which, upon a semi-spiral inclined at fifteen degrees,
+      pass a series of steel wire radii, two feet long, and thus projecting a
+      foot on either side. These radii are connected at the outer extremities by
+      two bands of flattened wire—the whole in this manner forming the
+      framework of the screw, which is completed by a covering of oiled silk cut
+      into gores, and tightened so as to present a tolerably uniform surface. At
+      each end of its axis this screw is supported by pillars of hollow brass
+      tube descending from the hoop. In the lower ends of these tubes are holes
+      in which the pivots of the axis revolve. From the end of the axis which is
+      next the car, proceeds a shaft of steel, connecting the screw with the
+      pinion of a piece of spring machinery fixed in the car. By the operation
+      of this spring, the screw is made to revolve with great rapidity,
+      communicating a progressive motion to the whole. By means of the rudder,
+      the machine was readily turned in any direction. The spring was of great
+      power, compared with its dimensions, being capable of raising forty-five
+      pounds upon a barrel of four inches diameter, after the first turn, and
+      gradually increasing as it was wound up. It weighed, altogether, eight
+      pounds six ounces. The rudder was a light frame of cane covered with silk,
+      shaped somewhat like a battle-door, and was about three feet long, and at
+      the widest, one foot. Its weight was about two ounces. It could be turned
       
-drags
-, either on land or sea, while the balloon is free; the
-      latter, consequently, is always in advance, when any progress whatever is
-      made: a comparison, therefore, by means of the compass, of the relative
-      positions of the two objects, will always indicate the 
-course
-. In
-      the same way, the angle formed by the rope with the vertical axis of the
-      machine, indicates the 
-velocity
-. When there is 
-no
- angle—in
-      other words, when the rope hangs perpendicularly, the whole apparatus is
-      stationary; but the larger the angle, that is to say, the farther the
-      balloon precedes the end of the rope, the greater the velocity; and the
-      converse.
+flat
+, and directed upwards or downwards, as well as to the right or
+      left; and thus enabled the æronaut to transfer the resistance of
+      the air which in an inclined position it must generate in its passage, to
+      any side upon which he might desire to act; thus determining the balloon
+      in the opposite direction.
     
-
-      “As the original design was to cross the British Channel, and alight as
-      near Paris as possible, the voyagers had taken the precaution to prepare
-      themselves with passports directed to all parts of the Continent,
-      specifying the nature of the expedition, as in the case of the Nassau
-      voyage, and entitling the adventurers to exemption from the usual
-      formalities of office: unexpected events, however, rendered these
-      passports superfluous.
