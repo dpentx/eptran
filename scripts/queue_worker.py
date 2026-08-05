@@ -330,7 +330,12 @@ def main():
             f.write(f"# {title}\n\n{full_translation}\n")
 
         try:
-            memory = mem.update_from_translation(memory, full_translation,
+            # update_from_translation artık KAYNAK (İngilizce) metni
+            # bekliyor (bkz. memory.py'deki açıklama) — originals henüz
+            # silinmedi (temizlik aşağıda), o yüzden burada güvenle
+            # yeniden okunabilir.
+            full_source = _reconstruct_source(originals_dir, chapter_idx, total_parts)
+            memory = mem.update_from_translation(memory, full_source,
                                                   clients, key_index)
             memory = mem.add_summary(memory, title, full_translation,
                                       clients, key_index)
