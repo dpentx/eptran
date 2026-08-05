@@ -170,6 +170,27 @@ def fix_text(text: str, clients: list, key_index: list, memory: dict,
                     result.append(fixed)
                     fixed_count += 1
 
+                    # KRİTİK: LLM'e "düzelt" diye gönderdiğimiz kelimelerden
+                    # düzeltilmiş metinde HÂLÂ duran varsa (örn. "Jupiter",
+                    # "massa" gibi özel isim/lehçe kelimesi — model bilerek
+                    # dokunmamış demektir), bunu mini sözlüğe "İngilizce
+                    # DEĞİL" diye işaretle. dictionary.py'de bunun için
+                    # mark_known() zaten vardı ama hiçbir yerden
+                    # çağrılmıyordu — bu yüzden aynı isim, bir hikâyede
+                    # onlarca kez geçtiğinde HER paragrafta yeniden
+                    # "sorunlu" sanılıp LLM'e yollanıyor, birkaç dakikada
+                    # 4 Groq key'in de rate limitini tüketip run'ı
+                    # kilitliyordu (bkz. pg2147/007 — Jupiter/massa/
+                    # Charleston tekrar tekrar "düzeltiliyor"). mark_known
+                    # zaten mini sözlüğe yazıyor, _flush_and_commit ile de
+                    # (aşağıda periyodik olarak) diske/git'e işleniyor —
+                    # yani hem bu dosyanın kalanında hem sonraki
+                    # dosyalarda/kitaplarda bir daha flag'lenmeyecek.
+                    fixed_lower = fixed.lower()
+                    for w in truly_bad:
+                        if w.lower() in fixed_lower:
+                            dictionary.mark_known(w, is_english=False)
+
         # Periyodik flush + commit — rate limit beklerken kesinti olsa
         # bile bu ana kadar öğrenilen kelimeler git'e işlenmiş olur.
         if idx % 5 == 0:

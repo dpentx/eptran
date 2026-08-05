@@ -110,16 +110,31 @@ def extract_from_source(source_text: str, clients: list, key_index: list) -> dic
         return {"characters": {}, "terms": {}, "style_notes": "", "summaries": []}
 
 
-def update_from_translation(memory: dict, translated_text: str,
+def update_from_translation(memory: dict, source_text: str,
                              clients: list, key_index: list) -> dict:
     """
-    Çevrilmiş metinden yeni karakter/terim bilgileri çıkar,
-    mevcut hafızayla birleştir.
+    Yeni bölümün KAYNAK (İngilizce) metninden yeni karakter/terim
+    bilgileri çıkar, mevcut hafızayla birleştir.
+
+    NOT (Ağustos 2026): Bu fonksiyon eskiden ÇEVRİLMİŞ (Türkçe) metni
+    alıyordu. characters/terms sözlüğü "İngilizce isim → Türkçe karşılık"
+    formatında olduğu için modelin elinde zaten Türkçeye çevrilmiş bir
+    metin varken orijinal İngilizce isimleri çıkarması imkansızdı — model
+    de Türkçe cümle parçalarını kendi kendine eşleyip hafızayı çöp
+    kayıtlarla dolduruyordu (örn. memory.json'da "terms" altında tam
+    Türkçe cümleler görülmüştü). Bu arada gerçek isimler (Jupiter,
+    Legrand, massa, Charleston...) hiç kalıcı hafızaya girmiyordu —
+    sadece o bölümün çeviri prompt'unda kullanılıp atılan
+    queue_worker.py'deki `chapter_entities`'te kalıyordu. Sonuç: review
+    aşamasının whitelist'i eksik kalıyor, aynı isimler her paragrafta
+    yeniden "yabancı kelime" sanılıp LLM'e yollanıyor, rate limit hızla
+    tükeniyordu. Kaynak (İngilizce) metni vermek modelin gerçek
+    İngilizce isim/terimleri doğru çıkarmasını sağlar.
     """
-    sample = translated_text[:3000]
+    sample = representative_sample(source_text, max_chars=6000)
     user_msg = (
         f"Mevcut hafıza:\n{json.dumps(memory, ensure_ascii=False)}\n\n"
-        f"Yeni bölüm metni:\n{sample}"
+        f"Yeni bölümün İNGİLİZCE kaynak metni:\n{sample}"
     )
     raw = gc.call(clients, key_index, _UPDATE_SYSTEM, user_msg, temperature=0.1)
     time.sleep(1)
