@@ -1,19 +1,13 @@
 {
-  "status": "completed",
-  "book": "pg2147",
-  "epub_file": "pg2147.epub",
-  "branch": "book/pg2147",
+  "status": "running",
+  "book": "knh-10",
+  "epub_file": "knh-10.epub",
+  "branch": "book/knh-10",
   "source_type": "epub",
-  "total": 14,
-  "completed": 14,
+  "total": 33,
+  "completed": 0,
   "current_chapter": "",
-  "started_at": "2026-07-23T20:21:41.085620+00:00",
+  "started_at": "2026-08-06T10:20:34.205053+00:00",
   "queue_mode": true,
-  "updated_at": "2026-08-06T08:22:14.764226+00:00",
-  "review_status": "completed",
-  "review_total": 14,
-  "review_completed": 14,
-  "review_current": "",
-  "convert_status": "completed",
-  "epub_output": "output/pg2147/pg2147_tr.epub"
+  "updated_at": "2026-08-06T10:20:34.222833+00:00"
 }
