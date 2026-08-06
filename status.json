@@ -9,9 +9,9 @@
   "current_chapter": "",
   "started_at": "2026-07-23T20:21:41.085620+00:00",
   "queue_mode": true,
-  "updated_at": "2026-08-06T08:17:36.046854+00:00",
+  "updated_at": "2026-08-06T08:19:25.738184+00:00",
   "review_status": "running",
   "review_total": 14,
-  "review_completed": 10,
-  "review_current": "010_pg2147.txt"
+  "review_completed": 11,
+  "review_current": "011_pg2147.txt"
 }
