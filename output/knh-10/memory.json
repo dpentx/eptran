@@ -1,7 +1,26 @@
 {
   "characters": {
     "Nianzhen": "Nianzhen",
-    "Maomao": "Maomao"
+    "Maomao": "Maomao",
+    "Jinshi": "Jinshi",
+    "Ka Zuigetsu": "Ka Zuigetsu",
+    "Basen": "Basen",
+    "Gaoshun": "Gaoshun",
+    "Chue": "Chue",
+    "Lakan": "Lakan",
+    "Empress Gyokuyou": "İmparatoriçe Gyokuyou",
+    "Rikuson": "Rikuson",
+    "Gyokuen": "Gyokuen",
+    "Gyoku-ou": "Gyoku-ou",
+    "Suiren": "Suiren",
+    "Taomei": "Taomei",
+    "Baryou": "Baryou",
+    "Tianyu": "Tianyu",
+    "Dr. You": "Dr. You",
+    "Lahan's Brother": "Lahan'ın Kardeşi",
+    "Luomen": "Luomen",
+    "Consort Lishu": "Karı Lishu",
+    "En'en": "En'en"
   },
   "terms": {
     "The Apothecary Diaries": "Kusuriya no Hitorigoto",
@@ -24,10 +43,19 @@
     "Dissection": "Diseksiyon",
     "The Last of Us": "The Last of Us",
     "Tang-dynasty": "Tang Hanedanı",
-    "Chinese apothecary cabinets": "Çin eczane dolapları"
+    "Chinese apothecary cabinets": "Çin eczane dolapları",
+    "pleasure district": "zina bölgesi",
+    "Go": "Go",
+    "Shogi": "Shogi",
+    "western capital": "batı başkenti",
+    "royal capital": "krallık başkenti",
+    "lady-in-waiting": "hazinedar",
+    "wet nurse": "emziren kadın",
+    "monocle": "tek gözlük"
   },
-  "style_notes": "Metin, standart bir kitap telif hakkı ve yayın bilgisi sayfasıdır; bu nedenle anlatıcı tonu yoktur. Çeviri sırasında yayınevi isimleri ve kitap başlığındaki Japonca orijinal isimler olduğu gibi korunmalıdır. Editör notları kişisel ve samimi bir tona sahiptir.",
+  "style_notes": "Metin, standart bir kitap telif hakkı ve yayın bilgisi sayfasıdır; bu nedenle anlatıcı tonu yoktur. Çeviri sırasında yayınevi isimleri ve kitap başlığındaki Japonca orijinal isimler olduğu gibi korunmalıdır. Editör notları kişisel ve samimi bir tona sahiptir. Karakter profilleri kısa, nesnel ve tanımlayıcıdır.",
   "summaries": [
-    "Editor’s Notes: Kusuriya no Hitorigoto'nun editörü Sasha McGlynn, çevirmen Kevin Steinbach ile birlikte çalışarak metnin yazım, dilbilgisi ve karakter sesini ayarladığını anlatır. Ayrıca, serinin gerçek dünya bilgilerine dayanması nedeniyle doğruluk kontrolü ve araştırma süreçlerinin de düzenleme aşamasında kritik bir rol oynadığını belirtir."
+    "Editor’s Notes: Kusuriya no Hitorigoto'nun editörü Sasha McGlynn, çevirmen Kevin Steinbach ile birlikte çalışarak metnin yazım, dilbilgisi ve karakter sesini ayarladığını anlatır. Ayrıca, serinin gerçek dünya bilgilerine dayanması nedeniyle doğruluk kontrolü ve araştırma süreçlerinin de düzenleme aşamasında kritik bir rol oynadığını belirtir.",
+    "Character Profiles: Metin, eczacı Maomao, imparatorun kardeşi Jinshi ve hizmetkârı Basen başta olmak üzere saray çevresindeki çeşitli karakterlerin yaş, geçmiş ve kişilik özelliklerini tanımlamaktadır. Bu profiller, Maomao’nun zehir takıntısı, Jinshi’nin güzelliği ve Basen’in acıya duyarsızlığı gibi önemli detayları vurgulayarak hikayenin ana figürlerini ve aralarındaki ilişkileri özetlemektedir."
   ]
 }
