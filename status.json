@@ -9,9 +9,10 @@
   "current_chapter": "",
   "started_at": "2026-07-23T20:21:41.085620+00:00",
   "queue_mode": true,
-  "updated_at": "2026-08-06T08:21:54.031669+00:00",
+  "updated_at": "2026-08-06T08:22:12.584329+00:00",
   "review_status": "completed",
   "review_total": 14,
   "review_completed": 14,
-  "review_current": ""
+  "review_current": "",
+  "convert_status": "running"
 }
