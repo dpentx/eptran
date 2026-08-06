@@ -25,7 +25,11 @@
     "Haku-u": "Haku-u",
     "Moon Prince": "Ay Prens",
     "Koku-u": "Koku-u",
-    "Hongniang": "Hongniang"
+    "Hongniang": "Hongniang",
+    "Niangniang": "Niangniang",
+    "quack doctor": "sahte doktor",
+    "pretty-boy": "şirin oğlan",
+    "freak strategist": "garip stratejist"
   },
   "terms": {
     "The Apothecary Diaries": "Kusuriya no Hitorigoto",
@@ -79,13 +83,21 @@
     "His Majesty": "Cihanşümul Han",
     "Imperial affection": "İmparatorluk ilgi",
     "consort-to-be": "gelecek karı",
-    "chief lady-in-waiting": "baş hazinedar"
+    "chief lady-in-waiting": "baş hazinedar",
+    "surgeon": "cerrah",
+    "junior official": "alt düzey memur",
+    "Administrative office": "İdari ofis",
+    "main building": "ana bina",
+    "annex": "ek bina",
+    "fertile earth": "verimli toprak",
+    "rich soil": "zengin toprak"
   },
-  "style_notes": "Metin, standart bir kitap telif hakkı ve yayın bilgisi sayfasıdır; bu nedenle anlatıcı tonu yoktur. Çeviri sırasında yayınevi isimleri ve kitap başlığındaki Japonca orijinal isimler olduğu gibi korunmalıdır. Editör notları kişisel ve samimi bir tona sahiptir. Karakter profilleri kısa, nesnel ve tanımlayıcıdır. Bölüm sonu (Epilogue) kısmı, İmparatoriçe Gyokuyou'nun iç monologlarını ve politik hesaplarını içeren daha duygusal ve stratejik bir anlatıma sahiptir. 'I-sei' gibi özel isimler ve 'rear palace' gibi saray terimleri tutarlı şekilde çevrilmiştir. Giriş (Prologue) bölümü, İmparatoriçe Gyokuyou'nun yeni gelen yeğeni Yaqin ile ilk karşılaşmasını ve Gyokuyou'nun manipülatif, gülümsemeyle silahlanan kişiliğini vurgulayan, psikolojik derinliği olan bir anlatımdır.",
+  "style_notes": "Metin, standart bir kitap telif hakkı ve yayın bilgisi sayfasıdır; bu nedenle anlatıcı tonu yoktur. Çeviri sırasında yayınevi isimleri ve kitap başlığındaki Japonca orijinal isimler olduğu gibi korunmalıdır. Editör notları kişisel ve samimi bir tona sahiptir. Karakter profilleri kısa, nesnel ve tanımlayıcıdır. Bölüm sonu (Epilogue) kısmı, İmparatoriçe Gyokuyou'nun iç monologlarını ve politik hesaplarını içeren daha duygusal ve stratejik bir anlatıma sahiptir. 'I-sei' gibi özel isimler ve 'rear palace' gibi saray terimleri tutarlı şekilde çevrilmiştir. Giriş (Prologue) bölümü, İmparatoriçe Gyokuyou'nun yeni gelen yeğeni Yaqin ile ilk karşılaşmasını ve Gyokuyou'nun manipülatif, gülümsemeyle silahlanan kişiliğini vurgulayan, psikolojik derinliği olan bir anlatımdır. Maomao'nun iç monologları sakin, analitik ve biraz alaycı bir tona sahiptir. Diyaloglar doğal ve karakterlerin kişiliklerine uygun olarak çevrilmiştir.",
   "summaries": [
     "Editor’s Notes: Kusuriya no Hitorigoto'nun editörü Sasha McGlynn, çevirmen Kevin Steinbach ile birlikte çalışarak metnin yazım, dilbilgisi ve karakter sesini ayarladığını anlatır. Ayrıca, serinin gerçek dünya bilgilerine dayanması nedeniyle doğruluk kontrolü ve araştırma süreçlerinin de düzenleme aşamasında kritik bir rol oynadığını belirtir.",
     "Character Profiles: Metin, eczacı Maomao, imparatorun kardeşi Jinshi ve hizmetkârı Basen başta olmak üzere saray çevresindeki çeşitli karakterlerin yaş, geçmiş ve kişilik özelliklerini tanımlamaktadır. Bu profiller, Maomao’nun zehir takıntısı, Jinshi’nin güzelliği ve Basen’in acıya duyarsızlığı gibi önemli detayları vurgulayarak hikayenin ana figürlerini ve aralarındaki ilişkileri özetlemektedir.",
     "Epilogue: İmparatoriçe Gyokuyou, Batı'dan gelen yakınını Yaqin'i tanıtması ve siyasi tartışmalardan kaçınması amacıyla Li'deki önemli eşler için bir çay partisi düzenler. Bu buluşma sırasında Gyokuyou, babası Gyokuen'in uzun vadeli siyasi hesapları doğrultusunda onu İmparatoriçe yapma sürecini ve İmparator'a duyduğu gerçek sevgiyi içtenlikle değerlendirir.",
-    "Prologue: İmparatoriçe Gyokuyou, saray dışında özel izinle batıdan gelen ve yabancı kökenli yeğeni Yaqin ile buluşur. Gyokuyou, Yaqin’in masumiyetinin ardındaki kararlılığı fark ederek ona nazik davranır ve iki karakter arasındaki gerilimi ve siyasi alt metni ortaya koyar."
+    "Prologue: İmparatoriçe Gyokuyou, saray dışında özel izinle batıdan gelen ve yabancı kökenli yeğeni Yaqin ile buluşur. Gyokuyou, Yaqin’in masumiyetinin ardındaki kararlılığı fark ederek ona nazik davranır ve iki karakter arasındaki gerilimi ve siyasi alt metni ortaya koyar.",
+    "Bölüm 6: Dr. You, Maomao, Tianyu ve sahte doktoru bir ekip olarak birleştirirken, Tianyu’nun abartılı tavırları sahte doktoru utandırır. Grup, Gyoku-ou’ya ait idari binalara yerleşir ve Maomao, Tianyu’nun İmparator’un küçük kardeşi Jinshi’yle ilgili şüphelerini gizlemeye çalışırken, sahte doktorun batı başkentine duyduğu heyecan ön plana çıkar."
   ]
 }
