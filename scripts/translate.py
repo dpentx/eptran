@@ -28,6 +28,49 @@ STATUS_FILE = "status.json"
 
 # ── Bölüm çıkarma ─────────────────────────────────────────────────────────────
 
+# Bir paragraf içindeki satırların ortalama uzunluğu bu eşiğin
+# ÜZERİNDEYSE düzyazı hard-wrap kalıntısı sayılır (kaynağın 70-75
+# karakarde sert satır kaydırması, satır sonlarını ANLAMSIZ kılar);
+# ALTINDAYSA şiir/dize sayılır (satır sonları KASITLI, korunmalı).
+# Gerçek verilerle doğrulandı (pg2147): kırık düzyazı paragrafı ~59
+# karakter/satır, "The Raven" epigrafı ~49.5, "Haunted Palace" dizesi
+# ~30.5 — 55 eşiği ikisini net ayırıyor.
+_HARDWRAP_AVG_LEN_THRESHOLD = 55
+
+
+def _reflow_hardwrapped(text: str) -> str:
+    """
+    NOT (Ağustos 2026): Bazı epub'larda (özellikle eski/otomatik
+    üretilmiş Gutenberg dönüştürmelerinde) bir alıntı/blok paragraf,
+    kaynak düz metnin 70-75 karakterlik sert satır kaydırmasını AYNEN
+    koruyan <br/> etiketleriyle işaretleniyor. extract_epub()'daki
+    soup.get_text(separator="\\n") bunları TEK satır içi "\\n" olarak
+    metne döküyor — ki bu, gerçek bir şiir/dize için doğru davranış
+    (convert.py bunları <br/>'a geri çevirip dizeleri korur), ama
+    düzyazı için YANLIŞ: model çeviri sırasında bu anlamsız satır
+    sonlarını olduğu gibi yansıtabiliyor, convert.py da her birini
+    <br/>'a çevirince okuyucuda tek bir cümle sanki birden fazla
+    paragrafmış gibi (büyük dikey boşluklarla) görünüyor (gerçek örnek:
+    pg2147/003, "Perhaps there is no task more difficult..." paragrafı).
+
+    Burada, çeviriye gitmeden ÖNCE, kaynaktaki her paragrafın satır
+    ortalama uzunluğuna bakıp düzyazı-gibi olanları (uzun ortalama) tek
+    akan satıra katlıyoruz; şiir-gibi olanları (kısa ortalama) olduğu
+    gibi bırakıyoruz. Kusursuz bir sınıflandırıcı değil ama gerçek
+    üretim verisiyle doğrulanmış net bir eşiğe dayanıyor.
+    """
+    paragraphs = text.split("\n\n")
+    out = []
+    for para in paragraphs:
+        lines = [l for l in para.split("\n")]
+        non_empty = [l.strip() for l in lines if l.strip()]
+        if len(non_empty) >= 2:
+            avg_len = sum(len(l) for l in non_empty) / len(non_empty)
+            if avg_len > _HARDWRAP_AVG_LEN_THRESHOLD:
+                para = " ".join(non_empty)
+        out.append(para)
+    return "\n\n".join(out)
+
 def extract_epub(epub_path: str) -> tuple:
     """
     NOT (Temmuz 2026): Eskiden bu fonksiyon SADECE metni çıkarıyordu
@@ -94,6 +137,7 @@ def extract_epub(epub_path: str) -> tuple:
 
         text = soup.get_text(separator="\n").strip()
         text = re.sub(r"\n{3,}", "\n\n", text)
+        text = _reflow_hardwrapped(text)
         text = boilerplate.clean(text)
         if len(text) < 300:
             continue
@@ -169,7 +213,8 @@ def extract_pdf(pdf_path: str, book_slug: str) -> tuple:
             starts.append((i, s))
 
     if not starts:
-        text = boilerplate.clean(re.sub(r"\n{3,}", "\n\n", "\n".join(all_lines).strip()))
+        text = boilerplate.clean(_reflow_hardwrapped(
+            re.sub(r"\n{3,}", "\n\n", "\n".join(all_lines).strip())))
         chapters = [{"name": "chapter_001",
                  "title": os.path.splitext(os.path.basename(pdf_path))[0],
                  "text": text}] if len(text) >= 300 else []
@@ -179,8 +224,8 @@ def extract_pdf(pdf_path: str, book_slug: str) -> tuple:
     chapters = []
     for idx in range(len(starts) - 1):
         sl, title = starts[idx]
-        body = boilerplate.clean(re.sub(r"\n{3,}", "\n\n",
-                                        "\n".join(all_lines[sl+1:starts[idx+1][0]]).strip()))
+        body = boilerplate.clean(_reflow_hardwrapped(re.sub(r"\n{3,}", "\n\n",
+                                        "\n".join(all_lines[sl+1:starts[idx+1][0]]).strip())))
         if len(body) >= 300:
             chapters.append({"name": f"chapter_{idx+1:03d}", "title": title, "text": body})
     return chapters, images
