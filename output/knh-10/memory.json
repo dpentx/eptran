@@ -7,11 +7,24 @@
     "Onsou": "Onsou",
     "Chue": "Chue",
     "Jinshi": "Jinshi",
-    "Gyokuen": "Gyokuen"
+    "Gyokuen": "Gyokuen",
+    "Tianyu": "Tianyu",
+    "Lihaku": "Lihaku",
+    "Taomei": "Taomei",
+    "Gaoshun": "Gaoshun",
+    "Basen": "Basen",
+    "Suiren": "Suiren",
+    "quack": "sahte doktor",
+    "Lahan's Brother": "Lakan'ın Kardeşi",
+    "Moon Prince": "Ay Prens",
+    "Xiaomao": "Xiaomao",
+    "Empress Gyokuyou": "İmparatoriçe Gyokuyou"
   },
   "terms": {
     "Chapter 2": "Bölüm 2",
     "Boss and Former Boss": "Patron ve Eski Patron",
+    "Chapter 3": "Bölüm 3",
+    "The Annex and the Forgotten Man": "Yan Bina ve Unutulmuş Adam",
     "administrative building": "idari bina",
     "farming villages": "çiftlik köyleri",
     "western capital": "batı başkenti",
@@ -32,14 +45,22 @@
     "fried dough": "kızarmış hamur",
     "Liuliu Fandian": "Liuliu Fandian",
     "royal city": "krallık şehri",
-    "interim ruler": "geçici yönetici"
+    "interim ruler": "geçici yönetici",
+    "I-sei Province": "I-sei Eyaleti",
+    "central region": "merkez bölge",
+    "medical office": "tıp ofisi",
+    "insect plague": "böcek salgını",
+    "locusts": "çöl sinekleri",
+    "Master Physician": "Usta Doktor",
+    "sheep's wool rug": "koyun yünü halı",
+    "bodyguard": "görevli"
   },
-  "style_notes": "Metin, Rikuson'un iç monologları ve diyaloglar üzerinden batı başkenti ile krallık başkenti arasındaki kültürel ve hiyerarşik farkları vurgulamaktadır. Rikuson'un tonu kaygılı, analitik ve biraz alaycıdır; Lakan ise umursamaz, bencil ve stratejik zekası arkasında saklanan bir karakter olarak tasvir edilir. Onsou'nun tonu ise kaygılı ve itaatkardır. 'Incense' (esans) ve 'fried dough' (kızarmış hamur) gibi terimler, karakterlerin bulunduğu ortamın ve sosyal statülerinin yansıması olarak çevrilmiştir. Lakan'ın 'Master' (Usta) unvanı ve Rikuson'un 'former boss' (eski patron) ifadesi, karakterler arasındaki geçmiş ve mevcut güç dinamiklerini yansıtmak için korunmuştur.",
+  "style_notes": "Metin, Rikuson'un iç monologları ve diyaloglar üzerinden batı başkenti ile krallık başkenti arasındaki kültürel ve hiyerarşik farkları vurgulamaktadır. Rikuson'un tonu kaygılı, analitik ve biraz alaycıdır; Lakan ise umursamaz, bencil ve stratejik zekası arkasında saklanan bir karakter olarak tasvir edilir. Onsou'nun tonu ise kaygılı ve itaatkardır. 'Incense' (esans) ve 'fried dough' (kızarmış hamur) gibi terimler, karakterlerin bulunduğu ortamın ve sosyal statülerinin yansıması olarak çevrilmiştir. Lakan'ın 'Master' (Usta) unvanı ve Rikuson'un 'former boss' (eski patron) ifadesi, karakterler arasındaki geçmiş ve mevcut güç dinamiklerini yansıtmak için korunmuştur. Maomao'nun iç sesleri, tıbbi merakı ve zehir takıntısı ön plandadır; Jinshi ise alaycı ve manipülatif bir tonda konuşur. 'Quack' ifadesi bağlama göre 'sahte doktor' olarak çevrilmiştir.",
   "summaries": [
-    "Character Profiles: Metin, eczacı Maomao, imparatorun kardeşi Jinshi ve hizmetkârı Basen başta olmak üzere saray çevresindeki çeşitli karakterlerin yaş, geçmiş ve kişilik özelliklerini tanımlamaktadır. Bu profiller, Maomao’nun zehir takıntısı, Jinshi’nin güzelliği ve Basen’in acıya duyarsızlığı gibi önemli detayları vurgulayarak hikayenin ana figürlerini ve aralarındaki ilişkileri özetlemektedir.",
     "Epilogue: İmparatoriçe Gyokuyou, Batı'dan gelen yakınını Yaqin'i tanıtması ve siyasi tartışmalardan kaçınması amacıyla Li'deki önemli eşler için bir çay partisi düzenler. Bu buluşma sırasında Gyokuyou, babası Gyokuen'in uzun vadeli siyasi hesapları doğrultusunda onu İmparatoriçe yapma sürecini ve İmparator'a duyduğu gerçek sevgiyi içtenlikle değerlendirir.",
     "Prologue: İmparatoriçe Gyokuyou, saray dışında özel izinle batıdan gelen ve yabancı kökenli yeğeni Yaqin ile buluşur. Gyokuyou, Yaqin’in masumiyetinin ardındaki kararlılığı fark ederek ona nazik davranır ve iki karakter arasındaki gerilimi ve siyasi alt metni ortaya koyar.",
     "Bölüm 6: Dr. You, Maomao, Tianyu ve sahte doktoru bir ekip olarak birleştirirken, Tianyu’nun abartılı tavırları sahte doktoru utandırır. Grup, Gyoku-ou’ya ait idari binalara yerleşir ve Maomao, Tianyu’nun İmparator’un küçük kardeşi Jinshi’yle ilgili şüphelerini gizlemeye çalışırken, sahte doktorun batı başkentine duyduğu heyecan ön plana çıkar.",
-    "Chapter 2: Boss and Former Boss: Rikuson, rahatsız edici bir sezgiyle çiftlik gezisinden erken döndüğünde, eski patronu Lakan ve danışmanı Onsou’nun beklenmedik ziyaretini karşılamak zorunda kalır. Maomao’nun da bulunduğu bu heyete hazırlanırken, Rikuson geçmişteki ilişkilerini ve mevcut gerilimi hatırlayarak salonu girer."
+    "Chapter 2: Boss and Former Boss: Rikuson, rahatsız edici bir sezgiyle çiftlik gezisinden erken döndüğünde, eski patronu Lakan ve danışmanı Onsou’nun beklenmedik ziyaretini karşılamak zorunda kalır. Maomao’nun da bulunduğu bu heyete hazırlanırken, Rikuson geçmişteki ilişkilerini ve mevcut gerilimi hatırlayarak salonu girer.",
+    "Chapter 3: The Annex and the Forgotten Man: Maomao, Tianyu ve sahte doktor Gyoku-ou’nun ek binasına yerleşirken, batı başkentindeki yeşillikler ve kilise benzeri mimari yapı üzerine konuşurlar. Eşyalarını düzenledikten sonra, malikaneyi keşfetme hakkını kazanmak için taş-kağıt-makas oynamaya karar verirler."
   ]
 }
