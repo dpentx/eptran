@@ -1,5 +1,8 @@
 {
-  "characters": {},
+  "characters": {
+    "Nianzhen": "Nianzhen",
+    "Maomao": "Maomao"
+  },
   "terms": {
     "The Apothecary Diaries": "Kusuriya no Hitorigoto",
     "Kusuriya No Hitorigoto": "Kusuriya no Hitorigoto",
@@ -12,8 +15,19 @@
     "Sasha McGlynn": "Sasha McGlynn",
     "Volume 10": "Cilt 10",
     "Ebook edition 1.0: January 2024": "E-kitap baskısı 1.0: Ocak 2024",
-    "Premium E-Book for cbg": "cbg için Premium E-Kitap"
+    "Premium E-Book for cbg": "cbg için Premium E-Kitap",
+    "The Thousand Diversions of Sasha McGlynn": "Sasha McGlynn'in Bin Bir Eğlencesi",
+    "vitiated": "bozulan",
+    "interrupted": "kesilen",
+    "Autopsy": "Otopsi",
+    "necropsy": "nekropsi",
+    "Dissection": "Diseksiyon",
+    "The Last of Us": "The Last of Us",
+    "Tang-dynasty": "Tang Hanedanı",
+    "Chinese apothecary cabinets": "Çin eczane dolapları"
   },
-  "style_notes": "Metin, standart bir kitap telif hakkı ve yayın bilgisi sayfasıdır; bu nedenle anlatıcı tonu yoktur. Çeviri sırasında yayınevi isimleri ve kitap başlığındaki Japonca orijinal isimler olduğu gibi korunmalıdır.",
-  "summaries": []
+  "style_notes": "Metin, standart bir kitap telif hakkı ve yayın bilgisi sayfasıdır; bu nedenle anlatıcı tonu yoktur. Çeviri sırasında yayınevi isimleri ve kitap başlığındaki Japonca orijinal isimler olduğu gibi korunmalıdır. Editör notları kişisel ve samimi bir tona sahiptir.",
+  "summaries": [
+    "Editor’s Notes: Kusuriya no Hitorigoto'nun editörü Sasha McGlynn, çevirmen Kevin Steinbach ile birlikte çalışarak metnin yazım, dilbilgisi ve karakter sesini ayarladığını anlatır. Ayrıca, serinin gerçek dünya bilgilerine dayanması nedeniyle doğruluk kontrolü ve araştırma süreçlerinin de düzenleme aşamasında kritik bir rol oynadığını belirtir."
+  ]
 }
