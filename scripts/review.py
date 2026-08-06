@@ -19,15 +19,23 @@ koşulsuz geçişi gereksiz kıldı — kaldırdık. Kalan review_fix.fix_text()
 zaten ucuz: sadece gerçek bir İngilizce kalıntı bulursa LLM çağırıyor.
 """
 import os
+import time
 
 from lib import boilerplate, groq_client as gc, memory as mem, review_fix
 from lib.git_utils import read_status, write_status, is_stale_running, trigger_workflow, current_branch
 from lib import dictionary
 
 STATUS_FILE = "status.json"
+# review.yml'in job timeout'u 60 dakika — bunun biraz altında (50 dk)
+# bir zaman bütçesi kullanıp, iş yarım kalırsa job'un ZORLA öldürülmesini
+# beklemeden düzgün bir checkpoint bırakarak çıkıyoruz. Aradaki 10
+# dakikalık pay: checkout/kurulum adımları + son commit için.
+TIME_BUDGET_SECONDS = 50 * 60
 
 
-def review_file(filepath: str, clients: list, key_index: list, memory: dict) -> None:
+def review_file(filepath: str, clients: list, key_index: list, memory: dict,
+                 checkpoint_path: str, deadline: float) -> bool:
+    """Döner: bu dosyanın review'u TAMAMEN bitti mi (True/False)."""
     with open(filepath, encoding="utf-8") as f:
         raw = f.read()
 
@@ -42,7 +50,7 @@ def review_file(filepath: str, clients: list, key_index: list, memory: dict) -> 
         if boilerplate.is_boilerplate(title_text) and len(body) < 100:
             print(f"  Boilerplate dosya temizleniyor: {title_text[:60]}")
             open(filepath, "w").close()
-            return
+            return True
     else:
         title_line = None
         body = raw.strip()
@@ -52,17 +60,23 @@ def review_file(filepath: str, clients: list, key_index: list, memory: dict) -> 
     if len(body) < 100:
         print(f"  İçerik kalmadı, dosya temizleniyor.")
         open(filepath, "w").close()
-        return
+        return True
 
     # Sözlük destekli İngilizce kelime düzeltmesi (NER çağrısı yok, LLM
     # çağrısı SADECE gerçek bir yabancı-kelime kalıntısı bulunursa olur)
     print(f"  Paragraf taraması (sözlük destekli)...")
-    body = review_fix.fix_text(body, clients, key_index, memory)
+    fixed_body, is_complete = review_fix.fix_text(
+        body, clients, key_index, memory,
+        checkpoint_path=checkpoint_path, deadline=deadline,
+    )
+    if not is_complete:
+        return False
 
-    final = f"{title_line}\n\n{body}\n" if title_line else body + "\n"
+    final = f"{title_line}\n\n{fixed_body}\n" if title_line else fixed_body + "\n"
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(final)
+    return True
 
 
 def main():
@@ -111,15 +125,19 @@ def main():
 
     print(f"Review başlıyor: {book_slug} — {total} dosya ({review_done} tamamlandı)")
 
+    deadline = time.time() + TIME_BUDGET_SECONDS
+
     for i, fname in enumerate(txt_files):
         if i < review_done:
             print(f"[{i+1}/{total}] Atlanıyor: {fname}")
             continue
 
         filepath = os.path.join(output_dir, fname)
+        checkpoint_path = f"{output_dir}/.review_checkpoint_{fname}.json"
         print(f"[{i+1}/{total}] Review: {fname}")
         try:
-            review_file(filepath, clients, key_index, memory)
+            completed = review_file(filepath, clients, key_index, memory,
+                                     checkpoint_path, deadline)
         except gc.AllKeysLockedError as e:
             # review_fix.fix_paragraph() içindeki gc.call() bunu fırlatabilir
             # (bkz. groq_client.py) — eskiden bu, review.py'yi yakalanmamış
@@ -133,6 +151,22 @@ def main():
             # gitmemesi için doğrudan return ediyoruz.
             print(f"  Tüm keyler kilitli ({e.wait_seconds}s) — bu run burada "
                   f"duruyor, bir sonraki tetiklemede '{fname}'den devam edilecek.")
+            return
+
+        if not completed:
+            # Zaman bütçesi doldu (büyük dosya, tek run'da bitmedi).
+            # review_fix.fix_text() zaten paragraf-bazlı checkpoint'i
+            # commit'e hazır hale getirdi (git add edildi) — burada
+            # sadece status'u "running" bırakıp run'ı düzgünce
+            # sonlandırıyoruz. Bir sonraki tetiklemede bu dosya AYNI
+            # noktadan (baştan değil) devam edecek. Eskiden bu senaryo
+            # hiç ele alınmıyordu — job 60 dk'da zorla öldürülüyordu ve
+            # hiçbir checkpoint olmadığı için bir sonraki run dosyayı
+            # SIFIRDAN deniyordu, büyük dosyalar asla bitmiyordu (gerçek
+            # bir kitapta 4 gün boyunca aynı dosyada takılı kalmıştık).
+            write_status(status, f"review: {i}/{total} (parça bazlı devam ediyor: {fname})")
+            print(f"  Bu run'da zaman bitti, '{fname}' henüz tamamlanmadı — "
+                  f"bir sonraki tetiklemede kaldığı paragraftan devam edecek.")
             return
 
         status["review_completed"] = i + 1
