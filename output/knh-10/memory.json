@@ -23,7 +23,9 @@
     "En'en": "En'en",
     "Yaqin": "Yaqin",
     "Haku-u": "Haku-u",
-    "Moon Prince": "Ay Prens"
+    "Moon Prince": "Ay Prens",
+    "Koku-u": "Koku-u",
+    "Hongniang": "Hongniang"
   },
   "terms": {
     "The Apothecary Diaries": "Kusuriya no Hitorigoto",
@@ -69,12 +71,21 @@
     "pigeon": "güvercin",
     "oil paper": "yağlı kağıt",
     "central region": "merkez bölge",
-    "inner tomboy": "içindeki delikanlı ruh"
+    "inner tomboy": "içindeki delikanlı ruh",
+    "Prologue": "Giriş",
+    "moisturizer": "nemlendirici",
+    "sea air": "deniz havası",
+    "local cuisine": "yerel mutfak",
+    "His Majesty": "Cihanşümul Han",
+    "Imperial affection": "İmparatorluk ilgi",
+    "consort-to-be": "gelecek karı",
+    "chief lady-in-waiting": "baş hazinedar"
   },
-  "style_notes": "Metin, standart bir kitap telif hakkı ve yayın bilgisi sayfasıdır; bu nedenle anlatıcı tonu yoktur. Çeviri sırasında yayınevi isimleri ve kitap başlığındaki Japonca orijinal isimler olduğu gibi korunmalıdır. Editör notları kişisel ve samimi bir tona sahiptir. Karakter profilleri kısa, nesnel ve tanımlayıcıdır. Bölüm sonu (Epilogue) kısmı, İmparatoriçe Gyokuyou'nun iç monologlarını ve politik hesaplarını içeren daha duygusal ve stratejik bir anlatıma sahiptir. 'I-sei' gibi özel isimler ve 'rear palace' gibi saray terimleri tutarlı şekilde çevrilmiştir.",
+  "style_notes": "Metin, standart bir kitap telif hakkı ve yayın bilgisi sayfasıdır; bu nedenle anlatıcı tonu yoktur. Çeviri sırasında yayınevi isimleri ve kitap başlığındaki Japonca orijinal isimler olduğu gibi korunmalıdır. Editör notları kişisel ve samimi bir tona sahiptir. Karakter profilleri kısa, nesnel ve tanımlayıcıdır. Bölüm sonu (Epilogue) kısmı, İmparatoriçe Gyokuyou'nun iç monologlarını ve politik hesaplarını içeren daha duygusal ve stratejik bir anlatıma sahiptir. 'I-sei' gibi özel isimler ve 'rear palace' gibi saray terimleri tutarlı şekilde çevrilmiştir. Giriş (Prologue) bölümü, İmparatoriçe Gyokuyou'nun yeni gelen yeğeni Yaqin ile ilk karşılaşmasını ve Gyokuyou'nun manipülatif, gülümsemeyle silahlanan kişiliğini vurgulayan, psikolojik derinliği olan bir anlatımdır.",
   "summaries": [
     "Editor’s Notes: Kusuriya no Hitorigoto'nun editörü Sasha McGlynn, çevirmen Kevin Steinbach ile birlikte çalışarak metnin yazım, dilbilgisi ve karakter sesini ayarladığını anlatır. Ayrıca, serinin gerçek dünya bilgilerine dayanması nedeniyle doğruluk kontrolü ve araştırma süreçlerinin de düzenleme aşamasında kritik bir rol oynadığını belirtir.",
     "Character Profiles: Metin, eczacı Maomao, imparatorun kardeşi Jinshi ve hizmetkârı Basen başta olmak üzere saray çevresindeki çeşitli karakterlerin yaş, geçmiş ve kişilik özelliklerini tanımlamaktadır. Bu profiller, Maomao’nun zehir takıntısı, Jinshi’nin güzelliği ve Basen’in acıya duyarsızlığı gibi önemli detayları vurgulayarak hikayenin ana figürlerini ve aralarındaki ilişkileri özetlemektedir.",
-    "Epilogue: İmparatoriçe Gyokuyou, Batı'dan gelen yakınını Yaqin'i tanıtması ve siyasi tartışmalardan kaçınması amacıyla Li'deki önemli eşler için bir çay partisi düzenler. Bu buluşma sırasında Gyokuyou, babası Gyokuen'in uzun vadeli siyasi hesapları doğrultusunda onu İmparatoriçe yapma sürecini ve İmparator'a duyduğu gerçek sevgiyi içtenlikle değerlendirir."
+    "Epilogue: İmparatoriçe Gyokuyou, Batı'dan gelen yakınını Yaqin'i tanıtması ve siyasi tartışmalardan kaçınması amacıyla Li'deki önemli eşler için bir çay partisi düzenler. Bu buluşma sırasında Gyokuyou, babası Gyokuen'in uzun vadeli siyasi hesapları doğrultusunda onu İmparatoriçe yapma sürecini ve İmparator'a duyduğu gerçek sevgiyi içtenlikle değerlendirir.",
+    "Prologue: İmparatoriçe Gyokuyou, saray dışında özel izinle batıdan gelen ve yabancı kökenli yeğeni Yaqin ile buluşur. Gyokuyou, Yaqin’in masumiyetinin ardındaki kararlılığı fark ederek ona nazik davranır ve iki karakter arasındaki gerilimi ve siyasi alt metni ortaya koyar."
   ]
 }
