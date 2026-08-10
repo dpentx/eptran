@@ -1,13 +1,13 @@
 {
-  "status": "running",
+  "status": "completed",
   "book": "knh-10",
   "epub_file": "knh-10.epub",
   "branch": "book/knh-10",
   "source_type": "epub",
   "total": 33,
   "completed": 33,
-  "current_chapter": "Chapter 19: Scratches",
+  "current_chapter": "",
   "started_at": "2026-08-06T10:20:34.205053+00:00",
   "queue_mode": true,
-  "updated_at": "2026-08-10T01:01:15.412226+00:00"
+  "updated_at": "2026-08-10T01:01:17.159377+00:00"
 }
