@@ -4135,7 +4135,7 @@
   "paralel": false,
   "paralellik": false,
   "parallel": true,
-  "param": true,
+  "param": false,
   "parayla": false,
   "parazitik": false,
   "paris": false,
