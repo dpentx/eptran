@@ -38,19 +38,19 @@ Kusuriya no Hitorigoto, gerçek dünyaya dayanmaktadır ve bu nedenle gerçek d�
 
 Bir Tavşan Deliklerine Düşmüştüm ve Çıkamıyorum
 
-Bazen, araştırmalarımı yaparken, derine inerim. Belki de çok derine. Ve bazen, araştırdığım şey, metindeki hızlı bir kenar notundan başka bir şey değildir ve nihayetinde hikayenin büyük resmine hiçbir etki etmeyecektir. Bunlar tavşan deliklerine yapılan yolculuklardır. Tuhaf bir terimin anlamını aramak, tuhaf bir bilgi parçası öğrenmeye, bu da başka birine, bu da birkaç hafta önce düşündüğüm o biraz ilgili şeye hatırlatmaya yol açabilir. Örneğin, bir keresinde Tang-dynasty mutfakları ve pişirme aletlerinin resimlerini aradım ve sonunda kendimi el yazımına geri döndürmeden önce duvarlarım için renk paletleri seçtim.
+Bazen araştırmalarım derinlere, hatta çok derinlere iner. Araştırdığım şey bazen metindeki hızlı bir kenar notundan ibarettir ve nihayetinde hikayenin büyük resmine hiçbir etki etmez. Bunlar tavşan deliklerine yapılan yolculuklardır. Tuhaf bir terimin anlamını aramak, tuhaf bir bilgi parçası öğrenmeye, bu da başka birine, bu da birkaç hafta önce düşündüğüm o biraz ilgili şeye hatırlatmaya yol açabilir. Örneğin, bir keresinde Tang Hanedanlığı mutfakları ve pişirme aletlerinin resimlerini aradım ve sonunda kendimi el yazımına geri döndürmeden önce duvarlarım için renk paletleri seçtim.
 
 Tüm bu tavşan deliklerinin onuruna, Kusuriya no Hitorigoto üzerinde çalışırken kendimi kaybettirdiğim bazı eğlenceli bilgiler ve arama terimlerini paylaşmak istiyorum. Belki de seride kendimi nerede kaybettiğimi tanırsınız; diğerleri sadece çarpık merak anlayışım tarafından açıklanabilir. Yine de, harika hikayeler oluştururlar ve kim bilir? Belki de öğrendiklerimi sonraki ciltlerde kullanabiliriz.
 
-Trivia:
+Genel Bilgiler:
 
-Datura stramonium, Kusuriya no Hitorigoto'da thornapple olarak bilinir, aynı zamanda zombie cucumber olarak da adlandırılır.
+Datura stramonium, Kusuriya no Hitorigoto'da dikenli elma olarak bilinir, aynı zamanda zombi salatası olarak da adlandırılır.
 
-Sol kol ve sol bacağı aynı anda hareket ettirmek (veya sağ kol ve sağ bacak) ipsilateral movement olarak adlandırılır.
+Sol kol ve sol bacağı aynı anda hareket ettirmek (veya sağ kol ve sağ bacak) ipsilateral hareket olarak adlandırılır.
 
-Çoğu calico kedi dişidir, sadece küçük bir yüzdesi erkektir. Calico'lar, hem Doğu hem de Batı kültürlerinde şanslı olarak görülür.
+Çoğu üç renkli kedi dişidir, sadece küçük bir yüzdesi erkektir. Üç renkliler, hem Doğu hem de Batı kültürlerinde şanslı olarak görülür.
 
-Autopsy ve necropsy, ölüm nedenini bulmak için bir bedeni kesmek için kullanılan terimlerdir. Autopsy insanlar için kullanılan terimdir; necropsy diğer hayvanlar için kullanılır. Dissection, bir bedeni (insan veya başka) açmak ve anatomisini incelemek eylemidir.
+Otopsi ve nekropsi, ölüm nedenini belirlemek amacıyla bir bedenin kesilip incelenmesi için kullanılan terimlerdir. Otopsi insanlar için kullanılan terimdir; nekropsi ise diğer hayvanlar için kullanılır. Diseksiyon, bir bedeni (insan veya başka) açarak anatomisini incelemek eylemidir.
 
 Bitler, 130 derece Fahrenheit üzerindeki sıcaklıklarda ölür.
 
@@ -62,7 +62,7 @@ Kedi nanesi alternatifleri
 
 Kadınların yüz dövmeleri olan kültürler
 
-Bitki lifleri için doğal boya sabitleyicileri vs. protein tabanlı lifler
+Bitki lifleri için doğal boya sabitleyicileri vs. protein bazlı lifler
 
 Parazitik mantar türleri
 
@@ -88,15 +88,15 @@ Berberler ilk kez cerrahlar olarak ne zaman başladı?
 
 Tembel ütüleme teknikleri
 
-Chinese apothecary cabinets
+Çin eczacılık dolapları
 
-Yakınımda satılık Chinese apothecary cabinets
+Yakınımda satılık Çin eczane dolapları
 
-Yakınımda uygun fiyatlı Chinese apothecary cabinets
+Yakınımda uygun fiyatlı Çin eczane dolapları
 
-DIY Chinese apothecary cabinet talimatları
+DIY Çin eczanesi dolabı talimatları
 
-Yakınımda satılık bebek evi Chinese apothecary cabinets
+Yakınımda satılık Çin apotek dolapları
 
 Mühürleme teknikleri
 
@@ -126,7 +126,7 @@ Gardıroplar
 
 Bebeklerin yememesi gereken şeyler
 
-Tang-dynasty metal işçiliği
+Tang Hanedanlığı metal işçiliği
 
 Ördeklerin yumurta bırakma davranışları
 
