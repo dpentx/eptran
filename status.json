@@ -9,11 +9,11 @@
   "current_chapter": "",
   "started_at": "2026-08-06T10:20:34.205053+00:00",
   "queue_mode": true,
-  "updated_at": "2026-08-11T08:47:57.832418+00:00",
+  "updated_at": "2026-08-11T08:48:00.718917+00:00",
   "review_status": "running",
   "review_total": 33,
-  "review_completed": 13,
-  "review_current": "013_knh-10.txt",
+  "review_completed": 14,
+  "review_current": "014_knh-10.txt",
   "convert_status": "completed",
   "epub_output": "output/knh-10/knh-10_tr.epub"
 }
