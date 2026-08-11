@@ -63,7 +63,27 @@ def _flush_and_commit(paragraph_idx: int) -> None:
 
 
 def _build_whitelist(memory: dict) -> set:
-    """Hafızadaki karakter ve terim isimlerinden whitelist oluştur (LLM çağrısı yok)."""
+    """
+    Hafızadaki karakter ve terim isimlerinden whitelist oluştur (LLM
+    çağrısı yok).
+
+    NOT (Ağustos 2026): `characters` (Maomao, Jinshi gibi özel isimler)
+    ile `terms` (Red Plum Village -> Kızıl Erik Köyü gibi Türkçe
+    karşılığı OLAN yer/unvan/terim çiftleri) birbirinden farklı amaçlar
+    taşıyor — characters İngilizce KALMALI, terms ise ÇEVRİLMİŞ olmalı.
+    Eskiden ikisi de aynı şekilde işleniyordu: terms'in İNGİLİZCE
+    tarafındaki her kelime de (örn. "Village") tek tek whitelist'e
+    ekleniyordu. Sonuç: "Red Plum Village" bir paragrafta HİÇ
+    çevrilmeden kalsa bile, "Village" kelimesi whitelist'te "tanıdık"
+    sayıldığı için review bunu hiç fark etmiyordu — gerçek üretimde
+    (knh-10/010) tam olarak bu oldu, aynı kitapta üç farklı hal bir
+    arada kaldı: çevrilmemiş "Red Plum Village", tutarsız "Kırmızı Erik
+    Köyü" ve resmi "Kızıl Erik Köyü". Artık terms'in İNGİLİZCE
+    tarafından kelime çıkarmıyoruz — böylece çevrilmemiş bir terim
+    gerçekten "sorunlu kelime" olarak tespit edilip fix_paragraph'a
+    gidiyor (ki fix_paragraph da artık aşağıda doğru karşılığı
+    biliyor, bkz. _relevant_term_map).
+    """
     whitelist = set()
     for eng_name, tr_name in memory.get("characters", {}).items():
         whitelist.add(eng_name.lower())
@@ -72,23 +92,58 @@ def _build_whitelist(memory: dict) -> set:
             if len(word) > 2:
                 whitelist.add(word.lower())
     for eng_term, tr_term in memory.get("terms", {}).items():
-        whitelist.add(eng_term.lower())
+        # Türkçe karşılığın kelimelerini whitelist'e ekliyoruz (yanlışlıkla
+        # "İngilizce" sanılmasınlar diye) — ama eng_term'ün kelimelerini
+        # EKLEMİYORUZ, çünkü bunlar tam da review'ın YAKALAMASI gereken,
+        # henüz çevrilmemiş kalıntılar olabilir.
         whitelist.add(tr_term.lower())
-        for word in eng_term.split() + tr_term.split():
+        for word in tr_term.split():
             if len(word) > 2:
                 whitelist.add(word.lower())
     return whitelist
 
 
+def _relevant_term_map(paragraph: str, memory: dict) -> dict:
+    """
+    Paragrafta (İngilizce hâliyle) geçen terim/karakter isimlerinin
+    daha önce belirlenmiş RESMİ Türkçe karşılığını çıkarır. fix_paragraph
+    bunu modele vererek "Village"i kendi seçtiği bir kelimeyle (örn.
+    "Kırmızı Erik Köyü") değil, kitap boyunca zaten kullanılan resmi
+    karşılıkla (örn. "Kızıl Erik Köyü") değiştirmesini sağlar — aksi
+    halde her fix_paragraph çağrısı aynı terimi farklı çevirebiliyordu.
+    """
+    low = paragraph.lower()
+    out = {}
+    for eng_term, tr_term in memory.get("terms", {}).items():
+        if eng_term.lower() in low:
+            out[eng_term] = tr_term
+    for eng_name, tr_name in memory.get("characters", {}).items():
+        if eng_name.lower() in low:
+            out[eng_name] = tr_name
+    return out
+
+
 def fix_paragraph(paragraph: str, whitelist: set,
-                  bad_words: list, clients: list, key_index: list) -> str:
+                  bad_words: list, clients: list, key_index: list,
+                  term_map: dict = None) -> str:
     """Sorunlu paragrafı LLM'e gönder, düzeltilmiş halini al."""
     protected_str = ", ".join(sorted(whitelist)) if whitelist else "yok"
     user_msg = (
         f"Korunacak isimler ve terimler: {protected_str}\n"
-        f"Düzeltilmesi gereken kelimeler: {', '.join(bad_words)}\n\n"
-        f"Paragraf:\n{paragraph}"
+        f"Düzeltilmesi gereken kelimeler: {', '.join(bad_words)}\n"
     )
+    if term_map:
+        # Bu kitapta bu terimler için ZATEN belirlenmiş resmi karşılıklar
+        # var — modelin kendi ad-hoc çevirisini uydurup tutarsızlık
+        # yaratmasını (örn. "Kırmızı Erik Köyü" vs resmi "Kızıl Erik
+        # Köyü") önlemek için bunları açıkça veriyoruz.
+        mapping_str = "; ".join(f'"{k}" = "{v}"' for k, v in term_map.items())
+        user_msg += (
+            f"Bu kitapta bu terimler için ZATEN belirlenmiş resmi "
+            f"karşılıklar var, başka bir çeviri UYDURMA, AYNEN kullan: "
+            f"{mapping_str}\n"
+        )
+    user_msg += f"\nParagraf:\n{paragraph}"
     result = gc.call(clients, key_index, _FIX_SYSTEM, user_msg)
     time.sleep(1)
     if result is None:
@@ -136,6 +191,15 @@ def fix_text(text: str, clients: list, key_index: list, memory: dict,
     kelimeler kaybolmaz — periyodik flush bunu garanti eder.
     """
     whitelist = _build_whitelist(memory)
+    # terms'in İngilizce tarafına ait kelimeler — bunlar mark_known ile
+    # KALICI olarak "İngilizce değil" diye işaretlenmemeli, çünkü bunlar
+    # çevrilmesi GEREKEN kelimeler (örn. "Village"); bir defalık gözden
+    # kaçma başka bir yerdeki gerçek çeviri ihtiyacını da köreltmemeli.
+    term_eng_words = set()
+    for eng_term in memory.get("terms", {}).keys():
+        for word in eng_term.split():
+            if len(word) > 2:
+                term_eng_words.add(word.lower())
     paragraphs = text.split("\n\n")
 
     start_idx, result = _load_checkpoint(checkpoint_path)
@@ -165,8 +229,9 @@ def fix_text(text: str, clients: list, key_index: list, memory: dict,
                 else:
                     print(f"    düzeltiliyor: {truly_bad[:5]}"
                           f"{'...' if len(truly_bad) > 5 else ''}")
+                    term_map = _relevant_term_map(cleaned, memory)
                     fixed = fix_paragraph(cleaned, whitelist, truly_bad,
-                                          clients, key_index)
+                                          clients, key_index, term_map)
                     result.append(fixed)
                     fixed_count += 1
 
@@ -188,7 +253,7 @@ def fix_text(text: str, clients: list, key_index: list, memory: dict,
                     # dosyalarda/kitaplarda bir daha flag'lenmeyecek.
                     fixed_lower = fixed.lower()
                     for w in truly_bad:
-                        if w.lower() in fixed_lower:
+                        if w.lower() in fixed_lower and w.lower() not in term_eng_words:
                             dictionary.mark_known(w, is_english=False)
 
         # Periyodik flush + commit — rate limit beklerken kesinti olsa
