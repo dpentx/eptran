@@ -123,15 +123,45 @@ def _relevant_term_map(paragraph: str, memory: dict) -> dict:
     return out
 
 
+def _term_consistency_issues(paragraph: str, memory: dict) -> dict:
+    """
+    ZATEN Türkçeye çevrilmiş ama resmi terimden FARKLI bir varyantla
+    yazılmış yerleri yakalar (örn. paragrafta "Kırmızı Erik Köyü"
+    geçiyor, oysa hafızadaki resmi karşılık "Kızıl Erik Köyü" —
+    ikisi de İngilizce değil, o yüzden english_detector/whitelist
+    mekanizması bunu HİÇ göremiyordu; gerçek üretimde knh-10/010'da
+    tam olarak bu oldu).
+
+    Yöntem: 3+ kelimelik her terimin son 2 kelimesini ("çapa" —
+    genelde baş isim, örn. "Erik Köyü") ara. Çapa paragrafta geçiyor
+    ama TERİMİN TAMAMI geçmiyorsa, muhtemelen ilk kelime(ler) farklı
+    yazılmış demektir → tutarsızlık şüphesi.
+
+    2 kelimelik terimler (örn. "Çiftlik Köyü") BİLEREK dışarıda
+    bırakıldı: son kelimeyi tek başına çapa yapmak ("Köyü" gibi) çok
+    jenerik olur ve alakasız yer adlarını (örn. "Kızıl Erik Köyü")
+    yanlış pozitif olarak tutsak eder.
+    """
+    low = paragraph.lower()
+    issues = {}
+    for eng_term, tr_term in memory.get("terms", {}).items():
+        words = tr_term.split()
+        if len(words) < 3:
+            continue
+        anchor = " ".join(words[-2:]).lower()
+        if anchor in low and tr_term.lower() not in low:
+            issues[tr_term] = eng_term
+    return issues
+
+
 def fix_paragraph(paragraph: str, whitelist: set,
                   bad_words: list, clients: list, key_index: list,
-                  term_map: dict = None) -> str:
+                  term_map: dict = None, consistency_issues: dict = None) -> str:
     """Sorunlu paragrafı LLM'e gönder, düzeltilmiş halini al."""
     protected_str = ", ".join(sorted(whitelist)) if whitelist else "yok"
-    user_msg = (
-        f"Korunacak isimler ve terimler: {protected_str}\n"
-        f"Düzeltilmesi gereken kelimeler: {', '.join(bad_words)}\n"
-    )
+    user_msg = f"Korunacak isimler ve terimler: {protected_str}\n"
+    if bad_words:
+        user_msg += f"Düzeltilmesi gereken (İngilizce kalmış) kelimeler: {', '.join(bad_words)}\n"
     if term_map:
         # Bu kitapta bu terimler için ZATEN belirlenmiş resmi karşılıklar
         # var — modelin kendi ad-hoc çevirisini uydurup tutarsızlık
@@ -142,6 +172,20 @@ def fix_paragraph(paragraph: str, whitelist: set,
             f"Bu kitapta bu terimler için ZATEN belirlenmiş resmi "
             f"karşılıklar var, başka bir çeviri UYDURMA, AYNEN kullan: "
             f"{mapping_str}\n"
+        )
+    if consistency_issues:
+        # Paragraf zaten tamamen Türkçe ama muhtemelen bir terimin
+        # FARKLI bir varyantı kullanılmış (bkz. _term_consistency_issues
+        # docstring'i). LLM'e "hangi kelimeyi ara" değil "hangi ifadenin
+        # resmi karşılığı bu" diye söylüyoruz — kendisi bulup değiştirsin.
+        cons_str = "; ".join(f'"{tr}" (kaynak: "{eng}")'
+                              for tr, eng in consistency_issues.items())
+        user_msg += (
+            f"UYARI: Bu paragrafta, aşağıdaki terimlerin RESMİ karşılığından "
+            f"FARKLI bir varyantı (örn. farklı bir sıfat/kelimeyle) "
+            f"kullanılmış olabilir. Eğer öyleyse, o ifadeyi resmi karşılıkla "
+            f"DEĞİŞTİR (anlamı aynı ama farklı yazılmış bir yer/terim adı "
+            f"arıyorsun): {cons_str}\n"
         )
     user_msg += f"\nParagraf:\n{paragraph}"
     result = gc.call(clients, key_index, _FIX_SYSTEM, user_msg)
@@ -220,41 +264,49 @@ def fix_text(text: str, clients: list, key_index: list, memory: dict,
         else:
             cleaned = unicode_cleaner.clean(para)
             eng_words = english_detector.find(cleaned)
-            if not eng_words:
+            truly_bad = [w for w in eng_words if w.lower() not in whitelist] if eng_words else []
+            # Paragrafta İngilizce kalıntı olmasa BİLE, zaten Türkçeye
+            # çevrilmiş bir terimin farklı bir varyantı kullanılmış
+            # olabilir (bkz. _term_consistency_issues) — bunu da ayrıca
+            # kontrol ediyoruz, çünkü english_detector bunu hiç göremez.
+            consistency_issues = _term_consistency_issues(cleaned, memory)
+
+            if not truly_bad and not consistency_issues:
                 result.append(cleaned)
             else:
-                truly_bad = [w for w in eng_words if w.lower() not in whitelist]
-                if not truly_bad:
-                    result.append(cleaned)
-                else:
-                    print(f"    düzeltiliyor: {truly_bad[:5]}"
+                if truly_bad:
+                    print(f"    düzeltiliyor (İngilizce kalıntı): {truly_bad[:5]}"
                           f"{'...' if len(truly_bad) > 5 else ''}")
-                    term_map = _relevant_term_map(cleaned, memory)
-                    fixed = fix_paragraph(cleaned, whitelist, truly_bad,
-                                          clients, key_index, term_map)
-                    result.append(fixed)
-                    fixed_count += 1
+                if consistency_issues:
+                    print(f"    düzeltiliyor (tutarsız terim varyantı): "
+                          f"{list(consistency_issues.keys())[:3]}")
+                term_map = _relevant_term_map(cleaned, memory)
+                fixed = fix_paragraph(cleaned, whitelist, truly_bad,
+                                      clients, key_index, term_map,
+                                      consistency_issues)
+                result.append(fixed)
+                fixed_count += 1
 
-                    # KRİTİK: LLM'e "düzelt" diye gönderdiğimiz kelimelerden
-                    # düzeltilmiş metinde HÂLÂ duran varsa (örn. "Jupiter",
-                    # "massa" gibi özel isim/lehçe kelimesi — model bilerek
-                    # dokunmamış demektir), bunu mini sözlüğe "İngilizce
-                    # DEĞİL" diye işaretle. dictionary.py'de bunun için
-                    # mark_known() zaten vardı ama hiçbir yerden
-                    # çağrılmıyordu — bu yüzden aynı isim, bir hikâyede
-                    # onlarca kez geçtiğinde HER paragrafta yeniden
-                    # "sorunlu" sanılıp LLM'e yollanıyor, birkaç dakikada
-                    # 4 Groq key'in de rate limitini tüketip run'ı
-                    # kilitliyordu (bkz. pg2147/007 — Jupiter/massa/
-                    # Charleston tekrar tekrar "düzeltiliyor"). mark_known
-                    # zaten mini sözlüğe yazıyor, _flush_and_commit ile de
-                    # (aşağıda periyodik olarak) diske/git'e işleniyor —
-                    # yani hem bu dosyanın kalanında hem sonraki
-                    # dosyalarda/kitaplarda bir daha flag'lenmeyecek.
-                    fixed_lower = fixed.lower()
-                    for w in truly_bad:
-                        if w.lower() in fixed_lower and w.lower() not in term_eng_words:
-                            dictionary.mark_known(w, is_english=False)
+                # KRİTİK: LLM'e "düzelt" diye gönderdiğimiz kelimelerden
+                # düzeltilmiş metinde HÂLÂ duran varsa (örn. "Jupiter",
+                # "massa" gibi özel isim/lehçe kelimesi — model bilerek
+                # dokunmamış demektir), bunu mini sözlüğe "İngilizce
+                # DEĞİL" diye işaretle. dictionary.py'de bunun için
+                # mark_known() zaten vardı ama hiçbir yerden
+                # çağrılmıyordu — bu yüzden aynı isim, bir hikâyede
+                # onlarca kez geçtiğinde HER paragrafta yeniden
+                # "sorunlu" sanılıp LLM'e yollanıyor, birkaç dakikada
+                # 4 Groq key'in de rate limitini tüketip run'ı
+                # kilitliyordu (bkz. pg2147/007 — Jupiter/massa/
+                # Charleston tekrar tekrar "düzeltiliyor"). mark_known
+                # zaten mini sözlüğe yazıyor, _flush_and_commit ile de
+                # (aşağıda periyodik olarak) diske/git'e işleniyor —
+                # yani hem bu dosyanın kalanında hem sonraki
+                # dosyalarda/kitaplarda bir daha flag'lenmeyecek.
+                fixed_lower = fixed.lower()
+                for w in truly_bad:
+                    if w.lower() in fixed_lower and w.lower() not in term_eng_words:
+                        dictionary.mark_known(w, is_english=False)
 
         # Periyodik flush + commit — rate limit beklerken kesinti olsa
         # bile bu ana kadar öğrenilen kelimeler git'e işlenmiş olur.
