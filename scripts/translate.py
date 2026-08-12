@@ -404,6 +404,21 @@ def main():
     file_ext = os.path.splitext(input_file)[1].lower()
     branch = f"book/{book_slug}"
 
+    # Seri geneli hafıza (bkz. lib/series.py): admin, epub ile AYNI
+    # isimde bir .series dosyası bırakırsa (örn. input/knh-11.epub +
+    # input/knh-11.series, içinde tek satır "kusuriya" yazan), bu kitap
+    # o seriye bağlanır — queue_worker.py, çeviriye başlamadan önce
+    # series/kusuriya.json'daki karakter/terim/notları hafızaya
+    # otomatik işler. Dosya yoksa hiçbir şey değişmez (eski davranış).
+    series_slug = None
+    series_companion = f"input/{os.path.splitext(input_file)[0]}.series"
+    if os.path.exists(series_companion):
+        with open(series_companion, encoding="utf-8") as f:
+            series_slug = f.read().strip()
+        os.remove(series_companion)
+        subprocess.run(["git", "rm", "-f", series_companion], check=False)
+        print(f"Seri tespit edildi: {series_slug}")
+
     print(f"Dosya: {input_file}")
     chapters, images = (extract_epub(file_path) if file_ext == ".epub"
                         else extract_pdf(file_path, book_slug))
@@ -488,6 +503,8 @@ def main():
         "started_at": datetime.now(timezone.utc).isoformat(),
         "queue_mode": True,
     }
+    if series_slug:
+        status["series"] = series_slug
     subprocess.run(["git", "add", originals_dir])
 
     # Bu dalın ilk push'u — git_utils.git_push() remote'ta bu dal henüz

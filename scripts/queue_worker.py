@@ -26,7 +26,7 @@ import re
 import subprocess
 from datetime import datetime, timezone
 
-from lib import groq_client as gc, memory as mem, ner
+from lib import groq_client as gc, memory as mem, ner, series as series_lib
 from lib.git_utils import write_status, trigger_workflow, current_branch
 from translate import translate_chapter
 
@@ -226,10 +226,30 @@ def main():
     key_index = [0]
 
     memory = mem.load(output_dir)
+    if memory.get("characters") and not memory.get("_book_memory_seeded"):
+        # Bu özellikten ÖNCE başlamış eski bir kitap: hafıza zaten dolu,
+        # sıfırdan çıkarmaya gerek yok — sadece bayrağı işaretle.
+        memory["_book_memory_seeded"] = True
+
+    # Seri geneli hafıza (bkz. lib/series.py): bu kitap bir seriye
+    # bağlıysa (status.json'da "series"), admin'in elle yazdığı
+    # series/<slug>.json'ı hafızaya işle. BİR KEZE MAHSUS değil — her
+    # run'da (ucuz, LLM çağrısı yok) tekrar uygulanıyor ki kitabın
+    # kendi öğrenme süreci (extract_from_source/update_from_translation)
+    # seri düzeyinde zaten doğrulanmış bir değeri YANLIŞLIKLA ezemesin
+    # (knh-10'da "Lahan'ın Kardeşi"nin "Lakan'ın Kardeşi"ye dönüşüp 10
+    # bölüme yayılması tam olarak böyle önlenmek isteniyor).
+    series_data = series_lib.load(status["series"]) if status.get("series") else {}
+    if series_data:
+        memory = series_lib.apply_overlay(memory, series_data)
 
     # Kitabın ilk bölümünün ilk parçasıysa ve hafıza boşsa, hafızayı
-    # kaynak metinden çıkar (bir kereye mahsus).
-    if chapter_idx == 0 and part_idx == 0 and not memory.get("characters"):
+    # kaynak metinden çıkar (bir kereye mahsus). Seri glossary'si zaten
+    # bazı karakterleri doldurmuş olabilir — extract_from_source yine de
+    # çalışır, çünkü amaç SADECE seride olmayan, bu kitaba özel yeni
+    # karakter/terimleri bulmak; overlay az önce uygulandığı ve aşağıda
+    # tekrar uygulanacağı için seriden gelenler ezilemez.
+    if chapter_idx == 0 and part_idx == 0 and not memory.get("_book_memory_seeded"):
         print("Çeviri hafızası çıkarılıyor...")
         full_source = _reconstruct_source(originals_dir, chapter_idx, total_parts)
         try:
@@ -238,9 +258,12 @@ def main():
             print(f"Tüm keyler kilitli ({e.wait_seconds}s) — hafıza çıkarılamadı, "
                   f"bu run'da self-trigger yapılmıyor.")
             return
+        memory = series_lib.apply_overlay(memory, series_data)  # seri her zaman kazanır
+        memory["_book_memory_seeded"] = True
         mem.save(output_dir, memory)
         print(f"  Hafıza: {len(memory['characters'])} karakter, "
-              f"{len(memory['terms'])} terim")
+              f"{len(memory['terms'])} terim"
+              + (f" (+ seri: {status['series']})" if series_data else ""))
 
     # Bu bölümün ilk parçasıysa NER + hafıza context'ini hesaplayıp
     # bölümün meta dosyasına önbelleğe al — diğer parçalar bunu tekrar
@@ -342,6 +365,12 @@ def main():
         except gc.AllKeysLockedError:
             print("Uyarı: hafıza güncellenemedi (tüm keyler kilitli), "
                   "mevcut hafıza korunuyor.")
+        # Seri her zaman kazanır: update_from_translation modelin kendi
+        # LLM çağrısıyla hafızayı yeniden yazabiliyor — teorik olarak
+        # seriden gelen bir değeri (örn. "Lahan'ın Kardeşi") yanlışlıkla
+        # değiştirebilirdi. Bu yüzden bölüm sonunda overlay'i her zaman
+        # tekrar (ucuza, LLM çağrısı olmadan) uyguluyoruz.
+        memory = series_lib.apply_overlay(memory, series_data)
         mem.save(output_dir, memory)
 
         # Bu bölümün kuyruk dosyalarını temizle (artık gerekmiyorlar)
