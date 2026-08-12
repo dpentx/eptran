@@ -139,8 +139,25 @@ def _term_consistency_issues(paragraph: str, memory: dict) -> dict:
 
     2 kelimelik terimler (örn. "Çiftlik Köyü") BİLEREK dışarıda
     bırakıldı: son kelimeyi tek başına çapa yapmak ("Köyü" gibi) çok
-    jenerik olur ve alakasız yer adlarını (örn. "Kızıl Erik Köyü")
-    yanlış pozitif olarak tutsak eder.
+    jenerik olur ve alakasız yer adlarını yanlış pozitif olarak
+    tutsak eder.
+
+    UYARI / DÜZELTME (Ağustos 2026, üretimde bulundu): İlk sürüm bu
+    kadar dikkatli değildi ve knh-10'da GERÇEK ZARAR verdi — "İmparator'un
+    küçük kardeşi" teriminin çapası ("küçük kardeşi") o kadar jenerik
+    çıktı ki kitaptaki HER "kardeşim/kardeşin/kardeşimsin" gibi kişisel,
+    alakasız cümleyi de yakaladı (örn. "ama yine de küçük kardeşimsin"
+    -> yanlışlıkla "ama yine de İmparator'un küçük kardeşisin" oldu,
+    Basen'in kişisel sözü resmi bir unvana dönüştü). Aynı şey "Patron ve
+    Eski Patron" teriminin çapası ("Eski Patron") için de oldu ("eski
+    patronu" diye geçen sıradan bir cümle de yanlışlıkla yakalandı).
+    Bu yüzden artık çapa, _anchor_is_distinctive() ile ayrıca
+    süzülüyor: çapadaki kelimelerin EN AZ BİRİ, akrabalık/unvan gibi
+    çok yaygın bir Türkçe kökle BAŞLAMIYORSA kabul ediliyor. "Erik
+    Köyü" geçer (ne "erik" ne "köy" o listede), "küçük kardeşi" ve
+    "Eski Patron" artık elenir (ikisi de tamamen jenerik kelimelerden
+    oluşuyor). Ayrıca içinde rakam/parantez geçen çapalar (bölüm
+    başlığı referansları, örn. "(2. Bölüm)") baştan eleniyor.
     """
     low = paragraph.lower()
     issues = {}
@@ -149,9 +166,35 @@ def _term_consistency_issues(paragraph: str, memory: dict) -> dict:
         if len(words) < 3:
             continue
         anchor = " ".join(words[-2:]).lower()
+        if any(c.isdigit() for c in anchor) or "(" in anchor or ")" in anchor:
+            continue
+        if not _anchor_is_distinctive(anchor):
+            continue
         if anchor in low and tr_term.lower() not in low:
             issues[tr_term] = eng_term
     return issues
+
+
+# Türkçede akrabalık/unvan/genel sıfat kökleri — bunlarla BAŞLAYAN
+# kelimeler (kardeşi, kardeşim, kardeşine, patronu, patronum, eski,
+# küçük, büyük...) tek başına asla "çapa" olarak yeterli sayılmaz,
+# çünkü hikâye boyunca yüzlerce alakasız cümlede organik olarak
+# geçerler. Bir çapanın GEÇERLİ sayılması için içindeki kelimelerden
+# EN AZ BİRİNİN bu listenin dışında (yani gerçekten ayırt edici,
+# örn. "Erik", "Kızıl" gibi) olması gerekiyor.
+_GENERIC_TR_STEMS = (
+    "kardeş", "abla", "ağabey", "abi", "patron", "eski", "yeni",
+    "küçük", "büyük", "anne", "baba", "amca", "teyze", "dede", "nine",
+    "usta", "efendi", "bey", "hanım", "dost", "arkadaş", "bölüm",
+    "kısım", "parça", "sayfa",
+)
+
+
+def _anchor_is_distinctive(anchor: str) -> bool:
+    for w in anchor.split():
+        if not any(w.startswith(stem) for stem in _GENERIC_TR_STEMS):
+            return True
+    return False
 
 
 def fix_paragraph(paragraph: str, whitelist: set,
