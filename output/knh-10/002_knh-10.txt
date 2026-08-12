@@ -1,0 +1,137 @@
+# Editor’s Notes
+
+Editörün Notları
+
+Kusuriya no Hitorigoto
+
+Cilt 10
+
+Sasha McGlynn'in Binbir Eğlencesi
+
+Herkes merhaba! Cilt 10'u nasıl buldunuz? İçinde her şey vardı, değil mi?
+
+Siyaset. Romantik. Aksiyon. Intrigalar.
+
+Ördekler.
+
+Ah, ama kendimi tanıtmayı unuttum! Ben Sasha McGlynn, Kusuriya no Hitorigoto'nun editörü. Çevirmen Kevin Steinbach ile birlikte yedi yıldan fazla bir süredir çalışıyorum. Bu süre zarfında, kendimizi ince ayarlı bir makineye dönüştürdük: O Japonca metni İngilizceye çeviriyor, ben de ona o eski parlatma dokunuşunu yapıyorum! Ben onun yin'iyim. O'nun X'i. Ya da... Gaoshun'a onun Jinshi'si? Anladınız sanırım.
+
+Kevin, önceki ciltte genel düzenleme sürecini harika bir şekilde tartıştı, bu yüzden ne yaptığımın detaylarına biraz daha derinlemesine girmeye ve size nihai üründe göremeyeceğiniz bir şeyden bahsetmeye zaman ayırmak istiyorum. Öyleyse, devam edin, değil mi? Ve dikkat edin; her yerde tavşan delikleri var...
+
+Kevin'in önceki ciltte dediği gibi, bir romanın bir bölümünü çevirdiğinde, dosyayı bana iletir. Düzenlememe yardımcı olacak notlar zaten yapmıştır ve tartışmaya ihtiyaç duyabilecek pasajları işaretlemiştir.
+
+Düzenleme yaparken, ilerledikçe birden fazla mini görevi yönetiyorum. Bunlar şunları içerir:
+
+Yazım. Tüm kelimeler, evimiz sözlüğü, J-Novel Club stil rehberi ve seri sözlüğüne uygun olarak doğru yazılmış mı?
+
+Dilbilgisi ve noktalama. Kelimeler doğru sırada mı? Özne-yüklem uyumu var mı? Fiil zamanı boyunca doğru mu?
+
+Ses. Her karakter belirli bir şekilde konuşma eğilimindedir ve belirli bir kelime dağarcığını kullanır (veya kullanmaz). Örneğin, Nianzhen geçmişini anlattığında, Kevin şöyle yazdı: İnsanlar, onun dediği gibi, bu felaketin nedeninin biz olduğumuzu, ritüel gözlemi ihlal ettiğimiz için kabul etmeye başladılar. Vitiated kelimesini işaretledim ve Nianzhen'in, alçak kökeniyle, bu tür bir kelime seçimi yapması muhtemel olmadığını belirttim. Nihai versiyonda bunu "kesinti" olarak değiştirdik: İnsanlar, onun dediği gibi, bu felaketin nedeninin biz olduğumuzu, ritüel gözlemi kestiğimiz için kabul etmeye başladılar.
+
+Bu görevlerin çoğu oldukça yüzeyseldir; metnin belirli kurallara uymasını ve okuyucunun dilbilgisi hataları veya karakter dışı kelime seçimleri tarafından hikayeden kopmamasını sağlamak için cümle ve paragraflarda değişiklikler yapıyorum. Yazım ve dilbilgisini kontrol etmek, işi bitirmek için bir editörün yapabileceği en az şeydir; metnin sesini ayarlamak, okuyucuların hikayeye daha derinlemesine dalmasına olanak tanıyan bir sonraki adımdır.
+
+Yukarıda bahsettiğim genel düzenlemeleri yaparken, el yazımında ilerledikçe, düzenlemenin en sevdiğim kısımlarından biriyle karşılaşıyorum.
+
+Gerçek kontrolü!
+
+Kusuriya no Hitorigoto, gerçek dünyaya dayanmaktadır ve bu nedenle gerçek dünya bilimi ve mantığına uyar. Hikaye, emin olmadığım bir fikir sunduğunda, doğru kelimeleri kullandığımızdan ve çeviride sağladığımız bilgilerin doğru olduğundan emin olmak için konuyu araştırarak ilerliyorum. Yazar Natsu Hyuuga, Kusuriya no Hitorigoto dünyasına lezzet katmada uzmanlaşmıştır, bu yüzden araştırmam makyaj terminolojisi için güzellik sitelerine bakmak kadar kolay veya hamilelik sırasında komplikasyonlar için tedavileri öğrenmek kadar derin olabilir. Benim için, doğru dili veya yaklaşımı anlamak için parçaları bir araya getirmek, kendi gizemimi çözmek gibidir—birkaç dakika için, Maomao'nun ayakkabılarında olabiliyorum! Keşfettiklerim doğrudan son sayfaya geçmese de, yazarın ne yazdığını daha fazla öğrenmek, İngilizce okuyucular için daha kolay açıklamamıza olanak tanır.
+
+Bir Tavşan Deliklerine Düşmüştüm ve Çıkamıyorum
+
+Bazen araştırmalarım derinlere, hatta çok derinlere iner. Araştırdığım şey bazen metindeki hızlı bir kenar notundan ibarettir ve nihayetinde hikayenin büyük resmine hiçbir etki etmez. Bunlar tavşan deliklerine yapılan yolculuklardır. Tuhaf bir terimin anlamını aramak, tuhaf bir bilgi parçası öğrenmeye, bu da başka birine, bu da birkaç hafta önce düşündüğüm o biraz ilgili şeye hatırlatmaya yol açabilir. Örneğin, bir keresinde Tang Hanedanlığı mutfakları ve pişirme aletlerinin resimlerini aradım ve sonunda kendimi el yazımına geri döndürmeden önce duvarlarım için renk paletleri seçtim.
+
+Tüm bu tavşan deliklerinin onuruna, Kusuriya no Hitorigoto üzerinde çalışırken kendimi kaybettirdiğim bazı eğlenceli bilgiler ve arama terimlerini paylaşmak istiyorum. Belki de seride kendimi nerede kaybettiğimi tanırsınız; diğerleri sadece çarpık merak anlayışım tarafından açıklanabilir. Yine de, harika hikayeler oluştururlar ve kim bilir? Belki de öğrendiklerimi sonraki ciltlerde kullanabiliriz.
+
+Genel Bilgiler:
+
+Datura stramonium, Kusuriya no Hitorigoto'da dikenli elma olarak bilinir, aynı zamanda zombi salatası olarak da adlandırılır.
+
+Sol kol ve sol bacağı aynı anda hareket ettirmek (veya sağ kol ve sağ bacak) ipsilateral hareket olarak adlandırılır.
+
+Çoğu üç renkli kedi dişidir, sadece küçük bir yüzdesi erkektir. Üç renkliler, hem Doğu hem de Batı kültürlerinde şanslı olarak görülür.
+
+Otopsi ve nekropsi, ölüm nedenini belirlemek amacıyla bir bedenin kesilip incelenmesi için kullanılan terimlerdir. Otopsi insanlar için kullanılan terimdir; nekropsi ise diğer hayvanlar için kullanılır. Diseksiyon, bir bedeni (insan veya başka) açarak anatomisini incelemek eylemidir.
+
+Bitler, 130 derece Fahrenheit üzerindeki sıcaklıklarda ölür.
+
+Arama Motoru Tavşan Delikleri şunları içerir:
+
+Kağıt hamuru ve kağıt yapımı
+
+Kedi nanesi alternatifleri
+
+Kadınların yüz dövmeleri olan kültürler
+
+Bitki lifleri için doğal boya sabitleyicileri vs. protein bazlı lifler
+
+Parazitik mantar türleri
+
+The Last of Us konsept sanatı
+
+Şok belirtileri
+
+pH'nin hortensyalara etkisi
+
+İnsan saçlı iç çamaşırı
+
+Tığ işi iç çamaşırı desenleri
+
+Farklı türlerdeki dışkıların kelime dağarcığı
+
+Zehirli yosun türleri
+
+Karanlıkta parlayan mantarlar
+
+Topuklu ayakkabıların tarihi
+
+Berberler ilk kez cerrahlar olarak ne zaman başladı?
+
+Tembel ütüleme teknikleri
+
+Çin eczacılık dolapları
+
+Yakınımda satılık Çin eczane dolapları
+
+Yakınımda uygun fiyatlı Çin eczane dolapları
+
+DIY Çin eczanesi dolabı talimatları
+
+Yakınımda satılık Çin apotek dolapları
+
+Mühürleme teknikleri
+
+Buğdayın anatomisi
+
+Patates'in anatomisi
+
+Kesilmiş uzuvların çürüme süreci
+
+Bir çayır böceğini yemeye nasıl hazırlanır
+
+Çayır böceği tarifleri
+
+Çayır böceği disseksiyonlarının fotoğrafları
+
+Ölü bedenlerdeki kanama, ölümün çeşitli aşamalarında
+
+Arsenik zehirlenmesinin belirtileri
+
+Dantelin tarihi
+
+Süt ile çay içmenin "doğru" yolu
+
+Çocuklar için eğlenceli bilim deneyleri
+
+Gardıroplar
+
+Bebeklerin yememesi gereken şeyler
+
+Tang Hanedanlığı metal işçiliği
+
+Ördeklerin yumurta bırakma davranışları
+
+Kadınların göğüs boyutunu artıran yiyecekler
+
+Dikilişi önleyen yiyecekler
+
+Devam edebilirim...ama şu an için durmak iyi bir yer olabilir. Umarım bu çok eksik tur, bir editörün işinin gerçekten ne kadar geniş kapsamlı olabileceğine dair bir bakış açısı sağlamıştır. Bu, onu bu kadar tatmin edici bir meslek haline getiren şeylerden biridir. Bir dahaki sefere kadar, eğlenin, geniş okuyun ve o tavşan deliklerinden korkmayın! Nereye gidebileceklerini asla bilemezsiniz.

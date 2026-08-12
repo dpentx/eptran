@@ -63,7 +63,27 @@ def _flush_and_commit(paragraph_idx: int) -> None:
 
 
 def _build_whitelist(memory: dict) -> set:
-    """Hafızadaki karakter ve terim isimlerinden whitelist oluştur (LLM çağrısı yok)."""
+    """
+    Hafızadaki karakter ve terim isimlerinden whitelist oluştur (LLM
+    çağrısı yok).
+
+    NOT (Ağustos 2026): `characters` (Maomao, Jinshi gibi özel isimler)
+    ile `terms` (Red Plum Village -> Kızıl Erik Köyü gibi Türkçe
+    karşılığı OLAN yer/unvan/terim çiftleri) birbirinden farklı amaçlar
+    taşıyor — characters İngilizce KALMALI, terms ise ÇEVRİLMİŞ olmalı.
+    Eskiden ikisi de aynı şekilde işleniyordu: terms'in İNGİLİZCE
+    tarafındaki her kelime de (örn. "Village") tek tek whitelist'e
+    ekleniyordu. Sonuç: "Red Plum Village" bir paragrafta HİÇ
+    çevrilmeden kalsa bile, "Village" kelimesi whitelist'te "tanıdık"
+    sayıldığı için review bunu hiç fark etmiyordu — gerçek üretimde
+    (knh-10/010) tam olarak bu oldu, aynı kitapta üç farklı hal bir
+    arada kaldı: çevrilmemiş "Red Plum Village", tutarsız "Kırmızı Erik
+    Köyü" ve resmi "Kızıl Erik Köyü". Artık terms'in İNGİLİZCE
+    tarafından kelime çıkarmıyoruz — böylece çevrilmemiş bir terim
+    gerçekten "sorunlu kelime" olarak tespit edilip fix_paragraph'a
+    gidiyor (ki fix_paragraph da artık aşağıda doğru karşılığı
+    biliyor, bkz. _relevant_term_map).
+    """
     whitelist = set()
     for eng_name, tr_name in memory.get("characters", {}).items():
         whitelist.add(eng_name.lower())
@@ -72,23 +92,145 @@ def _build_whitelist(memory: dict) -> set:
             if len(word) > 2:
                 whitelist.add(word.lower())
     for eng_term, tr_term in memory.get("terms", {}).items():
-        whitelist.add(eng_term.lower())
+        # Türkçe karşılığın kelimelerini whitelist'e ekliyoruz (yanlışlıkla
+        # "İngilizce" sanılmasınlar diye) — ama eng_term'ün kelimelerini
+        # EKLEMİYORUZ, çünkü bunlar tam da review'ın YAKALAMASI gereken,
+        # henüz çevrilmemiş kalıntılar olabilir.
         whitelist.add(tr_term.lower())
-        for word in eng_term.split() + tr_term.split():
+        for word in tr_term.split():
             if len(word) > 2:
                 whitelist.add(word.lower())
     return whitelist
 
 
+def _relevant_term_map(paragraph: str, memory: dict) -> dict:
+    """
+    Paragrafta (İngilizce hâliyle) geçen terim/karakter isimlerinin
+    daha önce belirlenmiş RESMİ Türkçe karşılığını çıkarır. fix_paragraph
+    bunu modele vererek "Village"i kendi seçtiği bir kelimeyle (örn.
+    "Kırmızı Erik Köyü") değil, kitap boyunca zaten kullanılan resmi
+    karşılıkla (örn. "Kızıl Erik Köyü") değiştirmesini sağlar — aksi
+    halde her fix_paragraph çağrısı aynı terimi farklı çevirebiliyordu.
+    """
+    low = paragraph.lower()
+    out = {}
+    for eng_term, tr_term in memory.get("terms", {}).items():
+        if eng_term.lower() in low:
+            out[eng_term] = tr_term
+    for eng_name, tr_name in memory.get("characters", {}).items():
+        if eng_name.lower() in low:
+            out[eng_name] = tr_name
+    return out
+
+
+def _term_consistency_issues(paragraph: str, memory: dict) -> dict:
+    """
+    ZATEN Türkçeye çevrilmiş ama resmi terimden FARKLI bir varyantla
+    yazılmış yerleri yakalar (örn. paragrafta "Kırmızı Erik Köyü"
+    geçiyor, oysa hafızadaki resmi karşılık "Kızıl Erik Köyü" —
+    ikisi de İngilizce değil, o yüzden english_detector/whitelist
+    mekanizması bunu HİÇ göremiyordu; gerçek üretimde knh-10/010'da
+    tam olarak bu oldu).
+
+    Yöntem: 3+ kelimelik her terimin son 2 kelimesini ("çapa" —
+    genelde baş isim, örn. "Erik Köyü") ara. Çapa paragrafta geçiyor
+    ama TERİMİN TAMAMI geçmiyorsa, muhtemelen ilk kelime(ler) farklı
+    yazılmış demektir → tutarsızlık şüphesi.
+
+    2 kelimelik terimler (örn. "Çiftlik Köyü") BİLEREK dışarıda
+    bırakıldı: son kelimeyi tek başına çapa yapmak ("Köyü" gibi) çok
+    jenerik olur ve alakasız yer adlarını yanlış pozitif olarak
+    tutsak eder.
+
+    UYARI / DÜZELTME (Ağustos 2026, üretimde bulundu): İlk sürüm bu
+    kadar dikkatli değildi ve knh-10'da GERÇEK ZARAR verdi — "İmparator'un
+    küçük kardeşi" teriminin çapası ("küçük kardeşi") o kadar jenerik
+    çıktı ki kitaptaki HER "kardeşim/kardeşin/kardeşimsin" gibi kişisel,
+    alakasız cümleyi de yakaladı (örn. "ama yine de küçük kardeşimsin"
+    -> yanlışlıkla "ama yine de İmparator'un küçük kardeşisin" oldu,
+    Basen'in kişisel sözü resmi bir unvana dönüştü). Aynı şey "Patron ve
+    Eski Patron" teriminin çapası ("Eski Patron") için de oldu ("eski
+    patronu" diye geçen sıradan bir cümle de yanlışlıkla yakalandı).
+    Bu yüzden artık çapa, _anchor_is_distinctive() ile ayrıca
+    süzülüyor: çapadaki kelimelerin EN AZ BİRİ, akrabalık/unvan gibi
+    çok yaygın bir Türkçe kökle BAŞLAMIYORSA kabul ediliyor. "Erik
+    Köyü" geçer (ne "erik" ne "köy" o listede), "küçük kardeşi" ve
+    "Eski Patron" artık elenir (ikisi de tamamen jenerik kelimelerden
+    oluşuyor). Ayrıca içinde rakam/parantez geçen çapalar (bölüm
+    başlığı referansları, örn. "(2. Bölüm)") baştan eleniyor.
+    """
+    low = paragraph.lower()
+    issues = {}
+    for eng_term, tr_term in memory.get("terms", {}).items():
+        words = tr_term.split()
+        if len(words) < 3:
+            continue
+        anchor = " ".join(words[-2:]).lower()
+        if any(c.isdigit() for c in anchor) or "(" in anchor or ")" in anchor:
+            continue
+        if not _anchor_is_distinctive(anchor):
+            continue
+        if anchor in low and tr_term.lower() not in low:
+            issues[tr_term] = eng_term
+    return issues
+
+
+# Türkçede akrabalık/unvan/genel sıfat kökleri — bunlarla BAŞLAYAN
+# kelimeler (kardeşi, kardeşim, kardeşine, patronu, patronum, eski,
+# küçük, büyük...) tek başına asla "çapa" olarak yeterli sayılmaz,
+# çünkü hikâye boyunca yüzlerce alakasız cümlede organik olarak
+# geçerler. Bir çapanın GEÇERLİ sayılması için içindeki kelimelerden
+# EN AZ BİRİNİN bu listenin dışında (yani gerçekten ayırt edici,
+# örn. "Erik", "Kızıl" gibi) olması gerekiyor.
+_GENERIC_TR_STEMS = (
+    "kardeş", "abla", "ağabey", "abi", "patron", "eski", "yeni",
+    "küçük", "büyük", "anne", "baba", "amca", "teyze", "dede", "nine",
+    "usta", "efendi", "bey", "hanım", "dost", "arkadaş", "bölüm",
+    "kısım", "parça", "sayfa",
+)
+
+
+def _anchor_is_distinctive(anchor: str) -> bool:
+    for w in anchor.split():
+        if not any(w.startswith(stem) for stem in _GENERIC_TR_STEMS):
+            return True
+    return False
+
+
 def fix_paragraph(paragraph: str, whitelist: set,
-                  bad_words: list, clients: list, key_index: list) -> str:
+                  bad_words: list, clients: list, key_index: list,
+                  term_map: dict = None, consistency_issues: dict = None) -> str:
     """Sorunlu paragrafı LLM'e gönder, düzeltilmiş halini al."""
     protected_str = ", ".join(sorted(whitelist)) if whitelist else "yok"
-    user_msg = (
-        f"Korunacak isimler ve terimler: {protected_str}\n"
-        f"Düzeltilmesi gereken kelimeler: {', '.join(bad_words)}\n\n"
-        f"Paragraf:\n{paragraph}"
-    )
+    user_msg = f"Korunacak isimler ve terimler: {protected_str}\n"
+    if bad_words:
+        user_msg += f"Düzeltilmesi gereken (İngilizce kalmış) kelimeler: {', '.join(bad_words)}\n"
+    if term_map:
+        # Bu kitapta bu terimler için ZATEN belirlenmiş resmi karşılıklar
+        # var — modelin kendi ad-hoc çevirisini uydurup tutarsızlık
+        # yaratmasını (örn. "Kırmızı Erik Köyü" vs resmi "Kızıl Erik
+        # Köyü") önlemek için bunları açıkça veriyoruz.
+        mapping_str = "; ".join(f'"{k}" = "{v}"' for k, v in term_map.items())
+        user_msg += (
+            f"Bu kitapta bu terimler için ZATEN belirlenmiş resmi "
+            f"karşılıklar var, başka bir çeviri UYDURMA, AYNEN kullan: "
+            f"{mapping_str}\n"
+        )
+    if consistency_issues:
+        # Paragraf zaten tamamen Türkçe ama muhtemelen bir terimin
+        # FARKLI bir varyantı kullanılmış (bkz. _term_consistency_issues
+        # docstring'i). LLM'e "hangi kelimeyi ara" değil "hangi ifadenin
+        # resmi karşılığı bu" diye söylüyoruz — kendisi bulup değiştirsin.
+        cons_str = "; ".join(f'"{tr}" (kaynak: "{eng}")'
+                              for tr, eng in consistency_issues.items())
+        user_msg += (
+            f"UYARI: Bu paragrafta, aşağıdaki terimlerin RESMİ karşılığından "
+            f"FARKLI bir varyantı (örn. farklı bir sıfat/kelimeyle) "
+            f"kullanılmış olabilir. Eğer öyleyse, o ifadeyi resmi karşılıkla "
+            f"DEĞİŞTİR (anlamı aynı ama farklı yazılmış bir yer/terim adı "
+            f"arıyorsun): {cons_str}\n"
+        )
+    user_msg += f"\nParagraf:\n{paragraph}"
     result = gc.call(clients, key_index, _FIX_SYSTEM, user_msg)
     time.sleep(1)
     if result is None:
@@ -136,6 +278,15 @@ def fix_text(text: str, clients: list, key_index: list, memory: dict,
     kelimeler kaybolmaz — periyodik flush bunu garanti eder.
     """
     whitelist = _build_whitelist(memory)
+    # terms'in İngilizce tarafına ait kelimeler — bunlar mark_known ile
+    # KALICI olarak "İngilizce değil" diye işaretlenmemeli, çünkü bunlar
+    # çevrilmesi GEREKEN kelimeler (örn. "Village"); bir defalık gözden
+    # kaçma başka bir yerdeki gerçek çeviri ihtiyacını da köreltmemeli.
+    term_eng_words = set()
+    for eng_term in memory.get("terms", {}).keys():
+        for word in eng_term.split():
+            if len(word) > 2:
+                term_eng_words.add(word.lower())
     paragraphs = text.split("\n\n")
 
     start_idx, result = _load_checkpoint(checkpoint_path)
@@ -156,40 +307,49 @@ def fix_text(text: str, clients: list, key_index: list, memory: dict,
         else:
             cleaned = unicode_cleaner.clean(para)
             eng_words = english_detector.find(cleaned)
-            if not eng_words:
+            truly_bad = [w for w in eng_words if w.lower() not in whitelist] if eng_words else []
+            # Paragrafta İngilizce kalıntı olmasa BİLE, zaten Türkçeye
+            # çevrilmiş bir terimin farklı bir varyantı kullanılmış
+            # olabilir (bkz. _term_consistency_issues) — bunu da ayrıca
+            # kontrol ediyoruz, çünkü english_detector bunu hiç göremez.
+            consistency_issues = _term_consistency_issues(cleaned, memory)
+
+            if not truly_bad and not consistency_issues:
                 result.append(cleaned)
             else:
-                truly_bad = [w for w in eng_words if w.lower() not in whitelist]
-                if not truly_bad:
-                    result.append(cleaned)
-                else:
-                    print(f"    düzeltiliyor: {truly_bad[:5]}"
+                if truly_bad:
+                    print(f"    düzeltiliyor (İngilizce kalıntı): {truly_bad[:5]}"
                           f"{'...' if len(truly_bad) > 5 else ''}")
-                    fixed = fix_paragraph(cleaned, whitelist, truly_bad,
-                                          clients, key_index)
-                    result.append(fixed)
-                    fixed_count += 1
+                if consistency_issues:
+                    print(f"    düzeltiliyor (tutarsız terim varyantı): "
+                          f"{list(consistency_issues.keys())[:3]}")
+                term_map = _relevant_term_map(cleaned, memory)
+                fixed = fix_paragraph(cleaned, whitelist, truly_bad,
+                                      clients, key_index, term_map,
+                                      consistency_issues)
+                result.append(fixed)
+                fixed_count += 1
 
-                    # KRİTİK: LLM'e "düzelt" diye gönderdiğimiz kelimelerden
-                    # düzeltilmiş metinde HÂLÂ duran varsa (örn. "Jupiter",
-                    # "massa" gibi özel isim/lehçe kelimesi — model bilerek
-                    # dokunmamış demektir), bunu mini sözlüğe "İngilizce
-                    # DEĞİL" diye işaretle. dictionary.py'de bunun için
-                    # mark_known() zaten vardı ama hiçbir yerden
-                    # çağrılmıyordu — bu yüzden aynı isim, bir hikâyede
-                    # onlarca kez geçtiğinde HER paragrafta yeniden
-                    # "sorunlu" sanılıp LLM'e yollanıyor, birkaç dakikada
-                    # 4 Groq key'in de rate limitini tüketip run'ı
-                    # kilitliyordu (bkz. pg2147/007 — Jupiter/massa/
-                    # Charleston tekrar tekrar "düzeltiliyor"). mark_known
-                    # zaten mini sözlüğe yazıyor, _flush_and_commit ile de
-                    # (aşağıda periyodik olarak) diske/git'e işleniyor —
-                    # yani hem bu dosyanın kalanında hem sonraki
-                    # dosyalarda/kitaplarda bir daha flag'lenmeyecek.
-                    fixed_lower = fixed.lower()
-                    for w in truly_bad:
-                        if w.lower() in fixed_lower:
-                            dictionary.mark_known(w, is_english=False)
+                # KRİTİK: LLM'e "düzelt" diye gönderdiğimiz kelimelerden
+                # düzeltilmiş metinde HÂLÂ duran varsa (örn. "Jupiter",
+                # "massa" gibi özel isim/lehçe kelimesi — model bilerek
+                # dokunmamış demektir), bunu mini sözlüğe "İngilizce
+                # DEĞİL" diye işaretle. dictionary.py'de bunun için
+                # mark_known() zaten vardı ama hiçbir yerden
+                # çağrılmıyordu — bu yüzden aynı isim, bir hikâyede
+                # onlarca kez geçtiğinde HER paragrafta yeniden
+                # "sorunlu" sanılıp LLM'e yollanıyor, birkaç dakikada
+                # 4 Groq key'in de rate limitini tüketip run'ı
+                # kilitliyordu (bkz. pg2147/007 — Jupiter/massa/
+                # Charleston tekrar tekrar "düzeltiliyor"). mark_known
+                # zaten mini sözlüğe yazıyor, _flush_and_commit ile de
+                # (aşağıda periyodik olarak) diske/git'e işleniyor —
+                # yani hem bu dosyanın kalanında hem sonraki
+                # dosyalarda/kitaplarda bir daha flag'lenmeyecek.
+                fixed_lower = fixed.lower()
+                for w in truly_bad:
+                    if w.lower() in fixed_lower and w.lower() not in term_eng_words:
+                        dictionary.mark_known(w, is_english=False)
 
         # Periyodik flush + commit — rate limit beklerken kesinti olsa
         # bile bu ana kadar öğrenilen kelimeler git'e işlenmiş olur.

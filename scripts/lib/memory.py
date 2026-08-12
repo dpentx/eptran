@@ -191,7 +191,8 @@ def build_context(memory: dict) -> str:
     Boşsa boş string döner.
     """
     if not any([memory.get("characters"), memory.get("terms"),
-                memory.get("style_notes"), memory.get("summaries")]):
+                memory.get("style_notes"), memory.get("summaries"),
+                memory.get("series_notes")]):
         return ""
 
     parts = ["=== ÇEVİRİ HAFIZASI ==="]
@@ -203,6 +204,14 @@ def build_context(memory: dict) -> str:
     if memory.get("terms"):
         terms = ", ".join(f"{k} → {v}" for k, v in memory["terms"].items())
         parts.append(f"Terimler: {terms}")
+
+    if memory.get("series_notes"):
+        # Seri glossary'sinden gelen, admin'in elle yazdığı notlar (bkz.
+        # lib/series.py) — "X ile Y'yi karıştırma" türü uyarılar burada
+        # modele doğrudan gösteriliyor, sadece isim eşlemesi değil.
+        parts.append("Seri notları (dikkat et):")
+        for note in memory["series_notes"]:
+            parts.append(f"  - {note}")
 
     if memory.get("style_notes"):
         parts.append(f"Stil: {memory['style_notes']}")
