@@ -24,7 +24,9 @@
     "Lahan": "Lahan",
     "Maamei": "Maamei",
     "Lihaku": "Lihaku",
-    "Moon Prince": "Ay Prens"
+    "Moon Prince": "Ay Prens",
+    "Grand Commandant Kan": "Büyük Komutan Kan",
+    "The Strategist": "Stratejist"
   },
   "terms": {
     "apothecary": "eczacı",
@@ -39,13 +41,17 @@
     "Red Plum Village": "Kızıl Erik Köyü",
     "swertia tea": "swertia çayı",
     "tendinitis": "tendinit",
-    "wet compress": "soğuk kompres"
+    "wet compress": "soğuk kompres",
+    "intestinal blockage": "bağırsak tıkanıklığı",
+    "foreign blood": "yabancı kan",
+    "Gold General": "Altın General"
   },
   "style_notes": "Metin, karakterlerin fiziksel özelliklerini, geçmişlerini ve kişiliklerini özetleyen nesnel ve bilgilendirici bir biyografi tonundadır. Çeviride bu tarafsız, ansiklopedik anlatım korunmalı; unvanlar ve aile bağları net bir şekilde ifade edilmelidir.",
   "summaries": [
     "Character Profiles: Metin, zehir ve ilaçlara meraklı eczacı Maomao ile imparatorun küçük kardeşi Jinshi başta olmak üzere, saraydaki hizmetliler, aile üyeleri ve diğer önemli karakterlerin profillerini içermektedir. Bu karakterler, geçmişleri, fiziksel özellikleri ve birbirleriyle olan ilişkileriyle birlikte tanıtılmaktadır.",
     "Prologue: Annesinin öğretileriyle yetiştirilen bir çocuk, babasının otoritesi ve annesinin merhametini birleştirerek doğduğu batı başkentini güçlü ve zengin bir şehir haline getirmeyi hedefler. Bu kararlılık, hem kişisel gelişimini hem de kasabanın refahını ve güvenliğini sağlamak üzerine kuruludur.",
     "Chapter 1: Dried Fruit: Maomao ve Lihaku, çekirge istilasının ardından tıbbi ofiste zehirli bitkilerle çalışırken Chue, sınırlı ilaç ve sargı malzemelerini getirir. Maomao, mevcut gıda kıtlığı ve gelecek hasata kadar süren olası açlık krizine rağmen, Vekil Vali Gyoku-ou’nun gıda stoklarını göndererek krizi yönettiğini düşünerek durumu değerlendirir.",
-    "Chapter 2: The Strategist Strikes!: Gece yarısı Jinshi’nin odasına çağrılan Maomao, Ay Prensini muayene ettiğini Suiren’e rapor ederken, Jinshi’nin yüzlerce başarısız mektup taslağı arasında yoğun bir stratejik çaba içinde olduğunu fark eder. Bu sırada odada gizlice bulunan Baryou ve onun koruduğu ördek kısa bir an için dikkat çeker, ancak Suiren mektupları toplayarak Jinshi’nin imparatorluk ailesi ve bürokrasiyle kurmaya çalıştığı geniş iletişim ağının zorluğunu vurgular."
+    "Chapter 2: The Strategist Strikes!: Gece yarısı Jinshi’nin odasına çağrılan Maomao, Ay Prensini muayene ettiğini Suiren’e rapor ederken, Jinshi’nin yüzlerce başarısız mektup taslağı arasında yoğun bir stratejik çaba içinde olduğunu fark eder. Bu sırada odada gizlice bulunan Baryou ve onun koruduğu ördek kısa bir an için dikkat çeker, ancak Suiren mektupları toplayarak Jinshi’nin imparatorluk ailesi ve bürokrasiyle kurmaya çalıştığı geniş iletişim ağının zorluğunu vurgular.",
+    "Bölüm 5: Maomao, Gyoku-ou Bey’in torununa yaptığı başarılı ameliyatı Jinshi’ye rapor ederken hastalığın nedeninin saç ve meyve tıkanıklığı olduğunu açıklar. Konu, Gyoku-ou’nun yabancı kanlara karşı duyduğu düşmanlık ve İmparatoriçe Gyokuyou ile hanımları arasındaki gerilime doğru kayar."
   ]
 }
