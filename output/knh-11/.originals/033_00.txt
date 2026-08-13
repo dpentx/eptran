@@ -1,0 +1,43 @@
+Translator’s Notes – 
+The Apothecary Diaries
+ vol. 11
+
+Show Me the Shogi!
+
+Hello, and welcome to the translation team’s reflections for volume 11 of The Apothecary Diaries ! We’ve spent a lot of time in these essays talking about the common forms that translation challenges take. This time, let’s look at a localization issue of a kind that you don’t see every day.
+
+In chapter 3, the characters discover records of Shogi games, which are given in standard Shogi notation. 
+
+The scraps contained inscriptions like “S59” and “+B83.” Even Maomao, who had no interest in Shogi whatsoever, recognized this as notation showing how the pieces in a Shogi match had moved. This notation involved foreign numerals not used in Kaou Province, perhaps for ease of reading.
+
+Does this seriously mean anything? Maomao held back a groan. Instead she turned to Onsou and asked, “Do you have another Shogi board and some pieces we could borrow?” When you didn’t understand something, there was nothing better than to try it out.
+
+Onsou furnished the materials, and with a 
+click-click-click
+, Maomao began to line up the pieces.
+
+“Let’s see... S59 would be...” She tried to put the pieces where the notes indicated, but increasingly she suspected it was a futile endeavor. She was just about to place one of the pawns when she stopped.
+
+“Now, that’s funny,” Chue interjected, looking at the board. “It says that Pawn should move to row two.”
+
+“Huh! Even I know that’s an illegal move.” Even Lihaku was getting in on the act.
+
+Our challenge this volume came in the form of how records of Shogi matches are formatted in Japanese notation versus Western notation. When approaching this passage, we began from the premise that “like translates like”—in other words, to give English readers a similar experience to that of Japanese readers, it was fair game to transpose the Japanese Shogi notation into the accepted style in English. Seems simple enough, right?
+
+The problem was, standard Shogi notation differs substantially between Japanese-language and English-language texts, and this created a puzzle for the translation.
+
+At its core, Japanese Shogi notation only requires that two properties are listed for a move: a piece’s destination on the board (written as two characters: the first written in Arabic numerals and representing the column on the board, and a kanji numeral representing the row), and the piece being moved (written as a single kanji character representative of that piece). In the text above, what we’ve transcribed as S59 in English notation is 5九銀 ( go-kyuu-gin ) in Japanese notation—column 5, row 9 (九 being the kanji for 9), and the piece being 銀, what we call a Silver General in our translations.
+
+English notation requires the same aspects as Japanese notation, but with one extra feature: the move that the piece makes. English denotes each piece with a letter (S for Silver General), and the destination is written as two numerals, both Arabic (column 5 row 9 is written as 59). Western notation places a symbol denoting the type of move between the piece and its destination ( - meaning a simple move, etc.) P-24 would indicate that a Pawn (P) makes a simple move (-) to column 2, row 4 (24) on the board.
+
+So to sum up, both systems indicate the piece making the move, but Western notation places it at the start of the sequence while Japanese places it at the end; Western notation includes the type of movement (simple move, move with capture, etc.), which is not obligatory in Japanese; and both systems include the destination, but again, this comes at the beginning in Japanese and later in Western notation.
+
+That might seem straightforward as far as it goes, although there are some other quirks that might make the notation look even more exotic in the translation than it does in the original. For example, one of the other moves mentioned is 8三馬 (Arabic 8, kanji 3, “horse”). Uma , “horse,” is the Japanese shorthand for “ ryuma ,” “dragon horse,” which is the promoted form of the Bishop ( kakugyou ). While Japanese has separate kanji to indicate each of the promoted pieces, as here, Western notation uses the code for the original piece preceded by a plus sign. So the promoted Bishop is notated as “+B,” and the full notation for this move is “+B83.” (Incidentally, the line about the notation using “foreign numerals not used in Kaou Province” is a direct translation of what’s in the Japanese text. Since Maomao and her companions evidently write using what we would call Chinese characters, we figured that it was fair to describe the Arabic numerals as “foreign” whether there was one of them or two. Just another of the many small considerations that go into seemingly incidental lines.)
+
+The main localization issue appears with Chue’s line, which we rendered as “It says that Pawn should move to row two.” In Japanese, the line is quite brief: “ Nifu desu yo! ” The word “ nifu ” is the Shogi notation 二歩, or a kanji 2 followed by the character for “pawn” (literally, “foot soldier”). In other words, the initial Arabic numeral (the column on the board) is not given—not, most likely, because it isn’t there in the records they’re studying, but because it’s not what Chue is interested in. We know by now that the kanji number indicates the row where the piece ends up. A pawn on row 2 is striking to her because—as apparently even Lihaku knows—pawns start on the third row and can’t move backward.
+
+That’s all well and good, but because Western notation goes piece, destination file, destination row, we can’t indicate only the piece and row without leaving a gap. It would have to be written as something like “P...2,” which looks funny and might not even make sense—not to mention the question of how it would be pronounced aloud, since Chue is speaking the line. Hence, we needed a way to get only the relevant information into the line—and casting it as an explanatory statement seemed like the smoothest way to do that.
+
+It’s a relatively minor point in the grand scheme of things—all these considerations are for the benefit of pretty much just this one line, and it’s not a subject that comes up again elsewhere in the book. In translation, even the smallest things can have surprisingly big stories behind them.
+
+Until next time, have fun, read widely, and we’ll see you for volume 12!
