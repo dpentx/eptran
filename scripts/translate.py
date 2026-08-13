@@ -17,7 +17,7 @@ import ebooklib
 from ebooklib import epub
 from bs4 import BeautifulSoup
 
-from lib import boilerplate, groq_client as gc, unicode_cleaner
+from lib import boilerplate, groq_client as gc, unicode_cleaner, series as series_lib
 from lib.git_utils import (
     write_status, trigger_workflow, create_book_branch,
     list_active_book_branches, peek_remote_file, is_stale_running, git_push,
@@ -90,6 +90,14 @@ def extract_epub(epub_path: str) -> tuple:
     Döner: (chapters, images) — images = {dosya_adı: bytes}
     """
     book = epub.read_epub(epub_path)
+
+    # Kitabın başlık/yazar metadata'sı — seri otomatik tanıma için
+    # (bkz. lib/series.py: detect_from_metadata). DC metadata yoksa
+    # (bazı ham/eksik epub'larda olabilir) sessizce boş kalır.
+    def _dc(name):
+        vals = book.get_metadata("DC", name)
+        return vals[0][0] if vals else ""
+    book_meta = {"title": _dc("title"), "author": _dc("creator")}
     images = {}
     saved_names = {}  # epub-içi href -> atanan dosya adı
     img_counter = [0]
@@ -214,7 +222,7 @@ def extract_epub(epub_path: str) -> tuple:
             '', raw_title, flags=re.IGNORECASE
         ).strip() or raw_title
         chapters.append({"name": item.get_name(), "title": title, "text": text})
-    return chapters, images
+    return chapters, images, book_meta
 
 
 def extract_pdf(pdf_path: str, book_slug: str) -> tuple:
@@ -257,7 +265,7 @@ def extract_pdf(pdf_path: str, book_slug: str) -> tuple:
         chapters = [{"name": "chapter_001",
                  "title": os.path.splitext(os.path.basename(pdf_path))[0],
                  "text": text}] if len(text) >= 300 else []
-        return chapters, images
+        return chapters, images, {}
 
     starts.append((len(all_lines), None))
     chapters = []
@@ -267,7 +275,10 @@ def extract_pdf(pdf_path: str, book_slug: str) -> tuple:
                                         "\n".join(all_lines[sl+1:starts[idx+1][0]]).strip())))
         if len(body) >= 300:
             chapters.append({"name": f"chapter_{idx+1:03d}", "title": title, "text": body})
-    return chapters, images
+    # PDF'lerde güvenilir DC metadata genelde yok — seri otomatik
+    # tanıma için boş dönüyoruz, dosya adı üzerinden .series eşlik
+    # dosyası ya da elle status.json düzenlemesi hâlâ çalışır.
+    return chapters, images, {}
 
 
 # ── Çeviri ─────────────────────────────────────────────────────────────────────
@@ -459,8 +470,27 @@ def main():
         print(f"Seri tespit edildi: {series_slug}")
 
     print(f"Dosya: {input_file}")
-    chapters, images = (extract_epub(file_path) if file_ext == ".epub"
-                        else extract_pdf(file_path, book_slug))
+    if file_ext == ".epub":
+        chapters, images, book_meta = extract_epub(file_path)
+    else:
+        chapters, images = extract_pdf(file_path, book_slug)
+        book_meta = {}
+
+    # Eşlik dosyası verilmediyse, epub'ın kendi başlık/yazar
+    # metadata'sından (+ dosya adından) otomatik seri tanımayı dene.
+    # Tek ve NET bir eşleşme yoksa dokunmuyoruz (bkz. detect_from_metadata
+    # docstring'i) — knh-11'de series/kusuriya.json'ın hiç uygulanmamış
+    # olması, admin'in .series eşlik dosyası oluşturmayı unutmasından
+    # kaynaklanmıştı (GitHub web'den tek dosya sürüklerken bu pratik
+    # değil); bu otomatik tanıma ile normal şartlarda hiç gerekmiyor.
+    if not series_slug:
+        guess = series_lib.detect_from_metadata(
+            book_meta.get("title", ""), book_meta.get("author", ""), input_file
+        )
+        if guess:
+            series_slug = guess
+            print(f"Seri otomatik tespit edildi (epub metadata): {series_slug}")
+
     total = len(chapters)
     print(f"Toplam bölüm: {total}, {len(images)} görsel bulundu.")
     if total == 0:
