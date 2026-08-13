@@ -77,6 +77,58 @@ def load(slug: str) -> dict:
     }
 
 
+def _list_slugs() -> list:
+    if not os.path.isdir(SERIES_DIR):
+        return []
+    return [os.path.splitext(f)[0] for f in os.listdir(SERIES_DIR) if f.endswith(".json")]
+
+
+def detect_from_metadata(title: str, author: str = "", filename: str = "") -> str | None:
+    """
+    Epub'ın kendi DC metadata'sından (başlık/yazar) ya da dosya adından
+    hangi seriye ait olduğunu tahmin etmeye çalışır — admin'in her
+    kitapta ayrıca bir .series eşlik dosyası bırakmasına GEREK
+    KALMASIN diye (knh-11'de tam olarak bu unutulup series hiç
+    uygulanmamıştı; GitHub web'den tek dosya sürükleyip bırakan bir
+    admin için ikinci bir dosya oluşturmak pratik değil).
+
+    Her series/<slug>.json, "aliases" adında bir liste tutabilir —
+    epub'ın başlığında/yazarında/dosya adında GEÇEN (küçük/büyük harf
+    duyarsız alt-dize) herhangi bir alias, o seriyi işaret eder. "series"
+    (görünen ad) alanı da otomatik olarak alias sayılır.
+
+    GÜVENLİK İLKESİ: Sadece TEK VE NET bir eşleşme varsa slug döner.
+    Hiç eşleşme yoksa ya da BİRDEN FAZLA seri eşleşiyorsa None döner —
+    yanlış seriyi otomatik uygulamak (örn. iki serinin ortak bir isim
+    paylaşması), hiç uygulamamaktan daha kötü bir hata olurdu. Böyle
+    durumlarda admin status.json'a "series" alanını elle ekleyebilir.
+    """
+    haystack = f"{title} {author} {filename}".lower()
+    if not haystack.strip():
+        return None
+
+    matches = []
+    for slug in _list_slugs():
+        path = _path(slug)
+        try:
+            with open(path, encoding="utf-8") as f:
+                data = json.load(f)
+        except (json.JSONDecodeError, OSError):
+            continue
+        aliases = list(data.get("aliases", []) or [])
+        if data.get("series"):
+            aliases.append(data["series"])
+        for alias in aliases:
+            if alias and alias.lower() in haystack:
+                matches.append(slug)
+                break
+
+    matches = list(dict.fromkeys(matches))  # tekrarları at, sırayı koru
+    if len(matches) == 1:
+        return matches[0]
+    return None
+
+
 def apply_overlay(memory: dict, series_data: dict) -> dict:
     """
     Seri glossary'sini kitabın memory'sine uygula. Seri verisi HER ZAMAN
