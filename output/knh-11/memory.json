@@ -32,7 +32,10 @@
     "Onsou": "Onsou",
     "Vice Minister Lu": "Lu Vekil Bakanı",
     "quack doctor": "sahte doktor",
-    "tramp": "serseri"
+    "tramp": "serseri",
+    "Colleague No. 1": "Meslektaş No. 1",
+    "Colleague No. 2": "Meslektaş No. 2",
+    "Yao": "Yao"
   },
   "terms": {
     "apothecary": "eczacı",
@@ -77,14 +80,37 @@
     "capital region": "başkent bölgesi",
     "businessman": "iş insanı",
     "con man": "dolandırıcı",
-    "feast": "zengin yemek / şölen"
+    "feast": "zengin yemek / şölen",
+    "coal": "kömür",
+    "annex": "ek bina / yan bina",
+    "tribute": "vergi / haraç",
+    "grain stores": "tahıl depoları",
+    "emergency relief": "acil yardım",
+    "miscalculation": "yanlış hesaplama",
+    "abacus": "abaküs / çubuk hesap makinesi",
+    "court lady": "saray hanımı",
+    "uncouth": "kaba / kaba saba",
+    "slimy smile": "iğrenç / kaygan gülümseme",
+    "full-blooded": "saf kanlı",
+    "withered": "solmuş / kurumuş",
+    "ghost": "hayalet",
+    "busybody": "işine karışan / meraklı",
+    "catastrophe": "felaket",
+    "game piece": "oyun parçası",
+    "diary": "günlük",
+    "veracity": "gerçeklik / doğruluk",
+    "hint": "ipucu",
+    "investigate": "soruşturmak",
+    "professional duties": "mesai sorumlulukları",
+    "glowering": "kızgın bakış / öfkeli bakış",
+    "innocent victim": "masum kurban"
   },
   "style_notes": "Metin, karakterlerin fiziksel özelliklerini, geçmişlerini ve kişiliklerini özetleyen nesnel ve bilgilendirici bir biyografi tonundadır. Çeviride bu tarafsız, ansiklopedik anlatım korunmalı; unvanlar ve aile bağları net bir şekilde ifade edilmelidir.",
   "summaries": [
-    "Bölüm 5: Maomao, Gyoku-ou Bey’in torununa yaptığı başarılı ameliyatı Jinshi’ye rapor ederken hastalığın nedeninin saç ve meyve tıkanıklığı olduğunu açıklar. Konu, Gyoku-ou’nun yabancı kanlara karşı duyduğu düşmanlık ve İmparatoriçe Gyokuyou ile hanımları arasındaki gerilime doğru kayar.",
     "Chapter 3: Big Lin: Maomao, Chue tarafından Büyük Lin’in bulunduğu lüks bir odaya getirilir ve burada yaşlı stratejist ile Büyük Lin’in arasında devam eden şogi maçına tanıklık eder. Büyük Lin’in sert tepkisi ve odadaki zengin detaylar, Maomao’nun bu gizemli ve güçlü figürle ilk yüzleşmesini ve çevresindeki lüksü gözlemlemesini sağlar.",
     "Chapter 4: Small Lin: Maomao ve arkadaşları Jinshi haritasını çözerken, Ay Prens’in Vekil Bakan Lu ile meşgul olması ve Küçük Lin’in kaybolması endişesiyle karşılaşırlar. Bilgi edinmek için zorunlu olarak stratejist yaşlı aptalla Shogi oyunu aracılığıyla iletişim kuran Maomao, on yedi yıl önceki batı başkenti ve Yi ailesi konağı hakkında sorular yöneltir.",
     "Chapter 5: A Brother’s Return: Maomao ve ekibi, batı başkentini tehdit eden ikinci çayır cırcır böceği sürüsüne karşı binaları güçlendirerek ve depolardaki patatesleri koruyarak hazırlanır. Böcekler kısa sürede ayrılmasına rağmen, kaynak kıtlığı, yangınlar ve doktor eksikliği gibi sorunlar halkın stresini ve gerilimini artırmaya devam eder.",
-    "Bölüm 9: Maomao, kurtarılan Lahan’ın Kardeşi ile buluşur ve onun sırtında gizlediği buğday torbalarının nedenini merak eder. Lahan’ın Kardeşi, yaşadığı tehlikeli deneyimi ve buğdayı taşıma sebeplerini anlatmaya başlar."
+    "Bölüm 9: Maomao, kurtarılan Lahan’ın Kardeşi ile buluşur ve onun sırtında gizlediği buğday torbalarının nedenini merak eder. Lahan’ın Kardeşi, yaşadığı tehlikeli deneyimi ve buğdayı taşıma sebeplerini anlatmaya başlar.",
+    "Chapter 6: From the Capital: Batı başkentindeki böcek salgını nedeniyle Lahan, I-sei Eyaleti'ne acil yardım göndermek zorunda kalır ve artan iş yüküyle başa çıkmak için 1 Numaralı Meslektaşı ile bir pazarlık yapar. Lahan, meslektaşının romantik sorunlarını çözmesini teklif ederek, karşılığında kendisine ait olan evrak işlerini devralmasını sağlar."
   ]
 }
