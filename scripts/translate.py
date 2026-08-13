@@ -107,10 +107,49 @@ def extract_epub(epub_path: str) -> tuple:
         saved_names[href] = name
         return name
 
-    chapters = []
+    # NOT (Ağustos 2026): Eskiden burada book.get_items() ile TÜM
+    # ITEM_DOCUMENT'lar dolaşılıyordu — ama bu, epub'ın gerçek okuma
+    # sırasını (<spine>) DEĞİL, ebooklib'in dahili/manifest sırasını
+    # verir; çoğu epub'da bu iki sıra birbirinden tamamen farklıdır
+    # (özellikle bölümü ikiye bölen resim ekleri olan kitaplarda, örn.
+    # "chapterN.xhtml" + "chapterN_1.xhtml"). Gerçek üretimde
+    # (knh-10) bu, "Bölüm 20'den sonra Bölüm 1 gelmesi" ve "(2. Bölüm)
+    # önce (1. Bölüm) sonra" gibi ciddi bir bölüm karışıklığına yol
+    # açtı — kitabın TAMAMI çevrildi ama İçindekiler'de doğru sırada
+    # değildi. Artık book.spine'ı (idref, linear) kullanıp gerçek
+    # okuma sırasını izliyoruz; spine'da olmayan (ör. bozuk/eksik
+    # referanslı) itemlar için eskisi gibi get_items() sırasına
+    # (spine'dan SONRA) düşüyoruz, hiçbir içerik kaybolmasın diye.
+    spine_ids = [idref for idref, _ in book.spine]
+    ordered_items = []
+    seen_ids = set()
+    for idref in spine_ids:
+        item = book.get_item_with_id(idref)
+        if item is not None and item.get_type() == ebooklib.ITEM_DOCUMENT:
+            ordered_items.append(item)
+            seen_ids.add(id(item))
     for item in book.get_items():
+        if item.get_type() == ebooklib.ITEM_DOCUMENT and id(item) not in seen_ids:
+            ordered_items.append(item)
+
+    chapters = []
+    for item in ordered_items:
         if item.get_type() != ebooklib.ITEM_DOCUMENT:
             continue
+
+        # Bazı epub'larda gerçek (ebooklib'in ürettiği) nav.xhtml'e ek
+        # olarak, düz metin bir "İçindekiler" kopyası da AYRI bir sayfa
+        # olarak bulunuyor (örn. "toc.xhtml") — sadece bölüm başlıklarının
+        # alt alta dizildiği, 300+ karaktere kolayca ulaşan ama gerçek
+        # anlatı içermeyen bir liste. Bu yüzden hem eski hem yeni mantıkta
+        # "gerçek bölüm" sanılıp gereksiz yere çevriliyordu (knh-10'da bu
+        # yüzden TÜM bölüm numaraları bir kayıyordu — gerçek kaynak: bu
+        # sayfa chapters[] listesinin başında fazladan bir slot açıyordu).
+        # Dosya adı "toc"/"contents" içeriyorsa atla.
+        base_lower = os.path.basename(item.get_name()).lower()
+        if re.search(r"\btoc\b|contents", base_lower):
+            continue
+
         soup = BeautifulSoup(item.get_content(), "html.parser")
         for tag in soup(["script", "style", "nav"]):
             tag.decompose()

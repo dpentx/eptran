@@ -143,9 +143,36 @@ def build_epub(book_slug, chapters, original_epub_path, output_path):
 
         spine_items = get_spine_order(original_book)
         chapter_index = 0
+        # translate.py'nin extract_epub()'ı artık bölünmüş bölümleri
+        # (örn. "chapter4.xhtml" + resim eki + "chapter4_1.xhtml") TEK
+        # bir çeviri birimi olarak birleştiriyor (bkz. o fonksiyonun
+        # docstring'i). Burada da aynı süreklilik mantığı gerekiyor:
+        # yoksa "chapter4_1.xhtml" da >=300 karakter gerçek metin
+        # içerdiği için AYRI bir bölüm sanılır, chapters[] listesinden
+        # fazladan bir eleman tüketilir ve o noktadan sonraki HER
+        # bölüm bir kayar (knh-10'da tam olarak bu yaşandı).
+        last_chapter_base = None
 
         for item in spine_items:
             if item.get_type() != ebooklib.ITEM_DOCUMENT:
+                continue
+
+            item_name = item.get_name()
+            base_noext = os.path.splitext(os.path.basename(item_name))[0]
+
+            # translate.py'nin extract_epub()'ıyla AYNI kural: düz metin
+            # "İçindekiler" kopyası sayfalarını (örn. "toc.xhtml") hiç
+            # render etme — zaten çevrilmiyor, chapters[] listesinde
+            # karşılığı yok.
+            if re.search(r"\btoc\b|contents", base_noext.lower()):
+                continue
+
+            if last_chapter_base and re.match(
+                rf'^{re.escape(last_chapter_base)}_\d+$', base_noext
+            ):
+                # Önceki gerçek bölümün devamı — içeriği zaten o
+                # bölümün chapters[] girdisinde birleşik halde, ayrı
+                # bir sayfa olarak render etmiyoruz.
                 continue
 
             soup = BeautifulSoup(item.get_content(), "html.parser")
@@ -153,11 +180,19 @@ def build_epub(book_slug, chapters, original_epub_path, output_path):
                 tag.decompose()
             text = soup.get_text().strip()
             imgs = soup.find_all("img")
-            item_name = item.get_name()
             safe_name = item_name.replace('/', '_').replace('.', '_')
 
             base = os.path.basename(item_name).lower()
-            is_insert = base.startswith("insert") or base.startswith("frontmatter") or base.startswith("bonus")
+            # NOT: "bonus" öneki eskiden buradaydı ama knh-10'da yanlış
+            # çıktı — bonus.xhtml gerçek, çevrilmesi gereken içerik
+            # (Editörün Notları, 300+ karakter) olduğu halde dosya adı
+            # yüzünden "atlanabilir ek sayfa" sanılıyordu. Sonuç: hem
+            # chapters[] listesi bir kayıyordu (çevrilmiş içerik yanlış
+            # slota — signup.xhtml'in yerine — düşüyordu) hem de
+            # kaynağın çevrilmemiş hali gereksiz yere ayrıca ekleniyordu.
+            # Asıl güvenilir sinyal zaten aşağıdaki is_image_page (gerçek
+            # metin uzunluğu) — dosya adı tahminine güvenmiyoruz artık.
+            is_insert = base.startswith("insert") or base.startswith("frontmatter")
             is_image_page = bool(imgs) and len(text) < 300
 
             if is_insert or is_image_page:
@@ -173,6 +208,7 @@ def build_epub(book_slug, chapters, original_epub_path, output_path):
             elif len(text) >= 300 and chapter_index < len(chapters):
                 ch = chapters[chapter_index]
                 chapter_index += 1
+                last_chapter_base = base_noext
                 ch_id = f"chapter_{chapter_index:03d}"
                 xhtml = text_to_xhtml(ch["title"], ch["body"])
                 epub_ch = epub.EpubHtml(
