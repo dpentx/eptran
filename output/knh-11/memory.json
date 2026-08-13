@@ -30,7 +30,9 @@
     "Big Lin": "Büyük Lin",
     "Small Lin": "Küçük Lin",
     "Onsou": "Onsou",
-    "Vice Minister Lu": "Lu Vekil Bakanı"
+    "Vice Minister Lu": "Lu Vekil Bakanı",
+    "quack doctor": "sahte doktor",
+    "tramp": "serseri"
   },
   "terms": {
     "apothecary": "eczacı",
@@ -54,14 +56,22 @@
     "King": "Şah",
     "Board of Rites": "Ritler Bakanlığı",
     "Vice Minister": "Vekil Bakan",
-    "hero": "kahraman (tiyatro rolü)"
+    "hero": "kahraman (tiyatro rolü)",
+    "pesticide": "tarım ilacı",
+    "seed potatoes": "tohum patates",
+    "oil paper": "yağlı kağıt",
+    "insect plague": "böcek salgını",
+    "grasshopper swarm": "çekirge sürüsü",
+    "arson": "arson / yangın çıkarma",
+    "hoarding": "stok yapma",
+    "bureaucrat": "memur / bürokrat"
   },
   "style_notes": "Metin, karakterlerin fiziksel özelliklerini, geçmişlerini ve kişiliklerini özetleyen nesnel ve bilgilendirici bir biyografi tonundadır. Çeviride bu tarafsız, ansiklopedik anlatım korunmalı; unvanlar ve aile bağları net bir şekilde ifade edilmelidir.",
   "summaries": [
-    "Chapter 1: Dried Fruit: Maomao ve Lihaku, çekirge istilasının ardından tıbbi ofiste zehirli bitkilerle çalışırken Chue, sınırlı ilaç ve sargı malzemelerini getirir. Maomao, mevcut gıda kıtlığı ve gelecek hasata kadar süren olası açlık krizine rağmen, Vekil Vali Gyoku-ou’nun gıda stoklarını göndererek krizi yönettiğini düşünerek durumu değerlendirir.",
     "Chapter 2: The Strategist Strikes!: Gece yarısı Jinshi’nin odasına çağrılan Maomao, Ay Prensini muayene ettiğini Suiren’e rapor ederken, Jinshi’nin yüzlerce başarısız mektup taslağı arasında yoğun bir stratejik çaba içinde olduğunu fark eder. Bu sırada odada gizlice bulunan Baryou ve onun koruduğu ördek kısa bir an için dikkat çeker, ancak Suiren mektupları toplayarak Jinshi’nin imparatorluk ailesi ve bürokrasiyle kurmaya çalıştığı geniş iletişim ağının zorluğunu vurgular.",
     "Bölüm 5: Maomao, Gyoku-ou Bey’in torununa yaptığı başarılı ameliyatı Jinshi’ye rapor ederken hastalığın nedeninin saç ve meyve tıkanıklığı olduğunu açıklar. Konu, Gyoku-ou’nun yabancı kanlara karşı duyduğu düşmanlık ve İmparatoriçe Gyokuyou ile hanımları arasındaki gerilime doğru kayar.",
     "Chapter 3: Big Lin: Maomao, Chue tarafından Büyük Lin’in bulunduğu lüks bir odaya getirilir ve burada yaşlı stratejist ile Büyük Lin’in arasında devam eden şogi maçına tanıklık eder. Büyük Lin’in sert tepkisi ve odadaki zengin detaylar, Maomao’nun bu gizemli ve güçlü figürle ilk yüzleşmesini ve çevresindeki lüksü gözlemlemesini sağlar.",
-    "Chapter 4: Small Lin: Maomao ve arkadaşları Jinshi haritasını çözerken, Ay Prens’in Vekil Bakan Lu ile meşgul olması ve Küçük Lin’in kaybolması endişesiyle karşılaşırlar. Bilgi edinmek için zorunlu olarak stratejist yaşlı aptalla Shogi oyunu aracılığıyla iletişim kuran Maomao, on yedi yıl önceki batı başkenti ve Yi ailesi konağı hakkında sorular yöneltir."
+    "Chapter 4: Small Lin: Maomao ve arkadaşları Jinshi haritasını çözerken, Ay Prens’in Vekil Bakan Lu ile meşgul olması ve Küçük Lin’in kaybolması endişesiyle karşılaşırlar. Bilgi edinmek için zorunlu olarak stratejist yaşlı aptalla Shogi oyunu aracılığıyla iletişim kuran Maomao, on yedi yıl önceki batı başkenti ve Yi ailesi konağı hakkında sorular yöneltir.",
+    "Chapter 5: A Brother’s Return: Maomao ve ekibi, batı başkentini tehdit eden ikinci çayır cırcır böceği sürüsüne karşı binaları güçlendirerek ve depolardaki patatesleri koruyarak hazırlanır. Böcekler kısa sürede ayrılmasına rağmen, kaynak kıtlığı, yangınlar ve doktor eksikliği gibi sorunlar halkın stresini ve gerilimini artırmaya devam eder."
   ]
 }
