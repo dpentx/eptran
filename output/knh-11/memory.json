@@ -64,14 +64,27 @@
     "grasshopper swarm": "çekirge sürüsü",
     "arson": "arson / yangın çıkarma",
     "hoarding": "stok yapma",
-    "bureaucrat": "memur / bürokrat"
+    "bureaucrat": "memur / bürokrat",
+    "I-sei Province": "I-sei Eyaleti",
+    "wheat": "buğday",
+    "harvest": "hasat",
+    "seeds": "tohumlar",
+    "yield": "verim",
+    "soldier": "asker",
+    "farmer": "çiftçi",
+    "village headman": "köy başkanı",
+    "connections": "bağlantılar / ilişkiler",
+    "capital region": "başkent bölgesi",
+    "businessman": "iş insanı",
+    "con man": "dolandırıcı",
+    "feast": "zengin yemek / şölen"
   },
   "style_notes": "Metin, karakterlerin fiziksel özelliklerini, geçmişlerini ve kişiliklerini özetleyen nesnel ve bilgilendirici bir biyografi tonundadır. Çeviride bu tarafsız, ansiklopedik anlatım korunmalı; unvanlar ve aile bağları net bir şekilde ifade edilmelidir.",
   "summaries": [
-    "Chapter 2: The Strategist Strikes!: Gece yarısı Jinshi’nin odasına çağrılan Maomao, Ay Prensini muayene ettiğini Suiren’e rapor ederken, Jinshi’nin yüzlerce başarısız mektup taslağı arasında yoğun bir stratejik çaba içinde olduğunu fark eder. Bu sırada odada gizlice bulunan Baryou ve onun koruduğu ördek kısa bir an için dikkat çeker, ancak Suiren mektupları toplayarak Jinshi’nin imparatorluk ailesi ve bürokrasiyle kurmaya çalıştığı geniş iletişim ağının zorluğunu vurgular.",
     "Bölüm 5: Maomao, Gyoku-ou Bey’in torununa yaptığı başarılı ameliyatı Jinshi’ye rapor ederken hastalığın nedeninin saç ve meyve tıkanıklığı olduğunu açıklar. Konu, Gyoku-ou’nun yabancı kanlara karşı duyduğu düşmanlık ve İmparatoriçe Gyokuyou ile hanımları arasındaki gerilime doğru kayar.",
     "Chapter 3: Big Lin: Maomao, Chue tarafından Büyük Lin’in bulunduğu lüks bir odaya getirilir ve burada yaşlı stratejist ile Büyük Lin’in arasında devam eden şogi maçına tanıklık eder. Büyük Lin’in sert tepkisi ve odadaki zengin detaylar, Maomao’nun bu gizemli ve güçlü figürle ilk yüzleşmesini ve çevresindeki lüksü gözlemlemesini sağlar.",
     "Chapter 4: Small Lin: Maomao ve arkadaşları Jinshi haritasını çözerken, Ay Prens’in Vekil Bakan Lu ile meşgul olması ve Küçük Lin’in kaybolması endişesiyle karşılaşırlar. Bilgi edinmek için zorunlu olarak stratejist yaşlı aptalla Shogi oyunu aracılığıyla iletişim kuran Maomao, on yedi yıl önceki batı başkenti ve Yi ailesi konağı hakkında sorular yöneltir.",
-    "Chapter 5: A Brother’s Return: Maomao ve ekibi, batı başkentini tehdit eden ikinci çayır cırcır böceği sürüsüne karşı binaları güçlendirerek ve depolardaki patatesleri koruyarak hazırlanır. Böcekler kısa sürede ayrılmasına rağmen, kaynak kıtlığı, yangınlar ve doktor eksikliği gibi sorunlar halkın stresini ve gerilimini artırmaya devam eder."
+    "Chapter 5: A Brother’s Return: Maomao ve ekibi, batı başkentini tehdit eden ikinci çayır cırcır böceği sürüsüne karşı binaları güçlendirerek ve depolardaki patatesleri koruyarak hazırlanır. Böcekler kısa sürede ayrılmasına rağmen, kaynak kıtlığı, yangınlar ve doktor eksikliği gibi sorunlar halkın stresini ve gerilimini artırmaya devam eder.",
+    "Bölüm 9: Maomao, kurtarılan Lahan’ın Kardeşi ile buluşur ve onun sırtında gizlediği buğday torbalarının nedenini merak eder. Lahan’ın Kardeşi, yaşadığı tehlikeli deneyimi ve buğdayı taşıma sebeplerini anlatmaya başlar."
   ]
 }
