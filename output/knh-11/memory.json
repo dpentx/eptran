@@ -16,7 +16,9 @@
     "Taomei": "Taomei",
     "Gyoku-en": "Gyoku-en",
     "Shaoh": "Shaoh",
-    "Yi": "Yi"
+    "Yi": "Yi",
+    "Gaoshun": "Gaoshun",
+    "Onsou": "Onsou"
   },
   "terms": {
     "western capital": "batı başkenti",
@@ -46,14 +48,24 @@
     "sea route": "deniz yolu",
     "rear palace": "arka saray",
     "I-sei Province": "I-sei Eyaleti",
-    "You clan": "You klanı"
+    "You clan": "You klanı",
+    "central region": "merkez bölge",
+    "His Majesty": "Padişah",
+    "Hokuaren": "Hokuaren",
+    "red deer": "kılgı geyiği",
+    "energy tonic": "enerji toniği",
+    "tigers": "kaplumbağalar",
+    "tiger bone wine": "kaplumbağa kemiği şarabı",
+    "physician": "hekim",
+    "apothecaries": "eczacılar",
+    "Shogi": "Shogi"
   },
   "summaries": [
-    "Chapter 6: From the Capital: Batı başkentindeki böcek salgını nedeniyle Lahan, I-sei Eyaleti'ne acil yardım göndermek zorunda kalır ve artan iş yüküyle başa çıkmak için 1 Numaralı Meslektaşı ile bir pazarlık yapar. Lahan, meslektaşının romantik sorunlarını çözmesini teklif ederek, karşılığında kendisine ait olan evrak işlerini devralmasını sağlar.",
     "Chapter 7: The Letters That Arrived: Maomao, I-sei Eyaleti'ndeki gıda kıtlığı ve beslenme bozuklukları sırasında Lahan'ın Kardeşi'nin depoda kırmızı yonca filizleri yetiştirdiğini keşfeder. Maomao, Lahan'ın Kardeşi ile ördek Jofu arasındaki ilginç etkileşimi gözlemleyerek, bu yeni bitki yetiştiriciliğinin hayatta kalma çabalarına katkı sağlayacağını anlar.",
     "Chapter 8: The Letters That Didn’t: Rikuson, çekirge salgını sonrası hasar telafisi ve kaynak dağıtımıyla ilgili ağır bürokratik yükü tek başına taşırken, eski ortağı Lahan’dan gelen mektupların kesilmesinin nedenini merak etmektedir.",
     "Bölüm 13: Rikuson, Lahan'ın merakını ve Maomao ile olan mesafesini düşünürken, Gyoku-ou'nun askerlerle birlikte olduğunu fark eder ve durumu analiz etmek için bir çiftlik köyünden gelen dilekçeyi inceler. Dilekçedeki sadakat ifadeleri ve asker alımı talebi, Gyoku-ou'nun halkı bastırmak için güç topladığına dair şüphelerini körükler, ancak Rikuson hala onun iyi bir vali olacağına dair umut beslemektedir.",
-    "Chapter 9: The Meeting: Jinshi, batı başkentindeki böcek salgını ve açlık krizi nedeniyle halkın öfkesini dindirmek amacıyla Gyoku-ou’nun gözetimi altında hapis hayatı sürmektedir. İtibarını korumak ve yardım çalışmalarını koordine etmek için idari ofise giderken, Chue ve Gaoshun gibi seçkin ekibiyle birlikte hareket etmektedir."
+    "Chapter 9: The Meeting: Jinshi, batı başkentindeki böcek salgını ve açlık krizi nedeniyle halkın öfkesini dindirmek amacıyla Gyoku-ou’nun gözetimi altında hapis hayatı sürmektedir. İtibarını korumak ve yardım çalışmalarını koordine etmek için idari ofise giderken, Chue ve Gaoshun gibi seçkin ekibiyle birlikte hareket etmektedir.",
+    "Bölüm 15: Jinshi, Gyoku-ou’nun Shaoh’a saldırma planını Hokuaren’in müdahale tehdidi ve alaycı imalarla engellemeye çalışırken, Lakan da savaşın tedarik maliyetlerini düşünerek toplantıdan ani bir şekilde ayrılır. Bu durum, batılı müttefiklerin şaşkınlığı ve Jinshi’nin diplomatik manevralarıyla gerilimin tırmandığı bir siyasi ortamı yansıtır."
   ],
   "style_notes": ""
 }
