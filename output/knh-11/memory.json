@@ -24,13 +24,20 @@
     "abacus": "abaküs",
     "communications": "iletişim",
     "official": "memur",
-    "Red Plum Village": "Kızıl Erik Köyü"
+    "Red Plum Village": "Kızıl Erik Köyü",
+    "conscription": "askere alma",
+    "petition": "dilekçe",
+    "governor": "vali",
+    "strategist": "stratejist",
+    "Imperial younger brother": "İmparator'un küçük kardeşi",
+    "royal capital": "imparatorluk başkenti"
   },
   "summaries": [
-    "Chapter 5: A Brother’s Return: Maomao ve ekibi, batı başkentini tehdit eden ikinci çayır cırcır böceği sürüsüne karşı binaları güçlendirerek ve depolardaki patatesleri koruyarak hazırlanır. Böcekler kısa sürede ayrılmasına rağmen, kaynak kıtlığı, yangınlar ve doktor eksikliği gibi sorunlar halkın stresini ve gerilimini artırmaya devam eder.",
     "Bölüm 9: Maomao, kurtarılan Lahan’ın Kardeşi ile buluşur ve onun sırtında gizlediği buğday torbalarının nedenini merak eder. Lahan’ın Kardeşi, yaşadığı tehlikeli deneyimi ve buğdayı taşıma sebeplerini anlatmaya başlar.",
     "Chapter 6: From the Capital: Batı başkentindeki böcek salgını nedeniyle Lahan, I-sei Eyaleti'ne acil yardım göndermek zorunda kalır ve artan iş yüküyle başa çıkmak için 1 Numaralı Meslektaşı ile bir pazarlık yapar. Lahan, meslektaşının romantik sorunlarını çözmesini teklif ederek, karşılığında kendisine ait olan evrak işlerini devralmasını sağlar.",
     "Chapter 7: The Letters That Arrived: Maomao, I-sei Eyaleti'ndeki gıda kıtlığı ve beslenme bozuklukları sırasında Lahan'ın Kardeşi'nin depoda kırmızı yonca filizleri yetiştirdiğini keşfeder. Maomao, Lahan'ın Kardeşi ile ördek Jofu arasındaki ilginç etkileşimi gözlemleyerek, bu yeni bitki yetiştiriciliğinin hayatta kalma çabalarına katkı sağlayacağını anlar.",
-    "Chapter 8: The Letters That Didn’t: Rikuson, çekirge salgını sonrası hasar telafisi ve kaynak dağıtımıyla ilgili ağır bürokratik yükü tek başına taşırken, eski ortağı Lahan’dan gelen mektupların kesilmesinin nedenini merak etmektedir."
-  ]
+    "Chapter 8: The Letters That Didn’t: Rikuson, çekirge salgını sonrası hasar telafisi ve kaynak dağıtımıyla ilgili ağır bürokratik yükü tek başına taşırken, eski ortağı Lahan’dan gelen mektupların kesilmesinin nedenini merak etmektedir.",
+    "Bölüm 13: Rikuson, Lahan'ın merakını ve Maomao ile olan mesafesini düşünürken, Gyoku-ou'nun askerlerle birlikte olduğunu fark eder ve durumu analiz etmek için bir çiftlik köyünden gelen dilekçeyi inceler. Dilekçedeki sadakat ifadeleri ve asker alımı talebi, Gyoku-ou'nun halkı bastırmak için güç topladığına dair şüphelerini körükler, ancak Rikuson hala onun iyi bir vali olacağına dair umut beslemektedir."
+  ],
+  "style_notes": ""
 }
