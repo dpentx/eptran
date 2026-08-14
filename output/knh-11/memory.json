@@ -18,7 +18,11 @@
     "Shaoh": "Shaoh",
     "Yi": "Yi",
     "Gaoshun": "Gaoshun",
-    "Onsou": "Onsou"
+    "Onsou": "Onsou",
+    "quack doctor": "sahte doktor",
+    "Yao": "Yao",
+    "En'en": "En'en",
+    "Luomen": "Luomen"
   },
   "terms": {
     "western capital": "batı başkenti",
@@ -58,14 +62,26 @@
     "tiger bone wine": "kaplumbağa kemiği şarabı",
     "physician": "hekim",
     "apothecaries": "eczacılar",
-    "Shogi": "Shogi"
+    "Shogi": "Shogi",
+    "medical office": "tıp ofisi",
+    "mortar": "havan",
+    "herbs": "otlar",
+    "mansion": "konak",
+    "insect plague": "böcek salgını",
+    "grasshopper slaying journey": "çekirge avlama yolculuğu",
+    "oil paper": "yağlı kağıt",
+    "Duck therapy": "Ördek terapisi",
+    "wrathful deity": "öfkeli ilah",
+    "civil service exam": "sınav",
+    "Verdigris House": "Verdigris Evi",
+    "coal": "kömür"
   },
   "summaries": [
-    "Chapter 7: The Letters That Arrived: Maomao, I-sei Eyaleti'ndeki gıda kıtlığı ve beslenme bozuklukları sırasında Lahan'ın Kardeşi'nin depoda kırmızı yonca filizleri yetiştirdiğini keşfeder. Maomao, Lahan'ın Kardeşi ile ördek Jofu arasındaki ilginç etkileşimi gözlemleyerek, bu yeni bitki yetiştiriciliğinin hayatta kalma çabalarına katkı sağlayacağını anlar.",
     "Chapter 8: The Letters That Didn’t: Rikuson, çekirge salgını sonrası hasar telafisi ve kaynak dağıtımıyla ilgili ağır bürokratik yükü tek başına taşırken, eski ortağı Lahan’dan gelen mektupların kesilmesinin nedenini merak etmektedir.",
     "Bölüm 13: Rikuson, Lahan'ın merakını ve Maomao ile olan mesafesini düşünürken, Gyoku-ou'nun askerlerle birlikte olduğunu fark eder ve durumu analiz etmek için bir çiftlik köyünden gelen dilekçeyi inceler. Dilekçedeki sadakat ifadeleri ve asker alımı talebi, Gyoku-ou'nun halkı bastırmak için güç topladığına dair şüphelerini körükler, ancak Rikuson hala onun iyi bir vali olacağına dair umut beslemektedir.",
     "Chapter 9: The Meeting: Jinshi, batı başkentindeki böcek salgını ve açlık krizi nedeniyle halkın öfkesini dindirmek amacıyla Gyoku-ou’nun gözetimi altında hapis hayatı sürmektedir. İtibarını korumak ve yardım çalışmalarını koordine etmek için idari ofise giderken, Chue ve Gaoshun gibi seçkin ekibiyle birlikte hareket etmektedir.",
-    "Bölüm 15: Jinshi, Gyoku-ou’nun Shaoh’a saldırma planını Hokuaren’in müdahale tehdidi ve alaycı imalarla engellemeye çalışırken, Lakan da savaşın tedarik maliyetlerini düşünerek toplantıdan ani bir şekilde ayrılır. Bu durum, batılı müttefiklerin şaşkınlığı ve Jinshi’nin diplomatik manevralarıyla gerilimin tırmandığı bir siyasi ortamı yansıtır."
+    "Bölüm 15: Jinshi, Gyoku-ou’nun Shaoh’a saldırma planını Hokuaren’in müdahale tehdidi ve alaycı imalarla engellemeye çalışırken, Lakan da savaşın tedarik maliyetlerini düşünerek toplantıdan ani bir şekilde ayrılır. Bu durum, batılı müttefiklerin şaşkınlığı ve Jinshi’nin diplomatik manevralarıyla gerilimin tırmandığı bir siyasi ortamı yansıtır.",
+    "Chapter 10: The Golden Ratio: Lahan’ın Kardeşi, çekirge salgınından sonra toprak ve iklim verilerini içeren haritasını inceleyerek sürdürülebilir tarım planları yaparken, Maomao onun emeğinin tanınması gerektiğini düşünür. İkili, buğday ekiminin sınırlamaları ve tohum sıkıntısı gibi tarımsal zorlukları tartışırken, sahte doktor da bu planlamaya dahil olur."
   ],
   "style_notes": ""
 }
