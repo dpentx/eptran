@@ -33,7 +33,8 @@
     "Lihaku": "Lihaku",
     "Dr. Liu": "Dr. Liu",
     "Gyokuen": "Gyokuen",
-    "Kada": "Kada"
+    "Kada": "Kada",
+    "Vice Minister Lu": "Başbakan Yardımcısı Lu"
   },
   "terms": {
     "western capital": "batı başkenti",
@@ -155,14 +156,21 @@
     "munificence": "cömertlik",
     "free clinic": "ücretsiz klinik",
     "inner circle": "iç çevre",
-    "respectful distance": "saygı mesafesi"
+    "respectful distance": "saygı mesafesi",
+    "hoe": "çapa",
+    "marauding peasants": "soygun yapan köylüler",
+    "ritual": "ritüel",
+    "foreign people": "yabancı halk",
+    "powder keg": "barut varili",
+    "hostage": "rehin",
+    "acting governor": "geçici vali"
   },
   "summaries": [
-    "Chapter 12: Mother versus Son: Jinshi’nin kahvaltı sırasında Basen’in gürültülü girişi ve Taomei’nin ona sert bir şekilde tepki vermesiyle geçen sahne, Gaoshun ailesinin gergin ve şiddet içeren dinamiklerini yansıtır. Taomei’nin oğluna tokat atması ve Basen’in buna karşı çıkması, aile içindeki otorite çatışmasını ve Jinshi’nin bu ortama duyduğu rahatsızlığı ortaya koyar.",
     "Bölüm 19: Ay Prens Jinshi, Gyoku-ou’nun başarıları çalması ve halkın alayları nedeniyle öfkelenen hizmetkârı Basen ile Taomei’nin arasındaki gerilimi sakinleştirir. Jinshi, durumu kontrol altına alarak ek koruma ve tıbbi yardım gibi pratik çözümler önererek krizi yönetmeye çalışır.",
     "Chapter 13: A Visit to the Ill: Maomao, Dr. Li ve diğer hekimlerin çalıştığı geçici kliniği ziyaret ederken, Jinshi’nin yerine hasta ve yaralıları kontrol etmek için gönderilen Basen ile karşılaşır. Maomao, Basen’in gösterişli duruşuna ve yanlış telaffuz edilen adını düzeltme çabasına rağmen, durumu kısa ve resmi bir şekilde halletmeye çalışır.",
     "Chapter 14: Tianyu: Dr. You ve Dr. Li'ye hediye seçimi tartışması sırasında Tianyu'nun getirdiği paketin düşmesiyle içerisinden kesik bir insan kolu çıkar. Tianyu, bu uzvun bir kazada kopan ve sahibinin artık ihtiyacı olmadığını söylediği için kendisinin aldığını açıklar.",
-    "Chapter 15: Violence: Maomao, Batı Başkentindeki yetersiz kaynaklar ve yoğun yorgunlukla mücadele ederken dikkatsizliği sonucu küçük bir yangına sebep olur. 75. günde ise gece geç saatlerde dışarıdan gelen bağırlar ve avludaki alevler onu uyandırır."
+    "Chapter 15: Violence: Maomao, Batı Başkentindeki yetersiz kaynaklar ve yoğun yorgunlukla mücadele ederken dikkatsizliği sonucu küçük bir yangına sebep olur. 75. günde ise gece geç saatlerde dışarıdan gelen bağırlar ve avludaki alevler onu uyandırır.",
+    "Bölüm 23: Ay Prens (Jinshi), böcek sürüsü krizindeki başarısını halka açıkça tanıyan Gyoku-ou’nun desteğiyle batı başkentinin halkının önünde ilk kez görünür oldu. Jinshi, sürünün gelişini önceden bildiği sorusuna, kehanet ritüellerinde ortaya çıkan felaket işaretlerine atıfta bulunarak yanıt verdi."
   ],
   "style_notes": ""
 }
