@@ -22,7 +22,9 @@
     "quack doctor": "sahte doktor",
     "Yao": "Yao",
     "En'en": "En'en",
-    "Luomen": "Luomen"
+    "Luomen": "Luomen",
+    "Windreaders": "Rüzgar Okuyucular",
+    "former shrine maiden": "eski tapınak kızkarısı"
   },
   "terms": {
     "western capital": "batı başkenti",
@@ -74,14 +76,21 @@
     "wrathful deity": "öfkeli ilah",
     "civil service exam": "sınav",
     "Verdigris House": "Verdigris Evi",
-    "coal": "kömür"
+    "coal": "kömür",
+    "coal code": "kömür kodu",
+    "sea lanes": "deniz yolları",
+    "Windreader tribe": "Rüzgar Okuyucu kabilesi",
+    "Yi clan": "Yi klanı",
+    "neutral country": "tarafsız ülke",
+    "slaves": "köleler",
+    "mining": "madencilik"
   },
   "summaries": [
-    "Chapter 8: The Letters That Didn’t: Rikuson, çekirge salgını sonrası hasar telafisi ve kaynak dağıtımıyla ilgili ağır bürokratik yükü tek başına taşırken, eski ortağı Lahan’dan gelen mektupların kesilmesinin nedenini merak etmektedir.",
     "Bölüm 13: Rikuson, Lahan'ın merakını ve Maomao ile olan mesafesini düşünürken, Gyoku-ou'nun askerlerle birlikte olduğunu fark eder ve durumu analiz etmek için bir çiftlik köyünden gelen dilekçeyi inceler. Dilekçedeki sadakat ifadeleri ve asker alımı talebi, Gyoku-ou'nun halkı bastırmak için güç topladığına dair şüphelerini körükler, ancak Rikuson hala onun iyi bir vali olacağına dair umut beslemektedir.",
     "Chapter 9: The Meeting: Jinshi, batı başkentindeki böcek salgını ve açlık krizi nedeniyle halkın öfkesini dindirmek amacıyla Gyoku-ou’nun gözetimi altında hapis hayatı sürmektedir. İtibarını korumak ve yardım çalışmalarını koordine etmek için idari ofise giderken, Chue ve Gaoshun gibi seçkin ekibiyle birlikte hareket etmektedir.",
     "Bölüm 15: Jinshi, Gyoku-ou’nun Shaoh’a saldırma planını Hokuaren’in müdahale tehdidi ve alaycı imalarla engellemeye çalışırken, Lakan da savaşın tedarik maliyetlerini düşünerek toplantıdan ani bir şekilde ayrılır. Bu durum, batılı müttefiklerin şaşkınlığı ve Jinshi’nin diplomatik manevralarıyla gerilimin tırmandığı bir siyasi ortamı yansıtır.",
-    "Chapter 10: The Golden Ratio: Lahan’ın Kardeşi, çekirge salgınından sonra toprak ve iklim verilerini içeren haritasını inceleyerek sürdürülebilir tarım planları yaparken, Maomao onun emeğinin tanınması gerektiğini düşünür. İkili, buğday ekiminin sınırlamaları ve tohum sıkıntısı gibi tarımsal zorlukları tartışırken, sahte doktor da bu planlamaya dahil olur."
+    "Chapter 10: The Golden Ratio: Lahan’ın Kardeşi, çekirge salgınından sonra toprak ve iklim verilerini içeren haritasını inceleyerek sürdürülebilir tarım planları yaparken, Maomao onun emeğinin tanınması gerektiğini düşünür. İkili, buğday ekiminin sınırlamaları ve tohum sıkıntısı gibi tarımsal zorlukları tartışırken, sahte doktor da bu planlamaya dahil olur.",
+    "Chapter 11: The Coal Mine: Maomao ve Chue, Lahan Bey’in Ay Prens’e ulaşamayan mektuplarının bilinçli olarak engellendiğini ve bu nedenle şifreli mesajlar gönderdiğini keşfederler. Ayrıca, I-sei Eyaleti’ndeki kömür madenciliğinin on yedi yıl önceki bastırma olayı sırasında kayıtların yok edilmesiyle birlikte gizlendiği ve bu faaliyetin bastırılanlar tarafından sürdürüldüğü şüphesi ortaya çıkar."
   ],
   "style_notes": ""
 }
