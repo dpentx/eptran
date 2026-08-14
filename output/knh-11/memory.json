@@ -24,7 +24,8 @@
     "En'en": "En'en",
     "Luomen": "Luomen",
     "Windreaders": "Rüzgar Okuyucular",
-    "former shrine maiden": "eski tapınak kızkarısı"
+    "former shrine maiden": "eski tapınak kızkarısı",
+    "Baryou": "Baryou"
   },
   "terms": {
     "western capital": "batı başkenti",
@@ -83,14 +84,17 @@
     "Yi clan": "Yi klanı",
     "neutral country": "tarafsız ülke",
     "slaves": "köleler",
-    "mining": "madencilik"
+    "mining": "madencilik",
+    "royal bodyguard": "krallık koruması",
+    "eunuch": "cübbeli",
+    "belt": "kemer"
   },
   "summaries": [
-    "Chapter 9: The Meeting: Jinshi, batı başkentindeki böcek salgını ve açlık krizi nedeniyle halkın öfkesini dindirmek amacıyla Gyoku-ou’nun gözetimi altında hapis hayatı sürmektedir. İtibarını korumak ve yardım çalışmalarını koordine etmek için idari ofise giderken, Chue ve Gaoshun gibi seçkin ekibiyle birlikte hareket etmektedir.",
     "Bölüm 15: Jinshi, Gyoku-ou’nun Shaoh’a saldırma planını Hokuaren’in müdahale tehdidi ve alaycı imalarla engellemeye çalışırken, Lakan da savaşın tedarik maliyetlerini düşünerek toplantıdan ani bir şekilde ayrılır. Bu durum, batılı müttefiklerin şaşkınlığı ve Jinshi’nin diplomatik manevralarıyla gerilimin tırmandığı bir siyasi ortamı yansıtır.",
     "Chapter 10: The Golden Ratio: Lahan’ın Kardeşi, çekirge salgınından sonra toprak ve iklim verilerini içeren haritasını inceleyerek sürdürülebilir tarım planları yaparken, Maomao onun emeğinin tanınması gerektiğini düşünür. İkili, buğday ekiminin sınırlamaları ve tohum sıkıntısı gibi tarımsal zorlukları tartışırken, sahte doktor da bu planlamaya dahil olur.",
     "Chapter 11: The Coal Mine: Maomao ve Chue, Lahan Bey’in Ay Prens’e ulaşamayan mektuplarının bilinçli olarak engellendiğini ve bu nedenle şifreli mesajlar gönderdiğini keşfederler. Ayrıca, I-sei Eyaleti’ndeki kömür madenciliğinin on yedi yıl önceki bastırma olayı sırasında kayıtların yok edilmesiyle birlikte gizlendiği ve bu faaliyetin bastırılanlar tarafından sürdürüldüğü şüphesi ortaya çıkar.",
-    "Chapter 12: Mother versus Son: Jinshi’nin kahvaltı sırasında Basen’in gürültülü girişi ve Taomei’nin ona sert bir şekilde tepki vermesiyle geçen sahne, Gaoshun ailesinin gergin ve şiddet içeren dinamiklerini yansıtır. Taomei’nin oğluna tokat atması ve Basen’in buna karşı çıkması, aile içindeki otorite çatışmasını ve Jinshi’nin bu ortama duyduğu rahatsızlığı ortaya koyar."
+    "Chapter 12: Mother versus Son: Jinshi’nin kahvaltı sırasında Basen’in gürültülü girişi ve Taomei’nin ona sert bir şekilde tepki vermesiyle geçen sahne, Gaoshun ailesinin gergin ve şiddet içeren dinamiklerini yansıtır. Taomei’nin oğluna tokat atması ve Basen’in buna karşı çıkması, aile içindeki otorite çatışmasını ve Jinshi’nin bu ortama duyduğu rahatsızlığı ortaya koyar.",
+    "Bölüm 19: Ay Prens Jinshi, Gyoku-ou’nun başarıları çalması ve halkın alayları nedeniyle öfkelenen hizmetkârı Basen ile Taomei’nin arasındaki gerilimi sakinleştirir. Jinshi, durumu kontrol altına alarak ek koruma ve tıbbi yardım gibi pratik çözümler önererek krizi yönetmeye çalışır."
   ],
   "style_notes": ""
 }
