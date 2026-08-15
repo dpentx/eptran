@@ -171,14 +171,40 @@
     "sailor": "denizci",
     "invasion force": "istilacı güç",
     "fried dough twists": "kızarmış hamur bükümleri",
-    "rigged game": "hileli oyun"
+    "rigged game": "hileli oyun",
+    "middle rite": "orta düzey tören",
+    "great rites": "büyük törenler",
+    "lesser rites": "küçük törenler",
+    "officiant": "tören görevlisi",
+    "ascetic meals": "zühdî yemekler",
+    "lady-in-waiting": "hazinedar",
+    "festival": "bayram",
+    "food stalls": "yemek tezgahları",
+    "stomach medication": "mide ilacı",
+    "substitute ingredients": "yerine geçen malzemeler",
+    "plaza": "meydan",
+    "shrine": "tapınak",
+    "big-mutt-like soldier": "büyük köpek benzeri asker",
+    "support base": "destek tabanı",
+    "politicians": "siyasetçiler",
+    "steamed potato": "buharda pişmiş patates",
+    "annex": "yan bina",
+    "Potato Palace": "Patates Sarayı",
+    "food handlers": "gıda işçileri",
+    "employment": "istihdam",
+    "roasted": "ızgarada pişmiş",
+    "sigil": "mühür",
+    "crescent moon": "hilal",
+    "self-flagellation": "kendini cezalandırma",
+    "snacks": "atıştırmalıklar",
+    "musical instruments": "müzik aletleri"
   },
   "summaries": [
-    "Chapter 13: A Visit to the Ill: Maomao, Dr. Li ve diğer hekimlerin çalıştığı geçici kliniği ziyaret ederken, Jinshi’nin yerine hasta ve yaralıları kontrol etmek için gönderilen Basen ile karşılaşır. Maomao, Basen’in gösterişli duruşuna ve yanlış telaffuz edilen adını düzeltme çabasına rağmen, durumu kısa ve resmi bir şekilde halletmeye çalışır.",
     "Chapter 14: Tianyu: Dr. You ve Dr. Li'ye hediye seçimi tartışması sırasında Tianyu'nun getirdiği paketin düşmesiyle içerisinden kesik bir insan kolu çıkar. Tianyu, bu uzvun bir kazada kopan ve sahibinin artık ihtiyacı olmadığını söylediği için kendisinin aldığını açıklar.",
     "Chapter 15: Violence: Maomao, Batı Başkentindeki yetersiz kaynaklar ve yoğun yorgunlukla mücadele ederken dikkatsizliği sonucu küçük bir yangına sebep olur. 75. günde ise gece geç saatlerde dışarıdan gelen bağırlar ve avludaki alevler onu uyandırır.",
     "Bölüm 23: Ay Prens (Jinshi), böcek sürüsü krizindeki başarısını halka açıkça tanıyan Gyoku-ou’nun desteğiyle batı başkentinin halkının önünde ilk kez görünür oldu. Jinshi, sürünün gelişini önceden bildiği sorusuna, kehanet ritüellerinde ortaya çıkan felaket işaretlerine atıfta bulunarak yanıt verdi.",
-    "Chapter 16: Gyokuen’s Children: Jinshi, İmparatoriçe Gyokuyou ve Sir Gyoku-ou ile ilgili gelişmelerden dolayı öfkeyle başını direğe vururken, Maomao ve diğer hizmetkârlar onu sakinleştirmeye çalışır. Gaoshun ve Baryou, Gyokuen’in politik duruşunu ve aile içi iletişimin belirsizliğini tartışarak konuya açıklık getirmeye çalışır."
+    "Chapter 16: Gyokuen’s Children: Jinshi, İmparatoriçe Gyokuyou ve Sir Gyoku-ou ile ilgili gelişmelerden dolayı öfkeyle başını direğe vururken, Maomao ve diğer hizmetkârlar onu sakinleştirmeye çalışır. Gaoshun ve Baryou, Gyokuen’in politik duruşunu ve aile içi iletişimin belirsizliğini tartışarak konuya açıklık getirmeye çalışır.",
+    "Chapter 17: In the Shadow of the Ritual: Maomao ve Lihaku, Jinshi’nin gerçekleştireceği orta düzeyli ritüel öncesi hazırlıkları yaparken, batı başkentindeki meydanın savunulabilirliği ve potansiyel kalabalık risklerini tartışmaktadır. Lihaku, Gyoku-ou’nun halka hitabı ve ailesinin nüfuzunun şiddeti azalttığına inanırken, Maomao kalabalığın Jinshi’nin gizli yanığını keşifleyebileceği endişesini taşımaktadır."
   ],
   "style_notes": ""
 }
