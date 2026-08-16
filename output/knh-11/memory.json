@@ -36,7 +36,11 @@
     "Kada": "Kada",
     "Vice Minister Lu": "Başbakan Yardımcısı Lu",
     "Gyoku-ou's Little Brother": "Gyoku-ou'nun Küçük Kardeşi",
-    "Sir Dahai": "Sayın Dahai"
+    "Sir Dahai": "Sayın Dahai",
+    "Gyoku-ou's aide": "Gyoku-ou'nun yardımcısı",
+    "lady-in-waiting": "hazinedar",
+    "Miss Chue": "Bayan Chue",
+    "Miss Maomao": "Bayan Maomao"
   },
   "terms": {
     "western capital": "batı başkenti",
@@ -199,14 +203,26 @@
     "snacks": "atıştırmalıklar",
     "musical instruments": "müzik aletleri",
     "jade beads": "yeşim boncukları",
-    "anticlimax": "anti-klimaks"
+    "anticlimax": "anti-klimaks",
+    "administrative building": "idari bina",
+    "Yi clan mansion": "Yi klanı konağı",
+    "traitor": "ihanetkar",
+    "handkerchief": "peçete",
+    "spy": "casus",
+    "western lands": "batı toprakları",
+    "sense of inferiority": "eksiklik hissi",
+    "superiors": "üstler",
+    "disguise": "kılık değiştirme",
+    "guilty conscience": "suçluluk duygusu",
+    "bloodied clothes": "kanlı kıyafetler",
+    "wind": "rüzgar"
   },
   "summaries": [
-    "Chapter 17: In the Shadow of the Ritual: Maomao ve Lihaku, Jinshi’nin gerçekleştireceği orta düzeyli ritüel öncesi hazırlıkları yaparken, batı başkentindeki meydanın savunulabilirliği ve potansiyel kalabalık risklerini tartışmaktadır. Lihaku, Gyoku-ou’nun halka hitabı ve ailesinin nüfuzunun şiddeti azalttığına inanırken, Maomao kalabalığın Jinshi’nin gizli yanığını keşifleyebileceği endişesini taşımaktadır.",
     "Chapter 18: The Siblings’ Conference: Rikuson, Gyoku-ou tarafından Batı Başkenti ve I-sei Eyaleti’nin geleceği hakkında görüşmek üzere düzenlenen kardeşler toplantısına katılır. Gyoku-ou’nun önerisi, limanlardan sorumlu üçüncü oğul Dahai tarafından reddedilir ve aile içindeki gerilim ile cinsiyet ayrımcılığına dayalı oturma düzeni dikkat çeker.",
     "Chapter 19: The Weeping Wind (Part One): Gyoku-ou, annesinin anısını yaşattığı bir tüyü incelerken, süt kardeşi Takubatsu ile görüşmek zorunda kalır. Takubatsu, Gyoku-ou’nun emziren annesinin oğlu olarak geçmişte kölelikten kurtarılmış ve aileyle yakın bağlar kurmuş bir karakterdir.",
     "Bölüm 28: Gyoku-ou, yıllardır onu kontrol eden güçlerden kurtulup özgür kaldığını hissederken, karşısında nefret ve acıma karışımı bir ifadeyle duran bilinmeyen bir adam tarafından hayatı sonlandırılır. Kahramanlık hayalleri ve batı başkentini refahlandırma arzusuyla yaşamış olan Gyoku-ou, kim olduğunu bile sormadan anlamsız bir şekilde ölür.",
-    "Chapter 20: The Weeping Wind (Part Two): Genç Rikuson, annesinin onu gelecekte batı bölgelerini koruyacak bir \"rüzgar\" olarak yetiştirme hayaliyle büyürken, Shogi salonunda Büyük Lin adlı yaşlı bir ustaya rastlar. Burada, kendisine küçümseyici bir dille hitap eden ve tilki gibi parlayan gözleri olan gizemli, yırtık kıyafetli bir adamla karşılaşır."
+    "Chapter 20: The Weeping Wind (Part Two): Genç Rikuson, annesinin onu gelecekte batı bölgelerini koruyacak bir \"rüzgar\" olarak yetiştirme hayaliyle büyürken, Shogi salonunda Büyük Lin adlı yaşlı bir ustaya rastlar. Burada, kendisine küçümseyici bir dille hitap eden ve tilki gibi parlayan gözleri olan gizemli, yırtık kıyafetli bir adamla karşılaşır.",
+    "Chapter 21: The Strategist Takes Command: Rikuson, Gyoku-ou’nun öldürüldüğü odada kanlar içinde bulunur ve durumu yönetmek için isyancıyı öldürdüğünü iddia eder. Şüpheli bakışlar arasında ortaya çıkan Lakan, olayın akışını belirleyecek kritik bir rol üstlenir."
   ],
   "style_notes": ""
 }
