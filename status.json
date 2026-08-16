@@ -10,9 +10,9 @@
   "started_at": "2026-08-13T12:07:51.910880+00:00",
   "queue_mode": true,
   "series": "kusuriya",
-  "updated_at": "2026-08-16T18:14:43.441238+00:00",
+  "updated_at": "2026-08-16T18:15:47.746712+00:00",
   "review_status": "running",
   "review_total": 35,
-  "review_completed": 19,
-  "review_current": "019_knh-11.txt"
+  "review_completed": 20,
+  "review_current": "020_knh-11.txt"
 }
