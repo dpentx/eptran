@@ -4399,7 +4399,7 @@
   "project": true,
   "projemi": false,
   "projeyi": false,
-  "prolog": true,
+  "prolog": false,
   "proof": true,
   "proper": true,
   "prosa": false,
