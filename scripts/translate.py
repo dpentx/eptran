@@ -214,7 +214,19 @@ def extract_epub(epub_path: str) -> tuple:
                 raw_title = first_line
                 text = text.split("\n", 1)[1].strip() if "\n" in text else text
             else:
-                raw_title = f"Bölüm {len(chapters) + 1}"
+                # NOT (Ağustos 2026): Eskiden burada f"Bölüm {len(chapters)+1}"
+                # kullanılıyordu — yani listedeki HAM SIRA numarası. Bu,
+                # kaynakta gerçek başlığı olmayan (numarasız kısa ara
+                # sahne/interlude) bölümler için YANILTICI: hikâyenin
+                # kendi numaralandırmasıyla hiç alakası yok. Gerçek
+                # üretimde (knh-11) "Bölüm 15: Şiddet" hemen ardından
+                # "Bölüm 23" geliyordu, sonra "Bölüm 16" ile devam
+                # ediyordu — okuyucuya sanki 16-22 arası bölümler
+                # silinmiş/kayıp gibi görünüyordu, oysa hiçbir şey eksik
+                # değildi, sadece bu ara sahnenin numarası anlamsızdı.
+                # Artık numaralı bir bölümmüş GİBİ görünen hiçbir şey
+                # üretmiyoruz — nötr bir sahne-arası işareti kullanıyoruz.
+                raw_title = "* * *"
 
         # Başlığı ayıkla — "The Project Gutenberg eBook of X" → "X"
         title = re.sub(
