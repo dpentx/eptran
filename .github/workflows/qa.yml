@@ -1,0 +1,102 @@
+name: QA Audit (Gemini)
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Denetlenecek kitap dalı (örn. book/knh-11)"
+        required: true
+        type: string
+      slug:
+        description: "Kitap slug'ı (örn. knh-11)"
+        required: true
+        type: string
+      max_chapters:
+        description: "Test için ilk N bölümle sınırla (boş = tümü)"
+        required: false
+        type: string
+      run_series_suggest:
+        description: "Kitap bitince seri glossary'sine öneri de üretilsin mi?"
+        required: false
+        type: boolean
+        default: true
+
+# NOT: Bu, ana çeviri hattından (translate.yml/queue-worker.yml/review.yml)
+# BİLEREK ayrı ve sadece elle (workflow_dispatch) tetiklenen bir araç —
+# Gemini'nin ücretsiz katmanı Groq'a göre çok daha kısıtlı (RPM/RPD), bu
+# yüzden otomatik/periyodik bir güvenlik ağına bağlanmıyor. Ne QA raporu
+# ne de seri önerisi hiçbir çeviri dosyasını OTOMATİK değiştirmez — bkz.
+# qa_audit.py ve series_suggest.py docstring'leri.
+jobs:
+  qa-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+
+    steps:
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          ref: ${{ inputs.branch }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Configure git
+        run: |
+          git config user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
+          git config user.email "${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
+
+      # series/<slug>.json genelde main'de yaşıyor (bkz. lib/series.py) —
+      # bu dal onu içermiyorsa, öneri script'inin "zaten var olan" bağlamı
+      # görebilmesi için main'den bir kopyasını çekmeyi dene. Yoksa (henüz
+      # bu seri için glossary yazılmadıysa) sorun değil, script boş
+      # sözlükle devam eder.
+      - name: Pull existing series glossary from main (best-effort)
+        if: inputs.run_series_suggest == true
+        run: |
+          mkdir -p series
+          git show origin/main:series/${{ inputs.slug }}.json > /tmp/existing_series.json 2>/dev/null \
+            && cp /tmp/existing_series.json series/${{ inputs.slug }}.json \
+            && echo "Mevcut glossary main'den çekildi." \
+            || echo "Bu seri için main'de henüz bir glossary yok, boş başlanıyor."
+
+      - name: Run QA audit
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+        run: |
+          if [ -n "${{ inputs.max_chapters }}" ]; then
+            python scripts/qa_audit.py "${{ inputs.slug }}" --max-chapters "${{ inputs.max_chapters }}"
+          else
+            python scripts/qa_audit.py "${{ inputs.slug }}"
+          fi
+
+      - name: Run series suggestion
+        if: inputs.run_series_suggest == true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+        run: python scripts/series_suggest.py "${{ inputs.slug }}"
+
+      - name: Commit results
+        run: |
+          git add output/${{ inputs.slug }}/qa_report.md series/*.suggested.json 2>/dev/null || true
+          git diff --cached --quiet && echo "Değişiklik yok." && exit 0
+          git commit -m "qa: ${{ inputs.slug }} denetim raporu + seri önerisi"
+          git push origin HEAD:${{ inputs.branch }}
