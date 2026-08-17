@@ -50,7 +50,19 @@ def get_client():
             "variables > Actions altına eklenmeli."
         )
     client = genai.Client(api_key=key)
-    model_name = os.environ.get("GEMINI_MODEL", _DEFAULT_MODEL)
+    # NOT (Ağustos 2026, gerçek üretim hatası): `os.environ.get("GEMINI_MODEL",
+    # _DEFAULT_MODEL)` YANLIŞ — bu sadece ortam değişkeni HİÇ YOKSA
+    # varsayılana düşer. Ama workflow'daki `GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}`
+    # satırı, repo'da o adda bir "variable" tanımlı DEĞİLSE değişkeni boş
+    # STRING olarak enjekte ediyor (yokmuş gibi silmiyor) — yani
+    # `os.environ["GEMINI_MODEL"]` var ama `""`. `.get(key, default)` bunu
+    # "boş model adı" olarak Gemini'ye gönderiyordu, o da her çağrıda
+    # "model is required" hatası veriyordu — 35 bölümlük bir kitapta 3
+    # deneme × artan bekleme ile ~17 dakika boşuna dönüp hiçbir gerçek
+    # denetim yapmadan "0 şüpheli nokta" ile bitiyordu (yanlışlıkla "temiz"
+    # görünüyordu, oysa hiç denetlenmemişti). `or` kullanmak hem "yok" hem
+    # "boş" durumunu doğru şekilde varsayılana düşürüyor.
+    model_name = os.environ.get("GEMINI_MODEL") or _DEFAULT_MODEL
     return client, model_name
 
 
