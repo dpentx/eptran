@@ -80,6 +80,14 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          # Python'un stdout'u CI ortamında (gerçek terminal olmadığı için)
+          # varsayılan olarak buffer'lanıyor — print() çağrıları anında değil,
+          # buffer dolunca ya da script bitince log'a düşüyor. Gemini'nin
+          # ücretsiz katmanı yavaş/rate-limit'li olduğu için her bölüm
+          # arasında uzun sessizlikler oluyor ve bu "job takılmış gibi"
+          # görünmesine yol açıyordu — script aslında çalışıyordu, sadece
+          # log gecikmeliydi.
+          PYTHONUNBUFFERED: "1"
         run: |
           if [ -n "${{ inputs.max_chapters }}" ]; then
             python scripts/qa_audit.py "${{ inputs.slug }}" --max-chapters "${{ inputs.max_chapters }}"
@@ -92,6 +100,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          PYTHONUNBUFFERED: "1"
         run: python scripts/series_suggest.py "${{ inputs.slug }}"
 
       - name: Commit results
