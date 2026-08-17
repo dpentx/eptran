@@ -98,6 +98,7 @@ def audit_book(slug: str, max_chapters: int | None = None):
     model = gem.get_client()
     report_lines = [f"# QA Raporu — {slug}", ""]
     total_issues = 0
+    failed_chapters = 0
 
     n = len(chapters) if max_chapters is None else min(max_chapters, len(chapters))
     for i in range(1, n + 1):
@@ -114,6 +115,7 @@ def audit_book(slug: str, max_chapters: int | None = None):
         )
         raw = gem.call(model, _AUDIT_SYSTEM, user_msg, temperature=0.1)
         if raw is None:
+            failed_chapters += 1
             report_lines.append(f"## Bölüm {i}: {src_chapter['title']}")
             report_lines.append("*(Gemini'den yanıt alınamadı, bu bölüm denetlenemedi.)*\n")
             continue
@@ -122,6 +124,7 @@ def audit_book(slug: str, max_chapters: int | None = None):
             data = gem.extract_json(raw)
             issues = data.get("issues", [])
         except Exception as e:
+            failed_chapters += 1
             report_lines.append(f"## Bölüm {i}: {src_chapter['title']}")
             report_lines.append(f"*(Yanıt ayrıştırılamadı: {e})*\n")
             continue
@@ -137,8 +140,27 @@ def audit_book(slug: str, max_chapters: int | None = None):
             report_lines.append("")
             total_issues += len(issues)
 
-    report_lines.insert(2, f"**Toplam {total_issues} şüpheli nokta bulundu "
-                           f"({n} bölüm tarandı).**\n")
+    # KRİTİK: eğer bölümlerin BÜYÜK ÇOĞUNLUĞU (ör. Gemini API/config
+    # hatası yüzünden) hiç denetlenemediyse, "0 şüpheli nokta" diye
+    # sessizce "temiz" görünen bir rapor YAZMIYORUZ — bu, hiç
+    # denetlenmemiş bir kitabı "denetlendi, sorun yok" sanmaktan çok
+    # daha tehlikeli bir sessiz-başarısızlık. Gerçek üretimde (knh-11,
+    # 17 Ağustos) GEMINI_MODEL ortam değişkeni boş geldiği için TÜM
+    # 35 bölüm başarısız oldu ama rapor "0 şüpheli nokta" yazdı — bu
+    # aslında "denetlenemedi" demekti, "temiz" değil.
+    checked = n - failed_chapters
+    if failed_chapters > 0 and checked < n * 0.5:
+        header = (f"**UYARI: {failed_chapters}/{n} bölüm denetlenemedi "
+                   f"(Gemini hatası) — bu rapor GÜVENİLİR DEĞİL, kitap "
+                   f"aslında taranmamış olabilir. Yukarıdaki 'Gemini "
+                   f"hatası' loglarını kontrol edin (API key, model adı, "
+                   f"rate limit vb.) ve tekrar çalıştırın.**\n")
+    else:
+        header = (f"**Toplam {total_issues} şüpheli nokta bulundu "
+                   f"({checked}/{n} bölüm başarıyla tarandı"
+                   + (f", {failed_chapters} bölüm denetlenemedi" if failed_chapters else "")
+                   + ").**\n")
+    report_lines.insert(2, header)
     report_lines.insert(3, "*Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru "
                            "kabul etmeyin — her maddeyi kaynakla birlikte "
                            "kendiniz kontrol edin. Bazı işaretlemeler yanlış "
@@ -147,7 +169,8 @@ def audit_book(slug: str, max_chapters: int | None = None):
     report_path = os.path.join(output_dir, "qa_report.md")
     with open(report_path, "w", encoding="utf-8") as f:
         f.write("\n".join(report_lines))
-    print(f"\nRapor yazıldı: {report_path} ({total_issues} şüpheli nokta)")
+    print(f"\nRapor yazıldı: {report_path} ({total_issues} şüpheli nokta, "
+          f"{failed_chapters}/{n} bölüm denetlenemedi)")
 
 
 if __name__ == "__main__":
