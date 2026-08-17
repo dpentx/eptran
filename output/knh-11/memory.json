@@ -19,7 +19,7 @@
     "Yi": "Yi",
     "Gaoshun": "Gaoshun",
     "Onsou": "Onsou",
-    "quack doctor": "sahte doktor",
+    "quack doctor": "şarlatan doktor",
     "Yao": "Yao",
     "En'en": "En'en",
     "Luomen": "Luomen",
@@ -34,7 +34,7 @@
     "Dr. Liu": "Dr. Liu",
     "Gyokuen": "Gyokuen",
     "Kada": "Kada",
-    "Vice Minister Lu": "Başbakan Yardımcısı Lu",
+    "Vice Minister Lu": "Bakan Yardımcısı Lu",
     "Gyoku-ou's Little Brother": "Gyoku-ou'nun Küçük Kardeşi",
     "Sir Dahai": "Sayın Dahai",
     "Gyoku-ou's aide": "Gyoku-ou'nun yardımcısı",
@@ -226,7 +226,10 @@
     "Japanese notation": "Japon notasyonu",
     "illegal move": "yasak hamle",
     "promoted form": "terfi etmiş form",
-    "foot soldier": "piyon"
+    "foot soldier": "piyon",
+    "pleasure district": "zevk mahallesi",
+    "wet nurse": "süt annesi",
+    "quack doctor": "şarlatan doktor"
   },
   "summaries": [
     "Chapter 20: The Weeping Wind (Part Two): Genç Rikuson, annesinin onu gelecekte batı bölgelerini koruyacak bir \"rüzgar\" olarak yetiştirme hayaliyle büyürken, Shogi salonunda Büyük Lin adlı yaşlı bir ustaya rastlar. Burada, kendisine küçümseyici bir dille hitap eden ve tilki gibi parlayan gözleri olan gizemli, yırtık kıyafetli bir adamla karşılaşır.",
