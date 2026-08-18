@@ -29,6 +29,25 @@ _DEFAULT_MODEL = "gemini-3.5-flash"
 MAX_EMPTY_RETRIES = 3
 
 
+class DailyQuotaExceeded(Exception):
+    """
+    Gemini'nin ücretsiz katmanının GÜNLÜK istek kotası (RPD — requests
+    per day) tükendiğinde fırlatılır. Bu, dakikalık rate limit (RPM)
+    gibi "birkaç saniye bekle, geç" türü bir şey DEĞİL — kota gece
+    (Google'ın saat dilimine göre) sıfırlanana kadar YENİDEN
+    DOLMUYOR. Bu yüzden normal retry/backoff döngüsüne SOKMUYORUZ;
+    tespit eder etmez hemen (deneme yapmadan) fırlatıyoruz.
+
+    Gerçek üretimde (knh-11, 17 Ağustos) bu ayrım yokken script, kota
+    zaten tükenmiş olduğu halde kalan ~13 bölümün her biri için 3'er
+    kez (20-40-60 saniye aralıklarla) boşuna denedi — bir sonuç
+    değişmeden onlarca dakika harcadı, sonunda admin sabrı taşıp
+    çalıştırmayı iptal etti ve o ana kadarki hiçbir ilerleme
+    kaydedilmemişti (checkpoint yoktu — bkz. qa_audit.py).
+    """
+    pass
+
+
 def get_client():
     """
     GEMINI_API_KEY ortam değişkeninden tek bir key okur (Groq'un
@@ -42,6 +61,19 @@ def get_client():
     paketin API'si FARKLI (eskisi genai.GenerativeModel(...), yenisi
     genai.Client(...).models.generate_content(...)) — ileride bir
     yerlerde eski paketle örnek kod görürsen KARIŞTIRMA.
+
+    NOT (Ağustos 2026, günlük kota): Gerçek üretimde `gemini-3.5-flash`
+    için ücretsiz katman günde SADECE 20 istekle sınırlı çıktı
+    (`GenerateRequestsPerDayPerProjectPerModel-FreeTier: 20`) — 35
+    bölümlük bir kitap TEK ÇALIŞTIRMADA bitmiyor. Bazı kaynaklara göre
+    "Flash-Lite" modelleri çok daha yüksek günlük kotaya sahip
+    (1000-1500/gün), ama bu hesaba/projeye göre değişebiliyor — kesin
+    rakam için https://ai.dev/rate-limit kontrol edilmeli. Model adını
+    GEMINI_MODEL repository variable'ından değiştirebilirsin (örn.
+    "gemini-3.1-flash-lite" deneyebilirsin), ama asıl güvence bu
+    DEĞİL — qa_audit.py'nin checkpoint mekanizması: kota hangi model
+    için ne olursa olsun, script kesildiği yerden devam edebiliyor
+    artık.
     """
     key = os.environ.get("GEMINI_API_KEY")
     if not key:
@@ -75,6 +107,10 @@ def call(client_info, system_msg: str, user_msg: str, temperature: float = 0.2) 
     MAX_EMPTY_RETRIES kez dener, sonra None döner — çağıran taraf None
     kontrolü yapıp mevcut veriyi korumalı (Groq client'la aynı
     sözleşme).
+
+    GÜNLÜK kota hatasında (bkz. DailyQuotaExceeded) HİÇ retry
+    yapmadan hemen fırlatır — bu tür bir hata dakikalar içinde
+    kendiliğinden düzelmez, denemek zaman kaybı.
     """
     client, model_name = client_info
     config = types.GenerateContentConfig(
@@ -94,8 +130,13 @@ def call(client_info, system_msg: str, user_msg: str, temperature: float = 0.2) 
                 raise ValueError("boş yanıt")
             return text
         except Exception as e:
-            msg = str(e).lower()
-            is_rate_limit = "429" in msg or "quota" in msg or "rate" in msg
+            msg = str(e)
+            # "PerDay" kotası (RPD) — RPM'in aksine bekleyip tekrar
+            # denemekle çözülmez, gün değişene kadar tükenmiş kalır.
+            if "PerDay" in msg or "RequestsPerDay" in msg:
+                raise DailyQuotaExceeded(msg) from e
+            msg_low = msg.lower()
+            is_rate_limit = "429" in msg_low or "quota" in msg_low or "rate" in msg_low
             empty_retries += 1
             if empty_retries > MAX_EMPTY_RETRIES:
                 print(f"  Gemini hatası ({MAX_EMPTY_RETRIES} denemeden sonra): {e}")
