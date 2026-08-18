@@ -16,15 +16,35 @@ Kullanım:
 
 Çıktı:
     output/<slug>/qa_report.md — okunabilir, chapter/paragraf referanslı
-    rapor. Var olan bir rapor varsa üzerine yazılır (her taramada temiz
-    başlar).
+    rapor.
+    output/<slug>/.qa_progress.json — checkpoint dosyası (bkz. aşağıdaki
+    NOT). Denetim tamamlanınca otomatik silinir.
+
+NOT (Ağustos 2026, CHECKPOINT — gerçek üretim krizi): İlk sürümde bu
+script tüm kitabı TEK SEFERDE denetleyip raporu SADECE EN SONDA
+yazıyordu. Gerçek üretimde (knh-11) Gemini'nin ücretsiz katmanı
+`gemini-3.5-flash` için günde SADECE 20 istekle sınırlı çıktı — 35
+bölümlük kitabın 22. bölümünde kota tükendi, script kalan 13 bölüm
+için anlamsızca tekrar tekrar denemeye devam etti (her biri 20-40-60
+saniye beklemeyle), admin sabrı taşıp çalıştırmayı iptal etti — ve o
+ana kadar başarıyla denetlenen 21 bölümün SONUCU DA KAYBOLDU, çünkü
+hiçbir ara kayıt yoktu.
+
+Artık her bölümden SONRA (başarılı ya da başarısız) ilerleme
+output/<slug>/.qa_progress.json'a yazılıyor. Script tekrar
+çalıştırıldığında (aynı gün kota dolmuşsa ertesi gün, ya da farklı bir
+key/model ile) KALDIĞI YERDEN devam ediyor, baştan başlamıyor. Ayrıca
+GÜNLÜK kota hatası (DailyQuotaExceeded) tespit edilirse script kalan
+bölümler için boşuna denemez, hemen durur ve mevcut ilerlemeyi
+kaydedip net bir mesajla çıkar.
 
 Neden Gemini (Qwen değil): Aynı modelin kendi çıktısını kendi
 denetlemesi, aynı kör noktaları paylaşma riski taşır. Farklı bir model
-ailesi, farklı hatalara farklı şekilde "takılır" — iki modelin ортak
+ailesi, farklı hatalara farklı şekilde "takılır" — iki modelin ortak
 kaçırdığı şeyler daha az olur.
 """
 import argparse
+import json
 import os
 import sys
 
@@ -82,6 +102,83 @@ def _find_original(slug: str) -> str | None:
     return None
 
 
+def _progress_path(output_dir: str) -> str:
+    return os.path.join(output_dir, ".qa_progress.json")
+
+
+def _load_progress(output_dir: str) -> dict:
+    path = _progress_path(output_dir)
+    if not os.path.exists(path):
+        return {"completed": {}, "failed": []}
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _save_progress(output_dir: str, progress: dict) -> None:
+    with open(_progress_path(output_dir), "w", encoding="utf-8") as f:
+        json.dump(progress, f, ensure_ascii=False, indent=2)
+
+
+def _write_report(output_dir: str, slug: str, chapters: list, progress: dict,
+                   n: int, note: str = "") -> int:
+    """Checkpoint'teki mevcut sonuçlardan raporu (yeniden) üretir."""
+    report_lines = [f"# QA Raporu — {slug}", ""]
+    total_issues = 0
+    completed = progress["completed"]
+    failed = set(progress["failed"])
+
+    for i in range(1, n + 1):
+        key = str(i)
+        if key in completed:
+            issues = completed[key]
+            if issues:
+                title = chapters[i - 1]["title"] if i <= len(chapters) else f"#{i}"
+                report_lines.append(f"## Bölüm {i}: {title} — {len(issues)} sorun")
+                for issue in issues:
+                    report_lines.append(f"- **{issue.get('type', '?')}**: {issue.get('description', '')}")
+                    if issue.get("source_quote"):
+                        report_lines.append(f"  - Kaynak: *\"{issue['source_quote']}\"*")
+                    if issue.get("translation_quote"):
+                        report_lines.append(f"  - Çeviri: *\"{issue['translation_quote']}\"*")
+                report_lines.append("")
+                total_issues += len(issues)
+        elif i in failed or key in [str(x) for x in failed]:
+            title = chapters[i - 1]["title"] if i <= len(chapters) else f"#{i}"
+            report_lines.append(f"## Bölüm {i}: {title}")
+            report_lines.append("*(Denetlenemedi.)*\n")
+
+    checked = len(completed)
+    failed_n = len(progress["failed"])
+    remaining = n - checked - failed_n
+
+    if note:
+        header = note
+    elif remaining > 0:
+        header = (f"**KISMİ RAPOR: {checked}/{n} bölüm tarandı, {remaining} bölüm "
+                   f"henüz denetlenmedi (muhtemelen kota/kesinti). Script'i "
+                   f"tekrar çalıştırınca kaldığı yerden devam edecek.**\n")
+    elif failed_n > 0 and checked < n * 0.5:
+        header = (f"**UYARI: {failed_n}/{n} bölüm denetlenemedi (Gemini hatası) "
+                   f"— bu rapor GÜVENİLİR DEĞİL. Yukarıdaki log'ları kontrol "
+                   f"edip tekrar çalıştırın.**\n")
+    else:
+        header = (f"**Toplam {total_issues} şüpheli nokta bulundu "
+                   f"({checked}/{n} bölüm başarıyla tarandı"
+                   + (f", {failed_n} bölüm denetlenemedi" if failed_n else "")
+                   + ").**\n")
+
+    report_lines.insert(2, header)
+    report_lines.insert(3, "*Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru "
+                           "kabul etmeyin — her maddeyi kaynakla birlikte "
+                           "kendiniz kontrol edin. Bazı işaretlemeler yanlış "
+                           "pozitif olabilir (bkz. script docstring'i).*\n")
+
+    report_path = os.path.join(output_dir, "qa_report.md")
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(report_lines))
+    return total_issues
+
+
 def audit_book(slug: str, max_chapters: int | None = None):
     output_dir = f"output/{slug}"
     orig_path = _find_original(slug)
@@ -96,12 +193,20 @@ def audit_book(slug: str, max_chapters: int | None = None):
         chapters, _ = extract_pdf(orig_path, slug)
 
     model = gem.get_client()
-    report_lines = [f"# QA Raporu — {slug}", ""]
-    total_issues = 0
-    failed_chapters = 0
-
+    progress = _load_progress(output_dir)
     n = len(chapters) if max_chapters is None else min(max_chapters, len(chapters))
+
+    already_done = len(progress["completed"]) + len(progress["failed"])
+    if already_done:
+        print(f"Devam ediliyor: {already_done}/{n} bölüm daha önce işlenmiş "
+              f"(checkpoint bulundu), kalan {n - already_done} bölümden devam.")
+
+    stopped_early = False
     for i in range(1, n + 1):
+        key = str(i)
+        if key in progress["completed"] or i in progress["failed"]:
+            continue  # zaten checkpoint'te var, atla
+
         src_chapter = chapters[i - 1]
         tr_title, tr_body = _load_translated(output_dir, i, slug)
         if tr_body is None:
@@ -113,64 +218,53 @@ def audit_book(slug: str, max_chapters: int | None = None):
             f"KAYNAK (İngilizce):\n{src_chapter['text'][:8000]}\n\n"
             f"ÇEVİRİ (Türkçe):\n{tr_body[:8000]}"
         )
-        raw = gem.call(model, _AUDIT_SYSTEM, user_msg, temperature=0.1)
+        try:
+            raw = gem.call(model, _AUDIT_SYSTEM, user_msg, temperature=0.1)
+        except gem.DailyQuotaExceeded:
+            print(f"\n  Günlük Gemini kotası tükendi ({i}/{n}. bölümde). "
+                  f"Kalan bölümler için boşuna denenmiyor — ilerleme "
+                  f"kaydedildi, script'i yarın (ya da farklı bir model/key "
+                  f"ile) tekrar çalıştırınca kaldığı yerden devam edecek.")
+            stopped_early = True
+            break
+
         if raw is None:
-            failed_chapters += 1
-            report_lines.append(f"## Bölüm {i}: {src_chapter['title']}")
-            report_lines.append("*(Gemini'den yanıt alınamadı, bu bölüm denetlenemedi.)*\n")
+            progress["failed"].append(i)
+            _save_progress(output_dir, progress)
             continue
 
         try:
             data = gem.extract_json(raw)
             issues = data.get("issues", [])
         except Exception as e:
-            failed_chapters += 1
-            report_lines.append(f"## Bölüm {i}: {src_chapter['title']}")
-            report_lines.append(f"*(Yanıt ayrıştırılamadı: {e})*\n")
+            print(f"    Yanıt ayrıştırılamadı: {e}")
+            progress["failed"].append(i)
+            _save_progress(output_dir, progress)
             continue
 
-        if issues:
-            report_lines.append(f"## Bölüm {i}: {src_chapter['title']} — {len(issues)} sorun")
-            for issue in issues:
-                report_lines.append(f"- **{issue.get('type', '?')}**: {issue.get('description', '')}")
-                if issue.get("source_quote"):
-                    report_lines.append(f"  - Kaynak: *\"{issue['source_quote']}\"*")
-                if issue.get("translation_quote"):
-                    report_lines.append(f"  - Çeviri: *\"{issue['translation_quote']}\"*")
-            report_lines.append("")
-            total_issues += len(issues)
+        progress["completed"][key] = issues
+        _save_progress(output_dir, progress)  # HER bölümden sonra checkpoint
 
-    # KRİTİK: eğer bölümlerin BÜYÜK ÇOĞUNLUĞU (ör. Gemini API/config
-    # hatası yüzünden) hiç denetlenemediyse, "0 şüpheli nokta" diye
-    # sessizce "temiz" görünen bir rapor YAZMIYORUZ — bu, hiç
-    # denetlenmemiş bir kitabı "denetlendi, sorun yok" sanmaktan çok
-    # daha tehlikeli bir sessiz-başarısızlık. Gerçek üretimde (knh-11,
-    # 17 Ağustos) GEMINI_MODEL ortam değişkeni boş geldiği için TÜM
-    # 35 bölüm başarısız oldu ama rapor "0 şüpheli nokta" yazdı — bu
-    # aslında "denetlenemedi" demekti, "temiz" değil.
-    checked = n - failed_chapters
-    if failed_chapters > 0 and checked < n * 0.5:
-        header = (f"**UYARI: {failed_chapters}/{n} bölüm denetlenemedi "
-                   f"(Gemini hatası) — bu rapor GÜVENİLİR DEĞİL, kitap "
-                   f"aslında taranmamış olabilir. Yukarıdaki 'Gemini "
-                   f"hatası' loglarını kontrol edin (API key, model adı, "
-                   f"rate limit vb.) ve tekrar çalıştırın.**\n")
+    note = ""
+    if stopped_early:
+        checked = len(progress["completed"])
+        note = (f"**Günlük Gemini kotası tükendiği için durduruldu — "
+                f"{checked}/{n} bölüm tarandı. Script'i tekrar çalıştırınca "
+                f"kaldığı yerden devam edecek (baştan başlamayacak).**\n")
+
+    total_issues = _write_report(output_dir, slug, chapters, progress, n, note)
+
+    # Denetim (bu run'ın erişebildiği kadarıyla) tamamlandıysa checkpoint'i
+    # temizle — bir sonraki tam taramanın sıfırdan başlaması için.
+    if not stopped_early and len(progress["completed"]) + len(progress["failed"]) >= n:
+        prog_path = _progress_path(output_dir)
+        if os.path.exists(prog_path):
+            os.remove(prog_path)
+        print(f"\nDenetim tamamlandı. Rapor: output/{slug}/qa_report.md "
+              f"({total_issues} şüpheli nokta)")
     else:
-        header = (f"**Toplam {total_issues} şüpheli nokta bulundu "
-                   f"({checked}/{n} bölüm başarıyla tarandı"
-                   + (f", {failed_chapters} bölüm denetlenemedi" if failed_chapters else "")
-                   + ").**\n")
-    report_lines.insert(2, header)
-    report_lines.insert(3, "*Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru "
-                           "kabul etmeyin — her maddeyi kaynakla birlikte "
-                           "kendiniz kontrol edin. Bazı işaretlemeler yanlış "
-                           "pozitif olabilir (bkz. script docstring'i).*\n")
-
-    report_path = os.path.join(output_dir, "qa_report.md")
-    with open(report_path, "w", encoding="utf-8") as f:
-        f.write("\n".join(report_lines))
-    print(f"\nRapor yazıldı: {report_path} ({total_issues} şüpheli nokta, "
-          f"{failed_chapters}/{n} bölüm denetlenemedi)")
+        print(f"\nKısmi rapor yazıldı: output/{slug}/qa_report.md "
+              f"({total_issues} şüpheli nokta, checkpoint korunuyor)")
 
 
 if __name__ == "__main__":
