@@ -141,6 +141,7 @@ def extract_epub(epub_path: str) -> tuple:
             ordered_items.append(item)
 
     chapters = []
+    last_chapter_base = None  # örn. 'chapter2' — son EKLENEN gerçek bölümün taban adı
     for item in ordered_items:
         if item.get_type() != ebooklib.ITEM_DOCUMENT:
             continue
@@ -157,6 +158,26 @@ def extract_epub(epub_path: str) -> tuple:
         base_lower = os.path.basename(item.get_name()).lower()
         if re.search(r"\btoc\b|contents", base_lower):
             continue
+
+        # NOT (Ağustos 2026, İKİNCİ bir gerçek üretim hatası — knh-11):
+        # Bazı bölümler ortadaki bir resim eki yüzünden epub'da İKİ ayrı
+        # dosyaya bölünüyor (örn. "chapter2.xhtml" + [resim] +
+        # "chapter2_1.xhtml" — ikisi de AYNI hikâye bölümünün parçası).
+        # convert.py bunu render sırasında zaten fark edip tek sayfa
+        # olarak birleştiriyordu, AMA extract_epub() burada hâlâ bunları
+        # İKİ AYRI "bölüm" olarak çeviriyordu — 35 bölümlük knh-11'de bu
+        # yüzden 8 çift oluştu, çeviri BİTTİ ama convert.py bu 8 "fazladan"
+        # çeviriyi hiçbir spine slotuna eşleştiremedi ve epub'a hiç
+        # koyamadı ("Uyarı: 8 bölüm eşleştirilemedi" — aslında 8 bölümün
+        # TAMAMI sessizce kitaptan düşmüştü). Kökten çözüm: birleştirmeyi
+        # convert.py'de değil, BURADA (çeviriye gitmeden önce) yapmak —
+        # böylece hem tek bir çeviri birimi olarak (daha tutarlı) çevrilir
+        # hem de convert.py'nin zaten bildiği mantıkla birebir örtüşür.
+        base_noext = os.path.splitext(os.path.basename(item.get_name()))[0]
+        is_continuation = bool(
+            last_chapter_base
+            and re.match(rf'^{re.escape(last_chapter_base)}_\d+$', base_noext)
+        )
 
         soup = BeautifulSoup(item.get_content(), "html.parser")
         for tag in soup(["script", "style", "nav"]):
@@ -187,6 +208,13 @@ def extract_epub(epub_path: str) -> tuple:
         text = _reflow_hardwrapped(text)
         text = boilerplate.clean(text)
         if len(text) < 300:
+            continue
+
+        if is_continuation:
+            # Yeni bir chapters[] girdisi AÇMIYORUZ — bir öncekinin
+            # gövdesine ekliyoruz. Başlık zaten önceki girdiden geliyor,
+            # burada başlık belirleme mantığına hiç girmiyoruz.
+            chapters[-1]["text"] = chapters[-1]["text"].rstrip() + "\n\n" + text
             continue
 
         if heading:
@@ -234,6 +262,7 @@ def extract_epub(epub_path: str) -> tuple:
             '', raw_title, flags=re.IGNORECASE
         ).strip() or raw_title
         chapters.append({"name": item.get_name(), "title": title, "text": text})
+        last_chapter_base = base_noext
     return chapters, images, book_meta
 
 
