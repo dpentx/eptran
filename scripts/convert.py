@@ -37,9 +37,25 @@ def load_txt_chapters(output_dir):
         body_lines = body_raw.split("\n", 1)
         first_line = body_lines[0].strip()
 
+        # NOT (Ağustos 2026, gerçek üretim hatası — knh-11): Eskiden
+        # burada SADECE "satır nokta/ünlem/soru işaretiyle bitmiyor mu"
+        # kontrolüne bakılıyordu — bu, "Bölüm 2: Stratejist Hamle
+        # Yapıyor!" gibi ÜNLEMLE BİTEN meşru bir başlığı "gerçek bir
+        # cümle, başlık değil" sanıp reddediyordu; sonuç: Türkçe başlık
+        # yerine İngilizcesi ("# " satırı) epub'a öyle gidiyordu. Artık
+        # "Bölüm N:" / "Chapter N:" kalıbına uyan satırlar, sonunda
+        # noktalama olsa bile HER ZAMAN başlık sayılıyor — bu, projede
+        # zaten kurulu olan tek geçerli başlık biçimiyle birebir örtüşüyor.
+        looks_like_chapter_heading = bool(
+            re.match(r'^(bölüm|chapter)\s+\S+', first_line, re.IGNORECASE)
+        )
+
         if normalize(first_line) and normalize(first_line) == normalize(raw_title):
             body_raw = body_lines[1].strip() if len(body_lines) > 1 else ""
-        elif normalize(first_line) and len(first_line) < 120 and not first_line.endswith((".", "!", "?", "…")):
+        elif normalize(first_line) and len(first_line) < 120 and (
+            looks_like_chapter_heading
+            or not first_line.endswith((".", "!", "?", "…"))
+        ):
             raw_title = first_line
             body_raw = body_lines[1].strip() if len(body_lines) > 1 else ""
 
