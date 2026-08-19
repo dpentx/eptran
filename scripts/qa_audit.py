@@ -192,7 +192,8 @@ def audit_book(slug: str, max_chapters: int | None = None):
     else:
         chapters, _ = extract_pdf(orig_path, slug)
 
-    model = gem.get_client()
+    clients = gem.get_clients()
+    key_index = [0]
     progress = _load_progress(output_dir)
     n = len(chapters) if max_chapters is None else min(max_chapters, len(chapters))
 
@@ -219,12 +220,14 @@ def audit_book(slug: str, max_chapters: int | None = None):
             f"ÇEVİRİ (Türkçe):\n{tr_body[:8000]}"
         )
         try:
-            raw = gem.call(model, _AUDIT_SYSTEM, user_msg, temperature=0.1)
-        except gem.DailyQuotaExceeded:
-            print(f"\n  Günlük Gemini kotası tükendi ({i}/{n}. bölümde). "
-                  f"Kalan bölümler için boşuna denenmiyor — ilerleme "
-                  f"kaydedildi, script'i yarın (ya da farklı bir model/key "
-                  f"ile) tekrar çalıştırınca kaldığı yerden devam edecek.")
+            raw = gem.call(clients, key_index, _AUDIT_SYSTEM, user_msg, temperature=0.1)
+        except gem.AllKeysExhausted:
+            print(f"\n  Elimizdeki tüm Gemini key'lerinin günlük kotası tükendi "
+                  f"({i}/{n}. bölümde). Kalan bölümler için boşuna denenmiyor — "
+                  f"ilerleme kaydedildi, script'i yarın (ya da yeni bir key "
+                  f"eklendiğinde) tekrar çalıştırınca kaldığı yerden devam edecek.")
+            stopped_early = True
+            break
             stopped_early = True
             break
 
