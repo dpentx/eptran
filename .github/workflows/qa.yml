@@ -79,6 +79,8 @@ jobs:
       - name: Run QA audit
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
           # Python'un stdout'u CI ortamında (gerçek terminal olmadığı için)
           # varsayılan olarak buffer'lanıyor — print() çağrıları anında değil,
@@ -99,6 +101,8 @@ jobs:
         if: inputs.run_series_suggest == true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
           PYTHONUNBUFFERED: "1"
         run: python scripts/series_suggest.py "${{ inputs.slug }}"
