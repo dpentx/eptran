@@ -48,70 +48,61 @@ class DailyQuotaExceeded(Exception):
     pass
 
 
-def get_client():
-    """
-    GEMINI_API_KEY ortam değişkeninden tek bir key okur (Groq'un
-    aksine çoklu key rotasyonu yok — bu araçlar yüksek hacimli ana
-    çeviri hattı değil, periyodik QA taraması, tek bir ücretsiz key
-    genelde yeterli).
+class AllKeysExhausted(Exception):
+    """Elimizdeki TÜM Gemini key'lerinin günlük kotası tükendiğinde fırlatılır."""
+    pass
 
-    NOT (Ağustos 2026): `google-generativeai` paketi TAMAMEN
-    KULLANIMDAN KALDIRILDI (bakım/güncelleme almıyor) — yerine
-    `google-genai` paketi (import google.genai) kullanılıyor. Bu iki
-    paketin API'si FARKLI (eskisi genai.GenerativeModel(...), yenisi
-    genai.Client(...).models.generate_content(...)) — ileride bir
-    yerlerde eski paketle örnek kod görürsen KARIŞTIRMA.
 
-    NOT (Ağustos 2026, günlük kota): Gerçek üretimde `gemini-3.5-flash`
-    için ücretsiz katman günde SADECE 20 istekle sınırlı çıktı
-    (`GenerateRequestsPerDayPerProjectPerModel-FreeTier: 20`) — 35
-    bölümlük bir kitap TEK ÇALIŞTIRMADA bitmiyor. Bazı kaynaklara göre
-    "Flash-Lite" modelleri çok daha yüksek günlük kotaya sahip
-    (1000-1500/gün), ama bu hesaba/projeye göre değişebiliyor — kesin
-    rakam için https://ai.dev/rate-limit kontrol edilmeli. Model adını
-    GEMINI_MODEL repository variable'ından değiştirebilirsin (örn.
-    "gemini-3.1-flash-lite" deneyebilirsin), ama asıl güvence bu
-    DEĞİL — qa_audit.py'nin checkpoint mekanizması: kota hangi model
-    için ne olursa olsun, script kesildiği yerden devam edebiliyor
-    artık.
+def get_clients() -> list:
     """
-    key = os.environ.get("GEMINI_API_KEY")
-    if not key:
+    GEMINI_API_KEY, GEMINI_API_KEY_2, GEMINI_API_KEY_3... ortam
+    değişkenlerinden BİRDEN FAZLA key okur (Groq'taki gibi, [(client,
+    model_name), ...] listesi olarak).
+
+    ÖNEMLİ SINIRLAMA (Ağustos 2026): Groq'un aksine, Gemini'nin ücretsiz
+    katman kotası key başına DEĞİL, Google Cloud PROJESİ başına
+    uygulanıyor — gerçek hata mesajında bunu açıkça görüyoruz:
+    `quotaId: 'GenerateRequestsPerDayPerProjectPerModel-FreeTier'`
+    ("PerProject", "PerKey" değil). Yani AYNI Google hesabından/
+    projesinden alınan 2-3 key'in HEPSİ AYNI günlük 20 isteklik havuzu
+    paylaşır — sadece key çoğaltmak kotayı ÇARPMAZ. Gerçekten fayda
+    görmek için her key AYRI bir Google Cloud projesinden (ideal
+    olarak ayrı Google hesaplarından) alınmalı. Buna rağmen bu
+    mekanizmayı kuruyoruz çünkü: (a) ayrı projelerden key'ler
+    kullanılırsa gerçekten işe yarıyor, (b) tek key'le de olsa
+    transient (kalıcı olmayan, dakikalık) hatalarda ikinci bir key'e
+    geçmek faydalı olabilir.
+    """
+    keys = []
+    first = os.environ.get("GEMINI_API_KEY")
+    if first:
+        keys.append(first)
+    idx = 2
+    while True:
+        k = os.environ.get(f"GEMINI_API_KEY_{idx}")
+        if not k:
+            break
+        keys.append(k)
+        idx += 1
+
+    if not keys:
         raise ValueError(
             "GEMINI_API_KEY bulunamadı. GitHub repo Settings > Secrets and "
             "variables > Actions altına eklenmeli."
         )
-    client = genai.Client(api_key=key)
+
     # NOT (Ağustos 2026, gerçek üretim hatası): `os.environ.get("GEMINI_MODEL",
     # _DEFAULT_MODEL)` YANLIŞ — bu sadece ortam değişkeni HİÇ YOKSA
     # varsayılana düşer. Ama workflow'daki `GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}`
     # satırı, repo'da o adda bir "variable" tanımlı DEĞİLSE değişkeni boş
-    # STRING olarak enjekte ediyor (yokmuş gibi silmiyor) — yani
-    # `os.environ["GEMINI_MODEL"]` var ama `""`. `.get(key, default)` bunu
-    # "boş model adı" olarak Gemini'ye gönderiyordu, o da her çağrıda
-    # "model is required" hatası veriyordu — 35 bölümlük bir kitapta 3
-    # deneme × artan bekleme ile ~17 dakika boşuna dönüp hiçbir gerçek
-    # denetim yapmadan "0 şüpheli nokta" ile bitiyordu (yanlışlıkla "temiz"
-    # görünüyordu, oysa hiç denetlenmemişti). `or` kullanmak hem "yok" hem
-    # "boş" durumunu doğru şekilde varsayılana düşürüyor.
+    # STRING olarak enjekte ediyor (yokmuş gibi silmiyor). `or` kullanmak
+    # hem "yok" hem "boş" durumunu doğru şekilde varsayılana düşürüyor.
     model_name = os.environ.get("GEMINI_MODEL") or _DEFAULT_MODEL
-    return client, model_name
+    return [(genai.Client(api_key=k), model_name) for k in keys]
 
 
-def call(client_info, system_msg: str, user_msg: str, temperature: float = 0.2) -> str | None:
-    """
-    Gemini'ye system+user mesajı gönderir. Groq'un call() imzasına
-    kasıtlı olarak benzer (system_msg/user_msg ayrımı, temperature).
-
-    Rate limit / geçici hatalarda üstel geri çekilmeyle (backoff)
-    MAX_EMPTY_RETRIES kez dener, sonra None döner — çağıran taraf None
-    kontrolü yapıp mevcut veriyi korumalı (Groq client'la aynı
-    sözleşme).
-
-    GÜNLÜK kota hatasında (bkz. DailyQuotaExceeded) HİÇ retry
-    yapmadan hemen fırlatır — bu tür bir hata dakikalar içinde
-    kendiliğinden düzelmez, denemek zaman kaybı.
-    """
+def _call_single(client_info, system_msg: str, user_msg: str, temperature: float) -> str | None:
+    """Tek bir key ile dener. Groq client'la aynı sözleşme: başarısızlıkta None döner."""
     client, model_name = client_info
     config = types.GenerateContentConfig(
         temperature=temperature,
@@ -133,6 +124,8 @@ def call(client_info, system_msg: str, user_msg: str, temperature: float = 0.2) 
             msg = str(e)
             # "PerDay" kotası (RPD) — RPM'in aksine bekleyip tekrar
             # denemekle çözülmez, gün değişene kadar tükenmiş kalır.
+            # Retry döngüsüne hiç girmeden hemen fırlatıyoruz ki üstteki
+            # call() bir sonraki key'e geçebilsin.
             if "PerDay" in msg or "RequestsPerDay" in msg:
                 raise DailyQuotaExceeded(msg) from e
             msg_low = msg.lower()
@@ -145,6 +138,37 @@ def call(client_info, system_msg: str, user_msg: str, temperature: float = 0.2) 
             print(f"  Gemini hatası: {e} — {wait}s sonra tekrar deneniyor "
                   f"({empty_retries}/{MAX_EMPTY_RETRIES})...")
             time.sleep(wait)
+
+
+def call(clients: list, key_index: list, system_msg: str, user_msg: str,
+         temperature: float = 0.2) -> str | None:
+    """
+    Gemini'ye system+user mesajı gönderir. Groq client'la aynı imza
+    deseni: `clients` = get_clients()'ın listesi, `key_index` = tek
+    elemanlı mutable liste (örn. [0]) — ardışık call() çağrıları
+    arasında "şu an hangi key aktif" durumunu paylaşmak için.
+
+    Bir key günlük kotasını tüketince (DailyQuotaExceeded) o key'i bu
+    RUN için "tükenmiş" işaretleyip BİR SONRAKİ key'e otomatik geçer —
+    tüm key'ler tükenirse AllKeysExhausted fırlatır. Tek key varsa
+    (varsayılan/eski davranış) bu tek adımlık bir döngüdür, davranış
+    değişmez.
+    """
+    exhausted = set()
+    n = len(clients)
+    while len(exhausted) < n:
+        idx = key_index[0] % n
+        if idx in exhausted:
+            key_index[0] += 1
+            continue
+        try:
+            return _call_single(clients[idx], system_msg, user_msg, temperature)
+        except DailyQuotaExceeded:
+            print(f"  Key #{idx + 1}/{n} günlük kotası tükendi"
+                  + (", sonraki key'e geçiliyor..." if len(exhausted) + 1 < n else "."))
+            exhausted.add(idx)
+            key_index[0] += 1
+    raise AllKeysExhausted(f"Elimizdeki {n} Gemini key'inin de günlük kotası tükendi.")
 
 
 def extract_json(raw: str):
