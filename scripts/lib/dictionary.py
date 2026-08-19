@@ -25,6 +25,16 @@ BIG_WORDLIST_CACHE = "/tmp/eptran_en_words_cache.txt"
 _big_wordlist_set = None
 _learned_cache = None
 
+# Hem İngilizce sözlükte hem Türkçede aynı (ya da neredeyse aynı) yazılışla,
+# aynı anlamda GERÇEKTEN var olan kelimeler — bunlar review'da "İngilizce
+# kalıntı" diye yanlış pozitif üretiyordu (bkz. is_english_word docstring'i).
+# Bilinçli olarak küçük tutuluyor: sadece gerçek üretimde karşılaşılan,
+# doğrulanmış kelimeler ekleniyor, "olabilir" diye tahmini kelime eklenmiyor.
+_SHARED_TR_EN_WORDS = {
+    "general",   # askeri rütbe; Shogi/satranç taşı adı olarak da kullanılıyor
+    "beriberi",  # B1 vitamini eksikliği hastalığı — Türkçe tıpta da aynı ad
+}
+
 
 def _load_learned() -> dict:
     """Mini sözlüğü diskten yükle, cache'le."""
@@ -85,9 +95,23 @@ def is_english_word(word: str) -> bool:
     Kelime İngilizce sözlükte var mı?
     Önce mini (öğrenilmiş) sözlüğe bakar, yoksa büyük sözlüğe düşer,
     sonucu mini sözlüğe yazar.
+
+    NOT (Ağustos 2026, gerçek üretim — knh-11): Bazı kelimeler HEM
+    İngilizce sözlükte HEM de Türkçede aynı (ya da neredeyse aynı)
+    yazılışla, aynı anlamda gerçekten var — "general" (askeri rütbe,
+    Shogi taşı adı olarak da kullanılıyor), "beriberi" (B1 vitamini
+    eksikliği hastalığı, Türkçe tıp literatüründe de aynı ad) gibi.
+    Bunlar review'da "İngilizce kalıntı" diye YANLIŞ POZİTİF üretiyordu
+    — gerçek üretimde "Altın General"/"Jade General" (Shogi taşları)
+    ve "beriberi" (hastalık adı) böyle işaretlenmişti, oysa ikisi de
+    zaten doğru Türkçe kullanımdı. _SHARED_TR_EN_WORDS bu tür bilinen
+    ortak kelimeleri baştan eleyip büyük sözlüğe hiç sormuyor.
     """
     wl = word.lower().strip(".,;:!?\"'()[]")
     if not wl or not wl.isalpha():
+        return False
+
+    if wl in _SHARED_TR_EN_WORDS:
         return False
 
     learned = _load_learned()
