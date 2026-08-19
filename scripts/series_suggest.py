@@ -65,7 +65,8 @@ def suggest_for_book(slug: str, series_slug: str):
         memory = json.load(f)
 
     existing = series_lib.load(series_slug)
-    model = gem.get_client()
+    clients = gem.get_clients()
+    key_index = [0]
 
     summaries = "\n".join(memory.get("summaries", [])[:40])
     user_msg = (
@@ -77,7 +78,11 @@ def suggest_for_book(slug: str, series_slug: str):
         f"notlar: {json.dumps(existing.get('notes', []), ensure_ascii=False)}\n\n"
         f"Kitabın bölüm özetleri:\n{summaries[:6000]}"
     )
-    raw = gem.call(model, _SUGGEST_SYSTEM, user_msg, temperature=0.2)
+    try:
+        raw = gem.call(clients, key_index, _SUGGEST_SYSTEM, user_msg, temperature=0.2)
+    except gem.AllKeysExhausted:
+        print("Elimizdeki tüm Gemini key'lerinin günlük kotası tükendi, öneri üretilemedi.")
+        return
     if raw is None:
         print("Gemini'den yanıt alınamadı, öneri üretilemedi.")
         return

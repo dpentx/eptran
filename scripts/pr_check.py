@@ -152,14 +152,92 @@ def check_book(slug: str) -> list:
     return problems
 
 
+def _check_gemini_report(output_dir: str) -> tuple:
+    """
+    Daha önce (qa_audit.py ile) üretilmiş bir Gemini denetim raporu
+    varsa, bulgularını bu kontrole dahil eder.
+
+    NEDEN SENKRON ÇALIŞTIRMIYORUZ: Gemini'nin ücretsiz katmanı günde
+    ~20 istekle sınırlı (proje başına, key sayısı fark etmiyor — bkz.
+    gemini_client.py). Bunu PR check'in İÇİNE senkron koysaydık, büyük
+    bir kitapta check günlerce "beklemede" kalır, merge'i pratikte
+    süresiz bekletirdi. Bunun yerine: admin "QA Audit (Gemini)"
+    workflow'unu ayrı, kendi hızında (checkpoint'li, günler sürebilen)
+    çalıştırır; BU fonksiyon sadece o ÇALIŞMANIN ÇIKTISINI (varsa)
+    okuyup PR check'e dahil eder. Rapor yoksa/eskiyse bunu SORUN değil,
+    sadece BİLGİ notu sayıyoruz — Gemini denetimi opsiyonel bir katman,
+    deterministik kontroller (bölüm kaybı, kalıntı kelime vb.) kadar
+    "zorunlu" değil.
+
+    Döner: (problems, info_notes) — problems exit code'u etkiler,
+    info_notes sadece bilgilendirme amaçlı.
+    """
+    problems, info = [], []
+    report_path = os.path.join(output_dir, "qa_report.md")
+    progress_path = os.path.join(output_dir, ".qa_progress.json")
+
+    if os.path.exists(progress_path):
+        info.append(
+            "Gemini denetimi yarım kalmış (checkpoint mevcut) — muhtemelen "
+            "günlük kota yüzünden duraklamış. 'QA Audit (Gemini)' workflow'unu "
+            "tekrar çalıştırınca kaldığı yerden devam edecek."
+        )
+
+    if not os.path.exists(report_path):
+        info.append(
+            "Henüz bir Gemini denetim raporu yok. İsteğe bağlı: Actions'tan "
+            "'QA Audit (Gemini)' çalıştırıp kaynakla karşılaştırmalı ek bir "
+            "denetim yaptırabilirsin."
+        )
+        return problems, info
+
+    with open(report_path, encoding="utf-8") as f:
+        report = f.read()
+
+    m = re.search(r"\*\*(.+?)\*\*", report)
+    summary = m.group(1) if m else ""
+
+    if "KISMİ RAPOR" in summary or "UYARI" in summary:
+        info.append(f"Gemini raporu tam/güvenilir değil: {summary}")
+    else:
+        m2 = re.search(r"Toplam (\d+) şüpheli nokta", summary)
+        n_issues = int(m2.group(1)) if m2 else 0
+        if n_issues > 0:
+            problems.append(
+                f"Gemini denetimi {n_issues} şüpheli nokta buldu (bkz. "
+                f"output/{os.path.basename(output_dir)}/qa_report.md). "
+                f"BU BİR ÖNERİ LİSTESİ, kesin hata anlamına gelmez — her "
+                f"maddeyi kaynakla birlikte kendin kontrol et."
+            )
+        else:
+            info.append("Gemini denetimi tamamlanmış, şüpheli nokta bulunamamış.")
+
+    return problems, info
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("slug", help="Kitap slug'ı, örn. knh-11")
+    parser.add_argument("--skip-gemini-report", action="store_true",
+                        help="Var olan qa_report.md'yi bile kontrole dahil etme")
     args = parser.parse_args()
 
     problems = check_book(args.slug)
+    info = []
+
+    if not args.skip_gemini_report:
+        gemini_problems, gemini_info = _check_gemini_report(f"output/{args.slug}")
+        problems += gemini_problems
+        info += gemini_info
+
+    if info:
+        print("ℹ️  Bilgi:")
+        for note in info:
+            print(f"  - {note}")
+        print()
+
     if problems:
-        print(f"\n❌ {args.slug}: {len(problems)} sorun bulundu:\n")
+        print(f"❌ {args.slug}: {len(problems)} sorun bulundu:\n")
         for p in problems:
             print(f"  - {p}")
         print("\nBu sorunlar merge'i FİZİKSEL OLARAK engellemiyor (branch "
