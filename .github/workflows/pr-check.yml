@@ -1,0 +1,47 @@
+name: PR Check (Kitap Denetimi)
+
+# Bir book/<slug> dalı main'e "tamamlandı" PR'ı açtığında (convert.py bunu
+# otomatik yapıyor) ya da o PR'a yeni commit geldiğinde otomatik çalışır.
+# Amaç: bu projede canlıda gerçekten yaşanmış hata sınıflarının (kayıp
+# bölüm, İngilizce kalmış başlık, kalıntı İngilizce kelime — bkz.
+# scripts/pr_check.py) hiçbirinin fark edilmeden main'e girmemesi.
+#
+# NOT: Bu check PR'da kırmızı/yeşil olarak görünür ama merge'i FİZİKSEL
+# OLARAK engellemez — sert bir engel istenirse repo Settings > Branches
+# > main için bir branch protection rule eklenip bu check "required"
+# olarak işaretlenmeli (job adı: "Kitap Bütünlük Kontrolü").
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check:
+    name: Kitap Bütünlük Kontrolü
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    if: startsWith(github.head_ref, 'book/')
+
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Extract book slug
+        id: slug
+        run: echo "slug=${GITHUB_HEAD_REF#book/}" >> "$GITHUB_OUTPUT"
+
+      - name: Run PR check
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: python scripts/pr_check.py "${{ steps.slug.outputs.slug }}"
