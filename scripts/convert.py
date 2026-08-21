@@ -310,7 +310,7 @@ def build_epub(book_slug, chapters, original_epub_path, output_path):
 body { font-family: serif; margin: 5%; text-align: justify; }
 h1 { text-align: center; margin: 2em 0 1em; }
 h2 { margin: 1.5em 0 0.5em; }
-p { margin: 0.5em 0; text-indent: 1.5em; }
+p { margin: 0 0 1em 0; text-indent: 1.5em; }
 img { max-width: 100%; display: block; margin: auto; }
 """,
     )

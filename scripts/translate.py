@@ -384,6 +384,44 @@ def translate_chapter(chapter: dict, clients: list, key_index: list,
         f"Çıktının TAMAMI sadece Türkçe olmalı — başka hiçbir dilden "
         f"(Arapça, Fransızca, İngilizce vb.) tek bir kelime bile karışmamalı. "
         f"'[EPUB_IMAGE:...]' etiketlerini olduğu gibi bırak.\n"
+        f"\n"
+        # NOT (Ağustos 2026, gerçek üretim geri bildirimi — knh-11): Model
+        # dilbilgisi olarak doğru ama üslup olarak "İngilizce'yi birebir
+        # Türkçe kelimelerle yazmış" gibi duran çeviriler üretiyordu.
+        # Somut örnekler (kullanıcının bizzat bulduğu): (1) kısa yan yana
+        # cümlelerde aynı kelimeyi ("var") art arda tekrarlayıp okunurken
+        # anlamı bulanıklaştırıyordu; (2) aynı nesneyi bir cümlede "kıyafet"
+        # bir sonrakinde "kostüm" diye iki farklı kelimeyle adlandırıp
+        # tutarsızlık yaratıyordu; (3) "growing plants for medicine" gibi
+        # bir ifadeyi kelime sırasını birebir koruyarak "ilaç için bitki
+        # yetiştirmek" yerine daha suni duran "ilaç bitkisi yetiştirmek"e
+        # çeviriyordu; (4) "this field is forbidden" gibi kısa/eksiltili
+        # İngilizce ifadeleri KELİME KELİME "bu tarla yasak" diye çevirip
+        # Türkçede eksik/muğlak bıraktığı halde, doğal Türkçe "bu tarlaya
+        # ekim yapmak yasak" gibi tamamlayıcı bir ifadeyi tercih etmiyordu.
+        # Bu dört madde de aynı kök sorunu gösteriyor: model İngilizce
+        # cümlenin YÜZEYİNİ (kelime sırası, kelime sayısı, hangi kelime
+        # neredeyse) Türkçeye taşımaya çalışıyor; oysa iyi bir çevirmen
+        # ANLAMI alıp Türkçenin kendi doğal cümle kalıbıyla yeniden kurar.
+        f"ÇEVİRİ TARZI — aşağıdakilere özellikle dikkat et:\n"
+        f"1. Kelime kelime çevirme; ANLAMI al, Türkçenin kendi doğal cümle "
+        f"kalıbıyla yeniden kur. İngilizce cümle yapısını (kelime sırasını, "
+        f"kısalığını/eksiltili yapısını) birebir taşımaya çalışma. Örnek: "
+        f"\"this field is forbidden\" → kelime kelime \"bu tarla yasak\" DEĞİL, "
+        f"\"bu tarlaya ekim yapmak yasak\" gibi anlamı tamamlayan doğal bir "
+        f"Türkçe ifade kullan.\n"
+        f"2. Yan yana ya da yakın cümlelerde AYNI kelimeyi (özellikle \"var\", "
+        f"\"oldu\", \"gibi\" gibi sık kullanılan kelimeleri) tekrar etmekten "
+        f"kaçın — cümle yapısını çeşitlendirerek aynı anlamı ver, okurken "
+        f"tekrar yüzünden anlam bulanıklaşmasın.\n"
+        f"3. Aynı bölüm/sahne içinde aynı nesne/kavramı HER ZAMAN aynı "
+        f"kelimeyle adlandır. Örnek: bir karakterin üzerindeki aynı giysiyi "
+        f"bir cümlede \"kıyafet\" diğerinde \"kostüm\" diye farklı "
+        f"kelimelerle çevirme — hangisini seçersen o bölüm boyunca ona sadık "
+        f"kal.\n"
+        f"4. Doğallık okunabilirlikten önemli değil: bir çeviri dilbilgisi "
+        f"olarak doğru ama \"çevrilmiş gibi\" okunuyorsa, o cümleyi bir "
+        f"Türk yazarın nasıl kurardığını düşünüp yeniden yaz.\n"
     )
     if protected_str:
         system_msg += f"{protected_str}\n"
