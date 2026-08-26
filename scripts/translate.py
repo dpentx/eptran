@@ -17,7 +17,7 @@ import ebooklib
 from ebooklib import epub
 from bs4 import BeautifulSoup
 
-from lib import boilerplate, groq_client as gc, unicode_cleaner, series as series_lib
+from lib import boilerplate, groq_client as gc, unicode_cleaner, series as series_lib, pitfalls
 from lib.git_utils import (
     write_status, trigger_workflow, create_book_branch,
     list_active_book_branches, peek_remote_file, is_stale_running, git_push,
@@ -385,24 +385,23 @@ def translate_chapter(chapter: dict, clients: list, key_index: list,
         f"(Arapça, Fransızca, İngilizce vb.) tek bir kelime bile karışmamalı. "
         f"'[EPUB_IMAGE:...]' etiketlerini olduğu gibi bırak.\n"
         f"\n"
-        # NOT (Ağustos 2026, gerçek üretim geri bildirimi — knh-11): Model
-        # dilbilgisi olarak doğru ama üslup olarak "İngilizce'yi birebir
-        # Türkçe kelimelerle yazmış" gibi duran çeviriler üretiyordu.
-        # Somut örnekler (kullanıcının bizzat bulduğu): (1) kısa yan yana
-        # cümlelerde aynı kelimeyi ("var") art arda tekrarlayıp okunurken
-        # anlamı bulanıklaştırıyordu; (2) aynı nesneyi bir cümlede "kıyafet"
-        # bir sonrakinde "kostüm" diye iki farklı kelimeyle adlandırıp
-        # tutarsızlık yaratıyordu; (3) "growing plants for medicine" gibi
-        # bir ifadeyi kelime sırasını birebir koruyarak "ilaç için bitki
-        # yetiştirmek" yerine daha suni duran "ilaç bitkisi yetiştirmek"e
-        # çeviriyordu; (4) "this field is forbidden" gibi kısa/eksiltili
-        # İngilizce ifadeleri KELİME KELİME "bu tarla yasak" diye çevirip
-        # Türkçede eksik/muğlak bıraktığı halde, doğal Türkçe "bu tarlaya
-        # ekim yapmak yasak" gibi tamamlayıcı bir ifadeyi tercih etmiyordu.
-        # Bu dört madde de aynı kök sorunu gösteriyor: model İngilizce
-        # cümlenin YÜZEYİNİ (kelime sırası, kelime sayısı, hangi kelime
-        # neredeyse) Türkçeye taşımaya çalışıyor; oysa iyi bir çevirmen
-        # ANLAMI alıp Türkçenin kendi doğal cümle kalıbıyla yeniden kurar.
+        # NOT (Ağustos 2026, gerçek üretim geri bildirimi — knh-11, iki
+        # ayrı bulgu turu): Model dilbilgisi olarak doğru ama üslup
+        # olarak "İngilizce'yi birebir Türkçe kelimelerle yazmış" gibi
+        # duran çeviriler üretiyordu (1. tur — kullanıcının elle bulduğu
+        # örnekler: "var" tekrarı, "kıyafet"/"kostüm" tutarsızlığı, "bu
+        # tarla yasak" gibi eksiltili çeviri). Gemini'nin bağımsız
+        # denetimi (2. tur — bkz. qa_audit.py) AYNI kök sorunun çok daha
+        # geniş ve TEHLİKELİ bir versiyonunu ortaya çıkardı: 84 anlam
+        # kayması arasında EN ciddi alt küme, İngilizce'deki OLUMSUZLAMA
+        # kalıplarının (çift olumsuzlama, "never averse to" gibi zıt-
+        # anlamlı ifadeler) çeviride YANLIŞLIKLA TERS ANLAMA dönüşmesiydi
+        # — örn. "willing" (istekli) → "istemeden de olsa"; "a young man"
+        # → "yaşlı bir adam"; "no one would have dared" → olumsuzlama
+        # düşürülüp "kimse ... ederdi". Bunlar YÜZEYDE gayet akıcı/doğru
+        # görünen Türkçe cümleler — review.py'nin İngilizce-kalıntı
+        # denetimi bunları HİÇ YAKALAYAMAZ. Aşağıdaki kurallar hem 1.
+        # hem 2. tur bulgularını kapsayacak şekilde genişletildi.
         f"ÇEVİRİ TARZI — aşağıdakilere özellikle dikkat et:\n"
         f"1. Kelime kelime çevirme; ANLAMI al, Türkçenin kendi doğal cümle "
         f"kalıbıyla yeniden kur. İngilizce cümle yapısını (kelime sırasını, "
@@ -419,10 +418,31 @@ def translate_chapter(chapter: dict, clients: list, key_index: list,
         f"bir cümlede \"kıyafet\" diğerinde \"kostüm\" diye farklı "
         f"kelimelerle çevirme — hangisini seçersen o bölüm boyunca ona sadık "
         f"kal.\n"
-        f"4. Doğallık okunabilirlikten önemli değil: bir çeviri dilbilgisi "
+        f"4. OLUMSUZLAMA/ZIT-ANLAM ÇOK TEHLİKELİ: İngilizce'de çift "
+        f"olumsuzlama ya da \"never averse to\", \"willing\", \"no one would "
+        f"have dared\" gibi olumsuzlama/zıt-anlam içeren kalıpları çevirirken, "
+        f"ANLAMIN YANLIŞLIKLA TERSİNE dönmesi çok kolay ve fark edilmesi çok "
+        f"zor bir hata (çünkü ortaya çıkan Türkçe cümle gayet akıcı görünür). "
+        f"Her böyle bir cümlede, çevirmeden ÖNCE kaynağın GERÇEKTE olumlu mu "
+        f"olumsuz mu dediğini kendine sor, sonra o anlamı Türkçeye AÇIK ve "
+        f"NET şekilde aktar.\n"
+        f"5. Kaynakta bir karakterin adı AÇIKÇA belirtilmişse, bu adı "
+        f"çeviride düşürüp belirsiz bir zamire (\"o\", \"onu\") çevirme — "
+        f"hangi karaktere atıf yapıldığı belirsizleşebilir ya da yanlış "
+        f"karaktere atfedilebilir.\n"
+        f"6. Bir İngilizce kelime, Türkçede FARKLI bir anlama gelen "
+        f"benzer-görünümlü bir kelimeye (\"yanlış dost\") benziyorsa, bu "
+        f"benzerliğe kanıp yanlış çevirme — emin olmadığın bir kelimenin "
+        f"GERÇEK anlamını düşün.\n"
+        f"7. Diyalog sırasını ve içeriğini kaynağa sadık tut — kaynakta "
+        f"olmayan hiçbir cümle/diyalog ekleme, kaynaktaki sırayı değiştirme.\n"
+        f"8. Doğallık okunabilirlikten önemli değil: bir çeviri dilbilgisi "
         f"olarak doğru ama \"çevrilmiş gibi\" okunuyorsa, o cümleyi bir "
         f"Türk yazarın nasıl kurardığını düşünüp yeniden yaz.\n"
     )
+    pitfalls_ctx = pitfalls.build_context()
+    if pitfalls_ctx:
+        system_msg += f"\n{pitfalls_ctx}\n"
     if protected_str:
         system_msg += f"{protected_str}\n"
     if prev_tail:
@@ -464,6 +484,100 @@ def translate_chapter(chapter: dict, clients: list, key_index: list,
                       f"elle kontrol gerekebilir.")
 
     return result
+
+
+def refine_translation(source_text: str, translation: str, clients: list,
+                       key_index: list, chapter_title: str,
+                       memory_ctx: str = "", protected_str: str = "") -> str:
+    """
+    İlk çeviriyi kaynakla KARŞILAŞTIRIP gözden geçiren, AYRI ve ODAKLI
+    bir ikinci geçiş. translate_chapter()'ın hemen ardından çağrılır.
+
+    NEDEN AYRI BİR GEÇİŞ (tek seferde değil): Bir model aynı anda hem
+    akıcı/yaratıcı metin ÜRETMEK hem de o metni SIKI şekilde DENETLEMEK
+    arasında geçiş yapmakta zorlanır — bunlar farklı bilişsel modlar.
+    Gerçek üretim kanıtı (knh-11'in Gemini denetimi, bkz. qa_audit.py)
+    bunu doğruluyor: review.py'nin İngilizce-kalıntı denetimi hiçbirini
+    YAKALAYAMADIĞI 84 anlam kayması bulundu — çünkü hepsi YÜZEYDE akıcı,
+    "doğru görünen" Türkçe cümlelerdi (olumsuzlamanın tersine dönmesi,
+    atlanmış cümleler, karakter adının belirsiz zamire dönüşmesi, hatta
+    bazı yerlerde kaynakta OLMAYAN uydurma diyalog satırları). Bunların
+    HİÇBİRİ kelime bazlı bir kontrolle yakalanamaz — sadece kaynakla
+    KARŞILAŞTIRMALI bir okuma yakalayabilir. Bu fonksiyon tam olarak
+    bunu yapıyor: modele üretmek değil, SADECE karşılaştırıp gerekirse
+    düzeltmek görevi veriyor.
+
+    reasoning_effort="low" kullanılıyor (varsayılan "none" değil) —
+    bu, gc.call()'ın kendi belgelediği "nadiren daha derin akıl
+    yürütme gerektiren çağrılar" durumu; karşılaştırma/analiz görevi
+    ham üretimden farklı, gerçek adım-adım muhakeme faydalı olabilir.
+
+    GÜVENLİK (bu geçiş ASLA çeviriyi kötüleştirmemeli):
+    - API başarısız olursa (None, ya da tüm key'ler kilitliyse) ORİJİNAL
+      çeviri hiç dokunulmadan döner — bu adım tamamen OPSİYONEL bir
+      iyileştirme, ana çeviriyi ASLA riske atmaz.
+    - Gözden geçirilmiş metin, orijinalin %50'sinden kısa ya da %160'ından
+      uzunsa (modelin bir şeyi bozduğunun/kısalttığının/tekrarladığının
+      işareti), ORİJİNAL çeviri korunur, şüpheli sonuç ASLA kullanılmaz.
+    """
+    system_msg = (
+        f"Sen titiz bir çeviri editörüsün. \"{chapter_title}\" bölümünün "
+        f"İngilizce kaynağı ile ilk Türkçe çevirisi verilecek. Görevin "
+        f"ÜRETMEK değil, KARŞILAŞTIRIP DÜZELTMEK.\n\n"
+        f"Özellikle şunları dikkatlice kontrol et:\n"
+        f"1. OLUMSUZLAMA/TERS ANLAM: İngilizce'de çift olumsuzlama ya da "
+        f"\"never averse to\", \"willing\", \"no one would have dared\" gibi "
+        f"olumsuzlama/zıt-anlam içeren kalıplar, çeviride YANLIŞLIKLA "
+        f"TERSİNE dönmüş olabilir (örn. \"istekli\" iken \"istemeden\" "
+        f"çıkmış olabilir) — bu tip bir ters anlam var mı dikkatlice "
+        f"karşılaştır.\n"
+        f"2. ATLANMIŞ/DEĞİŞTİRİLMİŞ İÇERİK: kaynaktaki bir cümle "
+        f"çeviride hiç yok mu, ya da anlamı tamamen değişmiş mi?\n"
+        f"3. KARAKTER/ZAMİR KARIŞIKLIĞI: kaynakta açıkça adı geçen bir "
+        f"karakter, çeviride belirsiz bir zamire dönüşüp yanlış kişiye "
+        f"atıf yapar hale gelmiş mi?\n"
+        f"4. UYDURMA/SIRASI KARIŞMIŞ DİYALOG: çeviride kaynakta olmayan "
+        f"bir cümle eklenmiş mi, diyalog sırası kaynakla uyuşmuyor mu?\n\n"
+        f"Gerçek bir sorun BULAMAZSAN çeviriyi OLDUĞU GİBİ, HİÇ "
+        f"DEĞİŞTİRMEDEN geri ver — küçük üslup tercihlerine DOKUNMA, "
+        f"sadece yukarıdaki türden SOMUT hataları düzelt. Yanıt olarak "
+        f"SADECE (düzeltilmiş ya da değiştirilmemiş) TAM çeviriyi yaz, "
+        f"hiçbir açıklama/yorum ekleme."
+    )
+    pitfalls_ctx = pitfalls.build_context()
+    if pitfalls_ctx:
+        system_msg += f"\n\n{pitfalls_ctx}"
+    if protected_str:
+        system_msg += f"\n{protected_str}"
+    if memory_ctx:
+        system_msg += f"\n\n{memory_ctx}"
+
+    user_msg = f"KAYNAK:\n{source_text}\n\nİLK ÇEVİRİ:\n{translation}"
+
+    try:
+        refined = gc.call(clients, key_index, system_msg, user_msg,
+                          temperature=0.1, reasoning_effort="low")
+    except gc.AllKeysLockedError:
+        # Bu adım opsiyonel bir İYİLEŞTİRME — ana çeviri zaten başarıyla
+        # tamamlanmıştı, keyler kilitliyse burada run'ı durdurmuyoruz,
+        # sadece gözden geçirmeden vazgeçip orijinali koruyoruz.
+        print("    Gözden geçirme atlandı (tüm keyler kilitli), orijinal çeviri korunuyor.")
+        return translation
+
+    if not refined:
+        print("    Gözden geçirmeden yanıt alınamadı, orijinal çeviri korunuyor.")
+        return translation
+
+    orig_len, new_len = len(translation), len(refined)
+    if orig_len > 200 and not (0.5 * orig_len <= new_len <= 1.6 * orig_len):
+        print(f"    Uyarı: gözden geçirme çıktısı beklenmedik uzunlukta "
+              f"({orig_len}->{new_len} karakter), orijinal çeviri korunuyor.")
+        return translation
+
+    if refined.strip() != translation.strip():
+        print("    Gözden geçirme bir düzeltme uyguladı.")
+
+    return refined
 
 
 # ── Ana akış ───────────────────────────────────────────────────────────────────

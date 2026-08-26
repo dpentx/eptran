@@ -28,7 +28,7 @@ from datetime import datetime, timezone
 
 from lib import groq_client as gc, memory as mem, ner, series as series_lib
 from lib.git_utils import write_status, trigger_workflow, current_branch
-from translate import translate_chapter
+from translate import translate_chapter, refine_translation
 
 STATUS_FILE = "status.json"
 PART_RE = re.compile(r"^(\d{3})_(\d{2})\.txt$")
@@ -330,6 +330,23 @@ def main():
         return
 
     translated_path = f"{translated_dir}/{chapter_idx:03d}_{part_idx:02d}.txt"
+    # Gemini denetiminin bulduğu en tehlikeli hata sınıflarını (olumsuzlama
+    # ters çevirme, atlanmış/uydurma cümle, karakter/zamir karışıklığı —
+    # bkz. translate.py'deki refine_translation docstring'i) yakalamak için
+    # ayrı, odaklı bir ikinci geçiş. refine_translation() kendi içinde
+    # zaten güvenli (API hatası/kilitli key/şüpheli uzunlukta orijinali
+    # korur); burada AYRICA sarmalıyoruz ki öngörülmedik bir hata bile
+    # olsa bu OPSİYONEL iyileştirme adımı ana çeviri akışını ASLA
+    # bozamasın — translated zaten başarıyla üretildi, kaybedilmemeli.
+    try:
+        translated = refine_translation(
+            chunk_text, translated, clients, key_index, title,
+            memory_ctx=memory_ctx, protected_str=protected_str,
+        )
+    except Exception as e:
+        print(f"    Uyarı: gözden geçirme adımında beklenmeyen hata ({e}), "
+              f"orijinal çeviri korunuyor.")
+
     with open(translated_path, "w", encoding="utf-8") as f:
         f.write(translated)
     subprocess.run(["git", "add", translated_path])
