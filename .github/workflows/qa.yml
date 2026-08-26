@@ -20,6 +20,11 @@ on:
         required: false
         type: boolean
         default: true
+      apply_fixes:
+        description: "Denetim bitince, somut olarak eşleştirilen hataları Qwen'e (Groq) düzelttir mi?"
+        required: false
+        type: boolean
+        default: false
 
 # NOT: Bu, ana çeviri hattından (translate.yml/queue-worker.yml/review.yml)
 # BİLEREK ayrı ve sadece elle (workflow_dispatch) tetiklenen bir araç —
@@ -113,6 +118,23 @@ jobs:
             python scripts/qa_audit.py "${{ inputs.slug }}"
           fi
 
+      # Gemini'nin somut olarak (kaynak+hatalı çeviri alıntısı çiftiyle)
+      # işaretlediği maddeleri Qwen'e (Groq) tek tek düzelttirir — bkz.
+      # apply_qa_fixes.py docstring'i: SADECE alıntı dosyada birebir
+      # bulunursa uygulanır, tahminle hiçbir yere yapıştırma yapılmaz.
+      # Varsayılan olarak KAPALI (apply_fixes: false) — ilk birkaç
+      # kitapta admin'in --dry-run ile önce kendi gözüyle kontrol etmesi
+      # öneriliyor.
+      - name: Apply QA fixes (Qwen)
+        if: inputs.apply_fixes == true
+        env:
+          GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
+          GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
+          GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
+          GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
+          PYTHONUNBUFFERED: "1"
+        run: python scripts/apply_qa_fixes.py "${{ inputs.slug }}"
+
       - name: Run series suggestion
         if: inputs.run_series_suggest == true
         env:
@@ -138,6 +160,7 @@ jobs:
           # `git add` çağrısıyla ekliyoruz — biri yoksa diğerleri etkilenmiyor.
           git add output/${{ inputs.slug }}/qa_report.md 2>/dev/null || true
           git add output/${{ inputs.slug }}/.qa_progress.json 2>/dev/null || true
+          git add output/${{ inputs.slug }}/*.txt 2>/dev/null || true
           git add series/*.suggested.json 2>/dev/null || true
           git diff --cached --quiet && echo "Değişiklik yok." && exit 0
           git commit -m "qa: ${{ inputs.slug }} denetim raporu + seri önerisi"
