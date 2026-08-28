@@ -24,7 +24,7 @@ Shogi salonunda da sarhoşlar bolca vardı; ama ara sıra gerçek bir ustaya ras
 
 Sonra Rikuson başını eğriyetti. “Hmm?” Büyük Lin bu oyunu kaybediyordu. Bu pek sık görülmezdi. Rikuson rakibine baktığında, henüz gençliğinin tam gücünde olan, ama yırtık ve kirli bir adam gördü. Yüzünde ince bir sakal kalıntısı vardı, kıyafetleri kirli ve saçları yerinde tutulurken neredeyse çözülüyordu. Kıyafeti yeterince güzeldi, ama durumunun öyle olmadığı anlaşılıyordu. Zayıf görünüyordu ve bronzlaşmamıştı; batı başkentinin sakini gibi görünmüyordu. Ama gözleri—gözleri bir tilkininki gibi parlıyordu.
 
-“Seninle küçük bir Piyonun var,” dedi adam—bir Shogi taşı. Tilki benzeri gözlerinden birinin üzerinde tek gözlük takıyordu, ithal bir parça, ama bu adamda her şey şık yerine kaba görünüyordu.
+“Yanında küçük bir Piyon olduğunu görüyorum,” dedi adam.—bir Shogi taşı. Tilki benzeri gözlerinden birinin üzerinde tek gözlük takıyordu, ithal bir parça, ama bu adamda her şey şık yerine kaba görünüyordu.
 
 Bunu ne demek istiyordu? Rikuson’dan bahsediyor gibi görünüyordu. Bu ifadeye tepki verdi, elleri yumruğa dönüştü. “Kime Piyon diyorsun?” diye sordu.
 
@@ -36,7 +36,7 @@ Bunu ne demek istiyordu? Rikuson’dan bahsediyor gibi görünüyordu. Bu ifadey
 
 “Go taşı...”
 
-Rikuson, Go taşı ile Piyon arasındaki farkın ne olduğunu tam olarak bilmiyordu. Soruyu düşünürken tahtaya baktı. Bu “Lakan” şüpheli görünebilir ve tanıştığı herkesi alay konusu yapabilir—ama bunu olağanüstü bir Shogi oyuncusu olarak destekliyordu. Bu, Rikuson’un Büyük Lin’in bir oyunu kaybettiğini ilk gördüğü andı. Büyük Lin, gençliğindeki gibi olmasa da, zirvede iken insanlar onu hala Shogi bilgesi olarak anıyordu; kaybetmesi neredeyse imkansız görünüyordu. Ama bu ziyaretçi, oyunlarında onu beşeride tutuyordu.
+Rikuson, Go taşı ile Piyon arasındaki farkın ne olduğunu tam olarak bilmiyordu. Soruyu düşünürken tahtaya baktı. Bu “Lakan” şüpheli görünebilir ve tanıştığı herkesi alay konusu yapabilir—ama bunu olağanüstü bir Shogi oyuncusu olarak destekliyordu. Bu, Rikuson’un Büyük Lin’in bir oyunu kaybettiğini ilk gördüğü andı. Büyük Lin, gençliğindeki gibi olmasa da, zirvede iken insanlar onu hala Shogi bilgesi olarak anıyordu; kaybetmesi neredeyse imkansız görünüyordu. Ama bu ziyaretçi, oyunlarında onunla başa baş gidiyordu.
 
 Merakla, Rikuson ertesi gün ve ondan sonraki gün de geri döndü. Lakan hep oradaydı. (Belki de bir işi yok muydu?) Shogi salonunda olmadığında, Rikuson’un öğrendiğine göre Go salonundaydı. Yaptığı tek şey oyun oynamaktı.
 
@@ -44,7 +44,7 @@ Bir gün, Büyük Lin orada değildi; Lakan başka insanlarla oynuyordu, ama old
 
 “Tekrar o geldi,” dedi biri. “Yi çocuğu!”
 
-Büyük Lin’in huzurunda kimse böyle bir şey söylemeye cesaret ederdi, ama Rikuson yalnızken kendilerini tutma ihtiyacı hissetmiyorlardı.
+Büyük Lin’in huzurunda Kimse böyle bir şey söylemeye cesaret edemezdi., ama Rikuson yalnızken kendilerini tutma ihtiyacı hissetmiyorlardı.
 
 Yi çocuğu. Yi klanının çocuğu; ona böyle diyorlardı. Yi klanı batı başkentini yönetiyordu, ama miras sisteminin benzersizliğine karşı kıskançlık duyan ve onları kötülemeye çok hazır birçok insan vardı.
 
@@ -62,7 +62,7 @@ Büyük Lin olmadan, en iyi ikinci seçeneği yaptı ve Lakan’ın yanına otur
 
 “Sadece Go taşları görürüm. Şanslıysam Shogi taşları.”
 
-“Ne kazanacaksın ki? Birkaç kez görürsün, hatırlarsın, değil mi?”
+“Anlaşılmayacak ne var? Birkaç kez görürsün, hatırlarsın, değil mi?”
 
 Rikuson için bu mantıksızdı, ama Lakan’ın yalan söylediğini düşünmüyordu. İnsanların yüzlerini ayırt etmek, çoğu insan için hayvanları birbirinden ayırt etmekten daha kolay değildi. Göçebe kabilelerinde, bazı çobanların koyunlarının her birini ayırt edebildiği söylenirdi—ama Rikuson bunu asla başaramazdı. Belki Lakan, insanların yüzlerini Rikuson’un koyunları gördüğü gibi görüyordu.
 

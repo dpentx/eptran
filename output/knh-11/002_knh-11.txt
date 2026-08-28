@@ -2,7 +2,7 @@
 
 Prolog
 
-Araç seslerini severdi: atların nalları, tekerleklerin gıcırtısı, sürücülerin bağırışları.
+Araç seslerini severdi: atların kişnemesi, tekerleklerin gıcırtısı, sürücülerin bağırışları.
 
 Pazar seslerini severdi: tüccarların çağrıları, kalabalığın hareketliliği, çocukların kahkahaları.
 
