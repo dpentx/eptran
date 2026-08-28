@@ -1,0 +1,32 @@
+{
+  "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-11 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
+  "source_book": "knh-11",
+  "new_characters": {
+    "Luomen": "Luomen",
+    "Ka Zuigetsu": "Ka Zuigetsu",
+    "Gaoshun": "Gaoshun",
+    "Consort Lishu": "Lishu Hanım",
+    "Baryou": "Baryou",
+    "Rikuson": "Rikuson",
+    "Gyokuen": "Gyokuen",
+    "Suiren": "Suiren",
+    "Taomei": "Taomei",
+    "Tianyu": "Tianyu",
+    "En'en": "En'en",
+    "Dr. You": "Dr. You",
+    "Vice Minister Lu": "Bakan Yardımcısı Lu"
+  },
+  "new_terms": {
+    "pleasure district": "zevk mahallesi",
+    "wet nurse": "süt annesi",
+    "quack doctor": "şarlatan doktor",
+    "Master Gyokuen": "Gyokuen Efendi",
+    "Master Gyoku-ou": "Gyoku-ou Efendi"
+  },
+  "new_notes": [
+    "Gyokuen (Gyokuen Efendi) ve Gyoku-ou (Gyoku-ou Efendi) isimleri son derece benzerdir ve karıştırılmamalıdır. Gyokuen, İmparatoriçe Gyokuyou'nun babasıdır; Gyoku-ou ise İmparatoriçe'nin erkek kardeşidir (ve batı bölgesinin vekil yöneticisidir).",
+    "Gaoshun, Jinshi'nin baş yardımcısıdır ve Basen'in babasıdır. Aralarındaki askeri/hiyerarşik ve ailevi bağa dikkat edilmelidir.",
+    "Luomen, Maomao'yu yetiştiren kişi (babalığı) ve aynı zamanda amcasıdır. Eski bir saray hekimidir.",
+    "Suiren, Jinshi'nin süt annesidir (wet nurse) ve saraydaki kıdemli hizmetlilerdendir."
+  ]
+}

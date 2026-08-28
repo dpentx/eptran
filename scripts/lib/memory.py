@@ -31,9 +31,10 @@ Kurallar:
 - Kültüre özgü terimler, büyü/güç adları, unvanlar önemlidir
 - style_notes kısa ve net olsun"""
 
-_UPDATE_SYSTEM = """Sen bir çeviri editörüsün. Mevcut çeviri hafızasını yeni bölüm bilgileriyle güncelle.
-SADECE güncellenmiş JSON döndür, başka hiçbir şey ekleme.
-Mevcut kayıtları silme, sadece yenilerini ekle veya çelişkileri düzelt."""
+_UPDATE_SYSTEM = """Sen bir çeviri editörüsün. Sana verilen bölüm metninde geçen,
+henüz bilinmeyen YENİ özel isim/terimleri bul. SADECE bunları JSON olarak
+döndür, başka hiçbir şey ekleme. Zaten bilinen isimleri/terimleri tekrar
+döndürme."""
 
 _SUMMARY_SYSTEM = (
     "Sana verilen Türkçe çeviri metninin 1-2 cümlelik özetini yaz. "
@@ -113,28 +114,54 @@ def extract_from_source(source_text: str, clients: list, key_index: list) -> dic
 def update_from_translation(memory: dict, source_text: str,
                              clients: list, key_index: list) -> dict:
     """
-    Yeni bölümün KAYNAK (İngilizce) metninden yeni karakter/terim
-    bilgileri çıkar, mevcut hafızayla birleştir.
+    Yeni bölümün KAYNAK (İngilizce) metninden YENİ karakter/terim
+    bilgileri çıkar, mevcut hafızaya ekle.
 
-    NOT (Ağustos 2026): Bu fonksiyon eskiden ÇEVRİLMİŞ (Türkçe) metni
-    alıyordu. characters/terms sözlüğü "İngilizce isim → Türkçe karşılık"
-    formatında olduğu için modelin elinde zaten Türkçeye çevrilmiş bir
-    metin varken orijinal İngilizce isimleri çıkarması imkansızdı — model
-    de Türkçe cümle parçalarını kendi kendine eşleyip hafızayı çöp
-    kayıtlarla dolduruyordu (örn. memory.json'da "terms" altında tam
-    Türkçe cümleler görülmüştü). Bu arada gerçek isimler (Jupiter,
-    Legrand, massa, Charleston...) hiç kalıcı hafızaya girmiyordu —
-    sadece o bölümün çeviri prompt'unda kullanılıp atılan
-    queue_worker.py'deki `chapter_entities`'te kalıyordu. Sonuç: review
-    aşamasının whitelist'i eksik kalıyor, aynı isimler her paragrafta
-    yeniden "yabancı kelime" sanılıp LLM'e yollanıyor, rate limit hızla
-    tükeniyordu. Kaynak (İngilizce) metni vermek modelin gerçek
-    İngilizce isim/terimleri doğru çıkarmasını sağlar.
+    NOT (Ağustos 2026, ilk versiyon): Bu fonksiyon eskiden ÇEVRİLMİŞ
+    (Türkçe) metni alıyordu. characters/terms sözlüğü "İngilizce isim →
+    Türkçe karşılık" formatında olduğu için modelin elinde zaten
+    Türkçeye çevrilmiş bir metin varken orijinal İngilizce isimleri
+    çıkarması imkansızdı — model de Türkçe cümle parçalarını kendi
+    kendine eşleyip hafızayı çöp kayıtlarla dolduruyordu. Kaynak
+    (İngilizce) metni vermek modelin gerçek İngilizce isim/terimleri
+    doğru çıkarmasını sağladı.
+
+    NOT (Ağustos 2026, ikinci düzeltme): İlk düzeltmeden SONRA bile
+    ayrı bir kararlılık sorunu vardı — fonksiyon her bölümde hafızanın
+    TAMAMINI ("Mevcut hafıza: {...tüm dict...}") LLM'e gönderip "güncelle"
+    diyor, dönen JSON'u DOĞRUDAN memory'nin yerine koyuyordu
+    (`return updated`). Prompt'ta "mevcut kayıtları silme" yazsa da bu
+    hiçbir yerde KOD SEVİYESİNDE zorlanmıyordu — model her defasında
+    tüm sözlüğü yeniden ürettiği için, dokunması istenmeyen kayıtları
+    bile "iyileştireyim" diye değiştirebiliyor ya da unutup düşürebiliyordu.
+    Gerçek üretimde (knh-11) "Vice Minister Lu" üç farklı bölümde üç
+    farklı Türkçe karşılığa dönüştü ("Lu Vekil Bakanı" → admin'in elle
+    düzelttiği "Lu Bakan Vekili" → sonra kendiliğinden "Başbakan Yardımcısı
+    Lu"), ve "pleasure district"/"wet nurse" gibi bazı terimler sözlükten
+    tamamen KAYBOLDU — admin'in serie/kitaba özel düzeltmeleri de dahil,
+    HİÇBİR kayıt güvende değildi.
+
+    Artık model'e sadece YENİ (henüz bilinmeyen) karakter/terimleri
+    bulmasını söylüyoruz, ve birleştirmeyi KOD içinde `setdefault` ile
+    yapıyoruz — var olan bir anahtarın değeri ne olursa olsun (otomatik
+    çıkarım, seri glossary'si, ya da admin'in elle düzelttiği bir kayıt)
+    ASLA otomatik olarak değiştirilmiyor/silinmiyor. Bir çeviriyi
+    düzeltmek artık her zaman bilinçli bir insan/seri-glossary
+    kararı — bu fonksiyonun kendisi asla "düzeltme" yapmıyor, sadece
+    eksik olanı tamamlıyor.
     """
     sample = representative_sample(source_text, max_chars=6000)
+    known_chars = ", ".join(sorted(memory.get("characters", {}).keys())) or "(henüz yok)"
+    known_terms = ", ".join(sorted(memory.get("terms", {}).keys())) or "(henüz yok)"
     user_msg = (
-        f"Mevcut hafıza:\n{json.dumps(memory, ensure_ascii=False)}\n\n"
-        f"Yeni bölümün İNGİLİZCE kaynak metni:\n{sample}"
+        f"Zaten bilinen karakterler (bunları TEKRAR döndürme): {known_chars}\n"
+        f"Zaten bilinen terimler (bunları TEKRAR döndürme): {known_terms}\n\n"
+        f"Yeni bölümün İNGİLİZCE kaynak metni:\n{sample}\n\n"
+        f"SADECE yukarıdaki listelerde OLMAYAN, bu bölümde geçen yeni "
+        f'özel isim/terimleri şu formatta JSON olarak döndür: '
+        f'{{"characters": {{"İsim": "Türkçe karşılığı"}}, '
+        f'"terms": {{"terim": "Türkçe karşılığı"}}}}. '
+        f"Hiç yeni bir şey yoksa boş sözlüklerle döndür."
     )
     raw = gc.call(clients, key_index, _UPDATE_SYSTEM, user_msg, temperature=0.1)
     time.sleep(1)
@@ -145,15 +172,27 @@ def update_from_translation(memory: dict, source_text: str,
             raw = raw.split("```")[1]
             if raw.startswith("json"):
                 raw = raw[4:]
-        updated = json.loads(raw)
-        # İzinsiz alanları temizle
-        updated = _sanitize(updated)
-        # summaries'i koru — update endpoint'i değiştirmez
-        updated["summaries"] = memory.get("summaries", [])
-        return updated
+        new_data = json.loads(raw)
+        new_data = _sanitize(new_data)
     except json.JSONDecodeError:
         print("  Hafıza güncellenemedi (JSON parse hatası), mevcut korunuyor.")
         return memory
+
+    # KRİTİK: sadece EKSİK olan anahtarları ekliyoruz — var olan hiçbir
+    # kayıt (otomatik ya da elle girilmiş) bu fonksiyon tarafından asla
+    # değiştirilmiyor/silinmiyor.
+    added = 0
+    for k, v in new_data.get("characters", {}).items():
+        if k not in memory["characters"]:
+            memory["characters"][k] = v
+            added += 1
+    for k, v in new_data.get("terms", {}).items():
+        if k not in memory["terms"]:
+            memory["terms"][k] = v
+            added += 1
+    if added:
+        print(f"  Hafızaya {added} yeni kayıt eklendi (mevcutlar korundu).")
+    return memory
 
 
 def add_summary(memory: dict, chapter_title: str, translated_text: str,

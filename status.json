@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "book": "knh-11",
+  "epub_file": "knh-11.epub",
+  "branch": "book/knh-11",
+  "source_type": "epub",
+  "total": 35,
+  "completed": 35,
+  "current_chapter": "",
+  "started_at": "2026-08-13T12:07:51.910880+00:00",
+  "queue_mode": true,
+  "series": "kusuriya",
+  "updated_at": "2026-08-28T05:22:33.386828+00:00",
+  "review_status": "completed",
+  "review_total": 35,
+  "review_completed": 35,
+  "review_current": "",
+  "convert_status": "completed",
+  "epub_output": "output/knh-11/knh-11_tr.epub"
+}

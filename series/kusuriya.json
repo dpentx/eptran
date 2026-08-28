@@ -10,14 +10,37 @@
     "Maamei": "Maamei",
     "Chue": "Chue",
     "Gyoku-ou": "Gyoku-ou",
-    "Empress Gyokuyou": "İmparatoriçe Gyokuyou"
+    "Empress Gyokuyou": "İmparatoriçe Gyokuyou",
+    "En'en": "En'en",
+    "Luomen": "Luomen",
+    "Ka Zuigetsu": "Ka Zuigetsu",
+    "Gaoshun": "Gaoshun",
+    "Consort Lishu": "Lishu Hanım",
+    "Baryou": "Baryou",
+    "Rikuson": "Rikuson",
+    "Gyokuen": "Gyokuen",
+    "Suiren": "Suiren",
+    "Taomei": "Taomei",
+    "Tianyu": "Tianyu",
+    "En'en": "En'en",
+    "Dr. You": "Dr. You",
+    "Vice Minister Lu": "Bakan Yardımcısı Lu"
   },
   "terms": {
-    "Red Plum Village": "Kızıl Erik Köyü"
+    "Red Plum Village": "Kızıl Erik Köyü",
+    "pleasure district": "zevk mahallesi",
+    "wet nurse": "süt annesi",
+    "quack doctor": "şarlatan doktor",
+    "Master Gyokuen": "Gyokuen Efendi",
+    "Master Gyoku-ou": "Gyoku-ou Efendi",
   },
   "notes": [
     "Lakan'ın evlatlık oğlu Lahan'dır. 'Lahan'ın Kardeşi' diye anılan (adı verilmeyen) kişi Lahan'ın çiftçi kardeşidir — bu isim ASLA 'Lakan'ın Kardeşi' diye yazılmamalı, ikisi tamamen farklı kişi/bağlamlardır.",
-    "İmparator'un küçük kardeşi Jinshi'dir. Basen, Maamei'nin küçük kardeşidir (İmparator ile ilgisi yoktur) — 'küçük kardeş' geçen her cümle otomatik olarak İmparator'un kardeşi anlamına gelmez, çoğu zaman sıradan bir aile ilişkisidir."
+    "İmparator'un küçük kardeşi Jinshi'dir. Basen, Maamei'nin küçük kardeşidir (İmparator ile ilgisi yoktur) — 'küçük kardeş' geçen her cümle otomatik olarak İmparator'un kardeşi anlamına gelmez, çoğu zaman sıradan bir aile ilişkisidir.",
+    "Gyokuen (Gyokuen Efendi) ve Gyoku-ou (Gyoku-ou Efendi) isimleri son derece benzerdir ve karıştırılmamalıdır. Gyokuen, İmparatoriçe Gyokuyou'nun babasıdır; Gyoku-ou ise İmparatoriçe'nin erkek kardeşidir (ve batı bölgesinin vekil yöneticisidir).",
+    "Gaoshun, Jinshi'nin baş yardımcısıdır ve Basen'in babasıdır. Aralarındaki askeri/hiyerarşik ve ailevi bağa dikkat edilmelidir.",
+    "Luomen, Maomao'yu yetiştiren kişi (babalığı) ve aynı zamanda amcasıdır. Eski bir saray hekimidir.",
+    "Suiren, Jinshi'nin süt annesidir (wet nurse) ve saraydaki kıdemli hizmetlilerdendir."
   ],
   "aliases": [
     "Kusuriya no Hitorigoto",
