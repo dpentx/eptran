@@ -25,6 +25,11 @@ on:
         required: false
         type: boolean
         default: false
+      skip_audit:
+        description: "Yeniden taramadan, dalda ZATEN VAR olan qa_report.md'yi kullanarak sadece düzeltme/öneri adımlarını çalıştır"
+        required: false
+        type: boolean
+        default: false
 
 # NOT: Bu, ana çeviri hattından (translate.yml/queue-worker.yml/review.yml)
 # BİLEREK ayrı ve sadece elle (workflow_dispatch) tetiklenen bir araç —
@@ -98,6 +103,7 @@ jobs:
             || echo "Bu seri için main'de henüz bir glossary yok, boş başlanıyor."
 
       - name: Run QA audit
+        if: inputs.skip_audit != true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
