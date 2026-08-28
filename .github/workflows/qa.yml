@@ -20,6 +20,16 @@ on:
         required: false
         type: boolean
         default: true
+      apply_fixes:
+        description: "Denetim bitince, somut olarak eşleştirilen hataları Qwen'e (Groq) düzelttir mi?"
+        required: false
+        type: boolean
+        default: false
+      skip_audit:
+        description: "Yeniden taramadan, dalda ZATEN VAR olan qa_report.md'yi kullanarak sadece düzeltme/öneri adımlarını çalıştır"
+        required: false
+        type: boolean
+        default: false
 
 # NOT: Bu, ana çeviri hattından (translate.yml/queue-worker.yml/review.yml)
 # BİLEREK ayrı ve sadece elle (workflow_dispatch) tetiklenen bir araç —
@@ -67,16 +77,33 @@ jobs:
       # görebilmesi için main'den bir kopyasını çekmeyi dene. Yoksa (henüz
       # bu seri için glossary yazılmadıysa) sorun değil, script boş
       # sözlükle devam eder.
+      #
+      # NOT (Ağustos 2026, gerçek üretim hatası): Burada eskiden
+      # `${{ inputs.slug }}` (KİTAP slug'ı, örn. "knh-11") kullanılıyordu —
+      # ama series dosyaları KİTABIN değil SERİNİN adıyla ("kusuriya")
+      # adlandırılıyor (bkz. status.json'daki "series" alanı). Bu yüzden
+      # main'deki GEÇERLİ series/kusuriya.json hiç çekilmiyordu, dalda
+      # zaten var olan (ve bir noktada elle düzenlenirken virgülü unutulup
+      # BOZULMUŞ) eski kopya kullanılmaya devam ediyordu — series_suggest.py
+      # "series/kusuriya.json okunamadı" diye sessizce göz ardı ediyordu.
+      # Artık status.json'dan GERÇEK seri slug'ını okuyup onu kullanıyoruz.
+      - name: Determine series slug
+        id: series
+        run: |
+          SERIES=$(python3 -c "import json, os; print((json.load(open('status.json', encoding='utf-8')).get('series') or '') if os.path.exists('status.json') else '')" 2>/dev/null || echo "")
+          echo "slug=$SERIES" >> "$GITHUB_OUTPUT"
+
       - name: Pull existing series glossary from main (best-effort)
-        if: inputs.run_series_suggest == true
+        if: inputs.run_series_suggest == true && steps.series.outputs.slug != ''
         run: |
           mkdir -p series
-          git show origin/main:series/${{ inputs.slug }}.json > /tmp/existing_series.json 2>/dev/null \
-            && cp /tmp/existing_series.json series/${{ inputs.slug }}.json \
-            && echo "Mevcut glossary main'den çekildi." \
+          git show origin/main:series/${{ steps.series.outputs.slug }}.json > /tmp/existing_series.json 2>/dev/null \
+            && cp /tmp/existing_series.json series/${{ steps.series.outputs.slug }}.json \
+            && echo "Mevcut glossary main'den çekildi (series/${{ steps.series.outputs.slug }}.json)." \
             || echo "Bu seri için main'de henüz bir glossary yok, boş başlanıyor."
 
       - name: Run QA audit
+        if: inputs.skip_audit != true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
@@ -97,6 +124,23 @@ jobs:
             python scripts/qa_audit.py "${{ inputs.slug }}"
           fi
 
+      # Gemini'nin somut olarak (kaynak+hatalı çeviri alıntısı çiftiyle)
+      # işaretlediği maddeleri Qwen'e (Groq) tek tek düzelttirir — bkz.
+      # apply_qa_fixes.py docstring'i: SADECE alıntı dosyada birebir
+      # bulunursa uygulanır, tahminle hiçbir yere yapıştırma yapılmaz.
+      # Varsayılan olarak KAPALI (apply_fixes: false) — ilk birkaç
+      # kitapta admin'in --dry-run ile önce kendi gözüyle kontrol etmesi
+      # öneriliyor.
+      - name: Apply QA fixes (Qwen)
+        if: inputs.apply_fixes == true
+        env:
+          GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
+          GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
+          GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
+          GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
+          PYTHONUNBUFFERED: "1"
+        run: python scripts/apply_qa_fixes.py "${{ inputs.slug }}"
+
       - name: Run series suggestion
         if: inputs.run_series_suggest == true
         env:
@@ -110,13 +154,20 @@ jobs:
       - name: Commit results
         if: always()
         run: |
-          # .qa_progress.json'ı da commit'liyoruz — checkpoint mekanizması
-          # (bkz. qa_audit.py) bunun dal üzerinde kalıcı olmasına bağlı,
-          # yoksa bir sonraki workflow çalıştırmasında (yeni bir checkout'la)
-          # ilerleme kaybolur ve baştan başlar.
-          git add output/${{ inputs.slug }}/qa_report.md \
-                  output/${{ inputs.slug }}/.qa_progress.json \
-                  series/*.suggested.json 2>/dev/null || true
+          # NOT (Ağustos 2026, gerçek üretim hatası): `git add A B C` çağrısı,
+          # üçünden BİRİ bile diskte yoksa (örn. denetim TAM tamamlanıp
+          # .qa_progress.json checkpoint'i silindiğinde — bu aslında BAŞARI
+          # durumu!) TÜM komutu sessizce başarısız kılıyor, mevcut olan
+          # diğer dosyaları (qa_report.md gibi) BİLE stage etmiyordu. Gerçek
+          # üretimde tam da bu oldu: denetim 27/27 bölümü başarıyla bitirdi,
+          # rapor diskte vardı, ama commit adımı "Değişiklik yok" deyip hiç
+          # commit atmadı — checkpoint temizlendiği için "başarı" sessizce
+          # "hiçbir şey yapılmadı" gibi göründü. Artık her dosyayı AYRI
+          # `git add` çağrısıyla ekliyoruz — biri yoksa diğerleri etkilenmiyor.
+          git add output/${{ inputs.slug }}/qa_report.md 2>/dev/null || true
+          git add output/${{ inputs.slug }}/.qa_progress.json 2>/dev/null || true
+          git add output/${{ inputs.slug }}/*.txt 2>/dev/null || true
+          git add series/*.suggested.json 2>/dev/null || true
           git diff --cached --quiet && echo "Değişiklik yok." && exit 0
           git commit -m "qa: ${{ inputs.slug }} denetim raporu + seri önerisi"
           git push origin HEAD:${{ inputs.branch }}
