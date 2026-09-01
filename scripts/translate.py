@@ -21,6 +21,7 @@ from lib import boilerplate, groq_client as gc, unicode_cleaner, series as serie
 from lib.git_utils import (
     write_status, trigger_workflow, create_book_branch,
     list_active_book_branches, peek_remote_file, is_stale_running, git_push,
+    current_branch, delete_remote_branch,
 )
 
 STATUS_FILE = "status.json"
@@ -634,6 +635,18 @@ def _scan_and_nudge_active_books() -> None:
 def main():
     _scan_and_nudge_active_books()
 
+    # Vercel artık yüklemeleri main'e değil, doğrudan queue/<slug> adında
+    # yeni bir dala yazıyor (bkz. api/upload.js) — bu yüzden main'e HİÇBİR
+    # otomasyon commit'i düşmüyor ve repo'da main için branch protection
+    # (PR zorunluluğu vb.) bot'u etkilemeden kurulabiliyor. Bu fonksiyon
+    # main'de çalışıyorsa (örn. cron'un periyodik nudge'ı, ya da admin
+    # main'e elle bir dosya bırakmışsa) eski usul davranışı KORUR — geriye
+    # dönük uyumluluk için. queue/<slug> dalında çalışıyorsa (normal/
+    # yeni yol), main'e hiç push atmadan mevcut dalı book/<slug>'a
+    # dönüştürür.
+    branch_now = current_branch()
+    is_queue_branch = branch_now.startswith("queue/")
+
     input_files = [f for f in os.listdir("input")
                    if f.endswith(".epub") or f.endswith(".pdf")]
     if not input_files:
@@ -695,21 +708,33 @@ def main():
     with open(file_path, "rb") as f:
         original_bytes = f.read()
 
-    # input/, henüz işlenmemiş kitapların kuyruğu — main dalında yaşıyor.
-    # Bir kitap işlenmeye alınır alınmaz kuyruktan (main'den) hemen
-    # ÇIKARILIP push'lanmalı; yoksa bir sonraki cron tetiklemesi aynı
+    # input/, henüz işlenmemiş kitapların kuyruğu — main dalında yaşıyor
+    # (SADECE eski/geriye-dönük-uyumluluk yolunda; normal yolda artık
+    # queue/<slug> dalında yaşıyor, bkz. yukarıdaki not). is_queue_branch
+    # DEĞİLSE (main'deysek): dosyayı kuyruktan hemen ÇIKARIP main'e
+    # push'lamamız gerekiyor — yoksa bir sonraki cron tetiklemesi aynı
     # dosyayı TEKRAR bulur ve book/<slug> dalı zaten var olduğu için
     # `git checkout -b` çakışmasına yol açar.
-    os.remove(file_path)
-    subprocess.run(["git", "rm", file_path], check=True)
-    git_push(f"input'tan alındı: {input_file}")
+    # is_queue_branch İSE (queue/<slug>'daysak): main'e hiç push atmadan,
+    # sadece dosyayı kuyruktan (git rm ile) kaldırıp devam ediyoruz —
+    # bu değişiklik, birazdan dal book/<slug>'a dönüşünce yapılacak TEK
+    # push'un içinde zaten gidecek.
+    if is_queue_branch:
+        subprocess.run(["git", "rm", file_path], check=True)
+    else:
+        os.remove(file_path)
+        subprocess.run(["git", "rm", file_path], check=True)
+        git_push(f"input'tan alındı: {input_file}")
 
     # Bu kitap için main'den ayrı, kendine ait bir dal oluştur. Tüm ara
     # ilerleme (çeviri, review, ciltleme) bundan sonra SADECE bu dala
     # yazılır — main hiç etkilenmez. Kitap tamamen bitince tek bir PR
     # açılır (bkz. convert.py), sen onaylayıp merge edene kadar main'e
     # hiçbir şey yansımaz.
-    create_book_branch(branch)
+    if is_queue_branch:
+        create_book_branch(branch, rename_from=branch_now)
+    else:
+        create_book_branch(branch)
 
     output_dir = f"output/{book_slug}"
     originals_dir = f"{output_dir}/.originals"
@@ -772,6 +797,10 @@ def main():
     # Bu dalın ilk push'u — git_utils.git_push() remote'ta bu dal henüz
     # yokken otomatik '-u origin <branch>' ile push eder.
     write_status(status, f"kuyruğa alındı: {total} bölüm, {total_parts_all} parça")
+    if is_queue_branch:
+        # queue/<slug>, artık book/<slug> olarak yaşıyor — geçici dalı
+        # uzaktan temizle (best-effort, başarısız olsa da önemli değil).
+        delete_remote_branch(branch_now)
     print(f"Queue-worker tetikleniyor (dal: {branch})...")
     trigger_workflow("queue-worker.yml", branch=branch)
 
