@@ -47,14 +47,45 @@ def _remote_branch_exists(branch: str) -> bool:
     return result.returncode == 0
 
 
-def create_book_branch(branch: str) -> None:
+def create_book_branch(branch: str, rename_from: str | None = None) -> None:
     """
-    main'den yeni bir kitap dalı oluşturup üzerine geçer (henüz push
+    Kitap dalını oluşturur.
+
+    rename_from VERİLMEZSE (eski/klasik yol — admin main'e elle dosya
+    bırakırsa): main'den yeni bir dal açıp üzerine geçer (henüz push
     etmez — ilk push, o dal üzerinde ilk write_status()/git_push()
     çağrısında, _remote_branch_exists() False olduğu için otomatik
     '-u origin <branch>' ile yapılır).
+
+    rename_from VERİLİRSE (Eylül 2026'dan itibaren normal yol — Vercel
+    artık main'e hiç dokunmadan doğrudan queue/<slug> adında bir dal
+    açıp yükleniyor, bkz. api/upload.js): main'den YENİ bir dal açmak
+    yerine, üzerinde bulunduğumuz queue/<slug> dalını book/<slug> olarak
+    YENİDEN ADLANDIRIR. Böylece main'e translate.py tarafında da HİÇ
+    push atılmamış olur — tüm akış (yükleme + kuyruktan kitap dalına
+    geçiş) main'i hiç görmeden tamamlanır.
     """
-    subprocess.run(["git", "checkout", "-b", branch], check=True)
+    if rename_from:
+        subprocess.run(["git", "branch", "-m", rename_from, branch], check=True)
+    else:
+        subprocess.run(["git", "checkout", "-b", branch], check=True)
+
+
+def delete_remote_branch(branch: str) -> None:
+    """
+    Uzaktaki bir dalı siler — SADECE temizlik amaçlı (rename_from ile
+    kullanılan geçici queue/<slug> dalını, book/<slug>'a taşındıktan
+    sonra kaldırmak için). Best-effort: başarısız olursa sessizce loglar,
+    script'i çökertmez (dal silinmese de bir sonraki çalıştırmayı
+    etkilemez, sadece repo'da işi bitmiş bir dal olarak kalır).
+    """
+    result = subprocess.run(
+        ["git", "push", "origin", "--delete", branch],
+        capture_output=True, text=True
+    )
+    if result.returncode != 0:
+        print(f"  Uyarı: uzak dal '{branch}' silinemedi (önemli değil): "
+              f"{result.stderr.strip()}")
 
 
 def list_active_book_branches() -> list:

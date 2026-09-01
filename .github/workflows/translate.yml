@@ -47,6 +47,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ steps.app-token.outputs.token }}
+          # NOT: explicit belirtiyoruz ama zaten GitHub Actions'ın
+          # varsayılanıyla aynı — workflow_dispatch API çağrısında hangi
+          # ref (dal) gönderildiyse checkout onu kullanır. Vercel artık
+          # bu workflow'u main değil queue/<slug> ref'iyle tetikliyor
+          # (bkz. api/upload.js) — bu satır, o davranışın gizli bir
+          # varsayıma değil, açık bir tercihe dayandığını belli etsin
+          # diye yazıldı.
+          ref: ${{ github.ref }}
           fetch-depth: 0
 
       - name: Setup Python
