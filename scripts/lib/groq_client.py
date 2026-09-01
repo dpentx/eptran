@@ -102,8 +102,12 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
     Groq'a system+user mesajı gönder, rate limit'e göre key rotasyonu yap.
     Dönen çıktıyı clean_output() ile temizleyerek döndür.
 
-    Model: qwen/qwen3.6-27b (Temmuz 2026 itibarıyla değiştirildi — bkz.
-    aşağıdaki not). reasoning_effort="none" (varsayılan): gpt-oss ailesi
+    Model: qwen/qwen3.8-27b (Eylül 2026 itibarıyla — Groq, qwen3.6-27b'yi
+    kaldırıp bunu önerdiği için değiştirildi; bkz. aşağıdaki not).
+    reasoning_effort="none" hâlâ geçerli ve Groq'ta bu model için
+    varsayılan da zaten "none" (Qwen'in kendi native varsayılanı "xhigh"
+    olsa da Groq API'si bunu override ediyor) — bu yüzden bu parametrede
+    ekstra bir değişiklik gerekmedi. reasoning_effort="none" (varsayılan): gpt-oss ailesi
     HER ZAMAN akıl yürütür ve bu KAPATILAMAZ (en düşük ayarında bile
     ("low") gizlice bir miktar "düşünme" token'ı harcar) — bu yüzden
     gpt-oss-120b'de "low" bile TPM/kesik-yanıt sorunlarını tam çözememişti.
@@ -122,6 +126,16 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
     (örn. "hatched" kelimesinin "yumurtlamış" diye ters çevrilmesi gibi
     anlam kaymaları) bu değişiklikle azalması bekleniyor — kesin olarak
     doğrulanmadı, gerçek kullanımda izlenmeli.
+
+    NOT (Eylül 2026): qwen3.6-27b'den qwen3.8-27b'ye geçildi — Groq
+    qwen3.6-27b'yi e-posta ile deprecate edip bunu önerdi. Qwen'in kendi
+    yayınladığı ölçümlerde 3.8, 3.6'ya göre kodlama/ajan görevlerinde
+    belirgin şekilde daha iyi (bağımsız doğrulanmadı) ve bağlam penceresi
+    çok daha geniş (262K, YaRN ile 1M'e kadar) — bu proje için pratik
+    etkisi muhtemelen düşük çünkü bölüm başına gönderilen metin zaten bu
+    sınırların çok altında. Aynı mimari aile (dense 27B, görsel+metin),
+    API arayüzü ve reasoning_effort davranışı aynı kaldı; tek gerekli
+    değişiklik model string'iydi.
 
     Model boş yanıt döndürürse VEYA yanıt token limiti yüzünden yarıda
     kesilirse (finish_reason == "length") (MAX_EMPTY_RETRIES kez tekrar
@@ -160,7 +174,7 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
         info = clients[idx]
         try:
             response = info["client"].chat.completions.create(
-                model="qwen/qwen3.6-27b",
+                model="qwen/qwen3.8-27b",
                 messages=[
                     {"role": "system", "content": system_msg},
                     {"role": "user", "content": user_msg},

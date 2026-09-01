@@ -73,12 +73,68 @@ def _parse_report(path: str) -> dict:
     return chapters
 
 
+def _sync_report(report_path: str, applied: list) -> None:
+    """
+    Başarıyla uygulanan düzeltmeleri qa_report.md'den siler.
+
+    NEDEN GEREKLİ: pr_check.py, qa_report.md'deki "Toplam N şüpheli
+    nokta" sayısını okuyup N>0 ise PR'ı "sorunlu" işaretliyor. Bu
+    script bir maddeyi düzeltince dosyadaki metin değişiyor ama
+    qa_report.md HİÇ güncellenmiyordu — yani Qwen düzeltmeyi yapmış
+    olsa bile pr_check.py aynı (artık var olmayan) sorunu hâlâ orada
+    duruyor sanıp PR'ı işaretlemeye devam ediyordu. Bu yüzden PR
+    kontrolü, gerçek metin düzeltilmiş olsa da hiç temizlenmiyordu.
+
+    Yalnızca GERÇEKTEN uygulanan (translation_quote dosyada bulunup
+    değiştirilen) maddeler silinir; atlanan (metin tam eşleşmedi)
+    maddeler raporda KALIR — hâlâ elle incelenmesi gerektiği anlamına
+    gelir.
+    """
+    if not applied:
+        return
+    with open(report_path, encoding="utf-8") as f:
+        content = f.read()
+
+    for _chapter_num, issue in applied:
+        block = f'- **{issue["type"]}**: {issue["desc"]}\n'
+        if issue.get("source"):
+            block += f'  - Kaynak: *"{issue["source"]}"*\n'
+        block += f'  - Çeviri: *"{issue["translation"]}"*\n'
+        if block in content:
+            content = content.replace(block, "", 1)
+
+    def _fix_chapter_header(m):
+        header, body = m.group(1), m.group(2)
+        remaining = body.count("- **")
+        if remaining == 0:
+            return ""
+        title = re.sub(r" — \d+ sorun$", f" — {remaining} sorun", header)
+        return title + "\n" + body
+
+    content = re.sub(
+        r"(## Bölüm \d+:.*? — \d+ sorun)\n(.*?)(?=\n## Bölüm |\Z)",
+        _fix_chapter_header, content, flags=re.DOTALL,
+    )
+    content = re.sub(r"\n{3,}", "\n\n", content)
+
+    total_remaining = content.count("- **")
+    content = re.sub(
+        r"\*\*Toplam \d+ şüpheli nokta bulundu",
+        f"**Toplam {total_remaining} şüpheli nokta bulundu",
+        content,
+    )
+
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write(content)
+
+
 def apply_fixes(slug: str, report_path: str, clients: list, key_index: list,
                  dry_run: bool = False):
     chapters_issues = _parse_report(report_path)
     output_dir = f"output/{slug}"
     total_fixed, total_skipped = 0, 0
     skipped_log = []
+    applied = []
 
     for chapter_num, issues in sorted(chapters_issues.items()):
         path = os.path.join(output_dir, f"{chapter_num:03d}_{slug}.txt")
@@ -127,6 +183,7 @@ def apply_fixes(slug: str, report_path: str, clients: list, key_index: list,
                 body = body.replace(tq, fixed, 1)
                 changed = True
                 total_fixed += 1
+                applied.append((chapter_num, issue))
                 print(f"    -> {fixed[:60]!r}")
             else:
                 # Aynı bölümde önceki bir düzeltme bu alıntıyı da
@@ -146,6 +203,12 @@ def apply_fixes(slug: str, report_path: str, clients: list, key_index: list,
         print("Atlanan örnekler (ilk 10):")
         for ch, snippet in skipped_log[:10]:
             print(f"  Bölüm {ch}: {snippet!r}")
+
+    if not dry_run:
+        _sync_report(report_path, applied)
+        if applied:
+            print(f"\nqa_report.md güncellendi: {len(applied)} düzeltilen madde "
+                  f"rapordan silindi, kalan sorunlar korundu.")
 
 
 if __name__ == "__main__":
