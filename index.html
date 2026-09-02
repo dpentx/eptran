@@ -785,37 +785,19 @@
     hideFeedback();
 
     try {
-      showFeedback('Hazırlanıyor...', 'uploading');
-      const credsRes = await fetch('/api/creds');
-      if (!credsRes.ok) throw new Error('Credentials alınamadı');
-      const { repo, branch, pat } = await credsRes.json();
-
       showFeedback('Dosya okunuyor...', 'uploading');
       const base64 = await toBase64(selectedFile);
 
-      showFeedback('GitHub bilgileri sorgulanıyor...', 'uploading');
-
-      let existingSha;
-      const checkRes = await fetch(
-        `https://api.github.com/repos/${repo}/contents/input/${selectedFile.name}`,
-        { headers: { Authorization: `token ${pat}` } }
-      );
-      if (checkRes.ok) {
-        const existing = await checkRes.json();
-        existingSha = existing.sha;
-      }
-
-      const commitBody = {
-        message: `upload: ${selectedFile.name}`,
-        content: base64,
-        branch,
-      };
-      if (existingSha) commitBody.sha = existingSha;
-
-      const commitData = await new Promise((resolve, reject) => {
+      // NOT (Eylül 2026): Bu adım artık GitHub'a doğrudan tarayıcıdan
+      // (PAT'i /api/creds ile alıp) yazmıyor — /api/upload sunucu
+      // tarafında çalışıyor: main'e HİÇ dokunmadan main'in ucundan
+      // queue/<slug> adında yeni bir dal açıp dosyayı oraya commit'liyor,
+      // sonra translate.yml'i o dalla tetikliyor. PAT artık tarayıcıya
+      // hiç çıkmıyor — sunucuda kalıyor. Eskiden ayrı olan /api/trigger
+      // çağrısına da artık gerek yok, /api/upload ikisini birden yapıyor.
+      const uploadData = await new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('PUT', `https://api.github.com/repos/${repo}/contents/input/${selectedFile.name}`);
-        xhr.setRequestHeader('Authorization', `token ${pat}`);
+        xhr.open('POST', '/api/upload');
         xhr.setRequestHeader('Content-Type', 'application/json');
 
         xhr.upload.onprogress = (e) => {
@@ -823,37 +805,27 @@
             const percent = Math.round((e.loaded / e.total) * 100);
             feedbackProgressFill.style.width = percent + '%';
             feedbackProgress.textContent = `%${percent}`;
-            showFeedback(`GitHub'a yükleniyor...`, 'uploading', true);
+            showFeedback(`Yükleniyor...`, 'uploading', true);
           }
         };
 
         xhr.onload = () => {
+          let data;
+          try {
+            data = JSON.parse(xhr.responseText);
+          } catch {
+            data = null;
+          }
           if (xhr.status >= 200 && xhr.status < 300) {
-            try {
-              resolve(JSON.parse(xhr.responseText));
-            } catch {
-              resolve(xhr.responseText);
-            }
+            resolve(data || {});
           } else {
-            try {
-              const err = JSON.parse(xhr.responseText);
-              reject(new Error(err.message || 'GitHub yükleme başarısız'));
-            } catch {
-              reject(new Error(`GitHub yükleme başarısız (Kod: ${xhr.status})`));
-            }
+            reject(new Error((data && data.error) || `Yükleme başarısız (Kod: ${xhr.status})`));
           }
         };
 
         xhr.onerror = () => reject(new Error('Ağ hatası oluştu.'));
-        xhr.send(JSON.stringify(commitBody));
+        xhr.send(JSON.stringify({ filename: selectedFile.name, content: base64 }));
       });
-
-      showFeedback('Çeviri başlatılıyor...', 'translating');
-      const triggerRes = await fetch('/api/trigger', { method: 'POST' });
-      const triggerData = await triggerRes.json();
-      if (!triggerRes.ok) {
-        throw new Error(triggerData.error || 'Workflow tetiklenemedi');
-      }
 
       showFeedback('Çeviri başladı ✓', 'completed');
       setTimeout(() => startPolling(), 500);
