@@ -785,19 +785,34 @@
     hideFeedback();
 
     try {
+      showFeedback('Hazırlanıyor...', 'uploading');
+
+      // AŞAMA 1: /api/upload'a SADECE dosya adını gönderiyoruz (dosya
+      // içeriği YOK — Vercel Function'ın 4.5MB istek sınırına takılmamak
+      // için). Sunucu main'e hiç dokunmadan queue/<slug> dalını açar ve
+      // bize kısa ömürlü (yaklaşık 1 saat), SADECE bu repoya, SADECE
+      // Contents+Actions iznine sahip bir GitHub App token'ı döner.
+      // Kalıcı GH_PAT hiçbir zaman tarayıcıya çıkmıyor.
+      const startRes = await fetch('/api/upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename: selectedFile.name }),
+      });
+      const startData = await startRes.json();
+      if (!startRes.ok) throw new Error(startData.error || 'Yükleme başlatılamadı');
+      const { repo, branch, token } = startData;
+
       showFeedback('Dosya okunuyor...', 'uploading');
       const base64 = await toBase64(selectedFile);
 
-      // NOT (Eylül 2026): Bu adım artık GitHub'a doğrudan tarayıcıdan
-      // (PAT'i /api/creds ile alıp) yazmıyor — /api/upload sunucu
-      // tarafında çalışıyor: main'e HİÇ dokunmadan main'in ucundan
-      // queue/<slug> adında yeni bir dal açıp dosyayı oraya commit'liyor,
-      // sonra translate.yml'i o dalla tetikliyor. PAT artık tarayıcıya
-      // hiç çıkmıyor — sunucuda kalıyor. Eskiden ayrı olan /api/trigger
-      // çağrısına da artık gerek yok, /api/upload ikisini birden yapıyor.
-      const uploadData = await new Promise((resolve, reject) => {
+      // AŞAMA 2: Dosyanın kendisi tarayıcıdan DOĞRUDAN GitHub'a gidiyor
+      // (Vercel'i hiç aşmıyor) — GitHub Contents API'nin sınırı
+      // (~50-100MB) Vercel'inkinden çok daha yüksek olduğu için büyük
+      // epub'lar burada takılmıyor. Kısa ömürlü token'la commit'leniyor.
+      await new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/api/upload');
+        xhr.open('PUT', `https://api.github.com/repos/${repo}/contents/input/${selectedFile.name}`);
+        xhr.setRequestHeader('Authorization', `token ${token}`);
         xhr.setRequestHeader('Content-Type', 'application/json');
 
         xhr.upload.onprogress = (e) => {
@@ -805,27 +820,39 @@
             const percent = Math.round((e.loaded / e.total) * 100);
             feedbackProgressFill.style.width = percent + '%';
             feedbackProgress.textContent = `%${percent}`;
-            showFeedback(`Yükleniyor...`, 'uploading', true);
+            showFeedback(`GitHub'a yükleniyor...`, 'uploading', true);
           }
         };
 
         xhr.onload = () => {
-          let data;
-          try {
-            data = JSON.parse(xhr.responseText);
-          } catch {
-            data = null;
-          }
           if (xhr.status >= 200 && xhr.status < 300) {
-            resolve(data || {});
+            resolve();
           } else {
-            reject(new Error((data && data.error) || `Yükleme başarısız (Kod: ${xhr.status})`));
+            let data;
+            try { data = JSON.parse(xhr.responseText); } catch { data = null; }
+            reject(new Error((data && data.message) || `GitHub yükleme başarısız (Kod: ${xhr.status})`));
           }
         };
 
         xhr.onerror = () => reject(new Error('Ağ hatası oluştu.'));
-        xhr.send(JSON.stringify({ filename: selectedFile.name, content: base64 }));
+        xhr.send(JSON.stringify({
+          message: `upload: ${selectedFile.name}`,
+          content: base64,
+          branch,
+        }));
       });
+
+      // AŞAMA 3: dosya artık queue/<slug> dalında — sunucudan (küçük,
+      // içeriksiz bir istekle) translate.yml'i o dalla tetiklemesini
+      // istiyoruz.
+      showFeedback('Çeviri başlatılıyor...', 'translating');
+      const finalizeRes = await fetch('/api/upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'finalize', branch }),
+      });
+      const finalizeData = await finalizeRes.json();
+      if (!finalizeRes.ok) throw new Error(finalizeData.error || 'Workflow tetiklenemedi');
 
       showFeedback('Çeviri başladı ✓', 'completed');
       setTimeout(() => startPolling(), 500);
