@@ -1,0 +1,65 @@
+Translator’s Notes – The 
+Apothecary Diaries
+ Diaries vol. 12
+
+A Word and a Prayer
+
+O Lord, do You see us?
+
+—Chue
+
+Hi, and thanks for reading The Apothecary Diaries volume 12! The western capital arc may be wrapping up, but it’s going to give us one more chance to examine a case study in translation.
+
+In this volume, Chue teaches Maomao a line of scripture. In Japanese it goes: “ Kami yo, watashi-tachi wo mite imasu ka? ” Grammatically, the sentence is quite simple, but getting it to sound just right in translation was, as so often, not such an easy matter.
+
+Let’s start by breaking it down in classic vocabulary-list form. All of the words in this sentence are common and used often.
+
+kami
+: god, God, or gods
+
+yo
+: an emphatic particle, almost like a verbal exclamation mark
+
+watashi-tachi
+: us, we (literally, “I” plus a plural marker)
+
+wo
+: a particle that marks the object of a sentence; the word that comes before 
+wo
+ is the object of the verb
+
+mite imasu
+: present progressive (“-ing”) form of the verb 
+miru
+ (“to see”)
+
+ka
+: an interrogative particle, similar to a verbal question mark
+
+The rendering of this sentence revolves around two cruxes: the translation of 
+kami
+ and of 
+miru
+. Both words are, again, common, but the way we choose to represent them in English will affect the way the reader hears them in their own head.
+
+As noted above, 
+kami
+ is a common word, but it has a wide range of meanings. It’s often associated with Shinto deities and spirits, but has been appropriated for other traditions; for example, Japanese Christians sometimes refer to God as 
+kami-sama
+. Here, the translation team had to draw on their thinking as readers, because the proper rendering of 
+kami
+ in this case is related to what we know of the world of 
+The Apothecary Diaries
+.
+
+We know that the chapel in which Chue and Maomao find themselves is located in “the west” and that the faith practiced there seems to have come from farther west still, perhaps from Shaoh or even beyond. To the extent that Li seems to be inspired by at least some elements of ancient China, the lands to its west may correspond with near-eastern locations like Persia. Which is to say, places with some concept of monotheism—something that might not be native to Li, based on the variety of religious ceremonies we’ve seen characters like Jinshi perform.
+
+I’m not suggesting that we can pin down exact, real-world parallels for the various countries in The Apothecary Diaries , simply that there’s good reason to think that the religion associated with this chapel is a monotheistic one—and hence there are good grounds for translating kami in the singular. Certainly, one could simply use “God.” We ended up with “Lord” for a couple of reasons. One was a sense that practitioners of this religion, whatever exactly it is, might prefer to address the deity with a title of honor rather than with the deity’s name—“God” sounds a bit direct, where “Lord” has a more respectful tone. The other reason was a meta-consideration: however we translated this line, for English readers (especially those in the US), it was always going to flirt with sounding like the title of Judy Blume’s cultural touchstone of a young-adult novel, Are You There, God? It’s Me, Margaret . Choosing “Lord” instead of “God” helped diminish this resemblance at least a little.
+
+What about miru , then? In Japanese, miru is the basic verb of vision. It corresponds to a wide range of English words including “look,” “see,” and “watch,” among others. Here it’s in the present progressive, indicating a continuing action. Hence the first thing that came into my mind was “Are you watching us?”—a more natural progressive construction in English than, say, “Are you seeing us?” or even “Are you looking at us?” However, “Are you watching us?” has a certain “Big Brother” undertone, whereas the Japanese clearly involves not just looking but, by dint of looking, acknowledging the existence of the thing that is looked at.
+
+That was why we felt that “see” was a more appropriate choice here, as “seeing someone” has a similar range of meaning in English: not just visually acknowledging that a thing is there, but (at least in some contexts) acknowledging the significance of its existence. As noted above, “Are you seeing us?” sounds a bit awkward, but “Do you see us?” is perfectly natural while still conveying the active, ongoing nature of the seeing. Finally, we chose to capitalize “You” as a way of emphasizing the possibly monotheistic character of this faith. This is purely a hint to the reader, of course, as in principle, the capital Y doesn’t sound any different than y when spoken aloud.
+
+So it was that we arrived at our translation: “O Lord, do You see us?” It’s a simple sentence with a complex texture, hopefully one that comes across in English as well as it does in Japanese.
+
+Until next time, read widely, and have fun!
