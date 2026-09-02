@@ -81,13 +81,26 @@ class AllKeysLockedError(Exception):
         super().__init__(f"Tüm keyler kilitli, en kısa bekleme: {wait_seconds}s")
 
 # Groq'un bazı organizasyon/tier'larında TPM (dakikalık token) limiti çok
-# düşük olabilir (örn. on_demand tier'da 8000 TPM görülmüştür). Groq,
-# max_completion_tokens'ı "bu istek en fazla bu kadar üretebilir" diye
-# PROMPT + bu değer toplamını önceden TPM limitine karşı kontrol eder —
-# gerçekte o kadar üretilmese bile istek daha başlamadan 413 ile reddedilir.
-# Bu yüzden makul/güvenli bir üst sınırla başlıyoruz; 413 alırsak küçültüp
-# tekrar deneriz (bkz. _shrink_and_retry mantığı call() içinde).
-_DEFAULT_MAX_COMPLETION_TOKENS = 6000
+# düşük olabilir (örn. on_demand tier'da 8000 TPM görülmüştür — qwen3.8-27b
+# için de topluluk ölçümleri bunu doğruluyor: ~8000 TPM, prompt+çıktı
+# toplamı). Groq, max_completion_tokens'ı "bu istek en fazla bu kadar
+# üretebilir" diye PROMPT + bu değer toplamını önceden TPM limitine karşı
+# kontrol eder — gerçekte o kadar üretilmese bile istek daha başlamadan 413
+# ile reddedilir. Bu yüzden makul/güvenli bir üst sınırla başlıyoruz; 413
+# alırsak küçültüp tekrar deneriz (bkz. _shrink_and_retry mantığı call()
+# içinde). NOT (Eylül 2026): eski varsayılan (6000) + pitfalls.py'nin
+# eklediği ~800 token'lık sabit bağlamla birlikte neredeyse HER istekte
+# ilk denemede 413 alınıyordu (loglarda "TPM limiti için çok büyük" art
+# arda 2-3 kez görülmesi bundan) — başlangıç değeri düşürüldü. Küçülen
+# max_out bir kez düşünce call() içinde geri BÜYÜMÜYOR; yani bir istek TPM
+# yüzünden küçülüp sonra gerçekten o kadar token'a sığmayan bir metin
+# üretmeye çalışırsa (finish_reason=length), 3 "kesik yanıt" denemesi de
+# AYNI küçük bütçeyle yapılır ve genelde hepsi aynı şekilde başarısız olup
+# parça atlanır. Bu döngü sık tekrarlanıyorsa (özellikle review/NER
+# adımlarında), Groq konsolünde qwen3.8-27b için hesabın gerçek TPM
+# tavanına bakmak (Settings > Limits) gerekebilir — 8000 varsayımı
+# yanlışsa buradaki sabit onun yerine güncellenmeli.
+_DEFAULT_MAX_COMPLETION_TOKENS = 3500
 _MIN_MAX_COMPLETION_TOKENS = 1024
 
 
