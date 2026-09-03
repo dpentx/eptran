@@ -30,7 +30,9 @@
     "Taomei": "Taomei",
     "Yao": "Yao",
     "Luomen": "Luomen",
-    "Moon Prince": "Ay Prens"
+    "Moon Prince": "Ay Prens",
+    "Junjie": "Junjie",
+    "Kan": "Kan"
   },
   "terms": {
     "pleasure district": "keyfane mahallesi",
@@ -44,14 +46,16 @@
     "congenital bureaucrat": "doğuştan bürokrat",
     "royal capital": "Kraliyet Başkenti",
     "central region": "merkez bölge",
-    "Dongpo pork": "Dongpo domuz eti"
+    "Dongpo pork": "Dongpo domuz eti",
+    "Verdigris House": "Yosun Yeşili Evi",
+    "mugwort mochi": "Artemisia mochi"
   },
   "style_notes": "Anlatım üçüncü şahıs ve karakterlerin iç dünyalarına nüfuz eden, hafif alaycı ama empatik bir tona sahiptir; metinde kullanılan İngilizce deyimler (örneğin 'enigma wrapped in a riddle') Türkçeye uyarlanırken karakterin absürt ve karmaşık doğasını yansıtan, akıcı ve doğal karşılıklar seçilmelidir.",
   "summaries": [
-    "Chapter 2: The Greenhouse and the Chapel: Maomao, serada yetiştirilen salatalıkları tıbbi malzeme olarak kullanmak istediği için bahçıvanla tartışmaya girer. Chue ve Lihaku'nun müdahalesiyle birlikte bahçıvanın amiri olay yerine çağrılarak durumun çözümü için araya girer.",
     "Chapter 3: Gyoku-ou’s Children: Gyoku-ou’nun üçüncü oğlu You Hulan, Ay Prens’e hizmet edeceği için muayenehaneye gelerek Maomao ve Doktor Kralı’na kibarca selam verir ve babasının adını kullanarak özür diler. Maomao, babasının tam zıttı gibi görünen bu alçakgönüllü genç adamın beklediğinden farklı olduğunu fark eder.",
     "Chapter 4: The Sheltered Wife: Maomao, Gyoku-ou’nun torunu Xiaohong’u muayene etmek için Hulan ve ekibiyle birlikte konağa giderken, Hulan’ın annesi ve ablasıyla tanışır. Maomao, hastanın saç rengindeki değişimi gözlemleyerek tıbbi değerlendirmeye başlar.",
     "Chapter 6: The Winery: Maomao, Ay Prens'in acil bir tıbbi vaka için dışarı çıkma izni vermesi üzerine Chue ve Hulan ile birlikte batı başkentinin kuzeydoğusundaki bir binaya sevk edilir. Yolculuk sırasında hastaları muayene edeceği söylenen Maomao, varış noktasında beklenmedik bir durumla karşı karşıya kalır.",
-    "Chapter 7: The Inheritance: Maomao, sarhoş mantarların etkisiyle baş ağrısı ve mide bulantısı yaşarken, Chue ve Lihaku'nun eşlik ettiği arabada bu deneyimi bilimsel olarak not etmeye çalışır. Lihaku'nun Maomao'yu \"Lahan\" ile kıyaslaması, karakterin yüzünü karartarak kısa süreli bir rahatsızlık yaratır."
+    "Chapter 7: The Inheritance: Maomao, sarhoş mantarların etkisiyle baş ağrısı ve mide bulantısı yaşarken, Chue ve Lihaku'nun eşlik ettiği arabada bu deneyimi bilimsel olarak not etmeye çalışır. Lihaku'nun Maomao'yu \"Lahan\" ile kıyaslaması, karakterin yüzünü karartarak kısa süreli bir rahatsızlık yaratır.",
+    "Chapter 8: Junjie: Maomao, Batı başkentindeki muayenehanesinde çalışırken, olgun tavırlı genç hizmetçisi ve tarım işlerinde zorluklar yaşayan Lahan’ın Kardeşi ile etkileşime girer. Bölüm, Lahan’ın Kardeşi’nin küçük patates hasadından duyduğu hayal kırıklığını ve Maomao’nun bu durumu sakin bir şekilde karşılamasını anlatır."
   ]
 }
