@@ -38,7 +38,8 @@
     "One-Eyed Dragon": "Tek Gözlu Ejderha",
     "Bear-Man": "Ayı Adam",
     "Beghura": "Beghura",
-    "Maachue": "Maachue"
+    "Maachue": "Maachue",
+    "Maamei": "Maamei"
   },
   "terms": {
     "pleasure district": "keyfane mahallesi",
@@ -64,14 +65,16 @@
     "Shihoku Province": "Shihoku Eyaleti",
     "Shaoh": "Shaoh",
     "Shaohnese": "Shaoh dili",
-    "Li": "Li"
+    "Li": "Li",
+    "Mi clan": "Mi Klanı",
+    "Ma clan": "Ma Klanı"
   },
   "style_notes": "Anlatım üçüncü şahıs ve karakterlerin iç dünyalarına nüfuz eden, hafif alaycı ama empatik bir tona sahiptir; metinde kullanılan İngilizce deyimler (örneğin 'enigma wrapped in a riddle') Türkçeye uyarlanırken karakterin absürt ve karmaşık doğasını yansıtan, akıcı ve doğal karşılıklar seçilmelidir.",
   "summaries": [
-    "Chapter 21: Serving Dinner: Maomao, haydutların yemeğini hazırlarken Tek Gözlü Ejder'in kendisine ve Xiaohong'a yönelik olası tacizlerinden endişe duyan kadınlarla konuşur. Akşam yemeğinde Maomao ve Xiaohong, Tek Gözlü Ejder'in yanında oturarak kasabadaki haydut sayısının tahmin edilenden az olduğunu fark eder.",
     "Chapter 22: How Things Turned Out: Maomao, haydutların hızla tasfiye edilmesinin ardından Shikyou ile yüzleşerek birbirlerinin kimlikleri ve geçmişleri hakkında sert bir hesaplaşma yapar. Bu gerilimli görüşmede, Maomao'nun zehir kontrolü yeteneği ve Shikyou'nun çete liderliği konuları masaya yatırılırken, Xiaohong ve Biaoshi Hanım dışarıda bekletilir.",
     "Chapter 23: The Road Home: Maomao, batı başkentine dönüş yolculuğu sırasında Gyoku-ou’nun dört oğlunun taht kavgasını analiz ederken, en küçük oğul Hulan’ın ikiyüzlülüğünün olayların arkasındaki asıl neden olduğunu fark eder. Chue’nin durumu basit bir taht kavgası olarak nitelendirmesine rağmen, Maomao gerçekte daha karmaşık bir oyunun oynandığından şüphelenir.",
     "Chapter 24: A Wounded Beast: Kayalık çölde kamp kuran Maomao, yangın dikkatleri dağıtırken yaralı Ayı Adam'ın saldırısına uğrar. Chue, son anda müdahale ederek Ayı Adam'ı öldürür ve Maomao'yu kurtarır.",
-    "Chapter 25: The Ugly Little Sparrow: Beghura, dürüst bir tüccar olan babası ile Shaoh ülkesinden kurtarılan güzel annesinin mutlu evliliğinden doğan, fiziksel olarak çirkin ama son derece zeki bir kızdır. Metin, babasının annesini tesadüfen kurtararak hayatına dahil etmesi ve Beghura'nın doğumuyla ailenin mutluluğunu anlatır."
+    "Chapter 25: The Ugly Little Sparrow: Beghura, dürüst bir tüccar olan babası ile Shaoh ülkesinden kurtarılan güzel annesinin mutlu evliliğinden doğan, fiziksel olarak çirkin ama son derece zeki bir kızdır. Metin, babasının annesini tesadüfen kurtararak hayatına dahil etmesi ve Beghura'nın doğumuyla ailenin mutluluğunu anlatır.",
+    "Chapter 26: Man and Wife: On altı yaşındaki Baryou, annesi Taomei'den İmparatorluk ailesini koruyan Ma klanının gizli istihbarat ayağı olan Mi klanının varlığını ve sızma yeteneğini öğrenir. Bu sırada, Baryou'nun reddedemeyeceği bir evlilik teklifi gelir ve coşkulu karakteriyle dikkat çeken Maachue (Bayan Chue) adlı kadın aileye katılır."
   ]
 }
