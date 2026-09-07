@@ -1,13 +1,13 @@
 {
-  "status": "running",
+  "status": "completed",
   "book": "knh-12",
   "epub_file": "knh-12.epub",
   "branch": "book/knh-12",
   "source_type": "epub",
   "total": 35,
   "completed": 35,
-  "current_chapter": "Copyright",
+  "current_chapter": "",
   "started_at": "2026-09-02T09:53:13.653934+00:00",
   "queue_mode": true,
-  "updated_at": "2026-09-07T20:56:00.122360+00:00"
+  "updated_at": "2026-09-07T20:56:02.607680+00:00"
 }
