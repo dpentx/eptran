@@ -6306,6 +6306,7 @@
   "stratejistti": false,
   "street": true,
   "strengthened": true,
+  "stres": false,
   "stresle": false,
   "strictest": true,
   "strongly": true,
