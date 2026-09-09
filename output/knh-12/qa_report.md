@@ -1,6 +1,6 @@
 # QA Raporu — knh-12
 
-**Toplam 86 şüpheli nokta bulundu (34/35 bölüm başarıyla tarandı, 1 bölüm denetlenemedi).**
+**Toplam 84 şüpheli nokta bulundu (34/35 bölüm başarıyla tarandı, 1 bölüm denetlenemedi).**
 
 *Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru kabul etmeyin — her maddeyi kaynakla birlikte kendiniz kontrol edin. Bazı işaretlemeler yanlış pozitif olabilir (bkz. script docstring'i).*
 
@@ -29,19 +29,13 @@
   - Kaynak: *"I don’t think things here are quite what they told the Moon Prince"*
   - Çeviri: *"Buradaki durumun, Ay Prens’e söyledikleri gibi olmadığını düşünmüyorum"*
 
-## Bölüm 5: Chapter 3: Gyoku-ou’s Children — 4 sorun
+## Bölüm 5: Chapter 3: Gyoku-ou’s Children — 2 sorun
 - **ANLAM_KAYMASI**: "Quack doctor" (şarlatan/sahte hekim) ifadesi metin boyunca "Doktor Kralı" olarak yanlış çevrilmiştir.
   - Kaynak: *"the quack answered"*
   - Çeviri: *"diye yanıtladı Doktor Kralı"*
-- **ANLAM_KAYMASI**: "Nephew" (yeğen) kelimesi "Oğlum" (son) olarak yanlış çevrilmiştir.
-  - Kaynak: *"My nephew injured the master physician"*
-  - Çeviri: *"Oğlum başhekimimize zarar verdi"*
 - **ANLAM_KAYMASI**: Kaynaktaki olumsuz ifade ("didn't seem like") çeviride olumlu hale getirilerek anlam tamamen tersine çevrilmiştir.
   - Kaynak: *"He sure didn’t seem like Gyoku-ou’s child."*
   - Çeviri: *"Gyoku-ou’nun çocuğu gibi görünüyordu."*
-- **ANLAM_KAYMASI**: Hulan'ın ikram getirme nezaketinde bulunduğu belirtilirken, çeviride sanki konuşmacıların kendilerinin ikram getirdiği şeklinde yanlış ve bozuk bir anlam kurulmuştur.
-  - Kaynak: *"Hulan was kind enough to bring snacks and wine."*
-  - Çeviri: *"Hulan, atıştırmalıklar ve şarap getirmemizin ne kadar nazik olduğunu söyleyebilirim."*
 
 ## Bölüm 6: Chapter 4: The Sheltered Wife — 7 sorun
 - **ATLANMIŞ**: Bölüm başlığı Türkçe çeviride tamamen atlanmıştır.
