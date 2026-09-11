@@ -1,6 +1,6 @@
 # QA Raporu — knh-12
 
-**Toplam 34 şüpheli nokta bulundu (34/35 bölüm başarıyla tarandı, 1 bölüm denetlenemedi).**
+**Toplam 30 şüpheli nokta bulundu (34/35 bölüm başarıyla tarandı, 1 bölüm denetlenemedi).**
 
 *Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru kabul etmeyin — her maddeyi kaynakla birlikte kendiniz kontrol edin. Bazı işaretlemeler yanlış pozitif olabilir (bkz. script docstring'i).*
 
@@ -35,11 +35,6 @@
 ## Bölüm 7: Chapter 5: Third Son, Second Son, Eldest Son — 1 sorun
 - **ATLANMIŞ**: Bölüm başlığı Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"Chapter 5: Third Son, Second Son, Eldest Son"*
-
-## Bölüm 10: Chapter 8: Junjie — 1 sorun
-- **ANLAM_KAYMASI**: Cümle 'Endişelendiğin şey bu mu?' yerine 'Endişelenen kişi bu mu?' anlamına gelecek şekilde yanlış çevrilmiştir.
-  - Kaynak: *"Is that what you’re worried about?"*
-  - Çeviri: *"Endişelenen bu mu?"*
 
 ## Bölüm 12: Chapter 10: Emergency Patient, Emergency Situation — 2 sorun
 - **TUTARSIZ_TERİM**: 'Quack' terimi metnin bir kısmında 'Doktor Kralı', diğer kısımlarında ise 'Şarlatan' olarak tutarsız bir şekilde çevrilmiştir.
@@ -79,14 +74,11 @@ Let’s turn back the clock a bit."*
 - **ATLANMIŞ**: Bölüm başlığı Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"Chapter 20: The Bandit Village (Part Two)"*
 
-## Bölüm 23: Chapter 21: Serving Dinner — 3 sorun
+## Bölüm 23: Chapter 21: Serving Dinner — 2 sorun
 - **ATLANMIŞ**: Bölüm başlığı ve bölümün ilk cümlesi Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"Chapter 21: Serving Dinner
 
 Maomao was preparing potatoes again."*
-- **ANLAM_KAYMASI**: Kanun kaçağı/haydut anlamına gelen 'outlaw' kelimesi 'kahraman' olarak yanlış çevrilmiştir.
-  - Kaynak: *"if the outlaw took her."*
-  - Çeviri: *"Kahraman Maomao'ya ne olabileceğinden endişe ediyordu."*
 - **ANLAM_KAYMASI**: Kaynak metinde yer almayan 'Yemeği zehir açısından ikimiz de kontrol ettik' ifadesi çeviriye eklenmiştir.
   - Kaynak: *"“You put somethin’ in this!” One-Eyed Dragon said."*
   - Çeviri: *"“Yemeği zehir açısından ikimiz de kontrol ettik.”"*
@@ -96,17 +88,9 @@ Maomao was preparing potatoes again."*
   - Kaynak: *"I thought they might be plotting to assassinate the Moon Prince..."*
   - Çeviri: *"“Ne gibi?” Maomao duraksadı. Bir VIP... posta kasabasında..."*
 
-## Bölüm 25: Chapter 23: The Road Home — 1 sorun
-- **ANLAM_KAYMASI**: 'The wife?' sorusu ve takip eden bazı paragraflar Türkçe metinde yanlış yerlere serpiştirilerek kronolojik ve mantıksal akış tamamen bozulmuştur.
-  - Kaynak: *"The wife?"*
-  - Çeviri: *"Eş?"*
-
-## Bölüm 26: Chapter 24: A Wounded Beast — 2 sorun
+## Bölüm 26: Chapter 24: A Wounded Beast — 1 sorun
 - **ATLANMIŞ**: Bölümün girişindeki ilk paragraf Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"They didn’t manage to cross the rocky desert that day, so they had to pitch camp"*
-- **ANLAM_KAYMASI**: Bu diyalog satırı çeviride kronolojik olarak çok yanlış bir yere (Shikyou'ya henüz su kaynatması söylenmeden önce, Chue'nin bıçak çektiği sahnenin hemen sonrasına) yerleştirilerek anlam bütünlüğünü bozmuştur.
-  - Kaynak: *"“Y-Yeah, right away,” he said."*
-  - Çeviri: *""E-Evet, hemen," dedi adam."*
 
 ## Bölüm 28: Chapter 26: Man and Wife — 1 sorun
 - **ATLANMIŞ**: Bölümün girişindeki ilk paragraf Türkçe çeviride tamamen atlanmıştır.
