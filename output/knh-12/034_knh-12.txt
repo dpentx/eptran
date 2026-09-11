@@ -1,0 +1,43 @@
+# Translator’s Notes – The Apothecary Diaries Diaries vol. 12
+
+Çevirmen Notları – Eczacı Günlükleri Cilt 12
+
+Bir Kelime ve Bir Dua
+
+Ey Rabbim, bizi görüyor musun?
+
+—Chue
+
+Merhaba, Eczacı Günlükleri 12. cildini okuduğunuz için teşekkürler! Batı başkenti bölümü sona ermek üzere olabilir, ama bize bir çeviri vaka çalışmasını daha inceleme fırsatı verecek.
+
+Bu ciltte Chue, Maomao'ya bir kutsal metin dizesi öğretiyor. Japonca orijinali şöyle: “Kami yo, watashi-tachi wo mite imasu ka?” Dilbilgisi açısından cümle oldukça basit, ancak çeviride tam istenen etkiyi yakalamak, çoğu zaman olduğu gibi, hiç de kolay bir iş değildi.
+
+İşe klasik kelime listesi formatında parçalara ayırarak başlayalım. Bu cümledeki tüm kelimeler yaygın ve sık kullanılan kelimeler.
+
+kami: tanrı, Tanrı veya tanrılar
+
+yo: vurgu edatı, neredeyse sözlü bir ünlem işareti gibi
+
+watashi-tachi: biz, bizi (kelimesi kelimesine, “ben” + çoğul eki)
+
+wo: cümlenin nesnesini belirleyen edat; wo'dan önce gelen kelime, fiilin nesnesidir
+
+mite imasu: miru (“görmek”) fiilinin şimdiki zaman devam hâli (“-ing” eki)
+
+ka: soru edatı, sözlü bir soru işareti gibi
+
+Bu cümlenin çevirisi iki temel soruna dayanıyor: kami ve miru kelimelerinin çevirisi. Her iki kelime de yine yaygın kelimeler, ancak İngilizce'de bunları nasıl temsil etmeyi seçtiğimiz, okurun kendi kafasında onları nasıl duyacağını etkileyecektir.
+
+Yukarıda belirtildiği gibi, kami yaygın bir kelime olmakla birlikte geniş bir anlam yelpazesine sahiptir. Genellikle Shinto tanrıları ve ruhlarıyla ilişkilendirilir; ancak diğer gelenekler tarafından da benimsenmiştir. Örneğin, Japon Hristiyanları bazen Tanrı'ya kami-sama der. Burada çeviri ekibi, bu durumda kami'nin doğru çevirisinin Eczacı Günlükleri dünyası hakkında bildiklerimizle ilgili olması nedeniyle okuyucuların düşüncelerine başvurmak zorunda kaldı.
+
+Chue ve Maomao'nun bulundukları şapelin “batıda” yer aldığını ve orada uygulanan inancın daha da batıdan, belki Shaoh'tan veya hatta ötesinden geldiğini biliyoruz. Li'nin en azından antik Çin'in bazı unsurlarından ilham aldığı ölçüde, batısındaki topraklar Pers gibi Yakın Doğu konumlarına karşılık gelebilir. Yani, tek tanrılığa dair bir kavramı olan yerler—bu, Jinshi gibi karakterlerin gerçekleştirdiği çeşitli dini törenlere dayanarak Li'nin yerli unsurları arasında olmayabilir.
+
+Eczacı Günlükleri'ndeki çeşitli ülkeler için kesin, gerçek dünya karşılıkları belirleyebileceğimizi öne sürmüyorum; sadece bu şapelle ilişkilendirilen dinin tek tanrılı bir din olduğuna dair iyi nedenler var ve dolayısıyla kami'yi tekil olarak çevirmemiz için iyi gerekçeler var. Elbette, basitçe “Tanrı” kullanılabilirdi. Birkaç nedenden dolayı “Rab” seçimine vardık. Biri, bu dinin uygulayıcılarının, tam olarak ne olduğu belirsiz olsa da, tanrıya onur verici bir unvanla hitap etmeyi, tanrının adıyla hitap etmekten daha çok tercih edebileceği hissiydi—“Tanrı” biraz doğrudan geliyor, oysa “Rab” daha saygılı bir ton taşıyor. Diğer neden ise meta-düzeyde bir düşünceydi: bu dizeyi nasıl çevirirsek çevirelim, İngilizce okuyucular için (özellikle ABD'dekiler için), Judy Blume'un genç yetişkin edebiyatının kültürel bir referans noktası olan Tanrı Orada mısın? Benim Margaret'im başlıklı romanın başlığına benzerlik taşıması kaçınılmazdı. “Tanrı” yerine “Rab” seçmek, bu benzerliği en azından biraz azaltmaya yardımcı oldu.
+
+Peki ya miru? Japonca'da miru, görme fiilinin temel halidir. “Bakmak,” “görmek” ve “izlemek” gibi geniş bir İngilizce kelime yelpazesine karşılık gelir. Burada şimdiki zaman devam halinde, devam eden bir eylemi gösteriyor. Dolayısıyla aklıma gelen ilk şey “Bizi izliyor musun?” oldu—İngilizce'de “Bizi görüyor musun?” veya hatta “Bize bakıyor musun?”dan daha doğal bir devam yapısı. Ancak “Bizi izliyor musun?” belirli bir “Büyük Kardeş” alt tonu taşıyor, oysa Japonca'da açıkça sadece bakmak değil, bakarak bakılan şeyin varlığını kabul etmek de söz konusu.
+
+Bu yüzden “görmek”in burada daha uygun bir seçim olduğunu hissettik, çünkü İngilizce'de “birini görmek” de benzer bir anlam yelpazesine sahip: sadece görsel olarak bir şeyin orada olduğunu kabul etmek değil, ama (en azından bazı bağlamlarda) varlığının önemini kabul etmek. Yukarıda belirtildiği gibi, “Are you seeing us?” ifadesi biraz garip duruyor, ancak “Do you see us?” tamamen doğal. ve aynı zamanda görme eyleminin aktif, devam eden doğasını aktarıyor. Son olarak, bu inancın olası tek tanrılı karakterini vurgulamanın bir yolu olarak “Sen” kelimesini büyük harfle yazmayı seçtik. Bu tabii ki okuyucuya tamamen bir ipucu, çünkü prensipte, büyük S ile küçük s sesli okunduğunda farklı duyulmuyor.
+
+Böylece çevirimize ulaştık: “Ey Rabbim, bizi görüyor musun?” Basit bir cümle, karmaşık bir doku; umarım Japonca'da olduğu gibi İngilizce'de de bu etkiyi verir.
+
+Bir dahaki sefere kadar, bol okuyun ve eğlenceli vakit geçirin!
