@@ -779,12 +779,28 @@
     hideFeedback();
   }
 
+  // Yükleme şifresi hiçbir zaman bu statik dosyanın içine GÖMÜLMEZ —
+  // sayfa açıldığında (ya da sekme yenilendiğinde) bir kere sorulur,
+  // sadece bu tarayıcı sekmesinin belleğinde (sessionStorage) tutulur.
+  // Bkz. güvenlik incelemesi notları: /api/upload öncesinde HİÇBİR
+  // kimlik kontrolü yoktu, bu URL'i bilen herkes gerçek bir GitHub
+  // yazma token'ı alabiliyordu.
+  function getUploadSecret() {
+    let secret = sessionStorage.getItem('eptran_upload_secret');
+    if (!secret) {
+      secret = window.prompt('Yükleme şifresi:') || '';
+      sessionStorage.setItem('eptran_upload_secret', secret);
+    }
+    return secret;
+  }
+
   submitBtn.addEventListener('click', async () => {
     if (!selectedFile) return;
     submitBtn.disabled = true;
     hideFeedback();
 
     try {
+      const secret = getUploadSecret();
       showFeedback('Hazırlanıyor...', 'uploading');
 
       // AŞAMA 1: /api/upload'a SADECE dosya adını gönderiyoruz (dosya
@@ -796,9 +812,13 @@
       const startRes = await fetch('/api/upload', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ filename: selectedFile.name }),
+        body: JSON.stringify({ filename: selectedFile.name, secret }),
       });
       const startData = await startRes.json();
+      if (startRes.status === 401) {
+        sessionStorage.removeItem('eptran_upload_secret');
+        throw new Error('Şifre yanlış — tekrar dene.');
+      }
       if (!startRes.ok) throw new Error(startData.error || 'Yükleme başlatılamadı');
       const { repo, branch, token } = startData;
 
@@ -849,7 +869,7 @@
       const finalizeRes = await fetch('/api/upload', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'finalize', branch }),
+        body: JSON.stringify({ action: 'finalize', branch, secret }),
       });
       const finalizeData = await finalizeRes.json();
       if (!finalizeRes.ok) throw new Error(finalizeData.error || 'Workflow tetiklenemedi');
