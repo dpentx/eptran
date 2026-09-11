@@ -44,6 +44,27 @@ _FIX_SYSTEM = (
     "SADECE düzeltilmiş paragrafı döndür, açıklama ekleme."
 )
 
+_KNOWN_PROPER_NOUNS_FILE = "known_proper_nouns.json"
+
+
+def _load_known_proper_nouns() -> set:
+    """
+    known_proper_nouns.json'daki, kitap/seri BAĞIMSIZ gerçek dünya özel
+    isimlerini okur (örn. bir çevirmen notunda anılan ünlü bir roman
+    başlığındaki isim). series.py'nin characters/terms'inden farkı: o
+    dosya TEK bir kitaba özel, bu ise hiçbir kitaba özel değil — aynı
+    isim başka bir kitapta da çıkabilir. Dosya yoksa/bozuksa boş set
+    döner (common_pitfalls.json/pitfalls.py ile aynı toleranslı desen).
+    """
+    if not os.path.exists(_KNOWN_PROPER_NOUNS_FILE):
+        return set()
+    try:
+        with open(_KNOWN_PROPER_NOUNS_FILE, encoding="utf-8") as f:
+            data = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return set()
+    return {w.lower() for w in data.get("entries", []) if w.strip()}
+
 
 def _flush_and_commit(paragraph_idx: int) -> None:
     """
@@ -85,6 +106,7 @@ def _build_whitelist(memory: dict) -> set:
     biliyor, bkz. _relevant_term_map).
     """
     whitelist = set()
+    whitelist |= _load_known_proper_nouns()
     for eng_name, tr_name in memory.get("characters", {}).items():
         whitelist.add(eng_name.lower())
         whitelist.add(tr_name.lower())
