@@ -2,6 +2,21 @@ import crypto from "node:crypto";
 
 export const config = { maxDuration: 30 };
 
+// Paylaşılan bir yükleme şifresiyle basit ama etkili bir erişim kontrolü.
+// Bu olmadan /api/upload'ı bilen HERKES (tarayıcı bile açmadan) bir
+// queue/<slug> dalı açtırıp repo-geneli contents+actions yazma izinli
+// gerçek bir GitHub token'ı alabiliyordu — bkz. güvenlik incelemesi
+// notları. timingSafeEqual, şifre karşılaştırmasının süresinden şifrenin
+// doğru kısmının tahmin edilebilmesini (timing attack) önlüyor.
+function checkSecret(provided) {
+  const expected = process.env.UPLOAD_SECRET;
+  if (!expected) return false; // secret tanımlı değilse KİMSEYİ içeri alma
+  const a = Buffer.from(String(provided || ""));
+  const b = Buffer.from(expected);
+  if (a.length !== b.length) return false;
+  return crypto.timingSafeEqual(a, b);
+}
+
 // Kitap slug'ı — translate.py'deki book_slug hesabıyla BİREBİR aynı mantık.
 function slugify(filename) {
   const noExt = filename.replace(/\.(epub|pdf)$/i, "");
@@ -88,6 +103,13 @@ export default async function handler(req, res) {
     });
 
   const body = req.body || {};
+
+  // Her iki aşama için de (start ve finalize) şifre zorunlu — yalnızca
+  // start'ı korumak yetmez, çünkü finalize tek başına bilinen bir dalda
+  // workflow tetiklemeye izin veriyor.
+  if (!checkSecret(body.secret)) {
+    return res.status(401).json({ error: "Yetkisiz" });
+  }
 
   try {
     // İKİNCİ AŞAMA: dosya GitHub'a doğrudan (tarayıcıdan) yüklendikten
