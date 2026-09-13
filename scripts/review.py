@@ -186,8 +186,21 @@ def main():
 
     status.update({"review_status": "completed", "review_current": ""})
     write_status(status, "review: completed")
-    print("Review tamamlandı. Ciltleme (convert) tetikleniyor...")
-    trigger_workflow("convert.yml", branch=current_branch())
+    # NOT (Eylül 2026): eskiden burada doğrudan convert.yml tetiklenirdi —
+    # yani Gemini QA denetimi (qa.yml) hiçbir zaman kendiliğinden
+    # başlamıyordu, sadece elle tetiklenirse çalışıyordu ve genelde
+    # convert.py çoktan PR'ı açtıktan SONRA yetişiyordu. Artık review
+    # bitince önce qa.yml tetikleniyor; o da (denetim + Qwen düzeltmeleri +
+    # seri önerisi bitince) convert.yml'i kendisi tetikliyor — böylece
+    # epub, QA düzeltmeleri UYGULANMIŞ haliyle ciltleniyor.
+    print("Review tamamlandı. QA denetimi (Gemini) tetikleniyor...")
+    trigger_workflow(
+        "qa.yml",
+        branch=current_branch(),
+        slug=book_slug,
+        apply_fixes="true",
+        run_series_suggest="true",
+    )
 
 
 if __name__ == "__main__":

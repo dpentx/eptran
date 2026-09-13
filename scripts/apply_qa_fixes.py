@@ -118,6 +118,17 @@ def _sync_report(report_path: str, applied: list) -> None:
     content = re.sub(r"\n{3,}", "\n\n", content)
 
     total_remaining = content.count("- **")
+
+    # Geriye TEK bir madde bile kalmadıysa, "Toplam 0 şüpheli nokta
+    # bulundu" yazan boş bir kabuk bırakmak yerine dosyayı tamamen
+    # sil — kitap main'e giderken artık işlevi kalmamış bir denetim
+    # dosyası taşımasın. (Bazı maddeler hâlâ "metin tam eşleşmedi"
+    # diye atlanmışsa dosya kalmaya devam eder — o durumda hâlâ elle
+    # bakılması gereken şeyler olabilir, bkz. yukarıdaki not.)
+    if total_remaining == 0:
+        os.remove(report_path)
+        return
+
     content = re.sub(
         r"\*\*Toplam \d+ şüpheli nokta bulundu",
         f"**Toplam {total_remaining} şüpheli nokta bulundu",
