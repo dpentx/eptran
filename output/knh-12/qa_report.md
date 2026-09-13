@@ -1,6 +1,6 @@
 # QA Raporu — knh-12
 
-**Toplam 42 şüpheli nokta bulundu (35/35 bölüm başarıyla tarandı).**
+**Toplam 41 şüpheli nokta bulundu (35/35 bölüm başarıyla tarandı).**
 
 *Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru kabul etmeyin — her maddeyi kaynakla birlikte kendiniz kontrol edin. Bazı işaretlemeler yanlış pozitif olabilir (bkz. script docstring'i).*
 
@@ -25,11 +25,6 @@
 ## Bölüm 7: Chapter 5: Third Son, Second Son, Eldest Son — 1 sorun
 - **ATLANMIŞ**: Bölüm başlığı Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"Chapter 5: Third Son, Second Son, Eldest Son"*
-
-## Bölüm 8: Chapter 6: The Winery — 1 sorun
-- **ANLAM_KAYMASI**: 'Quack doctor' (şarlatan doktor) ifadesi tamamen yanlış anlaşılarak 'Doktor Kralı' şeklinde çevrilmiştir.
-  - Kaynak: *"quack doctor"*
-  - Çeviri: *"Doktor Kralı"*
 
 ## Bölüm 10: Chapter 8: Junjie — 2 sorun
 - **ATLANMIŞ**: Bölüm başlığı Türkçe çeviride tamamen atlanmıştır.
