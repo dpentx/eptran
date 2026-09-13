@@ -31,12 +31,21 @@ on:
         type: boolean
         default: false
 
-# NOT: Bu, ana çeviri hattından (translate.yml/queue-worker.yml/review.yml)
-# BİLEREK ayrı ve sadece elle (workflow_dispatch) tetiklenen bir araç —
-# Gemini'nin ücretsiz katmanı Groq'a göre çok daha kısıtlı (RPM/RPD), bu
-# yüzden otomatik/periyodik bir güvenlik ağına bağlanmıyor. Ne QA raporu
-# ne de seri önerisi hiçbir çeviri dosyasını OTOMATİK değiştirmez — bkz.
-# qa_audit.py ve series_suggest.py docstring'leri.
+# NOT (Eylül 2026): Eskiden bu workflow ana çeviri hattından (translate.yml/
+# queue-worker.yml/review.yml) BİLEREK ayrı tutulur, sadece elle
+# (workflow_dispatch) tetiklenirdi — gerekçe: Gemini'nin ücretsiz katmanı
+# Groq'a göre çok daha kısıtlı (RPM/RPD), otomatik bir güvenlik ağına
+# bağlamanın kotayı gereksiz yere hızla tüketeceği düşünülmüştü.
+# Artık review.yml bitince BU workflow'u kendisi tetikliyor (bkz.
+# review.py) VE translate.yml'in periyodik güvenlik ağı da status.json'daki
+# qa_status alanına bakıp "review bitti ama QA bitmedi" durumunu görünce
+# bunu dürtüyor — bu ikinci kısım tam olarak istenen şeyi çözüyor: Gemini
+# günlük kotası tükenip iş yarım kalırsa (qa_audit.py zaten checkpoint'li,
+# .qa_progress.json ile kaldığı yerden devam ediyor), bir sonraki periyodik
+# tetiklemede (kota sıfırlandıktan sonra) otomatik devam eder — elle
+# tekrar tetiklemeye gerek kalmaz. Gemini kotası ENDİŞESİ hâlâ geçerli
+# ama artık checkpoint'li devam ettiği için tekrar denemeler ucuz (zaten
+# denetlenmiş bölümleri yeniden taramıyor).
 jobs:
   qa-audit:
     runs-on: ubuntu-latest
@@ -71,6 +80,23 @@ jobs:
         run: |
           git config user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
           git config user.email "${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
+
+      # Periyodik güvenlik ağının (translate.py:_scan_and_nudge_active_books)
+      # "QA bitmedi mi, o zaman dürt" diye tekrar tekrar boşu boşuna
+      # tetiklememesi için, bu işin BAŞLADIĞINI hemen işaretliyoruz. is_stale
+      # kontrolü (diğer *_status alanlarıyla aynı desen) güvenlik ağının,
+      # gerçekten çakılmış bir run'ı normal çalışan bir run'dan ayırt
+      # etmesini sağlıyor.
+      - name: Mark QA running
+        run: |
+          python3 -c "
+          import json, os, sys
+          sys.path.insert(0, 'scripts')
+          from lib.git_utils import write_status
+          status = json.load(open('status.json', encoding='utf-8')) if os.path.exists('status.json') else {}
+          status['qa_status'] = 'running'
+          write_status(status, 'qa: başladı')
+          "
 
       # series/<slug>.json genelde main'de yaşıyor (bkz. lib/series.py) —
       # bu dal onu içermiyorsa, öneri script'inin "zaten var olan" bağlamı
@@ -124,6 +150,25 @@ jobs:
             python scripts/qa_audit.py "${{ inputs.slug }}"
           fi
 
+      # qa_audit.py, günlük/anlık kota yüzünden yarım kalırsa BİLE 0 (başarılı)
+      # ile çıkıyor — "KISMİ RAPOR" yazıp checkpoint'i (.qa_progress.json)
+      # KORUYOR ki bir sonraki çalıştırma kaldığı yerden devam edebilsin.
+      # Denetim GERÇEKTEN tamamlandığında ise bu checkpoint dosyası SİLİNİYOR
+      # (bkz. qa_audit.py). Yani "tam mı kısmi mi tamamlandı" sorusunun
+      # cevabı, bu dosyanın hâlâ var olup olmadığında — Actions log'undaki
+      # "KISMİ RAPOR" metnini aramaktan daha güvenilir bir sinyal.
+      - name: Check QA completion
+        id: qacheck
+        if: always()
+        run: |
+          if [ -f "output/${{ inputs.slug }}/.qa_progress.json" ]; then
+            echo "complete=false" >> "$GITHUB_OUTPUT"
+            echo "Denetim KISMİ tamamlandı (checkpoint hâlâ duruyor) — muhtemelen Gemini günlük kotası doldu."
+          else
+            echo "complete=true" >> "$GITHUB_OUTPUT"
+            echo "Denetim TAM tamamlandı (checkpoint temizlendi)."
+          fi
+
       # Gemini'nin somut olarak (kaynak+hatalı çeviri alıntısı çiftiyle)
       # işaretlediği maddeleri Qwen'e (Groq) tek tek düzelttirir — bkz.
       # apply_qa_fixes.py docstring'i: SADECE alıntı dosyada birebir
@@ -171,3 +216,33 @@ jobs:
           git diff --cached --quiet && echo "Değişiklik yok." && exit 0
           git commit -m "qa: ${{ inputs.slug }} denetim raporu + seri önerisi"
           git push origin HEAD:${{ inputs.branch }}
+
+      # NOT (Eylül 2026): qa_status'u burada, HER durumda (always()) ama
+      # Check QA completion adımının sonucuna göre FARKLI değerle
+      # işaretliyoruz:
+      #  - complete=true  -> "completed" + convert.yml tetiklenir (epub artık
+      #    QA düzeltmeleri UYGULANMIŞ haliyle ciltlenir)
+      #  - complete=false -> "partial" (ASLA "completed" değil) — böylece
+      #    translate.py'nin periyodik güvenlik ağı bunu "hâlâ bitmedi" diye
+      #    görüp bir sonraki taramasında qa.yml'i TEKRAR tetikler; kaldığı
+      #    yerden (checkpoint sayesinde) devam eder. Gemini günlük kotası
+      #    doluysa, bu doğal olarak "ertesi gün otomatik devam etme" etkisini
+      #    verir — periyodik tarama zaten saatlik/günlük aralıklarla çalışıyor.
+      - name: Mark QA status & trigger next step
+        if: always()
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          python3 -c "
+          import json, os, sys
+          sys.path.insert(0, 'scripts')
+          from lib.git_utils import write_status
+          status = json.load(open('status.json', encoding='utf-8')) if os.path.exists('status.json') else {}
+          status['qa_status'] = '${{ steps.qacheck.outputs.complete == 'true' && 'completed' || 'partial' }}'
+          write_status(status, 'qa: ${{ steps.qacheck.outputs.complete == 'true' && 'tamamlandı' || 'kısmi, devam edecek' }}')
+          "
+          if [ "${{ steps.qacheck.outputs.complete }}" = "true" ]; then
+            gh workflow run convert.yml -f branch="${{ inputs.branch }}"
+          else
+            echo "QA kısmi kaldı — convert tetiklenmedi. Periyodik güvenlik ağı bir sonraki taramada qa.yml'i tekrar tetikleyecek."
+          fi
