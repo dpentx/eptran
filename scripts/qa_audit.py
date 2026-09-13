@@ -76,8 +76,8 @@ gerçek hata değil. Sadece gerçekten emin olduğun, somut sorunları bildir.
 
 SADECE şu JSON formatında yanıt ver, başka hiçbir şey yazma:
 {"issues": [{"type": "ATLANMIŞ|ANLAM_KAYMASI|TUTARSIZ_TERİM|ŞAHIS_UYUŞMAZLIĞI",
-"source_quote": "kaynaktan kısa alıntı (en fazla 15 kelime)",
-"translation_quote": "çeviriden kısa alıntı (en fazla 15 kelime, yoksa boş)",
+"source_quote": "kaynaktan, harfi harfine KOPYALANMIŞ bir alıntı",
+"translation_quote": "çeviriden, harfi harfine KOPYALANMIŞ bir alıntı (yoksa boş) — KISALTMA, ÖZETLEME ya da PARAFRAZ ETME; metinde birebir NASIL geçiyorsa (noktalama, tırnak işaretleri, büyük/küçük harf dahil) AYNEN öyle aktar. Sorunlu ifade uzun bir cümlenin ortasındaysa bile TAM CÜMLEYİ (nokta/virgülüyle) ver — kısa bir parça değil. Bu alan daha sonra dosyada BİREBİR ARANACAK; tek bir karakter bile farklıysa eşleşme başarısız olur ve düzeltme uygulanamaz.",
 "description": "sorunun kısa açıklaması (1-2 cümle)"}]}
 Hiç sorun yoksa {"issues": []} döndür."""
 
