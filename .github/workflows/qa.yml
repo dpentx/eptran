@@ -150,25 +150,6 @@ jobs:
             python scripts/qa_audit.py "${{ inputs.slug }}"
           fi
 
-      # qa_audit.py, günlük/anlık kota yüzünden yarım kalırsa BİLE 0 (başarılı)
-      # ile çıkıyor — "KISMİ RAPOR" yazıp checkpoint'i (.qa_progress.json)
-      # KORUYOR ki bir sonraki çalıştırma kaldığı yerden devam edebilsin.
-      # Denetim GERÇEKTEN tamamlandığında ise bu checkpoint dosyası SİLİNİYOR
-      # (bkz. qa_audit.py). Yani "tam mı kısmi mi tamamlandı" sorusunun
-      # cevabı, bu dosyanın hâlâ var olup olmadığında — Actions log'undaki
-      # "KISMİ RAPOR" metnini aramaktan daha güvenilir bir sinyal.
-      - name: Check QA completion
-        id: qacheck
-        if: always()
-        run: |
-          if [ -f "output/${{ inputs.slug }}/.qa_progress.json" ]; then
-            echo "complete=false" >> "$GITHUB_OUTPUT"
-            echo "Denetim KISMİ tamamlandı (checkpoint hâlâ duruyor) — muhtemelen Gemini günlük kotası doldu."
-          else
-            echo "complete=true" >> "$GITHUB_OUTPUT"
-            echo "Denetim TAM tamamlandı (checkpoint temizlendi)."
-          fi
-
       # Gemini'nin somut olarak (kaynak+hatalı çeviri alıntısı çiftiyle)
       # işaretlediği maddeleri Qwen'e (Groq) tek tek düzelttirir — bkz.
       # apply_qa_fixes.py docstring'i: SADECE alıntı dosyada birebir
@@ -185,6 +166,30 @@ jobs:
           GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
           PYTHONUNBUFFERED: "1"
         run: python scripts/apply_qa_fixes.py "${{ inputs.slug }}"
+
+      # NOT (Eylül 2026, gerçek üretim hatası): Bu kontrol eskiden
+      # .qa_progress.json checkpoint dosyasının yokluğuna bakıyordu VE
+      # "Apply QA fixes"ten ÖNCE çalışıyordu. Bu ikisi bir araya gelince
+      # şu hataya yol açtı: skip_audit=true ile (Gemini'yi hiç çalıştırmadan)
+      # tetiklenen bir run'da checkpoint zaten (önceki TAM taramadan)
+      # yoktu — kontrol bunu yanlışlıkla "tamamlandı" sandı ve qa_report.md
+      # hâlâ 15 çözülmemiş madde içerirken convert.yml'i tetikledi.
+      # Artık "qa_report.md'nin kendisi hâlâ var mı" diye bakıyoruz (o da
+      # apply_qa_fixes.py tarafından SADECE gerçekten 0 madde kalınca
+      # siliniyor) VE bunu düzeltmelerden SONRA kontrol ediyoruz — bu,
+      # skip_audit kullanılsa da kullanılmasa da, kalan gerçek durumu
+      # doğru yansıtan tek sinyal.
+      - name: Check QA completion
+        id: qacheck
+        if: always()
+        run: |
+          if [ -f "output/${{ inputs.slug }}/qa_report.md" ]; then
+            echo "complete=false" >> "$GITHUB_OUTPUT"
+            echo "qa_report.md hâlâ duruyor — çözülmemiş madde(ler) var."
+          else
+            echo "complete=true" >> "$GITHUB_OUTPUT"
+            echo "qa_report.md yok — ya hiç sorun bulunmadı ya da hepsi çözüldü."
+          fi
 
       - name: Run series suggestion
         if: inputs.run_series_suggest == true
