@@ -1,140 +1,62 @@
 # QA Raporu — knh-12
 
-**Toplam 32 şüpheli nokta bulundu (34/35 bölüm başarıyla tarandı, 1 bölüm denetlenemedi).**
+**Günlük Gemini kotası tükendiği için durduruldu — 11/35 bölüm tarandı. Script'i tekrar çalıştırınca kaldığı yerden devam edecek (baştan başlamayacak).**
 
 *Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru kabul etmeyin — her maddeyi kaynakla birlikte kendiniz kontrol edin. Bazı işaretlemeler yanlış pozitif olabilir (bkz. script docstring'i).*
 
 ## Bölüm 2: Prologue — 1 sorun
-- **ATLANMIŞ**: Bölüm başlığı olan 'Prologue' ifadesi Türkçe çeviride tamamen atlanmıştır.
+- **ATLANMIŞ**: Metnin başındaki 'Prologue' (Prolog/Giriş) başlığı Türkçe çeviride atlanmıştır.
   - Kaynak: *"Prologue"*
 
-## Bölüm 3: Chapter 1: The Princeling of the Main House — 2 sorun
-- **TUTARSIZ_TERİM**: "quack doctor" ifadesi metnin başında "Şarlatan Doktor" olarak çevrilmişken, ilerleyen kısımlarda "Doktor Kralı" olarak çevrilerek terim tutarsızlığı yaratılmıştır.
-  - Kaynak: *"the quack doctor"*
-  - Çeviri: *"Şarlatan Doktor / Doktor Kralı"*
-- **ANLAM_KAYMASI**: Kaynak metinde karakterin Gaoshun'un yanında o kadar gergin görünmediği belirtilirken, çeviride olumsuzluk anlamı gözden kaçırılarak gergin göründüğü yazılmıştır.
-  - Kaynak: *"He didn’t seem quite so tense"*
-  - Çeviri: *"o kadar gergin görünüyordu"*
-
 ## Bölüm 5: Chapter 3: Gyoku-ou’s Children — 1 sorun
+- **ANLAM_KAYMASI**: "quack doctor" (şarlatan hekim) ifadesi yanlış bir şekilde "Doktor Kralı" olarak çevrilmiştir.
+  - Kaynak: *"He was sipping tea with the quack doctor—a eunuch—and didn’t hesitate to act polite to Maomao."*
+  - Çeviri: *"Doktor Kralı ile—bir hadım olan—çay içiyor ve Maomao’ya kibar davranmaktan çekinmiyordu."*
+
+## Bölüm 6: Chapter 4: The Sheltered Wife — 1 sorun
 - **ATLANMIŞ**: Bölüm başlığı Türkçe çeviride tamamen atlanmıştır.
-  - Kaynak: *"Chapter 3: Gyoku-ou’s Children"*
+  - Kaynak: *"Chapter 4: The Sheltered Wife"*
 
 ## Bölüm 7: Chapter 5: Third Son, Second Son, Eldest Son — 1 sorun
 - **ATLANMIŞ**: Bölüm başlığı Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"Chapter 5: Third Son, Second Son, Eldest Son"*
 
-## Bölüm 10: Chapter 8: Junjie — 1 sorun
-- **ATLANMIŞ**: Bölüm başlığı Türkçe çeviride tamamen atlanmıştır.
-  - Kaynak: *"Chapter 8: Junjie"*
+## Bölüm 8: Chapter 6: The Winery — 1 sorun
+- **ANLAM_KAYMASI**: Karakterin babasının kız kardeşi (halası) olduğu açıkça belirtilen kişi için Türkçe çeviride 'teyze' kelimesi kullanılmıştır.
+  - Kaynak: *"“Your aunt? Meaning...”
 
-## Bölüm 11: Chapter 9: The Foreign Girl — 1 sorun
-- **ANLAM_KAYMASI**: Kaynak metinde yer almayan "Hayır, bekle...", "Aa, aman..." ve "Ve bu?" gibi ifadeler çevirmen tarafından metne eklenmiştir.
-  - Kaynak: *"“What’s this?” Maomao asked."*
-  - Çeviri: *"“Bu ne?” diye sordu Maomao. Hayır, bekle... “Aa, aman...” “Ve bu?”"*
+“My father’s younger sister,” Hulan explained."*
+  - Çeviri: *"“Teyzen? Yani...”
 
-## Bölüm 12: Chapter 10: Emergency Patient, Emergency Situation — 1 sorun
-- **ANLAM_KAYMASI**: Diyalog paragrafları tamamen birbirine karışmış ve kronolojik sıra bozulmuştur. Karakterler henüz söylenmemiş sözlere (öldürülme korkusu gibi) önceden tepki vermektedir.
-  - Kaynak: *"“Please help him. Uncle Shikyou, he’s dying.”... “Killed?”"*
-  - Çeviri: *"“Bana bir şey söyleyin. Neden bana geldiniz?... Öldürüldü mü?"*
+“Babamın küçük kız kardeşi,” açıkladı Hulan."*
 
-## Bölüm 13: Chapter 11: The Southern Inn Town — 2 sorun
-- **ANLAM_KAYMASI**: Maomao'nun 'Zahmet olmazsa (açıkla)' anlamındaki kibar ricası, Türkçe çeviride 'Buyur, rica ederim' şeklinde tamamen yanlış ve bağlam dışı bir ifadeyle karşılanmıştır.
-  - Kaynak: *"“If you’d be so kind.”"*
-  - Çeviri: *"“Buyur, rica ederim.”"*
-- **ANLAM_KAYMASI**: Metnin bu kısmından itibaren tüm diyaloglar ve anlatım paragrafları kronolojik sırasını kaybederek tamamen birbirine karışmış, ayrıca cümlenin 'how I know where we are' kısmı çevrilmemiştir.
-  - Kaynak: *"“I take it from the look on your face that you’d like me to explain how I know where we are.”"*
-  - Çeviri: *"“Yüzündeki ifadeye bakılırsa açıklamamı istediğinizi anlıyorum”"*
+## Bölüm 11: Chapter 9: The Foreign Girl
+*(Denetlenemedi.)*
 
-## Bölüm 17: Chapter 15: Priorities — 1 sorun
-- **ANLAM_KAYMASI**: Bu diyalog satırı ve çevresindeki bazı paragraflar (örn. 'Anlaşıldı.', 'Bir kitap. Elbette.') metin içinde tamamen yanlış ve alakasız yerlere girerek kronolojik sırayı bozmuş ve anlam bütünlüğünü zedelemiştir.
-  - Kaynak: *"“N-No way! That’s not what I meant!”"*
-  - Çeviri: *"“H-Hayır! Ben bunu kastetmedim!”"*
+## Bölüm 12: Chapter 10: Emergency Patient, Emergency Situation — 2 sorun
+- **ATLANMIŞ**: Bu cümle Türkçe çeviride tamamen atlanmıştır.
+  - Kaynak: *"That was as conciliatory as Maomao could be."*
+- **ANLAM_KAYMASI**: Paragrafların ve diyalogların sırası tamamen karışmış, bu yüzden Maomao henüz 'öldürülmekten' bahsedilmeden 'Öldürüldü mü?' diye tepki vermekte ve konuşma mantıksız bir hal almaktadır.
+  - Kaynak: *"“Please help him. Uncle Shikyou, he’s dying.” Xiaohong was struggling not to cry. She was too meek for this to be an act; she seemed to be in earnest.
 
-## Bölüm 18: Chapter 16: The Liar — 1 sorun
-- **TUTARSIZ_TERİM**: Aynı unvan/terim metnin bir yerinde 'dördüncü prens' (prensün), diğer yerlerinde ise 'dördüncü oğul' olarak tutarsız şekilde çevrilmiştir.
-  - Kaynak: *"fourth prince"*
-  - Çeviri: *"dördüncü prensun / dördüncü oğlun"*
+Maomao wondered what to do. This didn’t strike her as a childish prank. If Shikyou, Gyoku-ou’s eldest son, was indeed on death’s doorstep, Maomao couldn’t possibly just ignore him. But then, someone as important as Shikyou would obviously have a doctor already attending him.
 
-## Bölüm 19: Chapter 17: A Town of Faith — 1 sorun
-- **ATLANMIŞ**: Bölüm başlığı Türkçe çeviride tamamen atlanmıştır.
-  - Kaynak: *"Chapter 17: A Town of Faith"*
+“Tell me something. Why did you come to me? There are plenty of other doctors, right?”
 
-## Bölüm 20: Chapter 18: The Bandits’ Hideout — 1 sorun
-- **ATLANMIŞ**: Bölümün başlığı ve ilk paragrafı çeviride tamamen atlanmış, metne doğrudan ikinci paragraftan başlanmıştır.
-  - Kaynak: *"Chapter 18: The Bandits’ Hideout
+The confusion of the days immediately after the swarm was long since settled. Reprehensible though his behavior might be, there was no way a physician would refuse to see the son of the late governor. And Maomao couldn’t imagine any reason a female attendant would be required in this instance.
 
-The “town of faith” was remarkably quiet..."*
+Most of all, though, she wondered why it was Xiaohong who had come to call her.
 
-## Bölüm 22: Chapter 20: The Bandit Village (Part Two) — 1 sorun
-- **ATLANMIŞ**: Bölüm başlığı Türkçe çeviride tamamen atlanmıştır.
-  - Kaynak: *"Chapter 20: The Bandit Village (Part Two)"*
+“Uncle... Uncle says that if a doctor sees him...he’ll be killed.”
 
-## Bölüm 23: Chapter 21: Serving Dinner — 1 sorun
-- **ATLANMIŞ**: Bölüm başlığı ve bölümün giriş cümlesi Türkçe çeviride tamamen atlanmıştır.
-  - Kaynak: *"Chapter 21: Serving Dinner
+“Killed?”
 
-Maomao was preparing potatoes again."*
-
-## Bölüm 24: Chapter 22: How Things Turned Out — 1 sorun
-- **ANLAM_KAYMASI**: Diyalog sırası tamamen karışmıştır. Kaynakta daha sonra gelen 'A VIP... at the post town...' ve 'That's right' kısımları, çeviride çok daha erken bir yere, Shikyou'nun suikast şüphesini anlattığı kısımdan önceye eklenerek konuşma akışını ve mantığını bozmuştur.
-  - Kaynak: *"I thought they might be plotting to assassinate the Moon Prince..."*
-  - Çeviri: *"“Ne gibi?” Maomao duraksadı. Bir VIP... posta kasabasında... bir doktora ihtiyacı olan? “Tam olarak.”"*
-
-## Bölüm 25: Chapter 23: The Road Home — 2 sorun
-- **ATLANMIŞ**: Bölüm başlığı Türkçe çeviride tamamen atlanmıştır.
-  - Kaynak: *"Chapter 23: The Road Home"*
-- **ANLAM_KAYMASI**: Paragrafların sırası karıştırılmış; 'Eş?' (The wife?) sorusu ve hayvanlarla ilgili iç ses yanlış yerlere yerleştirilerek metnin anlam bütünlüğü bozulmuştur.
-  - Kaynak: *"Maybe those animals don’t represent the same things in I-sei Province"*
-  - Çeviri: *"Eş? Belki de o hayvanlar, I-sei Eyaleti'nde benim geldiğim yerdeki gibi"*
-
-## Bölüm 26: Chapter 24: A Wounded Beast — 1 sorun
-- **ATLANMIŞ**: Kaynağın en başındaki ilk paragraf ("They didn’t manage to cross... slept in the wagons.") Türkçe çeviride tamamen atlanmıştır.
-  - Kaynak: *"They didn’t manage to cross the rocky desert that day, so they had to pitch camp"*
-
-## Bölüm 27: Chapter 25: The Ugly Little Sparrow — 1 sorun
-- **ATLANMIŞ**: Bölüm başlığı Türkçe çeviride tamamen atlanmıştır.
-  - Kaynak: *"Chapter 25: The Ugly Little Sparrow"*
-
-## Bölüm 28: Chapter 26: Man and Wife — 2 sorun
-- **ATLANMIŞ**: Bölümün girişindeki ilk iki cümle Türkçe çeviride tamamen atlanmıştır.
-  - Kaynak: *"When Baryou was sixteen, he was summoned by his mother Taomei. “What I’m about to say to you, you must commit to memory,” she said."*
-- **ANLAM_KAYMASI**: Bu kısımdaki paragrafların sırası tamamen karıştığı için diyalog akışı ve olayların sırası bozulmuş, anlatımda ciddi bir anlam karmaşası yaratılmıştır.
-  - Kaynak: *"“Miss Chue, you’re standing extremely close...but, well, you seem to be that sort of person"*
-  - Çeviri: *"“Anlaşıldı!” Chue, Maamei’ye hızlıca bir selam verip... “Sorun… var mı?” dedi. Bayan Chue, çok yakınsınız..."*
-
-## Bölüm 29: Chapter 27: Master and Pupil — 1 sorun
-- **TUTARSIZ_TERİM**: 'Vice Minister Lu' unvanı metin içinde tutarsız bir şekilde hem 'Veziri Lu' hem de 'Lu Veziri' olarak çevrilmiştir. Ayrıca 'Vice Minister' (Yardımcı) unvanı yanlış aktarılmıştır.
-  - Kaynak: *"Vice Minister Lu"*
-  - Çeviri: *"Veziri Lu / Lu Veziri"*
-
-## Bölüm 30: Chapter 28: Sound Sleep — 2 sorun
-- **ANLAM_KAYMASI**: Jinshi ile konuşma ve fiziksel temas esnasında geçen diyaloglar ile ünlemler, henüz kapı açılmadan önceki kısma taşınarak kronolojik ve mantıksal bir anlam karmaşasına yol açmıştır.
-  - Kaynak: *"At exactly that moment, the door burst open."*
-  - Çeviri: *"Ah! / "Çok özür dilerim." / "Gerçekten de öyle." / "Ne?" / Tam o anda kapı gürültüyle açıldı."*
-- **ANLAM_KAYMASI**: Kaynak metin yarım bir cümleyle son bulurken, çeviride bu cümle tamamlanmış ve kaynakta hiç yer almayan iki paragraf dolusu ekstra olay/tasvir metne eklenmiştir.
-  - Kaynak: *"There’s nothing I can g"*
-  - Çeviri: *"Ona geri verebileceğim hiçbir şey yok. Maomao, yüzünü Jinshi'ye yaklaştırdı..."*
-
-## Bölüm 31: Chapter 29: The Compromise — 1 sorun
-- **ATLANMIŞ**: Bölümün ilk cümlesi Türkçe çeviride tamamen atlanmıştır.
-  - Kaynak: *"Jinshi’s first good sleep in days went a long way toward restoring his energy."*
-
-## Bölüm 32: Chapter 30: Growth — 1 sorun
-- **TUTARSIZ_TERİM**: "Vice Minister" unvanı metinde önce "Bakan Yardımcısı", hemen ardından ise "Vezir" olarak tutarsız bir şekilde çevrilmiştir.
-  - Kaynak: *"Vice Minister Lu"*
-  - Çeviri: *"Lu Bakan Yardımcısı / Lu Veziri"*
-
-## Bölüm 33: Epilogue — 1 sorun
-- **ATLANMIŞ**: Bölüm başlığı olan 'Epilogue' (Sonsöz) Türkçe çeviride atlanmıştır.
-  - Kaynak: *"Epilogue"*
-
-## Bölüm 34: Translator’s Notes – The Apothecary Diaries Diaries vol. 12 — 1 sorun
-- **ATLANMIŞ**: Metnin ana başlığı olan bu kısım Türkçe çeviride tamamen atlanmıştır.
-  - Kaynak: *"Translator’s Notes – The Apothecary Diaries Diaries vol. 12"*
-
-## Bölüm 35: Copyright — 2 sorun
-- **ATLANMIŞ**: Kitabın başlığı ve cilt numarası Türkçe çeviride tamamen atlanmıştır.
-  - Kaynak: *"The Apothecary Diaries: Volume 12"*
-- **ATLANMIŞ**: İngilizce metnin çevirmen bilgisi Türkçe çeviride yer almamaktadır.
-  - Kaynak: *"Translated by Kevin Steinbach"*
+Now, that got her attention."*
+  - Çeviri: *"“Bana bir şey söyleyin. Neden bana geldiniz? Başka doktorlar var, değil mi?”
+Öldürüldü mü?
+Şimdi, bu dikkatini çekti.
+“Lütfen ona yardım edin. Amca Shikyou, ölüyor.” Xiaohong ağlamamak için kendini zorluyordu. Bu kadar utangaç bir kız için bu bir oyundu olamazdı; samimi görünüyordu.
+Maomao ne yapacağını düşünüyordu. Bu, çocukça bir şaka gibi gelmiyordu ona. Eğer Shikyou, yani Gyoku-ou’nun en büyük oğlu gerçekten ölümün eşiğindeyse, Maomao onu görmezden gelemeyecekti. Ama Shikyou gibi önemli birinin yanında zaten bir doktor olmalıydı.
+Sürü olayının hemen ardından yaşanan kargaşa çoktan yatışmıştı. Davranışı ne kadar kınanmaya değer olursa olsun, merhum valinin oğluna bakmayı reddeden bir hekim çıkamazdı. Üstelik Maomao, bu durumda bir kadın hizmetçinin neden gerekeceğini hayal bile edemiyordu.
+Ama en çok merak ettiği şey, onu çağırmaya gelenin neden Xiaohong olmasıydı.
+“Amca... Amca, bir doktor onu görürse... öldürüleceğini söylüyor.”"*

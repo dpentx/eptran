@@ -4,11 +4,11 @@ Karakter Profilleri
 
 Maomao
 
-Eskiden keyfane mahallesinde bir eczacıydı. Arka sarayda ve ardından imparatorluk mahkemesinde kısa bir süre görev yaptıktan sonra, şimdi kendini batı başkentindeki hekimlerin yardımcısı olarak buluyor. İlaçlara ve zehirlere tam anlamıyla takıntılı, ama mevcut konumunda bunlara pek erişemiyor. Olaylar onu sürüklerken bile kendi konumunu korumaya çalışıyor. Yirmi yaşında.
+Eskiden keyfane mahallesinde bir eczacıydı. Arka sarayda ve ardından imparatorluk sarayında kısa bir süre görev yaptıktan sonra, şimdi kendini batı başkentindeki hekimlerin yardımcısı olarak buluyor. İlaçlara ve zehirlere tam anlamıyla takıntılı, ama mevcut konumunda bunlara pek erişemiyor. Olaylar onu sürüklerken bile kendi konumunu korumaya çalışıyor. Yirmi yaşında.
 
 Jinshi
 
-İmparator’un küçük kardeşi. Göksel peri kadar güzel bir genç adam. Gyoku-ou’un ölümüyle birlikte etrafında tehlike birikmeye başladı. Özellikle Rikuson ona çok fazla iş yükleniyor ve Jinshi bir gün ona misilleme yapmayı sabırsızlıkla bekliyor. Kendi hakkında çok yüksek bir görüşe sahip değil, ama barışçıl bir dünyada mükemmel bir siyasetçi olabileceği her şeye sahip. Gerçek adı: Ka Zuigetsu. Yirmi bir yaşında.
+İmparator’un küçük kardeşi. Göksel peri kadar güzel bir genç adam. Gyoku-ou’un ölümüyle birlikte etrafında tehlike birikmeye başladı. Özellikle Rikuson ona çok fazla iş yüklüyor ve Jinshi bir gün ona misilleme yapmayı sabırsızlıkla bekliyor. Kendi hakkında çok yüksek bir görüşe sahip değil, ama barışçıl bir dünyada mükemmel bir siyasetçi olabileceği her şeye sahip. Gerçek adı: Ka Zuigetsu. Yirmi bir yaşında.
 
 Basen
 
@@ -40,7 +40,7 @@ Maomao’nun biyolojik babası ve Luomen’in yeğeni. Bu tek gözlük takan tuh
 
 Rikuson
 
-Eskiden Lakan’ın yardımcısıydı, şimdi batı başkentinde görev yapıyor. İnsanların yüzlerini fotoğraflık hafızayla hatırlıyor. Gerçekte, yok edilen Yi klanının bir hayatta kalanı ve ailesi için gizlice intikamını aldı. Hayatının işini tamamlamış gibi görünmesi onu rahatlatmışa benziyor ve şimdi zamanını İmparator’un küçük kardeşini ezmekle geçiriyor.
+Eskiden Lakan’ın yardımcısıydı, şimdi batı başkentinde görev yapıyor. İnsanların yüzlerini fotoğraflık hafızayla hatırlıyor. Gerçekte, yok edilen Yi klanının bir hayatta kalanı ve ailesi için gizlice intikamını aldı. Hayatının işini tamamlamış gibi görünmesi onu rahatlatmışa benziyor ve şimdi zamanını İmparator’un küçük kardeşine eziyet etmekle geçiriyor.
 
 Gyokuen
 

@@ -1,0 +1,167 @@
+{
+  "completed": {
+    "1": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "After a stint in the rear palace and then the imperial court, she now finds herself as an assistant to the physicians in the western capital.",
+        "translation_quote": "Arka sarayda ve ardından imparatorluk mahkemesinde kısa bir süre görev yaptıktan sonra, şimdi kendini batı başkentindeki hekimlerin yardımcısı olarak buluyor.",
+        "description": "\"imperial court\" (imparatorluk sarayı/saray çevresi) ifadesi, hukuki bir terim olan \"imparatorluk mahkemesi\" şeklinde yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Rikuson in particular foists a lot of work on him, and Jinshi is eager to get back at him someday.",
+        "translation_quote": "Özellikle Rikuson ona çok fazla iş yükleniyor ve Jinshi bir gün ona misilleme yapmayı sabırsızlıkla bekliyor.",
+        "description": "\"foists a lot of work on him\" (ona çok fazla iş yıkıyor/yüklüyor) ifadesi \"ona çok fazla iş yükleniyor\" şeklinde çevrilmiştir. \"Yüklenmek\" fiili dönüşlü/edilgen anlam taşıdığı için işi Rikuson'un üstlendiği veya Rikuson'a iş yüklendiği anlamı oluşarak kaynağın tersi bir durum yaratmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Completing his life’s work seems to have helped him relax, and he now spends his time tormenting the Emperor’s younger brother.",
+        "translation_quote": "Hayatının işini tamamlamış gibi görünmesi onu rahatlatmışa benziyor ve şimdi zamanını İmparator’un küçük kardeşini ezmekle geçiriyor.",
+        "description": "\"tormenting\" (uğraşmak, canını sıkmak, eziyet etmek) kelimesi \"ezmekle\" şeklinde çevrilerek bağlama uymayan, aşırı sert ve yanlış bir anlam kazanmıştır."
+      }
+    ],
+    "2": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "Prologue",
+        "translation_quote": "",
+        "description": "Metnin başındaki 'Prologue' (Prolog/Giriş) başlığı Türkçe çeviride atlanmıştır."
+      }
+    ],
+    "3": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Here I thought he’d learned to step back just a little bit.",
+        "translation_quote": "Keşke biraz geri çekilmeyi öğrense, diye geçirdi aklından.",
+        "description": "'Here I thought...' kalıbı 'Ben de ... sanmıştım' anlamına gelirken, çeviride 'Keşke ... öğrense' şeklinde bir temenni olarak yanlış aktarılmıştır."
+      },
+      {
+        "type": "TUTARSIZ_TERİM",
+        "source_quote": "“All right, young lady. I leave the rest in your hands!” The quack doctor departed and Maomao, basically trading off with him, went into Jinshi’s bedroom.",
+        "translation_quote": "“Tamam, genç hanım. Geri kalanını senin ellerine bırakıyorum!” Doktor Kralı ayrıldı ve Maomao, temelde onunla nöbet değişimi yaparcasına Jinshi’nin yatak odasına girdi.",
+        "description": "Kaynak metindeki 'quack doctor' ifadesi bir önceki cümlede 'Şarlatan doktor' olarak çevrilmişken, burada 'Doktor Kralı' şeklinde farklı ve tutarsız bir şekilde çevrilmiştir."
+      }
+    ],
+    "4": [
+      {
+        "type": "ŞAHIS_UYUŞMAZLIĞI",
+        "source_quote": "Maybe if we tear up that other cucumber plot too.",
+        "translation_quote": "Belki o diğer salatalık tarlasını da sökerseniz.",
+        "description": "Kaynak metinde birinci çoğul şahıs (\"we\") kullanılırken, çeviride ikinci çoğul şahıs (\"sökerseniz\") kullanılarak şahıs uyuşmazlığı yapılmıştır."
+      }
+    ],
+    "5": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Who the heck is this guy?",
+        "translation_quote": "Bu adam kimin oğlu acaba?",
+        "description": "\"Who the heck is this guy?\" sorusu \"Bu adam da kim?\" anlamına gelir, karakterin kimin oğlu olduğunu sormamaktadır."
+      },
+      {
+        "type": "TUTARSIZ_TERİM",
+        "source_quote": "quack doctor",
+        "translation_quote": "Doktor Kralı",
+        "description": "Metnin başında \"şarlatan hekim\" olarak çevrilen \"quack doctor\" terimi, metnin devamında tutarsız bir şekilde \"Doktor Kralı\" olarak çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "He was sipping tea with the quack doctor—a eunuch—and didn’t hesitate to act polite to Maomao.",
+        "translation_quote": "Doktor Kralı ile—bir hadım olan—çay içiyor ve Maomao’ya kibar davranmaktan çekinmiyordu.",
+        "description": "\"quack doctor\" (şarlatan hekim) ifadesi yanlış bir şekilde \"Doktor Kralı\" olarak çevrilmiştir."
+      }
+    ],
+    "6": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "Chapter 4: The Sheltered Wife",
+        "translation_quote": "",
+        "description": "Bölüm başlığı Türkçe çeviride tamamen atlanmıştır."
+      },
+      {
+        "type": "TUTARSIZ_TERİM",
+        "source_quote": "In the same vein, she dubbed Hulan’s older sister “Hu’s Sis.”",
+        "translation_quote": "Aynı mantıkla, Hulan’ın büyük ablasına da “Hu’nun Ablası” adını taktı.",
+        "description": "Metnin başında 'Hu's Sis' ifadesi 'Hu'nun Ablası' olarak çevrilmişken, sonraki kısımlarda 'Hu'nun Kız Kardeşi' şeklinde çevrilerek tutarsızlık yaratılmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Thank you so much,” Hu’s Sis said, bowing deeply.",
+        "translation_quote": "“Çok teşekkür ederim,” dedi Hu’nun Ablası, derin bir eğilimle.",
+        "description": "Fiziksel bir eylem olan 'bowing' (eğilerek selam verme) ifadesi, soyut anlamdaki 'eğilim' (tendency/inclination) sözcüğüyle karıştırılarak 'derin bir eğilimle' şeklinde hatalı çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Hulan isn’t back yet, anyway. Why don’t we take it easy?”",
+        "translation_quote": "“Neyse ki Hulan henüz dönmedi. Neden biraz rahatlamayalım?”",
+        "description": "'anyway' (zaten, nasıl olsa) kelimesi 'Neyse ki' (iyi ki, şans eseri) şeklinde çevrilerek anlam kaymasına yol açmıştır."
+      }
+    ],
+    "7": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "Chapter 5: Third Son, Second Son, Eldest Son",
+        "translation_quote": "",
+        "description": "Bölüm başlığı Türkçe çeviride tamamen atlanmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Hulan was practically snorting with certainty, and his eyes were truly shining; if this was an act, he was doing a very good job.",
+        "translation_quote": "Hulan, neredeyse kesinlikle burnundan solumaktaydı ve gözleri gerçekten parlıyordu; eğer bu bir oyunduysa, çok iyi oynuyordu.",
+        "description": "İngilizce metindeki 'snorting with certainty' (emin bir şekilde burnundan ses çıkarmak/hınçla onaylamak) ifadesi, Türkçe'ye öfkeden deliye dönmek anlamına gelen 'burnundan solumaktaydı' şeklinde yanlış çevrilmiştir."
+      }
+    ],
+    "8": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Sure. Right. Off I go,” Maomao said, then she stuffed some tools into a bag and left the office.",
+        "translation_quote": "“Eminim. Tamam. Gidiyorum,” dedi Maomao, ardından bazı aletleri bir çantaya doldurdu ve ofisten ayrıldı.",
+        "description": "Maomao'nun kabullenme/onay belirten 'Sure. Right.' (Peki, tamam) ifadesi 'Eminim' şeklinde yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Your aunt? Meaning...”\n\n“My father’s younger sister,” Hulan explained.",
+        "translation_quote": "“Teyzen? Yani...”\n\n“Babamın küçük kız kardeşi,” açıkladı Hulan.",
+        "description": "Karakterin babasının kız kardeşi (halası) olduğu açıkça belirtilen kişi için Türkçe çeviride 'teyze' kelimesi kullanılmıştır."
+      }
+    ],
+    "9": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“So, getting back to the mushrooms, the question is why a winery would even have mushrooms that make you super drunk, right?”",
+        "translation_quote": "“Peki, mantarlara dönersek, soru şu: Bir şarap evinin neden bir şarap imalathanesinin mantarları bile olabileceği, değil mi?”",
+        "description": "Çeviride 'mushrooms that make you super drunk' (insanı aşırı sarhoş eden mantarlar) kısmı tamamen atlanmış ve 'winery' kelimesi aynı cümle içinde hem 'şarap evi' hem 'şarap imalathanesi' olarak mükerrer çevrilerek anlam tamamen bozulmuştur."
+      }
+    ],
+    "10": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Even...root-y ones like these?”",
+        "translation_quote": "“Bile... bunlar gibi kökleri olanlar mı?”",
+        "description": "'root-y' (kök gibi, cılız) ifadesi 'kökleri olanlar' şeklinde yanlış çevrilmiştir. Ayrıca 'Even' kelimesinin 'Bile' olarak cümlenin başında doğrudan çevrilmesi Türkçe dil bilgisine aykırıdır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Oh, but if anyone else here already has my name, please, by all means, forget it’s mine.",
+        "translation_quote": "“Ah, ama eğer burada benim adımı taşıyan başka biri varsa, lütfen, istediğiniz gibi unutun.",
+        "description": "'forget it’s mine' (benim adım olduğunu unutun) ifadesi 'istediğiniz gibi unutun' şeklinde yanlış çevrilerek anlam kaymasına yol açmıştır."
+      }
+    ],
+    "12": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "That was as conciliatory as Maomao could be.",
+        "translation_quote": "",
+        "description": "Bu cümle Türkçe çeviride tamamen atlanmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Please help him. Uncle Shikyou, he’s dying.” Xiaohong was struggling not to cry. She was too meek for this to be an act; she seemed to be in earnest.\n\nMaomao wondered what to do. This didn’t strike her as a childish prank. If Shikyou, Gyoku-ou’s eldest son, was indeed on death’s doorstep, Maomao couldn’t possibly just ignore him. But then, someone as important as Shikyou would obviously have a doctor already attending him.\n\n“Tell me something. Why did you come to me? There are plenty of other doctors, right?”\n\nThe confusion of the days immediately after the swarm was long since settled. Reprehensible though his behavior might be, there was no way a physician would refuse to see the son of the late governor. And Maomao couldn’t imagine any reason a female attendant would be required in this instance.\n\nMost of all, though, she wondered why it was Xiaohong who had come to call her.\n\n“Uncle... Uncle says that if a doctor sees him...he’ll be killed.”\n\n“Killed?”\n\nNow, that got her attention.",
+        "translation_quote": "“Bana bir şey söyleyin. Neden bana geldiniz? Başka doktorlar var, değil mi?”\nÖldürüldü mü?\nŞimdi, bu dikkatini çekti.\n“Lütfen ona yardım edin. Amca Shikyou, ölüyor.” Xiaohong ağlamamak için kendini zorluyordu. Bu kadar utangaç bir kız için bu bir oyundu olamazdı; samimi görünüyordu.\nMaomao ne yapacağını düşünüyordu. Bu, çocukça bir şaka gibi gelmiyordu ona. Eğer Shikyou, yani Gyoku-ou’nun en büyük oğlu gerçekten ölümün eşiğindeyse, Maomao onu görmezden gelemeyecekti. Ama Shikyou gibi önemli birinin yanında zaten bir doktor olmalıydı.\nSürü olayının hemen ardından yaşanan kargaşa çoktan yatışmıştı. Davranışı ne kadar kınanmaya değer olursa olsun, merhum valinin oğluna bakmayı reddeden bir hekim çıkamazdı. Üstelik Maomao, bu durumda bir kadın hizmetçinin neden gerekeceğini hayal bile edemiyordu.\nAma en çok merak ettiği şey, onu çağırmaya gelenin neden Xiaohong olmasıydı.\n“Amca... Amca, bir doktor onu görürse... öldürüleceğini söylüyor.”",
+        "description": "Paragrafların ve diyalogların sırası tamamen karışmış, bu yüzden Maomao henüz 'öldürülmekten' bahsedilmeden 'Öldürüldü mü?' diye tepki vermekte ve konuşma mantıksız bir hal almaktadır."
+      }
+    ]
+  },
+  "failed": [
+    11
+  ]
+}
