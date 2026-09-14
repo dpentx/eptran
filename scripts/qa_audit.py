@@ -179,6 +179,56 @@ def _write_report(output_dir: str, slug: str, chapters: list, progress: dict,
     return total_issues
 
 
+def _load_series_glossary(slug: str) -> str:
+    """
+    Bu kitabın ait olduğu serinin karakter/terim sözlüğünü (series/<seri
+    slug>.json) okuyup Gemini'nin denetim prompt'una eklenecek bir blok
+    olarak döner. Sözlük yoksa ya da boşsa "" döner.
+
+    NEDEN GEREKLİ: Gemini'ye şimdiye kadar SADECE tek bir bölümün kaynak+
+    çeviri metni veriliyordu — kitabın/serinin kendi karakter isimleri ve
+    terim kararları hakkında HİÇBİR BAĞLAM yoktu. Bu yüzden:
+      1) Doğru ve KASITLI çevrilmiş isimler/terimler bazen yanlışlıkla
+         ANLAM_KAYMASI ya da TUTARSIZ_TERİM diye işaretlenebiliyordu —
+         Gemini'nin "doğru" kabul edeceği bir referansı yoktu.
+      2) TUTARSIZ_TERİM kontrolü SADECE o bölümün İÇİNDE tutarlılığa
+         bakabiliyordu — bölümler arası (örn. 3. bölümde "Gyoku-ou",
+         20. bölümde "Gyokuou" gibi) tutarsızlıkları YAKALAYAMIYORDU,
+         çünkü Gemini her bölümü birbirinden habersiz, izole
+         görüyordu.
+    Bu sözlük artık her bölüm isteğine ekleniyor — Gemini artık hem
+    "bu isim burada neden böyle" diye tahmin etmek zorunda kalmıyor
+    hem de kitabın GENELİNDE sabitlenmiş isimlerle bu bölümü
+    karşılaştırabiliyor.
+    """
+    status_path = "status.json"
+    series_slug = None
+    if os.path.exists(status_path):
+        with open(status_path, encoding="utf-8") as f:
+            series_slug = json.load(f).get("series")
+    if not series_slug:
+        return ""
+
+    data = series_lib.load(series_slug)
+    characters = data.get("characters", {})
+    terms = data.get("terms", {})
+    if not characters and not terms:
+        return ""
+
+    lines = [
+        "\n\nBU SERİ İÇİN SABİTLENMİŞ İSİM/TERİM SÖZLÜĞÜ (bunlar KASITLI "
+        "kararlardır — aşağıdaki eşleşmelerden biri bölümde doğru "
+        "kullanılmışsa bunu ASLA ANLAM_KAYMASI ya da TUTARSIZ_TERİM diye "
+        "işaretleme; ama bölüm bu eşleşmelerden FARKLI bir çeviri "
+        "kullanıyorsa bu GERÇEK bir TUTARSIZ_TERİM sorunudur):"
+    ]
+    for eng, tr in characters.items():
+        lines.append(f"- {eng} → {tr}")
+    for eng, tr in terms.items():
+        lines.append(f"- {eng} → {tr}")
+    return "\n".join(lines)
+
+
 def audit_book(slug: str, max_chapters: int | None = None):
     output_dir = f"output/{slug}"
     orig_path = _find_original(slug)
@@ -191,6 +241,12 @@ def audit_book(slug: str, max_chapters: int | None = None):
         chapters, _, _ = extract_epub(orig_path)
     else:
         chapters, _ = extract_pdf(orig_path, slug)
+
+    glossary_block = _load_series_glossary(slug)
+    audit_system = _AUDIT_SYSTEM + glossary_block
+    if glossary_block:
+        print(f"  Seri sözlüğü yüklendi ({glossary_block.count(chr(10)) - 1} "
+              f"madde) — denetim buna göre karşılaştıracak.")
 
     clients = gem.get_clients()
     key_index = [0]
@@ -220,7 +276,7 @@ def audit_book(slug: str, max_chapters: int | None = None):
             f"ÇEVİRİ (Türkçe):\n{tr_body[:8000]}"
         )
         try:
-            raw = gem.call(clients, key_index, _AUDIT_SYSTEM, user_msg, temperature=0.1)
+            raw = gem.call(clients, key_index, audit_system, user_msg, temperature=0.1)
         except gem.AllKeysExhausted:
             print(f"\n  Elimizdeki tüm Gemini key'lerinin günlük kotası tükendi "
                   f"({i}/{n}. bölümde). Kalan bölümler için boşuna denenmiyor — "
