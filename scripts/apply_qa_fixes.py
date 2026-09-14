@@ -90,11 +90,15 @@ def _sync_report(report_path: str, applied: list) -> None:
     maddeler raporda KALIR — hâlâ elle incelenmesi gerektiği anlamına
     gelir.
     """
-    if not applied:
+    if not os.path.exists(report_path):
         return
     with open(report_path, encoding="utf-8") as f:
         content = f.read()
 
+    # NOT: `applied` boş olsa bile (bu çalıştırmada hiç yeni düzeltme
+    # uygulanmadıysa — örn. skip_audit ile tekrar denendiyse) aşağıdaki
+    # "0'a inince sil" kontrolünü YİNE DE yapıyoruz; raporun zaten
+    # önceden 0'a inmiş ama silinmemiş olma ihtimaline karşı.
     for _chapter_num, issue in applied:
         block = f'- **{issue["type"]}**: {issue["desc"]}\n'
         if issue.get("source"):
