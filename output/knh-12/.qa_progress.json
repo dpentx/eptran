@@ -159,6 +159,20 @@
         "translation_quote": "“Bana bir şey söyleyin. Neden bana geldiniz? Başka doktorlar var, değil mi?”\nÖldürüldü mü?\nŞimdi, bu dikkatini çekti.\n“Lütfen ona yardım edin. Amca Shikyou, ölüyor.” Xiaohong ağlamamak için kendini zorluyordu. Bu kadar utangaç bir kız için bu bir oyundu olamazdı; samimi görünüyordu.\nMaomao ne yapacağını düşünüyordu. Bu, çocukça bir şaka gibi gelmiyordu ona. Eğer Shikyou, yani Gyoku-ou’nun en büyük oğlu gerçekten ölümün eşiğindeyse, Maomao onu görmezden gelemeyecekti. Ama Shikyou gibi önemli birinin yanında zaten bir doktor olmalıydı.\nSürü olayının hemen ardından yaşanan kargaşa çoktan yatışmıştı. Davranışı ne kadar kınanmaya değer olursa olsun, merhum valinin oğluna bakmayı reddeden bir hekim çıkamazdı. Üstelik Maomao, bu durumda bir kadın hizmetçinin neden gerekeceğini hayal bile edemiyordu.\nAma en çok merak ettiği şey, onu çağırmaya gelenin neden Xiaohong olmasıydı.\n“Amca... Amca, bir doktor onu görürse... öldürüleceğini söylüyor.”",
         "description": "Paragrafların ve diyalogların sırası tamamen karışmış, bu yüzden Maomao henüz 'öldürülmekten' bahsedilmeden 'Öldürüldü mü?' diye tepki vermekte ve konuşma mantıksız bir hal almaktadır."
       }
+    ],
+    "13": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“I take it from the look on your face that you’d like me to explain how I know where we are.”\n\n“If you’d be so kind.” Shikyou had barely been conscious when they were brought here; he should be even less sure of their location than Maomao was. How could he be so certain she was right? “Did you and Miss Chue agree ahead of time that this was where you would come?”\n\n“Chue and I want the same thing.”",
+        "translation_quote": "“Yüzündeki ifadeye bakılırsa açıklamamı istediğinizi anlıyorum”\n\n\"Chue ile aynı şeyi istiyoruz.\"",
+        "description": "Kaynak metindeki diyalog sırası ve paragraflar tamamen karıştırılmış; Maomao'nun cevabı ve düşüncelerini içeren paragraf aradan çıkarılarak Shikyou'nun sözleri doğrudan birbirine bağlanmış ve anlam bütünlüğü bozulmuştur."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Why did you drag me",
+        "translation_quote": "\"Neden beni de sürüklediniz?\"\n\n\"Gyokujun'un annesi ne olacak?\"\n\n\"He he!\"\n\n\"Buyur, rica ederim.\" Shikyou, buraya getirildiğinde neredeyse bilincini yitirmişti; Maomao'dan bile daha az emin olmalıydı konumları hakkında. Nasıl bu kadar kesin bir şekilde haklı olduğunu biliyordu? \"Sen ve Bayan Chue, buraya geleceğinizi önceden mi kararlaştırdınız?\"\n\nMaomao, bir şeyler sakladığından emindi — ama bunun Shikyou ile bir bağlantı olduğunu asla tahmin etmemişti. En azından, onu kendisine bakması için neden istediğini açıklıyordu bu.\n\n*Yalan kokusu alıyorum*, diye düşündü Maomao — her ne kadar bu, Chue'nin sesinde bir şaka tonu taşıyarak söyleyebileceği türden bir şey olsa da.\n\n\"Bu eyaleti yönetmekten bu kadar kaçınan birinden gelen ilginç bir arzu.\"\n\n\"Herkesin en iyi olduğu bir işi olduğunu duymadın mı? Doğru kişiyi doğru yere koy; işlerin düzgün yürümesini sağlayan şey budur.\"\n\nBu, Shikyou'nun I-sei Eyaleti'ni yönetecek kapasiteye sahip olmadığını düşündüğünü söyleme biçimiydi.\n\nNeden böyle düşündüğünü anlamamak için bir sebep yoktu.\nMaomao'nun *anlayamadığı* şey ise...\n\n\"Eh. Bana ait bir konu değil. Bunu Chue'ye kendin sormalısın.\" Shikyou bir yudum daha su içti, ardından kepçeyi bir kenara bıraktı. Yatakta yatan Gyokujun'un ve Xiaohong'un başını okşadı. \"Bu çocuklara kötü bir şey yaptım,\" dedi. \"Yinxing şimdiye kadar çıldırmış olmalı.\"\n\nYinxing. Adını anış şeklinden, Maomao onun Xiaohong'un annesi olduğunu tahmin etti — bu da onu Shikyou'nun küçük kız kardeşi yapardı.\n\n\"Şaşıraca",
+        "description": "Kaynak metin yarım bir cümleyle biterken, çeviride bu ifadeden sonra kaynakta hiç bulunmayan diyaloglar, paragraflar ve yarım kalmış ifadeler eklenmiş, ayrıca önceki paragraflar buraya taşınarak metin yapısı tamamen bozulmuştur."
+      }
     ]
   },
   "failed": [
