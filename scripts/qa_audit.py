@@ -50,6 +50,7 @@ import sys
 
 from lib import gemini_client as gem
 from lib import series as series_lib
+from lib import boilerplate
 
 sys.path.insert(0, os.path.dirname(__file__))
 from translate import extract_epub, extract_pdf  # noqa: E402
@@ -271,6 +272,24 @@ def audit_book(slug: str, max_chapters: int | None = None):
             continue  # zaten checkpoint'te var, atla
 
         src_chapter = chapters[i - 1]
+
+        # NOT (Eylül 2026): Çevirmen notu / son söz / ek bölüm gibi ANA
+        # HİKÂYE DIŞI bölümler (örn. "Translator's Notes", içinde kasıtlı
+        # olarak İngilizce ifadeler alıntılanan bir çeviri-tercihi
+        # tartışması) denetim dışı bırakılıyor — bunlarda "İngilizce
+        # kalıntı" ya da "tutarsız terim" gibi bulgular GERÇEK hata değil,
+        # bölümün doğası gereği (bkz. knh-12, 34. bölüm: "Are you seeing
+        # us?" gibi İngilizce örnek cümleler kasıtlı olarak olduğu gibi
+        # bırakılmış). boilerplate.py'nin ZATEN VAR OLAN
+        # is_boilerplate_title() kontrolü tam bunun için yazılmıştı ama
+        # ne burada ne pr_check.py'de hiç kullanılmıyordu.
+        if boilerplate.is_boilerplate_title(src_chapter["title"]):
+            print(f"  [{i}/{n}] {src_chapter['title'][:40]!r} — ana hikâye "
+                  f"dışı (çevirmen notu vb.), denetim dışı bırakıldı.")
+            progress["completed"][key] = []
+            _save_progress(output_dir, progress)
+            continue
+
         tr_title, tr_body = _load_translated(output_dir, i, slug)
         if tr_body is None:
             print(f"  [{i}/{n}] çeviri dosyası bulunamadı, atlanıyor.")
