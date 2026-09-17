@@ -9,12 +9,12 @@
   "current_chapter": "",
   "started_at": "2026-09-02T09:53:13.653934+00:00",
   "queue_mode": true,
-  "updated_at": "2026-09-14T05:13:35.075610+00:00",
+  "updated_at": "2026-09-17T07:30:29.784231+00:00",
   "review_status": "completed",
   "review_total": 35,
   "review_completed": 35,
   "review_current": "",
-  "convert_status": "",
+  "convert_status": "running",
   "epub_output": "",
   "qa_status": "partial"
 }
