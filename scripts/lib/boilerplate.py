@@ -10,7 +10,7 @@ _PATTERNS = [
     re.compile(r'^\s*project gutenberg\b|gutenberg\.org|www\.gutenberg', re.IGNORECASE),
     re.compile(r'epubbooks?\.com|www\.[a-z0-9\-]+\.[a-z]{2,}', re.IGNORECASE),
     re.compile(r'\bebook\s*#?\d+\b', re.IGNORECASE),
-    re.compile(r"^(translator'?s?\s*notes?|note from the translator|çevirmen\s*not(u|lar[ıi]?))\b", re.IGNORECASE),
+    re.compile(r"^(translator['’]?s?\s*notes?|note from the translator|çevirmen\s*not(u|lar[ıi]?))\b", re.IGNORECASE),
     re.compile(r'bu (yayın|e[\-\s]?kitap).{0,60}(telif|lisans|hak)', re.IGNORECASE),
     # "This eBook is for the use of" — sadece paragrafın başında
     re.compile(r'^this e[\-\s]?book is for the use of', re.IGNORECASE),
