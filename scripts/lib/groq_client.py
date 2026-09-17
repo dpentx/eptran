@@ -81,13 +81,26 @@ class AllKeysLockedError(Exception):
         super().__init__(f"Tüm keyler kilitli, en kısa bekleme: {wait_seconds}s")
 
 # Groq'un bazı organizasyon/tier'larında TPM (dakikalık token) limiti çok
-# düşük olabilir (örn. on_demand tier'da 8000 TPM görülmüştür). Groq,
-# max_completion_tokens'ı "bu istek en fazla bu kadar üretebilir" diye
-# PROMPT + bu değer toplamını önceden TPM limitine karşı kontrol eder —
-# gerçekte o kadar üretilmese bile istek daha başlamadan 413 ile reddedilir.
-# Bu yüzden makul/güvenli bir üst sınırla başlıyoruz; 413 alırsak küçültüp
-# tekrar deneriz (bkz. _shrink_and_retry mantığı call() içinde).
-_DEFAULT_MAX_COMPLETION_TOKENS = 6000
+# düşük olabilir (örn. on_demand tier'da 8000 TPM görülmüştür — qwen3.8-27b
+# için de topluluk ölçümleri bunu doğruluyor: ~8000 TPM, prompt+çıktı
+# toplamı). Groq, max_completion_tokens'ı "bu istek en fazla bu kadar
+# üretebilir" diye PROMPT + bu değer toplamını önceden TPM limitine karşı
+# kontrol eder — gerçekte o kadar üretilmese bile istek daha başlamadan 413
+# ile reddedilir. Bu yüzden makul/güvenli bir üst sınırla başlıyoruz; 413
+# alırsak küçültüp tekrar deneriz (bkz. _shrink_and_retry mantığı call()
+# içinde). NOT (Eylül 2026): eski varsayılan (6000) + pitfalls.py'nin
+# eklediği ~800 token'lık sabit bağlamla birlikte neredeyse HER istekte
+# ilk denemede 413 alınıyordu (loglarda "TPM limiti için çok büyük" art
+# arda 2-3 kez görülmesi bundan) — başlangıç değeri düşürüldü. Küçülen
+# max_out bir kez düşünce call() içinde geri BÜYÜMÜYOR; yani bir istek TPM
+# yüzünden küçülüp sonra gerçekten o kadar token'a sığmayan bir metin
+# üretmeye çalışırsa (finish_reason=length), 3 "kesik yanıt" denemesi de
+# AYNI küçük bütçeyle yapılır ve genelde hepsi aynı şekilde başarısız olup
+# parça atlanır. Bu döngü sık tekrarlanıyorsa (özellikle review/NER
+# adımlarında), Groq konsolünde qwen3.8-27b için hesabın gerçek TPM
+# tavanına bakmak (Settings > Limits) gerekebilir — 8000 varsayımı
+# yanlışsa buradaki sabit onun yerine güncellenmeli.
+_DEFAULT_MAX_COMPLETION_TOKENS = 3500
 _MIN_MAX_COMPLETION_TOKENS = 1024
 
 
@@ -145,13 +158,29 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
     korumalı.
 
     Hesabın TPM limiti tek bir isteğin talep ettiği (prompt + max tokens)
-    boyuttan küçükse (413/"too large"), bu ASLA retry ile düzelmez —
-    max_completion_tokens otomatik küçültülüp hemen (30s beklemeden)
-    tekrar denenir; _MIN_MAX_COMPLETION_TOKENS'a inmesine rağmen hâlâ
-    reddediliyorsa None döner (30 dakika boşuna döngüye girmek yerine).
+    boyuttan küçükse (413/"too large"), önce SIRADAKİ key'e (varsa) AYNI
+    max_completion_tokens ile geçilir — birden fazla key farklı Groq
+    hesaplarından geliyorsa bu genelde tek başına yeterlidir, çünkü her
+    hesabın kendi bağımsız TPM penceresi vardır. Tüm key'ler aynı boyutta
+    413 verirse (ya da tek key varsa) ancak o zaman max_completion_tokens
+    küçültülüp TÜM key'lerle baştan denenir; _MIN_MAX_COMPLETION_TOKENS'a
+    inmesine rağmen hâlâ reddediliyorsa None döner (30 dakika boşuna
+    döngüye girmek yerine).
     """
     empty_retries = 0
     max_out = _DEFAULT_MAX_COMPLETION_TOKENS
+    # Bir 413 (istek TPM'e göre çok büyük) alındığında hangi client'ları
+    # şu anki max_out ile zaten DENEDİĞİMİZİ tutar. NOT (Eylül 2026):
+    # eskiden 413'te SADECE max_out küçültülüp AYNI key ile tekrar
+    # deneniyordu — "key değiştirmek işe yaramaz, hepsi aynı org'un TPM
+    # tavanını paylaşıyor" varsayımıyla. Bu varsayım TEK hesaptan alınan
+    # birden fazla key için doğruydu ama İbo'nun kurulumunda GROQ_API_KEY_1..4
+    # 4 AYRI Groq hesabından — yani her birinin kendi bağımsız TPM
+    # penceresi var. Art arda hızlı istekler bir hesabın penceresini
+    # boşaltınca, artık önce DİĞER hesapları (dolu bütçeyle) deniyoruz;
+    # hepsi aynı boyutta tükenmişse ancak o zaman küçültüp baştan
+    # deniyoruz.
+    tried_at_this_size = set()
     while True:
         now = time.time()
         available = [c for c in clients if c["locked_until"] <= now]
@@ -235,20 +264,26 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
             return result
         except RateLimitError as e:
             if _is_too_large_error(e):
-                # Bu, zamanla düzelen bir rate limit DEĞİL — tek bir isteğin
-                # talep ettiği token miktarı hesabın TPM tavanından büyük.
-                # Key değiştirmek ya da beklemek işe yaramaz (aynı org'un
-                # tavanı); tek çözüm isteği küçültmek.
+                tried_at_this_size.add(idx)
+                untried = [i for i in range(len(clients)) if i not in tried_at_this_size]
+                if untried:
+                    key_index[0] = untried[0]
+                    print(f"  Uyarı: key {info['id']} bu boyut için TPM'e sığmadı (413) — "
+                          f"aynı max_completion_tokens ile başka bir hesaba geçiliyor.")
+                    continue
+                # Bu boyutta TÜM key'ler denendi, hepsi 413 verdi — artık
+                # küçültüp baştan (tüm key'lerle tekrar) deniyoruz.
+                tried_at_this_size = set()
                 if max_out > _MIN_MAX_COMPLETION_TOKENS:
                     max_out = max(max_out // 2, _MIN_MAX_COMPLETION_TOKENS)
-                    print(f"  Uyarı: istek TPM limiti için çok büyük (413) — "
-                          f"max_completion_tokens {max_out}'a düşürülüp hemen "
-                          f"tekrar deneniyor.")
+                    print(f"  Uyarı: istek TPM limiti için çok büyük (413) — TÜM "
+                          f"key'lerde başarısız, max_completion_tokens {max_out}'a "
+                          f"düşürülüp hemen tekrar deneniyor.")
                     continue
                 print(f"  Hata: max_completion_tokens zaten {_MIN_MAX_COMPLETION_TOKENS} "
-                      f"(minimum) ama istek hâlâ hesabın TPM limitini aşıyor. "
+                      f"(minimum) ama istek TÜM key'lerde hâlâ TPM limitini aşıyor. "
                       f"Bu metin parçası muhtemelen tek başına çok uzun ya da "
-                      f"Groq hesabının TPM tavanı (bkz. Groq konsolu > Settings > "
+                      f"Groq hesaplarının TPM tavanı (bkz. Groq konsolu > Settings > "
                       f"Billing) çok düşük. Bu parça ATLANIYOR.")
                 return None
             wait = _parse_retry_seconds(e)
@@ -257,14 +292,22 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
             key_index[0] = (idx + 1) % len(clients)
         except Exception as e:
             if _is_too_large_error(e):
+                tried_at_this_size.add(idx)
+                untried = [i for i in range(len(clients)) if i not in tried_at_this_size]
+                if untried:
+                    key_index[0] = untried[0]
+                    print(f"  Uyarı: key {info['id']} bu boyut için TPM'e sığmadı (413) — "
+                          f"aynı max_completion_tokens ile başka bir hesaba geçiliyor.")
+                    continue
+                tried_at_this_size = set()
                 if max_out > _MIN_MAX_COMPLETION_TOKENS:
                     max_out = max(max_out // 2, _MIN_MAX_COMPLETION_TOKENS)
-                    print(f"  Uyarı: istek TPM limiti için çok büyük (413) — "
-                          f"max_completion_tokens {max_out}'a düşürülüp hemen "
-                          f"tekrar deneniyor.")
+                    print(f"  Uyarı: istek TPM limiti için çok büyük (413) — TÜM "
+                          f"key'lerde başarısız, max_completion_tokens {max_out}'a "
+                          f"düşürülüp hemen tekrar deneniyor.")
                     continue
                 print(f"  Hata: max_completion_tokens zaten {_MIN_MAX_COMPLETION_TOKENS} "
-                      f"(minimum) ama istek hâlâ hesabın TPM limitini aşıyor. "
+                      f"(minimum) ama istek TÜM key'lerde hâlâ TPM limitini aşıyor. "
                       f"Bu parça ATLANIYOR.")
                 return None
             print(f"Hata: {e} — 30s sonra tekrar deneniyor...")

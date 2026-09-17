@@ -50,6 +50,7 @@ import sys
 
 from lib import gemini_client as gem
 from lib import series as series_lib
+from lib import boilerplate
 
 sys.path.insert(0, os.path.dirname(__file__))
 from translate import extract_epub, extract_pdf  # noqa: E402
@@ -69,15 +70,21 @@ Görevin ÇEVİRİYİ DEĞİL, sadece SORUNLARI bulmak.
   kaynakta YOK (yani çevirmen hatası, kaynağın kendi üslubu değil —
   bunu ayırt etmek için kaynağı da kontrol et, kaynakta da aynı
   karışıklık varsa bu bir SORUN DEĞİL, atla).
+- İNGİLİZCE_KALINTI: Türkçe çeviri metninde, ÇEVRİLMESİ GEREKİRKEN
+  İngilizce bırakılmış tek bir kelime ya da kısa bir ifade (örn. bir
+  fiil, sıfat ya da bağlaç İngilizce kalmış). Aşağıda "SABİTLENMİŞ
+  İSİM/TERİM SÖZLÜĞÜ" verilmişse oradaki isimleri ya da bilinçli olarak
+  Latin harfleriyle bırakılan özel isimleri/başlıkları BUNA DAHIL ETME
+  — sadece gerçekten çevrilmesi unutulmuş sıradan kelimeleri işaretle.
 
 Emin olmadığın, sadece ÜSLUP tercihi olabilecek (örn. "ne yapıyorsun"
 vs "ne halt ediyorsun" gibi ton farkları) şeyleri RAPORLAMA — bunlar
 gerçek hata değil. Sadece gerçekten emin olduğun, somut sorunları bildir.
 
 SADECE şu JSON formatında yanıt ver, başka hiçbir şey yazma:
-{"issues": [{"type": "ATLANMIŞ|ANLAM_KAYMASI|TUTARSIZ_TERİM|ŞAHIS_UYUŞMAZLIĞI",
-"source_quote": "kaynaktan kısa alıntı (en fazla 15 kelime)",
-"translation_quote": "çeviriden kısa alıntı (en fazla 15 kelime, yoksa boş)",
+{"issues": [{"type": "ATLANMIŞ|ANLAM_KAYMASI|TUTARSIZ_TERİM|ŞAHIS_UYUŞMAZLIĞI|İNGİLİZCE_KALINTI",
+"source_quote": "kaynaktan, harfi harfine KOPYALANMIŞ bir alıntı",
+"translation_quote": "çeviriden, harfi harfine KOPYALANMIŞ bir alıntı (yoksa boş) — KISALTMA, ÖZETLEME ya da PARAFRAZ ETME; metinde birebir NASIL geçiyorsa (noktalama, tırnak işaretleri, büyük/küçük harf dahil) AYNEN öyle aktar. Sorunlu ifade uzun bir cümlenin ortasındaysa bile TAM CÜMLEYİ (nokta/virgülüyle) ver — kısa bir parça değil. Bu alan daha sonra dosyada BİREBİR ARANACAK; tek bir karakter bile farklıysa eşleşme başarısız olur ve düzeltme uygulanamaz.",
 "description": "sorunun kısa açıklaması (1-2 cümle)"}]}
 Hiç sorun yoksa {"issues": []} döndür."""
 
@@ -179,6 +186,56 @@ def _write_report(output_dir: str, slug: str, chapters: list, progress: dict,
     return total_issues
 
 
+def _load_series_glossary(slug: str) -> str:
+    """
+    Bu kitabın ait olduğu serinin karakter/terim sözlüğünü (series/<seri
+    slug>.json) okuyup Gemini'nin denetim prompt'una eklenecek bir blok
+    olarak döner. Sözlük yoksa ya da boşsa "" döner.
+
+    NEDEN GEREKLİ: Gemini'ye şimdiye kadar SADECE tek bir bölümün kaynak+
+    çeviri metni veriliyordu — kitabın/serinin kendi karakter isimleri ve
+    terim kararları hakkında HİÇBİR BAĞLAM yoktu. Bu yüzden:
+      1) Doğru ve KASITLI çevrilmiş isimler/terimler bazen yanlışlıkla
+         ANLAM_KAYMASI ya da TUTARSIZ_TERİM diye işaretlenebiliyordu —
+         Gemini'nin "doğru" kabul edeceği bir referansı yoktu.
+      2) TUTARSIZ_TERİM kontrolü SADECE o bölümün İÇİNDE tutarlılığa
+         bakabiliyordu — bölümler arası (örn. 3. bölümde "Gyoku-ou",
+         20. bölümde "Gyokuou" gibi) tutarsızlıkları YAKALAYAMIYORDU,
+         çünkü Gemini her bölümü birbirinden habersiz, izole
+         görüyordu.
+    Bu sözlük artık her bölüm isteğine ekleniyor — Gemini artık hem
+    "bu isim burada neden böyle" diye tahmin etmek zorunda kalmıyor
+    hem de kitabın GENELİNDE sabitlenmiş isimlerle bu bölümü
+    karşılaştırabiliyor.
+    """
+    status_path = "status.json"
+    series_slug = None
+    if os.path.exists(status_path):
+        with open(status_path, encoding="utf-8") as f:
+            series_slug = json.load(f).get("series")
+    if not series_slug:
+        return ""
+
+    data = series_lib.load(series_slug)
+    characters = data.get("characters", {})
+    terms = data.get("terms", {})
+    if not characters and not terms:
+        return ""
+
+    lines = [
+        "\n\nBU SERİ İÇİN SABİTLENMİŞ İSİM/TERİM SÖZLÜĞÜ (bunlar KASITLI "
+        "kararlardır — aşağıdaki eşleşmelerden biri bölümde doğru "
+        "kullanılmışsa bunu ASLA ANLAM_KAYMASI ya da TUTARSIZ_TERİM diye "
+        "işaretleme; ama bölüm bu eşleşmelerden FARKLI bir çeviri "
+        "kullanıyorsa bu GERÇEK bir TUTARSIZ_TERİM sorunudur):"
+    ]
+    for eng, tr in characters.items():
+        lines.append(f"- {eng} → {tr}")
+    for eng, tr in terms.items():
+        lines.append(f"- {eng} → {tr}")
+    return "\n".join(lines)
+
+
 def audit_book(slug: str, max_chapters: int | None = None):
     output_dir = f"output/{slug}"
     orig_path = _find_original(slug)
@@ -191,6 +248,12 @@ def audit_book(slug: str, max_chapters: int | None = None):
         chapters, _, _ = extract_epub(orig_path)
     else:
         chapters, _ = extract_pdf(orig_path, slug)
+
+    glossary_block = _load_series_glossary(slug)
+    audit_system = _AUDIT_SYSTEM + glossary_block
+    if glossary_block:
+        print(f"  Seri sözlüğü yüklendi ({glossary_block.count(chr(10)) - 1} "
+              f"madde) — denetim buna göre karşılaştıracak.")
 
     clients = gem.get_clients()
     key_index = [0]
@@ -209,6 +272,24 @@ def audit_book(slug: str, max_chapters: int | None = None):
             continue  # zaten checkpoint'te var, atla
 
         src_chapter = chapters[i - 1]
+
+        # NOT (Eylül 2026): Çevirmen notu / son söz / ek bölüm gibi ANA
+        # HİKÂYE DIŞI bölümler (örn. "Translator's Notes", içinde kasıtlı
+        # olarak İngilizce ifadeler alıntılanan bir çeviri-tercihi
+        # tartışması) denetim dışı bırakılıyor — bunlarda "İngilizce
+        # kalıntı" ya da "tutarsız terim" gibi bulgular GERÇEK hata değil,
+        # bölümün doğası gereği (bkz. knh-12, 34. bölüm: "Are you seeing
+        # us?" gibi İngilizce örnek cümleler kasıtlı olarak olduğu gibi
+        # bırakılmış). boilerplate.py'nin ZATEN VAR OLAN
+        # is_boilerplate_title() kontrolü tam bunun için yazılmıştı ama
+        # ne burada ne pr_check.py'de hiç kullanılmıyordu.
+        if boilerplate.is_boilerplate_title(src_chapter["title"]):
+            print(f"  [{i}/{n}] {src_chapter['title'][:40]!r} — ana hikâye "
+                  f"dışı (çevirmen notu vb.), denetim dışı bırakıldı.")
+            progress["completed"][key] = []
+            _save_progress(output_dir, progress)
+            continue
+
         tr_title, tr_body = _load_translated(output_dir, i, slug)
         if tr_body is None:
             print(f"  [{i}/{n}] çeviri dosyası bulunamadı, atlanıyor.")
@@ -220,7 +301,7 @@ def audit_book(slug: str, max_chapters: int | None = None):
             f"ÇEVİRİ (Türkçe):\n{tr_body[:8000]}"
         )
         try:
-            raw = gem.call(clients, key_index, _AUDIT_SYSTEM, user_msg, temperature=0.1)
+            raw = gem.call(clients, key_index, audit_system, user_msg, temperature=0.1)
         except gem.AllKeysExhausted:
             print(f"\n  Elimizdeki tüm Gemini key'lerinin günlük kotası tükendi "
                   f"({i}/{n}. bölümde). Kalan bölümler için boşuna denenmiyor — "
