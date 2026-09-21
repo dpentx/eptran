@@ -1,0 +1,50 @@
+Watch Your Tone
+
+In previous installments of The Apothecary Diaries Diaries, we’ve talked about how translators make choices about the particular kinds of vocabulary that are appropriate to a given passage or work, and even how sentences are structured in the target versus the source language. These aren’t just concerns for basic narration, though. Any work of fiction lives and dies on its characters, and The Apothecary Diaries is bursting with them, from prim-and-proper officials to noble folk to criminals, courtesans, and, well, apothecaries!
+
+To a certain extent, representing these varied voices in translation means having a command of the same tools that someone writing an English-language work would use to communicate who their characters are, but of course, a translator must do this while also being mindful of the way the characters sound in the original text. It’s partly creation and partly “re-creation.”
+
+Take a simple example: 
+urusee
+ (or 
+urusei
+). This is a single word, a slurring of the adjective 
+urusai
+, which means 
+loud
+ or 
+noisy (in an obnoxious way)
+. This kind of slurring is characteristic of tough-guy characters, or at least angry ones.
+
+With that information in mind, consider the possible translation: “I’m sorry, but you’re being a little bit noisy.”
+
+It doesn’t have the same feel, does it? The tone is completely different; the translation makes the speaker sound polite, even timid. Unless there’s some reason in the text to render urusee in such a voice, our possible translation would probably not be appropriate. Something like “Quiet!” or “Pipe down!” or a good old-fashioned “Shaddup!” would likely be better.
+
+One character who embodies this distinction is our favorite protagonist, Maomao. She sees herself as being at the bottom of the social hierarchy, so she speaks deferentially to almost everyone around her. (In Japanese, what’s often called “polite” language—for example, the sentence/verb endings desu and -masu —is really about relating to the people around you in a socially appropriate manner.) What Maomao thinks in her own head, however, is only heard by the reader and (thankfully) not the subjects of her inner voice. Therefore, she feels no compulsion to be particularly polite toward them. This is a distinction that can and should be represented in the translation.
+
+The question of character voice goes beyond obvious differences in usage, however. A word may be translated differently depending on the character using it, as well as their relationship to the listener. Consider an expression as simple as 
+konnichiwa
+. In a completely neutral context, this might simply be rendered 
+hello
+. A more aristocratic character might say 
+good day
+—or perhaps, if speaking down to someone, 
+hello there
+. If Lihaku is greeting Maomao, say, it could even become something like 
+hullo!
+
+Likewise, other vocabulary choices are informed by a character’s background. An aristocrat is likely to use more “big” words than an uneducated commoner, so if they each use the word 
+kaitai
+ (to disassemble, to break down), a scientist may use the term 
+dissect
+, a noble might be more likely to use 
+render,
+ a chef might say 
+butcher
+, and a commoner might say 
+chop up
+.
+
+There’s an element of subjectivity to this, but again, the translator must always remain aware of the original text, as in our urusee example above. The character’s voice is present in the Japanese; the job of the translator is to represent it using the full range of tools available in English. Granted, different translators may come to slightly different conclusions about how a given character should sound in English—translators also each have their own voice, like any writer, and as much as the Japanese author’s voice takes precedence in any translation, its exact sound will always be influenced by the voice speaking along with it. One reason editors are an important part of the translation process is to help check whether the translator has successfully communicated the voice of the original. (“I don’t think so-and-so would use that word,” Sasha might say to me.) This is part of the beauty of the connection that translation fosters, a reminder that when we connect to an author through translation, we do it with the help of other human beings.
+
+Have fun, read widely, and we’ll see you in the next volume!
