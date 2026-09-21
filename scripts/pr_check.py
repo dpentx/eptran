@@ -121,6 +121,19 @@ def check_book(slug: str) -> list:
             continue
         tr_title, body = parts[1].strip(), parts[2].strip()
 
+        # NOT (Eylül 2026): Çevirmen notu / son söz gibi ANA HİKÂYE DIŞI
+        # bölümlerde kasıtlı olarak alıntılanan İngilizce ifadeler (örn.
+        # "Are you seeing us?" gibi bir çeviri-tercihi tartışmasında) hem
+        # başlık hem kalıntı-kelime kontrolünü YANLIŞ POZİTİF'e
+        # düşürüyordu (bkz. knh-12, 34. bölüm). parts[0] hâlâ kaynağın
+        # ORİJİNAL (İngilizce) başlığını taşıyor — çeviri onu hiç
+        # değiştirmiyor, sadece parts[1]'e yeni bir başlık ekliyor. Bu
+        # yüzden is_boilerplate_title() kontrolünü parts[0]'a uyguluyoruz,
+        # zaten çevrilmiş olan parts[1]'e değil.
+        raw_title = parts[0].lstrip("#").strip()
+        if boilerplate.is_boilerplate_title(raw_title):
+            continue
+
         if _english_looking_title(tr_title):
             suspicious_titles.append((fname, tr_title))
 
