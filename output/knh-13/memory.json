@@ -39,7 +39,10 @@
     "Sifan": "Sifan",
     "Wufan": "Wufan",
     "Liufan": "Liufan",
-    "Junjie": "Junjie"
+    "Junjie": "Junjie",
+    "Lingli": "Lingli",
+    "Hongniang": "Hongniang",
+    "Shikyou": "Shikyou"
   },
   "terms": {
     "pleasure-district": "fuhuş bölgesi",
@@ -57,13 +60,18 @@
     "The Quack Doctor": "şartlatan doktor",
     "Master Gyokuen": "Gyokuen Efendi",
     "Master Gyoku-ou": "Gyoku-ou Efendi",
-    "I-sei Province": "I-sei Eyaleti"
+    "I-sei Province": "I-sei Eyaleti",
+    "Sun Prince": "Güneş Prens",
+    "Noon Prince": "Öğle Prens",
+    "Li's laws": "Li Yasaları",
+    "royal character Ka": "Kraliyet karakteri Ka"
   },
   "style_notes": "Anlatım tonu hafif ironik ve gözlemcidir; karakterlerin iç dünyalarına ve sosyal statülerine dair ince nüanslar taşır. Çeviride unvanların ve aile bağlarının tutarlılığına, özellikle 'western capital' ve 'royal capital' ayrımına dikkat edilmelidir.",
   "summaries": [
     "Character Profiles: Maomao ve Jinshi, batı başkentindeki olayların sakinleşmesiyle birlikte duygusal yakınlıklarını derinleştirirken, Rikuson'un intikamını tamamlaması ve Lakan'ın başkente dönüşü gibi gelişmeler saraydaki dinamikleri etkilemektedir.",
     "Chapter 1: Lahan and Sanfan: Lahan ve Sanfan, İmparator'un küçük kardeşinin dönüşünü karşılamak üzere limana giderken, Sanfan'ın Lakan'ın borçlarını ödemek için erkek kıyafetleri giyip şoförlük yapması ve Lahan'ın aile reisi plaketiyle onları içeri sokması anlatılır.",
     "Chapter 2: Lahan and the Dangling Corpse (Part One): Lakan'ın batı başkentinden dönüşüyle birlikte, Lahan'ın evine Ay Prens'in emriyle Kan Junjie adında gizemli bir çocuk gelir. Lahan, bu çocuğun aslında kendisiyle aynı adı taşıyan abisiyle yer değiştirdiğini fark eder.",
-    "Chapter 3: Lahan and the Dangling Corpse (Part Two): Lahan, küçük kız kardeşi Maomao ile uzun bir aradan sonra karşılaşırken, Dr. Liu ve meraklı Tianyu ile birlikte tavana asılı cesedi incelemektedir. Maomao'nun düşmanca tavrına rağmen Lahan, Ay Prens'e rapor sunmak için ceset olayını çözmeye odaklanır."
+    "Chapter 3: Lahan and the Dangling Corpse (Part Two): Lahan, küçük kız kardeşi Maomao ile uzun bir aradan sonra karşılaşırken, Dr. Liu ve meraklı Tianyu ile birlikte tavana asılı cesedi incelemektedir. Maomao'nun düşmanca tavrına rağmen Lahan, Ay Prens'e rapor sunmak için ceset olayını çözmeye odaklanır.",
+    "Chapter 5: Jinshi and the Report: Jinshi, batı başkentinden döndükten sonra İmparator'un huzuruna çıkarak raporunu sunar ve İmparator'un yaşlanma belirtilerinden endişe duyar. Görüşmede, Shishou'nun yerine geçen danışman Gyokuen'in oğlunun ölümüyle ilgili gizli duyguları ve Jinshi'nin geçmişteki eylemlerinin yarattığı suçluluk hissi öne çıkar."
   ]
 }
