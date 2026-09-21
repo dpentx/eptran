@@ -51,7 +51,10 @@
     "Sui": "Sui",
     "Suirei": "Suirei",
     "Yoh": "Yoh",
-    "Consort Lihua": "Lihua Konsortu"
+    "Consort Lihua": "Lihua Konsortu",
+    "Meimei": "Meimei",
+    "Go Sage": "Go Bilgesi",
+    "Wang Fang": "Wang Fang"
   },
   "terms": {
     "pleasure-district": "fuhuş bölgesi",
@@ -84,14 +87,15 @@
     "Shi clan": "Shi Klanı",
     "Li": "Li",
     "hereditary succession": "mirasçı sistem",
-    "quicksilver": "civa"
+    "quicksilver": "civa",
+    "jade tablet": "yeşim tablet"
   },
   "style_notes": "Anlatım tonu hafif ironik ve gözlemcidir; karakterlerin iç dünyalarına ve sosyal statülerine dair ince nüanslar taşır. Çeviride unvanların ve aile bağlarının tutarlılığına, özellikle 'western capital' ve 'royal capital' ayrımına dikkat edilmelidir.",
   "summaries": [
-    "Chapter 11: A Flower Called Joka: Joka, Dört Klasik ve Beş Kitabı ezbere bilmesiyle tanınan ve memuriyet sınavına hazırlanan adaylar için uğur getirdiğine inanılan yetenekli bir fahişedir. Metin, Joka'nın bu sınavlarda başarısı için düzenli müşteri olan yaşlı alim Laoshi ile ilişkisini ve Joka'nın, sadece fiziksel güzellikle sınırlı kalan diğer kadınların aksine zihinsel yetenekleriyle ayakta kaldığını vurgular.",
     "Chapter 12: Joka and Her Little Sister: Joka, Yosma Evi'nde küçük kız kardeşi Maomao'nun bir yıllık aradan sonra yorgun bir halde geri dönmesini karşılar. Maomao, yaşlı kadınla getirdiği değerli ambergris parçası üzerinden kira anlaşmazlığı nedeniyle keskin bir tartışmaya girer.",
     "Chapter 13: Yao and the Return of Lahan’s Brother: Maomao, batı başkentindeyken Yao'nun ameliyatlara asistanlık etmesine ve cerrahi aletlerin dezenfekte edilmesine yardımcı olurken, Yao insan bedenlerine alışmaya çalışarak mesleki becerilerini geliştirir. Yao, yetenekli olmasına rağmen saray hanımı statüsü nedeniyle tıbbi işlemleri resmen yapamaması ve bu durumun kendisini üzmeye devam etmesiyle birlikte, Maomao'nun gizli yetkinlikleri ve ikilinin iş birliği vurgulanır.",
     "Chapter 14: Ah-Duo’s Truth: Ah-Duo, Shi klanının hayatta kalan çocuklarını ve gizli kimliğine sahip Suirei'yi koruyarak onlara sığınak sağlarken, yakında gelecek olan Maomao'nun gelişini planlamaktadır.",
-    "Chapter 15: Jinshi’s Shock, Maomao’s Resolution: Jinshi, Suiren’in Maomao’nun o gece geleceğini ima eden yoğun tütsü ve özel yemek hazırlıklarını fark ederek şaşkınlık duyar. Maomao’nun gelişini öğrenen Jinshi, bu ani davetin ardındaki gerçek niyeti sorgular."
+    "Chapter 15: Jinshi’s Shock, Maomao’s Resolution: Jinshi, Suiren’in Maomao’nun o gece geleceğini ima eden yoğun tütsü ve özel yemek hazırlıklarını fark ederek şaşkınlık duyar. Maomao’nun gelişini öğrenen Jinshi, bu ani davetin ardındaki gerçek niyeti sorgular.",
+    "Chapter 16: Maomao and the Late Dinner: Maomao, Suiren'in hazırladığı akşam yemeğini yerken Jinshi'nin reddi sonrası hissettiği karmaşık duyguları ve Lahan'ın Kardeşi ile Meimei'yi görme planlarını düşünür. İçki etkisiyle Joka'nın aslında Tianyu ile akraba olabileceği ve yeşim tabletin imparatorluk kanını gizlemek için kullanıldığına dair yeni bir teoriye varır."
   ]
 }
