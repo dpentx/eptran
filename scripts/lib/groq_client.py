@@ -166,20 +166,20 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
     küçültülüp TÜM key'lerle baştan denenir; _MIN_MAX_COMPLETION_TOKENS'a
     inmesine rağmen hâlâ reddediliyorsa None döner (30 dakika boşuna
     döngüye girmek yerine).
+
+    NOT (Eylül 2026, ikinci bulgu): "sıradaki denenmemiş key" seçimi
+    SADECE tried_at_this_size'a bakıyordu, o key'in o an gerçek bir
+    rate-limit kilidi (locked_until) taşıyıp taşımadığına bakmıyordu.
+    Kilitli bir key seçilirse döngünün başındaki "if locked_until > now"
+    fallback'i devreye girip listede ilk AÇIK key'e dönüyordu — bu da
+    tried_at_this_size'ı tamamen görmezden gelip aynı (az önce 413 vermiş)
+    key'e geri sarıyordu. Sonuç: diğer key'lere hiç sıra gelmeden aynı
+    key ile sonsuz 413 döngüsü (küçültme adımına da hiç ulaşılmıyordu).
+    Düzeltme: "untried" artık hem bu boyutta denenmemiş HEM DE o an kilitli
+    OLMAYAN key'lerle sınırlı.
     """
     empty_retries = 0
     max_out = _DEFAULT_MAX_COMPLETION_TOKENS
-    # Bir 413 (istek TPM'e göre çok büyük) alındığında hangi client'ları
-    # şu anki max_out ile zaten DENEDİĞİMİZİ tutar. NOT (Eylül 2026):
-    # eskiden 413'te SADECE max_out küçültülüp AYNI key ile tekrar
-    # deneniyordu — "key değiştirmek işe yaramaz, hepsi aynı org'un TPM
-    # tavanını paylaşıyor" varsayımıyla. Bu varsayım TEK hesaptan alınan
-    # birden fazla key için doğruydu ama İbo'nun kurulumunda GROQ_API_KEY_1..4
-    # 4 AYRI Groq hesabından — yani her birinin kendi bağımsız TPM
-    # penceresi var. Art arda hızlı istekler bir hesabın penceresini
-    # boşaltınca, artık önce DİĞER hesapları (dolu bütçeyle) deniyoruz;
-    # hepsi aynı boyutta tükenmişse ancak o zaman küçültüp baştan
-    # deniyoruz.
     tried_at_this_size = set()
     while True:
         now = time.time()
@@ -265,14 +265,18 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
         except RateLimitError as e:
             if _is_too_large_error(e):
                 tried_at_this_size.add(idx)
-                untried = [i for i in range(len(clients)) if i not in tried_at_this_size]
+                now2 = time.time()
+                untried = [i for i in range(len(clients))
+                           if i not in tried_at_this_size and clients[i]["locked_until"] <= now2]
                 if untried:
                     key_index[0] = untried[0]
                     print(f"  Uyarı: key {info['id']} bu boyut için TPM'e sığmadı (413) — "
                           f"aynı max_completion_tokens ile başka bir hesaba geçiliyor.")
                     continue
-                # Bu boyutta TÜM key'ler denendi, hepsi 413 verdi — artık
-                # küçültüp baştan (tüm key'lerle tekrar) deniyoruz.
+                # Kalan key'ler ya bu boyutta zaten denendi ya da şu an
+                # rate-limit ile kilitli (kilidin açılmasını beklemek
+                # dakikalar/saatler sürebilir) — bu yüzden küçültmeye
+                # geçiyoruz.
                 tried_at_this_size = set()
                 if max_out > _MIN_MAX_COMPLETION_TOKENS:
                     max_out = max(max_out // 2, _MIN_MAX_COMPLETION_TOKENS)
@@ -293,7 +297,9 @@ def call(clients: list, key_index: list, system_msg: str, user_msg: str,
         except Exception as e:
             if _is_too_large_error(e):
                 tried_at_this_size.add(idx)
-                untried = [i for i in range(len(clients)) if i not in tried_at_this_size]
+                now2 = time.time()
+                untried = [i for i in range(len(clients))
+                           if i not in tried_at_this_size and clients[i]["locked_until"] <= now2]
                 if untried:
                     key_index[0] = untried[0]
                     print(f"  Uyarı: key {info['id']} bu boyut için TPM'e sığmadı (413) — "
