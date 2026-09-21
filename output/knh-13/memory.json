@@ -47,7 +47,11 @@
     "Laoshi": "Hoca",
     "Willow Boy": "Söğüt Çocuk",
     "Log Boy": "Kütük Adam",
-    "Fang": "Fang"
+    "Fang": "Fang",
+    "Sui": "Sui",
+    "Suirei": "Suirei",
+    "Yoh": "Yoh",
+    "Consort Lihua": "Lihua Konsortu"
   },
   "terms": {
     "pleasure-district": "fuhuş bölgesi",
@@ -76,14 +80,18 @@
     "Three Princesses": "Üç Prenses",
     "civil service examination": "sivil hizmet sınavı",
     "coming-of-age ceremony": "yaşına gelme töreni",
-    "La clan": "La Klanı"
+    "La clan": "La Klanı",
+    "Shi clan": "Shi Klanı",
+    "Li": "Li",
+    "hereditary succession": "mirasçı sistem",
+    "quicksilver": "civa"
   },
   "style_notes": "Anlatım tonu hafif ironik ve gözlemcidir; karakterlerin iç dünyalarına ve sosyal statülerine dair ince nüanslar taşır. Çeviride unvanların ve aile bağlarının tutarlılığına, özellikle 'western capital' ve 'royal capital' ayrımına dikkat edilmelidir.",
   "summaries": [
-    "Chapter 9: En’en’s Day Off: En'en, Yao'nun evinde misafir olarak kalma durumundan şikayet etmek ve gizli bir planını paylaşmak için Maomao'yu yanına çağırır. Maomao, Lakan'ın meşru olmayan kızı olmasına rağmen bu bağlamı reddederken, En'en'in Yao ile ilgili bir konuyu gündeme getireceğini sezgisel olarak anlar.",
     "Chapter 10: En’en and the Love Chat: Maomao ve En'en, Lakan'ın stratejisti Sanfan ile Yao'nun durumu hakkında bir görüşme yapar. Sanfan, Lakan'ın yeteneklerini ve gücünü öne çıkararak, Yao'nun Bakan Yardımcısı Lu'nun yeğeni olmasından kaynaklanan statüsü üzerinden konuyu gündeme getirir.",
     "Chapter 11: A Flower Called Joka: Joka, Dört Klasik ve Beş Kitabı ezbere bilmesiyle tanınan ve memuriyet sınavına hazırlanan adaylar için uğur getirdiğine inanılan yetenekli bir fahişedir. Metin, Joka'nın bu sınavlarda başarısı için düzenli müşteri olan yaşlı alim Laoshi ile ilişkisini ve Joka'nın, sadece fiziksel güzellikle sınırlı kalan diğer kadınların aksine zihinsel yetenekleriyle ayakta kaldığını vurgular.",
     "Chapter 12: Joka and Her Little Sister: Joka, Yosma Evi'nde küçük kız kardeşi Maomao'nun bir yıllık aradan sonra yorgun bir halde geri dönmesini karşılar. Maomao, yaşlı kadınla getirdiği değerli ambergris parçası üzerinden kira anlaşmazlığı nedeniyle keskin bir tartışmaya girer.",
-    "Chapter 13: Yao and the Return of Lahan’s Brother: Maomao, batı başkentindeyken Yao'nun ameliyatlara asistanlık etmesine ve cerrahi aletlerin dezenfekte edilmesine yardımcı olurken, Yao insan bedenlerine alışmaya çalışarak mesleki becerilerini geliştirir. Yao, yetenekli olmasına rağmen saray hanımı statüsü nedeniyle tıbbi işlemleri resmen yapamaması ve bu durumun kendisini üzmeye devam etmesiyle birlikte, Maomao'nun gizli yetkinlikleri ve ikilinin iş birliği vurgulanır."
+    "Chapter 13: Yao and the Return of Lahan’s Brother: Maomao, batı başkentindeyken Yao'nun ameliyatlara asistanlık etmesine ve cerrahi aletlerin dezenfekte edilmesine yardımcı olurken, Yao insan bedenlerine alışmaya çalışarak mesleki becerilerini geliştirir. Yao, yetenekli olmasına rağmen saray hanımı statüsü nedeniyle tıbbi işlemleri resmen yapamaması ve bu durumun kendisini üzmeye devam etmesiyle birlikte, Maomao'nun gizli yetkinlikleri ve ikilinin iş birliği vurgulanır.",
+    "Chapter 14: Ah-Duo’s Truth: Ah-Duo, Shi klanının hayatta kalan çocuklarını ve gizli kimliğine sahip Suirei'yi koruyarak onlara sığınak sağlarken, yakında gelecek olan Maomao'nun gelişini planlamaktadır."
   ]
 }
