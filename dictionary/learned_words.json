@@ -2216,6 +2216,7 @@
   "ellerle": false,
   "email": true,
   "emanet": false,
+  "emaneti": false,
   "embriyo": false,
   "emekle": false,
   "emekli": false,
@@ -5719,6 +5720,7 @@
   "oyuncuydu": false,
   "oyundu": false,
   "oyunduysa": false,
+  "oyunla": false,
   "oyunlu": false,
   "oyununa": false,
   "oyununuz": false,
@@ -8284,5 +8286,6 @@
   "zorunluluk": false,
   "zorunluluktur": false,
   "zufalle": false,
+  "zulin": false,
   "zulmetmezlerdi": false
 }
