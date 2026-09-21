@@ -43,7 +43,11 @@
     "Lingli": "Lingli",
     "Hongniang": "Hongniang",
     "Shikyou": "Shikyou",
-    "Lihaku": "Lihaku"
+    "Lihaku": "Lihaku",
+    "Laoshi": "Hoca",
+    "Willow Boy": "Söğüt Çocuk",
+    "Log Boy": "Kütük Adam",
+    "Fang": "Fang"
   },
   "terms": {
     "pleasure-district": "fuhuş bölgesi",
@@ -68,14 +72,17 @@
     "royal character Ka": "Kraliyet karakteri Ka",
     "central region": "Merkez Bölge",
     "inn town": "Han Kasabası",
-    "western leader": "Batı Lideri"
+    "western leader": "Batı Lideri",
+    "Three Princesses": "Üç Prenses",
+    "civil service examination": "sivil hizmet sınavı",
+    "coming-of-age ceremony": "yaşına gelme töreni"
   },
   "style_notes": "Anlatım tonu hafif ironik ve gözlemcidir; karakterlerin iç dünyalarına ve sosyal statülerine dair ince nüanslar taşır. Çeviride unvanların ve aile bağlarının tutarlılığına, özellikle 'western capital' ve 'royal capital' ayrımına dikkat edilmelidir.",
   "summaries": [
-    "Chapter 6: Tianyu’s Medical-Office Diary: Tianyu, muayenehanede tavana asılı bir cesetle karşılaştığında avcılık geçmişini hatırlayarak cesedi parçalamak isterken, ilaçlara düşkün sağlık görevlisi Niangniang ve meslektaşları onu bu fikirden vazgeçirmeye çalışır. Bölümde, Yao ve hizmetkârı En’en’in de muayenehaneye gelmesiyle karakterler arasındaki dinamikler ve Tianyu’nun sıra dışı kişiliği öne çıkar.",
     "Chapter 7: Maamei and Her Inept Brothers: Maamei, uzun süredir görmediği kardeşleri ve Chue ile yeniden bir araya geldiğinde, Chue'nün ağır yaralarını ve Basen'in bir ördeğe olan takıntısını şaşkınlıkla karşılar. Bölümde, Basen'in ördeği Jofu'yu aile üyesi olarak sahiplenmesi ve Chue'nün sakatlığı etrafında yaşanan komik gerilimler öne çıkar.",
     "Chapter 8: True Records of an Elder Brother: Anlatıcı, Lahan'ın daveti üzerine tarım köyünden ayrılıp gemiyle batı başkentine giderken, yolculuk sırasında deniz hastalığıyla mücadele eder ve I-sei Eyaleti'nde sulama potansiyeli olan araziler keşfeder. Varışta ise getirdiği patates tohumlarının kaybolduğunu fark eder ve muayenehanede tanıdık bir yüzle karşılaşır.",
     "Chapter 9: En’en’s Day Off: En'en, Yao'nun evinde misafir olarak kalma durumundan şikayet etmek ve gizli bir planını paylaşmak için Maomao'yu yanına çağırır. Maomao, Lakan'ın meşru olmayan kızı olmasına rağmen bu bağlamı reddederken, En'en'in Yao ile ilgili bir konuyu gündeme getireceğini sezgisel olarak anlar.",
-    "Chapter 10: En’en and the Love Chat: Maomao ve En'en, Lakan'ın stratejisti Sanfan ile Yao'nun durumu hakkında bir görüşme yapar. Sanfan, Lakan'ın yeteneklerini ve gücünü öne çıkararak, Yao'nun Bakan Yardımcısı Lu'nun yeğeni olmasından kaynaklanan statüsü üzerinden konuyu gündeme getirir."
+    "Chapter 10: En’en and the Love Chat: Maomao ve En'en, Lakan'ın stratejisti Sanfan ile Yao'nun durumu hakkında bir görüşme yapar. Sanfan, Lakan'ın yeteneklerini ve gücünü öne çıkararak, Yao'nun Bakan Yardımcısı Lu'nun yeğeni olmasından kaynaklanan statüsü üzerinden konuyu gündeme getirir.",
+    "Chapter 11: A Flower Called Joka: Joka, Dört Klasik ve Beş Kitabı ezbere bilmesiyle tanınan ve memuriyet sınavına hazırlanan adaylar için uğur getirdiğine inanılan yetenekli bir fahişedir. Metin, Joka'nın bu sınavlarda başarısı için düzenli müşteri olan yaşlı alim Laoshi ile ilişkisini ve Joka'nın, sadece fiziksel güzellikle sınırlı kalan diğer kadınların aksine zihinsel yetenekleriyle ayakta kaldığını vurgular."
   ]
 }
