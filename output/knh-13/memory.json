@@ -35,7 +35,11 @@
     "Dr. You": "Dr. You",
     "Vice Minister Lu": "Bakan Yardımcısı Lu",
     "Sanfan": "Sanfan",
-    "Moon Prince": "Ay Prens"
+    "Moon Prince": "Ay Prens",
+    "Sifan": "Sifan",
+    "Wufan": "Wufan",
+    "Liufan": "Liufan",
+    "Junjie": "Junjie"
   },
   "terms": {
     "pleasure-district": "fuhuş bölgesi",
@@ -52,11 +56,13 @@
     "quack doctor": "şarlatan doktor",
     "The Quack Doctor": "şartlatan doktor",
     "Master Gyokuen": "Gyokuen Efendi",
-    "Master Gyoku-ou": "Gyoku-ou Efendi"
+    "Master Gyoku-ou": "Gyoku-ou Efendi",
+    "I-sei Province": "I-sei Eyaleti"
   },
   "style_notes": "Anlatım tonu hafif ironik ve gözlemcidir; karakterlerin iç dünyalarına ve sosyal statülerine dair ince nüanslar taşır. Çeviride unvanların ve aile bağlarının tutarlılığına, özellikle 'western capital' ve 'royal capital' ayrımına dikkat edilmelidir.",
   "summaries": [
     "Character Profiles: Maomao ve Jinshi, batı başkentindeki olayların sakinleşmesiyle birlikte duygusal yakınlıklarını derinleştirirken, Rikuson'un intikamını tamamlaması ve Lakan'ın başkente dönüşü gibi gelişmeler saraydaki dinamikleri etkilemektedir.",
-    "Chapter 1: Lahan and Sanfan: Lahan ve Sanfan, İmparator'un küçük kardeşinin dönüşünü karşılamak üzere limana giderken, Sanfan'ın Lakan'ın borçlarını ödemek için erkek kıyafetleri giyip şoförlük yapması ve Lahan'ın aile reisi plaketiyle onları içeri sokması anlatılır."
+    "Chapter 1: Lahan and Sanfan: Lahan ve Sanfan, İmparator'un küçük kardeşinin dönüşünü karşılamak üzere limana giderken, Sanfan'ın Lakan'ın borçlarını ödemek için erkek kıyafetleri giyip şoförlük yapması ve Lahan'ın aile reisi plaketiyle onları içeri sokması anlatılır.",
+    "Chapter 2: Lahan and the Dangling Corpse (Part One): Lakan'ın batı başkentinden dönüşüyle birlikte, Lahan'ın evine Ay Prens'in emriyle Kan Junjie adında gizemli bir çocuk gelir. Lahan, bu çocuğun aslında kendisiyle aynı adı taşıyan abisiyle yer değiştirdiğini fark eder."
   ]
 }
