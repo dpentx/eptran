@@ -90,11 +90,15 @@ def _sync_report(report_path: str, applied: list) -> None:
     maddeler raporda KALIR — hâlâ elle incelenmesi gerektiği anlamına
     gelir.
     """
-    if not applied:
+    if not os.path.exists(report_path):
         return
     with open(report_path, encoding="utf-8") as f:
         content = f.read()
 
+    # NOT: `applied` boş olsa bile (bu çalıştırmada hiç yeni düzeltme
+    # uygulanmadıysa — örn. skip_audit ile tekrar denendiyse) aşağıdaki
+    # "0'a inince sil" kontrolünü YİNE DE yapıyoruz; raporun zaten
+    # önceden 0'a inmiş ama silinmemiş olma ihtimaline karşı.
     for _chapter_num, issue in applied:
         block = f'- **{issue["type"]}**: {issue["desc"]}\n'
         if issue.get("source"):
@@ -118,6 +122,17 @@ def _sync_report(report_path: str, applied: list) -> None:
     content = re.sub(r"\n{3,}", "\n\n", content)
 
     total_remaining = content.count("- **")
+
+    # Geriye TEK bir madde bile kalmadıysa, "Toplam 0 şüpheli nokta
+    # bulundu" yazan boş bir kabuk bırakmak yerine dosyayı tamamen
+    # sil — kitap main'e giderken artık işlevi kalmamış bir denetim
+    # dosyası taşımasın. (Bazı maddeler hâlâ "metin tam eşleşmedi"
+    # diye atlanmışsa dosya kalmaya devam eder — o durumda hâlâ elle
+    # bakılması gereken şeyler olabilir, bkz. yukarıdaki not.)
+    if total_remaining == 0:
+        os.remove(report_path)
+        return
+
     content = re.sub(
         r"\*\*Toplam \d+ şüpheli nokta bulundu",
         f"**Toplam {total_remaining} şüpheli nokta bulundu",

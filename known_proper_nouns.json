@@ -1,0 +1,9 @@
+{
+  "_meta": {
+    "amaç": "Kitap/seri BAĞIMSIZ, gerçek dünyaya ait özel isimler — çevirmenin dipnot/açıklama gibi yerlerde gerçek bir kitap, kişi, eser vb. adına atıf yaptığı ve İngilizce bırakılması GEREKEN kelimeler. series.py'deki characters/terms ile KARIŞTIRILMAMALI: o dosya TEK BİR kitaba özel (Maomao, Jinshi gibi), bu dosya ise hiçbir kitaba özel olmayan, tekrar tekrar farklı kitaplarda çıkabilecek gerçek dünya referansları içindir (örn. bir çevirmen notunda anılan ünlü bir roman başlığı).",
+    "kullanım": "scripts/lib/review_fix.py _build_whitelist() bunu okuyup normal whitelist'e ekler. Yeni bir gerçek isim false-positive'i çıkarsa (pr_check.py'nin 'whitelist dışı İngilizce kalıntı' uyarısı ama aslında doğru bir çeviri kararıysa), buraya ELLE eklenir — otomatik yazma yok, common_pitfalls.json ile aynı felsefe."
+  },
+  "entries": [
+    "Margaret"
+  ]
+}
