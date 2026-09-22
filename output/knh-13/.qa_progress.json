@@ -1,0 +1,94 @@
+{
+  "completed": {
+    "1": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "In the end, he has to go back to the royal capital without ever having gotten his revenge on Rikuson.",
+        "translation_quote": "Sonuçta, Rikuson'a intikamını alamadan imparatorluk başkentine geri dönmek zorunda kalmıştır.",
+        "description": "'Rikuson'dan intikamını alamadan' yerine 'Rikuson'a intikamını alamadan' denilerek yönelme eki yanlış kullanılmış ve anlam bozulmuştur."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "In truth, he’s a survivor of the otherwise exterminated Yi clan, and has secretly exacted revenge for his family.",
+        "translation_quote": "Aslında, yok edilen Yi klanından bir hayatta kalmıştır ve ailesi için gizlice intikamını almıştır.",
+        "description": "'a survivor' ifadesi 'bir hayatta kalmıştır' şeklinde dil bilgisi açısından hatalı ve anlamsız bir şekilde çevrilmiştir. 'hayatta kalan biridir' şeklinde çevrilmeliydi."
+      }
+    ],
+    "2": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“A whole year... I wonder if Maomao’s at least got one in the oven,” he mumbled.",
+        "translation_quote": "“Tam bir yıl... Umarım Maomao’nun en azından bir şeyi karnında olmuştur,” diye mırıldandı.",
+        "description": "\"got one in the oven\" hamile olmak anlamına gelen bir deyimdir. Çevirmen bunu kelimesi kelimesine \"karnında bir şey olmak\" şeklinde çevirerek anlamı tamamen bozmuştur."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Somehow it was only when he made a request of Sanfan that no drivers were available and she came instead.",
+        "translation_quote": "Sanfan’dan bir istekte bulunduğu zamanlarda şoför bulunamaması ve onun gelmesi, bir şekilde sadece Lahan’a özgüydü.",
+        "description": "\"it was only when...\" (sadece ... olduğunda gerçekleşiyordu) ifadesi, \"sadece Lahan'a özgüydü\" (it was unique only to Lahan) şeklinde yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“I wonder if she will.”",
+        "translation_quote": "“Umarım gelir.”",
+        "description": "\"I wonder if she will\" (Acaba gelir mi/geleceğinden şüpheliyim) ifadesi, \"Umarım gelir\" (I hope she comes) şeklinde yanlış bir anlam ve tonla çevrilmiştir."
+      }
+    ],
+    "5": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "The three women Onsou brought were all new palace ladies who had just passed the examinations this year. They were of reasonably respectable backgrounds; two of them were officials’ daughters while the other came from a merchant family. Each of them, Lahan thought, was notably beautiful.",
+        "translation_quote": "",
+        "description": "Kaynağın en başında yer alan bu paragraf Türkçe çeviride tamamen atlanmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Why in the world would you say we killed him?",
+        "translation_quote": "Neden dünyada bizi öldürdüğümüzü söylersiniz?",
+        "description": "Cümledeki 'bizi öldürdüğümüzü' ifadesi anlamı bozmaktadır; doğrusu 'onu bizim öldürdüğümüzü' olmalıdır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Lahan hadn’t been able to tell himself",
+        "translation_quote": "Lahan kendine itiraf edememişti",
+        "description": "Buradaki 'tell' fiili 'kokuyu ayırt etmek/fark etmek' anlamındadır. 'Kendine itiraf edememişti' çevirisi tamamen farklı ve hatalı bir anlam vermektedir."
+      }
+    ],
+    "6": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Jinshi thought he felt a throb from the burn on his flank, which should have healed long ago.",
+        "translation_quote": "Jinshi, çoktan iyileşmiş olması gereken böğründeki yanığın bir sızı hissettiğini sandı.",
+        "description": "Cümledeki 'yanığın bir sızı hissettiğini sandı' ifadesi dil bilgisel olarak hatalıdır ve yanığın kendisinin sızı hissettiği anlamını taşımaktadır. Doğrusu 'yanığında bir sızı hissettiğini sandı' olmalıdır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Ah, yes, Zuigetsu, that reminds me,” the Emperor said when Jinshi had finished his report.",
+        "translation_quote": "Evet, evet, Zuigetsu, bu beni hatırlattı,\" dedi İmparator, Jinshi raporunu bitirdiğinde.",
+        "description": "'that reminds me' kalıbı 'aklıma gelmişken' veya 'bu bana ... hatırlattı' anlamına gelir. 'bu beni hatırlattı' şeklinde çevrilmesi anlam kaymasına yol açmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "After I’ve greeted the Empress Dowager and the Empress. Er... If I could ask you to carry a summons?",
+        "translation_quote": "İmparatoriçe Dowa'ya ve İmparatoriçe'ye selam verdikten sonra. Eee... Bir çağrıyı taşımanı rica edebilir miyim?\"",
+        "description": "'Empress Dowager' (Ana İmparatoriçe) unvanı 'İmparatoriçe Dowa' şeklinde yanlış ve anlamsız bir kelimeyle çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Would you like me to call her right away?”",
+        "translation_quote": "Hemen çağırılmak ister misiniz?\"",
+        "description": "Basen, Jinshi'ye Maomao'yu hemen çağırmasını isteyip istemediğini sormaktadır ('Would you like me to call her...'). Çeviride ise 'Hemen çağırılmak ister misiniz?' denilerek Jinshi'nin kendisinin çağırılmak istenip istenmediği sorulmuş gibi aktarılmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "My father cautioned me you might call Maomao before he went.",
+        "translation_quote": "Babam, gitmeden önce Maomao'yu çağırabileceğimi uyardı.\"",
+        "description": "Kaynak metinde Gaoshun'un, Jinshi'nin Maomao'yu çağırabileceği konusunda Basen'i uyardığı belirtilmektedir ('you might call'). Çeviride ise 'Maomao'yu çağırabileceğimi' denilerek eylemi yapacak kişi Basen olarak aktarılmıştır."
+      }
+    ]
+  },
+  "failed": [
+    3,
+    4
+  ]
+}
