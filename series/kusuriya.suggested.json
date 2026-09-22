@@ -2,15 +2,17 @@
   "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-13 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
   "source_book": "knh-13",
   "new_characters": {
+    "Yao": "Yao",
     "Ah-Duo": "Ah-Duo",
     "Suirei": "Suirei",
-    "Yao": "Yao",
-    "Joka": "Joka",
-    "Pairin": "Pairin",
+    "Consort Lihua": "Lihua Konsortu",
     "Meimei": "Meimei",
-    "Hongniang": "Hongniang",
+    "Pairin": "Pairin",
+    "Joka": "Joka",
     "Lihaku": "Lihaku",
-    "Consort Lihua": "Lihua Konsortu"
+    "Hongniang": "Hongniang",
+    "Dr. Liu": "Dr. Liu",
+    "Dr. Li": "Dr. Li"
   },
   "new_terms": {
     "rear palace": "arka saray",
@@ -18,15 +20,15 @@
     "royal capital": "imparatorluk başkenti",
     "Verdigris House": "Yosma Evi",
     "Three Princesses": "Üç Prenses",
+    "jade tablet": "yeşim tablet",
     "La clan": "La Klanı",
-    "Shi clan": "Shi Klanı",
-    "jade tablet": "yeşim tablet"
+    "Shi clan": "Shi Klanı"
   },
   "new_notes": [
-    "Lahan's Brother karakteri mevcut glossary'de 'Lahan'ın Kardeşi' olarak kaydedilmiş olsa da bu ciltte 'Lahan'ın Abisi' olarak da çevrilmiştir. Gelecek ciltlerde tutarlılık adına tek bir karşılık seçilmelidir.",
-    "Verdigris House (Yosma Evi) bünyesindeki 'Three Princesses' (Üç Prenses) ifadesi Joka, Pairin ve Meimei'yi kastetmektedir. Bu üç karakterin isimleri ve unvanları birbirleriyle ilişkilidir.",
-    "Dr. Liu, Dr. Li ve Dr. You saraydaki farklı hekimlerdir; isim benzerlikleri nedeniyle birbirleriyle karıştırılmamalıdır.",
-    "Ah-Duo, eski bir konsort olup Suirei'yi ve Shi klanının geri kalan üyelerini gizlice koruması altında tutmaktadır. Aralarındaki bu koruyucu ilişki olay örgüsü için kritiktir.",
-    "Joka'nın Tianyu ile akrabalık bağı olabileceğine dair teoriler bulunduğundan, bu iki karakter arasındaki soybağı imalarına çeviride dikkat edilmelidir."
+    "Lahan's Brother karakteri için çeviri hafızasında hem 'Lahan'ın Abisi' hem de 'Lahan'ın Kardeşi' kullanılmıştır. Glossary'deki 'Lahan'ın Kardeşi' kullanımı tutarlılık adına korunmalıdır.",
+    "Dr. Liu, Dr. Li ve glossary'de zaten kayıtlı olan Dr. You isimleri birbirine çok benzer saray hekimleridir, çeviride karıştırılmamalıdır.",
+    "Pairin, Joka ve Meimei, Verdigris House'un (Yosma Evi) en prestijli üç fahişesidir ve birlikte 'Three Princesses' (Üç Prenses) olarak anılırlar.",
+    "Yao ve En'en yakın bir ikilidir; Yao tıp eğitimi alan asil bir saray hanımı, En'en ise onun koruyucusu ve hizmetçisidir.",
+    "Ah-Duo, eski bir imparatorluk konsortudur ve gizli planlar doğrultusunda Suirei ile Shi klanının hayatta kalan üyelerini koruması altında tutmaktadır."
   ]
 }
