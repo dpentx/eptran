@@ -35,7 +35,8 @@
     "Dr. You": "Dr. You",
     "Vice Minister Lu": "Bakan Yardımcısı Lu",
     "Kada": "Kada",
-    "Erfan": "Erfan"
+    "Erfan": "Erfan",
+    "Junjie": "Junjie"
   },
   "terms": {
     "pleasure-district": "fuhuş bölgesi",
@@ -68,10 +69,10 @@
   },
   "style_notes": "Metin, karakterlerin kısa ve öz biyografilerini sunan bir profil listesi formatındadır; anlatıcı tarafsız ve bilgilendirici bir ton kullanır. Çeviride unvanlar ve kültürel terimler (örneğin 'Verdigris House') tutarlılık göstererek yerelleştirilmeli, ancak karakter isimleri orijinal fonetikleriyle korunmalıdır.",
   "summaries": [
-    "Character Profiles: Maomao, tıp dairesinde asistan olarak çalışırken Jinshi'nin duygularını ciddiye almaya başlar ve bu süreçte Lakan'a duyduğu tiksinti ile tıbbi tutkusu devam eder. Metin, ayrıca Jinshi, Gaoshun, Lahan ve İmparatoriçe Gyokuyou gibi saraydaki diğer önemli karakterlerin profillerini ve aralarındaki ilişkileri detaylandırır.",
     "Chapter 1: The Meeting of the Named (Part One): Yorgun haldeyken En'en tarafından uyandırılan Maomao, ona verilen nadir bir bitki ansiklopedisi karşısında heyecanlanır ve kitabı inceleme fırsatı bulur. Bu sahne, Maomao'nun bitkiler konusundaki tutkusunu ve En'en'in onu bu önemli buluşmaya hazırladığını gösterir.",
     "Chapter 2: The Meeting of the Named (Part Two): Maomao, Lahan ve Lahan'ın Kardeşi, zodyak klanlarının katıldığı ve eş bulma amacıyla da kullanılan büyük bir davette alışılmadık bir oturma düzeniyle karşılaşırlar. Maomao, masalarda genç erkek ve kadınların eşit oranda yer almasından hareketle etkinliğin asıl amacının bir eş bulma toplantısı olduğunu fark eder.",
     "Chapter 3: The Shin Heirloom: Lahan, Maomao ve garip stratejist, Shin Klanı'nın hanımefendisiyle özel bir görüşme odasında buluşarak stratejisti gözetim altında tutan Erfan'ın da hazır bulunduğu bir toplantı başlatır. Maomao, Lahan'ın aşırı resmi tavrına ve garip stratejistin tuhaf davranışlarına sabrederek, karşı tarafın sunacağı cazip teklifi dinlemeye hazırlanır.",
-    "Chapter 4: The Rabbit and the Dragon: Shin Klanı hanımefendisi, ailesinin şaşkınlığına rağmen Shin Klanı'na ihanet ettiğini itiraf eder ve kırk yıl önceki olayları anlatmaya başlar. Anlatıda, hanımefendinin U Klanı liderinin eşiyle kurduğu yakın dostluk ve İmparatoriçe'nin tahtı ele geçirmesiyle klanlar arasındaki siyasi gerilimin derinleşmesi ele alınır."
+    "Chapter 4: The Rabbit and the Dragon: Shin Klanı hanımefendisi, ailesinin şaşkınlığına rağmen Shin Klanı'na ihanet ettiğini itiraf eder ve kırk yıl önceki olayları anlatmaya başlar. Anlatıda, hanımefendinin U Klanı liderinin eşiyle kurduğu yakın dostluk ve İmparatoriçe'nin tahtı ele geçirmesiyle klanlar arasındaki siyasi gerilimin derinleşmesi ele alınır.",
+    "Chapter 5: A Gong Resounds in the Heart: Lahan'ın Shin ve U klanlarıyla yaşadığı gerginlik, mücevher meselesinin çözüme kavuşmasıyla sona erse de stratejistin borç ilişkisi kurma çabaları devam eder. Maomao, Lahan'ın sinirli halini görüp ziyafete döndüğünde, Lahan'ın Kardeşi ile \"Mektuplar Beyi\" arasında Yao üzerinden çıkan tartışmaya tanık olur."
   ]
 }
