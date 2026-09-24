@@ -33,7 +33,8 @@
     "Gyokuen": "Gyokuen",
     "Taomei": "Taomei",
     "Dr. You": "Dr. You",
-    "Vice Minister Lu": "Bakan Yardımcısı Lu"
+    "Vice Minister Lu": "Bakan Yardımcısı Lu",
+    "Kada": "Kada"
   },
   "terms": {
     "pleasure-district": "fuhuş bölgesi",
@@ -52,8 +53,14 @@
     "quack doctor": "şarlatan doktor",
     "The Quack Doctor": "şartlatan doktor",
     "Master Gyokuen": "Gyokuen Efendi",
-    "Master Gyoku-ou": "Gyoku-ou Efendi"
+    "Master Gyoku-ou": "Gyoku-ou Efendi",
+    "Mi clan": "Mi Klanı",
+    "Ma clan": "Ma Klanı",
+    "U clan": "U Klanı",
+    "Three Princesses": "Üç Prenses"
   },
   "style_notes": "Metin, karakterlerin kısa ve öz biyografilerini sunan bir profil listesi formatındadır; anlatıcı tarafsız ve bilgilendirici bir ton kullanır. Çeviride unvanlar ve kültürel terimler (örneğin 'Verdigris House') tutarlılık göstererek yerelleştirilmeli, ancak karakter isimleri orijinal fonetikleriyle korunmalıdır.",
-  "summaries": []
+  "summaries": [
+    "Character Profiles: Maomao, tıp dairesinde asistan olarak çalışırken Jinshi'nin duygularını ciddiye almaya başlar ve bu süreçte Lakan'a duyduğu tiksinti ile tıbbi tutkusu devam eder. Metin, ayrıca Jinshi, Gaoshun, Lahan ve İmparatoriçe Gyokuyou gibi saraydaki diğer önemli karakterlerin profillerini ve aralarındaki ilişkileri detaylandırır."
+  ]
 }
