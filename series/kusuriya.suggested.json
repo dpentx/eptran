@@ -1,32 +1,34 @@
 {
-  "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-11 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
-  "source_book": "knh-11",
+  "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-13 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
+  "source_book": "knh-13",
   "new_characters": {
-    "Luomen": "Luomen",
-    "Ka Zuigetsu": "Ka Zuigetsu",
-    "Gaoshun": "Gaoshun",
-    "Consort Lishu": "Lishu Hanım",
-    "Baryou": "Baryou",
-    "Rikuson": "Rikuson",
-    "Gyokuen": "Gyokuen",
-    "Suiren": "Suiren",
-    "Taomei": "Taomei",
-    "Tianyu": "Tianyu",
-    "En'en": "En'en",
-    "Dr. You": "Dr. You",
-    "Vice Minister Lu": "Bakan Yardımcısı Lu"
+    "Yao": "Yao",
+    "Ah-Duo": "Ah-Duo",
+    "Suirei": "Suirei",
+    "Consort Lihua": "Lihua Konsortu",
+    "Meimei": "Meimei",
+    "Pairin": "Pairin",
+    "Joka": "Joka",
+    "Lihaku": "Lihaku",
+    "Hongniang": "Hongniang",
+    "Dr. Liu": "Dr. Liu",
+    "Dr. Li": "Dr. Li"
   },
   "new_terms": {
-    "pleasure district": "zevk mahallesi",
-    "wet nurse": "süt annesi",
-    "quack doctor": "şarlatan doktor",
-    "Master Gyokuen": "Gyokuen Efendi",
-    "Master Gyoku-ou": "Gyoku-ou Efendi"
+    "rear palace": "arka saray",
+    "western capital": "batı başkenti",
+    "royal capital": "imparatorluk başkenti",
+    "Verdigris House": "Yosma Evi",
+    "Three Princesses": "Üç Prenses",
+    "jade tablet": "yeşim tablet",
+    "La clan": "La Klanı",
+    "Shi clan": "Shi Klanı"
   },
   "new_notes": [
-    "Gyokuen (Gyokuen Efendi) ve Gyoku-ou (Gyoku-ou Efendi) isimleri son derece benzerdir ve karıştırılmamalıdır. Gyokuen, İmparatoriçe Gyokuyou'nun babasıdır; Gyoku-ou ise İmparatoriçe'nin erkek kardeşidir (ve batı bölgesinin vekil yöneticisidir).",
-    "Gaoshun, Jinshi'nin baş yardımcısıdır ve Basen'in babasıdır. Aralarındaki askeri/hiyerarşik ve ailevi bağa dikkat edilmelidir.",
-    "Luomen, Maomao'yu yetiştiren kişi (babalığı) ve aynı zamanda amcasıdır. Eski bir saray hekimidir.",
-    "Suiren, Jinshi'nin süt annesidir (wet nurse) ve saraydaki kıdemli hizmetlilerdendir."
+    "Lahan's Brother karakteri için çeviri hafızasında hem 'Lahan'ın Abisi' hem de 'Lahan'ın Kardeşi' kullanılmıştır. Glossary'deki 'Lahan'ın Kardeşi' kullanımı tutarlılık adına korunmalıdır.",
+    "Dr. Liu, Dr. Li ve glossary'de zaten kayıtlı olan Dr. You isimleri birbirine çok benzer saray hekimleridir, çeviride karıştırılmamalıdır.",
+    "Pairin, Joka ve Meimei, Verdigris House'un (Yosma Evi) en prestijli üç fahişesidir ve birlikte 'Three Princesses' (Üç Prenses) olarak anılırlar.",
+    "Yao ve En'en yakın bir ikilidir; Yao tıp eğitimi alan asil bir saray hanımı, En'en ise onun koruyucusu ve hizmetçisidir.",
+    "Ah-Duo, eski bir imparatorluk konsortudur ve gizli planlar doğrultusunda Suirei ile Shi klanının hayatta kalan üyelerini koruması altında tutmaktadır."
   ]
 }
