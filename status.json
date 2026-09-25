@@ -10,11 +10,12 @@
   "started_at": "2026-09-24T19:18:15.488319+00:00",
   "queue_mode": true,
   "series": "kusuriya",
-  "updated_at": "2026-09-25T15:03:58.072223+00:00",
+  "updated_at": "2026-09-25T15:04:02.815441+00:00",
   "review_status": "completed",
   "review_total": 25,
   "review_completed": 25,
   "review_current": "",
   "qa_status": "completed",
-  "convert_status": "running"
+  "convert_status": "completed",
+  "epub_output": "output/knh-14/knh-14_tr.epub"
 }
