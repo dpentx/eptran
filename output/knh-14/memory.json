@@ -49,7 +49,9 @@
     "Xiaomao": "Xiaomao",
     "Chou-u": "Chou-u",
     "Meimei": "Meimei",
-    "Mister Love Letters": "Mektup Aşığı Bey"
+    "Mister Love Letters": "Mektup Aşığı Bey",
+    "Hulan": "Hulan",
+    "Grand Commandant Kan": "Büyük Komutan Kan"
   },
   "terms": {
     "pleasure-district": "fuhuş bölgesi",
@@ -91,14 +93,15 @@
     "Kaou Province": "Kaou Eyaleti",
     "Shen clan": "Shen Klanı",
     "Monkey clan": "Maymun Klanı",
-    "zhen": "zhen"
+    "zhen": "zhen",
+    "poison birds": "zehirli kuşlar"
   },
   "style_notes": "Metin, karakterlerin kısa ve öz biyografilerini sunan bir profil listesi formatındadır; anlatıcı tarafsız ve bilgilendirici bir ton kullanır. Çeviride unvanlar ve kültürel terimler (örneğin 'Verdigris House') tutarlılık göstererek yerelleştirilmeli, ancak karakter isimleri orijinal fonetikleriyle korunmalıdır.",
   "summaries": [
-    "Chapter 12: Life in the Medical Office by the Training Grounds: Maomao, Dr. Liu tarafından askerlerin eğitim alanı yakınındaki en kaba saba tıp dairesine atanır ve burada Dr. Li'nin gözetiminde görev yapmaya başlar. Maomao, bu zorlu ortamda kıdemli bir hekimin nöbetini devralarak acil hastalarla ilgilenmeye başlar.",
     "Chapter 14: Two Good Friends: Maomao, Jinshi’nin koruması Basen’in eğitim alanına giderek onu Lihaku ile yaptığı dövüşte izler. Maomao, Dr. Li’nin kendisiyle gelme isteğini reddedip askerlerin arasında, boy farkına rağmen Basen’in Lihaku karşısında gösterdiği beceriyi gözlemlemektedir.",
     "Chapter 15: Contradictions and Goals: Maomao, direğe yapışan inatçı stratejistin yardımcısı Onsou ile uğraşırken, Dr. Li'nin getirdiği ve karın bölgesinde yaralı olan genç askerin hijyen sorununu fark eder. Maomao, askerle alay ederken Dr. Li onu kelepçelerek sargılarını değiştirmek için başka bir doktorun getirilmesini ister.",
     "Chapter 16: Yo: Maomao, inatçı yeni saray kızı Yo ile tanışır ve ikisi birlikte zevk mahallesindeki Yosun Evi'ne yürüyerek gider. Yol boyunca Maomao, Yo'yu çevredeki tehlikelere karşı uyarırken, mahallede onları tanıyan eski bir muhafızla kısa bir diyalog yaşarlar.",
-    "Chapter 17: The Forbidden Hunting Ground: Maomao, Dr. Li ve Tianyu, Tianyu'nun memleketi olan ve avcılığın yasak olduğu bir bölgeye, Dr. Liu'nun emriyle disseksiyon eğitimi için yola çıkar. Tianyu, bu gizemli görevin arkasında sarayla bağlantılı önemli bir figürün olduğunu ve babasının topraklarında gerçekleşen bu yasa dışı avcılığın kendisi için tehlikeli olabileceğini fark eder."
+    "Chapter 17: The Forbidden Hunting Ground: Maomao, Dr. Li ve Tianyu, Tianyu'nun memleketi olan ve avcılığın yasak olduğu bir bölgeye, Dr. Liu'nun emriyle disseksiyon eğitimi için yola çıkar. Tianyu, bu gizemli görevin arkasında sarayla bağlantılı önemli bir figürün olduğunu ve babasının topraklarında gerçekleşen bu yasa dışı avcılığın kendisi için tehlikeli olabileceğini fark eder.",
+    "Chapter 18: Kada’s Descendants: Maomao, av sırasında sıkılma ve Tianyu’nun yangın ihbarı üzerine Basen’i koruyucu olarak yanına alarak evine doğru harekete geçer. Bu gelişmede Suiren ve Taomei’nin onayı, Basen’in itirazı ve Tianyu’nun uyarısı olayın merkezinde yer alır."
   ]
 }
