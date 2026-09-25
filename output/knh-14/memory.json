@@ -95,7 +95,16 @@
     "Shen clan": "Shen Klanı",
     "Monkey clan": "Maymun Klanı",
     "zhen": "zhen",
-    "poison birds": "zehirli kuşlar"
+    "poison birds": "zehirli kuşlar",
+    "J-Novel Club": "J-Novel Club",
+    "The Apothecary Diaries": "Eczacı Günlükleri",
+    "Chicago Manual of Style": "Chicago Stil Kılavuzu",
+    "CMOS": "CMOS",
+    "house style": "yayın evi stili",
+    "style sheet": "stil sayfası",
+    "prepubs": "ön yayınlar",
+    "stet": "stet (değişikliği onaylama)",
+    "epub": "epub"
   },
   "style_notes": "Metin, karakterlerin kısa ve öz biyografilerini sunan bir profil listesi formatındadır; anlatıcı tarafsız ve bilgilendirici bir ton kullanır. Çeviride unvanlar ve kültürel terimler (örneğin 'Verdigris House') tutarlılık göstererek yerelleştirilmeli, ancak karakter isimleri orijinal fonetikleriyle korunmalıdır.",
   "summaries": [
