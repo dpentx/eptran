@@ -44,7 +44,11 @@
     "Consort Lihua": "Lihua Konsortu",
     "Changsha": "Changsha",
     "Onsou": "Onsou",
-    "Sazen": "Sazen"
+    "Sazen": "Sazen",
+    "Yo": "Yo",
+    "Xiaomao": "Xiaomao",
+    "Chou-u": "Chou-u",
+    "Meimei": "Meimei"
   },
   "terms": {
     "pleasure-district": "fuhuş bölgesi",
@@ -81,14 +85,15 @@
     "grass radical": "ot radikali (Çince yazı karakteri bileşeni)",
     "Imperial jades": "imparatorluk yeşim taşları",
     "I-sei Province": "I-sei Eyaleti",
-    "Shi clan": "Shi Klanı"
+    "Shi clan": "Shi Klanı",
+    "pibo shawls": "pibo şalları"
   },
   "style_notes": "Metin, karakterlerin kısa ve öz biyografilerini sunan bir profil listesi formatındadır; anlatıcı tarafsız ve bilgilendirici bir ton kullanır. Çeviride unvanlar ve kültürel terimler (örneğin 'Verdigris House') tutarlılık göstererek yerelleştirilmeli, ancak karakter isimleri orijinal fonetikleriyle korunmalıdır.",
   "summaries": [
-    "Chapter 10: A Flower Signature: Maomao, zevk mahallesinden dönerken Chue ile karşılaşır ve Ay Prens Jinshi'yi görmeye gittiğini açıklar. Chue, Maomao'yu arabaya bindirip içeri girerek Jinshi'den izin almaya çalışırken, Maomao bu bekleyiş sırasında geçmişteki reddedilme deneyimi ve mahcubiyet duyguları arasında içsel bir çatışma yaşar.",
     "Chapter 11: Their Juniors: Maomao, Yao ve En'en, saraydaki birikmiş doktor kıyafetlerini ve sargı bezlerini havuç kullanma yasağı nedeniyle zorlu koşullarda yıkamaktadır. Bu sırada, tıp dairesine yeni katılan iki genç kadının sargı bezlerini teslim etmesiyle günlük rutinlerine devam ederler.",
     "Chapter 12: Life in the Medical Office by the Training Grounds: Maomao, Dr. Liu tarafından askerlerin eğitim alanı yakınındaki en kaba saba tıp dairesine atanır ve burada Dr. Li'nin gözetiminde görev yapmaya başlar. Maomao, bu zorlu ortamda kıdemli bir hekimin nöbetini devralarak acil hastalarla ilgilenmeye başlar.",
     "Chapter 14: Two Good Friends: Maomao, Jinshi’nin koruması Basen’in eğitim alanına giderek onu Lihaku ile yaptığı dövüşte izler. Maomao, Dr. Li’nin kendisiyle gelme isteğini reddedip askerlerin arasında, boy farkına rağmen Basen’in Lihaku karşısında gösterdiği beceriyi gözlemlemektedir.",
-    "Chapter 15: Contradictions and Goals: Maomao, direğe yapışan inatçı stratejistin yardımcısı Onsou ile uğraşırken, Dr. Li'nin getirdiği ve karın bölgesinde yaralı olan genç askerin hijyen sorununu fark eder. Maomao, askerle alay ederken Dr. Li onu kelepçelerek sargılarını değiştirmek için başka bir doktorun getirilmesini ister."
+    "Chapter 15: Contradictions and Goals: Maomao, direğe yapışan inatçı stratejistin yardımcısı Onsou ile uğraşırken, Dr. Li'nin getirdiği ve karın bölgesinde yaralı olan genç askerin hijyen sorununu fark eder. Maomao, askerle alay ederken Dr. Li onu kelepçelerek sargılarını değiştirmek için başka bir doktorun getirilmesini ister.",
+    "Chapter 16: Yo: Maomao, inatçı yeni saray kızı Yo ile tanışır ve ikisi birlikte zevk mahallesindeki Yosun Evi'ne yürüyerek gider. Yol boyunca Maomao, Yo'yu çevredeki tehlikelere karşı uyarırken, mahallede onları tanıyan eski bir muhafızla kısa bir diyalog yaşarlar."
   ]
 }
