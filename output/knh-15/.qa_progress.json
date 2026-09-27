@@ -1,0 +1,282 @@
+{
+  "completed": {
+    "1": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "Character Profiles",
+        "translation_quote": "",
+        "description": "Bölümün başlığı olan 'Character Profiles' ifadesi Türkçe çeviride tamamen atlanmıştır."
+      }
+    ],
+    "2": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "That was all well and good, but not so much the sticks left over from late-night snacks of meat skewers, or—she couldn’t believe she was finding this—a naughty book that had clearly been passed around.",
+        "translation_quote": "Bu kadarı gayet makuldü, ama gece atıştırmalıklarından kalan et şiş çubukları ya da—bunu gördüğüne inanamıyordu—elden ele dolaşmış açıkça bir “pis kitap” değildi.",
+        "description": "Kaynak metinde mola odasında et şiş çubukları ve elden ele dolaşan müstehcen bir kitabın bulunduğu belirtilirken, çeviride cümlenin sonuna 'değildi' eklenerek bu nesnelerin orada bulunmadığı söylenmiş ve anlam tamamen tersine çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "He was thrilled to have found something to tease her about, but unfortunately for him, he didn’t realize that Dr. Li was standing right behind him.",
+        "translation_quote": "Onu taklit edebileceği bir şey bulduğu için heyecanlanmıştı, ama ne yazık ki Dr. Li’nin hemen arkasında durduğunu fark etmemişti.",
+        "description": "'something to tease her about' (onunla uğraşacak/ona takılacak bir şey) ifadesi 'onu taklit edebileceği bir şey' (taklit etmek/imitate) şeklinde yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Are you sure I shouldn’t go along?” he asked not Tianyu, but the old physician.",
+        "translation_quote": "“Benimle gelmemem gerektiğinden emin misin?” diye sordu, Tianyu’ya değil, yaşlı hekime.",
+        "description": "'Are you sure I shouldn't go along?' (Benim de gitmemem gerektiğinden emin misiniz?) sorusu, Türkçe çeviride 'Benimle gelmemem gerektiğinden emin misin?' şeklinde hem anlamsız hem de dil bilgisi açısından hatalı bir şekilde aktarılmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "it was located in the outer court, but close to His Majesty’s bedchamber.",
+        "translation_quote": "dış mahalledeydi, ama Majestelerinin yatak odasına yakındı.",
+        "description": "Sarayın bir bölümü olan 'outer court' (dış saray) ifadesi 'dış mahalle' olarak yanlış çevrilmiştir."
+      }
+    ],
+    "3": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Why would they handpick people to do drug trials?",
+        "translation_quote": "İlaç denemeleri için insanları neden eldivenle seçiyorlardı ki?",
+        "description": "\"handpick\" (özenle seçmek) ifadesi yanlış anlaşılarak \"eldivenle seçmek\" şeklinde çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "although he acted awfully frivolous, Yo trusted him implicitly.",
+        "translation_quote": "son derece hafif kanatlı davransa da, Yo ona körü körüne güveniyordu.",
+        "description": "\"frivolous\" (ciddiyetsiz, laubali) kelimesi \"hafif kanatlı\" şeklinde yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Let’s see... I got a pretty serious fever, but the blisters didn’t spread all over my body.",
+        "translation_quote": "“Görün bakalım... Oldukça ciddi bir ateşim çıktı, ama kabarcıklar vücudumun her yerine yayılmadı.",
+        "description": "\"Let's see\" (Bir düşüneyim, bakalım) ifadesi \"Görün bakalım\" şeklinde yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "He might look like a grandfatherly old man, but he was an experienced hand in this office and was used to things getting a little mean.",
+        "translation_quote": "Dışarıdan babaanne gibi görünebilirdi, ama bu büroda deneyimli bir eldi ve işlerin biraz sertleşmesine alışkındı.",
+        "description": "\"grandfatherly\" (büyükbaba gibi, dede gibi) ifadesi \"babaanne\" (grandmother) olarak yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“I have medicines to deliver,” said Maomao, entering the office and taking off her portable medicine cabinet.\n“Delivery’s here,” Yo echoed, imitating Maomao.\n“Well, well, what a sweet young thing you’ve brought with you today,” said the elderly doctor.\n“My name is Yo,” she told him. “I just started this year.” Evidently this was the first time they had met.\n“We don’t get a lot of young ladies around here. Too many rough-and-tumble types.”\n“I’m here,” Maomao said stiffly.\n“You and Miss Chue are special cases. In flower terms, I would say you’re an obako and a dandelion.”",
+        "translation_quote": "“Teslimat geldi,” diye yankıladı Yo, Maomao’yu taklit ederek.\n“Ben buradayım,” dedi Maomao sert bir şekilde.\n“İlk” eş, öyle mi?\n“İlaç teslimatım var,” dedi Maomao, odaya girip taşınabilir ilaç dolabını omuzlarından indirirken.\n“Vay canına, bugün yanına ne tatlı bir kız getirmişsin,” dedi yaşlı doktor.\n“Adım Yo,” dedi ona. “Bu yıl yeni başladım.” Görünüşe göre ilk kez tanışıyorlardı.\n“Burada pek genç hanımefendi görmüyoruz. Çoğu zaman kaba saba tiplerle uğraşıyoruz.”\n“Sen ve Chue Hanım istisnasınız. Çiçeklerle kıyaslayacak olursam, sen bir obako, o da bir karahindiba olursun.”",
+        "description": "Bu diyalog bölümündeki cümlelerin sırası tamamen karışmış, bazı ifadeler mükerrer veya yanlış yerleştirilmiş ve \"“İlk” eş, öyle mi?\" gibi kaynakta olmayan anlamsız bir ifade eklenmiştir."
+      }
+    ],
+    "4": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“I haven’t seen you since...yesterday,” she said.",
+        "translation_quote": "“Dün... senden beri görmedim,” dedi.",
+        "description": "\"since... yesterday\" ifadesi \"dünden beri\" yerine yanlış bir şekilde \"senden beri\" olarak çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“No, not since yesterday.”",
+        "translation_quote": "“Hayır, dün değil.”",
+        "description": "\"Not since yesterday\" (Dünden beri değil) ifadesi \"Hayır, dün değil\" şeklinde yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“What in the world do you think we’re making?” asked the doctor of average height.",
+        "translation_quote": "“Bence ne yapıyoruz?” diye sordu orta boylu doktor.",
+        "description": "\"What do you think we're making?\" (Sizce ne yapıyoruz?) sorusu \"Bence ne yapıyoruz?\" şeklinde yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Licorice and garden peony—it must be a decoction of the two,” answered Tall Senior, the taller of the two seniors.",
+        "translation_quote": "“Lakübit ve bahçe sümbülü—ikisinin bir karışımı olmalı,” diye cevap verdi, iki kıdemliden daha uzun olan Uzun Kıdemli.",
+        "description": "\"Licorice\" (meyan kökü) kelimesi uydurma bir kelime olan \"Lakübit\" olarak, \"garden peony\" (bahçe şakayığı) ise \"bahçe sümbülü\" olarak yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "They rode along for thirty minutes until they arrived at a mansion on the outskirts of the capital.",
+        "translation_quote": "Yirmi dakika boyunca sürüldüler ve başkentin dışındaki bir konakta indiler.",
+        "description": "\"thirty minutes\" (otuz dakika) ifadesi \"Yirmi dakika\" olarak yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Don’t mind us, she thought as she came into the house.",
+        "translation_quote": "Bizi rahatsız etmeyin, diye düşündü evin içine girerken.",
+        "description": "\"Don't mind us\" (Bize aldırmayın/Kusura bakmayın) ifadesi tam tersi anlama gelecek şekilde \"Bizi rahatsız etmeyin\" olarak çevrilmiştir."
+      }
+    ],
+    "5": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Still, the four of them weren’t enough to keep the place constantly staffed.",
+        "translation_quote": "Yine de dört kişilik kadro, mekânı sürekli dolu tutmaya yetmiyordu.",
+        "description": "\"constantly staffed\" ifadesi klinikte kesintisiz personel/nöbetçi bulundurmak anlamına gelir. Çeviride ise kliniği insanla/hastayla doldurmak anlamındaki \"dolu tutmak\" ifadesi kullanılarak anlam kaymasına yol açılmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Master Physician,” she started.",
+        "translation_quote": "“Başhekim,” diye başladı.",
+        "description": "\"Master Physician\" ifadesi hekime yönelik saygılı bir hitap şeklidir (Hekim Efendi/Hekim Üstat). Söz konusu karakter kliniğin veya saray tıp ofisinin idari yöneticisi (başhekimi) olmadığı için \"Başhekim\" çevirisi yanlış bir unvan kullanımıdır."
+      }
+    ],
+    "7": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "The physicians, chiefly the palace’s own doctors, are actually conducting drug trials.",
+        "translation_quote": "Heimler, özellikle sarayın kendi doktorları, aslında ilaç denemeleri yürütüyor.",
+        "description": "\"physicians\" (hekimler) kelimesi Türkçe metinde var olmayan \"Heimler\" şeklinde yanlış yazılmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Who else has noticed?",
+        "translation_quote": "\"Kimse daha fark etti mi?\"",
+        "description": "\"Başka kim fark etti?\" anlamına gelen soru, \"Daha fark eden oldu mu?\" şeklinde yanlış çevrilerek anlam kaymasına yol açmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Didn’t you deliberately gather people who would keep their mouths shut even if they did?",
+        "translation_quote": "Yapacak olsalar bile ağızlarını kapalı tutacak insanları kasıtlı olarak toplamadın mı?",
+        "description": "\"even if they did\" (fark etseler bile) ifadesi \"Yapacak olsalar bile\" şeklinde yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "I thought I told everyone to clear out,",
+        "translation_quote": "\"Bence herkese dağılmalarını söyledim,\"",
+        "description": "\"I thought I told...\" (herkese dağılmalarını söylediğimi sanıyordum) ifadesi \"Bence herkese dağılmalarını söyledim\" şeklinde yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "It’s all right.",
+        "translation_quote": "\"Olur.\"",
+        "description": "Gaoshun'un özür dilemesine karşılık Jinshi'nin söylediği \"Sorun değil / Önemli değil\" anlamındaki ifade \"Olur\" şeklinde yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "What is His Majesty’s current condition?",
+        "translation_quote": "\"Alteşin'in şu anki durumu nedir?\"",
+        "description": "\"His Majesty\" (Majesteleri - İmparator için kullanılır) unvanı, uydurma bir kelime olan \"Alteşin\" (muhtemelen Altesleri ile karışmış) şeklinde yanlış çevrilmiştir."
+      }
+    ],
+    "8": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "For a second, Maomao thought maybe he meant Princess Lingli, but she realized it was probably the adopted daughter Gyoku-ou had sent to the capital.",
+        "translation_quote": "Bir an için Maomao, Prens Lingli'yi kastettiğini düşündü, ama muhtemelen Gyoku-ou'nun başkente gönderdiği evlatlık kızı kastettiğini anladı.",
+        "description": "Kaynakta 'Princess' (Prenses) olarak geçen unvan Türkçe çeviride 'Prens' olarak yanlış aktarılmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“I did. But since we’ve got the time, how about we do this by question and answer?”",
+        "translation_quote": "\"Geldi. Ama vaktimiz varken, bunu soru-cevap şeklinde yapalım mı?\"\n\n\"Oh, en azından düşünmeye çalış.\"\n\n\"Sana söyledim, bu benim alanım değil.\"\n\n\"Tamam, tamam. İpucu: et.\"\n\n\"Kepek...\"\n\nSindirim...\n\nDemek ki fark etmiş.\n\n\"Kıdemlilerine karşı biraz fazla talebeksin, ha? Başka ilginç bir şeyim olup olmadığını bilmiyorum...\" Uzun Kıdemli havanını ve havan elini çalıştırırken düşünceli bir ses çıkardı. Alt kademesinden gelen bir isteği yerine getirmek isteyen iyi bir kıdemliydi. \"Eh, et ve balıken bahsetmişken...\"\n\n\"Evet? Aklına bir şey mi geldi?\" Maomao'nun gözleri daha da parladı.\n\n\"Geldi. Ama vaktimiz varken, bunu soru-cevap şeklinde yapalım mı?\"\n\n\"Oh, en azından düşünmeye çalış.\"\n\n\"Sana söyledim, bu benim alanım değil.\"\n\n\"Tamam, tamam. İpucu: et.\"\n\n\"Kepek...\"\n\nSindirim...\n\nDemek ki fark etmiş.",
+        "description": "Bölümün sonundaki diyaloglar henüz gerçekleşmeden buraya eklenmiş, iki kez tekrarlanmış ve kaynakta hiç olmayan 'Kepek...', 'Sindirim...', 'Demek ki fark etmiş.' gibi ifadeler uydurulmuştur."
+      },
+      {
+        "type": "ŞAHIS_UYUŞMAZLIĞI",
+        "source_quote": "If he was so sure he would win, why did he lose?",
+        "translation_quote": "Kazanacağından o kadar eminsen, neden kayb_",
+        "description": "Kaynakta üçüncü şahıs ('he was so sure') kullanılırken çeviride ikinci şahıs ('eminsen') kullanılmıştır."
+      },
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "If he was so sure he would win, why did he lose?\n\n\"Military matters aren’t really my area of expertise,\" Maomao said, frowning at what turned out to be quite a different topic from what she had expected. \"Help me out.\"\n\n\"Oh, at least \ntry\n to think it through.\"\n\n\"I told you, it’s not my field.\"\n\nThe two of them chatted away, their mortars grinding and the powder collecting.\n\n\"Okay, okay. Your hint is: meat.\"\n\n\"Meat?\" Maomao cocked her head and \nhmm\ned thoughtfully.\n\nMeat, meat, meat... Maybe he means they were caught in some unique trap or something?\n\nIt seemed unlikely that actual meat was the issue at hand.",
+        "translation_quote": "Kazanacağından o kadar eminsen, neden kayb_",
+        "description": "Metin bu noktada aniden kesilmekte ve bölümün geri kalan kısmı tamamen atlanmaktadır."
+      }
+    ],
+    "9": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Hulan, you withdraw. Send Basen around to replace you,” Jinshi said.",
+        "translation_quote": "\"Hulan, çekil. Seni Basen ile değiştirsin,\" dedi Jinshi.",
+        "description": "Jinshi, Hulan'a 'Basen'i gönder, senin yerine geçsin' talimatını vermektedir. Türkçe çeviride ise 'Seni Basen ile değiştirsin' denilerek eylemin yönü ve anlamı yanlış aktarılmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“That’s not what you call me, is it?”",
+        "translation_quote": "\"Beni öyle çağırıyorsun, öyle mi?\"",
+        "description": "Luomen, Maomao'nun resmi bir ortamda kendisine 'Pops' (Amca) diye hitap etmesini sorgulayarak 'Bana normalde böyle hitap etmezsin/etmemelisin, değil mi?' demek istemektedir. Türkçe çeviri ise bunu yanlış bir ifadeyle aktarmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "The appendix is that part that looks like a worm, isn’t it?",
+        "translation_quote": "Apandisit, solucan gibi görünen o kısım değil mi?",
+        "description": "İngilizcedeki 'appendix' (apandis organı) kelimesi, Türkçe çeviride hastalık adı olan 'apandisit' ile karıştırılmıştır."
+      }
+    ],
+    "13": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "They didn’t know where word of the surgery had leaked from.",
+        "translation_quote": "",
+        "description": "Kaynak metnin ilk cümlesi çeviride tamamen atlanmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Maomao could only guess how many people had seen those darkened fingers and immediately decided this woman was unfit to be their bride.",
+        "translation_quote": "Maomao, bu kadının damat adayı olmaya uygun olmadığını hemen kararlaştıran kaç kişinin o koyulaşmış parmakları gördüğünü tahmin edebilirdi.",
+        "description": "\"bride\" (gelin) kelimesi \"damat adayı\" olarak yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "If the appendix burst and sent filth throughout the Emperor’s abdomen, the chances of his demise skyrocketed.",
+        "translation_quote": "Ekinsoyu patlar ve İmparator'un karın boşluğuna pislik yayarsa, ölüm olasılığı fırlardı.",
+        "description": "\"appendix\" (apandis) kelimesi \"Ekinsoyu\" şeklinde anlamsız bir kelimeyle karşılanmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "In terms of age, she reminded Maomao of Jinshi’s elderly assistant Suiren, but she was less calculating.",
+        "translation_quote": "Yaş bakımından Maomao'yu, Jinshi'nin yaşlı yardımcısı Suiren'e hatırlatıyordu, ancak daha az hesapçıydı.",
+        "description": "\"she reminded Maomao of Suiren\" (Maomao'ya Suiren'i hatırlatıyordu) ifadesi, \"Maomao'yu Suiren'e hatırlatıyordu\" şeklinde tersine çevrilerek anlam kaymasına yol açmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Maomao sipped her tea and listened to the doctors do what amounted to griping.",
+        "translation_quote": "Maomao çayından bir yudum aldı ve hekimlerin fiyakalı şikayetlerini dinledi.",
+        "description": "\"what amounted to griping\" (sızlanmaktan ibaret olan konuşmalarını) ifadesi \"fiyakalı şikayetlerini\" şeklinde yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“We’d like to ask you to come with us,” one of the men said, showing her a peony crest.",
+        "translation_quote": "“Sizinle gelmenizi rica ediyoruz,” dedi erkeklerden biri, ona bir gelincik arması göstererek.",
+        "description": "\"peony\" (şakayık) çiçeği \"gelincik\" (poppy) olarak yanlış çevrilmiştir."
+      }
+    ],
+    "14": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "Jinshi was getting a headache from having this conversation for the umpteenth time.",
+        "translation_quote": "",
+        "description": "Bölümün giriş cümlesi Türkçe çeviride tamamen atlanmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“This is making me want to hide,” said Basen, looking just as bothered as Jinshi.",
+        "translation_quote": "\"Bu beni saklanmak istiyor,\" dedi Basen, Jinshi kadar rahatsız bir ifadeyle.",
+        "description": "\"This is making me want to hide\" (Bu durum bende saklanma isteği uyandırıyor) ifadesi, Türkçe dil bilgisine uymayacak şekilde \"Bu beni saklanmak istiyor\" olarak yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Perhaps I need a few more of these,” Jinshi said, scratching the scar on his cheek with a finger.",
+        "translation_quote": "\"Belki birkaç tane daha ekmek yemem gerek,\" dedi Jinshi, yanağındaki yara izini parmağıyla kaşıyarak.",
+        "description": "Jinshi yanağındaki yara izini kaşıyarak \"bunlardan (yara izlerinden) birkaç tane daha edinmeliyim\" demek isterken, çeviride \"birkaç tane daha ekmek yemem gerek\" şeklinde tamamen yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "She was the grandniece of the Empress Dowager’s half-brother, Hao—and hence also the great-niece of the Empress Dowager herself.",
+        "translation_quote": "Dul İmparatoriçe'nin amcasının kızı Hao'nun torunu ve dolayısıyla Dul İmparatoriçe'nin kendisinin de torunuydu.",
+        "description": "\"half-brother\" (üvey erkek kardeş) ifadesi \"amcasının kızı\" olarak, \"great-niece\" (kız/erkek kardeşinin torunu) ifadesi ise \"torunuydu\" (granddaughter) olarak yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“A young lady from the Empress’s faction was admitted to the rear palace at the same time and made a middle consort,” Maamei said.",
+        "translation_quote": "\"İmparatoriçe'nin fraksiyonundan genç bir hanım da aynı anda arka saraya kabul edildi ve Üst Düzey Konsort yapıldı,\" dedi Maamei.",
+        "description": "\"middle consort\" (orta düzey eş) ifadesi \"Üst Düzey Konsort\" (upper consort) olarak yanlış çevrilmiştir."
+      }
+    ]
+  },
+  "failed": [
+    6,
+    10,
+    11,
+    12
+  ]
+}
