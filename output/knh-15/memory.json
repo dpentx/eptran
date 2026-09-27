@@ -56,7 +56,9 @@
     "Shenmei": "Shenmei",
     "Loulan": "Loulan",
     "Zui": "Zui (İmparatorun gerçek adı)",
-    "Yue": "Yue (Jinshi'nin gerçek adı)"
+    "Yue": "Yue (Jinshi'nin gerçek adı)",
+    "Xiaodong": "Xiaodong",
+    "Auntie Liu": "Teyze Liu"
   },
   "terms": {
     "Kada’s Book": "Kada'nın Kitabı",
@@ -112,14 +114,17 @@
     "postsurgical care team": "ameliyat sonrası bakım ekibi",
     "Pure Consort": "Saflık Konsortu",
     "Precious one": "Değerli Konsort",
-    "I-sei Province": "I-sei Eyaleti"
+    "I-sei Province": "I-sei Eyaleti",
+    "appendicitis": "apandisit",
+    "large intestine": "kalın bağırsak",
+    "suture": "dikiş"
   },
   "style_notes": "Anlatım tonu hafif alaycı, gözlemci ve karakter odaklıdır; cümleler kısa, net ve karakterlerin iç dünyalarına veya sosyal statülerine dair ironik detaylar içermelidir.",
   "summaries": [
-    "Chapter 14: The Patient’s Consent: Ameliyat öncesi hazırlıklar sırasında rahat tavırlarıyla dikkat çeken Tianyu'nun yetenekli ama sorumsuz karakteri tartışılırken, Maomao ve Liu Teyze İmparator'un iyileşme süreci için gerekli malzemeleri düzenler. Bu sırada özel izinle gelen Chue Hanım, kolundaki iyileşmeyi kontrol ettirmek üzere Maomao'dan yardım ister.",
     "Chapter 15: Confession—The Surface: Maomao, Chue'nün gözetiminde İmparatorluk ailesinin özel salonuna giderken, geçmişte yaşadığı travmatik anıları hatırlayarak derin bir kaygı duyar. Chue'nün nöbette kalmasıyla yalnız kalacak olan Maomao, İmparator ve Gaoshun ile yapacağı görüşmeden kaçınmak ister.",
     "Chapter 16: Confession—The Secret: Ah-Duo, İmparator Yoh'un halef olarak küçük kardeşi Yue'yi seçme kararını ve bu durumun saraydaki güç dengelerini nasıl etkileyeceğini düşünürken, Yoh'un bu hamlenin arkasındaki gerçek niyetini sorgular. Metin, Yoh'un \"Gök\" statüsü ile Yue'nin insani doğası arasındaki farkı ve Ah-Duo'nun bu belirsizlikten duyduğu endişeyi vurgular.",
     "Chapter 17: Anxiety: İmparator’un Ah-Duo Hanım ile görüşmesi ve ameliyat yapacağı açıklaması üzerine Jinshi’nin kaygıya kapılmasıyla başlayan bölümde, Maomao ve Chue Hanım’ın gece yemeği planı üzerine tartışma yaşanır. Basen’in geleneksel itirazlarına rağmen grup noodle yemeye karar verirken, Jinshi’nin imparatorluk protokolü nedeniyle bu davete katılamayacağı iç sıkıntısı hissedilir.",
-    "Chapter 18: Before the Surgery: Maomao, İmparator için hazırlanan ameliyat ve özel dinlenme odasındaki son kontrolleri titizlikle tamamlar. Metin, saray hekimlerinin imparatorun hayatta kalması için gösterdiği özenli hazırlıkları ve ameliyat öncesi anestezi sürecini anlatır."
+    "Chapter 18: Before the Surgery: Maomao, İmparator için hazırlanan ameliyat ve özel dinlenme odasındaki son kontrolleri titizlikle tamamlar. Metin, saray hekimlerinin imparatorun hayatta kalması için gösterdiği özenli hazırlıkları ve ameliyat öncesi anestezi sürecini anlatır.",
+    "Chapter 19: During the Surgery: Ameliyat sırasında hastanın anesteziye tepki vermesi sonucu bir asistanın bistürüyle yaralanması ve diğer asistanın paniklemesi üzerine, Luomen'in Tianyu'dan cerrahi işlemleri devralmasını istemesiyle olaylar gelişir. Tianyu ise bu teklife, hastanın beklenen \"yeşim beden\" özelliğinden yoksun olduğunu söyleyerek alaycı bir şekilde yanıt verir."
   ]
 }
