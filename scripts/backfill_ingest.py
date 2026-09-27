@@ -8,13 +8,19 @@ hiçbir zaman eptran-web'e gönderilmemiş kitaplar var (bkz. output/*/*.epub).
 Bu script main'deki her tamamlanmış kitabı tek tek tarayıp push_book()
 ile eptran-web'e gönderir.
 
+NOT (Eylül 2026): İlk sürüm epub gönderiyordu, Vercel'in ~4.5MB istek
+sınırına tosladı (413). Artık convert.py'nin kendisiyle AYNI yolu
+kullanıyor: her kitabın output/<slug>/*.txt bölüm dosyalarını
+load_txt_chapters() ile ayrıştırıp format=txt olarak gönderiyor —
+bkz. lib/web_ingest.py'nin kendi notu.
+
 Idempotent: aynı kitabı ikinci kez göndermek zararsız — ingest.ts aynı
 sourceKey'i güncelleme (upsert) olarak işliyor, kopya novel oluşmuyor.
 """
 import os
 
 from lib.web_ingest import push_book
-from convert import get_book_metadata
+from convert import get_book_metadata, load_txt_chapters
 
 
 def find_completed_books(output_root="output"):
@@ -27,7 +33,7 @@ def find_completed_books(output_root="output"):
             continue
         epub_path = os.path.join(book_dir, f"{slug}_tr.epub")
         if os.path.exists(epub_path):
-            books.append((slug, epub_path))
+            books.append((slug, book_dir))
     return books
 
 
@@ -40,13 +46,15 @@ def main():
     print(f"{len(books)} tamamlanmış kitap bulundu: {', '.join(b[0] for b in books)}")
     print()
 
-    for slug, epub_path in books:
+    for slug, book_dir in books:
         original_epub_path = f"input/.originals/{slug}.epub"
         if not os.path.exists(original_epub_path):
             original_epub_path = None
         title, author = get_book_metadata(slug, original_epub_path)
-        print(f"→ {slug}  (\"{title}\"{f' — {author}' if author else ''})")
-        push_book(slug, epub_path, title, author)
+        chapters = load_txt_chapters(book_dir)
+        print(f"→ {slug}  (\"{title}\"{f' — {author}' if author else ''}, "
+              f"{len(chapters)} bölüm)")
+        push_book(slug, chapters, title, author)
         print()
 
 
