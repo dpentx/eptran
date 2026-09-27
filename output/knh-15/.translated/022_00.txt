@@ -1,0 +1,61 @@
+Hastalık Adında Ne Var?
+
+Merhaba!
+The Apothecary Diaries
+ serisinin bir cildini daha bizimle paylaştığınız için teşekkürler!
+
+Maomao'nun zehir kadar sevdiği bir şey varsa, o da hastalıklardır ve 15. cilt gizemli bir hastalık etrafında dönüyor. Bu durum yalnızca saray hekimleri için bir sınav değil; çeviri ekibi de yerelleştirme işini doğru yapabilmek için epey uğraştı. Bir bakalım!
+
+İmparator'un durumu ilk kez anıldığında, buna 盲腸炎 (
+mouchouen
+) deniyor. Kelimesi kelimesine çevrildiğinde bu terim,
+çekum iltihabı
+anlamına geliyor. Çekum, bağırsak sisteminin bir parçasıdır; ince bağırsak ile kalın bağırsakların başlangıcı olan kalın bağırsağı birbirine bağlar. (Daha da kelimesi kelimesine çevirirsek,
+mouchou
+karakterleri
+kör bağırsak
+anlamına geliyor; bu bilgiyi partilerde küçük sohbetler yapmaya çalışırken işinize yarayacağından eminiz.)
+
+Çeviri ekibinin, bu terim kitapta ilk kez geçtiğinde
+mouchouen
+kelimesiyle pek de aşina olmadığını söylemek yerinde olur. Birçok çevirmen notunda öğrendiğimiz gibi, tanımadığınız bir kelimeyle karşılaştığınızda ilk yapmanız gereken şey onu araştırmaktır. İlginç olan şu ki,
+mouchouen
+için basit bir çevrimiçi arama yaptığınızda, neredeyse her sonuç aslında başka bir duruma, yani
+chuusuien
+(虫垂炎) ile ilgili çıkıyor. Hatta
+mouchouen
+için Japonca Wikipedia'da arama yaptığınızda, sizi otomatik olarak
+chuusuien
+sayfasına yönlendiriyor.
+
+Peki
+chuusuien
+nedir? Bunu anlamak oldukça kolay: apandisit. (
+Chuusuien
+kelimesi kelimesine çevrildiğinde
+apandisit iltihabı
+anlamına geliyor. Boş sohbet hazinenize bir şeyler eklemek isterseniz,
+chuusui
+—yani apandisit—
+asılı solucan
+karakterleriyle yazılıyor. Bu, aslında İngilizcedeki resmi ad olan
+vermiform
+[ solucan biçimli ]
+appendix
+[ apandisit ] ile oldukça benzer.) Her şeyin basit ve kolay olması gerekmez mi?
+mouchouen
+kelimesini
+apandisit
+olarak çeviririz ve işimiz biter.
+
+Ama durun! Kada'nın Kitabı'nı okurken Maomao, mouchouen'in chuusuien ile sık sık karıştırıldığını belirten bir uyarı buluyor ve aslında neyle karşı karşıya olduklarını sorgulamaya başlıyor. Başka bir deyişle, metin bu iki terimi birbirinin yerine kullanılabilir olarak ele almıyor; aksine, farklı durumlara işaret ediyorlar.
+
+Bu kelimelerin nasıl yerelleştirileceğine karar vermeye çalışırken, en uygun başlangıç noktası chuusuien'dir. Maomao, bunun "solucan gibi görünen" bir organla, yani apandisit ile ilgili olduğunu özellikle belirtiyor; dolayısıyla onun apandisitten bahsettiğini biliyoruz. Ancak bu durumda, mouchouen için bir çeviri kalmıyor.
+
+Çeviri sürecinin bu aşamasında, çeviri ekibi henüz cecum kelimesini öğrenmemişti. (Anadilinizde bile keşfedilecek her zaman yeni şeyler olduğunu hatırlatmak isteriz!) Bunun yerine, mouchou'nun ne olduğunu bilmedikleri için bir hayli çaresiz kalan ekip, başka bir çevirmene başvurdu. (Her meslek grubunda olduğu gibi, aynı işi yapan insanları tanımak, takıldığınızda size faydalı bir kaynaktır.) Bu kişi, Japonca hazırlanmış bir sindirim sistemi şeması bulmayı başardı ve şemada mouchou olarak etiketlenmiş bir yapı vardı. Tesadüfe bakın ki, bu kişinin eşi tıp alanında çalışıyordu ve gizemli anatomik yapıyı çekum olarak tanımladı.
+
+Tıbbi kaynağımız bize ayrıca, çekum iltihabının İngilizcede kendi adının olduğunu da bildirdi: tiflit. İmparator'un sahip olduğu durumu tam olarak tanımlamanın yanı sıra, tiflit teriminin İngilizcede oldukça az bilinen bir terim olması da bir avantaj—tıp personeli bile bunu anında tanımayabilir. Bu da, İngilizce yerelleştirme okurlarına, çeviri ekibinin bu terimle ilk karşılaştığında hissettiği gizem duygusunu bir ölçüde yaşatıyor.
+
+Bu arada, günümüzde tiflitin yönetimi veya tedavisi için antibiyotikler ve kan transfüzyonu dahil olmak üzere çeşitli yöntemlerimiz var. Ancak bir strateji hâlâ geçerliliğini koruyor: "dekompresif laparotomi"—yani karın boşluğunu kesip açarak karın içi basıncını azaltmak için bir işlem yapmak. Ne kadar çok şey değişse de...
+
+Tıbbi kaynaklı çeviri sıkıntılarının bu kısa yolculuğunu beğendiğinizi umuyoruz. Eğlenin, bol okuyun ve tekrar görüşmek üzere!
