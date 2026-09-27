@@ -51,7 +51,8 @@
     "Anshi": "Anshi",
     "Hao": "Hao",
     "Lihua": "Lihua",
-    "Zuigetsu": "Zuigetsu"
+    "Zuigetsu": "Zuigetsu",
+    "Grand Commandant Kan": "Büyük Komutan Kan"
   },
   "terms": {
     "Kada’s Book": "Kada'nın Kitabı",
@@ -100,14 +101,18 @@
     "Gyoku clan": "Gyoku Klanı",
     "upper consort": "Üst Düzey Konsort",
     "tasters": "Deneme Yiyicileri",
-    "milk siblings": "Süt Kardeşler"
+    "milk siblings": "Süt Kardeşler",
+    "The Special Unit": "Özel Birim",
+    "peritonitis": "peritonit",
+    "anesthetic": "anestezik",
+    "postsurgical care team": "ameliyat sonrası bakım ekibi"
   },
   "style_notes": "Anlatım tonu hafif alaycı, gözlemci ve karakter odaklıdır; cümleler kısa, net ve karakterlerin iç dünyalarına veya sosyal statülerine dair ironik detaylar içermelidir.",
   "summaries": [
-    "Chapter 6: The Patient: Maomao, Jinshi'nin gizli bir hastalığı olup olmadığını anlamak için odasına gider ve onu aşırı yorgunlukla uyarır. Bu sırada Chue de hastalığı olduğunu öğrenir ve hayal kırıklığıyla ayrılırken, Maomao imparatorluk ailesiyle ilgili kritik bir konuyu açmaya hazırlanır.",
     "Chapter 7: A Man’s Romance: Maomao, İmparator'un hastalığına dair sırrı öğrendikten sonra Uzun Kıdemli ile sarayda ilaç hazırlama sürecinde çalışır ve arka saraydaki görev geçmişini anlatır. Bu bölümde, Maomao'nun arka sarayın zorlu ve rekabetçi ortamına dair gözlemleri ile Uzun Kıdemli'nin merakı öne çıkar.",
     "Chapter 8: Anesthesia: Maomao, Kada'nın Kitabı'nın onarıldığı haberini alıp Jinshi'nin ofisine gittiğinde, Dr. Liu ve Luomen ile karşılaşır. Hulan'ın rahatsız edici yakınlığına rağmen Jinshi, hekimleri onarım odasına alarak kitabın yeniden oluşturulan sayfalardaki önemli tıbbi bulguları incelemeye başlar.",
     "Chapter 9: To Everyone a Purpose: Maomao, intiharını sahteleyip kaçan Suirei ve yüksek eş unvanından ayrılan Ah-Duo'nun yaşadığı villaya, Majesteleri için anestezi tedavisini iyileştirmek amacıyla uyuşturucu bilgisi almak üzere gelir. Bu gizli görüşmede, yok edilen Shi Klanı'nın çocuklarını barındıran Ah-Duo ve Suirei ile Maomao, tıbbi konuları ele almak üzere özel bir odaya çekilir.",
-    "Chapter 10: Gyouyoh: İmparatorun tek oğlu Gyouyoh, kronik mide ağrısı ve kilo kaybı nedeniyle zorunlu ilaç kullanımıyla mücadele ederken, sadık koruması Gaoshun ona hem fiziksel hem de duygusal destek sağlamaktadır. Metin, Gyouyoh'un özgürlükten yoksun, sürekli izlenen ve hastalığıyla başa çıkmaya çalışan kırılgan durumunu vurgular."
+    "Chapter 10: Gyouyoh: İmparatorun tek oğlu Gyouyoh, kronik mide ağrısı ve kilo kaybı nedeniyle zorunlu ilaç kullanımıyla mücadele ederken, sadık koruması Gaoshun ona hem fiziksel hem de duygusal destek sağlamaktadır. Metin, Gyouyoh'un özgürlükten yoksun, sürekli izlenen ve hastalığıyla başa çıkmaya çalışan kırılgan durumunu vurgular.",
+    "Chapter 11: The Special Unit: Maomao, Dr. Liu, Luomen ve Dr. Tairan'ın da aralarında bulunduğu önemli doktorların, İmparator için hazırlanan özel birim toplantısına sekreter olarak katılır. Toplantıda, yeniden oluşturulan Kada'nın Kitabı'ndaki otopsi çizimleri incelenirken, ilaç denemelerindeki bireysel farklılıklar ve tedavi sonuçları tartışılır."
   ]
 }
