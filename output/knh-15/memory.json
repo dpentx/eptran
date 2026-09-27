@@ -54,7 +54,9 @@
     "Zuigetsu": "Zuigetsu",
     "Grand Commandant Kan": "Büyük Komutan Kan",
     "Shenmei": "Shenmei",
-    "Loulan": "Loulan"
+    "Loulan": "Loulan",
+    "Zui": "Zui (İmparatorun gerçek adı)",
+    "Yue": "Yue (Jinshi'nin gerçek adı)"
   },
   "terms": {
     "Kada’s Book": "Kada'nın Kitabı",
@@ -109,14 +111,15 @@
     "anesthetic": "anestezik",
     "postsurgical care team": "ameliyat sonrası bakım ekibi",
     "Pure Consort": "Saflık Konsortu",
-    "Precious one": "Değerli Konsort"
+    "Precious one": "Değerli Konsort",
+    "I-sei Province": "I-sei Eyaleti"
   },
   "style_notes": "Anlatım tonu hafif alaycı, gözlemci ve karakter odaklıdır; cümleler kısa, net ve karakterlerin iç dünyalarına veya sosyal statülerine dair ironik detaylar içermelidir.",
   "summaries": [
-    "Chapter 10: Gyouyoh: İmparatorun tek oğlu Gyouyoh, kronik mide ağrısı ve kilo kaybı nedeniyle zorunlu ilaç kullanımıyla mücadele ederken, sadık koruması Gaoshun ona hem fiziksel hem de duygusal destek sağlamaktadır. Metin, Gyouyoh'un özgürlükten yoksun, sürekli izlenen ve hastalığıyla başa çıkmaya çalışan kırılgan durumunu vurgular.",
     "Chapter 11: The Special Unit: Maomao, Dr. Liu, Luomen ve Dr. Tairan'ın da aralarında bulunduğu önemli doktorların, İmparator için hazırlanan özel birim toplantısına sekreter olarak katılır. Toplantıda, yeniden oluşturulan Kada'nın Kitabı'ndaki otopsi çizimleri incelenirken, ilaç denemelerindeki bireysel farklılıklar ve tedavi sonuçları tartışılır.",
     "Chapter 12: Explanation and Agreement: İmparator'un gizli ameliyatının sızması ve tedavi sürecine dış müdahaleler, Maomao'nun ilaç hazırlarken Liu Teyze tarafından uyarılmasına neden olur. Metin, İmparator'un kronik hastalığı, hekimlerin baskısı ve Dr. Liu'nun aile üyelerini işe alarak riski minimize etme stratejisi etrafında şekillenir.",
     "Chapter 13: Sowing Seeds: Jinshi, saraydaki siyasi baskılarla başa çıkmaya çalışırken yardımcısı Basen ve gizli çalışan Baryou ile etkileşime girer. Öğle yemeğinde harem kadını Maamei, Majesteleri'nin eşleri hakkındaki kritik gelişmeleri aktararak Jinshi'yi saraydaki güç dengeleri konusunda bilgilendirir.",
-    "Chapter 14: The Patient’s Consent: Ameliyat öncesi hazırlıklar sırasında rahat tavırlarıyla dikkat çeken Tianyu'nun yetenekli ama sorumsuz karakteri tartışılırken, Maomao ve Liu Teyze İmparator'un iyileşme süreci için gerekli malzemeleri düzenler. Bu sırada özel izinle gelen Chue Hanım, kolundaki iyileşmeyi kontrol ettirmek üzere Maomao'dan yardım ister."
+    "Chapter 14: The Patient’s Consent: Ameliyat öncesi hazırlıklar sırasında rahat tavırlarıyla dikkat çeken Tianyu'nun yetenekli ama sorumsuz karakteri tartışılırken, Maomao ve Liu Teyze İmparator'un iyileşme süreci için gerekli malzemeleri düzenler. Bu sırada özel izinle gelen Chue Hanım, kolundaki iyileşmeyi kontrol ettirmek üzere Maomao'dan yardım ister.",
+    "Chapter 15: Confession—The Surface: Maomao, Chue'nün gözetiminde İmparatorluk ailesinin özel salonuna giderken, geçmişte yaşadığı travmatik anıları hatırlayarak derin bir kaygı duyar. Chue'nün nöbette kalmasıyla yalnız kalacak olan Maomao, İmparator ve Gaoshun ile yapacağı görüşmeden kaçınmak ister."
   ]
 }
