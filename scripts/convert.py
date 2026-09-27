@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 from lxml import etree
 
 from lib.git_utils import read_status, write_status, open_pr, current_branch
+from lib.web_ingest import push_book
 
 STATUS_FILE = "status.json"
 
@@ -103,6 +104,30 @@ def find_original_epub(book_slug):
     if os.path.exists(backup_path):
         return backup_path
     return None
+
+
+def get_book_metadata(book_slug, original_epub_path):
+    """
+    eptran-web'e (push_book) gönderilecek başlık/yazarı, orijinal epub'ın
+    DC metadata'sından çıkarır — build_epub()'ın kendi içinde zaten
+    yaptığı title çıkarımıyla AYNI mantık, burada ayrıca author da
+    okunuyor (build_epub bunu hiç kullanmıyordu, epub'ın kendi
+    <meta name="author"> alanı zaten epub içine gömülü kalıyordu).
+
+    Orijinal epub yoksa (PDF/bağımsız metin modu) ya da DC metadata boşsa,
+    slug'dan türetilmiş nötr bir başlığa ve None yazara düşer — bu kalıcı
+    bir sorun değil: eptran-web aynı sourceKey ile bir sonraki gönderimde
+    title/author'ı günceller (bkz. ingest.ts), yalnızca ilk görünüşte
+    kaba bir başlık olur.
+    """
+    if original_epub_path and os.path.exists(original_epub_path):
+        original_book = epub.read_epub(original_epub_path)
+        title_meta = original_book.get_metadata('DC', 'title')
+        author_meta = original_book.get_metadata('DC', 'creator')
+        title = title_meta[0][0] if title_meta else book_slug.replace("_", " ")
+        author = author_meta[0][0] if author_meta else None
+        return title, author
+    return book_slug.replace("_", " "), None
 
 
 def get_spine_order(original_book):
@@ -252,7 +277,7 @@ def build_epub(book_slug, chapters, original_epub_path, output_path):
     else:
         print("Orijinal epub bulunamadı — PDF veya bağımsız metin modunda derleniyor.")
         book.set_title(book_slug.replace("_", " "))
-        
+
         images_dir = f"output/{book_slug}/images"
         if os.path.exists(images_dir):
             for img_name in sorted(os.listdir(images_dir)):
@@ -260,7 +285,7 @@ def build_epub(book_slug, chapters, original_epub_path, output_path):
                 if os.path.isdir(img_path):
                     continue
                 ext = os.path.splitext(img_name)[1].lower()
-                
+
                 if ext in ('.jpg', '.jpeg'):
                     m_type = "image/jpeg"
                 elif ext == '.png':
@@ -271,10 +296,10 @@ def build_epub(book_slug, chapters, original_epub_path, output_path):
                     m_type = "image/webp"
                 else:
                     continue
-                    
+
                 with open(img_path, "rb") as f_img:
                     img_content = f_img.read()
-                    
+
                 epub_img_item = epub.EpubItem(
                     uid=f"img_{re.sub(r'[^a-zA-Z0-9_]', '_', img_name)}",
                     file_name=f"Images/{img_name}",
@@ -282,7 +307,7 @@ def build_epub(book_slug, chapters, original_epub_path, output_path):
                     content=img_content
                 )
                 book.add_item(epub_img_item)
-            
+
             cover_candidates = [f for f in os.listdir(images_dir) if f.startswith("page_1_img_1") or f.startswith("page_2_img_1")]
             if cover_candidates:
                 cover_name = sorted(cover_candidates)[0]
@@ -368,18 +393,25 @@ def main():
 
     print("Dönüşüm tamamlandı.")
 
+    # eptran-web'e (Turso DB'ye) kitabı gönder — bkz. lib/web_ingest.py.
+    # Bu adım main'e giden PR'dan BAĞIMSIZ ve fail-soft: WEB_INGEST_URL/
+    # WEB_INGEST_SECRET tanımlı değilse ya da istek başarısız olursa
+    # sadece uyarı basar, PR açma akışını hiçbir şekilde durdurmaz.
+    title, author = get_book_metadata(book_slug, original_epub_path)
+    push_book(book_slug, epub_out, title, author)
+
     # Kitap tamamen bitti: çeviri + review + ciltleme. Bu, tüm sürecin TEK
     # onay noktası — kitap dalından (book/<slug>) main'e bir PR açılıyor.
     # Sen PR'ı inceleyip merge edene kadar main'de hiçbir şey değişmiyor.
     branch = current_branch()
-    title = f"📖 {book_slug.replace('_', ' ')} — çeviri tamamlandı"
+    title_line = f"📖 {book_slug.replace('_', ' ')} — çeviri tamamlandı"
     body = (
         f"**{len(chapters)} bölüm** çevrildi, review edildi ve `{epub_out}` "
         f"olarak ciltlendi.\n\n"
         f"Bu PR, `{branch}` dalındaki TÜM süreci (çeviri + review + epub) "
         f"main'e taşıyor — merge etmeden önce dilediğin kadar inceleyebilirsin."
     )
-    open_pr(branch, title, body)
+    open_pr(branch, title_line, body)
 
 
 if __name__ == "__main__":

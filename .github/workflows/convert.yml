@@ -77,4 +77,6 @@ jobs:
         if: steps.check.outputs.needed == 'yes'
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          WEB_INGEST_URL: ${{ secrets.WEB_INGEST_URL }}
+          WEB_INGEST_SECRET: ${{ secrets.WEB_INGEST_SECRET }}
         run: python scripts/convert.py
