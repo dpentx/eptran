@@ -43,7 +43,9 @@
     "Middle-Height Peer": "Orta Boy Akran",
     "Moon Prince": "Ay Prens",
     "Xiaohong": "Xiaohong",
-    "Xiaomao": "Xiaomao"
+    "Xiaomao": "Xiaomao",
+    "Lihaku": "Lihaku",
+    "Tairan": "Tairan"
   },
   "terms": {
     "Kada’s Book": "Kada'nın Kitabı",
@@ -84,14 +86,15 @@
     "book repair room": "kitap onarım odası",
     "empress regnant": "hükümdar imparatoriçe",
     "empress dowager": "dul imparatoriçe",
-    "brand in his flank": "yanına dövme vurulmuş"
+    "brand in his flank": "yanına dövme vurulmuş",
+    "western capital": "Batı Başkenti"
   },
   "style_notes": "Anlatım tonu hafif alaycı, gözlemci ve karakter odaklıdır; cümleler kısa, net ve karakterlerin iç dünyalarına veya sosyal statülerine dair ironik detaylar içermelidir.",
   "summaries": [
-    "Chapter 2: Smallpox and Chickenpox: Maomao, saray kadını Yo'dan çiçek hastalığı izlerini inceleme fırsatı bulur ve Kokuyou'nun uyguladığı tedavinin bireyler üzerindeki değişken etkilerini not alır.",
     "Chapter 3: Reassignment: Maomao, saraydaki en büyük ilaç deposuna nakledilir ve burada Uzun Kıdemli, Kısa Kıdemli ile Orta Boy Eşit adlı diğer yeni atananlarla birlikte Luomen'in gözetiminde ilaç hazırlama işine başlar. Grup, rabarbar kökü ve mu dan pi gibi malzemelerle hazırlanan karışımların hangi hastalıklara yönelik olduğunu tartışarak görevlerine devam eder.",
     "Chapter 4: Drug Trials: Luomen'in talimatıyla Maomao ve Kısa Kıdemli, ilaç denemeleri için sarayla klinik arasında çiftler halinde çalışmaya başlar. Maomao, Kısa Kıdemli'nin yetkinliğine hayran kalırken, klinikteki kâğıt kalitesinin yetersizliği nedeniyle şarlatan doktorun ailesinden malzeme temin etme planı yapar.",
     "Chapter 5: A Book Restored: Maomao, Ay Prens tarafından çağrıldığını öğrenince heyecanla yola çıkar ve at arabasında Tianyu ile karşılaşır. Tianyu'nun elindeki cerrahi korkulukları, onun otopsi işleriyle meşgul olduğunu gösterirken, Maomao'nun aklında ise yeni bulunan Kada'nın Kitabı vardır.",
-    "Chapter 6: The Patient: Maomao, Jinshi'nin gizli bir hastalığı olup olmadığını anlamak için odasına gider ve onu aşırı yorgunlukla uyarır. Bu sırada Chue de hastalığı olduğunu öğrenir ve hayal kırıklığıyla ayrılırken, Maomao imparatorluk ailesiyle ilgili kritik bir konuyu açmaya hazırlanır."
+    "Chapter 6: The Patient: Maomao, Jinshi'nin gizli bir hastalığı olup olmadığını anlamak için odasına gider ve onu aşırı yorgunlukla uyarır. Bu sırada Chue de hastalığı olduğunu öğrenir ve hayal kırıklığıyla ayrılırken, Maomao imparatorluk ailesiyle ilgili kritik bir konuyu açmaya hazırlanır.",
+    "Chapter 7: A Man’s Romance: Maomao, İmparator'un hastalığına dair sırrı öğrendikten sonra Uzun Kıdemli ile sarayda ilaç hazırlama sürecinde çalışır ve arka saraydaki görev geçmişini anlatır. Bu bölümde, Maomao'nun arka sarayın zorlu ve rekabetçi ortamına dair gözlemleri ile Uzun Kıdemli'nin merakı öne çıkar."
   ]
 }
