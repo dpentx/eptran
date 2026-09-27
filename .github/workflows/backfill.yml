@@ -1,0 +1,31 @@
+name: Backfill eptran-web ingest
+
+# Tek seferlik ihtiyaç için: PR #19'dan ÖNCE tamamlanmış, main'deki
+# output/*/*.epub kitaplarını eptran-web'e gönderir. İleride ingest
+# geçici olarak başarısız olursa (örn. secret rotasyonu sırasında)
+# tekrar elle tetiklenebilir — idempotent, aynı kitabı ikinci kez
+# göndermek zararsız (ingest.ts sourceKey'e göre upsert yapıyor).
+on:
+  workflow_dispatch: {}
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run backfill
+        env:
+          WEB_INGEST_URL: ${{ secrets.WEB_INGEST_URL }}
+          WEB_INGEST_SECRET: ${{ secrets.WEB_INGEST_SECRET }}
+        run: python scripts/backfill_ingest.py
