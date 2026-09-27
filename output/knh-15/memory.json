@@ -42,7 +42,8 @@
     "Short Senior": "Kısa Kıdemli",
     "Middle-Height Peer": "Orta Boy Akran",
     "Moon Prince": "Ay Prens",
-    "Xiaohong": "Xiaohong"
+    "Xiaohong": "Xiaohong",
+    "Xiaomao": "Xiaomao"
   },
   "terms": {
     "Kada’s Book": "Kada'nın Kitabı",
@@ -80,14 +81,17 @@
     "buckwheat": "karabuğday",
     "paulownia-wood box": "paulownia ahşap kutusu",
     "drug trials": "ilaç denemeleri",
-    "book repair room": "kitap onarım odası"
+    "book repair room": "kitap onarım odası",
+    "empress regnant": "hükümdar imparatoriçe",
+    "empress dowager": "dul imparatoriçe",
+    "brand in his flank": "yanına dövme vurulmuş"
   },
   "style_notes": "Anlatım tonu hafif alaycı, gözlemci ve karakter odaklıdır; cümleler kısa, net ve karakterlerin iç dünyalarına veya sosyal statülerine dair ironik detaylar içermelidir.",
   "summaries": [
-    "Chapter 1: The Selection Exam: Maomao ve Dr. Li, askerler arasındaki kavgaların azalmasıyla sakinleşen ortamda mola odasını temizlerken, Dr. Tianyu'nun beklenmedik ziyaretiyle karşılaşır. Tianyu'nun Maomao'ya \"Niangniang\" diye hitap etmesi ve Dr. Li'nin sert tepkisi, karakterler arasındaki gerilimi ve Maomao'nun gizemli geçmişine dair ipuçlarını ortaya koyar.",
     "Chapter 2: Smallpox and Chickenpox: Maomao, saray kadını Yo'dan çiçek hastalığı izlerini inceleme fırsatı bulur ve Kokuyou'nun uyguladığı tedavinin bireyler üzerindeki değişken etkilerini not alır.",
     "Chapter 3: Reassignment: Maomao, saraydaki en büyük ilaç deposuna nakledilir ve burada Uzun Kıdemli, Kısa Kıdemli ile Orta Boy Eşit adlı diğer yeni atananlarla birlikte Luomen'in gözetiminde ilaç hazırlama işine başlar. Grup, rabarbar kökü ve mu dan pi gibi malzemelerle hazırlanan karışımların hangi hastalıklara yönelik olduğunu tartışarak görevlerine devam eder.",
     "Chapter 4: Drug Trials: Luomen'in talimatıyla Maomao ve Kısa Kıdemli, ilaç denemeleri için sarayla klinik arasında çiftler halinde çalışmaya başlar. Maomao, Kısa Kıdemli'nin yetkinliğine hayran kalırken, klinikteki kâğıt kalitesinin yetersizliği nedeniyle şarlatan doktorun ailesinden malzeme temin etme planı yapar.",
-    "Chapter 5: A Book Restored: Maomao, Ay Prens tarafından çağrıldığını öğrenince heyecanla yola çıkar ve at arabasında Tianyu ile karşılaşır. Tianyu'nun elindeki cerrahi korkulukları, onun otopsi işleriyle meşgul olduğunu gösterirken, Maomao'nun aklında ise yeni bulunan Kada'nın Kitabı vardır."
+    "Chapter 5: A Book Restored: Maomao, Ay Prens tarafından çağrıldığını öğrenince heyecanla yola çıkar ve at arabasında Tianyu ile karşılaşır. Tianyu'nun elindeki cerrahi korkulukları, onun otopsi işleriyle meşgul olduğunu gösterirken, Maomao'nun aklında ise yeni bulunan Kada'nın Kitabı vardır.",
+    "Chapter 6: The Patient: Maomao, Jinshi'nin gizli bir hastalığı olup olmadığını anlamak için odasına gider ve onu aşırı yorgunlukla uyarır. Bu sırada Chue de hastalığı olduğunu öğrenir ve hayal kırıklığıyla ayrılırken, Maomao imparatorluk ailesiyle ilgili kritik bir konuyu açmaya hazırlanır."
   ]
 }
