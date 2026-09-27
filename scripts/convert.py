@@ -398,7 +398,7 @@ def main():
     # WEB_INGEST_SECRET tanımlı değilse ya da istek başarısız olursa
     # sadece uyarı basar, PR açma akışını hiçbir şekilde durdurmaz.
     title, author = get_book_metadata(book_slug, original_epub_path)
-    push_book(book_slug, epub_out, title, author)
+    push_book(book_slug, chapters, title, author)
 
     # Kitap tamamen bitti: çeviri + review + ciltleme. Bu, tüm sürecin TEK
     # onay noktası — kitap dalından (book/<slug>) main'e bir PR açılıyor.
