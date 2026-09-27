@@ -1,14 +1,14 @@
 {
-  "status": "running",
+  "status": "completed",
   "book": "knh-15",
   "epub_file": "knh-15.epub",
   "branch": "book/knh-15",
   "source_type": "epub",
   "total": 24,
   "completed": 24,
-  "current_chapter": "Copyright",
+  "current_chapter": "",
   "started_at": "2026-09-27T15:15:15.112591+00:00",
   "queue_mode": true,
   "series": "kusuriya",
-  "updated_at": "2026-09-27T16:22:06.898444+00:00"
+  "updated_at": "2026-09-27T16:22:09.245753+00:00"
 }
