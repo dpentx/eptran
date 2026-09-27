@@ -36,7 +36,8 @@
     "Dr. You": "Dr. You",
     "Vice Minister Lu": "Bakan Yardımcısı Lu",
     "Dr. Tianyu": "Dr. Tianyu",
-    "Shi clan": "Shi Klanı"
+    "Shi clan": "Shi Klanı",
+    "Kokuyou": "Kokuyou"
   },
   "terms": {
     "Kada’s Book": "Kada'nın Kitabı",
@@ -63,11 +64,13 @@
     "Master Gyoku-ou": "Gyoku-ou Efendi",
     "resurrection drug": "diriltme ilacı",
     "medicine storage room": "ilaç deposu",
-    "medicine-making test": "ilaç hazırlama sınavı"
+    "medicine-making test": "ilaç hazırlama sınavı",
+    "NOTICE OF REASSIGNMENT": "Görev Yeri Değişikliği Bildirimi"
   },
   "style_notes": "Anlatım tonu hafif alaycı, gözlemci ve karakter odaklıdır; cümleler kısa, net ve karakterlerin iç dünyalarına veya sosyal statülerine dair ironik detaylar içermelidir.",
   "summaries": [
     "Character Profiles: Maomao, saray tıp bürosunda görev yaparken biyolojik babası Lakan ve yeni yardımcısı Hulan'a karşı derin bir nefret beslerken, Jinshi ve İmparatoriçe Gyokuyou gibi sarayın önemli figürleriyle iç içe geçer. Metin, saraydaki siyasi entrikalar ve karakterler arası karmaşık ilişkileri öne çıkaran geniş bir karakter profili sunmaktadır.",
-    "Chapter 1: The Selection Exam: Maomao ve Dr. Li, askerler arasındaki kavgaların azalmasıyla sakinleşen ortamda mola odasını temizlerken, Dr. Tianyu'nun beklenmedik ziyaretiyle karşılaşır. Tianyu'nun Maomao'ya \"Niangniang\" diye hitap etmesi ve Dr. Li'nin sert tepkisi, karakterler arasındaki gerilimi ve Maomao'nun gizemli geçmişine dair ipuçlarını ortaya koyar."
+    "Chapter 1: The Selection Exam: Maomao ve Dr. Li, askerler arasındaki kavgaların azalmasıyla sakinleşen ortamda mola odasını temizlerken, Dr. Tianyu'nun beklenmedik ziyaretiyle karşılaşır. Tianyu'nun Maomao'ya \"Niangniang\" diye hitap etmesi ve Dr. Li'nin sert tepkisi, karakterler arasındaki gerilimi ve Maomao'nun gizemli geçmişine dair ipuçlarını ortaya koyar.",
+    "Chapter 2: Smallpox and Chickenpox: Maomao, saray kadını Yo'dan çiçek hastalığı izlerini inceleme fırsatı bulur ve Kokuyou'nun uyguladığı tedavinin bireyler üzerindeki değişken etkilerini not alır."
   ]
 }
