@@ -1,34 +1,30 @@
 {
-  "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-13 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
-  "source_book": "knh-13",
+  "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-15 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
+  "source_book": "knh-15",
   "new_characters": {
-    "Yao": "Yao",
+    "The Emperor": "İmparator",
     "Ah-Duo": "Ah-Duo",
     "Suirei": "Suirei",
-    "Consort Lihua": "Lihua Konsortu",
-    "Meimei": "Meimei",
-    "Pairin": "Pairin",
-    "Joka": "Joka",
+    "Lihua": "Lihua",
+    "Loulan": "Loulan",
+    "Zui": "Zui (İmparatorun gerçek adı)",
+    "Yue": "Yue (Jinshi'nin gerçek adı)",
     "Lihaku": "Lihaku",
-    "Hongniang": "Hongniang",
-    "Dr. Liu": "Dr. Liu",
-    "Dr. Li": "Dr. Li"
+    "Auntie Liu": "Teyze Liu"
   },
   "new_terms": {
     "rear palace": "arka saray",
-    "western capital": "batı başkenti",
-    "royal capital": "imparatorluk başkenti",
-    "Verdigris House": "Yosma Evi",
-    "Three Princesses": "Üç Prenses",
-    "jade tablet": "yeşim tablet",
-    "La clan": "La Klanı",
-    "Shi clan": "Shi Klanı"
+    "royal court": "imparatorluk sarayı",
+    "high consort": "yüksek eş",
+    "lady-in-waiting": "harem kadını",
+    "Mafeisan": "Mafeisan",
+    "western capital": "Batı Başkenti",
+    "Jade Pavilion": "Yeşim Köşkü"
   },
   "new_notes": [
-    "Lahan's Brother karakteri için çeviri hafızasında hem 'Lahan'ın Abisi' hem de 'Lahan'ın Kardeşi' kullanılmıştır. Glossary'deki 'Lahan'ın Kardeşi' kullanımı tutarlılık adına korunmalıdır.",
-    "Dr. Liu, Dr. Li ve glossary'de zaten kayıtlı olan Dr. You isimleri birbirine çok benzer saray hekimleridir, çeviride karıştırılmamalıdır.",
-    "Pairin, Joka ve Meimei, Verdigris House'un (Yosma Evi) en prestijli üç fahişesidir ve birlikte 'Three Princesses' (Üç Prenses) olarak anılırlar.",
-    "Yao ve En'en yakın bir ikilidir; Yao tıp eğitimi alan asil bir saray hanımı, En'en ise onun koruyucusu ve hizmetçisidir.",
-    "Ah-Duo, eski bir imparatorluk konsortudur ve gizli planlar doğrultusunda Suirei ile Shi klanının hayatta kalan üyelerini koruması altında tutmaktadır."
+    "Suirei (eski saray hanımı/komplocu) ve Suiren (Jinshi'nin yaşlı süt annesi) isimleri birbirine çok yakındır, kesinlikle karıştırılmamalıdır.",
+    "Zui, İmparator'un gerçek adıdır; Yue ise Jinshi'nin gerçek adıdır. Bu isimler hanedanın en mahrem sırlarından olup sadece çok özel bağlamlarda kullanılır.",
+    "Lihua (Lihua Hanım) ve Lishu (Lishu Hanım) saraydaki farklı yüksek eşlerdir (consort), isim benzerliği nedeniyle çeviride karıştırılmamalıdır.",
+    "Kitap listesinde 'rhubarb root' için 'rengarenk kökü' karşılığı verilmiştir; ancak bu bitki tıbbi literatürde ve Türkçe botanik dilinde 'ravent kökü' olarak bilinir. Gelecek ciltlerde tutarlılık adına bu çeviri tercihi gözden geçirilebilir."
   ]
 }
