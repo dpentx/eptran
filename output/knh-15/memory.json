@@ -34,7 +34,9 @@
     "Gyokuen": "Gyokuen",
     "Taomei": "Taomei",
     "Dr. You": "Dr. You",
-    "Vice Minister Lu": "Bakan Yardımcısı Lu"
+    "Vice Minister Lu": "Bakan Yardımcısı Lu",
+    "Dr. Tianyu": "Dr. Tianyu",
+    "Shi clan": "Shi Klanı"
   },
   "terms": {
     "Kada’s Book": "Kada'nın Kitabı",
@@ -58,10 +60,14 @@
     "quack doctor": "şarlatan doktor",
     "The Quack Doctor": "şartlatan doktor",
     "Master Gyokuen": "Gyokuen Efendi",
-    "Master Gyoku-ou": "Gyoku-ou Efendi"
+    "Master Gyoku-ou": "Gyoku-ou Efendi",
+    "resurrection drug": "diriltme ilacı",
+    "medicine storage room": "ilaç deposu",
+    "medicine-making test": "ilaç hazırlama sınavı"
   },
   "style_notes": "Anlatım tonu hafif alaycı, gözlemci ve karakter odaklıdır; cümleler kısa, net ve karakterlerin iç dünyalarına veya sosyal statülerine dair ironik detaylar içermelidir.",
   "summaries": [
-    "Character Profiles: Maomao, saray tıp bürosunda görev yaparken biyolojik babası Lakan ve yeni yardımcısı Hulan'a karşı derin bir nefret beslerken, Jinshi ve İmparatoriçe Gyokuyou gibi sarayın önemli figürleriyle iç içe geçer. Metin, saraydaki siyasi entrikalar ve karakterler arası karmaşık ilişkileri öne çıkaran geniş bir karakter profili sunmaktadır."
+    "Character Profiles: Maomao, saray tıp bürosunda görev yaparken biyolojik babası Lakan ve yeni yardımcısı Hulan'a karşı derin bir nefret beslerken, Jinshi ve İmparatoriçe Gyokuyou gibi sarayın önemli figürleriyle iç içe geçer. Metin, saraydaki siyasi entrikalar ve karakterler arası karmaşık ilişkileri öne çıkaran geniş bir karakter profili sunmaktadır.",
+    "Chapter 1: The Selection Exam: Maomao ve Dr. Li, askerler arasındaki kavgaların azalmasıyla sakinleşen ortamda mola odasını temizlerken, Dr. Tianyu'nun beklenmedik ziyaretiyle karşılaşır. Tianyu'nun Maomao'ya \"Niangniang\" diye hitap etmesi ve Dr. Li'nin sert tepkisi, karakterler arasındaki gerilimi ve Maomao'nun gizemli geçmişine dair ipuçlarını ortaya koyar."
   ]
 }
