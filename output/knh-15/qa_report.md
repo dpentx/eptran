@@ -1,6 +1,6 @@
 # QA Raporu — knh-15
 
-**Günlük Gemini kotası tükendiği için durduruldu — 11/24 bölüm tarandı. Script'i tekrar çalıştırınca kaldığı yerden devam edecek (baştan başlamayacak).**
+**Toplam 43 şüpheli nokta bulundu (13/24 bölüm başarıyla tarandı, 11 bölüm denetlenemedi).**
 
 *Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru kabul etmeyin — her maddeyi kaynakla birlikte kendiniz kontrol edin. Bazı işaretlemeler yanlış pozitif olabilir (bkz. script docstring'i).*
 
@@ -219,3 +219,31 @@ It seemed unlikely that actual meat was the issue at hand."*
   - Kaynak: *"“A young lady from the Empress’s faction was admitted to the rear palace at the same time and made a middle consort,” Maamei said."*
   - Çeviri: *""İmparatoriçe'nin fraksiyonundan genç bir hanım da aynı anda arka saraya kabul edildi ve Üst Düzey Konsort yapıldı," dedi Maamei."*
 
+## Bölüm 15: Chapter 14: The Patient’s Consent — 2 sorun
+- **ANLAM_KAYMASI**: Kaynaktaki ifade Maomao'nun kendisinin neden çağrıldığını teyit etmelerini istemesi anlamına gelirken, çeviride karşı tarafın kendisinden bunu onaylamasını istemesi gibi tamamen ters ve mantıksız bir anlam ortaya çıkmıştır.
+  - Kaynak: *"“May I ask you to confirm why I was called here?” she said."*
+  - Çeviri: *"“Neden buraya çağrıldığımı onaylamamı rica edebilir misin?” dedi."*
+- **ANLAM_KAYMASI**: 'couldn't help imagining' (hayal etmekten kendini alamadı) ifadesi, çeviride 'canlandıramadı' (hayal edemedi) şeklinde çevrilerek tam tersi bir anlam verilmiştir.
+  - Kaynak: *"He was in no shape to drink, so he was probably thinking of tea, but Maomao couldn’t help imagining a lavish banquet."*
+  - Çeviri: *"İçecek durumda değildi, bu yüzden muhtemelen çay düşünüyordu, ama Maomao zihninde görkemli bir ziyafet canlandıramadı."*
+
+## Bölüm 16: Chapter 15: Confession—The Surface
+*(Denetlenemedi.)*
+
+## Bölüm 17: Chapter 16: Confession—The Secret
+*(Denetlenemedi.)*
+
+## Bölüm 18: Chapter 17: Anxiety
+*(Denetlenemedi.)*
+
+## Bölüm 19: Chapter 18: Before the Surgery
+*(Denetlenemedi.)*
+
+## Bölüm 20: Chapter 19: During the Surgery
+*(Denetlenemedi.)*
+
+## Bölüm 21: Chapter 20: After the Surgery
+*(Denetlenemedi.)*
+
+## Bölüm 22: Epilogue
+*(Denetlenemedi.)*
