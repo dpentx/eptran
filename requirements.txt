@@ -8,3 +8,4 @@ pypdf
 pymupdf
 google-genai
 requests
+Pillow
