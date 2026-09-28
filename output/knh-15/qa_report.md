@@ -1,6 +1,6 @@
 # QA Raporu — knh-15
 
-**Günlük Gemini kotası tükendiği için durduruldu — 10/24 bölüm tarandı. Script'i tekrar çalıştırınca kaldığı yerden devam edecek (baştan başlamayacak).**
+**Günlük Gemini kotası tükendiği için durduruldu — 11/24 bölüm tarandı. Script'i tekrar çalıştırınca kaldığı yerden devam edecek (baştan başlamayacak).**
 
 *Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru kabul etmeyin — her maddeyi kaynakla birlikte kendiniz kontrol edin. Bazı işaretlemeler yanlış pozitif olabilir (bkz. script docstring'i).*
 
@@ -218,3 +218,4 @@ It seemed unlikely that actual meat was the issue at hand."*
 - **ANLAM_KAYMASI**: "middle consort" (orta düzey eş) ifadesi "Üst Düzey Konsort" (upper consort) olarak yanlış çevrilmiştir.
   - Kaynak: *"“A young lady from the Empress’s faction was admitted to the rear palace at the same time and made a middle consort,” Maamei said."*
   - Çeviri: *""İmparatoriçe'nin fraksiyonundan genç bir hanım da aynı anda arka saraya kabul edildi ve Üst Düzey Konsort yapıldı," dedi Maamei."*
+
