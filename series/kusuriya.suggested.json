@@ -5,31 +5,27 @@
     "Ah-Duo": "Ah-Duo",
     "Suirei": "Suirei",
     "Lihua": "Lihua",
+    "Loulan": "Loulan",
     "Lihaku": "Lihaku",
     "Hongniang": "Hongniang",
     "Zui": "Zui (İmparatorun gerçek adı)",
     "Yue": "Yue (Jinshi'nin gerçek adı)",
-    "Auntie Liu": "Teyze Liu",
-    "Loulan": "Loulan",
     "Shi clan": "Shi Klanı"
   },
   "new_terms": {
     "rear palace": "arka saray",
-    "royal court": "imparatorluk sarayı",
-    "medical office": "tıp bürosu",
-    "high consort": "yüksek eş",
-    "lady-in-waiting": "harem kadını",
-    "resurrection drug": "diriltme ilacı",
-    "western capital": "Batı Başkenti",
+    "Jade Pavilion": "Yeşim Köşkü",
     "Mafeisan": "Mafeisan",
-    "tasters": "Deneme Yiyicileri",
-    "Pure Consort": "Saflık Konsortu"
+    "Pure Consort": "Saflık Konsortu",
+    "Precious one": "Değerli Konsort",
+    "mouchouen": "Kör bağırsak iltihabı",
+    "chuusuien": "Apandisit"
   },
   "new_notes": [
-    "İmparator'un gerçek adı 'Zui', Jinshi'nin gerçek adı ise 'Yue'dir (veya Ka Zuigetsu). Bu isimler hikayede yüksek sır niteliğindedir ve kimlik ifşasını önlemek için dikkatli çevrilmelidir.",
-    "Suirei (Shi Klanı üyesi, şifacı) ile Suiren (Jinshi'nin süt annesi) isimleri fonetik olarak birbirine çok yakındır ancak tamamen farklı karakterlerdir, karıştırılmamalıdır.",
-    "Ah-Duo, eski Saflık Konsortu (Pure Consort) olup Jinshi'nin biyolojik annesidir. İmparator ile olan geçmişi ve Jinshi ile olan bağı serinin ana gizemlerindendir.",
-    "Lihua (Lihua) ve Lishu (Lishu Hanım) saraydaki farklı yüksek eşlerdir (high consort). Lihua, Kristal Köşk'ün sahibidir; Lishu ise genç yaştaki konsorttur.",
-    "Batı Başkenti (western capital), Gyoku Klanı'nın (Gyoku Clan) kalesidir ve sonraki ciltlerde ana olayların geçeceği bölgedir."
+    "Suiren (Jinshi'nin süt annesi) ve Suirei (saray hanımı/simyacı) isimleri fonetik olarak birbirine çok yakındır ve tamamen farklı karakterlerdir; çeviride kesinlikle karıştırılmamalıdır.",
+    "İmparator'un gerçek adı 'Zui', Jinshi'nin gerçek adı ise 'Yue'dir. Bu isimlerin geçtiği gizli veya resmi bağlamlara dikkat edilmelidir.",
+    "Kitap terimlerinde 'rhubarb root' karşılığı olarak geçen 'rengarenk kökü' ifadesi hatalı bir çeviri olabilir; doğrusu 'ravent kökü' olmalıdır.",
+    "'lady-in-waiting' terimi için kullanılan 'harem kadını' ifadesi yerine, saray hiyerarşisini ve karakterlerin statüsünü daha iyi yansıtan 'nedime' veya 'hizmetçi hanım' kullanımı değerlendirilmelidir.",
+    "'tasters' (zehir kontrolü yapanlar) için kullanılan 'Deneme Yiyicileri' yerine Türkçe tarihsel terminolojiye daha uygun olan 'zehir deneyicileri' veya 'çeşnicibaşı' terimleri tercih edilebilir."
   ]
 }
