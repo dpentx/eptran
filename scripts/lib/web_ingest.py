@@ -24,17 +24,22 @@ import os
 
 import requests
 
+from lib.cover import load_cover
+
 INGEST_TIMEOUT_SECONDS = 60
 
 
 def push_book(book_slug: str, chapters: list, title: str,
-              author: str | None = None, description: str | None = None) -> None:
+              author: str | None = None, description: str | None = None,
+              cover: tuple | None = None) -> None:
     """
     eptran-web'in /api/ingest'ine bir kitabın TÜM bölümlerini format=txt
     olarak gönderir.
 
     chapters: convert.py'nin load_txt_chapters()'ından dönen liste —
               her eleman {"title": ..., "body": ...} içerir.
+    cover   : opsiyonel (bytes, mime). Verilmezse input/.originals/<slug>.epub'dan
+              otomatik çıkarılır (lib/cover.py). eptran-web'de kapak olarak saklanır.
 
     WEB_INGEST_URL   : örn. https://eptran-web-virid.vercel.app/api/ingest
     WEB_INGEST_SECRET: eptran-web'deki INGEST_SECRET ile AYNI değer
@@ -68,6 +73,16 @@ def push_book(book_slug: str, chapters: list, title: str,
         fname = f"{i + 1:03d}_{book_slug}.txt"
         files.append(("files[]", (fname, content.encode("utf-8"), "text/plain")))
 
+    # Çağıran açıkça bir kapak vermediyse orijinal epub'dan kendimiz çıkarırız
+    # (bkz. lib/cover.py) — convert.py ve backfill'in değişmesine gerek kalmaz.
+    if cover is None:
+        cover = load_cover(book_slug)
+
+    if cover:
+        cover_bytes, cover_mime = cover
+        ext = "png" if cover_mime == "image/png" else "jpg"
+        files.append(("cover", (f"cover.{ext}", cover_bytes, cover_mime)))
+
     try:
         resp = requests.post(
             url, data=data, files=files,
@@ -91,4 +106,5 @@ def push_book(book_slug: str, chapters: list, title: str,
 
     print(f"  eptran-web'e gönderildi: novelId={result.get('novelId')}, "
           f"yeni bölüm={result.get('chaptersCreated')}, "
-          f"güncellenen bölüm={result.get('chaptersUpdated')}")
+          f"güncellenen bölüm={result.get('chaptersUpdated')}, "
+          f"kapak={'evet' if result.get('coverSaved') else 'yok'}")
