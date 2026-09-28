@@ -1,5 +1,7 @@
 import os
+import posixpath
 import re
+from urllib.parse import unquote
 
 import ebooklib
 from ebooklib import epub
@@ -141,15 +143,62 @@ def get_spine_order(original_book):
     return ordered
 
 
-def extract_cover_image(original_book):
-    for item in original_book.get_items():
-        if item.get_type() == ebooklib.ITEM_IMAGE:
-            if "cover" in item.get_name().lower():
-                return item
-    for item in original_book.get_items():
-        if item.get_type() == ebooklib.ITEM_IMAGE:
-            return item
+def _image_from_spine_pages(book, pages=3):
+    """Spine'ın ilk birkaç sayfasında (tipik olarak cover.xhtml) referans
+    verilen ilk resmi döner — yayıncı kapağı metadata'ya işaretlememişse bile
+    kapak sayfası neredeyse hep spine'ın başındadır."""
+    for idref, _ in book.spine[:pages]:
+        page = book.get_item_with_id(idref)
+        if page is None or page.get_type() != ebooklib.ITEM_DOCUMENT:
+            continue
+        soup = BeautifulSoup(page.get_content(), "html.parser")
+        refs = [t.get("src") for t in soup.find_all("img")]
+        refs += [t.get("xlink:href") or t.get("href") for t in soup.find_all("image")]
+        for ref in refs:
+            if not ref:
+                continue
+            target = posixpath.normpath(
+                posixpath.join(posixpath.dirname(page.get_name()), unquote(ref))
+            )
+            img = book.get_item_with_href(target)
+            if img is not None and str(getattr(img, "media_type", "")).startswith("image/"):
+                return img
     return None
+
+
+def extract_cover_image(original_book):
+    """
+    Orijinal epub'ın GERÇEK kapak resmini bulur; bulamazsa None (yanlış bir
+    resim seçmektense kapaksız kalmak daha iyi).
+
+    NOT (Eylül 2026, gerçek üretim hatası — knh-15): Eski hâli sadece
+    ITEM_IMAGE tipine bakıyordu. EPUB3'te kapak (properties="cover-image")
+    ebooklib'de ITEM_COVER olarak okunur — yani gerçek kapak
+    (Images/Cover.jpg) hiç aday değildi; adında "cover" geçen bir ITEM_IMAGE
+    de olmayınca "ilk resim" seçiliyordu: manifest sırasına göre rastgele bir
+    ek illüstrasyon (Insert6.jpg).
+
+    Öncelik: 1) ITEM_COVER  2) EPUB2 <meta name="cover">  3) adında "cover"
+    geçen resim  4) spine'ın ilk sayfalarının (cover.xhtml) referans verdiği
+    resim.
+    """
+    for item in original_book.get_items_of_type(ebooklib.ITEM_COVER):
+        return item
+
+    try:
+        for _, attrs in original_book.get_metadata("OPF", "cover"):
+            cid = (attrs or {}).get("content")
+            item = original_book.get_item_with_id(cid) if cid else None
+            if item is not None and str(getattr(item, "media_type", "")).startswith("image/"):
+                return item
+    except Exception:
+        pass
+
+    for item in original_book.get_items_of_type(ebooklib.ITEM_IMAGE):
+        if "cover" in os.path.basename(item.get_name()).lower():
+            return item
+
+    return _image_from_spine_pages(original_book)
 
 
 def build_epub(book_slug, chapters, original_epub_path, output_path):
@@ -167,8 +216,16 @@ def build_epub(book_slug, chapters, original_epub_path, output_path):
         book_title = title_meta[0][0] if title_meta else book_slug.replace("_", " ")
         book.set_title(book_title)
 
+        cover_item = extract_cover_image(original_book)
+        cover_name = cover_item.get_name() if cover_item else None
+
         for item in original_book.get_items():
             if item.get_type() in (ebooklib.ITEM_IMAGE, ebooklib.ITEM_COVER):
+                # Kapak aşağıda set_cover() ile ayrıca ekleniyor; burada da
+                # eklersek aynı dosya iki kez yazılıyor (epub içinde
+                # duplicate zip girdisi — katı okuyucular takılabiliyor).
+                if item.get_name() == cover_name:
+                    continue
                 safe_uid = f"img_{re.sub(r'[^a-zA-Z0-9_]', '_', item.get_name())}"
                 img_item = epub.EpubItem(
                     uid=safe_uid,
@@ -178,7 +235,6 @@ def build_epub(book_slug, chapters, original_epub_path, output_path):
                 )
                 book.add_item(img_item)
 
-        cover_item = extract_cover_image(original_book)
         if cover_item:
             book.set_cover(cover_item.get_name(), cover_item.get_content())
 
@@ -398,7 +454,7 @@ def main():
     # WEB_INGEST_SECRET tanımlı değilse ya da istek başarısız olursa
     # sadece uyarı basar, PR açma akışını hiçbir şekilde durdurmaz.
     title, author = get_book_metadata(book_slug, original_epub_path)
-    push_book(book_slug, epub_out, title, author)
+    push_book(book_slug, chapters, title, author)
 
     # Kitap tamamen bitti: çeviri + review + ciltleme. Bu, tüm sürecin TEK
     # onay noktası — kitap dalından (book/<slug>) main'e bir PR açılıyor.
