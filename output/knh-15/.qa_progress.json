@@ -271,6 +271,20 @@
         "translation_quote": "\"İmparatoriçe'nin fraksiyonundan genç bir hanım da aynı anda arka saraya kabul edildi ve Üst Düzey Konsort yapıldı,\" dedi Maamei.",
         "description": "\"middle consort\" (orta düzey eş) ifadesi \"Üst Düzey Konsort\" (upper consort) olarak yanlış çevrilmiştir."
       }
+    ],
+    "15": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“May I ask you to confirm why I was called here?” she said.",
+        "translation_quote": "“Neden buraya çağrıldığımı onaylamamı rica edebilir misin?” dedi.",
+        "description": "Kaynaktaki ifade Maomao'nun kendisinin neden çağrıldığını teyit etmelerini istemesi anlamına gelirken, çeviride karşı tarafın kendisinden bunu onaylamasını istemesi gibi tamamen ters ve mantıksız bir anlam ortaya çıkmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "He was in no shape to drink, so he was probably thinking of tea, but Maomao couldn’t help imagining a lavish banquet.",
+        "translation_quote": "İçecek durumda değildi, bu yüzden muhtemelen çay düşünüyordu, ama Maomao zihninde görkemli bir ziyafet canlandıramadı.",
+        "description": "'couldn't help imagining' (hayal etmekten kendini alamadı) ifadesi, çeviride 'canlandıramadı' (hayal edemedi) şeklinde çevrilerek tam tersi bir anlam verilmiştir."
+      }
     ]
   },
   "failed": [

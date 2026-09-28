@@ -2,29 +2,34 @@
   "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-15 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
   "source_book": "knh-15",
   "new_characters": {
-    "The Emperor": "İmparator",
     "Ah-Duo": "Ah-Duo",
     "Suirei": "Suirei",
     "Lihua": "Lihua",
-    "Loulan": "Loulan",
+    "Lihaku": "Lihaku",
+    "Hongniang": "Hongniang",
     "Zui": "Zui (İmparatorun gerçek adı)",
     "Yue": "Yue (Jinshi'nin gerçek adı)",
-    "Lihaku": "Lihaku",
-    "Auntie Liu": "Teyze Liu"
+    "Auntie Liu": "Teyze Liu",
+    "Loulan": "Loulan",
+    "Shi clan": "Shi Klanı"
   },
   "new_terms": {
     "rear palace": "arka saray",
     "royal court": "imparatorluk sarayı",
+    "medical office": "tıp bürosu",
     "high consort": "yüksek eş",
     "lady-in-waiting": "harem kadını",
-    "Mafeisan": "Mafeisan",
+    "resurrection drug": "diriltme ilacı",
     "western capital": "Batı Başkenti",
-    "Jade Pavilion": "Yeşim Köşkü"
+    "Mafeisan": "Mafeisan",
+    "tasters": "Deneme Yiyicileri",
+    "Pure Consort": "Saflık Konsortu"
   },
   "new_notes": [
-    "Suirei (eski saray hanımı/komplocu) ve Suiren (Jinshi'nin yaşlı süt annesi) isimleri birbirine çok yakındır, kesinlikle karıştırılmamalıdır.",
-    "Zui, İmparator'un gerçek adıdır; Yue ise Jinshi'nin gerçek adıdır. Bu isimler hanedanın en mahrem sırlarından olup sadece çok özel bağlamlarda kullanılır.",
-    "Lihua (Lihua Hanım) ve Lishu (Lishu Hanım) saraydaki farklı yüksek eşlerdir (consort), isim benzerliği nedeniyle çeviride karıştırılmamalıdır.",
-    "Kitap listesinde 'rhubarb root' için 'rengarenk kökü' karşılığı verilmiştir; ancak bu bitki tıbbi literatürde ve Türkçe botanik dilinde 'ravent kökü' olarak bilinir. Gelecek ciltlerde tutarlılık adına bu çeviri tercihi gözden geçirilebilir."
+    "İmparator'un gerçek adı 'Zui', Jinshi'nin gerçek adı ise 'Yue'dir (veya Ka Zuigetsu). Bu isimler hikayede yüksek sır niteliğindedir ve kimlik ifşasını önlemek için dikkatli çevrilmelidir.",
+    "Suirei (Shi Klanı üyesi, şifacı) ile Suiren (Jinshi'nin süt annesi) isimleri fonetik olarak birbirine çok yakındır ancak tamamen farklı karakterlerdir, karıştırılmamalıdır.",
+    "Ah-Duo, eski Saflık Konsortu (Pure Consort) olup Jinshi'nin biyolojik annesidir. İmparator ile olan geçmişi ve Jinshi ile olan bağı serinin ana gizemlerindendir.",
+    "Lihua (Lihua) ve Lishu (Lishu Hanım) saraydaki farklı yüksek eşlerdir (high consort). Lihua, Kristal Köşk'ün sahibidir; Lishu ise genç yaştaki konsorttur.",
+    "Batı Başkenti (western capital), Gyoku Klanı'nın (Gyoku Clan) kalesidir ve sonraki ciltlerde ana olayların geçeceği bölgedir."
   ]
 }
