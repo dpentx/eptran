@@ -1,0 +1,61 @@
+{
+  "completed": {
+    "1": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "Character Profiles",
+        "translation_quote": "",
+        "description": "Bölümün başlığı olan 'Character Profiles' ifadesi Türkçe çeviride tamamen atlanmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "He’s hen-pecked and long-suffering, but he knows a side of the Emperor that few people see.",
+        "translation_quote": "Eşine bağımlı ve sabırlı bir adam, ama İmparator'un az insanın gördüğü bir yönünü biliyor.",
+        "description": "'Hen-pecked' (kılıbık, karı sözünden çıkmayan) ifadesi 'eşine bağımlı' şeklinde çevrilerek yanlış bir anlam verilmiştir."
+      }
+    ],
+    "2": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "That was all well and good, but not so much the sticks left over from late-night snacks of meat skewers, or—she couldn’t believe she was finding this—a naughty book that had clearly been passed around.",
+        "translation_quote": "Bu kadarı gayet makuldü, ama gece atıştırmalıklarından kalan et şiş çubukları ya da—bunu gördüğüne inanamıyordu—elden ele dolaşmış açıkça müstehcen bir kitap değildi.",
+        "description": "Kaynaktaki 'not so much' ifadesi, mola odasında şekerleme yapılmasının hoş karşılandığını ancak et şişlerinin ve müstehcen kitabın o kadar da hoş karşılanmadığını belirtmektedir. Çeviri ise 'müstehcen bir kitap değildi' diyerek orada bulunan şeylerin bunlar olmadığını iddia etmekte ve anlamı tamamen tersine çevirmektedir."
+      }
+    ],
+    "3": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“I realize this isn’t very polite, but may I make a request of you?” she said.",
+        "translation_quote": "“Bunun pek kibarca bir istek olmadığını biliyorum, ama senden bir ricam var mı?” dedi.",
+        "description": "\"may I make a request of you?\" (senden bir ricada bulunabilir miyim?) ifadesi yanlış anlaşılarak \"senden bir ricam var mı?\" şeklinde soruya dönüştürülmüştür."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“I have medicines to deliver,” said Maomao, entering the office and taking off her portable medicine cabinet.\n\n“Delivery’s here,” Yo echoed, imitating Maomao.\n\n“Well, well, what a sweet young thing you’ve brought with you today,” said the elderly doctor.\n\n“My name is Yo,” she told him. “I just started this year.” Evidently this was the first time they had met.\n\n“We don’t get a lot of young ladies around here. Too many rough-and-tumble types.”\n\n“I’m here,” Maomao said stiffly.\n\n“You and Miss Chue are special cases. In flower terms, I would say you’re an obako and a dandelion.”\n\nSo she was in the same category as Chue now?",
+        "translation_quote": "“Teslimat geldi,” diye yankıladı Yo, Maomao’yu taklit ederek.\n\n“Ben buradayım,” dedi Maomao sert bir şekilde.\n\n“İlk” eş, öyle mi?\n\n“İlaç teslimatım var,” dedi Maomao, odaya girip taşınabilir ilaç dolabını omuzlarından indirirken.\n\n“Vay canına, bugün yanına ne tatlı bir kız getirmişsin,” dedi yaşlı doktor.\n\n“Adım Yo,” dedi ona. “Bu yıl yeni başladım.” Görünüşe göre ilk kez tanışıyorlardı.\n\n“Burada pek genç hanımefendi görmüyoruz. Çoğu zaman kaba saba tiplerle uğraşıyoruz.”\n\n“Sen ve Chue Hanım istisnasınız. Çiçeklerle kıyaslayacak olursam, sen bir obako, o da bir karahindiba olursun.”\n\nYani artık Chue ile aynı kategoride miydi?",
+        "description": "Diyalogdaki cümlelerin sırası tamamen karışmış, konuşmanın akışı bozulmuş ve kaynağı belirsiz bir şekilde \"“İlk” eş, öyle mi?\" ifadesi eklenmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Phew... Sorry about that. Thanks for the help,” Maomao said.",
+        "translation_quote": "“İyiki... Özür dilerim. Yardımın için teşekkürler,” dedi Maomao.",
+        "description": "Rahatlama belirten \"Phew\" (Of, şükür) ünlemi, \"İyi ki\" (neyse ki) şeklinde yanlış çevrilmiştir."
+      }
+    ],
+    "4": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“I haven’t seen you since...yesterday,” she said.",
+        "translation_quote": "“Dün... senden beri görmedim,” dedi.",
+        "description": "\"I haven't seen you since...\" ifadesindeki \"you\" (seni) nesnesi yanlış anlaşılarak \"senden beri\" şeklinde çevrilmiş ve ortaya anlamsız bir Türkçe cümle çıkmıştır. Doğrusu \"Seni... dünden beri görmemiştim\" olmalıdır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "They rode along for thirty minutes until they arrived at a mansion on the outskirts of the capital.",
+        "translation_quote": "Otuz dakika boyunca sürüldüler ve başkentin dışındaki bir konakta indiler.",
+        "description": "\"They rode along\" (yol aldılar/arabayla gittiler) ifadesi, sürgün edilmek veya zorla götürülmek anlamına gelen \"sürüldüler\" kelimesiyle yanlış çevrilmiştir."
+      }
+    ]
+  },
+  "failed": []
+}
