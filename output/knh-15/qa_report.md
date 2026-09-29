@@ -133,7 +133,13 @@ It seemed unlikely that actual meat was the issue at hand."*
 ## Bölüm 9: Chapter 8: Anesthesia
 *(Denetlenemedi.)*
 
-## Bölüm 10: Chapter 9: To Everyone a Purpose — 2 sorun
+## Bölüm 10: Chapter 9: To Everyone a Purpose — 4 sorun
+- **ANLAM_KAYMASI**: "Chou-u" karakterinin adı yanlışlıkla "Chue" olarak çevrilmiştir. Chue hikayedeki başka bir karakterdir.
+  - Kaynak: *"Chou-u, the little troublemaker of the pleasure district, should have been here by all rights as well, but as a side effect of the resurrection drug he had lost his memory, and therefore could walk a different path from these other children."*
+  - Çeviri: *"Zevk mahallesinin küçük belası Chue, normal şartlarda burada olmalıydı; ancak diriltme ilacının bir yan etkisi olarak hafızasını kaybetmişti ve bu yüzden diğer çocuklardan farklı bir yol izliyordu."*
+- **İNGİLİZCE_KALINTI**: "modest" kelimesi Türkçe çeviride "Modest" olarak İngilizce bırakılmıştır.
+  - Kaynak: *"It had a modest table and four chairs; an attendant prepared tea and then promptly left."*
+  - Çeviri: *"Modest bir masa ve dört sandalye vardı; bir hizmetli çay hazırladı ve hemen çıktı."*
 - **ANLAM_KAYMASI**: "wasn't biting" (ilgilenmedi, yemi yutmadı) deyimi "hiç almadı" şeklinde yanlış ve anlamsız çevrilmiştir.
   - Kaynak: *"“I think this is a road you’d be better off not taking.” Suirei wasn’t biting, not even a little."*
   - Çeviri: *"“Bence bu, gitmemeniz gereken bir yol.” Suirei hiç almadı, en ufak bir şekilde bile."*
@@ -147,11 +153,14 @@ It seemed unlikely that actual meat was the issue at hand."*
 ## Bölüm 12: Chapter 11: The Special Unit
 *(Denetlenemedi.)*
 
-## Bölüm 13: Chapter 12: Explanation and Agreement — 1 sorun
+## Bölüm 13: Chapter 12: Explanation and Agreement — 2 sorun
 - **ATLANMIŞ**: Bölümün ilk cümlesi Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"They didn’t know where word of the surgery had leaked from."*
+- **ANLAM_KAYMASI**: 'Peony' (şakayık) kelimesi 'gelincik' (poppy) olarak yanlış çevrilmiştir. Şakayık, İmparatoriçe Gyokuyou'nun simgesidir.
+  - Kaynak: *"“We’d like to ask you to come with us,” one of the men said, showing her a peony crest."*
+  - Çeviri: *""Sizinle gelmenizi rica ediyoruz," dedi erkeklerden biri, ona bir gelincik arması göstererek."*
 
-## Bölüm 14: Chapter 13: Sowing Seeds — 1 sorun
+## Bölüm 14: Chapter 13: Sowing Seeds — 3 sorun
 - **ANLAM_KAYMASI**: Cümlelerin sırası karıştırılmış ve araya kaynakta olmayan 'İyi, iyi.' ifadesi eklenmiştir. Bu durum, karşılaştırma yapılmadan 'Ana fark şuydu' denilmesine yol açarak mantık akışını bozmuş ve anlam kaymasına sebep olmuştur.
   - Kaynak: *"The former emperor’s reprehensible behavior bore a certain resemblance to something that had led to the rebellion of the Shi clan. That episode had been in some ways a revenge drama staged by Shenmei, whom the former emperor had spurned.
 
@@ -161,6 +170,12 @@ The main difference was that after they learned of Anshi’s pregnancy, her fami
 "İyi, iyi."
 
 Önceki imparatorun kabul edilemez davranışları, Shi Klanı'nın isyanına yol açan olaylara bir benzerlik taşıyordu. O hadise, bir bakıma, önceki imparatorun reddettiği Shenmei'nin sahnelediği bir intikam dramasıydı."*
+- **ANLAM_KAYMASI**: İngilizcedeki 'great-niece' (kız/erkek kardeşin torunu, yeğen torunu) ifadesi 'torun kızı' (granddaughter) olarak çevrilmiştir. Bu durum, karakteri Dul İmparatoriçe'nin öz torunu yaparak soy ağacında ciddi bir anlam hatasına yol açmaktadır.
+  - Kaynak: *"She was the grandniece of the Empress Dowager’s half-brother, Hao—and hence also the great-niece of the Empress Dowager herself."*
+  - Çeviri: *"Dul İmparatoriçe'nin üvey erkek kardeşi Hao'nun torun kızı ve dolayısıyla Dul İmparatoriçe'nin kendisinin de torun kızıydı."*
+- **TUTARSIZ_TERİM**: Metnin önceki kısımlarında 'Pure Consort' terimi 'Saflık Konsortu', 'Precious Consort' terimi ise 'Değerli Konsort' olarak çevrilmişken, burada sırasıyla 'Saf Eş' ve 'Değerli Eş' olarak çevrilerek tutarsızlık yaratılmıştır.
+  - Kaynak: *"Which is why we don’t make her the Pure Consort, but the Precious one."*
+  - Çeviri: *"Bu yüzden onu Saf Eş değil, Değerli Eş yapıyoruz."*
 
 ## Bölüm 15: Chapter 14: The Patient’s Consent
 *(Denetlenemedi.)*
@@ -168,9 +183,18 @@ The main difference was that after they learned of Anshi’s pregnancy, her fami
 ## Bölüm 16: Chapter 15: Confession—The Surface
 *(Denetlenemedi.)*
 
-## Bölüm 17: Chapter 16: Confession—The Secret — 2 sorun
+## Bölüm 17: Chapter 16: Confession—The Secret — 5 sorun
 - **ATLANMIŞ**: Cümlenin Türkçe çevirisi metinde tamamen atlanmıştır.
   - Kaynak: *"She’d screwed it all up, thought Ah-Duo."*
+- **ANLAM_KAYMASI**: "if Maomao would be hemmed in" (Maomao'nun da köşeye sıkışıp sıkışmayacağını) ifadesi "Maomao sıkışıp kaldığında" şeklinde yanlış çevrilerek kesinlik bildiren bir zaman zarfına dönüştürülmüştür.
+  - Kaynak: *"She wanted to know what choice Yue would make, if Maomao would be hemmed in, entrapped as Ah-Duo had been."*
+  - Çeviri: *"Maomao sıkışıp kaldığında, tıpkı Ah-Duo'nun sıkışıp kaldığı gibi, Yue'nin ne seçim yapacağını bilmek istiyordu."*
+- **ANLAM_KAYMASI**: "Excuse myself" (müsaade istemek, ayrılmak) ifadesi kelimesi kelimesine "kendimi dışarıda bırakmak" şeklinde yanlış çevrilmiştir.
+  - Kaynak: *"“I suppose I should excuse myself, then.”"*
+  - Çeviri: *""Sanırım kendimi dışarıda bırakmalıyım.""*
+- **ANLAM_KAYMASI**: "Take dictation" (söylenenleri yazmak/not etmek) ifadesi, tarihsel bağlama uymayacak şekilde "daktilo tutmak" olarak son derece hatalı çevrilmiştir.
+  - Kaynak: *"“Don’t ask me to take dictation on your will."*
+  - Çeviri: *""Vasiyetin için bana daktilo tutmamı isteme."*
 - **ANLAM_KAYMASI**: Diyalog sırası tersine dönmüş ve araya kaynakta olmayan "Sen bir yük değilsin." şeklinde uydurma bir cümle eklenmiştir.
   - Kaynak: *"“I suppose you assumed that even if you had set up the Crown Prince instead of Yue, I would be there while he was young.”
 
@@ -184,13 +208,22 @@ The main difference was that after they learned of Anshi’s pregnancy, her fami
 ## Bölüm 18: Chapter 17: Anxiety
 *(Denetlenemedi.)*
 
-## Bölüm 19: Chapter 18: Before the Surgery — 1 sorun
+## Bölüm 19: Chapter 18: Before the Surgery — 2 sorun
 - **ATLANMIŞ**: Bölümün ilk cümlesi olan 'The procedure would begin at noon.' Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"The procedure would begin at noon."*
+- **ANLAM_KAYMASI**: Metindeki 'will' kelimesi İmparator'un arkasında bıraktığı 'vasiyet' anlamında kullanılmışken, çeviride 'irade' (istek/kararlılık) olarak yanlış aktarılmıştır.
+  - Kaynak: *"She didn’t know what kind of will he had left, but she was determined that it wouldn’t be necessary."*
+  - Çeviri: *"Ne tür bir iradeye sahip olduğunu bilmiyordu, ama buna ihtiyaç duyulmaması gerektiğine kararlıydı."*
 
-## Bölüm 20: Chapter 19: During the Surgery — 1 sorun
+## Bölüm 20: Chapter 19: During the Surgery — 3 sorun
 - **ATLANMIŞ**: Ameliyatın başladığını belirten bu giriş cümlesi Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"The surgery began."*
+- **ANLAM_KAYMASI**: 'must have overwhelmed him' (onu sarsmış/bunalıma sokmuş olmalıydı) şeklindeki çıkarım ifadesi, çeviride 'onu ezmeliydi' denilerek bir gereklilik/zorunluluk gibi yanlış aktarılmıştır.
+  - Kaynak: *"He’d stuck a scalpel into Dr. Liu’s dominant hand, even if he hadn’t meant to, and the shock of doing something so awful must have overwhelmed him."*
+  - Çeviri: *"Ameliyat odasındaki yere yığılan adam, birinci asistandı; üst düzey hekimlerden biriydi. İstese de istemese de bistürüyü Dr. Liu’nun baskın eline saplamıştı ve bu kadar korkunç bir şey yaptığı şoku onu ezmeliydi."*
+- **ANLAM_KAYMASI**: Buradaki 'nerves' (heyecan, gerginlik, korku) kelimesi 'sinir' (öfke, hiddet) olarak yanlış çevrilmiştir.
+  - Kaynak: *"His hand never shook from nerves."*
+  - Çeviri: *"Eli sinirinden titremiyordu."*
 
 ## Bölüm 21: Chapter 20: After the Surgery
 *(Denetlenemedi.)*
