@@ -28,6 +28,7 @@ Kullanım:
     python scripts/apply_qa_fixes.py <kitap-slug>
 """
 import argparse
+import json
 import os
 import re
 
@@ -71,6 +72,54 @@ def _parse_report(path: str) -> dict:
         if issues:
             chapters[chapter_num] = issues
     return chapters
+
+
+def _progress_path(output_dir: str) -> str:
+    return os.path.join(output_dir, ".qa_progress.json")
+
+
+def _sync_progress_checkpoint(output_dir: str, applied: list) -> None:
+    """
+    Uygulanan düzeltmeleri .qa_progress.json checkpoint'inden de siler.
+
+    NEDEN GEREKLİ (Eylül 2026, gerçek üretim hatası — knh-15): qa_audit.py
+    HER çalıştığında (yeni bölüm denetlense de denetlenmese de) rapor
+    dosyasını checkpoint'teki (progress["completed"]) issue listesinden
+    SIFIRDAN yeniden üretir (bkz. qa_audit._write_report). Bu script bir
+    maddeyi düzeltip qa_report.md'den silse bile (_sync_report), checkpoint
+    hiç güncellenmiyordu — bir sonraki qa_audit.py çalıştırmasında rapor
+    checkpoint'ten yeniden üretilirken çoktan düzeltilmiş maddeler DİRİLİP
+    rapora geri ekleniyordu. Sonuç: qa_report.md hiçbir zaman gerçekten
+    boşalamıyor, qa_status asla "completed" olamıyor, periyodik güvenlik
+    ağı da bunu görüp qa.yml'i sonsuza dek tekrar tetikliyordu — her
+    döngüde "hâlâ yeni sorun var" gibi görünüyordu, aslında aynı (çoktan
+    çözülmüş) sorunlar geri geliyordu.
+    """
+    path = _progress_path(output_dir)
+    if not os.path.exists(path):
+        return  # zaten tam denetim bitmiş (checkpoint silinmiş), yapacak bir şey yok
+
+    with open(path, encoding="utf-8") as f:
+        progress = json.load(f)
+
+    by_chapter = {}
+    for chapter_num, issue in applied:
+        by_chapter.setdefault(chapter_num, []).append(issue["translation"])
+
+    changed = False
+    for chapter_num, fixed_quotes in by_chapter.items():
+        key = str(chapter_num)
+        issues = progress.get("completed", {}).get(key)
+        if not issues:
+            continue
+        remaining = [it for it in issues if it.get("translation_quote") not in fixed_quotes]
+        if len(remaining) != len(issues):
+            progress["completed"][key] = remaining
+            changed = True
+
+    if changed:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(progress, f, ensure_ascii=False, indent=2)
 
 
 def _sync_report(report_path: str, applied: list) -> None:
@@ -222,8 +271,10 @@ def apply_fixes(slug: str, report_path: str, clients: list, key_index: list,
     if not dry_run:
         _sync_report(report_path, applied)
         if applied:
-            print(f"\nqa_report.md güncellendi: {len(applied)} düzeltilen madde "
-                  f"rapordan silindi, kalan sorunlar korundu.")
+            _sync_progress_checkpoint(output_dir, applied)
+            print(f"\nqa_report.md ve .qa_progress.json güncellendi: "
+                  f"{len(applied)} düzeltilen madde her ikisinden de silindi, "
+                  f"kalan sorunlar korundu.")
 
 
 if __name__ == "__main__":
