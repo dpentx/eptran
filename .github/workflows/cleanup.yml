@@ -7,6 +7,13 @@ name: Cleanup old book output
 # Contents API sarmalayıcılarının) push/update yapabilip dosya/klasör
 # SİLEMEMESİ yüzünden bu iş, gerçek bir git checkout + commit + push
 # yapabilen bu workflow üzerinden yürütülüyor.
+#
+# NOT (ilk deneme başarısız oldu): main korumalı ("Changes must be
+# made through a pull request") — App token'ı bile main'e DOĞRUDAN push
+# atamaz. Bu yüzden değişiklik önce ayrı bir dala push'lanıp sonra PR
+# açılıyor; PR'ı merge etmek (gerekli ama "book/*" olmayan dallarda hiç
+# çalışmayan "Kitap Bütünlük Kontrolü" check'i yüzünden) elle/M mcp
+# üzerinden yapılmalı.
 on:
   workflow_dispatch:
     inputs:
@@ -21,6 +28,7 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
       - name: Generate app token
@@ -41,6 +49,9 @@ jobs:
           git config user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
           git config user.email "${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
 
+      - name: Create branch
+        run: git checkout -b "cleanup/${{ github.run_id }}"
+
       - name: Delete book output and originals
         run: |
           IFS=',' read -ra SLUGS <<< "${{ inputs.slugs }}"
@@ -52,11 +63,16 @@ jobs:
             git rm -f --ignore-unmatch "input/.originals/$slug.epub"
           done
 
-      - name: Commit and push
+      - name: Commit, push and open PR
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           if git diff --cached --quiet; then
             echo "Silinecek bir şey bulunamadı (slug'lar zaten yok ya da yanlış yazıldı)."
           else
             git commit -m "chore: eski kitap çıktıları silindi (${{ inputs.slugs }})"
-            git push origin HEAD:main
+            git push origin "cleanup/${{ github.run_id }}"
+            gh pr create --base main --head "cleanup/${{ github.run_id }}" \
+              --title "chore: eski kitap çıktıları silindi (${{ inputs.slugs }})" \
+              --body "cleanup.yml workflow_dispatch ile tetiklendi. Silinen slug'lar: ${{ inputs.slugs }}. Bu PR'ı merge etmek main'in ruleset'i yüzünden elle (ya da M mcp üzerinden) yapılmalı."
           fi
