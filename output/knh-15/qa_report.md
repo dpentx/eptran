@@ -1,6 +1,6 @@
 # QA Raporu — knh-15
 
-**Günlük Gemini kotası tükendiği için durduruldu — 14/24 bölüm tarandı. Script'i tekrar çalıştırınca kaldığı yerden devam edecek (baştan başlamayacak).**
+**Toplam 43 şüpheli nokta bulundu (17/24 bölüm başarıyla tarandı, 7 bölüm denetlenemedi).**
 
 *Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru kabul etmeyin — her maddeyi kaynakla birlikte kendiniz kontrol edin. Bazı işaretlemeler yanlış pozitif olabilir (bkz. script docstring'i).*
 
@@ -227,3 +227,16 @@ The main difference was that after they learned of Anshi’s pregnancy, her fami
 
 ## Bölüm 21: Chapter 20: After the Surgery
 *(Denetlenemedi.)*
+
+## Bölüm 22: Epilogue — 4 sorun
+- **ATLANMIŞ**: Bölüm başlığı olan 'Epilogue' (Sonsöz) çeviride atlanmıştır.
+  - Kaynak: *"Epilogue"*
+- **ANLAM_KAYMASI**: 'He said to just leave him' (onu kendi haline bırakmamızı söyledi) ifadesi, 'Bırakın gitsin, dedi' şeklinde yanlış çevrilmiştir.
+  - Kaynak: *"“I’m very sorry. He said to just leave him—that he couldn’t afford to sleep yet,” Basen said apologetically."*
+  - Çeviri: *"“Çok özür dilerim. Bırakın gitsin, dedi — henüz uyuyamayacağını söyledi,” dedi Basen özür dileyerek."*
+- **ANLAM_KAYMASI**: 'leave enough for her' (kendisine de kalacak kadar bırakmanızı) ifadesi, çeviride 'size yetecek kadar' şeklinde yanlış aktarılmıştır.
+  - Kaynak: *"“Miss Maomao, Miss Chue hopes you’ll leave enough for her,” Chue said—she was even hungrier than Maomao."*
+  - Çeviri: *"“Maomao Hanım, Chue Hanım'ın size yetecek kadar bırakmanızı umuyor,” dedi Chue — Maomao'dan bile daha açtı."*
+- **ANLAM_KAYMASI**: 'slurped' (höpürdeterek yedi) kelimesi 'emerek yedi' şeklinde yanlış ve tuhaf bir şekilde çevrilmiştir.
+  - Kaynak: *"“I see. I’m not suited to be emperor, you say?” Jinshi slurped some noodles, looking oddly happy."*
+  - Çeviri: *"“Anlıyorum. İmparator olmaya uygun değilim, öyle mi?” Jinshi, garip bir mutlulukla noodle'ları emerek yedi."*
