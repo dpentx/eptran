@@ -5,27 +5,27 @@
     "Ah-Duo": "Ah-Duo",
     "Suirei": "Suirei",
     "Lihua": "Lihua",
-    "Loulan": "Loulan",
     "Lihaku": "Lihaku",
+    "Loulan": "Loulan",
     "Hongniang": "Hongniang",
     "Zui": "Zui (İmparatorun gerçek adı)",
-    "Yue": "Yue (Jinshi'nin gerçek adı)",
-    "Shi clan": "Shi Klanı"
+    "Yue": "Yue (Jinshi'nin gerçek adı)"
   },
   "new_terms": {
     "rear palace": "arka saray",
     "Jade Pavilion": "Yeşim Köşkü",
+    "western capital": "Batı Başkenti",
     "Mafeisan": "Mafeisan",
+    "tasters": "Deneme Yiyicileri",
     "Pure Consort": "Saflık Konsortu",
     "Precious one": "Değerli Konsort",
-    "mouchouen": "Kör bağırsak iltihabı",
-    "chuusuien": "Apandisit"
+    "I-sei Province": "I-sei Eyaleti"
   },
   "new_notes": [
-    "Suiren (Jinshi'nin süt annesi) ve Suirei (saray hanımı/simyacı) isimleri fonetik olarak birbirine çok yakındır ve tamamen farklı karakterlerdir; çeviride kesinlikle karıştırılmamalıdır.",
-    "İmparator'un gerçek adı 'Zui', Jinshi'nin gerçek adı ise 'Yue'dir. Bu isimlerin geçtiği gizli veya resmi bağlamlara dikkat edilmelidir.",
-    "Kitap terimlerinde 'rhubarb root' karşılığı olarak geçen 'rengarenk kökü' ifadesi hatalı bir çeviri olabilir; doğrusu 'ravent kökü' olmalıdır.",
-    "'lady-in-waiting' terimi için kullanılan 'harem kadını' ifadesi yerine, saray hiyerarşisini ve karakterlerin statüsünü daha iyi yansıtan 'nedime' veya 'hizmetçi hanım' kullanımı değerlendirilmelidir.",
-    "'tasters' (zehir kontrolü yapanlar) için kullanılan 'Deneme Yiyicileri' yerine Türkçe tarihsel terminolojiye daha uygun olan 'zehir deneyicileri' veya 'çeşnicibaşı' terimleri tercih edilebilir."
+    "Suirei (saraydaki gizemli kadın/eczacı) ve Suiren (Jinshi'nin yaşlı süt annesi) isimleri birbirine çok yakındır, kesinlikle karıştırılmamalıdır.",
+    "Zui, İmparator'un gerçek/kişisel adıdır; Yue ise Jinshi'nin gerçek/kişisel adıdır. Bu isimler son derece gizlidir ve sadece çok özel/mahrem bağlamlarda kullanılır.",
+    "Lihua (Konsort Lihua), Lishu (Konsort Lishu) ve Lihaku (asker/subay) isimleri benzerdir. Lihua ve Lishu saraydaki yüksek rütbeli eşlerken, Lihaku dış sarayda görevli bir erkek subaydır.",
+    "Ah-Duo, eski 'Pure Consort' (Saflık Konsortu) olup İmparator ve Jinshi ile geçmişe dayanan, serinin ilerleyen bölümlerinde de önemini koruyan çok kritik bir bağa sahiptir.",
+    "Hongniang, İmparatoriçe Gyokuyou'nun baş nedimesidir (harem kadını) ve Yeşim Köşkü'nün (Jade Pavilion) düzeninden sorumludur."
   ]
 }
