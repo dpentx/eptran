@@ -1,6 +1,6 @@
 # QA Raporu — knh-15
 
-**Günlük Gemini kotası tükendiği için durduruldu — 8/24 bölüm tarandı. Script'i tekrar çalıştırınca kaldığı yerden devam edecek (baştan başlamayacak).**
+**Günlük Gemini kotası tükendiği için durduruldu — 14/24 bölüm tarandı. Script'i tekrar çalıştırınca kaldığı yerden devam edecek (baştan başlamayacak).**
 
 *Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru kabul etmeyin — her maddeyi kaynakla birlikte kendiniz kontrol edin. Bazı işaretlemeler yanlış pozitif olabilir (bkz. script docstring'i).*
 
@@ -65,6 +65,42 @@ Yani artık Chue ile aynı kategoride miydi?"*
   - Kaynak: *"They rode along for thirty minutes until they arrived at a mansion on the outskirts of the capital."*
   - Çeviri: *"Otuz dakika boyunca sürüldüler ve başkentin dışındaki bir konakta indiler."*
 
+## Bölüm 5: Chapter 4: Drug Trials — 4 sorun
+- **ANLAM_KAYMASI**: Metnin geçtiği dönemde telefon olmadığı ve Maomao'nun Lahan'ı telefonla araması değil, yanına çağırması kastedildiği için 'call' kelimesi 'aramak' olarak yanlış çevrilmiştir.
+  - Kaynak: *"Which did not mean she was going to call him."*
+  - Çeviri: *"Bu, onu araması gerektiği anlamına gelmiyordu."*
+- **ANLAM_KAYMASI**: 'Master Physician' ifadesi saygı belirten bir hitap olup 'Hekim Efendi' veya 'Usta Hekim' olarak çevrilmelidir; 'Başhekim' (Chief Physician) unvanı bu karakter için tıbbi hiyerarşi açısından yanlıştır.
+  - Kaynak: *"“Master Physician,” she started."*
+  - Çeviri: *""Başhekim," diye başladı."*
+- **ANLAM_KAYMASI**: 'so they wouldn't get in her way' (elbise kollarının ona engel olmaması için) ifadesi 'kollarının arasına girmemesi için' şeklinde anlamca hatalı çevrilmiştir.
+  - Kaynak: *"She’d brought a tie for her sleeves so they wouldn’t get in her way."*
+  - Çeviri: *"Kollarının arasına girmemesi için bir bağ getirmişti."*
+- **ANLAM_KAYMASI**: İngilizcedeki 'stomach' kelimesi burada karın (abdomen) anlamında kullanılmıştır. Apandisit/kör bağırsak ameliyatında mide organı değil karın açılacağı için 'mide' çevirisi tıbbi açıdan hatalıdır.
+  - Kaynak: *"“You could open their stomach and take out the filth,” Short Senior said."*
+  - Çeviri: *""Mide açılıp pislik çıkarılabilir," dedi Kısa Kıdemli."*
+
+## Bölüm 6: Chapter 5: A Book Restored — 4 sorun
+- **ANLAM_KAYMASI**: 'Just the other day' (daha geçen gün/geçenlerde) ifadesi 'az önce' olarak yanlış çevrilmiştir.
+  - Kaynak: *"Just the other day, they had found the book this ancestor had left behind."*
+  - Çeviri: *"Az önce, bu atadan geriye kalan kitabı bulmuşlardı."*
+- **ANLAM_KAYMASI**: 'Calluses' (nasırlar) kelimesi yanlış bir şekilde 'korkuluklar' olarak çevrilmiştir.
+  - Kaynak: *"I see calluses."*
+  - Çeviri: *"Korkuluklar görüyorum."*
+- **ANLAM_KAYMASI**: Metindeki 'calluses' (nasırlar) kelimesi 'korkuluklar' olarak yanlış çevrilmiştir.
+  - Kaynak: *"Just as those who wielded the sword could develop calluses on their hands, so, too, could those who wielded the brush get them on their fingers. Tianyu’s calluses, however, probably came not from a brush but from a scalpel."*
+  - Çeviri: *"Tıpkı kılıç kullananların ellerinde korkuluk oluşabileceği gibi, fırça kullananların da parmaklarında korkuluk oluşabilirdi. Ancak Tianyu’nun korkulukları, muhtemelen bir fırçadan değil, bir cerrahi bisturiden geliyordu."*
+- **ANLAM_KAYMASI**: 'since I saw you last' (seni son gördüğümden beri) ifadesi 'beni son gördüğümde' şeklinde yanlış çevrilerek anlam kaymasına yol açmıştır.
+  - Kaynak: *"“Have you learned to read minds since I saw you last, Niangniang?”"*
+  - Çeviri: *"“Beni son gördüğümde telepati mi öğrendin, Niangniang?”"*
+
+## Bölüm 7: Chapter 6: The Patient — 2 sorun
+- **ANLAM_KAYMASI**: "on his flank" (vücudunun yan tarafında/böğründe) ifadesi "Yanında" şeklinde yanlış çevrilmiştir. Damga Jinshi'nin vücudundadır, yanında duran bir nesne değildir.
+  - Kaynak: *"She was sure the red flower brand must still be on his flank."*
+  - Çeviri: *"Yanında o kırmızı çiçek damgasının hâlâ olmasından emindi."*
+- **ANLAM_KAYMASI**: "Thinking that I might be more knowledgeable" (kendimin daha bilgili olabileceğimi düşünerek) ifadesi "benden daha bilgili olabileceğimi" şeklinde çevrilerek anlamsız ve hatalı bir anlatım oluşturmuştur.
+  - Kaynak: *"“Thinking that I might be more knowledgeable in the matter about which our little cat wishes to learn, I took the liberty of coming here myself.”"*
+  - Çeviri: *""Küçük kedimizin öğrenmek istediği konuda benden daha bilgili olabileceğimi düşünerek, buraya kendim gelme cesaretini gösterdim.""*
+
 ## Bölüm 8: Chapter 7: A Man’s Romance — 2 sorun
 - **ANLAM_KAYMASI**: Çevirinin bu kısmında ciddi bir teknik bozulma gerçekleşmiş; diyaloglar birbirine girmiş, kaynakta olmayan kelimeler eklenmiş, metin mükerrer şekilde tekrarlanmış ve en sonunda yarım kalmıştır.
   - Kaynak: *"“Military matters aren’t really my area of expertise,” Maomao said, frowning at what turned out to be quite a different topic from what she had expected. “Help me out.”
@@ -93,3 +129,68 @@ The two of them chatted away, their mortars grinding and the powder collecting.
   - Kaynak: *"“Meat?” Maomao cocked her head and hmmed thoughtfully.
 Meat, meat, meat... Maybe he means they were caught in some unique trap or something?
 It seemed unlikely that actual meat was the issue at hand."*
+
+## Bölüm 9: Chapter 8: Anesthesia
+*(Denetlenemedi.)*
+
+## Bölüm 10: Chapter 9: To Everyone a Purpose — 2 sorun
+- **ANLAM_KAYMASI**: "wasn't biting" (ilgilenmedi, yemi yutmadı) deyimi "hiç almadı" şeklinde yanlış ve anlamsız çevrilmiştir.
+  - Kaynak: *"“I think this is a road you’d be better off not taking.” Suirei wasn’t biting, not even a little."*
+  - Çeviri: *"“Bence bu, gitmemeniz gereken bir yol.” Suirei hiç almadı, en ufak bir şekilde bile."*
+- **ANLAM_KAYMASI**: Ameliyat için geliştirilen "anesthetic" (anestezi/anestezik) kelimesi "uyuşturucu" olarak yanlış çevrilmiştir.
+  - Kaynak: *"“Who do you propose to use this anesthetic on?”"*
+  - Çeviri: *"“Bu uyuşturucuyu kimin üzerinde kullanmayı öneriyorsunuz?”"*
+
+## Bölüm 11: Chapter 10: Gyouyoh
+*(Denetlenemedi.)*
+
+## Bölüm 12: Chapter 11: The Special Unit
+*(Denetlenemedi.)*
+
+## Bölüm 13: Chapter 12: Explanation and Agreement — 1 sorun
+- **ATLANMIŞ**: Bölümün ilk cümlesi Türkçe çeviride tamamen atlanmıştır.
+  - Kaynak: *"They didn’t know where word of the surgery had leaked from."*
+
+## Bölüm 14: Chapter 13: Sowing Seeds — 1 sorun
+- **ANLAM_KAYMASI**: Cümlelerin sırası karıştırılmış ve araya kaynakta olmayan 'İyi, iyi.' ifadesi eklenmiştir. Bu durum, karşılaştırma yapılmadan 'Ana fark şuydu' denilmesine yol açarak mantık akışını bozmuş ve anlam kaymasına sebep olmuştur.
+  - Kaynak: *"The former emperor’s reprehensible behavior bore a certain resemblance to something that had led to the rebellion of the Shi clan. That episode had been in some ways a revenge drama staged by Shenmei, whom the former emperor had spurned.
+
+The main difference was that after they learned of Anshi’s pregnancy, her family had swiftly sent her older sister out of the rear palace."*
+  - Çeviri: *"Ana fark şuydu: Anshi'nin hamile olduğunu öğrendiklerinde, ailesi ablasını hızla arka saraydan çıkarmıştı.
+
+"İyi, iyi."
+
+Önceki imparatorun kabul edilemez davranışları, Shi Klanı'nın isyanına yol açan olaylara bir benzerlik taşıyordu. O hadise, bir bakıma, önceki imparatorun reddettiği Shenmei'nin sahnelediği bir intikam dramasıydı."*
+
+## Bölüm 15: Chapter 14: The Patient’s Consent
+*(Denetlenemedi.)*
+
+## Bölüm 16: Chapter 15: Confession—The Surface
+*(Denetlenemedi.)*
+
+## Bölüm 17: Chapter 16: Confession—The Secret — 2 sorun
+- **ATLANMIŞ**: Cümlenin Türkçe çevirisi metinde tamamen atlanmıştır.
+  - Kaynak: *"She’d screwed it all up, thought Ah-Duo."*
+- **ANLAM_KAYMASI**: Diyalog sırası tersine dönmüş ve araya kaynakta olmayan "Sen bir yük değilsin." şeklinde uydurma bir cümle eklenmiştir.
+  - Kaynak: *"“I suppose you assumed that even if you had set up the Crown Prince instead of Yue, I would be there while he was young.”
+
+“I did. Because you are honest and faithful.”"*
+  - Çeviri: *""Evet. Çünkü sen dürüst ve sadıksın."
+
+"Sen bir yük değilsin."
+
+"Sanırım, Yue yerine Veliaht Prens'i tahta çıkarsam, onun gençlik yıllarında da yanında olacağımı varsaydın.""*
+
+## Bölüm 18: Chapter 17: Anxiety
+*(Denetlenemedi.)*
+
+## Bölüm 19: Chapter 18: Before the Surgery — 1 sorun
+- **ATLANMIŞ**: Bölümün ilk cümlesi olan 'The procedure would begin at noon.' Türkçe çeviride tamamen atlanmıştır.
+  - Kaynak: *"The procedure would begin at noon."*
+
+## Bölüm 20: Chapter 19: During the Surgery — 1 sorun
+- **ATLANMIŞ**: Ameliyatın başladığını belirten bu giriş cümlesi Türkçe çeviride tamamen atlanmıştır.
+  - Kaynak: *"The surgery began."*
+
+## Bölüm 21: Chapter 20: After the Surgery
+*(Denetlenemedi.)*

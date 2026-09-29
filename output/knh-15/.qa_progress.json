@@ -141,7 +141,147 @@
         "translation_quote": "",
         "description": "Kaynak metnin sonundaki Maomao'nun et ipucu üzerine düşündüğü paragraflar Türkçe çeviride tamamen atlanmıştır."
       }
+    ],
+    "10": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Chou-u, the little troublemaker of the pleasure district, should have been here by all rights as well, but as a side effect of the resurrection drug he had lost his memory, and therefore could walk a different path from these other children.",
+        "translation_quote": "Zevk mahallesinin küçük belası Chue, normal şartlarda burada olmalıydı; ancak diriltme ilacının bir yan etkisi olarak hafızasını kaybetmişti ve bu yüzden diğer çocuklardan farklı bir yol izliyordu.",
+        "description": "\"Chou-u\" karakterinin adı yanlışlıkla \"Chue\" olarak çevrilmiştir. Chue hikayedeki başka bir karakterdir."
+      },
+      {
+        "type": "İNGİLİZCE_KALINTI",
+        "source_quote": "It had a modest table and four chairs; an attendant prepared tea and then promptly left.",
+        "translation_quote": "Modest bir masa ve dört sandalye vardı; bir hizmetli çay hazırladı ve hemen çıktı.",
+        "description": "\"modest\" kelimesi Türkçe çeviride \"Modest\" olarak İngilizce bırakılmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“I think this is a road you’d be better off not taking.” Suirei wasn’t biting, not even a little.",
+        "translation_quote": "“Bence bu, gitmemeniz gereken bir yol.” Suirei hiç almadı, en ufak bir şekilde bile.",
+        "description": "\"wasn't biting\" (ilgilenmedi, yemi yutmadı) deyimi \"hiç almadı\" şeklinde yanlış ve anlamsız çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Who do you propose to use this anesthetic on?”",
+        "translation_quote": "“Bu uyuşturucuyu kimin üzerinde kullanmayı öneriyorsunuz?”",
+        "description": "Ameliyat için geliştirilen \"anesthetic\" (anestezi/anestezik) kelimesi \"uyuşturucu\" olarak yanlış çevrilmiştir."
+      }
+    ],
+    "13": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "They didn’t know where word of the surgery had leaked from.",
+        "translation_quote": "",
+        "description": "Bölümün ilk cümlesi Türkçe çeviride tamamen atlanmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“We’d like to ask you to come with us,” one of the men said, showing her a peony crest.",
+        "translation_quote": "\"Sizinle gelmenizi rica ediyoruz,\" dedi erkeklerden biri, ona bir gelincik arması göstererek.",
+        "description": "'Peony' (şakayık) kelimesi 'gelincik' (poppy) olarak yanlış çevrilmiştir. Şakayık, İmparatoriçe Gyokuyou'nun simgesidir."
+      }
+    ],
+    "14": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "The former emperor’s reprehensible behavior bore a certain resemblance to something that had led to the rebellion of the Shi clan. That episode had been in some ways a revenge drama staged by Shenmei, whom the former emperor had spurned.\n\nThe main difference was that after they learned of Anshi’s pregnancy, her family had swiftly sent her older sister out of the rear palace.",
+        "translation_quote": "Ana fark şuydu: Anshi'nin hamile olduğunu öğrendiklerinde, ailesi ablasını hızla arka saraydan çıkarmıştı.\n\n\"İyi, iyi.\"\n\nÖnceki imparatorun kabul edilemez davranışları, Shi Klanı'nın isyanına yol açan olaylara bir benzerlik taşıyordu. O hadise, bir bakıma, önceki imparatorun reddettiği Shenmei'nin sahnelediği bir intikam dramasıydı.",
+        "description": "Cümlelerin sırası karıştırılmış ve araya kaynakta olmayan 'İyi, iyi.' ifadesi eklenmiştir. Bu durum, karşılaştırma yapılmadan 'Ana fark şuydu' denilmesine yol açarak mantık akışını bozmuş ve anlam kaymasına sebep olmuştur."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "She was the grandniece of the Empress Dowager’s half-brother, Hao—and hence also the great-niece of the Empress Dowager herself.",
+        "translation_quote": "Dul İmparatoriçe'nin üvey erkek kardeşi Hao'nun torun kızı ve dolayısıyla Dul İmparatoriçe'nin kendisinin de torun kızıydı.",
+        "description": "İngilizcedeki 'great-niece' (kız/erkek kardeşin torunu, yeğen torunu) ifadesi 'torun kızı' (granddaughter) olarak çevrilmiştir. Bu durum, karakteri Dul İmparatoriçe'nin öz torunu yaparak soy ağacında ciddi bir anlam hatasına yol açmaktadır."
+      },
+      {
+        "type": "TUTARSIZ_TERİM",
+        "source_quote": "Which is why we don’t make her the Pure Consort, but the Precious one.",
+        "translation_quote": "Bu yüzden onu Saf Eş değil, Değerli Eş yapıyoruz.",
+        "description": "Metnin önceki kısımlarında 'Pure Consort' terimi 'Saflık Konsortu', 'Precious Consort' terimi ise 'Değerli Konsort' olarak çevrilmişken, burada sırasıyla 'Saf Eş' ve 'Değerli Eş' olarak çevrilerek tutarsızlık yaratılmıştır."
+      }
+    ],
+    "17": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "She’d screwed it all up, thought Ah-Duo.",
+        "translation_quote": "",
+        "description": "Cümlenin Türkçe çevirisi metinde tamamen atlanmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "She wanted to know what choice Yue would make, if Maomao would be hemmed in, entrapped as Ah-Duo had been.",
+        "translation_quote": "Maomao sıkışıp kaldığında, tıpkı Ah-Duo'nun sıkışıp kaldığı gibi, Yue'nin ne seçim yapacağını bilmek istiyordu.",
+        "description": "\"if Maomao would be hemmed in\" (Maomao'nun da köşeye sıkışıp sıkışmayacağını) ifadesi \"Maomao sıkışıp kaldığında\" şeklinde yanlış çevrilerek kesinlik bildiren bir zaman zarfına dönüştürülmüştür."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“I suppose I should excuse myself, then.”",
+        "translation_quote": "\"Sanırım kendimi dışarıda bırakmalıyım.\"",
+        "description": "\"Excuse myself\" (müsaade istemek, ayrılmak) ifadesi kelimesi kelimesine \"kendimi dışarıda bırakmak\" şeklinde yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Don’t ask me to take dictation on your will.",
+        "translation_quote": "\"Vasiyetin için bana daktilo tutmamı isteme.",
+        "description": "\"Take dictation\" (söylenenleri yazmak/not etmek) ifadesi, tarihsel bağlama uymayacak şekilde \"daktilo tutmak\" olarak son derece hatalı çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“I suppose you assumed that even if you had set up the Crown Prince instead of Yue, I would be there while he was young.”\n\n“I did. Because you are honest and faithful.”",
+        "translation_quote": "\"Evet. Çünkü sen dürüst ve sadıksın.\"\n\n\"Sen bir yük değilsin.\"\n\n\"Sanırım, Yue yerine Veliaht Prens'i tahta çıkarsam, onun gençlik yıllarında da yanında olacağımı varsaydın.\"",
+        "description": "Diyalog sırası tersine dönmüş ve araya kaynakta olmayan \"Sen bir yük değilsin.\" şeklinde uydurma bir cümle eklenmiştir."
+      }
+    ],
+    "19": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "The procedure would begin at noon.",
+        "translation_quote": "",
+        "description": "Bölümün ilk cümlesi olan 'The procedure would begin at noon.' Türkçe çeviride tamamen atlanmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "She didn’t know what kind of will he had left, but she was determined that it wouldn’t be necessary.",
+        "translation_quote": "Ne tür bir iradeye sahip olduğunu bilmiyordu, ama buna ihtiyaç duyulmaması gerektiğine kararlıydı.",
+        "description": "Metindeki 'will' kelimesi İmparator'un arkasında bıraktığı 'vasiyet' anlamında kullanılmışken, çeviride 'irade' (istek/kararlılık) olarak yanlış aktarılmıştır."
+      }
+    ],
+    "20": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "The surgery began.",
+        "translation_quote": "",
+        "description": "Ameliyatın başladığını belirten bu giriş cümlesi Türkçe çeviride tamamen atlanmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "He’d stuck a scalpel into Dr. Liu’s dominant hand, even if he hadn’t meant to, and the shock of doing something so awful must have overwhelmed him.",
+        "translation_quote": "Ameliyat odasındaki yere yığılan adam, birinci asistandı; üst düzey hekimlerden biriydi. İstese de istemese de bistürüyü Dr. Liu’nun baskın eline saplamıştı ve bu kadar korkunç bir şey yaptığı şoku onu ezmeliydi.",
+        "description": "'must have overwhelmed him' (onu sarsmış/bunalıma sokmuş olmalıydı) şeklindeki çıkarım ifadesi, çeviride 'onu ezmeliydi' denilerek bir gereklilik/zorunluluk gibi yanlış aktarılmıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "His hand never shook from nerves.",
+        "translation_quote": "Eli sinirinden titremiyordu.",
+        "description": "Buradaki 'nerves' (heyecan, gerginlik, korku) kelimesi 'sinir' (öfke, hiddet) olarak yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Sir,” the first assistant said, passing him a fresh knife as he stabilized the surgical site. The second assistant kept mopping up blood and filth with gauze, producing an ever-growing pile of the stuff stained yellowish-red. The third assistant—that is, Tall Senior—took the used gauze and threw it away, then brought fresh; he was especially busy.",
+        "translation_quote": "“Efendim,” dedi birinci asistan, ameliyat bölgesini sabitlerken ona taze bir bistüri uzatarak. İkinci asistan, kanı ve kiri gazlı bezlerle siliyor, sarımsı-kırmızı lekelerle boyanmış, giderek büyüyen bir yığın oluşturuyordu. Üçüncü asistan—yani Uzun Kıdemli—kullanılmış gazlı bezleri alıp atıyor, yenilerini getiriyordu; özellikle o çok meşguldü.",
+        "description": "Bu paragraf çeviride kronolojik olarak tamamen yanlış bir yere yerleştirilmiş, kendisinden sonra gelmesi gereken cümlelerin arkasına kaydırılarak anlatım sırasını bozmuştur."
+      }
     ]
   },
-  "failed": []
+  "failed": [
+    9,
+    11,
+    12,
+    15,
+    16,
+    18,
+    21
+  ]
 }
