@@ -55,6 +55,92 @@
         "translation_quote": "Otuz dakika boyunca sürüldüler ve başkentin dışındaki bir konakta indiler.",
         "description": "\"They rode along\" (yol aldılar/arabayla gittiler) ifadesi, sürgün edilmek veya zorla götürülmek anlamına gelen \"sürüldüler\" kelimesiyle yanlış çevrilmiştir."
       }
+    ],
+    "5": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Which did not mean she was going to call him.",
+        "translation_quote": "Bu, onu araması gerektiği anlamına gelmiyordu.",
+        "description": "Metnin geçtiği dönemde telefon olmadığı ve Maomao'nun Lahan'ı telefonla araması değil, yanına çağırması kastedildiği için 'call' kelimesi 'aramak' olarak yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Master Physician,” she started.",
+        "translation_quote": "\"Başhekim,\" diye başladı.",
+        "description": "'Master Physician' ifadesi saygı belirten bir hitap olup 'Hekim Efendi' veya 'Usta Hekim' olarak çevrilmelidir; 'Başhekim' (Chief Physician) unvanı bu karakter için tıbbi hiyerarşi açısından yanlıştır."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "She’d brought a tie for her sleeves so they wouldn’t get in her way.",
+        "translation_quote": "Kollarının arasına girmemesi için bir bağ getirmişti.",
+        "description": "'so they wouldn't get in her way' (elbise kollarının ona engel olmaması için) ifadesi 'kollarının arasına girmemesi için' şeklinde anlamca hatalı çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“You could open their stomach and take out the filth,” Short Senior said.",
+        "translation_quote": "\"Mide açılıp pislik çıkarılabilir,\" dedi Kısa Kıdemli.",
+        "description": "İngilizcedeki 'stomach' kelimesi burada karın (abdomen) anlamında kullanılmıştır. Apandisit/kör bağırsak ameliyatında mide organı değil karın açılacağı için 'mide' çevirisi tıbbi açıdan hatalıdır."
+      }
+    ],
+    "6": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Just the other day, they had found the book this ancestor had left behind.",
+        "translation_quote": "Az önce, bu atadan geriye kalan kitabı bulmuşlardı.",
+        "description": "'Just the other day' (daha geçen gün/geçenlerde) ifadesi 'az önce' olarak yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "I see calluses.",
+        "translation_quote": "Korkuluklar görüyorum.",
+        "description": "'Calluses' (nasırlar) kelimesi yanlış bir şekilde 'korkuluklar' olarak çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Just as those who wielded the sword could develop calluses on their hands, so, too, could those who wielded the brush get them on their fingers. Tianyu’s calluses, however, probably came not from a brush but from a scalpel.",
+        "translation_quote": "Tıpkı kılıç kullananların ellerinde korkuluk oluşabileceği gibi, fırça kullananların da parmaklarında korkuluk oluşabilirdi. Ancak Tianyu’nun korkulukları, muhtemelen bir fırçadan değil, bir cerrahi bisturiden geliyordu.",
+        "description": "Metindeki 'calluses' (nasırlar) kelimesi 'korkuluklar' olarak yanlış çevrilmiştir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Have you learned to read minds since I saw you last, Niangniang?”",
+        "translation_quote": "“Beni son gördüğümde telepati mi öğrendin, Niangniang?”",
+        "description": "'since I saw you last' (seni son gördüğümden beri) ifadesi 'beni son gördüğümde' şeklinde yanlış çevrilerek anlam kaymasına yol açmıştır."
+      }
+    ],
+    "7": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "She was sure the red flower brand must still be on his flank.",
+        "translation_quote": "Yanında o kırmızı çiçek damgasının hâlâ olmasından emindi.",
+        "description": "\"on his flank\" (vücudunun yan tarafında/böğründe) ifadesi \"Yanında\" şeklinde yanlış çevrilmiştir. Damga Jinshi'nin vücudundadır, yanında duran bir nesne değildir."
+      },
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Thinking that I might be more knowledgeable in the matter about which our little cat wishes to learn, I took the liberty of coming here myself.”",
+        "translation_quote": "\"Küçük kedimizin öğrenmek istediği konuda benden daha bilgili olabileceğimi düşünerek, buraya kendim gelme cesaretini gösterdim.\"",
+        "description": "\"Thinking that I might be more knowledgeable\" (kendimin daha bilgili olabileceğimi düşünerek) ifadesi \"benden daha bilgili olabileceğimi\" şeklinde çevrilerek anlamsız ve hatalı bir anlatım oluşturmuştur."
+      },
+      {
+        "type": "TUTARSIZ_TERİM",
+        "source_quote": "“What is His Majesty’s current condition?”",
+        "translation_quote": "Majesteleri'nin şu anki durumu nedir?",
+        "description": "\"His Majesty\" unvanı metnin bir yerinde doğru şekilde \"Majesteleri\" olarak çevrilirken, diğer yerlerde (\"My guess is that His Majesty...\", \"His Majesty had typhlitis once...\") yanlış ve tutarsız bir şekilde \"Alteşin'in\" / \"Alteşin\" (Altes) olarak çevrilmiştir. İmparator için \"Altes\" unvanı kullanılmaz."
+      }
+    ],
+    "8": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Military matters aren’t really my area of expertise,” Maomao said, frowning at what turned out to be quite a different topic from what she had expected. “Help me out.”\n“Oh, at least try to think it through.”\n“I told you, it’s not my field.”\nThe two of them chatted away, their mortars grinding and the powder collecting.\n“Okay, okay. Your hint is: meat.”",
+        "translation_quote": "“Oh, en azından düşünmeye çalış.”\n“Sana söyledim, bu benim alanım değil.”\n“Tamam, tamam. İpucu: et.”\n“Kepek...”\n“Sindirim...”\n“Demek ki fark etmiş.”\n“Kıdemlilerine karşı biraz fazla talebeksin, ha? Başka ilginç bir şeyim olup olmadığını bilmiyorum...” Uzun Kıdemli havanını ve havan elini çalıştırırken düşünceli bir ses çıkardı. Alt kademesinden gelen bir isteği yerine getirmek isteyen iyi bir kıdemliydi. “Eh, et ve balıken bahsetmişken...”\n“Evet? Aklına bir şey mi geldi?” Maomao'nun gözleri daha da parladı.\n“Geldi. Ama vaktimiz varken, bunu soru-cevap şeklinde yapalım mı?”\n“Oh, en azından düşünmeye çalış.”\n“Sana söyledim, bu benim alanım değil.”\n“Tamam, tamam. İpucu: et.”\n“Kepek...”\n“Sindirim...”\n“Demek ki fark etmiş.”\n“Soru-cevap, efendim?” Maomao başını salladı; tartışmada “kazandığına” ya da “kaybettiğine” dair endişesi yoktu, bu yüzden cevapları bilmediği ortaya çıksa bile gayet memnundu.\n“Tamam, başlayalım. Çok uzun zaman önce, topraklarımız başka bir ülkeye karşı savaştı ve berbat bir şekilde yenildi. Orduyu komuta eden asker, son derece keskin zekâlı, stratejik durumu her zaman kavrayıp akıllıca kararlar veren bir adamdı. Keşifçiler göndererek düşman kampını inceletti ve zafer şansının yüksek olduğunu belirledi, bu temele dayanarak savaşa girdi. Kazanacağından o kadar eminsen, neden ka",
+        "description": "Çevirinin bu kısmında ciddi bir teknik bozulma gerçekleşmiş; diyaloglar birbirine girmiş, kaynakta olmayan kelimeler eklenmiş, metin mükerrer şekilde tekrarlanmış ve en sonunda yarım kalmıştır."
+      },
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "“Meat?” Maomao cocked her head and hmmed thoughtfully.\nMeat, meat, meat... Maybe he means they were caught in some unique trap or something?\nIt seemed unlikely that actual meat was the issue at hand.",
+        "translation_quote": "",
+        "description": "Kaynak metnin sonundaki Maomao'nun et ipucu üzerine düşündüğü paragraflar Türkçe çeviride tamamen atlanmıştır."
+      }
     ]
   },
   "failed": []
