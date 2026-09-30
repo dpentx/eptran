@@ -1,0 +1,15 @@
+{
+  "completed": {
+    "1": [
+      {
+        "type": "ATLANMIŞ",
+        "source_quote": "Character Profiles",
+        "translation_quote": "",
+        "description": "Karakter tanıtım bölümünün başlığı olan 'Character Profiles' çeviride atlanmıştır."
+      }
+    ]
+  },
+  "failed": [
+    2
+  ]
+}
