@@ -1,6 +1,6 @@
 # QA Raporu — knh-15
 
-**Günlük Gemini kotası tükendiği için durduruldu — 16/24 bölüm tarandı. Script'i tekrar çalıştırınca kaldığı yerden devam edecek (baştan başlamayacak).**
+**Günlük Gemini kotası tükendiği için durduruldu — 17/24 bölüm tarandı. Script'i tekrar çalıştırınca kaldığı yerden devam edecek (baştan başlamayacak).**
 
 *Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru kabul etmeyin — her maddeyi kaynakla birlikte kendiniz kontrol edin. Bazı işaretlemeler yanlış pozitif olabilir (bkz. script docstring'i).*
 
@@ -46,10 +46,27 @@
 ## Bölüm 4: Chapter 3: Reassignment
 *(Denetlenemedi.)*
 
-## Bölüm 5: Chapter 4: Drug Trials — 1 sorun
+## Bölüm 5: Chapter 4: Drug Trials — 2 sorun
+- **TUTARSIZ_TERİM**: "Master Physician" ifadesi burada "Hekim Efendi" olarak çevrilmişken, bir sonraki cümlede "Başhekim" olarak çevrilerek tutarsızlık yaratılmıştır.
+  - Kaynak: *"“Master Physician,” she started."*
+  - Çeviri: *"Hekim Efendi," diye başladı."*
 - **ANLAM_KAYMASI**: "Typhlitis" (tiflitis / kör bağırsak iltihabı) terimi "apandisit" olarak yanlış çevrilmiştir. Metinde hastalığın kör bağırsak (cecum) iltihabı olduğu açıkça belirtilmektedir.
   - Kaynak: *"“Typhlitis, maybe?” Maomao suggested."*
   - Çeviri: *"“Belki apandisit?” diye önerdi Maomao."*
+
+## Bölüm 6: Chapter 5: A Book Restored
+*(Denetlenemedi.)*
+
+## Bölüm 7: Chapter 6: The Patient — 3 sorun
+- **ANLAM_KAYMASI**: "Man" ifadesi burada "Yahu/Dostum" anlamında bir ünlem olarak kullanılmıştır, "Adam" şeklinde çevrilmesi anlam kaymasına yol açmıştır.
+  - Kaynak: *"“Man, I’m hungry too,” Tianyu said as he and Maomao left the room."*
+  - Çeviri: *""Adam, ben de açım," dedi Tianyu, Maomao ile birlikte odayı terk ederken."*
+- **ANLAM_KAYMASI**: "It's all good" ifadesi "Sorun değil/Gerek yok" anlamına gelir, "Olmaz" şeklinde çevrilmesi anlamı bozmuştur.
+  - Kaynak: *"“It’s all good. I’ve been sleeping in the medical office lately anyway.”"*
+  - Çeviri: *""Olmaz, son günlerde zaten tıp bürosunda uyuyorum.""*
+- **ANLAM_KAYMASI**: "didn't assume ... was an actual answer" ifadesi "kendi görüşünün kesin bir yanıt olduğunu varsaymıyordu" anlamına gelir. Türkçe çevirideki çift olumsuzluk ("olmadığını varsaymadı") tam tersi bir anlam yaratmaktadır.
+  - Kaynak: *"Maomao didn’t assume her opinion was an actual answer, however, so what else was she supposed to say?"*
+  - Çeviri: *"Maomao, görüşünün gerçek bir cevap olmadığını varsaymadı, peki ne demeliydi?"*
 
 ## Bölüm 8: Chapter 7: A Man’s Romance — 2 sorun
 - **ANLAM_KAYMASI**: Çeviri metnine kaynakta hiç var olmayan "Kepek...", "Sindirim...", "Demek ki fark etmiş." gibi ilgisiz ifadeler eklenmiş ve metin yapısı ciddi şekilde bozulmuştur.
@@ -85,14 +102,34 @@ Meat, meat, meat... Maybe he means they were caught in some unique trap or somet
 It seemed unlikely that actual meat was the issue at hand."*
   - Çeviri: *"Kazanacağından o kadar eminsen, neden ka"*
 
+## Bölüm 9: Chapter 8: Anesthesia — 2 sorun
+- **ANLAM_KAYMASI**: Kaynak metinde Luomen, Maomao'nun kendisine normalde bu şekilde hitap etmediğini belirtirken ('Bana böyle hitap etmiyorsun, değil mi?'), Türkçe çeviride tam tersi bir anlam çıkarılarak 'Beni öyle çağırıyorsun, öyle mi?' denmiştir.
+  - Kaynak: *"“That’s not what you call me, is it?”"*
+  - Çeviri: *"Beni öyle çağırıyorsun, öyle mi?"*
+- **ANLAM_KAYMASI**: Maomao'nun Luomen için kullandığı ve 'İhtiyar' anlamına gelen 'Pops' lakabı 'Amca' olarak yanlış çevrilmiştir.
+  - Kaynak: *"“Pops? What are you doing here?” Maomao asked."*
+  - Çeviri: *""Amca? Burada ne işin var?" diye sordu Maomao."*
+
 ## Bölüm 10: Chapter 9: To Everyone a Purpose
 *(Denetlenemedi.)*
 
-## Bölüm 11: Chapter 10: Gyouyoh — 1 sorun
+## Bölüm 11: Chapter 10: Gyouyoh — 5 sorun
 - **ATLANMIŞ**: Bölüm başlığı ve giriş paragrafı Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"Chapter 10: Gyouyoh
 
 From the time he was born, everything had been decided for Gyouyoh: what he would do, what he would be. As the emperor’s only son, that was the position he had been given."*
+- **ANLAM_KAYMASI**: Kaynakta 'Anshi'nin ağabeyi/büyük erkek kardeşi' ifadesi geçerken, çeviride 'Anshi'nin büyük oğlu' denilerek amca karakteri Gyouyoh'un kardeşi gibi gösterilmiş ve ciddi bir anlam kayması oluşmuştur.
+  - Kaynak: *"His uncle: that was to say, the older brother of Gyouyoh’s mother, Anshi."*
+  - Çeviri: *"Amcası: yani Gyouyoh’un annesi Anshi’nin büyük oğlu."*
+- **ANLAM_KAYMASI**: Gyouyoh, Hao'ya 'amcam olduğunuz için' demesi gerekirken çeviride 'amcanız olduğunuz için' denilerek anlam bozulmuştur.
+  - Kaynak: *"“Mm. So you propose that because you are my uncle, you can interrupt my lunch?”"*
+  - Çeviri: *"“Mm. Yani amcanız olduğunuz için öğle yemeğimi bölebileceğinizi mi öneriyorsunuz?”"*
+- **ŞAHIS_UYUŞMAZLIĞI**: Gaoshun, Gyouyoh'a ilacı içmesi gerektiğini söylerken (2. tekil/çoğul şahıs), çeviride 1. çoğul şahıs ('zorunluyuz') kullanılarak şahıs uyuşmazlığı yapılmıştır.
+  - Kaynak: *"“I’m afraid you must.”"*
+  - Çeviri: *"“Maalesef, zorunluyuz.”"*
+- **ANLAM_KAYMASI**: Paragrafların sırası karıştığı için İmparator, Hao henüz Lihua'dan bahsetmeden önce Lihua hakkında soru sormakta ve diyalog akışında mantık hatası/anlam kayması oluşmaktadır.
+  - Kaynak: *"“Lihua is an upper consort. Is there some sort of problem?” the Emperor asked."*
+  - Çeviri: *"“Lihua bir yüksek eş. Bir sorun mu var?” diye sordu İmparator."*
 
 ## Bölüm 12: Chapter 11: The Special Unit — 2 sorun
 - **ATLANMIŞ**: Bölüm başlığı Türkçe çeviride tamamen atlanmıştır.
@@ -139,7 +176,7 @@ Oldukça teselli edici bir rakam sayılmazdı, bu kesin. Yine de, bundan önceki
   - Kaynak: *"“What do you suppose this is about?” Maomao’s junior, Changsha, asked with a mystified look."*
   - Çeviri: *"“Bu ne hakkında olabilir?” diye sordu Maomao'nun juniörü Changsha, şaşkın bir ifadeyle."*
 
-## Bölüm 14: Chapter 13: Sowing Seeds — 2 sorun
+## Bölüm 14: Chapter 13: Sowing Seeds — 3 sorun
 - **ATLANMIŞ**: Bölümün giriş cümlesi Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"Jinshi was getting a headache from having this conversation for the umpteenth time."*
 - **ANLAM_KAYMASI**: Çeviride bu iki paragrafın sırası tamamen tersine çevrilerek mantık akışı bozulmuş ve araya kaynakta olmayan "İyi, iyi." ifadesi eklenmiştir.
@@ -151,8 +188,28 @@ The main difference was that after they learned of Anshi’s pregnancy, her fami
 "İyi, iyi."
 
 Önceki imparatorun kabul edilemez davranışları, Shi Klanı'nın isyanına yol açan olaylara bir benzerlik taşıyordu. O hadise, bir bakıma, önceki imparatorun reddettiği Shenmei'nin sahnelediği bir intikam dramasıydı."*
+- **ANLAM_KAYMASI**: Kaynak metinde Jinshi, Basen'in (he) henüz kimseyi yumruklamamış olmasına sevinirken, çeviride 'kimsenin yumruk atmadığına' (yani kimsenin kendilerine vurmadığına) sevindiği şeklinde yanlış aktarılmıştır.
+  - Kaynak: *"Jinshi was just happy he hadn’t punched anybody yet."*
+  - Çeviri: *"Jinshi, henüz kimsenin yumruk atmadığı için şükrediyordu."*
 
-## Bölüm 16: Chapter 15: Confession—The Surface — 1 sorun
+## Bölüm 15: Chapter 14: The Patient’s Consent — 3 sorun
+- **ANLAM_KAYMASI**: "ultimately" (en nihayetinde/sonuç olarak) kelimesi "en son" (lastly) şeklinde yanlış çevrilmiştir.
+  - Kaynak: *"It was always ultimately the patient who was least happy to have surgery."*
+  - Çeviri: *"Her zaman en son, ameliyat olmaktan en mutsuz olan hastaydı."*
+- **ANLAM_KAYMASI**: "shoring up his feelings of vulnerability" (kırılganlık hislerine karşı kendini desteklemek/güçlendirmek) ifadesi, "kırılganlık duygularını pekiştirmek" (kırılganlığını artırmak) şeklinde tam tersi bir anlamda çevrilmiştir.
+  - Kaynak: *"Was he thinking of trying to put his personal affairs in order in hopes of shoring up his feelings of vulnerability prior to surgery?"*
+  - Çeviri: *"Ameliyat öncesi kırılganlık duygularını pekiştirmek amacıyla kişisel işlerini düzenlemeye mi çalışıyordu?"*
+- **ANLAM_KAYMASI**: "might end up with an ulcer of his own" (kendisi de ülser olabilirdi) ifadesi, Türkçe dil bilgisi hatasıyla birleşerek "kendisi de ülser edebilir" (ülsere sebep olabilir) şeklinde yanlış aktarılmıştır.
+  - Kaynak: *"If that process included revealing the secret of Jinshi’s birth, Jinshi might end up with an ulcer of his own."*
+  - Çeviri: *"Eğer bu süreç, Jinshi’nin doğum sırrını ifşa etmeyi içeriyorsa, Jinshi’nin kendisi de ülser edebilir."*
+
+## Bölüm 16: Chapter 15: Confession—The Surface — 3 sorun
+- **ANLAM_KAYMASI**: Chue'nün kayınpederi (father-in-law) olan Gaoshun için 'kayanbiraderim' ve 'kayınbiraderimin' (brother-in-law) ifadeleri kullanılarak yanlış çeviri yapılmıştır.
+  - Kaynak: *"“My father-in-law? Not sure. Probably on guard too. But don’t you worry! I’m a good wife who brings her father-in-law’s favorite snacks so that we won’t get bored no matter how long your chat goes on!”"*
+  - Çeviri: *"“Kayanbiraderim? Emin değilim. Muhtemelen o da nöbette. Ama merak etmeyin! İyi bir eşim ve kayınbiraderimin en sevdiği atıştırmalıkları getiriyorum, böylece sohbetiniz ne kadar sürerse sürsün sıkılmayız!”"*
+- **ANLAM_KAYMASI**: Cümledeki duraksama belirten 'well' ifadesi 'iyi ki' olarak, 'common sense' (sağduyu) ise 'mantıklı olduğunu varsayması' şeklinde tamamen yanlış çevrilmiştir.
+  - Kaynak: *"It looked like it was safe to presume he shared the Ma clan’s sense of what was, well, common sense."*
+  - Çeviri: *"Görünüşe göre, Ma Klanı'nın neyin, iyi ki, mantıklı olduğunu varsayması güvenle kabul edilebilirdi."*
 - **ANLAM_KAYMASI**: Metnin bu bölümünde paragraflar tamamen birbirine karışmış, kaynakta olmayan ve ileriki diyaloglardan kopup gelen alakasız satırlar araya eklenmiştir.
   - Kaynak: *"Right in the middle of the chairs was a round table with two bottles on it. From what Maomao could see of what was in the glass cups that accompanied them, one bottle contained grape juice, the other plain water. There were four cups in total, and two of them were empty. That fact, and the similar number of places to sit, made it clear that only four people were going to take part in what was to follow.
 
@@ -189,9 +246,12 @@ Açıkçası, danışmanlarının bir şeylerin ters gittiğini fark etmemesi i�
 
 Adımlar duyulana kadar Majesteleri'ni gözlemlemeye devam ediyordu."*
 
-## Bölüm 17: Chapter 16: Confession—The Secret — 2 sorun
+## Bölüm 17: Chapter 16: Confession—The Secret — 3 sorun
 - **ATLANMIŞ**: Bölümün ilk cümlesinin Türkçe çevirisi metinde tamamen atlanmıştır.
   - Kaynak: *"She’d screwed it all up, thought Ah-Duo."*
+- **ANLAM_KAYMASI**: 'Resent' (gücenmek, içerlemek, kırılmak) kelimesi 'nefretle karşılamak' şeklinde yanlış çevrilmiştir.
+  - Kaynak: *"“Ah-Duo,” he said. “Do you resent me?”"*
+  - Çeviri: *""Ah-Duo," dedi. "Beni nefretle mi karşılıyorsun?""*
 - **ANLAM_KAYMASI**: Diyalog sırası tersine dönmüş ve kaynakta olmayan 'Sen bir yük değilsin.' ifadesi eklenerek anlam tamamen bozulmuştur.
   - Kaynak: *"“I suppose you assumed that even if you had set up the Crown Prince instead of Yue, I would be there while he was young.”
 
@@ -202,7 +262,10 @@ Adımlar duyulana kadar Majesteleri'ni gözlemlemeye devam ediyordu."*
 
 "Sanırım, Yue yerine Veliaht Prens'i tahta çıkarsam, onun gençlik yıllarında da yanında olacağımı varsaydın.""*
 
-## Bölüm 18: Chapter 17: Anxiety — 4 sorun
+## Bölüm 18: Chapter 17: Anxiety — 6 sorun
+- **ANLAM_KAYMASI**: Cümlenin anlamı tam tersi şekilde çevrilmiştir. 'Henüz hiçbir şey çözülmemişti' olması gerekirken olumlu fiil kullanılmıştır.
+  - Kaynak: *"Nothing had been resolved yet."*
+  - Çeviri: *"Henüz hiçbir şey çözülmüştü."*
 - **İNGİLİZCE_KALINTI**: İngilizce ifade Türkçe metinde çevrilmeden bırakılmıştır.
   - Kaynak: *"Ah, yes!"*
   - Çeviri: *"Ah, yes!"*
@@ -212,6 +275,9 @@ Adımlar duyulana kadar Majesteleri'ni gözlemlemeye devam ediyordu."*
 “What else could I possibly be?”"*
   - Çeviri: *"“Kaygılı mısın?” Ona baktı.
 “Deri grefti mi?”"*
+- **ANLAM_KAYMASI**: Jinshi, bir önceki cümlede başarısız olduğu söylenen yöntem için 'Başarısız olacağı kulağa mantıklı geliyor' (It sounds like it would [fail]) demek isterken, Türkçe çeviride tam tersi şekilde 'İşe yarayacak gibi görünüyor!' denmiştir.
+  - Kaynak: *"“It sounds like it would!”"*
+  - Çeviri: *"“İşe yarayacak gibi görünüyor!”"*
 - **ATLANMIŞ**: Bu iki paragraf Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"You’d think I was on the hunt for his ass!
 
@@ -247,3 +313,9 @@ Dr. Liu, Majesteleri kelimesini duyduğu anda dinlemeye hazır hale geldi."*
 İkinci asistan da başını salladı.
 “Benim de adım Wang, efendim. Farklı bir karakter.”
 Yakışık..."*
+
+## Bölüm 21: Chapter 20: After the Surgery — 2 sorun
+- **ATLANMIŞ**: Bölümün girişindeki ilk paragraf Türkçe çeviride tamamen atlanmıştır.
+  - Kaynak: *"After that, the surgery ended uneventfully. It wrapped up so quickly, it was almost as if all the excitement had never happened."*
+- **ATLANMIŞ**: Kaynaktaki bu cümle Türkçe çeviride yer almamaktadır; yerine kaynakta olmayan diyaloglar eklenmiş ve metin yarım kalmıştır.
+  - Kaynak: *"“I take no responsibility for anything I was too young to remember"*
