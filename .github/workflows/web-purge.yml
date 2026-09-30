@@ -1,0 +1,43 @@
+name: Purge novels from eptran-web
+
+# Admin aracı: eptran-web'deki (Turso DB) novel'ları siler — /api/purge
+# endpoint'ini WEB_INGEST_SECRET ile çağırır. Sadece elle tetiklenir.
+#
+# source_keys: virgülle ayrılmış kitap slug'ları (örn. knh-10,knh-11)
+#              ya da TÜM novel'ları silmek için tam olarak: ALL
+on:
+  workflow_dispatch:
+    inputs:
+      source_keys:
+        description: "Silinecek slug'lar (virgüllü) ya da TÜMÜ için: ALL"
+        required: true
+        type: string
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Call /api/purge
+        env:
+          WEB_INGEST_URL: ${{ secrets.WEB_INGEST_URL }}
+          WEB_INGEST_SECRET: ${{ secrets.WEB_INGEST_SECRET }}
+          SOURCE_KEYS: ${{ inputs.source_keys }}
+        run: |
+          if [ -z "$WEB_INGEST_URL" ] || [ -z "$WEB_INGEST_SECRET" ]; then
+            echo "WEB_INGEST_URL / WEB_INGEST_SECRET tanımlı değil."; exit 1
+          fi
+          PURGE_URL="${WEB_INGEST_URL%/api/ingest}/api/purge"
+
+          if [ "$SOURCE_KEYS" = "ALL" ]; then
+            BODY='{"all": true}'
+          else
+            BODY=$(python3 -c "import json,os; print(json.dumps({'sourceKeys': [k.strip() for k in os.environ['SOURCE_KEYS'].split(',') if k.strip()]}))")
+          fi
+          echo "POST $PURGE_URL  body=$BODY"
+
+          curl --fail-with-body -sS -X POST "$PURGE_URL" \
+            -H "Authorization: Bearer $WEB_INGEST_SECRET" \
+            -H "Content-Type: application/json" \
+            -d "$BODY"
+          echo
