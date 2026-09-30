@@ -314,8 +314,17 @@ Dr. Liu, Majesteleri kelimesini duyduğu anda dinlemeye hazır hale geldi."*
 “Benim de adım Wang, efendim. Farklı bir karakter.”
 Yakışık..."*
 
-## Bölüm 21: Chapter 20: After the Surgery — 2 sorun
+## Bölüm 21: Chapter 20: After the Surgery — 5 sorun
 - **ATLANMIŞ**: Bölümün girişindeki ilk paragraf Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"After that, the surgery ended uneventfully. It wrapped up so quickly, it was almost as if all the excitement had never happened."*
+- **ANLAM_KAYMASI**: 'A row of three cots' (yan yana dizilmiş üç karyola/sedye) ifadesi yanlış bir şekilde 'üç katlı yatak' olarak çevrilmiştir.
+  - Kaynak: *"It was a cramped chamber with a row of three cots."*
+  - Çeviri: *"Yurt odası olmadığını biliyordu. Üç katlı yatağın sıralandığı daracık bir odaydı."*
+- **ANLAM_KAYMASI**: 'nursing consort Lihua' (Lihua Hanım'a bakıcılık/hemşirelik yaptığı zamanlar) ifadesi yanlış anlaşılarak 'süt annesi Lihua' şeklinde çevrilmiştir.
+  - Kaynak: *"Every time Maomao saw them at work, she remembered nursing consort Lihua."*
+  - Çeviri: *"Maomao onları her çalışırken gördüğünde, süt annesi Lihua’yı hatırlıyordu."*
 - **ATLANMIŞ**: Kaynaktaki bu cümle Türkçe çeviride yer almamaktadır; yerine kaynakta olmayan diyaloglar eklenmiş ve metin yarım kalmıştır.
   - Kaynak: *"“I take no responsibility for anything I was too young to remember"*
+- **ANLAM_KAYMASI**: Cümlenin sonu 'alıyorm' şeklinde yarım kalmış ve paragrafın ikinci cümlesi tamamen atlanmıştır.
+  - Kaynak: *"The Emperor, who just had to lie there with nothing to entertain him, seemed to be enjoying Suiren’s banter. If anything, it seemed like anyone who tried to stop Suiren would be the one who got punished."*
+  - Çeviri: *"Ameliyatın ardından hiçbir eğlence kaynağı olmadan sadece yatağa uzanıp kalmak zorunda kalan İmparator, Suiren’in laf atışlarından keyif alıyorm"*
