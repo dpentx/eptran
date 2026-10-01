@@ -1,34 +1,37 @@
 {
-  "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-13 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
-  "source_book": "knh-13",
+  "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-15 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
+  "source_book": "knh-15",
   "new_characters": {
-    "Yao": "Yao",
     "Ah-Duo": "Ah-Duo",
     "Suirei": "Suirei",
-    "Consort Lihua": "Lihua Konsortu",
-    "Meimei": "Meimei",
-    "Pairin": "Pairin",
-    "Joka": "Joka",
+    "Lihua": "Lihua",
+    "Loulan": "Loulan",
     "Lihaku": "Lihaku",
     "Hongniang": "Hongniang",
-    "Dr. Liu": "Dr. Liu",
-    "Dr. Li": "Dr. Li"
+    "Zui": "Zui (İmparatorun gerçek adı)",
+    "Yue": "Yue (Jinshi'nin gerçek adı)",
+    "Auntie Liu": "Teyze Liu"
   },
   "new_terms": {
     "rear palace": "arka saray",
-    "western capital": "batı başkenti",
-    "royal capital": "imparatorluk başkenti",
-    "Verdigris House": "Yosma Evi",
-    "Three Princesses": "Üç Prenses",
-    "jade tablet": "yeşim tablet",
-    "La clan": "La Klanı",
-    "Shi clan": "Shi Klanı"
+    "royal court": "imparatorluk sarayı",
+    "medical office": "tıp bürosu",
+    "high consort": "yüksek eş",
+    "upper consort": "Üst Düzey Konsort",
+    "lady-in-waiting": "harem kadını",
+    "Crown Prince": "Veliaht Prens",
+    "Jade Pavilion": "Yeşim Köşkü",
+    "milk brother": "süt kardeşi",
+    "empress dowager": "dul imparatoriçe",
+    "western capital": "Batı Başkenti",
+    "Mafeisan": "Mafeisan",
+    "Pure Consort": "Saflık Konsortu",
+    "Precious one": "Değerli Konsort"
   },
   "new_notes": [
-    "Lahan's Brother karakteri için çeviri hafızasında hem 'Lahan'ın Abisi' hem de 'Lahan'ın Kardeşi' kullanılmıştır. Glossary'deki 'Lahan'ın Kardeşi' kullanımı tutarlılık adına korunmalıdır.",
-    "Dr. Liu, Dr. Li ve glossary'de zaten kayıtlı olan Dr. You isimleri birbirine çok benzer saray hekimleridir, çeviride karıştırılmamalıdır.",
-    "Pairin, Joka ve Meimei, Verdigris House'un (Yosma Evi) en prestijli üç fahişesidir ve birlikte 'Three Princesses' (Üç Prenses) olarak anılırlar.",
-    "Yao ve En'en yakın bir ikilidir; Yao tıp eğitimi alan asil bir saray hanımı, En'en ise onun koruyucusu ve hizmetçisidir.",
-    "Ah-Duo, eski bir imparatorluk konsortudur ve gizli planlar doğrultusunda Suirei ile Shi klanının hayatta kalan üyelerini koruması altında tutmaktadır."
+    "Suirei (eski saray hanımı/hekim) ve Suiren (Jinshi'nin yaşlı süt annesi) isimleri birbirine çok benzemektedir. Suirei entrikalarla ilişkili gizemli bir karakterken, Suiren saraydaki kıdemli hizmetlidir; bu iki isim kesinlikle karıştırılmamalıdır.",
+    "Zui, İmparator'un gerçek adıdır; Yue ise Jinshi'nin gerçek adıdır. Bu isimler karakterlerin gizli kimlikleri veya resmi olmayan hitaplarında kritik öneme sahiptir.",
+    "Saray hiyerarşisindeki 'Pure Consort' (Saflık Konsortu) ve 'Precious Consort/Precious one' (Değerli Konsort) unvanları, eşlerin saraydaki konumunu belirtir ve birebir bu karşılıklarla korunmalıdır.",
+    "Kitapta geçen 'Gyouyoh' ismi, 'Gyokuyou' (İmparatoriçe Gyokuyou) isminin farklı bir yazımı veya yazım hatası olabilir; çeviride tutarlılık adına kontrol edilmelidir."
   ]
 }
