@@ -5,27 +5,33 @@
     "Ah-Duo": "Ah-Duo",
     "Suirei": "Suirei",
     "Lihua": "Lihua",
-    "Lihaku": "Lihaku",
     "Loulan": "Loulan",
+    "Lihaku": "Lihaku",
     "Hongniang": "Hongniang",
     "Zui": "Zui (İmparatorun gerçek adı)",
-    "Yue": "Yue (Jinshi'nin gerçek adı)"
+    "Yue": "Yue (Jinshi'nin gerçek adı)",
+    "Auntie Liu": "Teyze Liu"
   },
   "new_terms": {
     "rear palace": "arka saray",
+    "royal court": "imparatorluk sarayı",
+    "medical office": "tıp bürosu",
+    "high consort": "yüksek eş",
+    "upper consort": "Üst Düzey Konsort",
+    "lady-in-waiting": "harem kadını",
+    "Crown Prince": "Veliaht Prens",
     "Jade Pavilion": "Yeşim Köşkü",
+    "milk brother": "süt kardeşi",
+    "empress dowager": "dul imparatoriçe",
     "western capital": "Batı Başkenti",
     "Mafeisan": "Mafeisan",
-    "tasters": "Deneme Yiyicileri",
     "Pure Consort": "Saflık Konsortu",
-    "Precious one": "Değerli Konsort",
-    "I-sei Province": "I-sei Eyaleti"
+    "Precious one": "Değerli Konsort"
   },
   "new_notes": [
-    "Suirei (saraydaki gizemli kadın/eczacı) ve Suiren (Jinshi'nin yaşlı süt annesi) isimleri birbirine çok yakındır, kesinlikle karıştırılmamalıdır.",
-    "Zui, İmparator'un gerçek/kişisel adıdır; Yue ise Jinshi'nin gerçek/kişisel adıdır. Bu isimler son derece gizlidir ve sadece çok özel/mahrem bağlamlarda kullanılır.",
-    "Lihua (Konsort Lihua), Lishu (Konsort Lishu) ve Lihaku (asker/subay) isimleri benzerdir. Lihua ve Lishu saraydaki yüksek rütbeli eşlerken, Lihaku dış sarayda görevli bir erkek subaydır.",
-    "Ah-Duo, eski 'Pure Consort' (Saflık Konsortu) olup İmparator ve Jinshi ile geçmişe dayanan, serinin ilerleyen bölümlerinde de önemini koruyan çok kritik bir bağa sahiptir.",
-    "Hongniang, İmparatoriçe Gyokuyou'nun baş nedimesidir (harem kadını) ve Yeşim Köşkü'nün (Jade Pavilion) düzeninden sorumludur."
+    "Suirei (eski saray hanımı/hekim) ve Suiren (Jinshi'nin yaşlı süt annesi) isimleri birbirine çok benzemektedir. Suirei entrikalarla ilişkili gizemli bir karakterken, Suiren saraydaki kıdemli hizmetlidir; bu iki isim kesinlikle karıştırılmamalıdır.",
+    "Zui, İmparator'un gerçek adıdır; Yue ise Jinshi'nin gerçek adıdır. Bu isimler karakterlerin gizli kimlikleri veya resmi olmayan hitaplarında kritik öneme sahiptir.",
+    "Saray hiyerarşisindeki 'Pure Consort' (Saflık Konsortu) ve 'Precious Consort/Precious one' (Değerli Konsort) unvanları, eşlerin saraydaki konumunu belirtir ve birebir bu karşılıklarla korunmalıdır.",
+    "Kitapta geçen 'Gyouyoh' ismi, 'Gyokuyou' (İmparatoriçe Gyokuyou) isminin farklı bir yazımı veya yazım hatası olabilir; çeviride tutarlılık adına kontrol edilmelidir."
   ]
 }
