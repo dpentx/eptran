@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 from lxml import etree
 
 from lib.git_utils import read_status, write_status, open_pr, current_branch
+from lib.chapter_titles import normalize_title
 from lib.web_ingest import push_book
 
 STATUS_FILE = "status.json"
@@ -61,6 +62,12 @@ def load_txt_chapters(output_dir):
         ):
             raw_title = first_line
             body_raw = body_lines[1].strip() if len(body_lines) > 1 else ""
+
+        # Başlığı TEK şablona oturt ("Bölüm N: Başlık") — eski/elle düzenlenmiş
+        # dosyalarda "Chapter N" ya da farklı ayraçlar kalmış olabilir.
+        # Başlık kalıbına uymayanlara ("* * *", "Çevirmen Notları") dokunmaz.
+        src_header = lines[0].lstrip("#").strip() if lines[0].startswith("#") else ""
+        raw_title = normalize_title(raw_title, src_header)
 
         chapters.append({"filename": fname, "title": raw_title, "body": body_raw})
     return chapters
