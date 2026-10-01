@@ -27,8 +27,23 @@ import subprocess
 from datetime import datetime, timezone
 
 from lib import groq_client as gc, memory as mem, ner, series as series_lib
+from lib import chapter_titles
 from lib.git_utils import write_status, trigger_workflow, current_branch
 from translate import translate_chapter, refine_translation
+
+
+_SUBTITLE_SYSTEM = (
+    "Sen bir çevirmensin. Verilen İngilizce bölüm alt başlığını doğal, kısa "
+    "bir Türkçe başlığa çevir. YALNIZCA çevrilmiş başlığı yaz: tırnak işareti, "
+    "açıklama, sondaki nokta ya da 'Bölüm' ön eki EKLEME. Özel isimleri "
+    "(karakter/yer adları) olduğu gibi bırak."
+)
+
+
+def _translate_subtitle(clients, key_index, subtitle: str) -> str:
+    """Model bölüm başlığını yazmadığında alt başlığı ayrıca çevirir
+    (tek kısa çağrı). Hata/boş yanıtta '' döner — çağıran sadece 'Bölüm N' yazar."""
+    return gc.call(clients, key_index, _SUBTITLE_SYSTEM, subtitle, temperature=0.1) or ""
 
 STATUS_FILE = "status.json"
 PART_RE = re.compile(r"^(\d{3})_(\d{2})\.txt$")
@@ -365,6 +380,22 @@ def main():
                       encoding="utf-8") as f:
                 pieces.append(f.read())
         full_translation = "\n\n".join(pieces)
+
+        # Bölüm başlığını TEK şablona oturt ("Bölüm N: Başlık", bkz.
+        # lib/chapter_titles.py). Model başlık satırını bazen "Chapter N",
+        # bazen "Bölüm N" yazıyor, bazen de hiç yazmıyor — bunu burada
+        # kodla düzeltiyoruz. Başlık düzeltmesi hiçbir koşulda bölümün
+        # yazılmasını engellemez (hata olursa metin olduğu gibi kalır).
+        try:
+            full_translation, title_warn = chapter_titles.enforce_title_line(
+                title, full_translation,
+                translate_fn=lambda sub: _translate_subtitle(clients, key_index, sub),
+            )
+            if title_warn:
+                print(f"  Başlık: {title_warn}")
+        except Exception as e:
+            print(f"  Uyarı: başlık şablonu uygulanamadı ({e}); metin olduğu gibi yazılıyor.")
+
         out_path = f"{output_dir}/{chapter_idx+1:03d}_{book_slug}.txt"
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(f"# {title}\n\n{full_translation}\n")
