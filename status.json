@@ -9,9 +9,9 @@
   "current_chapter": "",
   "started_at": "2026-10-08T07:51:42.526596+00:00",
   "queue_mode": true,
-  "updated_at": "2026-10-08T07:54:15.928994+00:00",
+  "updated_at": "2026-10-08T07:54:20.008913+00:00",
   "review_status": "running",
   "review_total": 2,
-  "review_completed": 1,
-  "review_current": "001_test-hollowmere.txt"
+  "review_completed": 2,
+  "review_current": "002_test-hollowmere.txt"
 }
