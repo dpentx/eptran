@@ -30,6 +30,11 @@ jobs:
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          # eptran-library'ye de yazabilmesi için token'ı iki repoya açıyoruz.
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            eptran
+            eptran-library
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -80,3 +85,13 @@ jobs:
           WEB_INGEST_URL: ${{ secrets.WEB_INGEST_URL }}
           WEB_INGEST_SECRET: ${{ secrets.WEB_INGEST_SECRET }}
         run: python scripts/convert.py
+
+      # Bitmiş kitabı eptran-library'ye yayımlar (bölümler staging dalına,
+      # epub draft Release'e) ve PR'a link yorumu ekler. Fail-soft: hata
+      # olsa bile convert/PR akışı bozulmaz.
+      - name: Publish to library
+        if: steps.check.outputs.needed == 'yes'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: python scripts/publish_library.py
