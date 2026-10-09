@@ -101,6 +101,25 @@ def _load_translated(output_dir: str, index: int, slug: str) -> tuple:
     return None, raw.strip()
 
 
+def _strip_leading_title(text: str, title: str) -> str:
+    """
+    NOT (Ekim 2026, test kitabında yakalanan yanlış pozitif): extract_epub(),
+    epub'ta <h1-h3> başlığı varsa başlığı chapter["title"]'a alıyor AMA
+    gövde metninden ÇIKARMIYOR — yani chapter["text"] hâlâ "Chapter 1: ..."
+    satırıyla başlıyor. Çeviri tarafında ise başlık ayrı satıra (parts[1])
+    ayrılıp gövdeye (tr_body) HİÇ girmiyor. Gemini'ye giden kaynak/çeviri
+    çifti bu yüzden asimetrik oluyordu: kaynakta başlık var, çeviride yok
+    -> her bölüm için sahte bir "ATLANMIŞ: başlık atlanmış" bulgusu ->
+    qa_report.md hiç temizlenmiyor -> qa_status 'partial' kalıp convert
+    tetiklenmiyor ve pr_check kırmızı kalıyordu. Kaynağın ilk satırı
+    başlıkla birebir aynıysa onu da çıkarıyoruz (iki taraf simetrik olsun).
+    """
+    first, sep, rest = text.partition("\n")
+    if sep and rest.strip() and first.strip() == (title or "").strip():
+        return rest.lstrip()
+    return text
+
+
 def _find_original(slug: str) -> str | None:
     for ext in (".epub", ".pdf"):
         path = f"input/.originals/{slug}{ext}"
@@ -296,8 +315,9 @@ def audit_book(slug: str, max_chapters: int | None = None):
             continue
 
         print(f"  [{i}/{n}] {src_chapter['title'][:40]!r} denetleniyor...")
+        src_text = _strip_leading_title(src_chapter["text"], src_chapter["title"])
         user_msg = (
-            f"KAYNAK (İngilizce):\n{src_chapter['text'][:8000]}\n\n"
+            f"KAYNAK (İngilizce):\n{src_text[:8000]}\n\n"
             f"ÇEVİRİ (Türkçe):\n{tr_body[:8000]}"
         )
         try:
