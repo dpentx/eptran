@@ -9,12 +9,12 @@
   "current_chapter": "",
   "started_at": "2026-10-08T07:51:42.526596+00:00",
   "queue_mode": true,
-  "updated_at": "2026-10-09T18:35:25.398073+00:00",
+  "updated_at": "2026-10-09T18:36:17.950748+00:00",
   "review_status": "completed",
   "review_total": 2,
   "review_completed": 2,
   "review_current": "",
-  "qa_status": "running",
+  "qa_status": "partial",
   "convert_status": "completed",
   "epub_output": "output/test-hollowmere/test-hollowmere_tr.epub"
 }
