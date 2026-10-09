@@ -1,0 +1,16 @@
+{
+  "characters": {
+    "Mira": "Mira",
+    "the ghost": "hayalet",
+    "Captain Voss": "Kaptan Voss"
+  },
+  "terms": {
+    "Hollowmere": "Hollowmere",
+    "The Late Apprentice": "Geç Kalan Çırak"
+  },
+  "style_notes": "Anlatım tonu hafif mizahi ve kuru bir espriye dayalıdır; diyaloglar kısa, keskin ve karakterlerin kişiliklerini (Mira'nın kafa karışıklığı, hayaletin kabalığı) hemen ortaya koyacak şekilde akıcı olmalıdır.",
+  "summaries": [
+    "Chapter 1: The Late Apprentice: Hollowmere'deki fenerin hayaleti, yeni çırak Mira'yı sürekli geç kaldığı için azarlar. Bu diyalog, Mira'nın hayaletle ilk karşılaşmasını ve aralarındaki gergin ilişkiyi ortaya koyar.",
+    "Chapter 2: Cold Tea: Kaptan Voss ve Mira, soğumuş çay eşliğinde gergin bir ortamda buluşurken, üstlerindeki fenerin inlemesiyle hayaletin geciktiği konuşulur."
+  ]
+}
