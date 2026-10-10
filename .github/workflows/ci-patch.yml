@@ -1,0 +1,49 @@
+name: CI patch (geçici)
+
+# fix/scripts-from-main dalındaki workflow dosyalarına .github/patches/
+# altındaki yamayı uygular ve o dala commit atar. Sadece tools/ci-patch
+# dalına push edilince çalışır; iş bitince bu dal silinecek.
+on:
+  push:
+    branches: [tools/ci-patch]
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+
+    steps:
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Checkout tools
+        uses: actions/checkout@v4
+        with:
+          path: tools
+
+      - name: Checkout target branch
+        uses: actions/checkout@v4
+        with:
+          ref: fix/scripts-from-main
+          token: ${{ steps.app-token.outputs.token }}
+          path: target
+
+      - name: Apply patch
+        run: |
+          python3 tools/.github/patches/patch_main_scripts.py target
+          python3 -c "import yaml,glob; [yaml.safe_load(open(f)) for f in glob.glob('target/.github/workflows/*.yml')]; print('yaml ok')"
+          git -C target diff --stat
+
+      - name: Commit and push
+        run: |
+          git -C target config user.name "ci-patch[bot]"
+          git -C target config user.email "ci-patch[bot]@users.noreply.github.com"
+          git -C target add .github/workflows
+          git -C target commit -m "workflows: script'ler her zaman main'den çalıştırılsın (dal sadece veri taşır)"
+          git -C target push origin HEAD:fix/scripts-from-main
