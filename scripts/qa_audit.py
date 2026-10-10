@@ -47,6 +47,8 @@ import argparse
 import json
 import os
 import sys
+import unicodedata
+from difflib import SequenceMatcher
 
 from lib import gemini_client as gem
 from lib import series as series_lib
@@ -118,6 +120,60 @@ def _strip_leading_title(text: str, title: str) -> str:
     if sep and rest.strip() and first.strip() == (title or "").strip():
         return rest.lstrip()
     return text
+
+
+def _norm(text: str) -> str:
+    """Karşılaştırma için normalize eder: Unicode, büyük/küçük harf, tırnak ve
+    tire çeşitleri ile boşluk farklarını yok sayar."""
+    t = unicodedata.normalize("NFKC", text or "").casefold()
+    for a, b in (("“", '"'), ("”", '"'), ("‘", "'"), ("’", "'"),
+                 ("–", "-"), ("—", "-"), ("…", "...")):
+        t = t.replace(a, b)
+    return " ".join(t.split())
+
+
+def _quote_present(quote: str, text: str, min_ratio: float = 0.6) -> bool:
+    """Gemini'nin verdiği alıntı gerçekten metinde var mı? Birebir (normalize
+    edilmiş) geçiyorsa evet; küçük sapmalar için en uzun ortak blok alıntının
+    en az %60'ını kapsıyorsa (ve >=12 karakterse) yine evet. Amaç hafif
+    yanlış aktarımı affedip tamamen UYDURULMUŞ alıntıları elemek."""
+    nq, nt = _norm(quote), _norm(text)
+    if not nq:
+        return False
+    if nq in nt:
+        return True
+    m = SequenceMatcher(None, nq, nt, autojunk=False).find_longest_match(0, len(nq), 0, len(nt))
+    return m.size >= 12 and m.size / len(nq) >= min_ratio
+
+
+def _verify_issues(issues, src_text: str, tr_text: str, chapter_no: int) -> list:
+    """Gemini zaman zaman metinde olmayan cümleleri "alıntılayıp" bulgu
+    uyduruyordu. Her bulgunun alıntıları GERÇEKTEN kaynak/çeviri metninde
+    var mı diye kontrol edilir; yoksa bulgu elenir (rapora girmez).
+    - İNGİLİZCE_KALINTI: alıntı ÇEVİRİ metninde olmalı.
+    - Diğerleri: source_quote KAYNAKTA olmalı; translation_quote doluysa
+      ÇEVİRİDE olmalı."""
+    if not isinstance(issues, list):
+        return []
+    kept, dropped = [], 0
+    for issue in issues:
+        if not isinstance(issue, dict):
+            dropped += 1
+            continue
+        sq = str(issue.get("source_quote") or "")
+        tq = str(issue.get("translation_quote") or "")
+        if "KALINTI" in str(issue.get("type", "")).upper():
+            ok = _quote_present(tq or sq, tr_text)
+        else:
+            ok = _quote_present(sq, src_text) and (not tq.strip() or _quote_present(tq, tr_text))
+        if ok:
+            kept.append(issue)
+        else:
+            dropped += 1
+    if dropped:
+        print(f"    Bölüm {chapter_no}: {dropped} bulgu doğrulanamadı "
+              f"(alıntı metinde yok), elendi.")
+    return kept
 
 
 def _find_original(slug: str) -> str | None:
@@ -346,6 +402,7 @@ def audit_book(slug: str, max_chapters: int | None = None):
             _save_progress(output_dir, progress)
             continue
 
+        issues = _verify_issues(issues, src_text[:8000], tr_body[:8000], i)
         progress["completed"][key] = issues
         _save_progress(output_dir, progress)  # HER bölümden sonra checkpoint
 
