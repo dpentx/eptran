@@ -40,7 +40,9 @@
     "Ah-Duo": "Ah-Duo",
     "Lihaku": "Lihaku",
     "Pairin": "Pairin",
-    "Fengming": "Fengming"
+    "Fengming": "Fengming",
+    "Kevin": "Çevirmen",
+    "Sasha": "Editör"
   },
   "terms": {
     "hougong": "Arka Saray",
@@ -115,7 +117,12 @@
     "milk-sibling": "süt kardeşi",
     "heir apparent": "taht veliahtı",
     "South Palace": "Güney Sarayı",
-    "nunnery": "Manastır"
+    "nunnery": "Manastır",
+    "karatou": "Acı/Sert Damak (Alkol Tercih Edenler)",
+    "amatou": "Tatlı Damak (Tatlı Tercih Edenler)",
+    "karai": "Acı/Sert/Kuru",
+    "shio-karai": "Tuzlu Acı",
+    "umami": "Umami (Beşinci Tat)"
   },
   "style_notes": "Anlatıcı, Maomao'nun acımasız ve alaycı iç sesini yansıtan, kuru ve ironik bir ton kullanır; cümleler genellikle kısa, keskin ve karakterin pratik, hayatta kalma odaklı bakış açısını vurgulayacak şekilde yapılandırılmıştır.",
   "summaries": [
