@@ -43,6 +43,17 @@ jobs:
           ref: ${{ inputs.branch }}
           fetch-depth: 0
 
+      # Kod HER ZAMAN main'den gelir; dal sadece veri (status.json, output/ ...)
+      # tasir. Aksi halde dal acildigi andaki eski script'lerle calisir, main'e
+      # giren duzeltmeler acik kitaplara ulasmaz (ve bir PR'in kendi pr_check.py'sini
+      # degistirerek kontrolu zayiflatmasi mumkun olur).
+      - name: Use scripts from main
+        run: |
+          git fetch origin main
+          mkdir -p "$RUNNER_TEMP/main-code"
+          git archive FETCH_HEAD scripts requirements.txt | tar -x -C "$RUNNER_TEMP/main-code"
+          echo "MAIN_CODE=$RUNNER_TEMP/main-code" >> "$GITHUB_ENV"
+
       - name: Check if conversion needed
         id: check
         run: |
@@ -70,7 +81,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.check.outputs.needed == 'yes'
-        run: pip install -r requirements.txt
+        run: pip install -r "$MAIN_CODE/requirements.txt"
 
       - name: Configure git
         if: steps.check.outputs.needed == 'yes'
@@ -84,7 +95,7 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           WEB_INGEST_URL: ${{ secrets.WEB_INGEST_URL }}
           WEB_INGEST_SECRET: ${{ secrets.WEB_INGEST_SECRET }}
-        run: python scripts/convert.py
+        run: python "$MAIN_CODE/scripts/convert.py"
 
       # Bitmiş kitabı eptran-library'ye yayımlar (bölümler staging dalına,
       # epub draft Release'e) ve PR'a link yorumu ekler. Fail-soft: hata
@@ -94,4 +105,4 @@ jobs:
         continue-on-error: true
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
-        run: python scripts/publish_library.py
+        run: python "$MAIN_CODE/scripts/publish_library.py"
