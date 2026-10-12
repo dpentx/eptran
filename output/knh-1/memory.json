@@ -30,7 +30,8 @@
     "Xiaolan": "Xiaolan",
     "Hongniang": "Hongniang",
     "Fuyou": "Fuyou",
-    "Yinghua": "Yinghua"
+    "Yinghua": "Yinghua",
+    "Virtuous Consort": "Erdemli Konsort"
   },
   "terms": {
     "hougong": "Arka Saray",
@@ -74,14 +75,18 @@
     "xianfei": "Bilge Konsort",
     "defei": "Erdemli Konsort",
     "shufei": "Saf Konsort",
-    "Upper First rank": "Üst Birinci Sınıf"
+    "Upper First rank": "Üst Birinci Sınıf",
+    "Garden Party": "Bahçe Partisi",
+    "heating stone": "ısı taşı",
+    "charcoal grill": "kömür ızgarası",
+    "silver hair stick": "gümüş saç çubuğu"
   },
   "style_notes": "Anlatıcı, Maomao'nun acımasız ve alaycı iç sesini yansıtan, kuru ve ironik bir ton kullanır; cümleler genellikle kısa, keskin ve karakterin pratik, hayatta kalma odaklı bakış açısını vurgulayacak şekilde yapılandırılmıştır.",
   "summaries": [
-    "Chapter 11: The Unsettling Matter of the Spirit (Part Two): Maomao, uyku yürüyüşü sorunu yaşayan bir fahişenin duygusal çalkantılarla tetiklenen rahatsızlığını tedavi etme sürecini anlatırken, sarayda iki haftadır kuzey ve doğu çeyreklerinde beliren gizemli bir ruhun varlığından bahseder. Hikâyede Maomao, Jinshi, Gaoshun ve İmparatoriçe Gyokuyou karakterleri, bu iki farklı gizemi tartışırken olayların seyrini belirler.",
     "Chapter 12: The Threat: Maomao, İmparator'un emriyle Lihua Hanımefendi'nin harem kadınlarının tehdit ve düşmanlığına maruz kalarak ona bakmak zorunda kalır. Bu bölümde, İmparator'un pervasız isteği ve Maomao'nun saraydaki zorlu konumu öne çıkar.",
     "Chapter 13: Nursing: Maomao, haremdeki ihmalkar bakımların aksine Lihua Hanımefendi'ye zorla beslenme ve hijyen desteği sağlayarak sağlığını iyileştirmeye çalışır. Lihua'nın toparlanmaya başlamasıyla birlikte, Maomao'ya neden kendisini ölüme terk etmediğini sorarak duygusal bir diyalog başlatır.",
     "Chapter 14: The Fire: Maomao, Arka Saray'ın bahçelerinde topladığı matsutake mantarlarını paylaşmak için doktora giderken, tek yakın dostu Xiaolan ile sohbet eder. Sohbet sırasında, asıl sarayda bir kadının aşk iksiri kullanarak bir askere âşık olma hikâyesi anlatılır ve bu durum Maomao'da tedirginlik uyandırır.",
-    "Chapter 15: Covert Operations: Maomao, Arka Saray'da gizli operasyonlar yürüten ve aşırı güzelliği nedeniyle ona karşı içten bir tiksinti duyduğu Jinshi ile baş başa kalır. İkili, ilaç tozlarının renkleri ve yazı çubuklarına emdirilme yöntemleri üzerine teknik bir tartışma yürütürken Maomao, Jinshi'nin gizli bir şifre üzerinde çalıştığını sezer."
+    "Chapter 15: Covert Operations: Maomao, Arka Saray'da gizli operasyonlar yürüten ve aşırı güzelliği nedeniyle ona karşı içten bir tiksinti duyduğu Jinshi ile baş başa kalır. İkili, ilaç tozlarının renkleri ve yazı çubuklarına emdirilme yöntemleri üzerine teknik bir tartışma yürütürken Maomao, Jinshi'nin gizli bir şifre üzerinde çalıştığını sezer.",
+    "Chapter 16: The Garden Party (Part One): Bahçe partisi öncesinde Maomao, Prenses Lingli ve harem kadınlarını ısıtma taşlarıyla güvende tutarken, İmparator Jinshi'nin Konsort Gyokuyou'ya olan yakın ilgisi ve diğer konsortlara karşı üstünlük kurma çabası Gaoshun tarafından endişeyle izlenmektedir."
   ]
 }
