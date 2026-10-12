@@ -68,13 +68,24 @@ jobs:
           ref: ${{ inputs.branch }}
           fetch-depth: 0
 
+      # Kod HER ZAMAN main'den gelir; dal sadece veri (status.json, output/ ...)
+      # tasir. Aksi halde dal acildigi andaki eski script'lerle calisir, main'e
+      # giren duzeltmeler acik kitaplara ulasmaz (ve bir PR'in kendi pr_check.py'sini
+      # degistirerek kontrolu zayiflatmasi mumkun olur).
+      - name: Use scripts from main
+        run: |
+          git fetch origin main
+          mkdir -p "$RUNNER_TEMP/main-code"
+          git archive FETCH_HEAD scripts requirements.txt | tar -x -C "$RUNNER_TEMP/main-code"
+          echo "MAIN_CODE=$RUNNER_TEMP/main-code" >> "$GITHUB_ENV"
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r "$MAIN_CODE/requirements.txt"
 
       - name: Configure git
         run: |
@@ -145,9 +156,9 @@ jobs:
           PYTHONUNBUFFERED: "1"
         run: |
           if [ -n "${{ inputs.max_chapters }}" ]; then
-            python scripts/qa_audit.py "${{ inputs.slug }}" --max-chapters "${{ inputs.max_chapters }}"
+            python "$MAIN_CODE/scripts/qa_audit.py" "${{ inputs.slug }}" --max-chapters "${{ inputs.max_chapters }}"
           else
-            python scripts/qa_audit.py "${{ inputs.slug }}"
+            python "$MAIN_CODE/scripts/qa_audit.py" "${{ inputs.slug }}"
           fi
 
       # Gemini'nin somut olarak (kaynak+hatalı çeviri alıntısı çiftiyle)
@@ -165,7 +176,7 @@ jobs:
           GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
           GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
           PYTHONUNBUFFERED: "1"
-        run: python scripts/apply_qa_fixes.py "${{ inputs.slug }}"
+        run: python "$MAIN_CODE/scripts/apply_qa_fixes.py" "${{ inputs.slug }}"
 
       # NOT (Eylül 2026, gerçek üretim hatası): Bu kontrol eskiden
       # .qa_progress.json checkpoint dosyasının yokluğuna bakıyordu VE
@@ -199,7 +210,7 @@ jobs:
           GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
           PYTHONUNBUFFERED: "1"
-        run: python scripts/series_suggest.py "${{ inputs.slug }}"
+        run: python "$MAIN_CODE/scripts/series_suggest.py" "${{ inputs.slug }}"
 
       - name: Commit results
         if: always()

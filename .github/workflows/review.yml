@@ -40,6 +40,17 @@ jobs:
           ref: ${{ inputs.branch }}
           fetch-depth: 0
 
+      # Kod HER ZAMAN main'den gelir; dal sadece veri (status.json, output/ ...)
+      # tasir. Aksi halde dal acildigi andaki eski script'lerle calisir, main'e
+      # giren duzeltmeler acik kitaplara ulasmaz (ve bir PR'in kendi pr_check.py'sini
+      # degistirerek kontrolu zayiflatmasi mumkun olur).
+      - name: Use scripts from main
+        run: |
+          git fetch origin main
+          mkdir -p "$RUNNER_TEMP/main-code"
+          git archive FETCH_HEAD scripts requirements.txt | tar -x -C "$RUNNER_TEMP/main-code"
+          echo "MAIN_CODE=$RUNNER_TEMP/main-code" >> "$GITHUB_ENV"
+
       - name: Check if review needed
         id: check
         run: |
@@ -81,7 +92,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.check.outputs.needed == 'yes'
-        run: pip install -r requirements.txt
+        run: pip install -r "$MAIN_CODE/requirements.txt"
 
       - name: Configure git
         if: steps.check.outputs.needed == 'yes'
@@ -97,4 +108,4 @@ jobs:
           GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
           GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
-        run: python scripts/review.py
+        run: python "$MAIN_CODE/scripts/review.py"
