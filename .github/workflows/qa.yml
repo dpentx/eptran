@@ -255,6 +255,10 @@ jobs:
           from lib.git_utils import write_status
           status = json.load(open('status.json', encoding='utf-8')) if os.path.exists('status.json') else {}
           status['qa_status'] = '${{ steps.qacheck.outputs.complete == 'true' && 'completed' || 'partial' }}'
+          slug = '${{ inputs.slug }}'
+          unresolved = os.path.exists('output/' + slug + '/qa_report.md') and not os.path.exists('output/' + slug + '/.qa_progress.json')
+          if status['qa_status'] == 'partial' and unresolved:
+              status['qa_attempts'] = int(status.get('qa_attempts') or 0) + 1
           write_status(status, 'qa: ${{ steps.qacheck.outputs.complete == 'true' && 'tamamlandı' || 'kısmi, devam edecek' }}')
           "
           if [ "${{ steps.qacheck.outputs.complete }}" = "true" ]; then
