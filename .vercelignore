@@ -1,0 +1,9 @@
+# Vercel yalnızca index.html + api/ fonksiyonlarını yayınlıyor (bkz. vercel.json).
+# Reponun geri kalanı (output/, input/, series/, scripts/ ...) ~300 MB; vercel.json'da
+# outputDirectory "." olduğu için her deployment'a tamamı giriyor ve "Deployment
+# Storage" kotasını (Hobby: 10 GB) dolduruyordu. Kök dizindeki HER ŞEYİ yoksay,
+# sadece site için gerekenleri yayına al.
+/*
+!api
+!vercel.json
+!*.html
