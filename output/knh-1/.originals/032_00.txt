@@ -1,0 +1,53 @@
+Bonus: Translator’s Notes
+
+The 
+Apothecary Diaries
+ Diaries
+
+Vol. 1
+
+A Question of Taste
+
+Welcome to the end matter! Your friendly translator Kevin here. We hope you’ve enjoyed this first volume of 
+The Apothecary Diaries
+.
+
+I’d like to try to give some insight into what the translation process is like, especially on this particular series. The Apothecary Diaries boasts a number of features that require special attention from the translator, such as its setting and the profusion of words related to medicine, biology, and so on. Part of being a translator is being able to quickly reach a point where you can pass yourself off as sounding at least as competent as the original author when it comes to specialty subjects like this, something the internet has been an absolute boon for in the modern era of translation.
+
+In the interest of revealing the sorts of places where translators have to make more subtle choices than simply picking up jargon, though, I’d like to focus on a vocabulary item from chapter 25 of this book. That’s the story of Kounen, Jinshi’s acquaintance who dies of salt poisoning. It transpires that, unable to taste salty flavors, he didn’t realize he was drinking heavily salted wine until it was too late.
+
+In the source text, Kounen is said to have formerly been 
+karatou 
+(辛党) before his tastes changed and he became 
+amatou
+ (甘党). The word 
+amatou
+ is fairly straightforward; the two characters literally mean “sweet faction,” and it’s a noun that describes someone with a sweet tooth. But 
+karatou
+ is a little thornier.
+
+There are two major issues: the meaning of the source vocabulary, and how to render it in English. (Incidentally, these are the two basic issues involved in any attempted translation.) Let’s start with the meaning of the word, because if you don’t understand what something means, you don’t have much chance of translating it. The first character is related to the word karai (辛い), but even this common adjective poses a bit of a riddle by virtue of its semantic range. Semantic range refers to the variety of meanings a word can have, and karai , though often translated as “spicy” or “hot,” can also mean “salty” (sometimes referred to as shio-karai , or “salt- karai ”). In the context of wine or alcohol, it can even mean “dry” as opposed to sweet. (There are other situations where karai has a figurative meaning and might be translated as “stern,” “severe,” or “difficult,” but those meanings obviously aren’t involved here, so we can ignore them.)
+
+Thus it seems 
+karatou
+ means “the 
+karai
+ faction,” but here comes the next wrinkle. As a compound, 
+karatou
+ in the modern language frequently means someone who prefers alcohol to sweet foods (that is, over against being someone of the 
+amatou
+). Indeed, this has become the dominant meaning. The online J>J dictionary Goo defines 
+karatou
+ as “someone who prefers alcohol over candies and sweets” (my translation), and gives 
+amatou
+ as its antonym.
+
+So the evidence seems to weigh in favor of karatou as meaning simply someone who likes to drink, but in translation, it’s always important to consider the context of a word in the source text. In chapter 25 of this book, Jinshi describes Kounen after his transformation: “He developed a serious sweet tooth (lit. ‘Became a major member of the amatou ’). He preferred sweet wine to drink, and would only take sweet side dishes as well.”
+
+The crucial part, in my mind, immediately follows this sentence. Jinshi recounts that Kounen rejected anything he was given that wasn’t sweet. The examples he gives include smoked meat and rock salt: that is, the very definition of foods that are karai . To me, this shows that karatou here means more than simply someone who likes to drink. After all, the point isn’t that Kounen started drinking, but that he started (among other things) drinking sweet wines. Indeed, if we take karatou as meaning someone who prefers alcohol to sweets, as many modern dictionaries have it, then its use here becomes almost paradoxical.
+
+Thus, to me, the matter of the meaning of karatou is settled. But then the question remains: how do we describe this karai preference in English? Rock salt would be salty (to coin a truism), but smoked or cured meat? Sure, it has an element of saltiness, but is that the primary flavor we associate with it? Would we simply call it savory? But then how do we account for the fact that karai food is often spicy? Using the actual word “spicy” or “hot” would be too limiting, the same way that “salty” would. In a more modern or more technical context, we could consider an expression like “foods with lots of umami.” Umami (actually a loan word from Japanese, in which it simply means “deliciousness”) is the “fifth flavor” we perceive in addition to sweet, salty, sour, and bitter. But my concern was that having Maomao say something like “Did he used to prefer foods with more umami?” would sound pedantic, anachronistic, or both. In the end, after talking it over with Sasha (editors matter to a translation!), we felt “savory” covered the most bases.
+
+All this, just to translate a seemingly common vocabulary term that only appears for a few pages! Although a lot of this thought process goes much quicker in my head than it does when I have to write it all out, the translator does have to make these decisions and sometimes pause to investigate the meaning of a word in one or both languages. It takes time and effort, and requires a practitioner who’s both versed in the nuances of the source language and alert to the possible expressive resources of the target language. For the translator, the mysteries Maomao solves aren’t the only ones in this series! But that’s part of the fun.
+
+See you next time!
