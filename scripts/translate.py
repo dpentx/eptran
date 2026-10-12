@@ -25,6 +25,12 @@ from lib.git_utils import (
 
 STATUS_FILE = "status.json"
 
+# QA denetimi bittikten sonra COZULMEMIS bulgu kalirsa (apply_qa_fixes duzeltemedi)
+# periyodik tarama kac kez daha duzeltme denesin? Sonra kitap cozulmemis bulgularla
+# ciltlenip PR'a gider (pr_check kirmizi gosterir, karar insana kalir) —
+# aksi halde sonsuza kadar yeniden dener ve Gemini kotasini yer.
+MAX_QA_ATTEMPTS = 3
+
 
 # ── Bölüm çıkarma ─────────────────────────────────────────────────────────────
 
@@ -640,10 +646,31 @@ def _scan_and_nudge_active_books() -> None:
             book_slug = status.get("book")
             if not book_slug:
                 continue
-            print(f"[{branch}] QA denetimi bekliyor/durmuş — qa.yml dürtülüyor.")
+            # NOT (Ekim 2026): QA "partial" kalınca eskiden HER taramada
+            # Gemini denetimi BAŞTAN çalışıyordu (checkpoint denetim bitince
+            # siliniyor) ve çözülemeyen bir bulgu varsa bu sonsuza dek sürüyordu.
+            # Artık: (1) elle ciltlenmiş kitaba dokunulmaz, (2) denetim bitmiş ama
+            # bulgu kalmışsa Gemini yeniden çalıştırılmaz, sadece düzeltmeler
+            # tekrar denenir, (3) MAX_QA_ATTEMPTS denemeden sonra kitap
+            # çözülmemiş bulgularla ciltlenir (PR kontrolü kırmızı gösterir).
+            if status.get("convert_status") == "completed":
+                continue
+            attempts = int(status.get("qa_attempts") or 0)
+            if qa_status == "partial" and attempts >= MAX_QA_ATTEMPTS:
+                if status.get("convert_status") != "running":
+                    print(f"[{branch}] QA {attempts} denemede çözülemedi — "
+                          "çözülmemiş bulgularla ciltleme başlatılıyor.")
+                    trigger_workflow("convert.yml", branch=branch)
+                continue
+            audit_done = (qa_status == "partial" and peek_remote_file(
+                branch, f"output/{book_slug}/qa_report.md") is not None)
+            print(f"[{branch}] QA denetimi bekliyor/durmuş — qa.yml dürtülüyor"
+                  + (" (sadece düzeltme denemesi)." if audit_done else "."))
             trigger_workflow(
                 "qa.yml", branch=branch, slug=book_slug,
-                apply_fixes="true", run_series_suggest="true",
+                apply_fixes="true",
+                run_series_suggest="false" if audit_done else "true",
+                skip_audit="true" if audit_done else "false",
             )
             continue
 
