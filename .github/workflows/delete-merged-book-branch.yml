@@ -1,0 +1,27 @@
+name: Delete merged book branch
+
+# book/<slug> PR'ı merge olunca dalı siler. Aksi halde yetim kalan dal,
+# api/upload.js'in "zaten devam eden bir çeviri var" kontrolünü (book/ ve
+# queue/ ile başlayan her dalı "aktif" sayıyor) sürekli tetikler ve yeni
+# kitap yüklemeyi engeller. library-promote.yml dal adını olay verisinden
+# okuduğu için dal silinse de etkilenmez.
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  delete:
+    if: >-
+      github.event.pull_request.merged == true &&
+      startsWith(github.event.pull_request.head.ref, 'book/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+
+    steps:
+      - name: Delete head branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: gh api -X DELETE "repos/${GITHUB_REPOSITORY}/git/refs/heads/${HEAD_REF}"
