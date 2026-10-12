@@ -39,7 +39,8 @@
     "Ailan": "Ailan",
     "Ah-Duo": "Ah-Duo",
     "Lihaku": "Lihaku",
-    "Pairin": "Pairin"
+    "Pairin": "Pairin",
+    "Fengming": "Fengming"
   },
   "terms": {
     "hougong": "Arka Saray",
@@ -101,14 +102,18 @@
     "wood strip": "ahşap şerit",
     "congee": "pirinç çorbası",
     "rush mat": "saz hasırı",
-    "mortar and pestle": "havanda ve tokmak"
+    "mortar and pestle": "havanda ve tokmak",
+    "Garnet Pavilion": "Garnet Pavyonu",
+    "Chief lady-in-waiting": "Baş Hanımefendi",
+    "Food Service": "Yemek Servisi",
+    "foot binding": "Ayak Bağlama"
   },
   "style_notes": "Anlatıcı, Maomao'nun acımasız ve alaycı iç sesini yansıtan, kuru ve ironik bir ton kullanır; cümleler genellikle kısa, keskin ve karakterin pratik, hayatta kalma odaklı bakış açısını vurgulayacak şekilde yapılandırılmıştır.",
   "summaries": [
-    "Chapter 21: Lihaku: Maomao, Xiaolan ile zehirlenme olayını ve saç çubuklarının Arka Saray'daki gizli anlamını tartışırken, Lihaku eğitimini tamamladıktan sonra kendisine verilen pembe mercanlı saç çubuğunun ciddi bir niyet taşıdığından şüphelenir.",
     "Chapter 22: Homecoming: Maomao, Lihaku'nun eşliğinde Arka Saray'dan ayrılıp Kırmızı Işık Bölgesi'ndeki Yosun Yeşili Evi'ne döner. Burada, geçmişte inci gözyaşlarıyla tanınan ancak şimdi sertleşmiş bir karakter olan yaşlı Nine ile karşılaşır.",
     "Chapter 23: Wheat Stalks: Maomao, babasının tarlada olduğunu fark edip bitkilerini kontrol ederken, bir çırak tarafından acil bir durum için orta halli bir fahişehaneye sürüklenir. Orada, bir yatakta yatan ve kusmuş halde bulunan bir çiftin etrafında toplanan kadınlarla karşılaşır.",
     "Chapter 24: A Misunderstanding: Maomao, Lihaku'nun kefaletini ve yeni müşterisini halledip Yeşim Köşkü'ne döndüğünde, gergin ve kıskanç görünen Jinshi ile karşılaşır. Jinshi, Maomao'nun ev ziyareti ve Lihaku hakkındaki sorularıyla onu sorgularken, aralarındaki gerilim ve yanlış anlama derinleşir.",
-    "Chapter 25: Wine: Maomao, Jinshi ve Gyokuyou Hanım, Kounen adlı savaşçının aşırı şarap içerek ölümünün arkasındaki gizemi araştırırken, Jinshi'nin Maomao'yu bu işe dahil etmesinin ardındaki planı sorgular. Maomao, normalden yarı kadar içilen şarabın ölüm nedeni olamayacağını düşünerek, Gaoshun'un getirdiği aynı partiden kalan şarap numunesini incelemeye başlar."
+    "Chapter 25: Wine: Maomao, Jinshi ve Gyokuyou Hanım, Kounen adlı savaşçının aşırı şarap içerek ölümünün arkasındaki gizemi araştırırken, Jinshi'nin Maomao'yu bu işe dahil etmesinin ardındaki planı sorgular. Maomao, normalden yarı kadar içilen şarabın ölüm nedeni olamayacağını düşünerek, Gaoshun'un getirdiği aynı partiden kalan şarap numunesini incelemeye başlar.",
+    "Chapter 26: Two ’Cides to Every Story: Gaoshun, Jinshi'ye Arka Saray'da bulunan cesedin Saflık Konsortu'nun baş nedimi Fengming'e ait olduğunu bildiren raporu sunar. Maomao, cesedi incelemek için çağrıldığında bu görevi reddederken, Jinshi ve Gaoshun olay yerinde belirir."
   ]
 }
