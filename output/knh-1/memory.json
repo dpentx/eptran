@@ -23,7 +23,11 @@
     "Taomei": "Taomei",
     "Tianyu": "Tianyu",
     "Dr. You": "Dr. You",
-    "Vice Minister Lu": "Bakan Yardımcısı Lu"
+    "Vice Minister Lu": "Bakan Yardımcısı Lu",
+    "Lady Lihua": "Lihua Hanımefendi",
+    "Princess Lingli": "Prenses Lingli",
+    "Xiaoling": "Xiaoling",
+    "Xiaolan": "Xiaolan"
   },
   "terms": {
     "hougong": "Arka Saray",
@@ -39,10 +43,16 @@
     "quack doctor": "şarlatan doktor",
     "The Quack Doctor": "şartlatan doktor",
     "Master Gyokuen": "Gyokuen Efendi",
-    "Master Gyoku-ou": "Gyoku-ou Efendi"
+    "Master Gyoku-ou": "Gyoku-ou Efendi",
+    "Eastern Palace": "Doğu Sarayı",
+    "central area": "merkez bölge",
+    "western quarter": "batı çeyreği",
+    "eastern quarter": "doğu çeyreği",
+    "sawbones": "halka açık doktor / şarlatan"
   },
   "style_notes": "Anlatıcı, Maomao'nun acımasız ve alaycı iç sesini yansıtan, kuru ve ironik bir ton kullanır; cümleler genellikle kısa, keskin ve karakterin pratik, hayatta kalma odaklı bakış açısını vurgulayacak şekilde yapılandırılmıştır.",
   "summaries": [
-    "Chapter 1: Maomao: Eczacı Maomao, üç kaçırıcı tarafından zorla kraliyet sarayının Arka Sarayı'na getirilmiştir. Burada, sarayın kasvetli hizmet alanlarında çalışırken, saray kadınlarının okuma yazma bilmemesi ve zorla getirilmeleri gibi çarpık koşulları gözlemlemektedir."
+    "Chapter 1: Maomao: Eczacı Maomao, üç kaçırıcı tarafından zorla kraliyet sarayının Arka Sarayı'na getirilmiştir. Burada, sarayın kasvetli hizmet alanlarında çalışırken, saray kadınlarının okuma yazma bilmemesi ve zorla getirilmeleri gibi çarpık koşulları gözlemlemektedir.",
+    "Chapter 2: The Two Consorts: Maomao, sarayda İmparator'un iki eşi Gyokuyou ve Lihua'nın bebeklerinin ölümü üzerine dolaşan lanet söylentilerini dinlerken, bu durumun aslında bir hastalık veya zehirlenme olabileceğini düşünür. Bu sırada, İmparatoriçe Lihua'nın durumunun daha kötü olduğu ve doktorun onu daha sık ziyaret ettiği bilgisiyle Maomao'nun merakı artar."
   ]
 }
