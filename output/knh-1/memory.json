@@ -27,7 +27,8 @@
     "Lady Lihua": "Lihua Hanımefendi",
     "Princess Lingli": "Prenses Lingli",
     "Xiaoling": "Xiaoling",
-    "Xiaolan": "Xiaolan"
+    "Xiaolan": "Xiaolan",
+    "Hongniang": "Hongniang"
   },
   "terms": {
     "hougong": "Arka Saray",
@@ -52,14 +53,17 @@
     "Office of Serving Women": "Hizmetçi Kadınlar Dairesi",
     "Office of the Interior": "İç İşleri Dairesi",
     "Domestic Service Department": "Ev Hizmetleri Departmanı",
-    "Matron of the Serving Women": "Hizmetçi Kadınlar Başmüdüresi"
+    "Matron of the Serving Women": "Hizmetçi Kadınlar Başmüdüresi",
+    "Poison Tester": "Zehir Denetçisi",
+    "food taster": "yemek denetçisi",
+    "hazard pay": "tehlike tazminatı"
   },
   "style_notes": "Anlatıcı, Maomao'nun acımasız ve alaycı iç sesini yansıtan, kuru ve ironik bir ton kullanır; cümleler genellikle kısa, keskin ve karakterin pratik, hayatta kalma odaklı bakış açısını vurgulayacak şekilde yapılandırılmıştır.",
   "summaries": [
-    "Chapter 1: Maomao: Eczacı Maomao, üç kaçırıcı tarafından zorla kraliyet sarayının Arka Sarayı'na getirilmiştir. Burada, sarayın kasvetli hizmet alanlarında çalışırken, saray kadınlarının okuma yazma bilmemesi ve zorla getirilmeleri gibi çarpık koşulları gözlemlemektedir.",
     "Chapter 2: The Two Consorts: Maomao, sarayda İmparator'un iki eşi Gyokuyou ve Lihua'nın bebeklerinin ölümü üzerine dolaşan lanet söylentilerini dinlerken, bu durumun aslında bir hastalık veya zehirlenme olabileceğini düşünür. Bu sırada, İmparatoriçe Lihua'nın durumunun daha kötü olduğu ve doktorun onu daha sık ziyaret ettiği bilgisiyle Maomao'nun merakı artar.",
     "Chapter 3: Jinshi: Jinshi, saraydaki gürültüyü yatıştırırken genç prensin ölümü ve üvey kız kardeşi Prenses Lingli'nin aynı hastalıktan hızla iyileşmesi arasındaki gizemli farkı araştırmaya başlar. Bu sırada, Prenses'in annesi Gyokuyou Hanımefendi'nden gelen ve hastalığın sebebini aydınlatmaya yönelik çirkin yazılı bir kumaş parçası, olayların seyrini değiştiren kritik bir ipucu sunar.",
     "Chapter 4: The Nymph’s Smile: Maomao, prensin ölümünün nedeninin aşırı makyaj tozu kullanımı olduğunu fark ederken, yas süresince kaldırılan et ikramı ve hizmetçi kadınların zorlu yaşam koşullarıyla karşı karşıya kalır. Yasın ardından İmparator'un Gyokuyou Hanım'a yönelmesi üzerine Maomao, bir hademeden gelen emirle Hizmetçi Kadınlar Matronu'nun ofisine çağrılır.",
-    "Chapter 5: Attendant: Maomao, okuma yazma bilmediğini iddia etmesine rağmen el yazısı analizi yoluyla kendisini tespit eden hadım Jinshi tarafından Gyokuyou Eşinin köşküne götürülür. Bu sahnede, Eşinin kırmızı saçlı bir kadın olduğunu ve yanında sağlıklı bir bebekle birlikte bulunduğunu görürüz."
+    "Chapter 5: Attendant: Maomao, okuma yazma bilmediğini iddia etmesine rağmen el yazısı analizi yoluyla kendisini tespit eden hadım Jinshi tarafından Gyokuyou Eşinin köşküne götürülür. Bu sahnede, Eşinin kırmızı saçlı bir kadın olduğunu ve yanında sağlıklı bir bebekle birlikte bulunduğunu görürüz.",
+    "Chapter 6: Poison Tester: Jinshi, zehir bilgisi olan Maomao'yu İmparator'un gözde eşi Gyokuyou Hanımefendi'nin hizmetine vererek hem eşin güvenliğini sağlamayı hem de kızın yeteneklerini kontrol altında tutmayı planlar. Maomao ise bu atamayla birlikte saray hiyerarşisinde orta kademeye yükselir ve daha iyi yaşam koşullarına kavuşur."
   ]
 }
