@@ -28,7 +28,8 @@
     "Princess Lingli": "Prenses Lingli",
     "Xiaoling": "Xiaoling",
     "Xiaolan": "Xiaolan",
-    "Hongniang": "Hongniang"
+    "Hongniang": "Hongniang",
+    "Fuyou": "Fuyou"
   },
   "terms": {
     "hougong": "Arka Saray",
@@ -61,14 +62,16 @@
     "shangqin": "shangqin (Ev Hizmetleri Dairesi)",
     "Housekeeping Service": "Ev Hizmetleri Dairesi",
     "chaise longue": "uzanma koltuğu",
-    "rhododendron": "gülgiller"
+    "rhododendron": "gülgiller",
+    "Cacao": "Kakao",
+    "Upper Fourth rank": "Üst Dördüncü Sınıf"
   },
   "style_notes": "Anlatıcı, Maomao'nun acımasız ve alaycı iç sesini yansıtan, kuru ve ironik bir ton kullanır; cümleler genellikle kısa, keskin ve karakterin pratik, hayatta kalma odaklı bakış açısını vurgulayacak şekilde yapılandırılmıştır.",
   "summaries": [
-    "Chapter 3: Jinshi: Jinshi, saraydaki gürültüyü yatıştırırken genç prensin ölümü ve üvey kız kardeşi Prenses Lingli'nin aynı hastalıktan hızla iyileşmesi arasındaki gizemli farkı araştırmaya başlar. Bu sırada, Prenses'in annesi Gyokuyou Hanımefendi'nden gelen ve hastalığın sebebini aydınlatmaya yönelik çirkin yazılı bir kumaş parçası, olayların seyrini değiştiren kritik bir ipucu sunar.",
     "Chapter 4: The Nymph’s Smile: Maomao, prensin ölümünün nedeninin aşırı makyaj tozu kullanımı olduğunu fark ederken, yas süresince kaldırılan et ikramı ve hizmetçi kadınların zorlu yaşam koşullarıyla karşı karşıya kalır. Yasın ardından İmparator'un Gyokuyou Hanım'a yönelmesi üzerine Maomao, bir hademeden gelen emirle Hizmetçi Kadınlar Matronu'nun ofisine çağrılır.",
     "Chapter 5: Attendant: Maomao, okuma yazma bilmediğini iddia etmesine rağmen el yazısı analizi yoluyla kendisini tespit eden hadım Jinshi tarafından Gyokuyou Eşinin köşküne götürülür. Bu sahnede, Eşinin kırmızı saçlı bir kadın olduğunu ve yanında sağlıklı bir bebekle birlikte bulunduğunu görürüz.",
     "Chapter 6: Poison Tester: Jinshi, zehir bilgisi olan Maomao'yu İmparator'un gözde eşi Gyokuyou Hanımefendi'nin hizmetine vererek hem eşin güvenliğini sağlamayı hem de kızın yeteneklerini kontrol altında tutmayı planlar. Maomao ise bu atamayla birlikte saray hiyerarşisinde orta kademeye yükselir ve daha iyi yaşam koşullarına kavuşur.",
-    "Chapter 7: Branch: Gyokuyou Eşinde harem kadınları, yeni atanan yemek denetçisi Maomao'yu koruyarak onu zor işlerden muaf tutar ve beslenmesini artırarak hayatta kalma şansını yükseltmeye çalışır. Bu durum, Maomao'nun kolundaki ağır yara izlerinden kaynaklanan geçmiş travmalarının, çevresindeki kadınların ona karşı geliştirdiği koruyucu ve şefkatli tutumun temel nedeni olduğunu gösterir."
+    "Chapter 7: Branch: Gyokuyou Eşinde harem kadınları, yeni atanan yemek denetçisi Maomao'yu koruyarak onu zor işlerden muaf tutar ve beslenmesini artırarak hayatta kalma şansını yükseltmeye çalışır. Bu durum, Maomao'nun kolundaki ağır yara izlerinden kaynaklanan geçmiş travmalarının, çevresindeki kadınların ona karşı geliştirdiği koruyucu ve şefkatli tutumun temel nedeni olduğunu gösterir.",
+    "Chapter 8: Love Potion: Yemek denetçisi Maomao, Jinshi'nin kendisine sunduğu baozi'lerdeki afrodizyakı tespit edip uyarır ve ardından kendisinden bir aşk iksiri hazırlaması istenir. Maomao, bu teklifi kabul ederek gerekli alet, malzeme ve zamanı talep eder."
   ]
 }
