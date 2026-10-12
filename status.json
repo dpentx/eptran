@@ -10,5 +10,8 @@
   "started_at": "2026-10-12T18:20:38.228840+00:00",
   "queue_mode": true,
   "series": "kusuriya",
-  "updated_at": "2026-10-12T23:59:03.907236+00:00"
+  "updated_at": "2026-10-12T23:59:41.334379+00:00",
+  "review_status": "running",
+  "review_total": 34,
+  "review_completed": 0
 }
