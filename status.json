@@ -15,7 +15,6 @@
   "review_total": 34,
   "review_completed": 34,
   "review_current": "",
-  "qa_status": "completed",
-  "convert_status": "completed",
+  "qa_status": "partial",
   "epub_output": "output/knh-1/knh-1_tr.epub"
 }
