@@ -197,6 +197,13 @@ jobs:
           if [ -f "output/${{ inputs.slug }}/qa_report.md" ]; then
             echo "complete=false" >> "$GITHUB_OUTPUT"
             echo "qa_report.md hâlâ duruyor — çözülmemiş madde(ler) var."
+          elif [ -f "output/${{ inputs.slug }}/.qa_progress.json" ]; then
+            # NOT (Ekim 2026): checkpoint varsa denetim YARIM kalmistir (gunluk kota vb.).
+            # Rapor henuz yazilmadigi icin eskiden "rapor yok" yanlislikla "tamamlandi"
+            # sayiliyor ve kitap denetimsiz ciltleniyordu (knh-1: 34 bolumden yalnizca
+            # 3 tanesi denetlenmisti).
+            echo "complete=false" >> "$GITHUB_OUTPUT"
+            echo "Denetim yarim kalmis (.qa_progress.json mevcut) - kaldigi yerden devam edecek."
           else
             echo "complete=true" >> "$GITHUB_OUTPUT"
             echo "qa_report.md yok — ya hiç sorun bulunmadı ya da hepsi çözüldü."
