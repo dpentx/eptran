@@ -1,37 +1,41 @@
 {
-  "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-15 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
-  "source_book": "knh-15",
+  "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-1 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
+  "source_book": "knh-1",
   "new_characters": {
+    "Lady Lihua": "Lihua Hanımefendi",
+    "Princess Lingli": "Prenses Lingli",
     "Ah-Duo": "Ah-Duo",
-    "Suirei": "Suirei",
-    "Lihua": "Lihua",
-    "Loulan": "Loulan",
-    "Lihaku": "Lihaku",
+    "Fengming": "Fengming",
     "Hongniang": "Hongniang",
-    "Zui": "Zui (İmparatorun gerçek adı)",
-    "Yue": "Yue (Jinshi'nin gerçek adı)",
-    "Auntie Liu": "Teyze Liu"
+    "Xiaolan": "Xiaolan",
+    "Lihaku": "Lihaku",
+    "Pairin": "Pairin",
+    "Yinghua": "Yinghua",
+    "Fuyou": "Fuyou",
+    "Guiyuan": "Guiyuan",
+    "Ailan": "Ailan",
+    "Xiaoling": "Xiaoling"
   },
   "new_terms": {
-    "rear palace": "arka saray",
-    "royal court": "imparatorluk sarayı",
-    "medical office": "tıp bürosu",
-    "high consort": "yüksek eş",
-    "upper consort": "Üst Düzey Konsort",
-    "lady-in-waiting": "harem kadını",
-    "Crown Prince": "Veliaht Prens",
+    "rear palace": "Arka Saray",
+    "hougong": "Arka Saray",
+    "Verdigris House": "Yosun Yeşili Evi",
     "Jade Pavilion": "Yeşim Köşkü",
-    "milk brother": "süt kardeşi",
-    "empress dowager": "dul imparatoriçe",
-    "western capital": "Batı Başkenti",
-    "Mafeisan": "Mafeisan",
-    "Pure Consort": "Saflık Konsortu",
-    "Precious one": "Değerli Konsort"
+    "Crystal Pavilion": "Kristal Köşkü",
+    "Diamond Pavilion": "Elmas Pavilyonu",
+    "Garnet Pavilion": "Garnet Pavyonu",
+    "guifei": "Değerli Konsort",
+    "xianfei": "Bilge Konsort",
+    "defei": "Erdemli Konsort",
+    "shufei": "Saf Konsort",
+    "Food Service": "Yemek Servisi",
+    "Office of Serving Women": "Hizmetçi Kadınlar Dairesi",
+    "Poison Tester": "Zehir Denetçisi"
   },
   "new_notes": [
-    "Suirei (eski saray hanımı/hekim) ve Suiren (Jinshi'nin yaşlı süt annesi) isimleri birbirine çok benzemektedir. Suirei entrikalarla ilişkili gizemli bir karakterken, Suiren saraydaki kıdemli hizmetlidir; bu iki isim kesinlikle karıştırılmamalıdır.",
-    "Zui, İmparator'un gerçek adıdır; Yue ise Jinshi'nin gerçek adıdır. Bu isimler karakterlerin gizli kimlikleri veya resmi olmayan hitaplarında kritik öneme sahiptir.",
-    "Saray hiyerarşisindeki 'Pure Consort' (Saflık Konsortu) ve 'Precious Consort/Precious one' (Değerli Konsort) unvanları, eşlerin saraydaki konumunu belirtir ve birebir bu karşılıklarla korunmalıdır.",
-    "Kitapta geçen 'Gyouyoh' ismi, 'Gyokuyou' (İmparatoriçe Gyokuyou) isminin farklı bir yazımı veya yazım hatası olabilir; çeviride tutarlılık adına kontrol edilmelidir."
+    "Lihua (Lihua Hanımefendi / Kristal Köşkü) ile Lishu (Lishu Hanım / Elmas Pavilyonu) isimleri sesletim olarak karıştırılmamalıdır; Lihua üst rütbeli kıdemli eşlerden biri iken Lishu yaşça çok daha küçük ve çekingen bir konsorttur.",
+    "Ah-Duo, dördüncü üst düzey konsorttan biri olan eski 'Saflık Konsortu'dur (Pure Consort / shufei). Fengming ise onun baş hizmetkarıdır (Chief lady-in-waiting).",
+    "Xiaolan (Arka Saray'daki hizmetçi kız) ile Xiaoling karakterleri karıştırılmamalıdır.",
+    "Verdigris House (Yosun Yeşili Evi), Maomao'nun büyüdüğü zevk mahallesindeki (pleasure district) ünlü fahişe evidir; Pairin, Meimei ve Joka buranın baş fahişeleridir."
   ]
 }
