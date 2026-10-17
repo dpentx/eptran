@@ -2,40 +2,26 @@
   "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-1 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
   "source_book": "knh-1",
   "new_characters": {
-    "Lady Lihua": "Lihua Hanımefendi",
-    "Princess Lingli": "Prenses Lingli",
     "Ah-Duo": "Ah-Duo",
+    "Lady Lihua": "Lihua Hanımefendi",
     "Fengming": "Fengming",
-    "Hongniang": "Hongniang",
     "Xiaolan": "Xiaolan",
-    "Lihaku": "Lihaku",
+    "Hongniang": "Hongniang",
     "Pairin": "Pairin",
-    "Yinghua": "Yinghua",
-    "Fuyou": "Fuyou",
-    "Guiyuan": "Guiyuan",
-    "Ailan": "Ailan",
-    "Xiaoling": "Xiaoling"
+    "Lihaku": "Lihaku"
   },
   "new_terms": {
     "rear palace": "Arka Saray",
-    "hougong": "Arka Saray",
-    "Verdigris House": "Yosun Yeşili Evi",
     "Jade Pavilion": "Yeşim Köşkü",
     "Crystal Pavilion": "Kristal Köşkü",
-    "Diamond Pavilion": "Elmas Pavilyonu",
     "Garnet Pavilion": "Garnet Pavyonu",
-    "guifei": "Değerli Konsort",
-    "xianfei": "Bilge Konsort",
-    "defei": "Erdemli Konsort",
-    "shufei": "Saf Konsort",
-    "Food Service": "Yemek Servisi",
-    "Office of Serving Women": "Hizmetçi Kadınlar Dairesi",
+    "Diamond Pavilion": "Elmas Pavilyonu",
+    "Verdigris House": "Yosun Yeşili Evi",
     "Poison Tester": "Zehir Denetçisi"
   },
   "new_notes": [
-    "Lihua (Lihua Hanımefendi / Kristal Köşkü) ile Lishu (Lishu Hanım / Elmas Pavilyonu) isimleri sesletim olarak karıştırılmamalıdır; Lihua üst rütbeli kıdemli eşlerden biri iken Lishu yaşça çok daha küçük ve çekingen bir konsorttur.",
-    "Ah-Duo, dördüncü üst düzey konsorttan biri olan eski 'Saflık Konsortu'dur (Pure Consort / shufei). Fengming ise onun baş hizmetkarıdır (Chief lady-in-waiting).",
-    "Xiaolan (Arka Saray'daki hizmetçi kız) ile Xiaoling karakterleri karıştırılmamalıdır.",
-    "Verdigris House (Yosun Yeşili Evi), Maomao'nun büyüdüğü zevk mahallesindeki (pleasure district) ünlü fahişe evidir; Pairin, Meimei ve Joka buranın baş fahişeleridir."
+    "Ah-Duo, eski Saflık Konsortu'dur (Pure Consort / Shufei); doğum sırasında yaşadığı sağlık sorunları nedeniyle kısır kalmış ve Arka Saray'dan ayrılmıştır. Fengming ise onun baş hanımefendisidir.",
+    "Dört Üst Düzey Eş ve Köşkleri: İmparatoriçe Gyokuyou (Yeşim Köşkü / Jade Pavilion), Lihua Hanımefendi (Kristal Köşkü / Crystal Pavilion), Lishu Hanım (Elmas Pavilyonu / Diamond Pavilion), Ah-Duo (Garnet Pavyonu / Garnet Pavilion). Lihua ve Lishu isimleri karıştırılmamalıdır.",
+    "Mevcut glossary'de 'The Quack Doctor' karşılığında yer alan 'şartlatan doktor' ifadesinde yazım hatası bulunmaktadır; doğrusu 'şarlatan doktor' olmalıdır."
   ]
 }
