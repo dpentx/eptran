@@ -1,0 +1,31 @@
+# Bonus: Translator’s Notes
+
+Bonus: Çevirmen Notları
+
+Eczacının Günlükleri Günlükleri
+
+Cilt 1
+
+Tat Meselesi
+
+Arka kapak bölümlerine hoş geldiniz! Dostunuz çevirmen Kevin buradan sesleniyor. Umarız Eczacının Günlükleri'nin bu ilk cildini keyifle okumuşsunuzdur.
+
+Çeviri sürecinin nasıl işlediğine, özellikle de bu özel seriye dair bazı içgörüleri paylaşmak isterim. Eczacının Günlükleri, çevirmenden özel bir dikkat gerektiren birçok özelliğe sahip; bunların başında konumu ve tıp, biyoloji gibi alanlarla ilgili terimlerin bolluğu geliyor. Bir çevirmen olmanın parçası, bu tür uzmanlık konularında orijinal yazar en azından aynı yetkinlikte görünebilecek bir noktaya hızla ulaşabilmektir; modern çeviri çağında internet bu konuda mutlak bir nimet olmuştur.
+
+Ancak, çevirmenlerin jargonu seçmekten daha ince tercihler yapmak zorunda kaldığı yerleri ortaya koymak amacıyla, bu kitabın 25. bölümündeki bir sözlük maddesine odaklanmak istiyorum. Bu, tuz zehirlenmesinden ölen, Jinshi'nin tanıdığı Kounen'in hikâyesidir. Anlaşılan o ki, tuzlu tatları alamadığı için, çok tuzlu şarap içtiğini fark edene kadar çok geç kalmıştı.
+
+Kaynak metinde, Kounen'in tatları değişmeden önce karatou (辛党) olduğu, ardından amatou (甘党) olduğu belirtiliyor. amatou kelimesi oldukça basit; iki karakterin kelime anlamı "tatlı fraksiyonu" ve tatlı düşkünü olan birini tanımlayan bir isim. Ancak karatou biraz daha dikenli.
+
+İki temel sorun var: kaynak sözcüğün anlamı ve İngilizceye nasıl aktarılacağı. (Bu arada, bunlar herhangi bir çeviri denemesinde söz konusu olan iki temel sorundur.) Sözcüğün anlamıyla başlayalım, çünkü bir şeyin ne anlama geldiğini anlamıyorsanız, onu çevirme şansınız pek yoktur. İlk karakter, karai (辛い) kelimesiyle ilişkilidir, ancak bu yaygın sıfat bile, semantik aralığı sayesinde biraz bulmaca niteliği taşır. Semantik aralık, bir kelimenin sahip olabileceği anlam çeşitliliğine atıfta bulunur ve karai, sıklıkla "acı" veya "sıcak" olarak çevrilse de, "tuzlu" (bazen shio-karai veya "tuz karai" olarak da anılır) anlamına da gelebilir. Şarap veya alkol bağlamında, tatlıya karşı "kuru" anlamına bile gelebilir. (karai'nin mecazi bir anlama sahip olduğu ve "sert", "ağır" veya "zor" olarak çevrilebileceği diğer durumlar da vardır, ancak bu anlamlar burada açıkça söz konusu olmadığı için onları görmezden gelebiliriz.)
+
+Dolayısıyla karatou'nun "karai fraksiyonu" anlamına geldiği görülüyor, ancak işte bir sonraki pürüz burada başlıyor. Bir bileşik olarak, karatou modern dilde sık sık tatlı yiyeceklere kıyasla alkole tercih eden birini ifade eder (yani amatou olmanın tam tersi). Gerçekten de, bu baskın anlam haline gelmiştir. Çevrimiçi J>J sözlüğü Goo, karatou'yu "şekerlemelere ve tatlılara kıyasla alkole tercih eden kişi" olarak tanımlar (bunu ben çevirdim) ve amatou'yu zıt anlamlısı olarak verir.
+
+Bu nedenle, kanıtlar karatou'nun basitçe içmeyi seven birini ifade ettiğini gösteriyor gibi görünüyor, ancak çeviride, her zaman kaynak metindeki bir kelimenin bağlamını göz önünde bulundurmak önemlidir. Bu kitabın 25. bölümünde, Jinshi, Kounen'in dönüşümünden sonra onu şöyle tanımlar: "Ciddi bir tatlı düşkünlüğü geliştirdi (kelime anlamıyla 'amatou'nun önemli bir üyesi oldu'). İçecek olarak tatlı şarap tercih etti ve yan yemek olarak da sadece tatlıları kabul etti."
+
+Benim için hayati olan kısım, bu cümlenin hemen ardından geliyor. Jinshi, Kounen'in tatlı olmayan her şeyi reddettiğini anlatıyor. Verdiği örnekler arasında dumanlanmış et ve kaya tuzu var; yani karai yiyeceklerin tam tanımı. Bana göre bu, karatou'nun burada sadece içmeyi seven birini ifade ettiğinden daha fazlasını gösteriyor. Sonuçta, mesele Kounen'in içmeye başlaması değil, (diğer şeylerin yanı sıra) tatlı şaraplar içmeye başlamasıydı. Gerçekten de, karatou'yu, birçok modern sözlüğün belirttiği gibi, tatlılara kıyasla alkole tercih eden bir kişi olarak alırsak, burada kullanımı neredeyse paradoksal hale gelir.
+
+Dolayısıyla benim için Acı/Sert Damak (Alkol Tercih Edenler) kavramının anlamı meselesi çözüldü. Ancak o zaman soru hâlâ şu: Bu Acı/Sert/Kuru tercihini İngilizcede nasıl tanımlarız? Kaya tuzu tuzlu olurdu (bir klişe olarak söylemek gerekirse), ama dumanlanmış veya kurutulmuş et? Evet, tuzluluk unsuru var, ama bununla ilişkilendirdiğimiz birincil tat bu mu? Sadece "lezzetli" mi derdik? Peki Acı/Sert/Kuru yiyeceklerin sıklıkla acı olmasını nasıl açıklarız? Gerçek "acı" veya "sıcak" kelimesini kullanmak, "tuzlu" kelimesi gibi çok sınırlayıcı olurdu. Daha modern veya daha teknik bir bağlamda, "Umami (Beşinci Tat)si bol yiyecekler" gibi bir ifadeyi düşünebilirdik. Umami (aslında Japoncadan ödünç alınan bir kelime, orada sadece "lezzetlilik" anlamına gelir), tatlı, tuzlu, ekşi ve acı dışında algıladığımız "beşinci tattır". Ancak endişem, Maomao'nun "Eskiden daha fazla Umami (Beşinci Tat)si olan yiyecekleri mi tercih ediyordu?" gibi bir şey söylemesinin pedant, anacronistik veya her ikisi birden olacağıydı. Sonunda, Editör ile (editörler bir çeviri için önemlidir!) bunu tartıştıktan sonra, "lezzetli" ifadesinin en geniş kapsamlı olduğunu hissettik.
+
+Tüm bunlar, sadece birkaç sayfa boyunca görünen, sıradan görünen bir sözlük terimini çevirmek için! Bu düşünce sürecinin büyük bir kısmı, hepsini yazmak zorunda kaldığımda olduğundan çok daha hızlı kafamda işleniyor olsa da, çevirmenin bu kararları vermesi ve bazen bir kelimenin anlamını bir veya her iki dilde araştırmak için durması gerekir. Bu zaman ve çaba gerektirir ve hem kaynak dilin nüanslarına vâkıf hem de hedef dilin olası ifade kaynaklarına karşı uyanık olan bir uygulayıcı gerektirir. Çevirmen için, Maomao'nun çözdükleri bu serideki tek gizemler değil! Ama bu, eğlencenin bir parçası.
+
+Sonraki sefere görüşmek üzere!
