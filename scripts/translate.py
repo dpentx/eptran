@@ -662,8 +662,14 @@ def _scan_and_nudge_active_books() -> None:
                           "çözülmemiş bulgularla ciltleme başlatılıyor.")
                     trigger_workflow("convert.yml", branch=branch)
                 continue
-            audit_done = (qa_status == "partial" and peek_remote_file(
-                branch, f"output/{book_slug}/qa_report.md") is not None)
+            # NOT: denetim YARIM kalinca da (kota vb.) kismi bir qa_report.md yazilir;
+            # "rapor var" tek basina "denetim bitti" demek DEGIL. Bitmis denetimde
+            # checkpoint (.qa_progress.json) silinir, yani bitti = rapor var VE
+            # checkpoint yok. Aksi halde yarim denetim sonsuza dek atlanirdi (knh-1).
+            audit_done = (
+                qa_status == "partial"
+                and peek_remote_file(branch, f"output/{book_slug}/qa_report.md") is not None
+                and peek_remote_file(branch, f"output/{book_slug}/.qa_progress.json") is None)
             print(f"[{branch}] QA denetimi bekliyor/durmuş — qa.yml dürtülüyor"
                   + (" (sadece düzeltme denemesi)." if audit_done else "."))
             trigger_workflow(
