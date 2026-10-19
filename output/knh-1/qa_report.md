@@ -1,6 +1,6 @@
 # QA Raporu — knh-1
 
-**Günlük Gemini kotası tükendiği için durduruldu — 5/34 bölüm tarandı. Script'i tekrar çalıştırınca kaldığı yerden devam edecek (baştan başlamayacak).**
+**UYARI: 20/34 bölüm denetlenemedi (Gemini hatası) — bu rapor GÜVENİLİR DEĞİL. Yukarıdaki log'ları kontrol edip tekrar çalıştırın.**
 
 *Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru kabul etmeyin — her maddeyi kaynakla birlikte kendiniz kontrol edin. Bazı işaretlemeler yanlış pozitif olabilir (bkz. script docstring'i).*
 
@@ -62,3 +62,24 @@
 - **ANLAM_KAYMASI**: "Scaring me up more customers" (bana daha fazla müşteri bulup getirmek/toplamak) ifadesi "benden daha fazla müşteri çekmek" şeklinde çevrilerek yön ve anlam hatası yapılmıştır.
   - Kaynak: *"“Then spend it scaring me up more customers. Not old farts, either. Young bucks like your friend today that we can squeeze something out of.”"*
   - Çeviri: *"“O zaman onu benden daha fazla müşteri çekmek için kullan. Yaşlı palyaçolar değil. Bugünkü arkadaşın gibi, içinden bir şeyler sıktığımız genç delikanlılar.”"*
+
+## Bölüm 23: Chapter 23: Wheat Stalks
+*(Denetlenemedi.)*
+
+## Bölüm 24: Chapter 24: A Misunderstanding
+*(Denetlenemedi.)*
+
+## Bölüm 25: Chapter 25: Wine — 1 sorun
+- **ANLAM_KAYMASI**: Kaynakta bulunmayan "Bal kabağı mı?" diyalogu çeviriye eklenmiş ve İngilizce "Her words" (Onun sözleri) ifadesi Türkçe "Her kelime" (her bir kelime) şeklinde yanlış çevrilmiştir.
+  - Kaynak: *"Her words sounded portentous, but clearly puzzled Jinshi and Gaoshun."*
+  - Çeviri: *"“Bal kabağı mı?” diye sordu Maomao. Her kelime kasvetli bir hava taşıyordu, ancak Jinshi ve Gaoshun'un yüzlerindeki şaşkınlık açıktı."*
+
+## Bölüm 26: Chapter 26: Two ’Cides to Every Story — 1 sorun
+- **ANLAM_KAYMASI**: Diyalog sıralaması ve konuşmacı takibi tamamen bozulmuştur; Jinshi henüz söylenmemiş bir cümleye yanıt vermekte, ayrıca metnin daha ileriki bir kısmında yer alan "Cinayet olduğunu mu ima ediyorsunuz?" sorusu buraya yanlış yerleştirilerek anlam akışı tahrip edilmiştir.
+  - Kaynak: *"“There is a way to reach the top without any tools, but I don’t believe that woman could have managed it.”
+
+“Is there? What way would that be?”"*
+  - Çeviri: *""Var mı? Nasıl bir yol olabilir?"
+"Cinayet olduğunu mu ima ediyorsunuz?"
+Araç gereç kullanmadan tepenin zirvesine ulaşmanın bir yolu var, ama o kadının bunu başarmış olabileceğine inanmıyorum."*
+

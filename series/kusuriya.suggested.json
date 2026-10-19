@@ -3,25 +3,26 @@
   "source_book": "knh-1",
   "new_characters": {
     "Ah-Duo": "Ah-Duo",
-    "Lady Lihua": "Lihua Hanımefendi",
     "Fengming": "Fengming",
+    "Lady Lihua": "Lihua Hanımefendi",
     "Xiaolan": "Xiaolan",
     "Hongniang": "Hongniang",
-    "Pairin": "Pairin",
-    "Lihaku": "Lihaku"
+    "Lihaku": "Lihaku",
+    "Pairin": "Pairin"
   },
   "new_terms": {
+    "hougong": "Arka Saray",
     "rear palace": "Arka Saray",
     "Jade Pavilion": "Yeşim Köşkü",
-    "Crystal Pavilion": "Kristal Köşkü",
-    "Garnet Pavilion": "Garnet Pavyonu",
-    "Diamond Pavilion": "Elmas Pavilyonu",
     "Verdigris House": "Yosun Yeşili Evi",
-    "Poison Tester": "Zehir Denetçisi"
+    "Poison Tester": "Zehir Denetçisi",
+    "Pure Consort": "Saflık Konsortu",
+    "Diamond Pavilion": "Elmas Pavilyonu"
   },
   "new_notes": [
-    "Ah-Duo, eski Saflık Konsortu'dur (Pure Consort / Shufei); doğum sırasında yaşadığı sağlık sorunları nedeniyle kısır kalmış ve Arka Saray'dan ayrılmıştır. Fengming ise onun baş hanımefendisidir.",
-    "Dört Üst Düzey Eş ve Köşkleri: İmparatoriçe Gyokuyou (Yeşim Köşkü / Jade Pavilion), Lihua Hanımefendi (Kristal Köşkü / Crystal Pavilion), Lishu Hanım (Elmas Pavilyonu / Diamond Pavilion), Ah-Duo (Garnet Pavyonu / Garnet Pavilion). Lihua ve Lishu isimleri karıştırılmamalıdır.",
-    "Mevcut glossary'de 'The Quack Doctor' karşılığında yer alan 'şartlatan doktor' ifadesinde yazım hatası bulunmaktadır; doğrusu 'şarlatan doktor' olmalıdır."
+    "Ah-Duo eski Saflık Konsortu'dur (Pure Consort); Fengming ise onun baş hizmetlisidir. Ah-Duo doğum sırasındaki komplikasyonlar nedeniyle kısırlık yaşamış ve saraydan ayrılmak zorunda kalmıştır.",
+    "Lady Lihua (Lihua Hanımefendi), Değerli Konsort (Precious Consort) unvanına sahiptir ve Kristal Köşkü'nde kalır.",
+    "Mevcut glossary'de 'The Quack Doctor' karşılığı 'shartlatan doktor' şeklinde yazım hatası içermektedir ('şarlatan doktor' olarak güncellenmesi değerlendirilmelidir).",
+    "Arka Saray'daki üst düzey dört eş unvanı (Precious Consort / Değerli Konsort, Virtuous Consort / Erdemli Konsort, Wise Consort / Bilge Konsort, Pure Consort / Saflık Konsortu) hiyerarşik unvanlardır, karakterlerin özel isimleriyle karıştırılmamalıdır."
   ]
 }
