@@ -69,6 +69,12 @@ Maomao bu işin sessizce sonuçlanmasını istiyordu, ama her şey bu az konuşa
   - Kaynak: *"“Then spend it scaring me up more customers. Not old farts, either. Young bucks like your friend today that we can squeeze something out of.”"*
   - Çeviri: *"“O zaman onu benden daha fazla müşteri çekmek için kullan. Yaşlı palyaçolar değil. Bugünkü arkadaşın gibi, içinden bir şeyler sıktığımız genç delikanlılar.”"*
 
+## Bölüm 23: Chapter 23: Wheat Stalks
+*(Denetlenemedi.)*
+
+## Bölüm 24: Chapter 24: A Misunderstanding
+*(Denetlenemedi.)*
+
 ## Bölüm 26: Chapter 26: Two ’Cides to Every Story — 1 sorun
 - **ANLAM_KAYMASI**: Diyalog sırası karıştırılmış; Maomao'nun söylemesi gereken cümle Jinshi'nin sorusundan sonraya atılmış ve metnin ilerleyen kısmında yer alması gereken 'Cinayet olduğunu mu ima ediyorsunuz?' cümlesi araya yanlış şekilde girerek diyalog akışını bozmuştur.
   - Kaynak: *"“There is a way to reach the top without any tools, but I don’t believe that woman could have managed it.”
@@ -79,4 +85,3 @@ Maomao bu işin sessizce sonuçlanmasını istiyordu, ama her şey bu az konuşa
 "Cinayet olduğunu mu ima ediyorsunuz?"
 
 Araç gereç kullanmadan tepenin zirvesine ulaşmanın bir yolu var, ama o kadının bunu başarmış olabileceğine inanmıyorum."*
-
