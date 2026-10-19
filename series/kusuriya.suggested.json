@@ -2,27 +2,27 @@
   "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-1 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
   "source_book": "knh-1",
   "new_characters": {
+    "Lady Lihua": "Lihua Hanımefendi",
     "Ah-Duo": "Ah-Duo",
     "Fengming": "Fengming",
-    "Lady Lihua": "Lihua Hanımefendi",
+    "Pairin": "Pairin",
+    "Lihaku": "Lihaku",
     "Xiaolan": "Xiaolan",
     "Hongniang": "Hongniang",
-    "Lihaku": "Lihaku",
-    "Pairin": "Pairin"
+    "Princess Lingli": "Prenses Lingli"
   },
   "new_terms": {
-    "hougong": "Arka Saray",
     "rear palace": "Arka Saray",
     "Jade Pavilion": "Yeşim Köşkü",
+    "Diamond Pavilion": "Elmas Pavilyonu",
+    "Crystal Pavilion": "Kristal Köşkü",
     "Verdigris House": "Yosun Yeşili Evi",
-    "Poison Tester": "Zehir Denetçisi",
-    "Pure Consort": "Saflık Konsortu",
-    "Diamond Pavilion": "Elmas Pavilyonu"
+    "Poison Tester": "Zehir Denetçisi"
   },
   "new_notes": [
-    "Ah-Duo eski Saflık Konsortu'dur (Pure Consort); Fengming ise onun baş hizmetlisidir. Ah-Duo doğum sırasındaki komplikasyonlar nedeniyle kısırlık yaşamış ve saraydan ayrılmak zorunda kalmıştır.",
-    "Lady Lihua (Lihua Hanımefendi), Değerli Konsort (Precious Consort) unvanına sahiptir ve Kristal Köşkü'nde kalır.",
-    "Mevcut glossary'de 'The Quack Doctor' karşılığı 'shartlatan doktor' şeklinde yazım hatası içermektedir ('şarlatan doktor' olarak güncellenmesi değerlendirilmelidir).",
-    "Arka Saray'daki üst düzey dört eş unvanı (Precious Consort / Değerli Konsort, Virtuous Consort / Erdemli Konsort, Wise Consort / Bilge Konsort, Pure Consort / Saflık Konsortu) hiyerarşik unvanlardır, karakterlerin özel isimleriyle karıştırılmamalıdır."
+    "Ah-Duo 'Saflık Konsortu' (Pure Consort) unvanına sahiptir; Fengming ise onun baş hanımefendisidir (chief lady-in-waiting).",
+    "Konsortların kaldığı pavyonlar karıştırılmamalıdır: İmparatoriçe Gyokuyou -> Yeşim Köşkü (Jade Pavilion), Lihua Hanımefendi -> Kristal Köşkü (Crystal Pavilion), Lishu Hanım -> Elmas Pavilyonu (Diamond Pavilion).",
+    "Lihua (Lihua Hanımefendi) ile Lishu (Lishu Hanım) isimleri sesletim olarak benzeştiği için karıştırılmaya müsaittir; ikisi farklı pavyonlarda yaşayan farklı konsortlardır.",
+    "Verdigris House Türkçe metinlerde 'Yosun Yeşili Evi' olarak çevrilmektedir. Pairin, Maomao'nun bu evdeki kıdemli fahişe 'abla'larından biridir."
   ]
 }
