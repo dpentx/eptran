@@ -2,27 +2,28 @@
   "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-1 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
   "source_book": "knh-1",
   "new_characters": {
-    "Lady Lihua": "Lihua Hanımefendi",
     "Ah-Duo": "Ah-Duo",
+    "Lady Lihua": "Lihua Hanımefendi",
+    "Princess Lingli": "Prenses Lingli",
     "Fengming": "Fengming",
-    "Pairin": "Pairin",
-    "Lihaku": "Lihaku",
-    "Xiaolan": "Xiaolan",
     "Hongniang": "Hongniang",
-    "Princess Lingli": "Prenses Lingli"
+    "Xiaolan": "Xiaolan",
+    "Pairin": "Pairin",
+    "Lihaku": "Lihaku"
   },
   "new_terms": {
-    "rear palace": "Arka Saray",
     "Jade Pavilion": "Yeşim Köşkü",
-    "Diamond Pavilion": "Elmas Pavilyonu",
     "Crystal Pavilion": "Kristal Köşkü",
+    "Garnet Pavilion": "Garnet Pavyonu",
+    "Diamond Pavilion": "Elmas Pavilyonu",
     "Verdigris House": "Yosun Yeşili Evi",
-    "Poison Tester": "Zehir Denetçisi"
+    "Poison Tester": "Zehir Denetçisi",
+    "milk-sibling": "süt kardeşi",
+    "Pure Consort": "Saflık Konsortu"
   },
   "new_notes": [
-    "Ah-Duo 'Saflık Konsortu' (Pure Consort) unvanına sahiptir; Fengming ise onun baş hanımefendisidir (chief lady-in-waiting).",
-    "Konsortların kaldığı pavyonlar karıştırılmamalıdır: İmparatoriçe Gyokuyou -> Yeşim Köşkü (Jade Pavilion), Lihua Hanımefendi -> Kristal Köşkü (Crystal Pavilion), Lishu Hanım -> Elmas Pavilyonu (Diamond Pavilion).",
-    "Lihua (Lihua Hanımefendi) ile Lishu (Lishu Hanım) isimleri sesletim olarak benzeştiği için karıştırılmaya müsaittir; ikisi farklı pavyonlarda yaşayan farklı konsortlardır.",
-    "Verdigris House Türkçe metinlerde 'Yosun Yeşili Evi' olarak çevrilmektedir. Pairin, Maomao'nun bu evdeki kıdemli fahişe 'abla'larından biridir."
+    "Ah-Duo 'Pure Consort' (Saflık Konsortu) unvanını taşır; Fengming ise onun baş hizmetlisidir. Ah-Duo ile Fengming arasındaki süt kardeşi (milk-sibling) bağı metinlerde kilit rol oynar.",
+    "Arka Saray'daki Dört Üst Rütbeli Eş (Konsort) ve Köşkleri tutarlı tutulmalıdır: Yeşim Köşkü (Jade Pavilion) -> İmparatoriçe Gyokuyou, Kristal Köşkü (Crystal Pavilion) -> Lihua Hanımefendi, Garnet Pavyonu (Garnet Pavilion) -> Ah-Duo, Elmas Pavilyonu (Diamond Pavilion) -> Lishu Hanım.",
+    "Verdigris House (Yosun Yeşili Evi), Maomao'nun büyüdüğü zevk mahallesindeki fahişe evidir; Arka Saray bünyesindeki köşkle/pavyonlarla karıştırılmamalıdır."
   ]
 }
