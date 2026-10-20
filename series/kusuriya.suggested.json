@@ -4,7 +4,6 @@
   "new_characters": {
     "Ah-Duo": "Ah-Duo",
     "Lady Lihua": "Lihua Hanımefendi",
-    "Princess Lingli": "Prenses Lingli",
     "Fengming": "Fengming",
     "Hongniang": "Hongniang",
     "Xiaolan": "Xiaolan",
@@ -12,18 +11,17 @@
     "Lihaku": "Lihaku"
   },
   "new_terms": {
+    "hougong": "Arka Saray",
     "Jade Pavilion": "Yeşim Köşkü",
     "Crystal Pavilion": "Kristal Köşkü",
-    "Garnet Pavilion": "Garnet Pavyonu",
     "Diamond Pavilion": "Elmas Pavilyonu",
+    "Garnet Pavilion": "Garnet Pavyonu",
     "Verdigris House": "Yosun Yeşili Evi",
-    "Poison Tester": "Zehir Denetçisi",
-    "milk-sibling": "süt kardeşi",
-    "Pure Consort": "Saflık Konsortu"
+    "Poison Tester": "Zehir Denetçisi"
   },
   "new_notes": [
-    "Ah-Duo 'Pure Consort' (Saflık Konsortu) unvanını taşır; Fengming ise onun baş hizmetlisidir. Ah-Duo ile Fengming arasındaki süt kardeşi (milk-sibling) bağı metinlerde kilit rol oynar.",
-    "Arka Saray'daki Dört Üst Rütbeli Eş (Konsort) ve Köşkleri tutarlı tutulmalıdır: Yeşim Köşkü (Jade Pavilion) -> İmparatoriçe Gyokuyou, Kristal Köşkü (Crystal Pavilion) -> Lihua Hanımefendi, Garnet Pavyonu (Garnet Pavilion) -> Ah-Duo, Elmas Pavilyonu (Diamond Pavilion) -> Lishu Hanım.",
-    "Verdigris House (Yosun Yeşili Evi), Maomao'nun büyüdüğü zevk mahallesindeki fahişe evidir; Arka Saray bünyesindeki köşkle/pavyonlarla karıştırılmamalıdır."
+    "Dört Yüksek Rütbeli Konsort (Eş) ve Köşkleşmeleri: İmparatoriçe Gyokuyou -> Yeşim Köşkü (Jade Pavilion), Lady Lihua -> Kristal Köşkü (Crystal Pavilion), Lishu Hanım -> Elmas Pavilyonu (Diamond Pavilion), Ah-Duo -> Garnet Pavyonu. Çevirilerde eş-köşk eşleşmelerine dikkat edilmelidir.",
+    "Ah-Duo, 'Saflık Konsortu' (Pure Consort / Shufei) unvanını taşımaktadır; Fengming ise Ah-Duo'nun baş hizmetlisidir.",
+    "Xiaolan, Maomao'nun Arka Saray'daki en yakın hizmetçi arkadaşıdır; isim benzerliği olan Xiaoling ile karıştırılmamalıdır."
   ]
 }

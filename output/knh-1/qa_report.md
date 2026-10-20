@@ -1,6 +1,6 @@
 # QA Raporu — knh-1
 
-**Günlük Gemini kotası tükendiği için durduruldu — 27/34 bölüm tarandı. Script'i tekrar çalıştırınca kaldığı yerden devam edecek (baştan başlamayacak).**
+**Toplam 8 şüpheli nokta bulundu (29/34 bölüm başarıyla tarandı, 5 bölüm denetlenemedi).**
 
 *Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru kabul etmeyin — her maddeyi kaynakla birlikte kendiniz kontrol edin. Bazı işaretlemeler yanlış pozitif olabilir (bkz. script docstring'i).*
 
