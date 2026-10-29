@@ -12,7 +12,7 @@ on:
 # Sadece kendi türünden (başka bir translate run'ı) ile çakışmayı önler.
 # ÖNEMLİ: review/convert ile AYNI grubu kullanmıyoruz — aynı grupta
 # kuyruğa girmiş birden fazla çalışma olduğunda GitHub Actions sadece
-# EN SON kuyruğa girenı çalıştırıp öncekileri iptal ediyor. Bu yüzden
+# EN SON kuyruğa gireni çalıştırıp öncekileri iptal ediyor. Bu yüzden
 # translate zaman aşımına uğrayıp bir sonraki denemesi kuyruğa girdiğinde,
 # review'ın kuyruğa girmiş bir çalışması onu iptal edip yerine geçebiliyordu
 # — çevirinin hiç ilerleyememesinin sebebi buydu. Artık her workflow kendi
