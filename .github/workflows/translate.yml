@@ -12,7 +12,7 @@ on:
 # Sadece kendi türünden (başka bir translate run'ı) ile çakışmayı önler.
 # ÖNEMLİ: review/convert ile AYNI grubu kullanmıyoruz — aynı grupta
 # kuyruğa girmiş birden fazla çalışma olduğunda GitHub Actions sadece
-# EN SON kuyruğa gireni çalıştırıp öncekileri iptal ediyor. Bu yüzden
+# EN SON kuyruğa girenı çalıştırıp öncekileri iptal ediyor. Bu yüzden
 # translate zaman aşımına uğrayıp bir sonraki denemesi kuyruğa girdiğinde,
 # review'ın kuyruğa girmiş bir çalışması onu iptal edip yerine geçebiliyordu
 # — çevirinin hiç ilerleyememesinin sebebi buydu. Artık her workflow kendi
@@ -85,3 +85,31 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: python "$MAIN_CODE/scripts/translate.py"
+
+      # translate.py bu run'da kitabı queue/<slug> dalından book/<slug>'a
+      # taşıyor (book dalı queue dalından açılıp push'lanıyor) ama eski
+      # queue/<slug> dalını silmiyordu. api/upload.js "queue/ ile başlayan her
+      # dal = aktif" sayıyordu, yani her kitaptan sonra yetim bir queue dalı
+      # kalıp yeni yüklemeleri engelliyordu — ve sıradaki kitap sistemi
+      # onu "bekleyen kitap" sanacaktı. Book dalı gerçekten oluştuktan sonra
+      # temizliyoruz.
+      - name: Remove spent queue branch
+        if: startsWith(github.ref, 'refs/heads/queue/')
+        run: |
+          slug="${GITHUB_REF_NAME#queue/}"
+          if git ls-remote --exit-code --heads origin "book/${slug}" >/dev/null 2>&1; then
+            git push origin --delete "${GITHUB_REF_NAME}" \
+              || echo "Uyarı: ${GITHUB_REF_NAME} silinemedi (önemli değil)."
+          else
+            echo "book/${slug} oluşmamış — ${GITHUB_REF_NAME} silinmiyor."
+          fi
+
+      # Cron (ya da elle) main'de çalışırken: aktif kitap yoksa ve yüklemesi
+      # bitmiş bekleyen bir queue/* dalı varsa en eskisini başlatır. Normal
+      # yol delete-merged-book-branch.yml'dir; bu, kaçan tetiklemelerin
+      # güvenlik ağı.
+      - name: Start next queued book (safety net)
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: python "$MAIN_CODE/scripts/start_next_queue.py"
