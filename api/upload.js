@@ -2,6 +2,9 @@ import crypto from "node:crypto";
 
 export const config = { maxDuration: 30 };
 
+// Aynı anda sırada bekleyebilecek en fazla kitap sayısı (çevrilmekte olan hariç).
+const MAX_QUEUE = 10;
+
 // Paylaşılan bir yükleme şifresiyle basit ama etkili bir erişim kontrolü.
 // Bu olmadan /api/upload'ı bilen HERKES (tarayıcı bile açmadan) bir
 // queue/<slug> dalı açtırıp repo-geneli contents+actions yazma izinli
@@ -81,6 +84,24 @@ async function getScopedUploadToken(repo) {
   return tokenData.token;
 }
 
+async function listBranchNames(gh) {
+  const res = await gh("/branches?per_page=100");
+  if (!res.ok) throw new Error("Dal listesi alınamadı");
+  return (await res.json()).map((b) => b.name);
+}
+
+// Bir queue/<slug> dalında dosya GERÇEKTEN yüklenmiş mi? (main'e göre en az
+// 1 commit ilerde mi). Yükleme yarıda kalmış yetim dallar "hazır" sayılmaz.
+// Hazırsa yüklemenin tarihi de döner (sıralama için).
+async function uploadInfo(gh, mainBranch, name) {
+  const res = await gh(`/compare/${mainBranch}...${name}`);
+  if (!res.ok) return { name, ready: false, date: "" };
+  const data = await res.json();
+  const ready = (data.ahead_by || 0) > 0;
+  const date = ready ? data.commits?.[0]?.commit?.committer?.date || "" : "";
+  return { name, ready, date };
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST")
     return res.status(405).json({ error: "Method not allowed" });
@@ -114,13 +135,47 @@ export default async function handler(req, res) {
   try {
     // İKİNCİ AŞAMA: dosya GitHub'a doğrudan (tarayıcıdan) yüklendikten
     // SONRA çağrılır — bu istek küçük (sadece dal adı), Vercel'in
-    // boyut sınırına takılmaz. Workflow'u burada, uzun ömürlü sunucu
-    // token'ıyla (GH_PAT) tetikliyoruz.
+    // boyut sınırına takılmaz.
+    //
+    // Sıraya ekleme: çevrilmekte olan bir kitap (book/*) ya da aynı anda
+    // daha önce yüklenmiş başka bir bekleyen kitap varsa workflow BURADA
+    // tetiklenmez; kitap queue/<slug> dalında bekler ve öndeki kitabın PR'ı
+    // merge olup dalı silinince kendiliğinden başlatılır (bkz.
+    // scripts/start_next_queue.py, delete-merged-book-branch.yml). Sadece
+    // sistem boşsa workflow'u burada, uzun ömürlü sunucu token'ıyla
+    // (GH_PAT) tetikliyoruz.
     if (body.action === "finalize") {
       const { branch } = body;
-      if (!branch) return res.status(400).json({ error: "branch gerekli" });
+      if (!branch || !branch.startsWith("queue/"))
+        return res.status(400).json({ error: "Geçerli bir queue dalı gerekli" });
 
       await new Promise((r) => setTimeout(r, 1500));
+
+      const names = await listBranchNames(gh);
+      if (!names.includes(branch))
+        return res.status(404).json({ error: "Kuyruk dalı bulunamadı" });
+
+      const mine = await uploadInfo(gh, MAIN_BRANCH, branch);
+      if (!mine.ready)
+        return res.status(409).json({ error: "Dosya dalda bulunamadı — yükleme tamamlanmamış" });
+
+      // Önde kimler var: çevrilmekte olan kitap + benden ÖNCE yüklenmiş
+      // bekleyenler (eşit tarihte ad sırası belirler — iki yükleme aynı
+      // anda biterse ikisi de beklemeye düşmesin).
+      const hasActiveBook = names.some((n) => n.startsWith("book/"));
+      const others = names.filter((n) => n.startsWith("queue/") && n !== branch);
+      const infos = await Promise.all(others.map((n) => uploadInfo(gh, MAIN_BRANCH, n)));
+      const olderWaiting = infos.filter(
+        (i) =>
+          i.ready &&
+          (i.date < mine.date || (i.date === mine.date && i.name < branch))
+      ).length;
+      const ahead = (hasActiveBook ? 1 : 0) + olderWaiting;
+
+      if (ahead > 0) {
+        return res.json({ success: true, queued: true, ahead });
+      }
+
       const dispatchRes = await gh("/actions/workflows/translate.yml/dispatches", {
         method: "POST",
         body: JSON.stringify({ ref: branch }),
@@ -128,13 +183,13 @@ export default async function handler(req, res) {
       if (!dispatchRes.ok) {
         return res.status(500).json({ error: "Workflow tetiklenemedi" });
       }
-      return res.json({ success: true });
+      return res.json({ success: true, queued: false });
     }
 
     // BİRİNCİ AŞAMA (varsayılan): sadece dosya adı gönderilir, dosya
     // İÇERİĞİ YOK — Vercel'in 4.5MB istek sınırına buradan takılma
     // ihtimali yok. Burada:
-    //  1) zaten devam eden bir çeviri var mı bakılır
+    //  1) aynı kitap zaten çevriliyor/sırada mı bakılır; kuyruk doluysa reddedilir
     //  2) main'in ucundan queue/<slug> dalı açılır (main'e HİÇ yazılmaz)
     //  3) SADECE bu repoya, SADECE Contents+Actions iznine sahip, ~1 saat
     //     sonra kendiliğinden ölen bir token üretilip tarayıcıya verilir
@@ -153,51 +208,78 @@ export default async function handler(req, res) {
     if (!isEpub && !isPdf)
       return res.status(400).json({ error: "Sadece .epub ve .pdf dosyaları kabul edilir" });
 
-    const branchesRes = await gh("/branches?per_page=100");
-    if (branchesRes.ok) {
-      const branches = await branchesRes.json();
-      const active = branches.filter(
-        (b) => b.name.startsWith("book/") || b.name.startsWith("queue/")
-      );
-      if (active.length > 0) {
-        return res.status(409).json({ error: "Zaten devam eden bir çeviri var" });
-      }
-    }
-
     const slug = slugify(filename);
     const queueBranch = `queue/${slug}`;
 
-    const refRes = await gh(`/git/ref/heads/${MAIN_BRANCH}`);
-    if (!refRes.ok) {
-      return res.status(500).json({ error: "main dalının referansı alınamadı" });
-    }
-    const refData = await refRes.json();
-    const mainSha = refData.object.sha;
+    const names = await listBranchNames(gh);
 
-    const createRefRes = await gh("/git/refs", {
-      method: "POST",
-      body: JSON.stringify({ ref: `refs/heads/${queueBranch}`, sha: mainSha }),
-    });
-    if (!createRefRes.ok) {
-      const err = await createRefRes.json();
-      return res.status(500).json({ error: "Kuyruk dalı oluşturulamadı", detail: err.message });
+    if (names.includes(`book/${slug}`))
+      return res.status(409).json({ error: "Bu kitap zaten çevriliyor" });
+
+    const hasActiveBook = names.some((n) => n.startsWith("book/"));
+    const otherQueue = names.filter((n) => n.startsWith("queue/") && n !== queueBranch);
+    const otherInfos = await Promise.all(otherQueue.map((n) => uploadInfo(gh, MAIN_BRANCH, n)));
+    const waitingCount = otherInfos.filter((i) => i.ready).length;
+
+    if (waitingCount >= MAX_QUEUE)
+      return res.status(409).json({
+        error: `Sıra dolu (en fazla ${MAX_QUEUE} kitap bekleyebilir)`,
+      });
+
+    const branchExists = names.includes(queueBranch);
+    if (branchExists) {
+      const mine = await uploadInfo(gh, MAIN_BRANCH, queueBranch);
+      if (mine.ready)
+        return res.status(409).json({ error: "Bu kitap zaten sırada" });
+      // Dosya yok: daha önceki yarım kalmış bir yüklemenin yetim dalı —
+      // yeniden kullanıyoruz, böylece aynı dosyayı tekrar denemek mümkün.
+    } else {
+      const refRes = await gh(`/git/ref/heads/${MAIN_BRANCH}`);
+      if (!refRes.ok) {
+        return res.status(500).json({ error: "main dalının referansı alınamadı" });
+      }
+      const refData = await refRes.json();
+      const mainSha = refData.object.sha;
+
+      const createRefRes = await gh("/git/refs", {
+        method: "POST",
+        body: JSON.stringify({ ref: `refs/heads/${queueBranch}`, sha: mainSha }),
+      });
+      if (!createRefRes.ok) {
+        const err = await createRefRes.json();
+        return res.status(500).json({ error: "Kuyruk dalı oluşturulamadı", detail: err.message });
+      }
     }
+
+    // Dalı biz açtıysak token üretilemezse geri sileriz; yeniden kullandığımız
+    // yetim dala dokunmayız.
+    const cleanupBranch = async () => {
+      if (!branchExists) {
+        await gh(`/git/refs/heads/${queueBranch}`, { method: "DELETE" }).catch(() => {});
+      }
+    };
 
     let uploadToken;
     try {
       uploadToken = await getScopedUploadToken(REPO);
     } catch (e) {
-      await gh(`/git/refs/heads/${queueBranch}`, { method: "DELETE" }).catch(() => {});
+      await cleanupBranch();
       return res.status(500).json({ error: "Geçici yükleme token'ı üretilemedi", detail: e.message });
     }
     if (!uploadToken) {
-      await gh(`/git/refs/heads/${queueBranch}`, { method: "DELETE" }).catch(() => {});
+      await cleanupBranch();
       return res.status(500).json({
         error: "APP_ID / APP_PRIVATE_KEY Vercel'de tanımlı değil (bkz. .github/workflows/translate.yml'deki aynı secret'lar — aynı değerleri Vercel proje ayarlarına da eklemen gerekiyor)",
       });
     }
 
-    return res.json({ repo: REPO, branch: queueBranch, token: uploadToken });
+    return res.json({
+      repo: REPO,
+      branch: queueBranch,
+      token: uploadToken,
+      queued: hasActiveBook || waitingCount > 0,
+      position: waitingCount + 1,
+    });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Sunucu hatası" });

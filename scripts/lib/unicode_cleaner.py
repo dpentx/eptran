@@ -66,8 +66,3 @@ def find_foreign_words(text: str) -> list:
         if scripts and 'latin' not in scripts and scripts != {'other'}:
             found.append(word)
     return found
-
-
-def has_foreign_script(text: str) -> bool:
-    """Metinde Latin dışı (Arapça, Kiril, Yunan, CJK) herhangi bir tam kelime var mı?"""
-    return len(find_foreign_words(text)) > 0
