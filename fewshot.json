@@ -1,0 +1,4 @@
+{
+  "_meta": "ELLE seçilen 'kaynak -> iyi Türkçe çeviri' örnekleri; lib/fewshot.py bunları çeviri sistem prompt'una ekler (en fazla 3 örnek / 1200 karakter — Groq free TPM tavanı yüzünden). Boşken hiçbir şey eklenmez. Örnekleri elle yazma, eval/gold'daki lisansı temiz bir çiftten `python eval/add_pair.py fewshot <id>` ile kopyala. EPTRAN_FEWSHOT=0 ile kapatılabilir.",
+  "entries": []
+}
