@@ -8,3 +8,7 @@ __pycache__/
 # Input klasörü içindeki gerçek dosyalar (sadece .gitkeep kalır)
 input/*.epub
 input/*.pdf
+
+# Eval: telifli/özel test verisi ve koşu çıktıları git'e girmez
+eval/private/
+eval/results/
