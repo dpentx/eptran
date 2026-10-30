@@ -453,6 +453,46 @@
       50% { opacity: 0.5; }
     }
 
+    #queue-card {
+      display: none;
+    }
+
+    #queue-card.visible {
+      display: block;
+    }
+
+    .queue-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .queue-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--md-surface-container);
+      border: 1px solid var(--md-outline-variant);
+      border-radius: 8px;
+      font-size: 0.8125rem;
+      color: var(--md-on-surface);
+    }
+
+    .queue-pos {
+      flex-shrink: 0;
+      min-width: 1.5rem;
+      height: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--md-primary-container);
+      color: var(--md-on-primary-container);
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
     #output-section {
       display: none;
     }
@@ -564,30 +604,6 @@
 
     .output-item a:hover {
       background: var(--md-primary-container);
-    }
-
-    #error-msg {
-      display: none;
-      margin-top: 1rem;
-      padding: 1rem;
-      background: var(--md-error-container);
-      border: 1px solid rgba(248, 113, 113, 0.3);
-      border-radius: 8px;
-      font-size: 0.8125rem;
-      color: var(--md-on-error-container);
-      font-weight: 400;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-    }
-
-    #error-msg.visible {
-      display: flex;
-    }
-
-    #error-msg i {
-      margin-top: 2px;
-      flex-shrink: 0;
     }
 
     .updated-at {
@@ -706,6 +722,11 @@
   <div class="updated-at" id="updated-at"></div>
 </div>
 
+<div class="card" id="queue-card">
+  <div class="card-title">sıra</div>
+  <div class="queue-list" id="queue-list"></div>
+</div>
+
 <div class="card" id="review-card">
   <div class="card-title">inceleme durumu</div>
 
@@ -735,7 +756,7 @@
 <footer>
   <a href="https://github.com/search?q=eptran" target="_blank">github</a>
   &nbsp;·&nbsp;
-  <a href="#" onclick="event.preventDefault()">groq gpt-oss-120b</a>
+  <span>groq qwen3.8-27b</span>
 </footer>
 
 <script>
@@ -753,6 +774,7 @@
 
   let selectedFile = null;
   let pollInterval = null;
+  let busy = false; // çevrilen/bekleyen kitap var mı? (butonu 'Sıraya Ekle' yapar)
 
   dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
   dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
@@ -777,6 +799,16 @@
     fileInfo.classList.remove('hidden');
     submitBtn.disabled = false;
     hideFeedback();
+  }
+
+  function refreshSubmitLabel() {
+    submitBtn.textContent = busy ? 'Sıraya Ekle' : 'Çeviriyi Başlat';
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    }[c]));
   }
 
   // Yükleme şifresi hiçbir zaman bu statik dosyanın içine GÖMÜLMEZ —
@@ -874,7 +906,21 @@
       const finalizeData = await finalizeRes.json();
       if (!finalizeRes.ok) throw new Error(finalizeData.error || 'Workflow tetiklenemedi');
 
-      showFeedback('Çeviri başladı ✓', 'completed');
+      // Sunucu, sistem doluysa kitabı sıraya alıp workflow'u TETİKLEMEZ
+      // (queued: true) — öndeki kitap bitince otomatik başlar.
+      if (finalizeData.queued) {
+        const n = finalizeData.ahead || 0;
+        showFeedback(`Sıraya eklendi ✓ (önünde ${n} kitap var)`, 'completed');
+      } else {
+        showFeedback('Çeviri başladı ✓', 'completed');
+      }
+
+      // Başka bir kitap eklenebilsin diye seçimi sıfırla.
+      selectedFile = null;
+      fileInput.value = '';
+      fileInfo.classList.add('hidden');
+      submitBtn.disabled = true;
+
       setTimeout(() => startPolling(), 500);
     } catch (err) {
       showFeedback('Hata: ' + err.message, 'error');
@@ -893,6 +939,7 @@
 
   function startPolling() {
     statusCard.classList.add('visible');
+    if (pollInterval) clearInterval(pollInterval);
     fetchStatus();
     pollInterval = setInterval(fetchStatus, 10000);
   }
@@ -905,7 +952,13 @@
 
       const done = data.status === 'completed' && (data.epubFile || data.convert_status === 'completed');
       const idle = data.status === 'idle';
-      if (done || idle) clearInterval(pollInterval);
+      const hasQueue = Array.isArray(data.queue) && data.queue.length > 0;
+      // Sırada bekleyen kitap varsa bir sonrakinin başlamasını görmek için
+      // yoklamaya devam ediyoruz.
+      if ((done || idle) && !hasQueue) {
+        clearInterval(pollInterval);
+        pollInterval = null;
+      }
     } catch (err) {
       console.error('Status fetch error:', err);
     }
@@ -979,6 +1032,31 @@
     }
 
     updateReviewUI(data);
+    updateQueueUI(data);
+
+    busy = data.status === 'running' || data.convert_status === 'running'
+      || !!data.active_branch || (Array.isArray(data.queue) && data.queue.length > 0);
+    refreshSubmitLabel();
+  }
+
+  function updateQueueUI(data) {
+    const queueCard = document.getElementById('queue-card');
+    const list = document.getElementById('queue-list');
+    const queue = Array.isArray(data.queue) ? data.queue : [];
+
+    if (queue.length === 0) {
+      queueCard.classList.remove('visible');
+      list.innerHTML = '';
+      return;
+    }
+    queueCard.classList.add('visible');
+    list.innerHTML = queue
+      .map(item => `
+        <div class="queue-item">
+          <span class="queue-pos">${item.position}</span>
+          <span>${escapeHtml(String(item.slug).replace(/_/g, ' '))}</span>
+        </div>`)
+      .join('');
   }
 
   function updateReviewUI(data) {
@@ -1044,12 +1122,11 @@
     try {
       const res = await fetch('/api/status');
       const data = await res.json();
-      if (data.status === 'running' || data.status === 'completed') {
-        statusCard.classList.add('visible');
+      const hasQueue = Array.isArray(data.queue) && data.queue.length > 0;
+      if (data.status === 'running' || data.status === 'completed' || hasQueue) {
+        if (data.status !== 'idle') statusCard.classList.add('visible');
         updateStatusUI(data);
-        if (data.status === 'running' || data.convert_status === 'running') {
-          submitBtn.textContent = 'Çeviri Devam Ediyor';
-          submitBtn.disabled = true;
+        if (data.status === 'running' || data.convert_status === 'running' || hasQueue) {
           startPolling();
         }
       }
