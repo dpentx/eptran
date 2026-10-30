@@ -1,0 +1,83 @@
+name: Eval (altın set)
+
+# Altın test setini (eval/gold) hattın gerçek çeviri fonksiyonundan geçirip
+# referans çevirilerle puanlar. Hangi dalı seçerek tetiklersen O dalın
+# kodu/prompt'u/fewshot.json'u test edilir (translate.yml'in aksine kod
+# main'den çekilmez) — bir prompt değişikliğini main'e almadan ölçmek için.
+#
+# Groq kotası çeviriyle ORTAK: aktif bir kitap (book/*) ya da bekleyen
+# bir yükleme (queue/*) varken, `force` işaretlenmedikçe çalışmaz.
+on:
+  workflow_dispatch:
+    inputs:
+      label:
+        description: "Bu koşunun adı (örn. baseline, fewshot-on)"
+        required: true
+        default: "baseline"
+      limit:
+        description: "En fazla kaç çift (0 = hepsi)"
+        required: true
+        default: "20"
+      fewshot:
+        description: "fewshot.json örnekleri prompt'a eklensin mi"
+        type: boolean
+        default: true
+      force:
+        description: "Aktif çeviri varken de çalıştır (kota yarışır!)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: eptran-eval
+  cancel-in-progress: false
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Aktif çeviri var mı?
+        env:
+          FORCE: ${{ inputs.force }}
+        run: |
+          active=$(git ls-remote --heads origin 'book/*' 'queue/*' | wc -l)
+          if [ "$active" != "0" ] && [ "$FORCE" != "true" ]; then
+            echo "::error::Aktif/bekleyen kitap var ($active dal). Groq kotası çeviriyle ortak; bitmesini bekle ya da 'force' işaretle."
+            exit 1
+          fi
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt -r eval/requirements.txt
+
+      - name: Run eval
+        env:
+          LABEL: ${{ inputs.label }}
+          LIMIT: ${{ inputs.limit }}
+          EPTRAN_FEWSHOT: ${{ inputs.fewshot && '1' || '0' }}
+          GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
+          GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
+          GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
+          GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
+        run: |
+          args=(--label "$LABEL" --limit "$LIMIT")
+          if [ -f eval/baseline.json ]; then args+=(--baseline eval/baseline.json); fi
+          python eval/run_eval.py "${args[@]}"
+
+      - name: Sonuçları yükle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results
+          path: eval/results/
+          if-no-files-found: ignore

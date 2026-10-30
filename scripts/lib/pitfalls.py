@@ -14,10 +14,16 @@ ekler, ama TERSİNE hiçbir şey yapmaz — bir kitabın çevirisi bu dosyayı
 kendiliğinden güncellemez. Yeni bir tuzak örüntüsü keşfedilirse
 (genelde bir kitabın Gemini QA denetiminde tekrarlayan bir hata
 görülünce), common_pitfalls.json'a ELLE eklenmesi gerekir.
+
+NOT: build_context() ayrıca lib/fewshot.py'nin örnek bloğunu da (varsa)
+sonuna ekler. translate.py zaten tek noktadan bu fonksiyonu çağırdığı
+için few-shot desteği için translate.py'ye dokunmak gerekmedi.
 """
 
 import json
 import os
+
+from . import fewshot
 
 PITFALLS_FILE = "common_pitfalls.json"
 
@@ -33,12 +39,7 @@ def _load_entries() -> list:
     return data.get("entries", [])
 
 
-def build_context() -> str:
-    """
-    common_pitfalls.json'daki genel tuzakları, sistem prompt'una
-    eklenecek okunabilir bir blok olarak döner. Dosya yoksa ya da
-    boşsa "" döner (çağıran taraf zaten falsy kontrolü yapıyor).
-    """
+def _build_pitfalls_block() -> str:
     entries = _load_entries()
     if not entries:
         return ""
@@ -61,3 +62,14 @@ def build_context() -> str:
             lines.append(f"- \"{pattern}\" → \"{correct}\"")
 
     return "\n".join(lines)
+
+
+def build_context() -> str:
+    """
+    common_pitfalls.json'daki genel tuzakları (ve varsa fewshot.json'daki
+    örnek çevirileri), sistem prompt'una eklenecek okunabilir bir blok
+    olarak döner. İkisi de yoksa/boşsa "" döner (çağıran taraf zaten
+    falsy kontrolü yapıyor).
+    """
+    blocks = [b for b in (_build_pitfalls_block(), fewshot.build_context()) if b]
+    return "\n\n".join(blocks)
