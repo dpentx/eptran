@@ -82,7 +82,7 @@ eptran/
 │       └── pitfalls.py              # common_pitfalls.json'ı sistem prompt'una ekler
 ├── .github/workflows/
 │   ├── translate.yml              # Yükleme sonrası ana çeviri workflow'u
-│   ├── queue-worker.yml           # Bölüm/parça bazında devam workflow'u
+│   ├── queue-worker.yml           # Bölüm/parça bazlı devam workflow'u
 │   ├── review.yml                 # İkinci geçiş workflow'u
 │   ├── qa.yml                     # Gemini denetimi + Qwen düzeltme workflow'u
 │   ├── pr-check.yml               # "Kitap Bütünlük Kontrolü"
@@ -97,3 +97,89 @@ eptran/
 ├── requirements.txt
 └── vercel.json
 ```
+
+
+
+### 1. Repoyu Fork'la
+
+Sağ üstten **Fork** butonuna bas.
+
+### 2. GitHub Actions'ı Etkinleştir
+
+Fork'ladktan sonra **Actions** sekmesine gidip etkinleştir.
+
+### 3. Bir GitHub App Oluştur
+
+Otomasyon, kalıcı bir kişisel token yerine bir GitHub App üzerinden
+çalışır (hem GitHub Actions hem Vercel tarafında).
+
+[github.com/settings/apps/new](https://github.com/settings/apps/new)
+adresinden:
+- **Repository permissions:** `Contents` (Read and Write), `Pull
+  requests` (Read and Write), `Actions` (Read and Write)
+- Oluşturduktan sonra **App ID**'yi not al, bir **private key** üret ve
+  indir (`.pem` dosyası)
+- App'i fork'ladığın repoya kur (Install App)
+
+### 4. GitHub Actions Secret'larını Ekle
+
+Repo → **Settings → Secrets and variables → Actions**:
+
+| İsim | Açıklama |
+|---|---|
+| `APP_ID` | 3. adımdaki App ID |
+| `APP_PRIVATE_KEY` | İndirdiğin `.pem` dosyasının tam içeriği |
+| `GROQ_API_KEY_1..4` | Groq API key'leri (bkz. aşağıdaki not) — tek key de yeterli, o zaman sadece `GROQ_API_KEY` kullan |
+| `GEMINI_API_KEY`, `GEMINI_API_KEY_2`, `GEMINI_API_KEY_3` | Gemini API key'leri (birden fazlası isteğe bağlı, rate limit rotasyonu için) |
+
+> **Not — birden fazla Groq/Gemini key'i:** Rotasyonun gerçekten işe
+> yaraması için her key'in **ayrı bir hesaptan** gelmesi gerekir.
+> Groq'un (ve çoğu sağlayıcının) rate limit'leri hesap/organizasyon
+> başınadır — aynı hesaptan üretilmiş birden fazla key toplam
+> kapasiteyi ARTIRMAZ, hepsi aynı havuzu paylaşır.
+
+Ayrıca **Settings → Secrets and variables → Actions → Variables**
+kısmına `GEMINI_MODEL` (örn. güncel bir Gemini model adı) eklemen
+gerekir.
+
+### 5. Vercel'e Deploy Et
+
+[vercel.com](https://vercel.com) üzerinden repoyu import et ve şu ortam
+değişkenlerini gir:
+
+| Değişken | Açıklama |
+|---|---|
+| `GH_PAT` | Sunucu tarafı işlemler (dal açma, workflow tetikleme) için bir GitHub token — repo'ya `Contents` + `Actions` yazma izni yeterli |
+| `GH_REPO` | `kullaniciadi/eptran` formatında fork'un adı |
+| `GH_BRANCH` | Ana dal adı (genellikle `main`) |
+| `APP_ID` | 3. adımdaki App ID — GitHub Actions'takiyle AYNI değer |
+| `APP_PRIVATE_KEY` | 3. adımdaki private key — GitHub Actions'takiyle AYNI değer |
+
+## Limitler
+
+Groq'un güncel rate limit'lerini kendi hesabından doğrula:
+[console.groq.com/settings/limits](https://console.groq.com/settings/limits)
+(model, plan tipine göre değişir — ücretsiz planda dakikalık token
+tavanı düşük olabilir, çok bölümlü kitaplarda çeviri birden fazla
+çalıştırmaya yayılabilir).
+
+## Çıktı Formatı
+
+Çeviri tamamlanınca `output/<kitap-adı>/<kitap-adı>_tr.epub` olarak
+üretilir. Bölümler ayrıca `output/<kitap-adı>/001_<kitap-adı>.txt`
+şeklinde de mevcuttur.
+
+## Bilinen İstisna Listeleri
+
+- `common_pitfalls.json` — kitap bağımsız, tekrar eden genel çeviri
+  hataları (yanlış kelime seçimleri vb.)
+- `known_proper_nouns.json` — kitap bağımsız, gerçek dünyaya ait ve
+  İngilizce bırakılması gereken özel isimler (bir çevirmen notunda
+  anılan gerçek bir eser adı gibi)
+
+Her ikisi de elle güncellenir — yeni bir örüntü/isim keşfedilince
+ilgili dosyaya bir satır eklemek yeterli, kod değişikliği gerekmez.
+
+---
+
+*Groq (qwen3.8-27b) · Gemini · GitHub Actions · Vercel*
