@@ -106,7 +106,7 @@ Sağ üstten **Fork** butonuna bas.
 
 ### 2. GitHub Actions'ı Etkinleştir
 
-Fork'ladktan sonra **Actions** sekmesine gidip etkinleştir.
+Fork'ladıktan sonra **Actions** sekmesine gidip etkinleştir.
 
 ### 3. Bir GitHub App Oluştur
 
