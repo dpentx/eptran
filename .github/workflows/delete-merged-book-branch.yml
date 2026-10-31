@@ -1,24 +1,28 @@
 name: Delete merged book branch
 
-# book/<slug> PR'ı merge olunca dalı siler. Aksi halde yetim kalan dal,
-# api/upload.js'in "zaten devam eden bir çeviri var" kontrolünü (book/ ve
-# queue/ ile başlayan her dalı "aktif" sayıyor) sürekli tetikler ve yeni
-# kitap yüklemeyi engeller. library-promote.yml dal adını olay verisinden
-# okuduğu için dal silinse de etkilenmez.
+# book/<slug> PR'ı KAPANINCA (merge edilsin ya da edilmesin) dalı siler.
+# Aksi halde yetim kalan dal, api/upload.js'in "zaten devam eden bir çeviri
+# var" kontrolünü (book/ ve queue/ ile başlayan her dalı "aktif" sayıyor)
+# sürekli tetikler ve sıradaki kitabın başlamasını engeller.
+#   - merge edildiyse: library-promote.yml dal adını olay verisinden
+#     okuduğu için dal silinse de etkilenmez.
+#   - merge EDILMEDEN kapatıldıysa (çeviri kalitesiz bulunup reddedildi):
+#     kitabın main'e ve kütüphaneye girmediği bilinerek dal yine silinir.
+#     DİKKAT: dal silinince çeviri dosyaları da gider; saklamak istiyorsan
+#     PR'ı kapatmadan önce dalı başka bir yere kopyala.
 #
 # Dal silindikten sonra SİRADAKİ kitabı da başlatır: yükleme sırasında
 # bekleyen queue/* dallarından en eskisi için translate.yml tetiklenir
 # (bkz. scripts/start_next_queue.py). Böylece birden fazla kitap "sıraya
-# eklenebiliyor" ve biri bitince diğeri kendiliğinden başlıyor.
+# eklenebiliyor" ve biri bitince (ya da reddedilince) diğeri kendiliğinden
+# başlıyor.
 on:
   pull_request:
     types: [closed]
 
 jobs:
   delete:
-    if: >-
-      github.event.pull_request.merged == true &&
-      startsWith(github.event.pull_request.head.ref, 'book/')
+    if: startsWith(github.event.pull_request.head.ref, 'book/')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
