@@ -4,7 +4,7 @@ gönderir.
 
 NOT (Eylül 2026, gerçek üretim hatası): İlk sürüm burada ciltlenmiş
 epub'ı (resimler dahil, 20-30MB) gönderiyordu. Bu, Vercel'in Serverless
-Function istek gövdesi sınırına (~4.5MB) toslandı — 413 Request Entity
+Function istek gövdesi sınırına (~4.5MB) tosladı — 413 Request Entity
 Too Large. Oysa eptran-web'in kendi ingest.ts'i epub'ı parse edip SADECE
 düz metni (chapters.content) veritabanına yazıyor, resimleri zaten hiç
 kullanmıyor. Yani epub göndermek en başından gereksiz bir israftı.
