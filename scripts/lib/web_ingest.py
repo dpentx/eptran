@@ -4,7 +4,7 @@ gönderir.
 
 NOT (Eylül 2026, gerçek üretim hatası): İlk sürüm burada ciltlenmiş
 epub'ı (resimler dahil, 20-30MB) gönderiyordu. Bu, Vercel'in Serverless
-Function istek gövdesi sınırına (~4.5MB) tosladı — 413 Request Entity
+Function istek gövdesi sınırına (~4.5MB) toslandı — 413 Request Entity
 Too Large. Oysa eptran-web'in kendi ingest.ts'i epub'ı parse edip SADECE
 düz metni (chapters.content) veritabanına yazıyor, resimleri zaten hiç
 kullanmıyor. Yani epub göndermek en başından gereksiz bir israftı.
@@ -19,14 +19,39 @@ yüz KB, 4.5MB sınırının çok altında.
 Fail-soft: internet/HTTP hatası ya da eksik secret durumunda script'i
 ÇÖKERTMEZ, sadece uyarı basar. Kitabın kendisi (epub + main'e PR) bu
 adımdan tamamen bağımsız.
+
+MERGE SONRASINA ERTELEME (Ekim 2026): Eskiden convert.py kitabı siteye PR
+henüz onaylanmadan, ciltleme biter bitmez gönderiyordu — yani İbo'nun
+reddedeceği kalitesiz bir çeviri bile sitede yayınlanıyordu. Artık
+`book/*` dalındayken push_book() hiçbir şey göndermez (sadece bilgi
+basar); gönderim PR MERGE EDİLİNCE .github/workflows/web-ingest-on-merge.yml
+tarafından scripts/web_ingest_book.py ile main'den yapılır. Dal tespiti:
+`git rev-parse --abbrev-ref HEAD` "book/" ile başlıyorsa ertelenir. main'de
+ya da detached HEAD'de (merge workflow'u, backfill_ingest.py) normal çalışır.
+WEB_INGEST_FORCE=1 ertelemeyi atlatır.
 """
 import os
+import subprocess
 
 import requests
 
 from lib.cover import load_cover
 
 INGEST_TIMEOUT_SECONDS = 60
+
+
+def _on_book_branch() -> bool:
+    """book/<slug> dalında mıyız? (WEB_INGEST_FORCE=1 ise hiç sayma.)"""
+    if os.environ.get("WEB_INGEST_FORCE") == "1":
+        return False
+    try:
+        branch = subprocess.run(
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+            capture_output=True, text=True, check=True,
+        ).stdout.strip()
+    except Exception:
+        return False
+    return branch.startswith("book/")
 
 
 def push_book(book_slug: str, chapters: list, title: str,
@@ -46,6 +71,11 @@ def push_book(book_slug: str, chapters: list, title: str,
 
     İkisinden biri eksikse sessizce (ama görünür bir uyarıyla) atlanır.
     """
+    if _on_book_branch():
+        print("  eptran-web'e gönderim PR merge edilene kadar ertelendi "
+              "(bkz. .github/workflows/web-ingest-on-merge.yml).")
+        return
+
     url = os.environ.get("WEB_INGEST_URL")
     secret = os.environ.get("WEB_INGEST_SECRET")
 
