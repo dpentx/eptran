@@ -1,0 +1,43 @@
+name: Web ingest on merge
+
+# book/<slug> PR'ı MERGE edilince kitabı okuyucu sitesine (eptran-web)
+# gönderir. Eskiden convert.py bunu PR açılmadan önce yapıyordu, yani
+# onaylanmamış/reddedilecek çeviriler de sitede yayına giriyordu.
+# Merge edilmeden kapatılan PR'lar (reddedilenler) siteye HİÇ gitmez.
+#
+# Kod ve veri main'in merge commit'inden gelir (dal merge sonrası silinse bile
+# çalışır). Siteye gönderim fail-soft'tur ama kitap bulunamazsa job kırmızı olur.
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  ingest:
+    if: >-
+      github.event.pull_request.merged == true &&
+      startsWith(github.event.pull_request.head.ref, 'book/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout merge commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Send book to eptran-web
+        env:
+          WEB_INGEST_URL: ${{ secrets.WEB_INGEST_URL }}
+          WEB_INGEST_SECRET: ${{ secrets.WEB_INGEST_SECRET }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: python scripts/web_ingest_book.py "${HEAD_REF#book/}"
