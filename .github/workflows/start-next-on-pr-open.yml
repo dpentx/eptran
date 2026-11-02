@@ -1,0 +1,32 @@
+name: Start next queued book (PR opened)
+
+# Bir kitabın çevirisi/ciltlemesi bitip book/<slug> PR'ı AÇILINCA kuyruktaki
+# sıradaki kitabı başlatır. Kuyruk, PR'ın merge edilmesini BEKLEMEZ: inceleme
+# sonra, vakti gelince yapılır (bkz. scripts/start_next_queue.py). Hâlâ
+# işlenen bir kitap varsa script hiçbir şey yapmaz.
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  start-next:
+    if: startsWith(github.event.pull_request.head.ref, 'book/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: write
+
+    steps:
+      # pull_request olaylarında varsayılan checkout PR'ın merge ref'idir;
+      # script'i main'den alıyoruz.
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Start next queued book
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MAIN_BRANCH: ${{ github.event.repository.default_branch }}
+        run: python3 scripts/start_next_queue.py

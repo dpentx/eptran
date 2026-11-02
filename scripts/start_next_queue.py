@@ -1,17 +1,22 @@
 """
 eptran — start_next_queue.py
 
-Kuyruktaki (queue/*) bir SONRAKI kitabı başlatır.
+Kuyruktaki (queue/*) bir SONRAKİ kitabı başlatır.
 
-Aktif bir kitap (book/*) YOKSA, yükleme tamamlanmış bekleyen queue/* dalları
-arasından en eskisini (yükleme sırasına göre) seçip translate.yml'i o dal
-ref'iyle tetikler — api/upload.js'in tek kitap boşta iken yaptığıyla aynı şey.
+Hâlâ İŞLENEN bir kitap (convert_status != "completed" olan book/*) YOKSA,
+yükleme tamamlanmış bekleyen queue/* dalları arasından en eskisini (yükleme
+sırasına göre) seçip translate.yml'i o dal ref'iyle tetikler — api/upload.js'in
+sistem boşta iken yaptığıyla aynı şey.
+
+ÖNEMLİ (Kasım 2026): Çevirisi/ciltlemesi bitip PR'ı açılmış ama henüz merge
+edilmemiş bir kitap "işleniyor" SAYILMAZ. Kuyruk, repo sahibinin PR'ı incelemesini
+beklemez; inceleme sonra, vakti gelince yapılır.
 
 Çağıranlar:
-  - delete-merged-book-branch.yml: bir kitabın PR'ı merge olup book/<slug>
-    dalı silinince (normal yol).
-  - translate.yml'in 6 saatlik cron'u (main'de): kaçan/başarısız tetiklemeleri
-    telafi eden güvenlik ağı (örn. PR merge edilmeden dal elle silindiyse).
+  - start-next-on-pr-open.yml: bir book/* PR'ı açılınca (kitap bitti).
+  - delete-merged-book-branch.yml: bir book/* PR'ı kapanınca (merge/red).
+  - translate.yml'in 6 saatlik cron'u (main'de): kaçan tetiklemeleri
+    telafi eden güvenlik ağı.
 
 "Hazır" = dal main'e göre en az 1 commit ilerde (yani dosya gerçekten
 YÜKLENMİŞ). Yükleme yarıda kalmış, artık dal başka bir şeye yaramayan
@@ -22,6 +27,7 @@ bir yardımcı adım, asıl işlerin (dal silme, cron taraması) başarısını 
 
 Ortam: GH_TOKEN (Actions: write), GITHUB_REPOSITORY.
 """
+import json
 import os
 import subprocess
 import sys
@@ -40,6 +46,34 @@ def _gh(*args: str) -> str:
 def _branch_names() -> list:
     out = _gh("api", f"repos/{REPO}/branches", "--paginate", "--jq", ".[].name")
     return [line.strip() for line in out.splitlines() if line.strip()]
+
+
+def _in_progress(branch: str) -> bool:
+    """
+    book/<slug> dalındaki kitap hâlâ işleniyor mu? status.json'daki
+    convert_status "completed" ise bitmiştir (PR açıldı, inceleme bekliyor).
+    status.json okunamıyorsa (dal yeni açıldı) temkinli davranıp işleniyor sayarız.
+    """
+    try:
+        raw = _gh(
+            "api", "-H", "Accept: application/vnd.github.raw+json",
+            f"repos/{REPO}/contents/status.json?ref={branch}",
+        )
+        return json.loads(raw).get("convert_status") != "completed"
+    except Exception:
+        return True
+
+
+def _dispatch_pending(branch: str) -> bool:
+    """translate.yml bu dal için zaten kuyrukta/çalışıyor mu? (çift tetiklemeyi önler)"""
+    try:
+        out = _gh("run", "list", "--workflow", "translate.yml", "--branch", branch,
+                  "--json", "status", "--limit", "10")
+        runs = json.loads(out or "[]")
+    except Exception:
+        return False
+    return any(r.get("status") in ("queued", "in_progress", "waiting", "pending", "requested")
+               for r in runs)
 
 
 def _upload_info(branch: str):
@@ -62,8 +96,9 @@ def main() -> None:
         return
 
     names = _branch_names()
-    if any(n.startswith("book/") for n in names):
-        print("Aktif bir kitap (book/*) var — sıradaki başlatılmayacak.")
+    busy = [n for n in names if n.startswith("book/") and _in_progress(n)]
+    if busy:
+        print(f"Hâlâ işlenen kitap var ({', '.join(busy)}) — sıradaki başlatılmayacak.")
         return
 
     ready = []
@@ -85,6 +120,9 @@ def main() -> None:
     ready.sort()  # ISO-8601 tarihler metin olarak da doğru sıralanır
     _, next_branch = ready[0]
     print(f"Sıradaki kitap: {next_branch} (arkasında {len(ready) - 1} kitap daha var).")
+    if _dispatch_pending(next_branch):
+        print("translate.yml bu dal için zaten kuyrukta/çalışıyor — tekrar tetiklenmiyor.")
+        return
     _gh("workflow", "run", "translate.yml", "--ref", next_branch)
     print("translate.yml tetiklendi.")
 
