@@ -273,6 +273,26 @@ export default async function handler(req, res) {
       });
     }
 
+    // Token'ı tarayıcıya vermeden önce GitHub'ın GERÇEKTEN kabul ettiğini
+    // doğrula: aksi halde sorun (örn. "Bad credentials") ancak tarayıcıdan
+    // 33MB'lık dosya yüklenirken, anlaşılması zor bir hata olarak ortaya
+    // çıkıyordu. Yetim bir dal yeniden kullanıldıysa da, yeni açıldıysa da
+    // `input/` klasörü o dalda vardır (main'den açılıyor).
+    const probe = await fetch(
+      `https://api.github.com/repos/${REPO}/contents/input?ref=${encodeURIComponent(queueBranch)}`,
+      { headers: { Authorization: `Bearer ${uploadToken}`, Accept: "application/vnd.github+json" } }
+    );
+    if (!probe.ok) {
+      const detail = await probe.json().catch(() => ({}));
+      await cleanupBranch();
+      // index.html yalnızca `error` alanını gösterdiği için ayrıntı mesajın içinde.
+      const why = `HTTP ${probe.status}: ${detail.message || "?"}, token türü: ${String(uploadToken).slice(0, 4)}…`;
+      return res.status(502).json({
+        error: `GitHub, üretilen yükleme token'ını reddetti (${why}) — yükleme başlatılmadı`,
+        detail: why,
+      });
+    }
+
     return res.json({
       repo: REPO,
       branch: queueBranch,
