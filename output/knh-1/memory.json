@@ -29,7 +29,8 @@
     "Princess Lingli": "Prenses Lingli",
     "Xiaoling": "Xiaoling",
     "Hongniang": "Hongniang",
-    "Fuyou": "Fuyou"
+    "Fuyou": "Fuyou",
+    "Yinghua": "Yinghua"
   },
   "terms": {
     "hougong": "Arka Saray",
@@ -65,14 +66,17 @@
     "rhododendron": "gülgiller",
     "Cacao": "Kakao",
     "Upper Fourth rank": "Üst Dördüncü Sınıf",
-    "loach-mustached doctor": "Somon bıyıklı doktor"
+    "loach-mustached doctor": "Somon bıyıklı doktor",
+    "zacha": "zacha (baharatlı eski çay)",
+    "mooncakes": "ay kurabiyesi",
+    "peach village": "şeftali köyü"
   },
   "style_notes": "Anlatıcı, Maomao'nun acımasız ve alaycı iç sesini yansıtan, kuru ve zeki bir ton kullanır; cümleler genellikle kısa, keskin ve karakterin çevresindeki çürümüşlüğü soğukkanlılıkla gözlemleyen bir bakış açısıyla kurgulanmıştır.",
   "summaries": [
-    "Chapter 5: Attendant: Maomao, el yazısı analizi yoluyla Consort Gyokuyou'ya gönderdiği gizli mesajın izini süren hadım Jinshi tarafından köşke götürülür. Maomao, eczacı geçmişini ve okuma yazma bilme yeteneğini gizleyerek tehlikeli sorguya hazırlanırken, Gyokuyou'nun yanında kırmızı saçlı bir kadın ve bebeğiyle karşılaşır.",
     "Chapter 6: Poison Tester: Jinshi, zehir bilgisi olan ve Gyokuyou Hanım'ın kızını kurtaran benekli kızı, harem kadını olarak istihdam ederek hem eşinin güvenini kazanmayı hem de kendi çıkarlarını korumayı planlar. Maomao ise bu atamayla birlikte saray hiyerarşisinde orta kademeye yükselir ve daha iyi yaşam koşullarına kavuşur.",
     "Chapter 7: Branch: Maomao, Gyokuyou Hanım'ın harem kadılarından oluşan düzenli ekibin sayesinde yemek tatlamaktan başka iş yapmadan odasında kalmakta ve çevresindeki kadınların şefkatiyle zorla beslenerek kilo almaktadır. Bu durum, zehirlenme riskine karşı hayatta kalma şansını artırırken, sol kolundaki yara izleri nedeniyle ona duyulan derin acıma duygusunu da yansıtmaktadır.",
     "Chapter 8: Love Potion: Jinshi, Maomao'ya içinde afrodisyak bulunan baozi'leri tattırmaya çalışır ancak Maomao bunu fark edip soğukkanlılıkla reddeder. Ardından Jinshi ve Gyokuyou, Maomao'dan bir aşk iksiri hazırlamasını talep eder ve Maomao bu teklifi kabul eder.",
-    "Chapter 9: Cacao: Maomao, Yeşim Köşkü'nde kakao ve çeşitli malzemelerle dayanıklılık iksiri hazırlarken, bu sürecin Jinshi'yi yorgun ve sinirli bir duruma getirdiği anlatılır. Metin, Maomao'nun çikolata deneyimi ve iksirin güçlü etkileri hakkında bilgi verirken, hazırlık aşamasındaki teknik detaylara odaklanır."
+    "Chapter 9: Cacao: Maomao, Yeşim Köşkü'nde kakao ve çeşitli malzemelerle dayanıklılık iksiri hazırlarken, bu sürecin Jinshi'yi yorgun ve sinirli bir duruma getirdiği anlatılır. Metin, Maomao'nun çikolata deneyimi ve iksirin güçlü etkileri hakkında bilgi verirken, hazırlık aşamasındaki teknik detaylara odaklanır.",
+    "Chapter 10: The Unsettling Matter of the Spirit (Part One): Gyokuyou Hanım'ın sadık harem kadını Yinghua, geçmişte kötü muamele görmüş ve zehir tatlaması için saraya getirilen Maomao'ya acıyarak onu ağır işlerden korur. Bu durum, baş harem kadını Hongniang'ın Maomao'ya çamaşır taşıma gibi hafif görevler vermesine ve saraydaki hiyerarşik gerilimlere yol açar."
   ]
 }
