@@ -39,7 +39,8 @@
     "Imperial younger brother": "İmparatorun Küçük Kardeşi",
     "Guiyuan": "Guiyuan",
     "Ailan": "Ailan",
-    "Ah-Duo": "Ah-Duo"
+    "Ah-Duo": "Ah-Duo",
+    "Lihaku": "Lihaku"
   },
   "terms": {
     "hougong": "Arka Saray",
@@ -86,14 +87,16 @@
     "silver hair stick": "gümüş saç çubuğu",
     "red-light district": "Kırmızı Işık Bölgesi",
     "decorative hair stick": "Süsleme Saç Çubuğu",
-    "mother-in-law": "Kayınvalide"
+    "mother-in-law": "Kayınvalide",
+    "quartz ornaments": "kuvars süsleri",
+    "ladies' curtain": "hanımefendiler perdesi"
   },
   "style_notes": "Anlatıcı, Maomao'nun acımasız ve alaycı iç sesini yansıtan, kuru ve zeki bir ton kullanır; cümleler genellikle kısa, keskin ve karakterin çevresindeki çürümüşlüğü soğukkanlılıkla gözlemleyen bir bakış açısıyla kurgulanmıştır.",
   "summaries": [
-    "Chapter 12: The Threat: Maomao, İmparator'un emriyle Lihua Hanımefendi'nin hastalığına bakmak zorunda kalır ve bu görevi kabul etmek için Gyokuyou Hanım'ın hizmetkârı olarak kalma baskısıyla karşı karşıya kalır. Bölüm, Maomao'nun düşmanca bir ortamda hizmet verirken İmparator'un bu cüretkâr isteğinin ardındaki güvensizlik veya kayıtsızlık üzerine düşündüğü anları anlatır.",
     "Chapter 13: Nursing: Maomao, ağır hasta olan Lihua Hanımefendi'yi besleyip yıkayarak sağlığına kavuşturmak için haremdeki diğer kadınları zorla çalıştırır. Lihua'nın iyileşme sürecinde Maomao'ya teşekkür etmesi, ikisi arasında duygusal bir bağın kurulduğunu gösterir.",
     "Chapter 15: Covert Operations: Maomao, Arka Saray'da gizli operasyonlarla ilgili ipuçları veren tozları incelemek için Jinshi ile baş başa kalır ve bu etkileşim sırasında onun aşırı güzelliğine karşı içsel bir rahatsızlık duyar. Maomao, tozların çözünürlüğüne dair teknik bilgiler verirken, Jinshi'nin gizli bir şifre üzerinde çalıştığını sezer ve kendini korumak için sessiz kalmaya karar verir.",
     "Chapter 16: The Garden Party (Part One): Maomao, Prenses Lingli ve harem kadınlarını ısıtma taşlarıyla donatarak bahçe partisine hazırlık yaparken, Gaoshun efendisi Jinshi'nin Gyokuyou Hanım'a olan yakınlaşmasını ve kıskançlık uyandıran güzelliğini endişeyle gözlemler.",
-    "Chapter 17: The Garden Party (Part Two): Bahçe partisinde İmparator, İmparatoriçe Anne ve tahtın birinci varisi olan hasta küçük kardeşi baş köşede otururken, Maomao perde arkasından bu gerilimli siyasi düzeni ve İmparatoriçe Anne'nin gençliğini gözlemlemektedir."
+    "Chapter 17: The Garden Party (Part Two): Bahçe partisinde İmparator, İmparatoriçe Anne ve tahtın birinci varisi olan hasta küçük kardeşi baş köşede otururken, Maomao perde arkasından bu gerilimli siyasi düzeni ve İmparatoriçe Anne'nin gençliğini gözlemlemektedir.",
+    "Chapter 18: The Garden Party (Part Three): Maomao ve Guiyuan, bahçe partisinde sağlıklı görünen Prenses Lingli'yi ziyaret ederken, Erdemli Konsort Lishu Hanım'ın çevresindeki atmosferi okuyamayan ve diğer hanımlarla renk paletleri üzerinden gizli bir rekabet içindeki tansiyonlu varlığına tanık olurlar."
   ]
 }
