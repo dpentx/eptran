@@ -90,6 +90,28 @@ async function listBranchNames(gh) {
   return (await res.json()).map((b) => b.name);
 }
 
+// Hâlâ İŞLENEN bir kitap var mı? Çevirisi/ciltlemesi bitip PR'ı açılmış
+// (convert_status === "completed") ama henüz merge edilmemiş kitap meşgul
+// SAYILMAZ: kuyruk repo sahibinin incelemesini beklemez. status.json okunamazsa
+// (dal yeni açıldı) temkinli davranıp işleniyor sayarız.
+async function hasBookInProgress(gh, names) {
+  const books = names.filter((n) => n.startsWith("book/"));
+  const flags = await Promise.all(
+    books.map(async (name) => {
+      try {
+        const r = await gh(`/contents/status.json?ref=${encodeURIComponent(name)}`);
+        if (!r.ok) return true;
+        const data = await r.json();
+        const status = JSON.parse(Buffer.from(data.content, "base64").toString());
+        return status.convert_status !== "completed";
+      } catch {
+        return true;
+      }
+    })
+  );
+  return flags.some(Boolean);
+}
+
 // Bir queue/<slug> dalında dosya GERÇEKTEN yüklenmiş mi? (main'e göre en az
 // 1 commit ilerde mi). Yükleme yarıda kalmış yetim dallar "hazır" sayılmaz.
 // Hazırsa yüklemenin tarihi de döner (sıralama için).
@@ -137,13 +159,13 @@ export default async function handler(req, res) {
     // SONRA çağrılır — bu istek küçük (sadece dal adı), Vercel'in
     // boyut sınırına takılmaz.
     //
-    // Sıraya ekleme: çevrilmekte olan bir kitap (book/*) ya da aynı anda
-    // daha önce yüklenmiş başka bir bekleyen kitap varsa workflow BURADA
-    // tetiklenmez; kitap queue/<slug> dalında bekler ve öndeki kitabın PR'ı
-    // merge olup dalı silinince kendiliğinden başlatılır (bkz.
-    // scripts/start_next_queue.py, delete-merged-book-branch.yml). Sadece
-    // sistem boşsa workflow'u burada, uzun ömürlü sunucu token'ıyla
-    // (GH_PAT) tetikliyoruz.
+    // Sıraya ekleme: HÂLÂ İŞLENEN bir kitap (book/*, convert_status
+    // tamamlanmamış) ya da aynı anda daha önce yüklenmiş başka bir bekleyen
+    // kitap varsa workflow BURADA tetiklenmez; kitap queue/<slug> dalında
+    // bekler ve öndeki kitabın PR'ı AÇILINCA (merge'ü beklemeden)
+    // kendiliğinden başlatılır (bkz. scripts/start_next_queue.py,
+    // start-next-on-pr-open.yml). Sadece sistem boşsa workflow'u burada,
+    // uzun ömürlü sunucu token'ıyla (GH_PAT) tetikliyoruz.
     if (body.action === "finalize") {
       const { branch } = body;
       if (!branch || !branch.startsWith("queue/"))
@@ -162,7 +184,7 @@ export default async function handler(req, res) {
       // Önde kimler var: çevrilmekte olan kitap + benden ÖNCE yüklenmiş
       // bekleyenler (eşit tarihte ad sırası belirler — iki yükleme aynı
       // anda biterse ikisi de beklemeye düşmesin).
-      const hasActiveBook = names.some((n) => n.startsWith("book/"));
+      const hasActiveBook = await hasBookInProgress(gh, names);
       const others = names.filter((n) => n.startsWith("queue/") && n !== branch);
       const infos = await Promise.all(others.map((n) => uploadInfo(gh, MAIN_BRANCH, n)));
       const olderWaiting = infos.filter(
@@ -216,7 +238,7 @@ export default async function handler(req, res) {
     if (names.includes(`book/${slug}`))
       return res.status(409).json({ error: "Bu kitap zaten çevriliyor" });
 
-    const hasActiveBook = names.some((n) => n.startsWith("book/"));
+    const hasActiveBook = await hasBookInProgress(gh, names);
     const otherQueue = names.filter((n) => n.startsWith("queue/") && n !== queueBranch);
     const otherInfos = await Promise.all(otherQueue.map((n) => uploadInfo(gh, MAIN_BRANCH, n)));
     const waitingCount = otherInfos.filter((i) => i.ready).length;
