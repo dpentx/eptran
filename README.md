@@ -37,10 +37,12 @@ bir GitHub Actions + Vercel aracı.
   eklenebilir**: çevrilen bir kitap (`book/*`) ya da önde bekleyen bir kitap
   varsa yeni yükleme reddedilmez; dosya `queue/<kitap-adı>` dalında bekler
   (arayüzde "sıra" kartında görünür, düğme "Sıraya Ekle" olur, en fazla 10
-  kitap). Öndeki kitabın PR'ı merge edilip `book/*` dalı silinince
-  `delete-merged-book-branch.yml` sıradaki en eski kitabı otomatik başlatır
-  (`scripts/start_next_queue.py`); `translate.yml`'in 6 saatlik cron'u da
-  kaçan tetiklemeleri aynı script'le telafi eder.
+  kitap). Öndeki kitabın çevirisi bitip PR'ı AÇILINCA
+  (`start-next-on-pr-open.yml`) sıradaki en eski kitap otomatik başlar — PR'ın
+  merge edilmesi beklenmez, inceleme sonra yapılır
+  (`scripts/start_next_queue.py`). PR kapanınca (`delete-merged-book-branch.yml`)
+  dal silinir ve `translate.yml`'in 6 saatlik cron'u da kaçan tetiklemeleri
+  aynı script'le telafi eder.
 - `main`'e giden PR, `pr_check.py` (İngilizce kalıntı taraması + Gemini
   raporu özeti) tarafından kontrol edilir; bunu zorunlu bir status
   check olarak ayarlamak istersen workflow adı **"Kitap Bütünlük
