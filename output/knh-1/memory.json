@@ -43,7 +43,10 @@
     "Lihaku": "Lihaku",
     "Pairin": "Pairin",
     "Fengming": "Fengming",
-    "Joka": "Joka"
+    "Joka": "Joka",
+    "Kounen": "Kounen",
+    "Kevin": "Kevin",
+    "Sasha": "Sasha"
   },
   "terms": {
     "hougong": "Arka Saray",
@@ -124,14 +127,19 @@
     "ginger tea": "Zencefil çayı",
     "hard buns of bread": "Sert ekmek topları",
     "fruit honeys": "Meyve balı",
-    "red trumpet of a flower": "Kırmızı boru çiçeği"
+    "red trumpet of a flower": "Kırmızı boru çiçeği",
+    "karatou": "acı/sert taraftarı",
+    "amatou": "tatlı taraftarı",
+    "karai": "acı/sert",
+    "shio-karai": "tuzlu-acı",
+    "umami": "umami"
   },
   "style_notes": "Anlatıcı, Maomao'nun acımasız ve alaycı iç sesini yansıtan, kuru ve zeki bir ton kullanır; cümleler genellikle kısa, keskin ve karakterin çevresindeki çürümüşlüğü soğukkanlılıkla gözlemleyen bir bakış açısıyla kurgulanmıştır.",
   "summaries": [
-    "Chapter 28: Honey (Part Two): Maomao, Gaoshun ile birlikte Lishu Hanım'ı Elmas Köşkü'nde ziyaret eder ve bal yiyememesi nedeniyle yaşadığı mide bulantısını hemen fark ederek ona sorar. Bu etkileşim, Maomao'nun keskin gözlem yeteneğini ve Lishu Hanım'ın şaşkınlığını ön plana çıkarır.",
     "Chapter 29: Honey (Part Three): Maomao, Gyokuyou Hanım'dan gelen mektubu ve zehirli çiçeği kullanarak Ah-Duo'nun nedimesi Fengming ile Garnet Köşkü'nde gizli bir görüşme yapar. Görüşmede, Ah-Duo'nun doğum sırasında kısırlaştığı ve bu nedenle Arka Saray'dan sürgüne gönderileceği gerçeği ortaya çıkar.",
     "Chapter 30: Ah-Duo: Maomao, Arka Saray'dan ayrılacağı gece duvarın üzerine çıkıp Ah-Duo Hanım ile karşılaşır ve onunla birlikte içki paylaşır. Bu bölüm, Maomao'nun saraydaki son gecesini ve Ah-Duo ile kurduğu samimi bağı anlatır.",
     "Chapter 31: Dismissal: Jinshi, idam edilen Fengming’in ailesi ve bağlantılarının cezalandırılma listesini incelediği sırada, yardımcısı Gaoshun’un soğukkanlı tutumu ve Maomao ile arasındaki sınıfsal uçurumun derinleşmesiyle iç çatışma yaşar. Bölüm, Maomao’nun gizlice kuruttuğu incirlerle Xiaolan’a toplu görevden çekilme planını sorduğu anla sona erer.",
-    "Epilogue: The Eunuch and the Courtesan: Maomao, yaşlı kadının yönlendirmesiyle saray yetkililerinin katıldığı lüks bir ziyafette fahişe olarak görevlendirilir. Bu sahnede, Maomao'nun eczacılık tutkusuna rağmen zorla fuhuşa sürüklenmesi ve Pairin ile Joka gibi diğer kadınların varlığı öne çıkar."
+    "Epilogue: The Eunuch and the Courtesan: Maomao, yaşlı kadının yönlendirmesiyle saray yetkililerinin katıldığı lüks bir ziyafette fahişe olarak görevlendirilir. Bu sahnede, Maomao'nun eczacılık tutkusuna rağmen zorla fuhuşa sürüklenmesi ve Pairin ile Joka gibi diğer kadınların varlığı öne çıkar.",
+    "Bonus: Translator’s Notes: Çevirmen Kevin, *Eczacı Günlükleri* serisindeki tıbbi jargonun çevrilişini ve özellikle 25. bölümde tuz zehirlenmesinden ölen Kounen'in hikâyesinde geçen \"karatou\" (acı/tuzlu tarafı seven) teriminin bağlama dayalı incelikli çeviri sürecini detaylandırır."
   ]
 }
