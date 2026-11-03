@@ -54,10 +54,14 @@ yeni bir dersi bulunca buraya ekle.
   `queue/<slug>` → `translate.py` kitabı `book/<slug>` dalına taşır → çeviri,
   review, QA, ciltleme hepsi o dalda → `convert.py` tek bir PR açar.
 - Kuyruk: sistem doluyken yüklenen kitaplar `queue/<slug>` dalında bekler;
-  `scripts/start_next_queue.py` aktif kitap yoksa en eskisini başlatır.
-- `book/*` PR'ı kapanınca (merge edilsin ya da edilmesin) dal otomatik silinir ve
-  sıradaki kitap başlar (`delete-merged-book-branch.yml`). Merge'siz kapatılan
-  kitabın dosyaları dalla birlikte gider.
+  `scripts/start_next_queue.py` HÂLÂ İŞLENEN kitap yoksa en eskisini başlatır.
+  "İşleniyor" = `status.json`'da `convert_status != "completed"` olan `book/*` dalı.
+  Çevirisi bitip PR'ı açılmış kitap meşgul SAYILMAZ: kuyruk, PR'ın merge edilmesini
+  beklemez (repo sahibi incelemeyi sonra yapar). Tetikleyiciler: PR açılınca
+  (`start-next-on-pr-open.yml`), PR kapanınca (`delete-merged-book-branch.yml`),
+  6 saatlik cron (`translate.yml`).
+- `book/*` PR'ı kapanınca (merge edilsin ya da edilmesin) dal otomatik silinir.
+  Merge'siz kapatılan kitabın dosyaları dalla birlikte gider.
 - Okuyucu sitesine (eptran-web) gönderim PR MERGE EDİLİNCE yapılır
   (`web-ingest-on-merge.yml` → `scripts/web_ingest_book.py`). `convert.py`
   içindeki `push_book()` `book/*` dalındayken bilerek hiçbir şey göndermez.
