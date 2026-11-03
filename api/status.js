@@ -1,11 +1,15 @@
 export const config = { maxDuration: 10 };
 
 // Site durumu:
-//  - Aktif kitap: çevrilmekte olan book/<slug> dalındaki status.json. (Ara
-//    ilerleme main'e hiç yazılmıyor, main'deki status.json sadece EN SON
-//    TAMAMLANAN kitabın durumu — eskiden burada yalnızca o okunduğu için
-//    site çeviri sırasında hep eski kitabı gösteriyordu.)
-//  - Aktif kitap yoksa: main'deki status.json (son tamamlanan kitap).
+//  - Aktif kitap: HÂLÂ İŞLENEN book/<slug> dalındaki status.json
+//    (convert_status "completed" değil). Ara ilerleme main'e hiç yazılmıyor,
+//    main'deki status.json sadece EN SON MERGE EDİLEN kitabın durumu — eskiden
+//    burada yalnızca o okunduğu için site çeviri sırasında hep eski kitabı
+//    gösteriyordu.
+//  - Bitmiş ama merge bekleyen kitaplar (PR açık) "aktif" SAYILMAZ; kuyruk
+//    onları beklemez. Hiç işlenen kitap ve sıra yoksa bunlardan biri
+//    (indirme bağlantılarıyla) gösterilir; adları `awaiting_merge` alanında.
+//  - Hiçbiri yoksa: main'deki status.json (son merge edilen kitap).
 //  - Sıra: yükleme sırasına göre bekleyen queue/<slug> dalları (dosyası
 //    gerçekten yüklenmiş olanlar — yarım kalmış yüklemelerin yetim dalları
 //    sayılmaz).
@@ -40,7 +44,15 @@ export default async function handler(req, res) {
     const branchesRes = await gh("/branches?per_page=100");
     const names = branchesRes.ok ? (await branchesRes.json()).map((b) => b.name) : [];
 
-    const activeBranch = names.find((n) => n.startsWith("book/")) || null;
+    const bookInfos = await Promise.all(
+      names
+        .filter((n) => n.startsWith("book/"))
+        .map(async (name) => ({ name, st: await readStatus(name) }))
+    );
+    const isDone = (b) => b.st && b.st.convert_status === "completed";
+    const inProgress = bookInfos.find((b) => !isDone(b)) || null;
+    const awaiting = bookInfos.filter(isDone);
+    const activeBranch = inProgress ? inProgress.name : null;
 
     const queueInfos = await Promise.all(
       names
@@ -69,15 +81,20 @@ export default async function handler(req, res) {
       .map((q, i) => ({ ...q, position: i + 1 }));
 
     let status;
-    if (activeBranch) {
+    let displayBranch = null;
+    if (inProgress) {
       // Dal yeni açıldıysa status.json henüz olmayabilir.
       status =
-        (await readStatus(activeBranch)) ||
-        { status: "running", book: activeBranch.slice("book/".length) };
+        inProgress.st ||
+        { status: "running", book: inProgress.name.slice("book/".length) };
+      displayBranch = inProgress.name;
     } else if (queue.length > 0) {
       // Aktif kitap yok ama sırada bekleyen var: biri anında başlayacak,
       // main'deki eski (tamamlanmış) kitabı göstermek karışıklık yaratır.
       status = { status: "idle" };
+    } else if (awaiting.length > 0) {
+      status = awaiting[0].st;
+      displayBranch = awaiting[0].name;
     } else {
       status = (await readStatus(MAIN_BRANCH)) || { status: "idle" };
     }
@@ -86,7 +103,7 @@ export default async function handler(req, res) {
     let epubFile = null;
 
     if (status.status === "completed" && status.book) {
-      const ref = activeBranch || MAIN_BRANCH;
+      const ref = displayBranch || MAIN_BRANCH;
       const outputRes = await gh(
         `/contents/output/${status.book}?ref=${encodeURIComponent(ref)}`
       );
@@ -112,6 +129,7 @@ export default async function handler(req, res) {
       epubFile,
       queue,
       active_branch: activeBranch,
+      awaiting_merge: awaiting.map((b) => b.name.slice("book/".length)),
     });
   } catch (err) {
     console.error(err);
