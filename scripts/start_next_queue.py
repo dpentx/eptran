@@ -3,12 +3,12 @@ eptran — start_next_queue.py
 
 Kuyruktaki (queue/*) bir SONRAKİ kitabı başlatır.
 
-Hâlâ ÇEVİRİLEN bir kitap (çeviri VEYA review'u bitmemiş book/*) YOKSA,
+Hâlâ ÇEVRİLEN bir kitap (çeviri VEYA review'u bitmemiş book/*) YOKSA,
 yükleme tamamlanmış bekleyen queue/* dalları arasından en eskisini (yükleme
 sırasına göre) seçip translate.yml'i o dal ref'iyle tetikler — api/upload.js'in
 sistem boşta iken yaptığıyla aynı şey.
 
-ÖNEMLİ (Kasım 2026): Sıra yalnızca Groq faznı (çeviri + review) bekler. QA
+ÖNEMLİ (Kasım 2026): Sıra yalnızca Groq fazını (çeviri + review) bekler. QA
 denetimi (Gemini'nin günlük kotasına bağlı, saatler/günler sürebilir), düzeltme
 ve ciltleme bitmeden de — ve PR merge edilmeden de — sıradaki kitap başlar.
 Bu "kuyruk" meşgul sayılmaz; kota yüzünden yarım kalan bir QA sırayı tıkamasın.
@@ -51,8 +51,8 @@ def _branch_names() -> list:
 
 def _in_progress(branch: str) -> bool:
     """
-    book/<slug> dalındaki kitap hâlâ ÇEVİRİLİYOR mu? status.json'da çeviri
-    (status) ve review (review_status) "completed" ise Groq fazi bitmiştir;
+    book/<slug> dalındaki kitap hâlâ ÇEVRİLİYOR mu? status.json'da çeviri
+    (status) ve review (review_status) "completed" ise Groq fazı bitmiştir;
     QA/ciltleme/PR sonrası adımlar sırayı tutmaz.
     status.json okunamıyorsa (dal yeni açıldı) temkinli davranıp işleniyor sayarız.
     """
