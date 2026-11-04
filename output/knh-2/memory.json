@@ -31,7 +31,9 @@
     "Hongniang": "Hongniang",
     "Xiaomao": "Xiaomao",
     "Jinka": "Jinka",
-    "Suirei": "Suirei"
+    "Suirei": "Suirei",
+    "Princess Lingli": "Prenses Lingli",
+    "Ah-Duo": "Ah-Duo"
   },
   "terms": {
     "rear palace": "arka saray",
@@ -56,14 +58,15 @@
     "ox bezoar": "öküz taşı",
     "Board of Rites": "Törenler Kurulu",
     "Thornapple": "Diken Elması",
-    "resurrection drug": "diriltme ilacı"
+    "resurrection drug": "diriltme ilacı",
+    "path of the moon": "ay yolu"
   },
   "style_notes": "Anlatım, Jinshi'nin dışarıdan zarif ama içteninde acı çeken kurnazlığı ile Maomao'nun pratik, biraz isyankâr ama ailesine bağlı tavrı arasında dengelenmelidir; diyaloglar doğal ve karakterlerin sosyal statülerine uygun bir dille aktarılmalıdır.",
   "summaries": [
-    "Chapter 9: Lakan: Maomao, bir kadının onu bıçakla tehdit ettiği rahatsız edici bir rüya görür ve uyanınca günlük işlerine odaklanarak bu anıyı bastırmaya çalışır. Ardından Jinshi, \"garip bir memurdan\" gelen bir hediye şişesini bırakır ve Maomao'dan Verdirgis Evi'nin düzenli müşterileri hakkında bilgi ister.",
     "Chapter 10: Suirei: Maomao, Suiren'in Jinshi'nin gizli görevleri ve askeri kamplarla bağlantılı tehlikeli geçmişine dair farkındalığını sezerken, ikili çay molasında günlük rutinleri ve akşamki vejetaryen öğün hazırlığı üzerine sohbet eder.",
     "Chapter 11: Chance or Something More: Maomao, Lihaku'dan ambar yangınının bir dikkati çekme taktiği olduğunu ve ayin gereçlerinin çalındığını öğrenir. Yangın, hırsızlık ve gıda zehirlenmesi vakalarının bağlantılı olabileceğini düşünen Maomao, olayların arkasındaki asıl failin Kounen Efendi olduğunu tahmin eder.",
     "Chapter 12: The Ritual: Maomao, saray arşivindeki sarı dolayları inceleyerek Törenler Dairesi'nde yaşanan gıda zehirlenmesi vakalarını araştırır. Tesadüflerin kasıtlı bir örüntü oluşturduğunu fark eden Maomao, olayların arkasındaki bağlantıyı çözmek için notlar almaya başlar.",
-    "Chapter 13: Thornapple: Maomao, Jinshi'nin yatak odasında yaralı halde uyandığında, onu ziyaret eden Gaoshun, Basen ve Jinshi'ye olayın bir kaza değil, planlı bir suikast girişimi olduğunu açıklar."
+    "Chapter 13: Thornapple: Maomao, Jinshi'nin yatak odasında yaralı halde uyandığında, onu ziyaret eden Gaoshun, Basen ve Jinshi'ye olayın bir kaza değil, planlı bir suikast girişimi olduğunu açıklar.",
+    "Chapter 14: Gaoshun: Jinshi, Suirei'nin ölümü ve Lakan'ın Maomao üzerindeki gizemli etkisi gibi çözülmemiş sorunlarla başa çıkarken, yaralı Maomao'yu geri getiren baş yardımcısı Gaoshun ile görüşür. Gaoshun'un sadakati ve Jinshi'ye olan bağlılığı vurgulanırken, ertesi gün arka sarayda olacakları planlanır."
   ]
 }
