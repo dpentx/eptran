@@ -50,7 +50,7 @@ export default async function handler(req, res) {
         .filter((n) => n.startsWith("book/"))
         .map(async (name) => ({ name, st: await readStatus(name) }))
     );
-    // Groq fazi (çeviri + review) bitti mi?
+    // Groq fazı (çeviri + review) bitti mi?
     const groqDone = (b) => b.st && b.st.status === "completed" && b.st.review_status === "completed";
     const inProgress = bookInfos.find((b) => !groqDone(b)) || null;
     const finishing = bookInfos.filter((b) => groqDone(b) && b.st.convert_status !== "completed");
