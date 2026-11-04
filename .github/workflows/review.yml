@@ -4,10 +4,16 @@ on:
   workflow_dispatch:
     inputs:
       branch:
-        description: "Kitap dalı (örn. book/pg2147)"
+        description: "İşlenecek kitap dalı (örn. book/pg2147)"
         required: true
         type: string
 
+# translate.yml, hangi kitap dalının review'a hazır olduğunu (status.json
+# üzerinden) kendisi tespit edip bu workflow'u dal adıyla tetikliyor —
+# artık kendi cron'u ya da workflow_run zincirlemesi yok (geçmişte bu
+# ikisinin BİRLİKTE var olması, translate henüz bitmeden review'ın
+# gereksiz yere tetiklenmesine yol açmıştı). Merkezi güvenlik ağı
+# translate.yml'de; bu workflow sadece açıkça çağrıldığında çalışır.
 concurrency:
   group: eptran-review-${{ inputs.branch }}
   cancel-in-progress: false
@@ -34,31 +40,49 @@ jobs:
           ref: ${{ inputs.branch }}
           fetch-depth: 0
 
-      - name: Check review needed
-        id: check
-        run: |
-          python3 - <<'EOF'
-          import json, os
-          try:
-              s = json.load(open("status.json"))
-          except Exception:
-              s = {}
-          needed = s.get("status") == "completed" and s.get("review_status") != "completed"
-          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
-              f.write(f"needed={'yes' if needed else 'no'}\n")
-          EOF
-
       # Kod HER ZAMAN main'den gelir; dal sadece veri (status.json, output/ ...)
       # tasir. Aksi halde dal acildigi andaki eski script'lerle calisir, main'e
       # giren duzeltmeler acik kitaplara ulasmaz (ve bir PR'in kendi pr_check.py'sini
       # degistirerek kontrolu zayiflatmasi mumkun olur).
       - name: Use scripts from main
-        if: steps.check.outputs.needed == 'yes'
         run: |
           git fetch origin main
           mkdir -p "$RUNNER_TEMP/main-code"
           git archive FETCH_HEAD scripts requirements.txt | tar -x -C "$RUNNER_TEMP/main-code"
           echo "MAIN_CODE=$RUNNER_TEMP/main-code" >> "$GITHUB_ENV"
+
+      - name: Check if review needed
+        id: check
+        run: |
+          STATUS=$(python3 -c "
+          import json, sys
+          from datetime import datetime, timezone, timedelta
+          try:
+              with open('status.json') as f:
+                  s = json.load(f)
+              if s.get('status') != 'completed':
+                  print('no')
+                  sys.exit()
+              rs = s.get('review_status')
+              if rs == 'completed':
+                  print('no')
+                  sys.exit()
+              if rs == 'running':
+                  updated_at = s.get('updated_at')
+                  if not updated_at:
+                      print('yes')
+                      sys.exit()
+                  ts = datetime.fromisoformat(updated_at)
+                  if ts.tzinfo is None:
+                      ts = ts.replace(tzinfo=timezone.utc)
+                  age = datetime.now(timezone.utc) - ts
+                  print('yes' if age > timedelta(minutes=30) else 'no')
+                  sys.exit()
+              print('yes')
+          except Exception:
+              print('no')
+          ")
+          echo "needed=$STATUS" >> $GITHUB_OUTPUT
 
       - name: Setup Python
         if: steps.check.outputs.needed == 'yes'
@@ -86,7 +110,7 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: python "$MAIN_CODE/scripts/review.py"
 
-      # Review bittiyse (Groq fazi tamam) sıradaki kitabı başlat: kuyruk QA'yı
+      # Review bittiyse (Groq fazı tamam) sıradaki kitabı başlat: kuyruk QA'yı
       # (Gemini kotasına bağlı, saatler/günler sürebilir), ciltlemeyi ve PR
       # merge'ünü BEKLEMEZ. Script idempotent: review henüz bitmediyse ya da
       # başka bir kitap hâlâ çevriliyorsa hiçbir şey yapmaz (bkz.
