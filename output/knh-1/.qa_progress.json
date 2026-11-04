@@ -8,7 +8,26 @@
     "14": [],
     "15": [],
     "16": [],
-    "17": []
+    "17": [],
+    "18": [],
+    "19": [],
+    "20": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "Gaoshun was too perceptive to miss the way she came up short. “Yes? What’s wrong?”\n\n“Nothing.” There was no point clumsily trying to keep secrets from Gaoshun. Even if it would render her little charade of the day before meaningless. Maomao let out a small sigh. “This bowl has been touched by four people in all, I would guess.” She pointed to the differing patterns in the white dust",
+        "translation_quote": "Gaoshun, sözlerinin yarım kaldığını kaçıracak kadar kör değildi. “Evet? Ne oldu?”\n\nGaoshun ona yoğun bir bakış attı. “Yemek tatlayıcısı neden?”\n\n“Sorun değil.”\n\n“Evet. Ama garip bir şekilde, onu kurtardı.”\n\n⭘⬤⭘\n\n“Hiçbir şey.” Gaoshun’dan sırlar saklamaya çalışmanın bir anlamı yoktu; üstelik bu, dün sergilediği o küçük oyunsuzluğu da anlamsız kılacaktı. Maomao küçük bir iç çekiş verdi. “Bu kaseye toplamda dört kişinin dokunduğunu tahmin ediyorum.” Beyaz toz üzerindeki farklı desenlere işaret etti, kendi parmaklarıyla yüzeye dokunmamaya özen göstererek. “Kaseyi parlatırken ona dokunulmaz; dolayısıyla bu izlerin çorba dağıtan kişiye, onu servis edene, Erdemli Konsort’un yemek tatlayıcısına ve kimliği belirsiz bir kişiye ait olduğunu varsayabiliriz.”\n\nMaomao bu olayın sessizce sona ermesini istiyordu, ama her şey bu az konuşan adamın nasıl tepki vereceğine bağlıydı. “Basit aslında. Şüpheliyim, yemek tatlayıcısı kasıtlı olarak ka",
+        "description": "Metnin son kısmına kaynakta bulunmayan yabancı diyaloglar, ayraçlar ve kaynaktan tamamen kopuk ek cümleler girmiş; paragrafın anlamı ve bütünlüğü bozulmuştur."
+      }
+    ],
+    "21": [],
+    "22": [
+      {
+        "type": "ANLAM_KAYMASI",
+        "source_quote": "“Then spend it scaring me up more customers. Not old farts, either. Young bucks like your friend today that we can squeeze something out of.”",
+        "translation_quote": "“O zaman, bana daha fazla müşteri çekmek için harca. Yaşlı palyaçolar değil. Bugünkü arkadaşın gibi, içinden bir şeyler sıyırabileceğimiz genç erkekler.”",
+        "description": "İngilizce 'old farts' (yaşlı moruklar/bunaklar) deyimi hatalı bir şekilde 'yaşlı palyaçolar' olarak çevrilmiştir."
+      }
+    ]
   },
   "failed": [
     2,
