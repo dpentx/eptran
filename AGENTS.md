@@ -40,6 +40,10 @@ yeni bir dersi bulunca buraya ekle.
   (`get_file_contents` dizin listesi `ref` parametresiyle sha verir) ya da public
   repoda `raw.githubusercontent.com/<owner>/<repo>/<COMMIT_SHA>/<path>` ile diff
   al. Dal adıyla raw URL ~5 dk önbellekli, bayat içerik gösterir; commit SHA kullan.
+- Bir dosyayı ASLA hafızadan/önceki çıktıdan yeniden yazma: önce sandbox'ta `cat` ile
+  GERÇEĞİNİ oku, sadece istediğin satırları değiştir. (Bir workflow'u hafızadan
+  yazarken gerçek "review gerekli mi" mantığını bozmuştum; sha karşılaştırması yakaladı.)
+  Push'tan sonra main'e göre `diff | grep '^<'` ile yalnızca EKLEME olduğunu doğrula.
 - MCP araçları `tool_search` ile yüklenir; çoğunda `owner`/`repo` parametresi var
   (varsayılan `dpentx/eptran`). PR kapatma aracı yok: dalı silmek PR'ı kapatır.
 - Test et ve PR'a yaz neyi test ettiğini: `py_compile`, YAML yükleme, JS için jsdom,
@@ -54,12 +58,13 @@ yeni bir dersi bulunca buraya ekle.
   `queue/<slug>` → `translate.py` kitabı `book/<slug>` dalına taşır → çeviri,
   review, QA, ciltleme hepsi o dalda → `convert.py` tek bir PR açar.
 - Kuyruk: sistem doluyken yüklenen kitaplar `queue/<slug>` dalında bekler;
-  `scripts/start_next_queue.py` HÂLÂ İŞLENEN kitap yoksa en eskisini başlatır.
-  "İşleniyor" = `status.json`'da `convert_status != "completed"` olan `book/*` dalı.
-  Çevirisi bitip PR'ı açılmış kitap meşgul SAYILMAZ: kuyruk, PR'ın merge edilmesini
-  beklemez (repo sahibi incelemeyi sonra yapar). Tetikleyiciler: PR açılınca
+  `scripts/start_next_queue.py` HÂLÂ ÇEVRİLEN kitap yoksa en eskisini başlatır.
+  "Çevriliyor" = `status.json`'da `status` veya `review_status` "completed" olmayan
+  `book/*` dalı (yani Groq fazı). QA (Gemini kotasına bağlı, saatler/günler sürebilir),
+  düzeltme, ciltleme ve PR merge'ü sırayı TUTMAZ; repo sahibi incelemeyi sonra yapar.
+  Tetikleyiciler: review bitince (`review.yml` son adımı), PR açılınca
   (`start-next-on-pr-open.yml`), PR kapanınca (`delete-merged-book-branch.yml`),
-  6 saatlik cron (`translate.yml`).
+  6 saatlik cron (`translate.yml`; GitHub cron'u düzensizdir, saatlerce gecikebilir).
 - `book/*` PR'ı kapanınca (merge edilsin ya da edilmesin) dal otomatik silinir.
   Merge'siz kapatılan kitabın dosyaları dalla birlikte gider.
 - Okuyucu sitesine (eptran-web) gönderim PR MERGE EDİLİNCE yapılır
