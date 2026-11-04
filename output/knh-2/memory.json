@@ -50,14 +50,16 @@
     "Verdigris House": "Verdigris Evi",
     "Pairin": "Pairin",
     "Pure Consort": "Saflık Konsortu",
-    "food taster": "yemek denetçisi"
+    "food taster": "yemek denetçisi",
+    "calculus bovis": "öküz taşı",
+    "ox bezoar": "öküz taşı"
   },
   "style_notes": "Anlatım, Jinshi'nin dışarıdan zarif ama içteninde acı çeken kurnazlığı ile Maomao'nun pratik, biraz isyankâr ama ailesine bağlı tavrı arasında dengelenmelidir; diyaloglar doğal ve karakterlerin sosyal statülerine uygun bir dille aktarılmalıdır.",
   "summaries": [
-    "Chapter 6: Makeup: Maomao, Jinshi'nin kendisi için makyaj malzemesi hazırlamasını istemesi üzerine şaşkınlıkla tepki verir ve bu durumun ülkeyi tehlikeye atabileceğini ima eder. Jinshi, Maomao'dan burnundaki benekleri gizlemek için kullandığı kil karışımının yapımını öğrenir ve bu karışımı kendi yüzünde denemeye başlar.",
     "Chapter 7: A Jaunt Around Town: Maomao, Dış Mahkeme'ye giderken Jinshi'nin sarayda şüphe çekmemesi için duruşunu ve hitap şeklini düzeltmeye çalışır. Bu süreçte Jinshi, kendisine \"Jinka\" denilmesini ister ve Maomao'nun kılık değiştirme çabalarına alaycı bir şekilde karşılık verir.",
     "Chapter 8: The Plum Poison: Maomao, Dış Mahkeme'deki yoğun çalışmasının ardından babasının eczanesi Verdigris Evi'ne döner ve babasından gelen istek üzerine yan binadaki ağır hasta bir kadına ilaç götürür. Bu sahnede, Maomao'nun hem zorlu çalışma koşullarına hem de babasının tıbbi uygulamalarına tanıklık ettiği anlar aktarılır.",
     "Chapter 9: Lakan: Maomao, bir kadının onu bıçakla tehdit ettiği rahatsız edici bir rüya görür ve uyanınca günlük işlerine odaklanarak bu anıyı bastırmaya çalışır. Ardından Jinshi, \"garip bir memurdan\" gelen bir hediye şişesini bırakır ve Maomao'dan Verdirgis Evi'nin düzenli müşterileri hakkında bilgi ister.",
-    "Chapter 10: Suirei: Maomao, Suiren'in Jinshi'nin gizli görevleri ve askeri kamplarla bağlantılı tehlikeli geçmişine dair farkındalığını sezerken, ikili çay molasında günlük rutinleri ve akşamki vejetaryen öğün hazırlığı üzerine sohbet eder."
+    "Chapter 10: Suirei: Maomao, Suiren'in Jinshi'nin gizli görevleri ve askeri kamplarla bağlantılı tehlikeli geçmişine dair farkındalığını sezerken, ikili çay molasında günlük rutinleri ve akşamki vejetaryen öğün hazırlığı üzerine sohbet eder.",
+    "Chapter 11: Chance or Something More: Maomao, Lihaku'dan ambar yangınının bir dikkati çekme taktiği olduğunu ve ayin gereçlerinin çalındığını öğrenir. Yangın, hırsızlık ve gıda zehirlenmesi vakalarının bağlantılı olabileceğini düşünen Maomao, olayların arkasındaki asıl failin Kounen Efendi olduğunu tahmin eder."
   ]
 }
