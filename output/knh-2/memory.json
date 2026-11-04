@@ -37,10 +37,14 @@
     "quack doctor": "şarlatan doktor",
     "The Quack Doctor": "şartlatan doktor",
     "Master Gyokuen": "Gyokuen Efendi",
-    "Master Gyoku-ou": "Gyoku-ou Efendi"
+    "Master Gyoku-ou": "Gyoku-ou Efendi",
+    "outer court": "Dış Mahkeme",
+    "inner court": "İç Mahkeme",
+    "Jade Pavilion": "Yeşim Köşkü"
   },
   "style_notes": "Anlatım, Jinshi'nin dışarıdan zarif ama içteninde acı çeken kurnazlığı ile Maomao'nun pratik, biraz isyankâr ama ailesine bağlı tavrı arasında dengelenmelidir; diyaloglar doğal ve karakterlerin sosyal statülerine uygun bir dille aktarılmalıdır.",
   "summaries": [
-    "Prologue: Jinshi, İmparator ile yaptığı ve özgürlüğüne kavuşmak için kazanması gereken bahsi sürdürmek amacıyla güzellik ve zekâsını kullanarak saraydaki konumunu sağlamlaştırmaya çalışırken, Maomao ise Meimei tarafından kendisine dayatılan kozmetik ve kıyafetlere karşı direnç göstermektedir."
+    "Prologue: Jinshi, İmparator ile yaptığı ve özgürlüğüne kavuşmak için kazanması gereken bahsi sürdürmek amacıyla güzellik ve zekâsını kullanarak saraydaki konumunu sağlamlaştırmaya çalışırken, Maomao ise Meimei tarafından kendisine dayatılan kozmetik ve kıyafetlere karşı direnç göstermektedir.",
+    "Chapter 1: Serving in the Outer Court: Maomao, Arka Saray'dan Dış Mahkeme'ye transfer edilerek Jinshi'nin baş yardımcısı Gaoshun tarafından sarayın bölümleri hakkında bilgilendirilir. Sınavı geçemediği için memurluk yerine temizlik görevlisi olarak çalışmaya başlayan Maomao, yeni çalışma ortamında diğer kadınların düşmanca bakışlarına maruz kalır."
   ]
 }
