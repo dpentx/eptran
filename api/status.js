@@ -1,14 +1,15 @@
 export const config = { maxDuration: 10 };
 
 // Site durumu:
-//  - Aktif kitap: HÂLÂ İŞLENEN book/<slug> dalındaki status.json
-//    (convert_status "completed" değil). Ara ilerleme main'e hiç yazılmıyor,
-//    main'deki status.json sadece EN SON MERGE EDİLEN kitabın durumu — eskiden
-//    burada yalnızca o okunduğu için site çeviri sırasında hep eski kitabı
+//  - Aktif kitap: HÂLÂ ÇEVRİLEN book/<slug> dalındaki status.json (çeviri
+//    veya review bitmemiş). Ara ilerleme main'e hiç yazılmıyor, main'deki
+//    status.json sadece EN SON MERGE EDİLEN kitabın durumu — eskiden burada
+//    yalnızca o okunduğu için site çeviri sırasında hep eski kitabı
 //    gösteriyordu.
-//  - Bitmiş ama merge bekleyen kitaplar (PR açık) "aktif" SAYILMAZ; kuyruk
-//    onları beklemez. Hiç işlenen kitap ve sıra yoksa bunlardan biri
-//    (indirme bağlantılarıyla) gösterilir; adları `awaiting_merge` alanında.
+//  - Çevirisi+review'u bitmiş kitaplar "aktif" SAYILMAZ; kuyruk onları
+//    beklemez. İki aşama: `finishing` (QA/düzeltme/ciltleme sürüyor) ve
+//    `awaiting_merge` (PR açık, inceleme bekliyor). Çevrilen kitap ve sıra
+//    yoksa bunlardan biri (indirme bağlantılarıyla) gösterilir.
 //  - Hiçbiri yoksa: main'deki status.json (son merge edilen kitap).
 //  - Sıra: yükleme sırasına göre bekleyen queue/<slug> dalları (dosyası
 //    gerçekten yüklenmiş olanlar — yarım kalmış yüklemelerin yetim dalları
@@ -49,9 +50,11 @@ export default async function handler(req, res) {
         .filter((n) => n.startsWith("book/"))
         .map(async (name) => ({ name, st: await readStatus(name) }))
     );
-    const isDone = (b) => b.st && b.st.convert_status === "completed";
-    const inProgress = bookInfos.find((b) => !isDone(b)) || null;
-    const awaiting = bookInfos.filter(isDone);
+    // Groq fazı (çeviri + review) bitti mi?
+    const groqDone = (b) => b.st && b.st.status === "completed" && b.st.review_status === "completed";
+    const inProgress = bookInfos.find((b) => !groqDone(b)) || null;
+    const finishing = bookInfos.filter((b) => groqDone(b) && b.st.convert_status !== "completed");
+    const awaiting = bookInfos.filter((b) => groqDone(b) && b.st.convert_status === "completed");
     const activeBranch = inProgress ? inProgress.name : null;
 
     const queueInfos = await Promise.all(
@@ -92,6 +95,9 @@ export default async function handler(req, res) {
       // Aktif kitap yok ama sırada bekleyen var: biri anında başlayacak,
       // main'deki eski (tamamlanmış) kitabı göstermek karışıklık yaratır.
       status = { status: "idle" };
+    } else if (finishing.length > 0) {
+      status = finishing[0].st;
+      displayBranch = finishing[0].name;
     } else if (awaiting.length > 0) {
       status = awaiting[0].st;
       displayBranch = awaiting[0].name;
@@ -129,6 +135,7 @@ export default async function handler(req, res) {
       epubFile,
       queue,
       active_branch: activeBranch,
+      finishing: finishing.map((b) => b.name.slice("book/".length)),
       awaiting_merge: awaiting.map((b) => b.name.slice("book/".length)),
     });
   } catch (err) {

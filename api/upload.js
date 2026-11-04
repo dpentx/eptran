@@ -90,10 +90,10 @@ async function listBranchNames(gh) {
   return (await res.json()).map((b) => b.name);
 }
 
-// Hâlâ İŞLENEN bir kitap var mı? Çevirisi/ciltlemesi bitip PR'ı açılmış
-// (convert_status === "completed") ama henüz merge edilmemiş kitap meşgul
-// SAYILMAZ: kuyruk repo sahibinin incelemesini beklemez. status.json okunamazsa
-// (dal yeni açıldı) temkinli davranıp işleniyor sayarız.
+// Hâlâ ÇEVRİLEN bir kitap var mı? Sıra yalnızca Groq fazını (çeviri + review)
+// bekler; QA (Gemini kotasına bağlı, saatler/günler sürebilir), ciltleme ve
+// PR merge'ü sırayı TUTMAZ. status.json okunamazsa (dal yeni açıldı)
+// temkinli davranıp çevriliyor sayarız.
 async function hasBookInProgress(gh, names) {
   const books = names.filter((n) => n.startsWith("book/"));
   const flags = await Promise.all(
@@ -103,7 +103,7 @@ async function hasBookInProgress(gh, names) {
         if (!r.ok) return true;
         const data = await r.json();
         const status = JSON.parse(Buffer.from(data.content, "base64").toString());
-        return status.convert_status !== "completed";
+        return !(status.status === "completed" && status.review_status === "completed");
       } catch {
         return true;
       }
@@ -159,13 +159,13 @@ export default async function handler(req, res) {
     // SONRA çağrılır — bu istek küçük (sadece dal adı), Vercel'in
     // boyut sınırına takılmaz.
     //
-    // Sıraya ekleme: HÂLÂ İŞLENEN bir kitap (book/*, convert_status
-    // tamamlanmamış) ya da aynı anda daha önce yüklenmiş başka bir bekleyen
-    // kitap varsa workflow BURADA tetiklenmez; kitap queue/<slug> dalında
-    // bekler ve öndeki kitabın PR'ı AÇILINCA (merge'ü beklemeden)
-    // kendiliğinden başlatılır (bkz. scripts/start_next_queue.py,
-    // start-next-on-pr-open.yml). Sadece sistem boşsa workflow'u burada,
-    // uzun ömürlü sunucu token'ıyla (GH_PAT) tetikliyoruz.
+    // Sıraya ekleme: HÂLÂ ÇEVRİLEN bir kitap (book/*, çeviri veya review
+    // bitmemiş) ya da aynı anda daha önce yüklenmiş başka bir bekleyen kitap
+    // varsa workflow BURADA tetiklenmez; kitap queue/<slug> dalında bekler ve
+    // öndeki kitabın review'u bitince (QA/ciltleme/merge'ü beklemeden)
+    // kendiliğinden başlatılır (bkz. scripts/start_next_queue.py). Sadece
+    // sistem boşsa workflow'u burada, uzun ömürlü sunucu token'ıyla
+    // (GH_PAT) tetikliyoruz.
     if (body.action === "finalize") {
       const { branch } = body;
       if (!branch || !branch.startsWith("queue/"))
