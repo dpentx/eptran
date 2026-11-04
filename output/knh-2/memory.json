@@ -40,7 +40,12 @@
     "Shishou": "Shishou",
     "Fengxian": "Fengxian",
     "Master Jinshi": "Usta Jinshi",
-    "Princess Fuyou": "Prenses Fuyou"
+    "Princess Fuyou": "Prenses Fuyou",
+    "Lu Shang": "Lu Shang",
+    "Jiang Ziya": "Jiang Ziya",
+    "King Wen of Zhou": "Zhou Hanedanı Kralı Wen",
+    "Liu Bei": "Liu Bei",
+    "Kongming": "Kongming"
   },
   "terms": {
     "rear palace": "arka saray",
@@ -74,14 +79,16 @@
     "caterpillar fungus": "Kurtçuk Mantarı",
     "Board of Justice": "Adalet Dairesi",
     "Three Princesses": "Üç Prenses",
-    "congee": "Çorba (Congee)"
+    "congee": "Çorba (Congee)",
+    "Romance of the Three Kingdoms": "Üç Krallık Romanı",
+    "sleeping dragon": "uyuyan ejderha"
   },
   "style_notes": "Anlatım, Jinshi'nin dışarıdan zarif ama içteninde acı çeken kurnazlığı ile Maomao'nun pratik, biraz isyankâr ama ailesine bağlı tavrı arasında dengelenmelidir; diyaloglar doğal ve karakterlerin sosyal statülerine uygun bir dille aktarılmalıdır.",
   "summaries": [
-    "Chapter 16: Paper: Maomao, arka sarayın sağlık dairesine gelerek şarlatan doktorla birlikte ilaçların bozulmasını önlemek için temizlik yapmaya başlar. Bu süreçte, Suiren'in disiplininin etkisiyle artan sorumluluk duygusu ve doktorun tembel tavrı arasındaki dinamik öne çıkar.",
     "Chapter 17: How to Buy Out a Contract: Lihaku, Verdigris Evi'ndeki gösterici Pairin'in sözleşmesini kapatmanın maliyetini öğrenmek için Maomao'yu çağırır. Maomao, piyasa fiyatının yaklaşık 200 gümüş olduğunu belirtirken, Pairin'in borçlarının neredeyse sıfır olması nedeniyle gerçek maliyetin büyük ölçüde geleneksel kutlama harcamalarına bağlı olduğunu açıklar.",
     "Chapter 18: Blue Roses: Maomao, İmparatoriçe Gyokuyou’nun hamileliğinin ilerlediği ve Prenses Lingli’nin büyüdüğü Yeşim Köşkü’nde, hem sağlık hizmetlerini düzenlemeye çalışmakta hem de küçük Prensesi oyalamakla meşguldür. Bu süreçte, baş nedime Hongniang’ın kendi çocuğu olma hayalleri ve Maomao’nun görevdeki zorlukları öne çıkan temalar arasında yer alır.",
     "Chapter 19: Red Nails: Lakan, bahçe ziyafetinde duyarsızlığını korurken insanları Go taşları gibi algılayarak stratejik bir bakış açısı sergiler. Kırmızı gözlerindeki acı ve beklediği kişinin gelmemesiyle birlikte, etrafındaki kalabalıkta kışkırtıcı bir figür aramaya başlar.",
-    "Epilogue: Maomao, Meimei'den gelen mektupla sözleşmesinin sona erdiğini öğrenir ve bu özgürlüğü kutlamak için arka sarayın duvarlarında geleneksel bir atkı dansı yapmaya başlar. Dans sırasında tökezleyip düşmek üzereyken, kendisini kurtaran beklenmedik ziyaretçinin Usta Jinshi olduğu ortaya çıkar."
+    "Epilogue: Maomao, Meimei'den gelen mektupla sözleşmesinin sona erdiğini öğrenir ve bu özgürlüğü kutlamak için arka sarayın duvarlarında geleneksel bir atkı dansı yapmaya başlar. Dans sırasında tökezleyip düşmek üzereyken, kendisini kurtaran beklenmedik ziyaretçinin Usta Jinshi olduğu ortaya çıkar.",
+    "Bonus Translator’s Notes: Çevirmen, *The Apothecary Diaries* 2. cildindeki Çin tarihi temalı jargonu doğru aktarmak için \"arka saray\" ve \"妃\" (consort) terimlerinin İngilizce karşılıklarını akademik kaynaklar ve Wikipedia üzerinden araştırır. Bu süreç, çeviri ekibinin döneme özgü rütbe sistemlerini ve dilbilgisi inceliklerini nasıl ele aldığını gösterir."
   ]
 }
