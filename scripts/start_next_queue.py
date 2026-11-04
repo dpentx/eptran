@@ -3,14 +3,15 @@ eptran — start_next_queue.py
 
 Kuyruktaki (queue/*) bir SONRAKİ kitabı başlatır.
 
-Hâlâ İŞLENEN bir kitap (convert_status != "completed" olan book/*) YOKSA,
+Hâlâ ÇEVRİLEN bir kitap (çeviri VEYA review'u bitmemiş book/*) YOKSA,
 yükleme tamamlanmış bekleyen queue/* dalları arasından en eskisini (yükleme
 sırasına göre) seçip translate.yml'i o dal ref'iyle tetikler — api/upload.js'in
 sistem boşta iken yaptığıyla aynı şey.
 
-ÖNEMLİ (Kasım 2026): Çevirisi/ciltlemesi bitip PR'ı açılmış ama henüz merge
-edilmemiş bir kitap "işleniyor" SAYILMAZ. Kuyruk, İbo'nun PR'ı incelemesini
-beklemez; inceleme sonra, vakti gelince yapılır.
+ÖNEMLİ (Kasım 2026): Sıra yalnızca Groq fazını (çeviri + review) bekler. QA
+denetimi (Gemini'nin günlük kotasına bağlı, saatler/günler sürebilir), düzeltme
+ve ciltleme bitmeden de — ve PR merge edilmeden de — sıradaki kitap başlar.
+Bu "kuyruk" meşgul sayılmaz; kota yüzünden yarım kalan bir QA sırayı tıkamasın.
 
 Çağıranlar:
   - start-next-on-pr-open.yml: bir book/* PR'ı açılınca (kitap bitti).
@@ -50,8 +51,9 @@ def _branch_names() -> list:
 
 def _in_progress(branch: str) -> bool:
     """
-    book/<slug> dalındaki kitap hâlâ işleniyor mu? status.json'daki
-    convert_status "completed" ise bitmiştir (PR açıldı, inceleme bekliyor).
+    book/<slug> dalındaki kitap hâlâ ÇEVRİLİYOR mu? status.json'da çeviri
+    (status) ve review (review_status) "completed" ise Groq fazı bitmiştir;
+    QA/ciltleme/PR sonrası adımlar sırayı tutmaz.
     status.json okunamıyorsa (dal yeni açıldı) temkinli davranıp işleniyor sayarız.
     """
     try:
@@ -59,7 +61,9 @@ def _in_progress(branch: str) -> bool:
             "api", "-H", "Accept: application/vnd.github.raw+json",
             f"repos/{REPO}/contents/status.json?ref={branch}",
         )
-        return json.loads(raw).get("convert_status") != "completed"
+        status = json.loads(raw)
+        done = status.get("status") == "completed" and status.get("review_status") == "completed"
+        return not done
     except Exception:
         return True
 
@@ -98,7 +102,7 @@ def main() -> None:
     names = _branch_names()
     busy = [n for n in names if n.startswith("book/") and _in_progress(n)]
     if busy:
-        print(f"Hâlâ işlenen kitap var ({', '.join(busy)}) — sıradaki başlatılmayacak.")
+        print(f"Hâlâ çevrilen kitap var ({', '.join(busy)}) — sıradaki başlatılmayacak.")
         return
 
     ready = []

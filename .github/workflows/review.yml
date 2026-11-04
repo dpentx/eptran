@@ -109,3 +109,14 @@ jobs:
           GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: python "$MAIN_CODE/scripts/review.py"
+
+      # Review bittiyse (Groq fazı tamam) sıradaki kitabı başlat: kuyruk QA'yı
+      # (Gemini kotasına bağlı, saatler/günler sürebilir), ciltlemeyi ve PR
+      # merge'ünü BEKLEMEZ. Script idempotent: review henüz bitmediyse ya da
+      # başka bir kitap hâlâ çevriliyorsa hiçbir şey yapmaz (bkz.
+      # scripts/start_next_queue.py).
+      - name: Start next queued book
+        if: always() && steps.check.outputs.needed == 'yes'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: python3 "$MAIN_CODE/scripts/start_next_queue.py"
