@@ -160,7 +160,7 @@ jobs:
           # varsayılan olarak buffer'lanıyor — print() çağrıları anında değil,
           # buffer dolunca ya da script bitince log'a düşüyor. Gemini'nin
           # ücretsiz katmanı yavaş/rate-limit'li olduğu için her bölüm
-          # arasında uzun sessizlikler oluşuyor ve bu "job takılmış göbi"
+          # arasında uzun sessizlikler oluyor ve bu "job takılmış gibi"
           # görünmesine yol açıyordu — script aslında çalışıyordu, sadece
           # log gecikmeliydi.
           PYTHONUNBUFFERED: "1"
