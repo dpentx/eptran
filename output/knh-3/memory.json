@@ -23,7 +23,12 @@
     "Tianyu": "Tianyu",
     "Dr. You": "Dr. You",
     "Vice Minister Lu": "Bakan Yardımcısı Lu",
-    "Xiaolan": "Xiaolan"
+    "Xiaolan": "Xiaolan",
+    "Hongniang": "Hongniang",
+    "Yinghua": "Yinghua",
+    "Ailan": "Ailan",
+    "Guiyuan": "Guiyuan",
+    "Shisui": "Shisui"
   },
   "terms": {
     "eunuch": "hadım",
@@ -40,11 +45,15 @@
     "Master Gyoku-ou": "Gyoku-ou Efendi",
     "Caterpillar fungus": "Kurtçuk mantarı",
     "Thornapple": "Dikenli elma",
-    "Kudzu root": "Kudzu kökü"
+    "Kudzu root": "Kudzu kökü",
+    "Jade Pavilion": "Yeşil Taht Köşkü",
+    "Praying mantis oothecae": "Kasatka yumurta kesesi",
+    "spider's silk": "Örümcek ipeği"
   },
   "style_notes": "Anlatım, küçük bir çocuğun sınırlı algı dünyasından ve ardından büyüyen karakterin iç monologundan oluşan, gizemli ve gergin bir tona sahiptir; cümleler kısa, gözlemci ve atmosferik detaylara odaklanmalıdır.",
   "summaries": [
     "Prologue: Çocuk, konağında yaşlı bir adamın kendisine yaklaşmasıyla annesi ve hadımların müdahalesine tanık olur. Olay sırasında düşen renkli taşın etkisiyle çocuk, konağın en güçlü figürü olan yaşlı kadının varlığıyla derin bir ürperti hisseder.",
-    "Chapter 1: Books: Maomao, tıbbi ofiste keşfettikleri damıtma cihazıyla gül yapraklarından parfüm üretirken, hadım Jinshi ve yardımcısı Gaoshun'un beklenmedik ziyaretiyle karşılaşır. Maomao, konuklarına çay atıştırmalıkları ikram ederken, parfümün Yeşim Köşkü'nde değil de burada hazırlanmasının nedenini açıklar."
+    "Chapter 1: Books: Maomao, tıbbi ofiste keşfettikleri damıtma cihazıyla gül yapraklarından parfüm üretirken, hadım Jinshi ve yardımcısı Gaoshun'un beklenmedik ziyaretiyle karşılaşır. Maomao, konuklarına çay atıştırmalıkları ikram ederken, parfümün Yeşim Köşkü'nde değil de burada hazırlanmasının nedenini açıklar.",
+    "Chapter 3: The Caravan: Maomao, Hongniang ve diğer harem kadınları mevsim değişikliği nedeniyle kıyafetlerini düzenlerken, Ailan İmparatoriçe Gyokuyou’nun hamileliği bahanesiyle tüm eşlerin harem kadını sayısını artıracağı bilgisini paylaşır. Bu durum, özellikle İmparator’un favori eşi Loulan Hanım’ın büyük bir törenle saraya girişinin diğer kadınlar arasında kıskançlık ve endişe yaratacağına işaret eder."
   ]
 }
