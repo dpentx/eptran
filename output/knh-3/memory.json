@@ -22,7 +22,8 @@
     "Taomei": "Taomei",
     "Tianyu": "Tianyu",
     "Dr. You": "Dr. You",
-    "Vice Minister Lu": "Bakan Yardımcısı Lu"
+    "Vice Minister Lu": "Bakan Yardımcısı Lu",
+    "Xiaolan": "Xiaolan"
   },
   "terms": {
     "eunuch": "hadım",
@@ -36,10 +37,14 @@
     "quack doctor": "şarlatan doktor",
     "The Quack Doctor": "şartlatan doktor",
     "Master Gyokuen": "Gyokuen Efendi",
-    "Master Gyoku-ou": "Gyoku-ou Efendi"
+    "Master Gyoku-ou": "Gyoku-ou Efendi",
+    "Caterpillar fungus": "Kurtçuk mantarı",
+    "Thornapple": "Dikenli elma",
+    "Kudzu root": "Kudzu kökü"
   },
   "style_notes": "Anlatım, küçük bir çocuğun sınırlı algı dünyasından ve ardından büyüyen karakterin iç monologundan oluşan, gizemli ve gergin bir tona sahiptir; cümleler kısa, gözlemci ve atmosferik detaylara odaklanmalıdır.",
   "summaries": [
-    "Prologue: Çocuk, konağında yaşlı bir adamın kendisine yaklaşmasıyla annesi ve hadımların müdahalesine tanık olur. Olay sırasında düşen renkli taşın etkisiyle çocuk, konağın en güçlü figürü olan yaşlı kadının varlığıyla derin bir ürperti hisseder."
+    "Prologue: Çocuk, konağında yaşlı bir adamın kendisine yaklaşmasıyla annesi ve hadımların müdahalesine tanık olur. Olay sırasında düşen renkli taşın etkisiyle çocuk, konağın en güçlü figürü olan yaşlı kadının varlığıyla derin bir ürperti hisseder.",
+    "Chapter 1: Books: Maomao, tıbbi ofiste keşfettikleri damıtma cihazıyla gül yapraklarından parfüm üretirken, hadım Jinshi ve yardımcısı Gaoshun'un beklenmedik ziyaretiyle karşılaşır. Maomao, konuklarına çay atıştırmalıkları ikram ederken, parfümün Yeşim Köşkü'nde değil de burada hazırlanmasının nedenini açıklar."
   ]
 }
