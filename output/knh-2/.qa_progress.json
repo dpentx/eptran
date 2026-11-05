@@ -1,28 +1,8 @@
 {
   "completed": {
     "1": [],
-    "2": [
-      {
-        "type": "ANLAM_KAYMASI",
-        "source_quote": "but why would anyone bother to learn history? What good would it do them?",
-        "translation_quote": "İlaçlar, otlar ve şifalı bitkiler bir şeydi, ama kimin tarihi öğrenmeye zahmet edeceğini anlıyordu? Ona ne faydası olurdu?",
-        "description": "Kaynakta 'insan neden tarih öğrenmeye zahmet etsin ki?' şeklinde bir sorgulama yapılırken, çeviri 'kimin tarihi öğrenmeye zahmet edeceğini anlıyordu' diyerek yanlış bir anlam vermiştir."
-      },
-      {
-        "type": "ANLAM_KAYMASI",
-        "source_quote": "“Are you listening to me?” the woman demanded",
-        "translation_quote": "\"Bana mı bakıyorsun?\" diye sordu kadın, Maomao bu biraz uygunsuz düşüncelere dalmışken.",
-        "description": "'Are you listening to me?' ifadesi 'Beni dinliyor musun?' anlamına gelmektedir; çeviride 'Bana mı bakıyorsun?' denilerek yanlış aktarılmıştır."
-      }
-    ],
-    "4": [
-      {
-        "type": "ANLAM_KAYMASI",
-        "source_quote": "“Who’s joking?” Jinshi showed her the scroll he was holding. Maomao’s expression darkened as she read it, for what was written there was most inconvenient. Indeed, she would have liked to pretend the scroll didn’t exist.",
-        "translation_quote": "“Kim şaka yapıyor?” Jinshi elindeki makroyu ona gösterdi. Maomao okudukça ifadesi karardı, çünkü orada yazılanlar son derece uygunsuzdu. Aslında, makroyu var olmadığını varsaymayı tercih ederdi.",
-        "description": "\"scroll\" (yazılı tomar/parşömen) sözcüğü yanlış bir şekilde \"makro\" olarak çevrilmiştir."
-      }
-    ],
+    "2": [],
+    "4": [],
     "5": [],
     "6": [
       {
@@ -37,14 +17,7 @@
     "10": [],
     "11": [],
     "12": [],
-    "13": [
-      {
-        "type": "ANLAM_KAYMASI",
-        "source_quote": "“Why, there’s an observance today.”",
-        "translation_quote": "\"Neden mi, bugün bir ibadet var.\"",
-        "description": "Buradaki 'Why' bir soru kelimesi değil, konuşma dilinde şaşırma veya fark etme belirten bir nidadır ('Aaa', 'Bak sen', 'Ha' vb.). 'Neden mi' olarak çevrilmesi anlam kaymasına yol açmıştır."
-      }
-    ],
+    "13": [],
     "15": [
       {
         "type": "ŞAHIS_UYUŞMAZLIĞI",
@@ -53,48 +26,11 @@
         "description": "Kaynakta Gaoshun en küçük oğlunun Jinshi ile aynı yaşta (3. şahıs) olduğunu belirtirken, çeviride 2. şahıs eki (\"yaştasınız\") kullanılarak şahıs karmaşası yaratılmıştır."
       }
     ],
-    "16": [
-      {
-        "type": "ANLAM_KAYMASI",
-        "source_quote": "For snacks they had the castoffs from the latest tea party—today it was longxutang , dragon’s beard candy, a treat made of delicate fibers that melted in the mouth.",
-        "translation_quote": "Atıştırmalık olarak son çay partisinin artıkları vardı—bugün longxutang (ejder sakızı), ağızda eriyen ince liflerden yapılmış bir lezzet.",
-        "description": "'Dragon's beard candy' (ejderha sakalı tatlısı) ifadesindeki 'beard' (sakal) kelimesi yanlış çevrilerek 'ejder sakızı' denmiştir."
-      }
-    ],
-    "17": [
-      {
-        "type": "ANLAM_KAYMASI",
-        "source_quote": "He was lucky he still had a job.",
-        "translation_quote": "Hâlâ bir işinin olması ona çok iyi geliyordu.",
-        "description": "Kaynakta doktorun hâlâ bir işinin bulunmasının kendisi için bir şans olduğu ifade edilirken, çeviride işinin olmasının ona iyi geldiği söylenerek anlam kaydırılmıştır."
-      },
-      {
-        "type": "ANLAM_KAYMASI",
-        "source_quote": "The doctor who had been close with Suirei had indeed, they’d heard, been punished for the missing thornapple.",
-        "translation_quote": "Suiren’e yakın olan doktorun, gerçekten de, kaybolan diken elması yüzünden cezalandırıldığını duymuşlardı.",
-        "description": "Kaynakta 'Suirei' adlı karakterden bahsedilmektedir; ancak çeviride yanlışlıkla farklı bir karakter olan 'Suiren' ismi kullanılmıştır."
-      },
-      {
-        "type": "ANLAM_KAYMASI",
-        "source_quote": "Old guy has rich tastes!",
-        "translation_quote": "Eski adamın zengin zevkleri var!",
-        "description": "'Old guy' (yaşlı adam/ihtiyar) kelimesi kelime kelime çevrilerek hatalı bir şekilde 'Eski adam' olarak aktarılmıştır."
-      },
-      {
-        "type": "İNGİLİZCE_KALINTI",
-        "source_quote": "“My family produces this. We even supply it here to the court. Impressive, no?”",
-        "translation_quote": "“Ailem bunu üretiyor. Hatta saraya bile tedarik ediyoruz. İmpresif, değil mi?”",
-        "description": "İngilizce 'impressive' kelimesi çevrilmeden 'İmpresif' biçiminde Türkçe metinde bırakılmıştır."
-      }
-    ],
-    "19": [
-      {
-        "type": "ANLAM_KAYMASI",
-        "source_quote": "She knew the petals yielded an oil that served as a skin beautifier—the courtesans had used it periodically.",
-        "translation_quote": "Taç yapraklarından, cilt güzelleştirici olarak kullanılan bir yağ elde edildiğini biliyordu —göstericiler bunu periyodik olarak kullanırdı.",
-        "description": "\"courtesans\" (kurtizanlar / zevk kadınları) kelimesi hatalı bir şekilde \"göstericiler\" olarak çevrilmiştir."
-      }
-    ]
+    "16": [],
+    "17": [],
+    "19": [],
+    "20": [],
+    "21": []
   },
   "failed": [
     3,
