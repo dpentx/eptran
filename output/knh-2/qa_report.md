@@ -1,6 +1,6 @@
 # QA Raporu — knh-2
 
-**Günlük Gemini kotası tükendiği için durduruldu — 18/24 bölüm tarandı. Script'i tekrar çalıştırınca kaldığı yerden devam edecek (baştan başlamayacak).**
+**Toplam 3 şüpheli nokta bulundu (20/24 bölüm başarıyla tarandı, 4 bölüm denetlenemedi).**
 
 *Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru kabul etmeyin — her maddeyi kaynakla birlikte kendiniz kontrol edin. Bazı işaretlemeler yanlış pozitif olabilir (bkz. script docstring'i).*
 
@@ -25,3 +25,11 @@ milord
 .”"*
   - Çeviri: *""Evet. Sizinle aynı yaştasınız, efendim.""*
 
+## Bölüm 18: Chapter 17: How to Buy Out a Contract
+*(Denetlenemedi.)*
+
+## Bölüm 23: Bonus Translator’s Notes — 1 sorun
+- **ATLANMIŞ**: Metnin ana başlığı olan 'The Apothecary Diaries Diaries' Türkçe çeviride atlanmıştır.
+  - Kaynak: *"The 
+Apothecary Diaries
+ Diaries"*
