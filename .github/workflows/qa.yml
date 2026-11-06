@@ -46,6 +46,16 @@ on:
 # tekrar tetiklemeye gerek kalmaz. Gemini kotası ENDİŞESİ hâlâ geçerli
 # ama artık checkpoint'li devam ettiği için tekrar denemeler ucuz (zaten
 # denetlenmiş bölümleri yeniden taramıyor).
+# Aynı kitap için iki QA çalışması AYNI ANDA yürümesin: periyodik tarama
+# (translate.yml her çalışmasında, queue/* dallarındakiler dahil) ile elle ya da
+# başka bir tetikleme aynı anda "QA bekliyor" görüp ikisini birden başlatabiliyordu
+# — Gemini kotasını boşa harcar, aynı dala çakışan push'lar yapar.
+# cancel-in-progress: false → ikinci çalışma birincinin bitmesini bekler;
+# qa_audit.py checkpoint'li olduğu için gereksizse hemen biter.
+concurrency:
+  group: eptran-qa-${{ inputs.branch }}
+  cancel-in-progress: false
+
 jobs:
   qa-audit:
     runs-on: ubuntu-latest
