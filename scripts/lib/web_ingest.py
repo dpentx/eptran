@@ -21,7 +21,7 @@ Fail-soft: internet/HTTP hatası ya da eksik secret durumunda script'i
 adımdan tamamen bağımsız.
 
 MERGE SONRASINA ERTELEME (Ekim 2026): Eskiden convert.py kitabı siteye PR
-henüz onaylanmadan, ciltleme biter bitmez gönderiyordu — yani İbo'nun
+henüz onaylanmadan, ciltleme biter bitmez gönderiyordu — yani repo sahibinin
 reddedeceği kalitesiz bir çeviri bile sitede yayınlanıyordu. Artık
 `book/*` dalındayken push_book() hiçbir şey göndermez (sadece bilgi
 basar); gönderim PR MERGE EDİLİNCE .github/workflows/web-ingest-on-merge.yml
