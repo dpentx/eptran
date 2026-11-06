@@ -23,7 +23,7 @@ yeni bir dersi bulunca buraya ekle.
   klasörünü `sparse-checkout add` ile açma: epub ve görseller de iner.
 - Kalıcı çözüm henüz yapılmadı: epub/görselleri git'ten çıkarıp Releases/
   eptran-library'ye taşımak ve geçmişi temizlemek (`git filter-repo` TÜM dalların
-  geçmişini yeniden yazar → yalnızca İbo açıkça isterse).
+  geçmişini yeniden yazar → yalnızca repo sahibi açıkça isterse).
 
 ## 2. Çalışma biçimi
 
@@ -31,7 +31,7 @@ yeni bir dersi bulunca buraya ekle.
   "Kitap Bütünlük Kontrolü" (sadece `book/*` PR'larında gerçekten çalışır, diğerlerinde
   atlanır ama kaydı birkaç sn gecikebilir). Merge "405 … expected" verirse ~30 sn
   bekleyip tekrar dene.
-- PR'ı İbo istemeden merge etme (istediğinde et). Canlı siteye giden repolarda
+- PR'ı repo sahibi istemeden merge etme (istediğinde et). Canlı siteye giden repolarda
   (eptran-web) önce Vercel preview READY mi diye bak.
 - `push_files` (GitHub MCP) TAM dosya içeriği ister, satır içi düzenleme yok.
   Büyük bir dosyayı baştan yazmak yazım hatası riski taşır (özellikle Türkçe
@@ -61,7 +61,7 @@ yeni bir dersi bulunca buraya ekle.
   `scripts/start_next_queue.py` HÂLÂ ÇEVRİLEN kitap yoksa en eskisini başlatır.
   "Çevriliyor" = `status.json`'da `status` veya `review_status` "completed" olmayan
   `book/*` dalı (yani Groq fazı). QA (Gemini kotasına bağlı, saatler/günler sürebilir),
-  düzeltme, ciltleme ve PR merge'ü sırayı TUTMAZ; İbo incelemeyi sonra yapar.
+  düzeltme, ciltleme ve PR merge'ü sırayı TUTMAZ; repo sahibi incelemeyi sonra yapar.
   Tetikleyiciler: review bitince (`review.yml` son adımı), PR açılınca
   (`start-next-on-pr-open.yml`), PR kapanınca (`delete-merged-book-branch.yml`),
   6 saatlik cron (`translate.yml`; GitHub cron'u düzensizdir, saatlerce gecikebilir).
