@@ -1,37 +1,39 @@
 {
-  "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-15 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
-  "source_book": "knh-15",
+  "_meta": "Bu dosya OTOMATİK ÜRETİLDİ (knh-2 kitabından, Gemini ile). series/kusuriya.json'a hiç yazılmadı — beğendiğin maddeleri ELLE oraya taşı, sonra bu dosyayı silebilirsin.",
+  "source_book": "knh-2",
   "new_characters": {
-    "Ah-Duo": "Ah-Duo",
-    "Suirei": "Suirei",
+    "The Emperor": "İmparator",
+    "Meimei": "Meimei",
+    "Lihaku": "Lihaku",
     "Lihua": "Lihua",
     "Loulan": "Loulan",
-    "Lihaku": "Lihaku",
     "Hongniang": "Hongniang",
-    "Zui": "Zui (İmparatorun gerçek adı)",
-    "Yue": "Yue (Jinshi'nin gerçek adı)",
-    "Auntie Liu": "Teyze Liu"
+    "Suirei": "Suirei",
+    "Princess Lingli": "Prenses Lingli",
+    "Ah-Duo": "Ah-Duo",
+    "Fengxian": "Fengxian",
+    "Pairin": "Pairin",
+    "Princess Fuyou": "Prenses Fuyou"
   },
   "new_terms": {
     "rear palace": "arka saray",
-    "royal court": "imparatorluk sarayı",
-    "medical office": "tıp bürosu",
-    "high consort": "yüksek eş",
-    "upper consort": "Üst Düzey Konsort",
-    "lady-in-waiting": "harem kadını",
-    "Crown Prince": "Veliaht Prens",
+    "outer court": "Dış Mahkeme",
+    "inner court": "İç Mahkeme",
     "Jade Pavilion": "Yeşim Köşkü",
-    "milk brother": "süt kardeşi",
-    "empress dowager": "dul imparatoriçe",
-    "western capital": "Batı Başkenti",
-    "Mafeisan": "Mafeisan",
+    "Verdigris House": "Verdigris Evi",
     "Pure Consort": "Saflık Konsortu",
-    "Precious one": "Değerli Konsort"
+    "food taster": "yemek denetçisi",
+    "calculus bovis": "öküz taşı",
+    "Board of Rites": "Törenler Kurulu",
+    "empress dowager": "Tahttan İnmiş İmparatoriçe",
+    "Three Princesses": "Üç Prenses",
+    "Board of Justice": "Adalet Dairesi"
   },
   "new_notes": [
-    "Suirei (eski saray hanımı/hekim) ve Suiren (Jinshi'nin yaşlı süt annesi) isimleri birbirine çok benzemektedir. Suirei entrikalarla ilişkili gizemli bir karakterken, Suiren saraydaki kıdemli hizmetlidir; bu iki isim kesinlikle karıştırılmamalıdır.",
-    "Zui, İmparator'un gerçek adıdır; Yue ise Jinshi'nin gerçek adıdır. Bu isimler karakterlerin gizli kimlikleri veya resmi olmayan hitaplarında kritik öneme sahiptir.",
-    "Saray hiyerarşisindeki 'Pure Consort' (Saflık Konsortu) ve 'Precious Consort/Precious one' (Değerli Konsort) unvanları, eşlerin saraydaki konumunu belirtir ve birebir bu karşılıklarla korunmalıdır.",
-    "Kitapta geçen 'Gyouyoh' ismi, 'Gyokuyou' (İmparatoriçe Gyokuyou) isminin farklı bir yazımı veya yazım hatası olabilir; çeviride tutarlılık adına kontrol edilmelidir."
+    "Meimei ve Maamei isimleri son derece benzerdir ve karıştırılmamalıdır: Meimei, Verdigris Evi'nin kıdemli göstericilerinden (courtesan) biridir; Maamei ise Gaoshun'un kızı ve Basen'in ablasıdır.",
+    "Lihaku ve Lihua isimleri karıştırılmamalıdır: Lihaku genç bir askeri subaydır; Lihua ise İmparator'un üst düzey eşlerinden (konsort) biridir.",
+    "Fengxian, Maomao'nun öz annesidir ve Verdigris Evi'nin eski kıdemli göstericisidir. Lakan ile geçmişe dayanan karmaşık bir bağı vardır.",
+    "Hongniang, İmparatoriçe Gyokuyou'nun kaldığı Yeşim Köşkü'nün (Jade Pavilion) baş nedimesidir.",
+    "Pairin, Verdigris Evi'nin 'Üç Prenses' olarak bilinen kıdemli göstericilerinden biridir; Lihaku onun sözleşmesini (sözleşme fesih bedelini) satın almaya çalışmaktadır."
   ]
 }
