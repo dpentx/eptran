@@ -29,7 +29,8 @@
     "Ailan": "Ailan",
     "Guiyuan": "Guiyuan",
     "Shisui": "Shisui",
-    "Consort Lihua": "Lihua Konsortu"
+    "Consort Lihua": "Lihua Konsortu",
+    "Shin": "Şin"
   },
   "terms": {
     "eunuch": "hadım",
@@ -50,14 +51,15 @@
     "Jade Pavilion": "Yeşil Taht Köşkü",
     "Praying mantis oothecae": "Kasatka yumurta kesesi",
     "spider's silk": "Örümcek ipeği",
-    "Crystal Pavilion": "Kristal Köşkü"
+    "Crystal Pavilion": "Kristal Köşkü",
+    "Whiteblossom": "Beyaz Çiçek"
   },
   "style_notes": "Anlatım, küçük bir çocuğun sınırlı algı dünyasından ve ardından büyüyen karakterin iç monologundan oluşan, gizemli ve gergin bir tona sahiptir; cümleler kısa, gözlemci ve atmosferik detaylara odaklanmalıdır.",
   "summaries": [
-    "Chapter 5: Corpse Fungus (Part One): Maomao, çamaşırhanede Xiaolan'a okuma yazma öğretirken, şarlatan doktor aracılığıyla arka sarayda evlenmek üzere olan bir kadının gizemli kayboluşu hakkında dedikodu duyar. Maomao, Yeşil Taht Köşkü'ne döndüğünde ise hamileliği belli olmaması için özel kıyafetler giyen Gyokuyou'nun düzenlediği çay partisiyle karşılaşır.",
     "Chapter 6: Corpse Fungus (Part Two): Maomao, cenazede çıkan kavganın arkasındaki nedeni araştırdığı sırada, düşük rütbeli eşin hastalığına neden olan zehirli kırmızı mantarı tespit eder. Bu bulguyu Jinshi ve Gaoshun ile paylaşmak için onları tıbbi ofise çağırır ve zehirli mantarın tehlikeli doğasını koruyucu önlemler alarak açıklar.",
     "Chapter 8: The Moon Spirit: Jinshi, elçilikten gelen bir talep üzerine Maomao'dan, efsanevi \"Ay Ruhu\" kadınının kim olduğunu sorar. Maomao, bu kadının kendisi olduğunu ve hâlâ hayatta olduğunu açıklayarak, yüksek bir ücret karşılığında elçiye tanıtılmayı teklif eder.",
     "Chapter 9: The Clinic: Maomao, parfüm zehiri soruşturması sırasında haremdeki üst düzey eşlerin Loulan ve Lihua gibi güçlü ailelerle bağlantılarını analiz ederken, özel elçilerin bu olaydaki olası rolünü sorgular.",
-    "Chapter 10: Third Time’s the Charm (Part One): Maomao, Ailan'ın klinikte kullandığı soğuk algınlığı ilacının sarayda fark edilmesi üzerine, ilacın kaynağını açıklamak ve olası resmi soruşturmayı önlemek için gözetim altında kliniğe geri çağrılır. Bu süreçte hamile Gyokuyou'nun endişesi ve Maomao'yu refakat eden Yinghua'nın, Maomao'nun gizemli ilaç bileşenleri ve odasındaki yoğun koku hakkında sorduğu sorular öne çıkar."
+    "Chapter 10: Third Time’s the Charm (Part One): Maomao, Ailan'ın klinikte kullandığı soğuk algınlığı ilacının sarayda fark edilmesi üzerine, ilacın kaynağını açıklamak ve olası resmi soruşturmayı önlemek için gözetim altında kliniğe geri çağrılır. Bu süreçte hamile Gyokuyou'nun endişesi ve Maomao'yu refakat eden Yinghua'nın, Maomao'nun gizemli ilaç bileşenleri ve odasındaki yoğun koku hakkında sorduğu sorular öne çıkar.",
+    "Chapter 11: Third Time’s the Charm (Part Two): Arka sarayda, genç prensin ölümünden sonra itibarını yitiren hekim, yanında güzelliğiyle tanınan saray kadınıyla birlikte Bilge Konsortu Lihua'yı görmeye gelir. Lihua'nın yardımcısı Shin, hekimin reddedilmesini engellemek için Jinshi'nin imzasını taşıyan resmi bir mektubu sunmasıyla durumu tersine çevirir."
   ]
 }
