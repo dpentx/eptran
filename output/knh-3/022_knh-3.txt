@@ -1,12 +1,10 @@
 # Bonus Translator’s Notes
 
-Çevirmen Notları
-
 İlaçhane Günlükleri
 
 Cilt 3
 
-Workaday Translation
+Günlük Çeviri
 
 İlaçhane Günlükleri çevirmen notlarına hoş geldiniz. Umarım 3. cildin tadını çıkarmışsınızdır! Bu notların son birkaç bölümünde, bir çeviriye nasıl başlanacağını ve özel bir durumda oldukça büyük bir hayal gücü sıçraması nasıl yapılacağını inceledik. Bu sefer, daha “sıradan” çeviri çalışmalarının nasıl göründüğüne dair bir perspektif sunmak istiyorum. Bu amaçla, oldukça düz bir pasajı inceleyeceğiz; geçen sefer baktığımız gibi büyük kültürel veya yerelleştirme sorunları göremeyeceksiniz, ancak bu, Japonca ve İngilizce versiyonları arasında dilin kendisinin nasıl uyarlandığına odaklanabileceğimiz anlamına geliyor.
 
@@ -14,7 +12,7 @@ Pasaja geçmeden önce, çevirinin ne olduğunu ve ne olmadığını biraz konu�
 
 İşte basit bir Japonca cümle (inceleyeceğimiz pasajdan değil):
 
-猫猫が薬を飲んだ。
+。
 Maomao ga kusuri wo nonda.
 
 Bu cümlenin doğal çevirisi muhtemelen “Maomao ilacı aldı” olurdu. Bu, Japonca anlamına oldukça yakın olsa da, en katı anlamda aslında “harfiyen” değildir. Kaynak metnin tavizsiz bir yansıması şöyle görünebilirdi:
@@ -31,7 +29,7 @@ Bu girişle amacım şudur: kaynak dilindeki bir cümlenin en harfiyen olası if
 
 Aşağıdaki paragrafa baktığımızda bunları aklınızda tutun. Bu, Maomao'nun önceki imparatorun resim odasına girip etrafına baktığı sahneden geliyor. Aşağıda, hem Japonca hem de romaji transkripsiyonuyla pasajı, ardından “harfiyen” olmayan (bu terimin tuzaklarını artık biliyoruz) ancak en az uyarlamayı yaptığım bir çeviri sundum.
 
-猫猫は床に半透明の欠片を見つけた。煮詰めた飴のようなそれをまじまじと見る。そして、床にちらほらとある汚れ。必死に取ろうと拭いた跡があるその汚れをじっと見る。ふと、壁に近づくほど汚れが増えているように思えた。
+。。、。。、。
 Maomao wa toko ni hantoumei no kakera wo mitsuketa. Nitsumeta ame no you na sore wo maji-maji to miru. Soshite, toko ni chirahora to aru yogore. Hisshi ni torou to fuita ato ga aru sono yogore wo jitto miru. Futo, kabe ni chikazuku hodo yogore ga fuete iru you ni omoeta.
 
 Maomao, yerde yarı saydam parçacıklar keşfetti. Sert şeker gibi parçacıklara dikkatle baktı. Sonra, yerde dağınık lekeler. Onları çıkarmak umuduyla çaresizce silinmiş izler taşıyan o lekelere dikkatle baktı. Aniden, lekelerin duvara yaklaştıkça arttığı gibi göründü [ona göre].
@@ -44,7 +42,7 @@ Yerde, sert şeker gibi küçük, yarı saydam parçacıklar fark etti. Onlara d
 
 "Uyarlanmamış" olarak nitelendirdiğim çeviri için bile dil konusunda bazı tercihler yapmak zorunda kaldığımı fark etmiş olabilirsiniz. Örneğin, Japonca isimler varsayılan olarak sayı belirtmez (tekil mi çoğul mu olduğu belli değildir), bu yüzden Maomao'nun yerde tek bir parça mı yoksa birkaç parça mı keşfettiği her zaman açık değildir. (Aynı durum yogore için de geçerlidir; bu kelime tek başına hem "lekeler" hem de "lekeler" anlamına gelebilir, ancak sayılarının "arttığı" belirtilerek birden fazla oldukları açıkça anlaşılmaktadır.) Ayrıca, mitsukeru kelimesini (karakterlerinin "doğrudan" anlamı "görmek ve yakalanmak" veya daha idiomatik bir ifadeyle "göze çarpmak" olan) "find" (bulmak) veya "spot" (fark etmek) yerine "discover" (keşfetmek) olarak çevirmeyi seçtim. Böylece, çevirinin iki dildeki kelimeler arasında basit bir birebir eşleşme içermediğini (bazen bir sözlüğün öyle göstermesine rağmen) hemen görebiliriz; bunun yerine, her kelime belirli bir anlam aralığını kapsar ve çevirmenin yaptığı şey, hedef dilde aynı anlam aralığını bulup en uygun olanı seçmektir. Bir düzeyde, kendilerine "Yazar tam olarak bu sahneyi yazsaydı ama İngilizceyi ana dili olarak konuşan biri olsaydı, hangi kelimeleri kullanırdı?" diye sorarlar. Elbette cevap biraz öznel olacaktır, ancak tamamen keyfi değildir.
 
-Bu pasajın yukarıdaki sürümden oldukça farklı okunduğunu, ancak tartışmasız aynı pasaj olduğunu görebilirsiniz. mitsukeru kelimesini "notice" (fark etmek) olarak çevirdim (kısmen aynı sahnede biraz sonra "discover" kelimesini kullandığım için kelime tekrarı yapmamak istemedim) ve bu paragrafta birkaç kez karşımıza çıkan bir nesneye dikkatle bakma fikrini ifade etmenin farklı yollarını buldum.
+Bu pasajın yukarıdaki sürümden oldukça farklı okunduğunu, ancak tartışmasız aynı pasaj olduğunu görebilirsiniz. mitsukeru kelimesini "fark etmek" olarak çevirdim (kısmen aynı sahnede biraz sonra "discover" kelimesini kullandığım için kelime tekrarı yapmamak istemedim) ve bu paragrafta birkaç kez karşımıza çıkan bir nesneye dikkatle bakma fikrini ifade etmenin farklı yollarını buldum.
 
 Özellikle cümlelerin kendilerine ne olduğunu vurgulamak isterim. Hem Japonca paragraf hem de benim nihai sürümüm beş cümle içerir, ancak içindeki malzeme biraz farklı bir şekilde düzenlenmiştir. Örneğin, Japonca pasaj "yarı saydam parçacıkları" ilk cümlede tanıtıyor, ardından onları betimleyen ve onlara atıfta bulunmak için bir zamir (sore, kabaca "şu") kullanan ayrı bir cümleye geçiyor. İngilizce'de bu, biraz sakar, hatta biraz fazla tekrarlı görünebilir. (Tekrar, Japonca düzyazıda çok yüksek bir toleransa sahip olduğu, ancak İngilizce'de çok daha az arzu edilen bir şeydir.) Bunun yerine, parçacıkların (sert şeker gibi) betimlemesini, ilk kez anıldıkları ana taşıdım; bu, İngilizce'de betimlemeyi ele almanın daha doğal bir yoludur.
 
