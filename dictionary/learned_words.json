@@ -7401,6 +7401,7 @@
   "require": true,
   "resepsiyon": false,
   "resim": false,
+  "resimdi": false,
   "resimlerle": false,
   "resimli": false,
   "resimsel": false,
