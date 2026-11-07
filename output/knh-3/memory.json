@@ -34,7 +34,8 @@
     "Wang Mu": "Wang Mu",
     "Empress Dowager": "İmparatoriçe Anası",
     "Anshi": "Anshi",
-    "Lo-en": "Lo-en"
+    "Lo-en": "Lo-en",
+    "Lihaku": "Lihaku"
   },
   "terms": {
     "eunuch": "hadım",
@@ -70,14 +71,18 @@
     "orpiment": "orpiment",
     "empress regnant": "hükümdar imparatoriçe",
     "inner court": "iç saray",
-    "feifa": "feifa (hava tabancası)"
+    "feifa": "feifa (hava tabancası)",
+    "fire powder": "barut",
+    "saltpeter": "sodyum nitrat",
+    "sulfur": "kükürt",
+    "charcoal": "kömür"
   },
   "style_notes": "Anlatım, küçük bir çocuğun sınırlı algı dünyasından ve ardından büyüyen karakterin iç monologundan oluşan, gizemli ve gergin bir tona sahiptir; cümleler kısa, gözlemci ve atmosferik detaylara odaklanmalıdır.",
   "summaries": [
-    "Chapter 12: The Shrine of Choosing: Maomao, Jinshi'nin öncülük ettiği ve Xiaolan'ın da dahil olduğu arka saraydaki gizli eğitim kurumunu gözlemlemektedir. Öğrenciler, ülkenin kuruluşunu anlatan \"Kraliçe Anne\" efsanesini dinlerken, Maomao bu sessiz devrimin sarayın geleceğini nasıl değiştireceğini merak etmektedir.",
     "Chapter 13: The Empress Dowager: Maomao, baş nedime Hongniang ve Yinghua'nın sert uyarılarına rağmen depoyu yeni odası olarak seçer ve haremde böcek toplayan deli bir kadın olduğu yönündeki yanlış anlaşılmayı inkar eder. Bu süreçte Maomao, tıbbi otlar topladığını savunurken, arkadaşı Xiaolan ile çay içerek sohbet etmeye devam eder.",
     "Chapter 14: His Former Majesty: Maomao, önceki imparatorun pedofil olduğu gerçeğini ve İmparatoriçe Anası'nın doğumundaki zorlukları düşünürken, mevcut imparatorun küçük kardeşinin biyolojik babasının kimliği konusunda şüpheler duyar. Ardından İmparatoriçe Anası ile Arka Saray'ın iç avlusunda, üst düzey eşlerin katıldığı bir çay partisi sırasında buluşur.",
     "Chapter 15: Scary Stories: Maomao, Yeşil Taht Köşkü'ndeki küçük depo kulübesinde kalmak istemesi üzerine Yinghua ile kısa bir tartışma yaşar ve İmparatoriçe Gyokuyou'nun onayıyla bu isteği kabul edilir. Bölümün sonunda, yeni gelen saray kadınlarıyla kaynaşması için Maomao'yu akşam için \"ödünç alan\" Yinghua'nın ürkütücü bir davranış sergilemesiyle gerilim yükselir.",
-    "Chapter 18: The Hunt (Part Two): Jinshi'nin bir hizmetkâr kızla birlikte uzun süre kaybolması üzerine, oğlu Basen ve diğer memurlar arasında huzursuzluk ve öfke yükselirken, ev sahibi Shishou'nun kayıtsızlığı dikkat çekiyor. Bu gerilimli atmosferde, stratejist Lakan'ın fahiyeyle vakit geçirdiği dedikodusu da mahkeme çevrelerinde yankılanıyor."
+    "Chapter 18: The Hunt (Part Two): Jinshi'nin bir hizmetkâr kızla birlikte uzun süre kaybolması üzerine, oğlu Basen ve diğer memurlar arasında huzursuzluk ve öfke yükselirken, ev sahibi Shishou'nun kayıtsızlığı dikkat çekiyor. Bu gerilimli atmosferde, stratejist Lakan'ın fahiyeyle vakit geçirdiği dedikodusu da mahkeme çevrelerinde yankılanıyor.",
+    "Chapter 19: The Hunt (Part Three): Jinshi, yüzmeyi bilmeyen Maomao'yu şelalenin arkasındaki gizli mağaraya atarak onu kurtarır ve ıslanan kıyafetlerini kurutmak için birlikte soyunurlar. Maomao, su basmış ilaç otlarını kurtarmaya çalışırken, bu gizli mekânın geçmişte bir memur tarafından cesaret testi olarak kullanıldığını öğrenir."
   ]
 }
