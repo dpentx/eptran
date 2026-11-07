@@ -1,8 +1,11 @@
 # QA Raporu — knh-3
 
-**Günlük Gemini kotası tükendiği için durduruldu — 15/23 bölüm tarandı. Script'i tekrar çalıştırınca kaldığı yerden devam edecek (baştan başlamayacak).**
+**Toplam 5 şüpheli nokta bulundu (19/23 bölüm başarıyla tarandı, 4 bölüm denetlenemedi).**
 
 *Bu bir OTOMATİK ÖNERİ listesidir, kesin doğru kabul etmeyin — her maddeyi kaynakla birlikte kendiniz kontrol edin. Bazı işaretlemeler yanlış pozitif olabilir (bkz. script docstring'i).*
+
+## Bölüm 1: Prologue
+*(Denetlenemedi.)*
 
 ## Bölüm 5: Chapter 4: Perfume Oil — 1 sorun
 - **ANLAM_KAYMASI**: 'Lech' (abaza/sapık/çapkın erkek) kelimesi yanlış anlaşılarak 'fahişe' (prostitute) şeklinde çevrilmiştir.
@@ -34,4 +37,11 @@
 ## Bölüm 14: Chapter 13: The Empress Dowager — 1 sorun
 - **ATLANMIŞ**: Kaynak metnin en sonunda yer alan 'A quest' başlığı/ifadesi Türkçe çeviride tamamen atlanmıştır.
   - Kaynak: *"A quest"*
+
+## Bölüm 20: Chapter 19: The Hunt (Part Three) — 1 sorun
+- **ANLAM_KAYMASI**: Kaynak metinde daha sonra geçen diyalog cümlesi çeviride yanlış yere (iç konuşmanın ortasına) kaymış ve kaynakta hiç olmayan "Ama—" ifadesi eklenmiştir.
+  - Kaynak: *"“Does Master Gaoshun know about this place?”"*
+  - Çeviri: *""Gaoshun Efendi bu yerden haberdar mı?"
+
+"Ama—""*
 
