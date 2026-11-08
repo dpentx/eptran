@@ -10,12 +10,13 @@
   "started_at": "2026-11-05T04:24:35.650143+00:00",
   "queue_mode": true,
   "series": "kusuriya",
-  "updated_at": "2026-11-08T12:25:22.737417+00:00",
+  "updated_at": "2026-11-08T12:25:25.421305+00:00",
   "review_status": "completed",
   "review_total": 23,
   "review_completed": 23,
   "review_current": "",
   "qa_status": "partial",
   "qa_attempts": 3,
-  "convert_status": "running"
+  "convert_status": "completed",
+  "epub_output": "output/knh-3/knh-3_tr.epub"
 }
