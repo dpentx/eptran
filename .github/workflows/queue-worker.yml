@@ -19,8 +19,8 @@ jobs:
   work:
     runs-on: ubuntu-latest
     # Her run TEK BİR parça çeviriyor — normalde birkaç dakika sürer.
-    # Yine de NER/hafıza çıkarımı + birkaç retry ihtimaline karşı makul
-    # bir pay bırakıyoruz. Eskiden bir run bir KİTABIN TAMAMINI (360 dk'ya
+    # Yine de NER/hafıza çıkarımı + birkaç retry ihtimaline karşı
+    # makul bir pay bırakıyoruz. Eskiden bir run bir KİTABIN TAMAMINI (360 dk'ya
     # kadar) işlemeye çalışıyordu; artık kaybedilebilecek en fazla şey
     # tek bir parçanın o anki denemesi.
     timeout-minutes: 20
@@ -28,12 +28,17 @@ jobs:
       contents: write
 
     steps:
+      # TEST DALI (test/library-sync-e2e): token eptran-library'ye de yazabilmeli.
       - name: Generate app token
         id: app-token
         uses: actions/create-github-app-token@v1
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            eptran
+            eptran-library
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,13 +47,11 @@ jobs:
           ref: ${{ inputs.branch }}
           fetch-depth: 0
 
-      # Kod HER ZAMAN main'den gelir; dal sadece veri (status.json, output/ ...)
-      # tasir. Aksi halde dal acildigi andaki eski script'lerle calisir, main'e
-      # giren duzeltmeler acik kitaplara ulasmaz (ve bir PR'in kendi pr_check.py'sini
-      # degistirerek kontrolu zayiflatmasi mumkun olur).
-      - name: Use scripts from main
+      # TEST DALI: kod main'den DEĞİL, feat/library-sync'ten alınır (henüz main'de
+      # olmayan library_sync'i denemek için). Veri dalı yine sadece veri taşır.
+      - name: Use scripts from feat/library-sync (TEST)
         run: |
-          git fetch origin main
+          git fetch origin feat/library-sync
           mkdir -p "$RUNNER_TEMP/main-code"
           git archive FETCH_HEAD scripts requirements.txt | tar -x -C "$RUNNER_TEMP/main-code"
           echo "MAIN_CODE=$RUNNER_TEMP/main-code" >> "$GITHUB_ENV"
@@ -73,4 +76,5 @@ jobs:
           GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
           GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          LIBRARY_SYNC: "1"
         run: python "$MAIN_CODE/scripts/queue_worker.py"
