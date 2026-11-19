@@ -10,7 +10,8 @@ ve status.json'un bir aynasını cilt klasörünün yanına yazar:
 SINIR (neyin nereye gittiği):
   * eptran'da (book/<slug> dalı) KALANLAR: status.json (ASIL kopya), memory.json,
     .originals/ (İngilizce kaynak parçalar), .translated/ (parça çevirileri).
-  * library'ye GİDENLER: sadece biten bölüm metinleri + status aynası.
+  * library'ye GİDENLER: sadece biten bölüm metinleri + status aynası; ciltlenmiş
+    epub ise git'e değil library Release'ine gider (eptran'da yok sayılır).
   İngilizce kaynak parçalar library'ye ASLA girmez (public repo, telif).
 
 NE ZAMAN ÇALIŞIR: yalnızca LIBRARY_SYNC=1 ise. Kapalıyken (varsayılan) bu modül
@@ -56,7 +57,8 @@ FINAL_RE = re.compile(r"^(\d{3})_.+\.txt$")
 # Library tarafındaki bölüm dosyaları: 001.txt
 LIB_FINAL_RE = re.compile(r"^(\d{3})\.txt$")
 # Yerel exclude: .originals/.translated altındakiler 4 segment olduğu için eşleşmez.
-EXCLUDE_LINES = [f"/{WORK_DIR}/", "output/*/[0-9][0-9][0-9]_*.txt"]
+# Ciltlenmiş epub de eptran'a girmez: library Release'ine gider (publish_library.py).
+EXCLUDE_LINES = [f"/{WORK_DIR}/", "output/*/[0-9][0-9][0-9]_*.txt", "output/*/*.epub"]
 MAX_ATTEMPTS = 3
 
 
