@@ -127,15 +127,28 @@ def publish_to_library(book_slug: str, chapters: list, epub_path: str,
         work = os.path.join(tmp, "lib")
         _run(["git", "clone", _clone_url(repo), work])
         default = _run(["git", "symbolic-ref", "--short", "HEAD"], cwd=work)
-        _run(["git", "checkout", "-B", staging, f"origin/{default}"], cwd=work)
+        # LIBRARY_SYNC=1 (bkz. lib/library_sync.py): bölümler ve status aynası çeviri
+        # sürerken staging dalına ZATEN artımlı yazıldı. Dalı sıfırlayıp bölümleri
+        # yeniden yazmak o aynayı silerdi; bu yüzden mevcut staging dalının üstüne
+        # sadece index.json eklenir. Kapalıyken eski davranış aynen korunur.
+        sync_mode = os.environ.get("LIBRARY_SYNC") == "1"
+        base = f"origin/{default}"
+        if sync_mode and _run(["git", "ls-remote", "--heads", "origin", staging],
+                              cwd=work, check=False):
+            _run(["git", "fetch", "--quiet", "origin", staging], cwd=work)
+            base = f"origin/{staging}"
+        _run(["git", "checkout", "-B", staging, base], cwd=work)
 
         # 3) Bölümleri yaz (eski/artık dosyalar kalmasın diye klasörü sıfırla).
         cilt_dir = os.path.join(work, series_slug, book)
-        shutil.rmtree(cilt_dir, ignore_errors=True)
-        os.makedirs(cilt_dir)
-        for i, ch in enumerate(chapters, start=1):
-            with open(os.path.join(cilt_dir, f"{i:03d}.txt"), "w", encoding="utf-8") as f:
-                f.write(f"{ch['title']}\n\n{ch['body']}\n")
+        if sync_mode:
+            print("  library: bölümler artımlı senkronla zaten staging'de, yeniden yazılmıyor.")
+        else:
+            shutil.rmtree(cilt_dir, ignore_errors=True)
+            os.makedirs(cilt_dir)
+            for i, ch in enumerate(chapters, start=1):
+                with open(os.path.join(cilt_dir, f"{i:03d}.txt"), "w", encoding="utf-8") as f:
+                    f.write(f"{ch['title']}\n\n{ch['body']}\n")
 
         # 4) Seri index.json'ı güncelle.
         index_path = os.path.join(work, series_slug, "index.json")
@@ -161,7 +174,12 @@ def publish_to_library(book_slug: str, chapters: list, epub_path: str,
         else:
             _run(["git", "-c", f"user.name={name_cfg}", "-c", f"user.email={mail_cfg}",
                   "commit", "-m", f"{book}: {len(chapters)} bölüm eklendi"], cwd=work)
-        _run(["git", "push", "--force", "origin", f"{staging}:{staging}"], cwd=work)
+        # Eski modda staging dalı her seferinde sıfırdan kurulduğu için force gerekir;
+        # senkron modunda dal artımlı büyür, normal push yeter (force kaybettirirdi).
+        push_cmd = ["git", "push", "origin", f"{staging}:{staging}"]
+        if not sync_mode:
+            push_cmd.insert(2, "--force")
+        _run(push_cmd, cwd=work)
 
         info = {
             "repo": repo, "branch": staging, "series": series_slug,
