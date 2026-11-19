@@ -26,12 +26,17 @@ jobs:
       contents: write
 
     steps:
+      # TEST DALI: token eptran-library'ye de yazabilmeli.
       - name: Generate app token
         id: app-token
         uses: actions/create-github-app-token@v1
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            eptran
+            eptran-library
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,13 +45,10 @@ jobs:
           ref: ${{ inputs.branch }}
           fetch-depth: 0
 
-      # Kod HER ZAMAN main'den gelir; dal sadece veri (status.json, output/ ...)
-      # tasir. Aksi halde dal acildigi andaki eski script'lerle calisir, main'e
-      # giren duzeltmeler acik kitaplara ulasmaz (ve bir PR'in kendi pr_check.py'sini
-      # degistirerek kontrolu zayiflatmasi mumkun olur).
-      - name: Use scripts from main
+      # TEST DALI: kod main'den DEĞİL, feat/library-sync'ten alınır.
+      - name: Use scripts from feat/library-sync (TEST)
         run: |
-          git fetch origin main
+          git fetch origin feat/library-sync
           mkdir -p "$RUNNER_TEMP/main-code"
           git archive FETCH_HEAD scripts requirements.txt | tar -x -C "$RUNNER_TEMP/main-code"
           echo "MAIN_CODE=$RUNNER_TEMP/main-code" >> "$GITHUB_ENV"
@@ -100,6 +102,15 @@ jobs:
           git config user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
           git config user.email "${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
 
+      # TEST DALI: biten bölümler artik library'de; review onlari yerinde okuyup
+      # düzenlesin diye job başında output/<slug>/ altına çekilir.
+      - name: Pull chapters from library
+        if: steps.check.outputs.needed == 'yes'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          LIBRARY_SYNC: "1"
+        run: python "$MAIN_CODE/scripts/library_pull.py"
+
       - name: Run review
         if: steps.check.outputs.needed == 'yes'
         env:
@@ -108,10 +119,11 @@ jobs:
           GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
           GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          LIBRARY_SYNC: "1"
         run: python "$MAIN_CODE/scripts/review.py"
 
-      # Review bittiyse (Groq fazı tamam) sıradaki kitabı başlat: kuyruk QA'yı
-      # (Gemini kotasına bağlı, saatler/günler sürebilir), ciltlemeyi ve PR
+      # Review bittiyse (Groq fazi tamam) siradaki kitabi başlat: kuyruk QA'yi
+      # (Gemini kotasina bagli, saatler/günler sürebilir), ciltlemeyi ve PR
       # merge'ünü BEKLEMEZ. Script idempotent: review henüz bitmediyse ya da
       # başka bir kitap hâlâ çevriliyorsa hiçbir şey yapmaz (bkz.
       # scripts/start_next_queue.py).
