@@ -190,6 +190,50 @@ class LibrarySyncTest(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             library_sync.sync_if_enabled()
 
+    # ---- publish_library ile uyum ----
+
+    def _patch_release(self):
+        from lib import library_publish
+        library_publish._ensure_release = (
+            lambda repo, tag, title, epub: f"https://example.invalid/{tag}/{os.path.basename(epub)}")
+        return library_publish
+
+    def test_epub_is_not_committed_to_eptran(self):
+        self.enable()
+        self.push_status()
+        self.write("output/test/test_tr.epub", "PK-fake-epub")
+        self.status["convert_status"] = "completed"
+        self.push_status("convert")
+        self.assertNotIn("output/test/test_tr.epub", self.ep_files())
+
+    def test_publish_in_sync_mode_keeps_incremental_content(self):
+        """Senkron açıkken publish, bölümleri/status aynasını silmeden sadece index.json ekler."""
+        self.enable()
+        self.push_status()
+        self.write("output/test/test_tr.epub", "PK-fake-epub")
+        lp = self._patch_release()
+        info = lp.publish_to_library("test", [{"title": "B", "body": "x"}],
+                                     "output/test/test_tr.epub", "Başlık", None, "demo-seri")
+        self.assertIsNotNone(info)
+        lib = self.lib_files()
+        self.assertIn("demo-seri/index.json", lib)
+        self.assertIn("demo-seri/test/status.json", lib)
+        # Bölüm, çalışma dosyasının BİREBİR haliyle duruyor (yeniden yazılmadı).
+        body = sh("git", "show", "staging/test:demo-seri/test/001.txt", cwd=self.lib_bare)
+        self.assertEqual(body, "# Bölüm 1: Başlangıç\n\nMerhaba.")
+        index = json.loads(sh("git", "show", "staging/test:demo-seri/index.json", cwd=self.lib_bare))
+        self.assertEqual(index["ciltler"][0]["slug"], "test")
+
+    def test_publish_without_sync_keeps_legacy_behavior(self):
+        """Senkron kapalıyken publish eski gibi bölümleri sıfırdan yazar."""
+        os.environ["LIBRARY_CLONE_URL"] = self.lib_bare
+        self.write("output/test/test_tr.epub", "PK-fake-epub")
+        lp = self._patch_release()
+        lp.publish_to_library("test", [{"title": "B", "body": "x"}],
+                              "output/test/test_tr.epub", "Başlık", None, "demo-seri")
+        body = sh("git", "show", "staging/test:demo-seri/test/001.txt", cwd=self.lib_bare)
+        self.assertEqual(body, "B\n\nx")
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
