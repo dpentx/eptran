@@ -19,8 +19,8 @@ jobs:
   work:
     runs-on: ubuntu-latest
     # Her run TEK BİR parça çeviriyor — normalde birkaç dakika sürer.
-    # Yine de NER/hafıza çıkarımı + birkaç retry ihtimaline karşı
-    # makul bir pay bırakıyoruz. Eskiden bir run bir KİTABIN TAMAMINI (360 dk'ya
+    # Yine de NER/hafıza çıkarımı + birkaç retry ihtimaline karşı makul
+    # bir pay bırakıyoruz. Eskiden bir run bir KİTABIN TAMAMINI (360 dk'ya
     # kadar) işlemeye çalışıyordu; artık kaybedilebilecek en fazla şey
     # tek bir parçanın o anki denemesi.
     timeout-minutes: 20
