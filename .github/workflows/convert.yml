@@ -43,13 +43,10 @@ jobs:
           ref: ${{ inputs.branch }}
           fetch-depth: 0
 
-      # Kod HER ZAMAN main'den gelir; dal sadece veri (status.json, output/ ...)
-      # tasir. Aksi halde dal acildigi andaki eski script'lerle calisir, main'e
-      # giren duzeltmeler acik kitaplara ulasmaz (ve bir PR'in kendi pr_check.py'sini
-      # degistirerek kontrolu zayiflatmasi mumkun olur).
-      - name: Use scripts from main
+      # TEST DALI: kod main'den DEĞİL, feat/library-sync'ten alınır.
+      - name: Use scripts from feat/library-sync (TEST)
         run: |
-          git fetch origin main
+          git fetch origin feat/library-sync
           mkdir -p "$RUNNER_TEMP/main-code"
           git archive FETCH_HEAD scripts requirements.txt | tar -x -C "$RUNNER_TEMP/main-code"
           echo "MAIN_CODE=$RUNNER_TEMP/main-code" >> "$GITHUB_ENV"
@@ -89,20 +86,30 @@ jobs:
           git config user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
           git config user.email "${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
 
+      # TEST DALI: biten bölümler library'de; convert onları yerinde okusun diye
+      # job başında output/<slug>/ altına çekilir.
+      - name: Pull chapters from library
+        if: steps.check.outputs.needed == 'yes'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          LIBRARY_SYNC: "1"
+        run: python "$MAIN_CODE/scripts/library_pull.py"
+
+      # TEST: WEB_INGEST_* bilerek verilmedi (test kitabı siteye gönderilmesin).
       - name: Run conversion (and open completion PR)
         if: steps.check.outputs.needed == 'yes'
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
-          WEB_INGEST_URL: ${{ secrets.WEB_INGEST_URL }}
-          WEB_INGEST_SECRET: ${{ secrets.WEB_INGEST_SECRET }}
+          LIBRARY_SYNC: "1"
         run: python "$MAIN_CODE/scripts/convert.py"
 
-      # Bitmiş kitabı eptran-library'ye yayımlar (bölümler staging dalına,
-      # epub draft Release'e) ve PR'a link yorumu ekler. Fail-soft: hata
-      # olsa bile convert/PR akışı bozulmaz.
+      # Bitmiş kitabı eptran-library'ye yayımlar (epub draft Release'e, index.json
+      # staging dalına) ve PR'a link yorumu ekler. Fail-soft: hata olsa bile
+      # convert/PR akışı bozulmaz.
       - name: Publish to library
         if: steps.check.outputs.needed == 'yes'
         continue-on-error: true
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          LIBRARY_SYNC: "1"
         run: python "$MAIN_CODE/scripts/publish_library.py"
