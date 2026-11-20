@@ -163,6 +163,28 @@ class LibrarySyncTest(unittest.TestCase):
         body = sh("git", "show", "staging/test:demo-seri/test/001.txt", cwd=self.lib_bare)
         self.assertIn("Merhaba, dünya.", body)
 
+    def test_pull_falls_back_to_library_main_after_promote(self):
+        """library_promote staging'i silince (merge sonrası) bölümler ana daldan okunur."""
+        self.enable()
+        self.push_status()
+        # library_promote'u taklit et: cilt klasörünü main'e al, staging'i sil.
+        seed = os.path.join(self.tmp, "promote")
+        sh("git", "clone", self.lib_bare, seed)
+        sh("git", "checkout", "origin/staging/test", "--", "demo-seri/test", cwd=seed)
+        sh("git", "commit", "-m", "promote", cwd=seed)
+        sh("git", "push", "origin", "HEAD:main", cwd=seed)
+        sh("git", "push", "origin", "--delete", "staging/test", cwd=seed)
+        shutil.rmtree(".library", ignore_errors=True)
+        os.remove("output/test/001_test.txt")
+        from lib import library_sync
+        self.assertEqual(library_sync.pull(), 1)
+        self.assertTrue(os.path.exists("output/test/001_test.txt"))
+
+    def test_pull_for_unknown_book_returns_zero(self):
+        self.enable()
+        from lib import library_sync
+        self.assertEqual(library_sync.pull(), 0)
+
     def test_not_on_book_branch_is_noop(self):
         """main gibi dallarda aynayı bayat status ile ezmemeli."""
         self.enable()
