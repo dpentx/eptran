@@ -1,15 +1,6 @@
 name: PR Check (Kitap Denetimi)
 
-# Bir book/<slug> dalı main'e "tamamlandı" PR'ı açtığında (convert.py bunu
-# otomatik yapıyor) ya da o PR'a yeni commit geldiğinde otomatik çalışır.
-# Amaç: bu projede canlıda gerçekten yaşanmış hata sınıflarının (kayıp
-# bölüm, İngilizce kalmış başlık, kalıntı İngilizce kelime — bkz.
-# scripts/pr_check.py) hiçbirinin fark edilmeden main'e girmemesi.
-#
-# NOT: Bu check PR'da kırmızı/yeşil olarak görünür ama merge'i FİZİKSEL
-# OLARAK engellemez — sert bir engel istenirse repo Settings > Branches
-# > main için bir branch protection rule eklenip bu check "required"
-# olarak işaretlenmeli (job adı: "Kitap Bütünlük Kontrolü").
+# TEST DALI SÜRÜMÜ: kod main'den değil feat/library-sync'ten alınır, LIBRARY_SYNC sabit "1".
 on:
   pull_request:
     branches: [main]
@@ -21,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     if: startsWith(github.head_ref, 'book/')
+    env:
+      LIBRARY_SYNC: "1"
 
     steps:
       - name: Checkout PR head
@@ -29,13 +22,9 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
 
-      # Kod HER ZAMAN main'den gelir; dal sadece veri (status.json, output/ ...)
-      # tasir. Aksi halde dal acildigi andaki eski script'lerle calisir, main'e
-      # giren duzeltmeler acik kitaplara ulasmaz (ve bir PR'in kendi pr_check.py'sini
-      # degistirerek kontrolu zayiflatmasi mumkun olur).
-      - name: Use scripts from main
+      - name: Use scripts from feat/library-sync (TEST)
         run: |
-          git fetch origin main
+          git fetch origin feat/library-sync
           mkdir -p "$RUNNER_TEMP/main-code"
           git archive FETCH_HEAD scripts requirements.txt | tar -x -C "$RUNNER_TEMP/main-code"
           echo "MAIN_CODE=$RUNNER_TEMP/main-code" >> "$GITHUB_ENV"
@@ -47,6 +36,11 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r "$MAIN_CODE/requirements.txt"
+
+      - name: Pull chapters from library
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python "$MAIN_CODE/scripts/library_pull.py"
 
       - name: Extract book slug
         id: slug
