@@ -23,6 +23,11 @@ jobs:
       contents: write
       pull-requests: write
 
+    # Repo değişkeni LIBRARY_SYNC=1 ise biten bölümler eptran-library'ye yazılır
+    # (bkz. scripts/lib/library_sync.py). Tanımsızsa/0 ise eski davranış.
+    env:
+      LIBRARY_SYNC: ${{ vars.LIBRARY_SYNC || '0' }}
+
     steps:
       - name: Generate app token
         id: app-token
@@ -88,6 +93,14 @@ jobs:
         run: |
           git config user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
           git config user.email "${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
+
+      # LIBRARY_SYNC açıkken biten bölümler eptran'da değil eptran-library'de
+      # durur; bu adım onları output/<slug>/ altına çeker (kapalıysa bir şey yapmaz).
+      - name: Pull chapters from library
+        if: steps.check.outputs.needed == 'yes'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: python "$MAIN_CODE/scripts/library_pull.py"
 
       - name: Run conversion (and open completion PR)
         if: steps.check.outputs.needed == 'yes'
