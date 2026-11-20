@@ -177,7 +177,7 @@ jobs:
           # varsayılan olarak buffer'lanıyor — print() çağrıları anında değil,
           # buffer dolunca ya da script bitince log'a düşüyor. Gemini'nin
           # ücretsiz katmanı yavaş/rate-limit'li olduğu için her bölüm
-          # arasında uzun sessizlikler oluşuyor ve bu "job takılmış gibi"
+          # arasında uzun sessizlikler oluyor ve bu "job takılmış gibi"
           # görünmesine yol açıyordu — script aslında çalışıyordu, sadece
           # log gecikmeliydi.
           PYTHONUNBUFFERED: "1"
@@ -215,7 +215,7 @@ jobs:
       # Artık "qa_report.md'nin kendisi hâlâ var mı" diye bakıyoruz (o da
       # apply_qa_fixes.py tarafından SADECE gerçekten 0 madde kalınca
       # siliniyor) VE bunu düzeltmelerden SONRA kontrol ediyoruz — bu,
-      # skip_audit kullanılsın kullanılmasın, kalan gerçek durumu
+      # skip_audit kullanılsa da kullanılmasa da, kalan gerçek durumu
       # doğru yansıtan tek sinyal.
       - name: Check QA completion
         id: qacheck
