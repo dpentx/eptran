@@ -226,7 +226,8 @@ def pull() -> int:
     """Job başında çağrılır: library'deki staging/<slug> bölümlerini yerel
     output/<slug>/NNN_<slug>.txt olarak yazar (review/qa/pr-check/convert bunları
     yerinde okur ve düzenler). status.json'a DOKUNMAZ (asıl kopya eptran'da).
-    Yazılan dosya sayısını döner; staging dalı yoksa 0."""
+    Yazılan dosya sayısını döner; staging dalı yoksa library ana dalından okur
+    (promote sonrası), orada da yoksa 0."""
     if not enabled():
         return 0
     status = _load_status()
@@ -240,8 +241,10 @@ def pull() -> int:
     lib_book = _slug(book)
     staging = f"staging/{lib_book}"
 
-    if not _prepare_branch(WORK_DIR, staging):
-        return 0
+    # staging dalı yoksa (kitap PR'ı merge olunca library_promote onu siler) klon
+    # varsayılan dalın ucuna kurulur; promote edilmiş kitabın bölümleri orada durur.
+    # Merge sonrası çalışan web-ingest bu yüzden aynı yoldan okuyabilir.
+    _prepare_branch(WORK_DIR, staging)
     src_dir = os.path.join(WORK_DIR, series, lib_book)
     if not os.path.isdir(src_dir):
         return 0
