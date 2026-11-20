@@ -12,7 +12,7 @@ on:
 # Sadece kendi türünden (başka bir translate run'ı) ile çakışmayı önler.
 # ÖNEMLİ: review/convert ile AYNI grubu kullanmıyoruz — aynı grupta
 # kuyruğa girmiş birden fazla çalışma olduğunda GitHub Actions sadece
-# EN SON kuyruğa gireni çalıştırıp öncekileri iptal ediyor. Bu yüzden
+# EN SON kuyruğa girenı çalıştırıp öncekileri iptal ediyor. Bu yüzden
 # translate zaman aşımına uğrayıp bir sonraki denemesi kuyruğa girdiğinde,
 # review'ın kuyruğa girmiş bir çalışması onu iptal edip yerine geçebiliyordu
 # — çevirinin hiç ilerleyememesinin sebebi buydu. Artık her workflow kendi
@@ -35,6 +35,11 @@ jobs:
     permissions:
       contents: write
 
+    # Repo değişkeni LIBRARY_SYNC=1 ise biten bölümler eptran-library'ye yazılır
+    # (bkz. scripts/lib/library_sync.py). Tanımsızsa/0 ise eski davranış.
+    env:
+      LIBRARY_SYNC: ${{ vars.LIBRARY_SYNC || '0' }}
+
     steps:
       - name: Generate app token
         id: app-token
@@ -42,6 +47,11 @@ jobs:
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          # eptran-library'ye de yazabilmesi için token'ı iki repoya açıyoruz.
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            eptran
+            eptran-library
 
       - name: Checkout
         uses: actions/checkout@v4
