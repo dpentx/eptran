@@ -20,6 +20,10 @@ jobs:
     timeout-minutes: 15
     permissions:
       contents: read
+    # Repo değişkeni LIBRARY_SYNC=1 ise biten bölümler eptran-library'ye yazılır
+    # (bkz. scripts/lib/library_sync.py). Tanımsızsa/0 ise eski davranış.
+    env:
+      LIBRARY_SYNC: ${{ vars.LIBRARY_SYNC || '0' }}
 
     steps:
       - name: Checkout merge commit
@@ -34,6 +38,13 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      # LIBRARY_SYNC açıkken biten bölümler eptran-library'de durur (promote
+      # sonrası ana dalda, ondan önce staging'de); okuma için github.token yeter.
+      - name: Pull chapters from library
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/library_pull.py
 
       - name: Send book to eptran-web
         env:

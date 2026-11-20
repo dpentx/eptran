@@ -35,6 +35,11 @@ jobs:
     permissions:
       contents: write
 
+    # Repo değişkeni LIBRARY_SYNC=1 ise biten bölümler eptran-library'ye yazılır
+    # (bkz. scripts/lib/library_sync.py). Tanımsızsa/0 ise eski davranış.
+    env:
+      LIBRARY_SYNC: ${{ vars.LIBRARY_SYNC || '0' }}
+
     steps:
       - name: Generate app token
         id: app-token
@@ -42,6 +47,11 @@ jobs:
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          # eptran-library'ye de yazabilmesi için token'ı iki repoya açıyoruz.
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            eptran
+            eptran-library
 
       - name: Checkout
         uses: actions/checkout@v4

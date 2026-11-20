@@ -129,6 +129,16 @@ def git_push(message: str, max_retries: int = 3) -> None:
     deniyoruz; hepsi başarısız olursa (gerçek/kalıcı bir sorun varsa)
     yine RuntimeError ile duruyoruz — sonsuza kadar sessizce denemiyoruz.
     """
+    # LIBRARY_SYNC=1 ise (bkz. lib/library_sync.py): biten bölüm metinleri ve
+    # status aynası ÖNCE eptran-library'ye yazılır, SONRA eptran'a commit'lenir.
+    # Sıra bilinçli: library'ye yazıldıktan sonra çökülürse ilerleme kaybolmaz
+    # (kuyruk ilerlemeyi dosyalardan okur); tersi olsaydı eksik kalırdı.
+    # Kapalıyken hiçbir şey yapmaz. Bu çağrı "değişiklik yok" erken çıkışından
+    # ÖNCE olmalı: biten txt'ler eptran'da yok sayıldığında eptran tarafında fark
+    # çıkmaz ama library tarafında çıkabilir.
+    from lib import library_sync
+    library_sync.sync_if_enabled()
+
     branch = current_branch()
     subprocess.run(["git", "add", "-A"], check=True)
     result = subprocess.run(["git", "diff", "--cached", "--quiet"])

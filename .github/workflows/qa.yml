@@ -63,6 +63,11 @@ jobs:
     permissions:
       contents: write
 
+    # Repo değişkeni LIBRARY_SYNC=1 ise biten bölümler eptran-library'ye yazılır
+    # (bkz. scripts/lib/library_sync.py). Tanımsızsa/0 ise eski davranış.
+    env:
+      LIBRARY_SYNC: ${{ vars.LIBRARY_SYNC || '0' }}
+
     steps:
       - name: Generate app token
         id: app-token
@@ -70,6 +75,11 @@ jobs:
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          # eptran-library'ye de yazabilmesi için token'ı iki repoya açıyoruz.
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            eptran
+            eptran-library
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -102,6 +112,13 @@ jobs:
           git config user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
           git config user.email "${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
 
+      # LIBRARY_SYNC açıkken biten bölümler eptran'da değil eptran-library'de
+      # durur; bu adım onları output/<slug>/ altına çeker (kapalıysa bir şey yapmaz).
+      - name: Pull chapters from library
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: python "$MAIN_CODE/scripts/library_pull.py"
+
       # Periyodik güvenlik ağının (translate.py:_scan_and_nudge_active_books)
       # "QA bitmedi mi, o zaman dürt" diye tekrar tekrar boşu boşuna
       # tetiklememesi için, bu işin BAŞLADIĞINI hemen işaretliyoruz. is_stale
@@ -112,7 +129,7 @@ jobs:
         run: |
           python3 -c "
           import json, os, sys
-          sys.path.insert(0, 'scripts')
+          sys.path.insert(0, os.environ['MAIN_CODE'] + '/scripts')
           from lib.git_utils import write_status
           status = json.load(open('status.json', encoding='utf-8')) if os.path.exists('status.json') else {}
           status['qa_status'] = 'running'
@@ -229,6 +246,19 @@ jobs:
           PYTHONUNBUFFERED: "1"
         run: python "$MAIN_CODE/scripts/series_suggest.py" "${{ inputs.slug }}"
 
+      # QA düzeltmeleri (apply_qa_fixes) bölüm metinlerini yerinde değiştirir. Library
+      # açıkken bunlar eptran'a değil library'ye gider; sonraki adımlar takılsa bile
+      # düzeltmeler kaybolmasın diye burada hemen yazılır (kapalıysa bir şey yapmaz).
+      - name: Sync edited chapters to library
+        if: always()
+        run: |
+          python3 -c "
+          import os, sys
+          sys.path.insert(0, os.environ['MAIN_CODE'] + '/scripts')
+          from lib import library_sync
+          library_sync.sync_if_enabled()
+          "
+
       - name: Commit results
         if: always()
         run: |
@@ -268,7 +298,7 @@ jobs:
         run: |
           python3 -c "
           import json, os, sys
-          sys.path.insert(0, 'scripts')
+          sys.path.insert(0, os.environ['MAIN_CODE'] + '/scripts')
           from lib.git_utils import write_status
           status = json.load(open('status.json', encoding='utf-8')) if os.path.exists('status.json') else {}
           status['qa_status'] = '${{ steps.qacheck.outputs.complete == 'true' && 'completed' || 'partial' }}'
