@@ -21,6 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     if: startsWith(github.head_ref, 'book/')
+    # Repo değişkeni LIBRARY_SYNC=1 ise biten bölümler eptran-library'ye yazılır
+    # (bkz. scripts/lib/library_sync.py). Tanımsızsa/0 ise eski davranış.
+    env:
+      LIBRARY_SYNC: ${{ vars.LIBRARY_SYNC || '0' }}
 
     steps:
       - name: Checkout PR head
@@ -47,6 +51,13 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r "$MAIN_CODE/requirements.txt"
+
+      # LIBRARY_SYNC açıkken biten bölümler eptran-library'de durur (public repo,
+      # okuma için github.token yeter); denetim onları output/<slug>/ altında görür.
+      - name: Pull chapters from library
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python "$MAIN_CODE/scripts/library_pull.py"
 
       - name: Extract book slug
         id: slug

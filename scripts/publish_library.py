@@ -46,7 +46,9 @@ def main() -> None:
     chapters = load_txt_chapters(f"output/{book}")
     title, author = get_book_metadata(book, find_original_epub(book))
 
-    info = publish_to_library(book, chapters, epub, title, author, status.get("series"))
+    # library_series: library_sync'in ilk senkronda sabitlediği klasör (varsa ona uy).
+    series = status.get("library_series") or status.get("series")
+    info = publish_to_library(book, chapters, epub, title, author, series)
     if not info:
         _comment_on_pr(current_branch(),
                        "⚠️ Library'ye yayın başarısız oldu (bkz. convert workflow logu). "
