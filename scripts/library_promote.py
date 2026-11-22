@@ -20,6 +20,7 @@ import sys
 import tempfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.chapter_format import to_published  # noqa: E402
 from lib.library_publish import (  # noqa: E402
     DEFAULT_LIBRARY_REPO, _run, _clone_url, _gh, _load_index, _slug,
 )
@@ -49,6 +50,18 @@ def _attempt(repo: str, book: str, tmp: str, n: int) -> str:
     # 1) Cilt klasörünü staging'den al (ana daldaki eski sürümü önce sil).
     shutil.rmtree(os.path.join(work, series, book), ignore_errors=True)
     _run(["git", "checkout", staging_ref, "--", f"{series}/{book}"], cwd=work)
+
+    # 1b) Bölümleri YAYIN biçimine çevir (ilk satır başlık, sonra gövde; bkz.
+    # lib/chapter_format.py). Staging'de çalışma biçimi kalır (pipeline gidiş-dönüşü
+    # için gerekli); ana dal okuyucu sitesi ve düzeltme PR'larının gördüğü biçimdir.
+    cilt_dir = os.path.join(work, series, book)
+    for name in sorted(os.listdir(cilt_dir)):
+        if name.endswith(".txt"):
+            path = os.path.join(cilt_dir, name)
+            with open(path, encoding="utf-8") as f:
+                raw = f.read()
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(to_published(name, raw))
 
     # 2) Staging'deki index girdisini ana dalın index'ine ekle/güncelle.
     staged = json.loads(_run(["git", "show", f"{staging_ref}:{series}/index.json"], cwd=work))
