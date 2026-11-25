@@ -1,0 +1,68 @@
+name: Apply Reader Suggestions
+
+# Okuyucu önerilerini (eptran-web) eptran-library'ye düzeltme PR'ı olarak taşır ve
+# açık öneri PR'larının sonucunu siteye yansıtır (bkz. scripts/lib/suggestions.py).
+# Library'ye hiçbir şey doğrudan girmez: her düzeltme bir PR'dır ve insan onayı ister.
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "PR açmadan, ne yapılacağını logla"
+        required: false
+        type: boolean
+        default: false
+      suggestions_json:
+        description: "Deneme: web'e bağlanmadan bu JSON öneri listesiyle PR aç (durum güncellenmez)"
+        required: false
+        type: string
+  schedule:
+    - cron: "23 */6 * * *"
+
+concurrency:
+  group: eptran-apply-suggestions
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+
+    steps:
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          # Sadece eptran-library'ye yazılır (öneri dalı + PR).
+          owner: ${{ github.repository_owner }}
+          repositories: eptran-library
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Betik sadece standart kütüphane kullanır; pip install gerekmez.
+      - name: Apply suggestions
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          WEB_INGEST_URL: ${{ secrets.WEB_INGEST_URL }}
+          WEB_INGEST_SECRET: ${{ secrets.WEB_INGEST_SECRET }}
+          GIT_AUTHOR_NAME: ${{ steps.app-token.outputs.app-slug }}[bot]
+          GIT_AUTHOR_EMAIL: ${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com
+          DRY_RUN: ${{ inputs.dry_run }}
+          SUGGESTIONS_JSON: ${{ inputs.suggestions_json }}
+        run: |
+          ARGS=""
+          if [ "$DRY_RUN" = "true" ]; then ARGS="$ARGS --dry-run"; fi
+          if [ -n "$SUGGESTIONS_JSON" ]; then
+            printf '%s' "$SUGGESTIONS_JSON" > "$RUNNER_TEMP/suggestions.json"
+            ARGS="$ARGS --suggestions-file $RUNNER_TEMP/suggestions.json"
+          fi
+          python scripts/apply_suggestions.py $ARGS
