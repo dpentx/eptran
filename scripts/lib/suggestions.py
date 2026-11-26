@@ -243,6 +243,19 @@ def _identity() -> tuple:
     return name, mail
 
 
+REQUIRED_KEYS = ("id", "selectedText", "suggestedText", "sourceKey", "chapterIndex")
+
+
+def usable(suggestions: list) -> list:
+    """Gerekli alanları olmayan kayıtları (ör. web henüz eski yanıt biçimini
+    döndürüyorsa) atlar; betiği çökmesin, uyarı basılsın."""
+    good = [s for s in (suggestions or []) if isinstance(s, dict) and all(k in s for k in REQUIRED_KEYS)]
+    if len(good) != len(suggestions or []):
+        print(f"  Uyarı: {len(suggestions) - len(good)} kayıt beklenen biçimde değil, atlandı "
+              f"(web'in güncel sürümü yayında mı?).")
+    return good
+
+
 def _group_by_chapter(suggestions: list) -> dict:
     groups = {}
     for s in suggestions:
@@ -256,6 +269,7 @@ def process_pending(suggestions: list, repo: str, web, gh, tmp: str,
     """Bekleyen önerilerden library PR'ları açar. web=None ise durum güncellenmez
     (dosya/deneme modu). Özet sayaçlarla döner."""
     stats = {"pr_opened": 0, "applied": 0, "rejected": 0, "skipped_limit": 0, "errors": 0}
+    suggestions = usable(suggestions)
     if not suggestions:
         return stats
 
@@ -314,7 +328,13 @@ def process_pending(suggestions: list, repo: str, web, gh, tmp: str,
             _run(["git", "-c", f"user.name={name}", "-c", f"user.email={mail}", "commit", "--quiet",
                   "-m", title], cwd=work)
             _run(["git", "push", "--quiet", "origin", f"{branch}:{branch}"], cwd=work)
-            url = gh.pr_create(branch, title, body)
+            try:
+                url = gh.pr_create(branch, title, body)
+            except Exception:
+                # PR açılamadıysa (ör. izin eksik) dal yetim kalmasın; aksi halde öneri
+                # beklemede kaldığı için her çalıştırmada yeni bir yetim dal birikirdi.
+                _run(["git", "push", "--quiet", "origin", "--delete", branch], cwd=work, check=False)
+                raise
             stats["pr_opened"] += 1
             stats["applied"] += len(applied)
             print(f"  PR açıldı: {url}")
@@ -340,7 +360,7 @@ def reconcile_open(suggestions: list, repo: str, web, gh, tmp: str) -> dict:
     yeniden okutup 'merged', birleşmeden kapanmışsa 'rejected'."""
     stats = {"merged": 0, "closed": 0, "still_open": 0, "errors": 0}
     by_pr = {}
-    for s in suggestions:
+    for s in usable(suggestions):
         if s.get("prUrl"):
             by_pr.setdefault(s["prUrl"], []).append(s)
 
