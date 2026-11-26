@@ -276,6 +276,26 @@ class FlowTest(unittest.TestCase):
         self.assertEqual(stats["pr_opened"], 1)
         self.assertEqual(stats["skipped_limit"], 1)
 
+    def test_old_shape_records_are_skipped_not_crashing(self):
+        FakeWeb.state["suggestions"] = [
+            {"id": "eski", "status": "pending", "selectedText": "x", "suggestedText": "y",
+             "chapter": {"index": 1}},                       # sourceKey/chapterIndex yok
+            S("ok1", "herkes eve döndü", "herkes evine döndü"),
+        ]
+        errors = sg.run(self.web, "x/y", gh=self.gh)
+        self.assertEqual(errors, 0)
+        self.assertEqual(len(self.gh.created), 1)
+
+    def test_failed_pr_creation_deletes_orphan_branch_and_keeps_pending(self):
+        class BrokenGh(FakeGh):
+            def pr_create(self, head, title, body):
+                raise RuntimeError("Resource not accessible by integration")
+        FakeWeb.state["suggestions"] = [S("s1", "herkes eve döndü", "herkes evine döndü")]
+        errors = sg.run(self.web, "x/y", gh=BrokenGh())
+        self.assertEqual(errors, 1)
+        self.assertNotIn("oneri/", sh("git", "branch", "-a", cwd=self.bare))   # dal temizlendi
+        self.assertEqual(FakeWeb.state["patches"], [])                         # beklemede kaldı
+
     def test_dry_run_changes_nothing(self):
         FakeWeb.state["suggestions"] = [S("s1", "herkes eve döndü", "herkes evine döndü")]
         sg.run(self.web, "x/y", gh=self.gh, dry_run=True)
